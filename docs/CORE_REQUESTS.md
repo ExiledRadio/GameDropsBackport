@@ -89,7 +89,10 @@ driest humidity, weirdness above 0, where plains are otherwise), and to call
 `com.exiledradio.gamedropsbackport.poplar.PoplarFeatures.vegetation(world, rand, chunkCorner, biome)` for its vegetal
 step (also `tree`, `fallenTree`). Its surface is grass with coarse dirt where `small_patch` noise is above 1.2.
 
-**Meanwhile:** the dappled forest is placed on 1.12.2's biome layers only (`DappledForestLayer`).
+**Done** (Caves & Cliffs 1.1.3, `Editions.GAME_DROPS`): its 1.18 terrain places the dappled forest in
+`MIDDLE_BIOMES_VARIANT[1][0]` (its leaves are 26.3's, all 7594 compared), lays coarse dirt where 26.3's `small_patch`
+is at least 1.2 (the noise compared with 26.3's own, bit for bit) and calls `PoplarFeatures.vegetation` at population.
+The 1.18 terrain's biome provider builds no `GenLayer`s, so `DappledForestLayer` never reaches those worlds.
 
 ## 5. One boat registry (family) — stream 5
 
@@ -167,9 +170,11 @@ Caves & Cliffs' terrain core has no 26.2 edition, so its biome source never name
 the bands in its surface rules before deepslate, `Biomes.byName("sulfur_caves")`, and the biome's 3D id through Core's
 `ModernGeneration.biomeId` (F3, spawning). A climate query in `ModernGeneration` would also do for the placement.
 
-**Meanwhile:** `sulfurcaves.ModernClimate` reads the terrain's climate noise by reflection and applies 26.2's box
-itself, the bands are laid at population (after the terrain's ores, which they cover), and F3 shows the column's
-biome. `SulfurCaves` switches to the terrain's own biome as soon as `Biomes.byName("sulfur_caves")` answers.
+**Done** (Caves & Cliffs 1.1.3, `Editions.GAME_DROPS`): the biome line after the lush caves, the bands in its surface
+rules before deepslate (26.3's `sulfur_cave_gradient`, bit for bit), `Biomes.byName("sulfur_caves")` and the 3D id.
+`SulfurCaves.terrainHasSulfurCaves` asks the generator's `editions()` for that edition: in such a world the terrain's
+biome is the answer, `ModernClimate` and the bands at population step aside (the springs, pools and spikes stay ours).
+A 1.18 world made before the edition keeps `ModernClimate` and the bands.
 
 
 ## Lf. Look and feel (stream 8)

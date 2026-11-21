@@ -33,8 +33,7 @@ takes its orange.
 | 7 | `gd7_poplarwood` | `/tp @p 228.5 94 248.5 158 12` | 7000, clear | A woodcutter's cabin of poplar at the forest edge. It has plank walls on stripped poplar log posts, a stair roof with a slab ridge, a poplar door, button and pressure plate, open trapdoor shutters, and a slab porch with a fence rail and an open gate. Outside are a sign ("Poplar Grove / Woodcutter"), a potted sapling, a woodpile of poplar logs, wood and stripped wood, shelf mushrooms on the posts, red shrubs, saplings and a poplar boat pulled up on the grass. | `TODO-poplar-wood.jpg` (**Poplar and the dappled forest**, second image) |
 | 8 | `gd8_camp` | `/tp @p 203.5 90 251.5 -158 18` | 5500, clear | An abandoned camp under red poplars at the forest edge (26.3's dappled forest campsite and tent). On the left is the campsite: a cold campfire, log seats with cushions, a path and the chest. On the right is the tent of white wool stairs over straw beds, with a cauldron and a barrel. **Before the shot, open the chest by the campfire.** 26.3's camp chest always rolls one explorer map, made on opening. Hold it in your off hand (F) so the map shows beside the camp. | `TODO-abandoned-camp.jpg` (**Abandoned camps**). The alt text says "in a taiga"; this camp is the dappled forest one, so change it to "An abandoned camp at the edge of the dappled forest" |
 | 9 | `gd9_softblocks` | `/tp @p 109.5 103 211.5 168 26` | 4500, clear | A spruce garden terrace on the west hill. A cyan wool-stair sofa with light gray wool slab arms and yellow, orange and pink cushions. A rug of red and white wool and wool slabs. A coffee table of white concrete slabs. Lime and magenta wool slab stools with cushions. Gray and light gray concrete stairs as steps, and concrete slab planters. Two straw beds and hay under a lean-to roofed with black concrete stairs. | `TODO-soft-blocks.jpg` (**Wool, concrete, cushions and straw beds**) |
-| 10 | 26.x menus | title screen, pause menu (Esc), World Options... (pause menu) | n/a | 26.3's panorama (the dappled forest with an abandoned camp) and splashes on the title screen. The pause menu shows 26.2's icon row and World Options... in place of Open to LAN. The World Options screen has General and Multiplayer. Captured by hand; nothing to build. Optional: the description has no slot for them yet. | none yet; could go after the first paragraph of **The rest of 26.x** |
-| 11 | settings screen | in game: Options, Mod Options, Backport Core, Game Drops | n/a | The settings screen. The user captures it; nothing to build. | `TODO-settings.jpg` (**The rest of 26.x**) |
+| 10 | settings screen | in game: Options, Mod Options, Backport Core, Game Drops | n/a | The settings screen. The user captures it; nothing to build. | `TODO-settings.jpg` (**The rest of 26.x**) |
 
 ## Image lines to paste
 
@@ -51,8 +50,7 @@ Save each shot as JPEG, under 2 MB (CurseForge's limit), with the name below, th
 | `TODO-poplar-wood.jpg` | `gd7-poplar-wood.jpg` |
 | `TODO-soft-blocks.jpg` | `gd9-soft-blocks.jpg` |
 | `TODO-abandoned-camp.jpg` | `gd8-abandoned-camp.jpg` |
-| `TODO-settings.jpg` | `gd11-settings.jpg` |
-| (menus, no slot yet) | `gd10-menus.jpg` |
+| `TODO-settings.jpg` | `gd10-settings.jpg` |
 
 ## Things to know
 

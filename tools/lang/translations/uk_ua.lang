@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=Покинуті табори та мапи до�
 config.gamedropsbackport.camps.tooltip=Покинуті табори та мапи дослідника.
 config.gamedropsbackport.camps.enabled=Увімкнено
 config.gamedropsbackport.camps.enabled.tooltip=Покинуті табори з'являються в нових чанках.
+config.gamedropsbackport.poplar.generateBiome=Генерувати плямисті ліси
+config.gamedropsbackport.poplar.generateBiome.tooltip=Плямисті ліси з'являються в нових чанках. Якщо вимкнено, біом не реєструється.

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "gamedropsbackport:poplar_sign"
+    },
+    "facing=south": {
+      "model": "gamedropsbackport:poplar_sign"
+    },
+    "facing=west": {
+      "model": "gamedropsbackport:poplar_sign"
+    },
+    "facing=east": {
+      "model": "gamedropsbackport:poplar_sign"
+    }
+  }
+}

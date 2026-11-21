@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=Verlaten kampen en ontdekkingskaarten
 config.gamedropsbackport.camps.tooltip=Verlaten kampen en ontdekkingskaarten.
 config.gamedropsbackport.camps.enabled=Ingeschakeld
 config.gamedropsbackport.camps.enabled.tooltip=Verlaten kampen ontstaan in nieuw gegenereerde chunks.
+config.gamedropsbackport.poplar.generateBiome=Populierenbossen genereren
+config.gamedropsbackport.poplar.generateBiome.tooltip=Populierenbossen ontstaan in nieuw gegenereerde chunks. Uitgeschakeld wordt het bioom niet geregistreerd.

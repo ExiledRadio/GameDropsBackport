@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=버려진 야영지와 탐험가 지도
 config.gamedropsbackport.camps.tooltip=버려진 야영지와 탐험가 지도.
 config.gamedropsbackport.camps.enabled=활성화
 config.gamedropsbackport.camps.enabled.tooltip=버려진 야영지가 새로 생성되는 청크에 생성됩니다.
+config.gamedropsbackport.poplar.generateBiome=얼룩덜룩한 숲 생성
+config.gamedropsbackport.poplar.generateBiome.tooltip=얼룩덜룩한 숲이 새로 생성되는 청크에 생성됩니다. 끄면 생물 군계가 등록되지 않습니다.

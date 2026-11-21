@@ -1,0 +1,14 @@
+block.poplar_leaves.ambient
+block.poplar_leaves.break
+block.poplar_leaves.fall
+block.poplar_leaves.hit
+block.poplar_leaves.place
+block.poplar_leaves.step
+block.red_shrub.break
+block.red_shrub.place
+block.shelf_mushroom.bounce
+block.shelf_mushroom.break
+block.shelf_mushroom.fall
+block.shelf_mushroom.place
+block.shelf_mushroom.step
+item.axe.strip

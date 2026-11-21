@@ -1,0 +1,7 @@
+{
+  "parent": "gamedropsbackport:block/door_bottom_right",
+  "textures": {
+    "bottom": "gamedropsbackport:block/poplar_door_bottom",
+    "top": "gamedropsbackport:block/poplar_door_top"
+  }
+}

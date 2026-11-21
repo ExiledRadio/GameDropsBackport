@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=Terkedilmiş kamplar ve kâşif haritaları
 config.gamedropsbackport.camps.tooltip=Terkedilmiş kamplar ve kâşif haritaları.
 config.gamedropsbackport.camps.enabled=Etkin
 config.gamedropsbackport.camps.enabled.tooltip=Terkedilmiş kamplar yeni oluşturulan yığınlarda oluşur.
+config.gamedropsbackport.poplar.generateBiome=Alacalı Ormanlar Oluştur
+config.gamedropsbackport.poplar.generateBiome.tooltip=Alacalı ormanlar yeni oluşturulan yığınlarda oluşur. Kapalıyken biyom kaydedilmez.

@@ -113,6 +113,11 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Poplar fields ---
+        @Config.RequiresMcRestart
+        @Setting.NewChunks
+        @Config.Comment("Dappled forests generate in newly generated chunks. Off, the biome is not registered.")
+        @Config.LangKey("config.gamedropsbackport.poplar.generateBiome")
+        public boolean generateBiome = true;
         // --- end Poplar ---
     }
 

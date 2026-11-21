@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=Camps abandonnés et cartes d'exploration
 config.gamedropsbackport.camps.tooltip=Camps abandonnés et cartes d'exploration.
 config.gamedropsbackport.camps.enabled=Activé
 config.gamedropsbackport.camps.enabled.tooltip=Les camps abandonnés apparaissent dans les chunks nouvellement générés.
+config.gamedropsbackport.poplar.generateBiome=Générer des forêts ambrées
+config.gamedropsbackport.poplar.generateBiome.tooltip=Les forêts ambrées apparaissent dans les chunks nouvellement générés. Désactivé, le biome n'est pas enregistré.

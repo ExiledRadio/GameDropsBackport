@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=Acampamentos abandonados e mapas de explorador
 config.gamedropsbackport.camps.tooltip=Acampamentos abandonados e mapas de explorador.
 config.gamedropsbackport.camps.enabled=Ativado
 config.gamedropsbackport.camps.enabled.tooltip=Acampamentos abandonados são gerados em chunks recém-gerados.
+config.gamedropsbackport.poplar.generateBiome=Gerar florestas salpicadas
+config.gamedropsbackport.poplar.generateBiome.tooltip=Florestas salpicadas são geradas em chunks recém-gerados. Desativado, o bioma não é registrado.

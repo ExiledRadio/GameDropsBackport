@@ -1,0 +1,1 @@
+biome.gamedropsbackport.dappled_forest = biome.minecraft.dappled_forest

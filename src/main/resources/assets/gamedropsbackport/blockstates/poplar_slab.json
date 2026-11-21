@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=top,variant=default": {
+      "model": "gamedropsbackport:poplar_slab_top"
+    },
+    "half=bottom,variant=default": {
+      "model": "gamedropsbackport:poplar_slab"
+    }
+  }
+}

@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=Заброшенные лагеря и карты
 config.gamedropsbackport.camps.tooltip=Заброшенные лагеря и карты исследователя.
 config.gamedropsbackport.camps.enabled=Включено
 config.gamedropsbackport.camps.enabled.tooltip=Заброшенные лагеря появляются в новых чанках.
+config.gamedropsbackport.poplar.generateBiome=Генерировать пёстрые леса
+config.gamedropsbackport.poplar.generateBiome.tooltip=Пёстрые леса появляются в новых чанках. Если выключено, биом не регистрируется.

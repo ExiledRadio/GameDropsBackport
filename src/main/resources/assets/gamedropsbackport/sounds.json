@@ -1,0 +1,347 @@
+{
+  "block.poplar_leaves.break": {
+    "sounds": [
+      "gamedropsbackport:block/leaf_litter/break1",
+      "gamedropsbackport:block/leaf_litter/break2",
+      "gamedropsbackport:block/leaf_litter/break3",
+      "gamedropsbackport:block/leaf_litter/break4",
+      "gamedropsbackport:block/leaf_litter/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.poplar_leaves.step": {
+    "sounds": [
+      "gamedropsbackport:block/leaf_litter/step1",
+      "gamedropsbackport:block/leaf_litter/step2",
+      "gamedropsbackport:block/leaf_litter/step3",
+      "gamedropsbackport:block/leaf_litter/step4",
+      "gamedropsbackport:block/leaf_litter/step5",
+      "gamedropsbackport:block/leaf_litter/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.poplar_leaves.place": {
+    "sounds": [
+      "gamedropsbackport:block/leaf_litter/place1",
+      "gamedropsbackport:block/leaf_litter/place2",
+      "gamedropsbackport:block/leaf_litter/place3",
+      "gamedropsbackport:block/leaf_litter/place4",
+      "gamedropsbackport:block/leaf_litter/place5"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.poplar_leaves.hit": {
+    "sounds": [
+      "gamedropsbackport:block/leaf_litter/step1",
+      "gamedropsbackport:block/leaf_litter/step2",
+      "gamedropsbackport:block/leaf_litter/step3",
+      "gamedropsbackport:block/leaf_litter/step4",
+      "gamedropsbackport:block/leaf_litter/step5",
+      "gamedropsbackport:block/leaf_litter/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.poplar_leaves.fall": {
+    "sounds": [
+      "gamedropsbackport:block/leaf_litter/step1",
+      "gamedropsbackport:block/leaf_litter/step2",
+      "gamedropsbackport:block/leaf_litter/step3",
+      "gamedropsbackport:block/leaf_litter/step4",
+      "gamedropsbackport:block/leaf_litter/step5",
+      "gamedropsbackport:block/leaf_litter/step6"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.generic.fall"
+  },
+  "block.poplar_leaves.ambient": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient1",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient2",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient3",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient4",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient5",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient6",
+        "volume": 4.0,
+        "weight": 3
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient7",
+        "volume": 4.0,
+        "weight": 3
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient8",
+        "volume": 4.0,
+        "weight": 3
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient9",
+        "volume": 4.0,
+        "weight": 3
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient10",
+        "volume": 4.0,
+        "weight": 3
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient11",
+        "volume": 4.0,
+        "weight": 3
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient12",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient13",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient14",
+        "volume": 4.0,
+        "weight": 3
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient15",
+        "volume": 4.0,
+        "weight": 4
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient16",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient17",
+        "volume": 4.0,
+        "weight": 3
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient18",
+        "volume": 4.0,
+        "weight": 4
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient19",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient20",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient21",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient22",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient23",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/ambient24",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/wind1",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/wind2",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/poplar_leaves/wind3",
+        "volume": 2.0
+      }
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.poplar_leaves.ambient"
+  },
+  "block.red_shrub.break": {
+    "sounds": [
+      "gamedropsbackport:block/red_shrub/break1",
+      "gamedropsbackport:block/red_shrub/break2",
+      "gamedropsbackport:block/red_shrub/break3",
+      "gamedropsbackport:block/red_shrub/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.red_shrub.place": {
+    "sounds": [
+      "gamedropsbackport:block/red_shrub/place1",
+      "gamedropsbackport:block/red_shrub/place2",
+      "gamedropsbackport:block/red_shrub/place3",
+      "gamedropsbackport:block/red_shrub/place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.shelf_mushroom.break": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:block/shelf_mushroom/break1",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "gamedropsbackport:block/shelf_mushroom/break2",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "gamedropsbackport:block/shelf_mushroom/break3",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "gamedropsbackport:block/shelf_mushroom/break4",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "gamedropsbackport:block/shelf_mushroom/break5",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "gamedropsbackport:block/shelf_mushroom/break6",
+        "pitch": 1.2,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.shelf_mushroom.step": {
+    "sounds": [
+      "gamedropsbackport:block/shelf_mushroom/step1",
+      "gamedropsbackport:block/shelf_mushroom/step2",
+      "gamedropsbackport:block/shelf_mushroom/step3",
+      "gamedropsbackport:block/shelf_mushroom/step4",
+      "gamedropsbackport:block/shelf_mushroom/step5",
+      "gamedropsbackport:block/shelf_mushroom/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.shelf_mushroom.place": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:block/shelf_mushroom/place1",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "gamedropsbackport:block/shelf_mushroom/place2",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "gamedropsbackport:block/shelf_mushroom/place3",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "gamedropsbackport:block/shelf_mushroom/place4",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "gamedropsbackport:block/shelf_mushroom/place5",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "gamedropsbackport:block/shelf_mushroom/place6",
+        "pitch": 1.2,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.shelf_mushroom.fall": {
+    "sounds": [
+      "gamedropsbackport:block/shelf_mushroom/bounce1",
+      "gamedropsbackport:block/shelf_mushroom/bounce2",
+      "gamedropsbackport:block/shelf_mushroom/bounce3",
+      "gamedropsbackport:block/shelf_mushroom/bounce4",
+      "gamedropsbackport:block/shelf_mushroom/bounce5"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.generic.fall"
+  },
+  "block.shelf_mushroom.bounce": {
+    "sounds": [
+      "gamedropsbackport:block/shelf_mushroom/bounce1",
+      "gamedropsbackport:block/shelf_mushroom/bounce2",
+      "gamedropsbackport:block/shelf_mushroom/bounce3",
+      "gamedropsbackport:block/shelf_mushroom/bounce4",
+      "gamedropsbackport:block/shelf_mushroom/bounce5"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.shelf_mushroom.bounce"
+  },
+  "item.axe.strip": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:item/axe/strip1",
+        "volume": 0.9
+      },
+      {
+        "name": "gamedropsbackport:item/axe/strip1",
+        "pitch": 0.85,
+        "volume": 0.9
+      },
+      {
+        "name": "gamedropsbackport:item/axe/strip2",
+        "volume": 0.9
+      },
+      {
+        "name": "gamedropsbackport:item/axe/strip2",
+        "pitch": 0.85,
+        "volume": 0.9
+      },
+      {
+        "name": "gamedropsbackport:item/axe/strip3",
+        "volume": 0.9
+      },
+      {
+        "name": "gamedropsbackport:item/axe/strip3",
+        "pitch": 0.85,
+        "volume": 0.9
+      },
+      {
+        "name": "gamedropsbackport:item/axe/strip4",
+        "volume": 0.9
+      },
+      {
+        "name": "gamedropsbackport:item/axe/strip4",
+        "pitch": 0.85,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.gamedropsbackport.item.axe.strip"
+  }
+}

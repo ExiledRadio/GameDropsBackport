@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=Verlassene Lager und Entdeckerkarten
 config.gamedropsbackport.camps.tooltip=Verlassene Lager und Entdeckerkarten.
 config.gamedropsbackport.camps.enabled=Aktiviert
 config.gamedropsbackport.camps.enabled.tooltip=Verlassene Lager entstehen in neu generierten Chunks.
+config.gamedropsbackport.poplar.generateBiome=Rotlaubwälder generieren
+config.gamedropsbackport.poplar.generateBiome.tooltip=Rotlaubwälder entstehen in neu generierten Chunks. Ausgeschaltet wird das Biom nicht registriert.

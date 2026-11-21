@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=廢棄營地與探險家地圖
 config.gamedropsbackport.camps.tooltip=廢棄營地和探險家地圖。
 config.gamedropsbackport.camps.enabled=啟用
 config.gamedropsbackport.camps.enabled.tooltip=廢棄營地會在新生成的區塊中生成。
+config.gamedropsbackport.poplar.generateBiome=生成斑駁森林
+config.gamedropsbackport.poplar.generateBiome.tooltip=斑駁森林會在新生成的區塊中生成。關閉後不註冊該生態域。

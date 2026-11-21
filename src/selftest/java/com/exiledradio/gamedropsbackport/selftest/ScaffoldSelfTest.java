@@ -38,6 +38,7 @@ final class ScaffoldSelfTest implements SelfTest {
         check.ok(lang.size() > 0, "en_us.lang has keys");
 
         Set<String> categoryKeys = new HashSet<String>();
+        int settings = 0;
         for (Field category : ModConfig.class.getFields()) {
             if (!Modifier.isStatic(category.getModifiers())) {
                 continue;
@@ -51,6 +52,7 @@ final class ScaffoldSelfTest implements SelfTest {
                 if (!check.ok(k != null, "LangKey on " + category.getName() + "." + setting.getName())) {
                     continue;
                 }
+                settings++;
                 check.ok(lang.contains(k.value()), "lang key " + k.value());
                 check.ok(lang.contains(k.value() + ".tooltip"), "lang key " + k.value() + ".tooltip");
             }
@@ -71,7 +73,7 @@ final class ScaffoldSelfTest implements SelfTest {
             for (String key : categoryKeys) {
                 check.ok(groups.contains(key), "page group " + key);
             }
-            check.eq(7, page.entries.size(), "page settings (one enabled switch per category)");
+            check.eq(settings, page.entries.size(), "page settings (one per config field)");
         }
     }
 

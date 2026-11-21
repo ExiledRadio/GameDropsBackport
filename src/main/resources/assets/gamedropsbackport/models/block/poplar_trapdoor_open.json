@@ -1,0 +1,6 @@
+{
+  "parent": "gamedropsbackport:block/template_orientable_trapdoor_open",
+  "textures": {
+    "texture": "gamedropsbackport:block/poplar_trapdoor"
+  }
+}

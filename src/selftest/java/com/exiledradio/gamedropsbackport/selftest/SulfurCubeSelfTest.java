@@ -6,6 +6,7 @@ import com.exiledradio.gamedropsbackport.sulfurcube.ArchetypeItems;
 import com.exiledradio.gamedropsbackport.sulfurcube.EntitySulfurCube;
 import com.exiledradio.gamedropsbackport.sulfurcube.ItemSulfurCubeBucket;
 import com.exiledradio.gamedropsbackport.sulfurcube.SulfurCubes;
+import com.exiledradio.gamedropsbackport.sulfurcube.client.HeldBlockPose;
 
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
@@ -69,6 +70,7 @@ final class SulfurCubeSelfTest implements SelfTest {
         check.ok(world.getMinecraftServer().getAdvancementManager().getAdvancement(SulfurCubes.UH_OH) != null,
                 "advancement Uh Oh is loaded");
 
+        heldBlockPose(check);
         archetypes(check);
         floor(world);
         sizes(check, world);
@@ -82,6 +84,21 @@ final class SulfurCubeSelfTest implements SelfTest {
         dispenser(check, world);
         spawning(check, world);
         dump();
+    }
+
+    /** The held block sits centered in the gel, as 26.3 draws it (1.12.2's renderModelBrightness adds a yaw). */
+    private static void heldBlockPose(Check check) {
+        double[][] corners = {
+            HeldBlockPose.place(0, 0, 0), HeldBlockPose.place(1, 0, 0), HeldBlockPose.place(0, 0, 1),
+            HeldBlockPose.place(1, 1, 1)};
+        double[][] want = {{-0.5, -0.518, -0.5}, {0.5, -0.518, -0.5}, {-0.5, -0.518, 0.5}, {0.5, 0.482, 0.5}};
+        for (int i = 0; i < corners.length; i++) {
+            boolean near = true;
+            for (int a = 0; a < 3; a++) {
+                near &= Math.abs(corners[i][a] - want[i][a]) < 1.0E-4;
+            }
+            check.ok(near, "held block corner " + i + " at 26.3's spot: " + java.util.Arrays.toString(corners[i]));
+        }
     }
 
     private static void archetypes(Check check) {

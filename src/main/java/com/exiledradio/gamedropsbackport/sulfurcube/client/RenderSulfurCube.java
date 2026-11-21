@@ -134,9 +134,13 @@ public class RenderSulfurCube extends RenderLiving<EntitySulfurCube> {
         if (baby) {
             GlStateManager.scale(0.5F, 0.5F, 0.5F);
         }
-        GlStateManager.translate(-0.5F, -0.518F, -0.5F);
+        // 26.3 translates by (-0.5, -0.518, -0.5); see HeldBlockPose for 1.12.2's extra yaw.
+        GlStateManager.rotate(HeldBlockPose.YAW, 0.0F, 1.0F, 0.0F);
+        GlStateManager.translate(HeldBlockPose.X, HeldBlockPose.Y, HeldBlockPose.Z);
         this.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+        GlStateManager.pushMatrix();
         blocks.renderBlockBrightness(state, cube.getBrightness());
+        GlStateManager.popMatrix();
         float fuse = fuseLeft(Minecraft.getMinecraft().getRenderPartialTicks(), cube);
         if (fuse > 0.0F && (int) fuse / 5 % 2 == 0) {
             GlStateManager.disableTexture2D();
@@ -146,7 +150,9 @@ public class RenderSulfurCube extends RenderLiving<EntitySulfurCube> {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
             GlStateManager.doPolygonOffset(-3.0F, -3.0F);
             GlStateManager.enablePolygonOffset();
+            GlStateManager.pushMatrix();
             blocks.renderBlockBrightness(state, 1.0F);
+            GlStateManager.popMatrix();
             GlStateManager.doPolygonOffset(0.0F, 0.0F);
             GlStateManager.disablePolygonOffset();
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

@@ -277,6 +277,58 @@ final class SulfurCubeSelfTest implements SelfTest {
             b.setDead();
         }
         check.eq(2, babies, "named babies of size 1");
+        death(check, world);
+    }
+
+    /**
+     * 26.3's SulfurCube extends AbstractCubeMob extends AgeableMob, not Slime: an adult without a block dies to
+     * ordinary damage (8 health) and its remove() makes two baby sulfur cubes, never slimes; a baby splits into
+     * nothing; the loot table is empty, so the only drop is the held block.
+     */
+    private static void death(Check check, WorldServer world) {
+        FakePlayer player = FakePlayerFactory.getMinecraft(world);
+        AxisAlignedBB area = new AxisAlignedBB(ORIGIN.add(-8, -1, 0), ORIGIN.add(24, 12, 24));
+        int slimes = world.getEntitiesWithinAABB(net.minecraft.entity.monster.EntitySlime.class, area).size();
+
+        EntitySulfurCube adult = cube(world, ORIGIN.add(10, 0, 12), false);
+        adult.attackEntityFrom(DamageSource.causePlayerDamage(player), 8.0F);
+        check.ok(adult.getHealth() <= 0.0F, "a player kills an adult holding nothing (8 health)");
+        adult.setDead();
+        List<EntitySulfurCube> children = cubes(world, adult);
+        check.ok(!net.minecraft.entity.monster.EntitySlime.class.isAssignableFrom(EntitySulfurCube.class), "a sulfur cube is not a slime");
+        check.eq(2, children.size(), "it splits into two sulfur cubes");
+        for (EntitySulfurCube b : children) {
+            check.ok(b.isChild() && b.getCubeSize() == 1, "each a size 1 baby");
+            int around = cubes(world, b).size();
+            b.setHealth(0.0F);
+            b.setDead();
+            check.eq(around - 1, cubes(world, b).size(), "a baby splits into nothing");
+        }
+        check.eq(slimes, world.getEntitiesWithinAABB(net.minecraft.entity.monster.EntitySlime.class, area).size(),
+                "no slimes appear");
+
+        // Drops: the held block and nothing else (26.3's loot table is empty).
+        EntitySulfurCube holder = cube(world, ORIGIN.add(16, 0, 12), false);
+        holder.equipItem(new ItemStack(Blocks.DIRT, 1, 1));
+        for (EntityItem e : items(world, holder)) {
+            e.setDead();
+        }
+        holder.attackEntityFrom(DamageSource.OUT_OF_WORLD, 100.0F);
+        check.ok(holder.getHealth() <= 0.0F, "the void kills a cube holding a block");
+        List<EntityItem> drops = items(world, holder);
+        check.eq(1, drops.size(), "one drop");
+        if (drops.size() == 1) {
+            ItemStack d = drops.get(0).getItem();
+            check.ok(d.getItem() == Item.getItemFromBlock(Blocks.DIRT) && d.getMetadata() == 1 && d.getCount() == 1,
+                    "the held coarse dirt: " + d);
+        }
+        holder.setDead();
+        for (EntitySulfurCube b : cubes(world, holder)) {
+            b.setDead();
+        }
+        for (EntityItem e : items(world, holder)) {
+            e.setDead();
+        }
     }
 
     private static void buckets(Check check, WorldServer world) {

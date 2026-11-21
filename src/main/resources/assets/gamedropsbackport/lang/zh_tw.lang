@@ -18,6 +18,22 @@ config.gamedropsbackport.softBlocks.tooltip=羊毛與混凝土樓梯和半磚、
 config.gamedropsbackport.softBlocks.enabled.tooltip=停用時不會註冊任何內容，已有這些內容的世界會失去它們。
 config.gamedropsbackport.camps.tooltip=廢棄營地和探險家地圖。
 config.gamedropsbackport.camps.enabled.tooltip=廢棄營地會在新生成的區塊中生成。
+config.gamedropsbackport.changes.tooltip=26.x 對 1.12.2 中已有的指令、生物、方塊和物品所做的更改。
+config.gamedropsbackport.changes.enabled.tooltip=關閉時，下方所有更改都會關閉，恢復 1.12.2 的行為。
+config.gamedropsbackport.changes.timeCommand.tooltip=/time 使用世界時鐘：set day、noon、night 和 midnight 會前進到下一個對應時間；pause、resume 和 rate；of <clock>；query 查詢時間和時間線；使用 26.1 的訊息 (26.1)。
+config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule 使用 26.x 的訊息回應，並且把規則設為目前的值會報錯 (26.3)。
+config.gamedropsbackport.changes.teamColorNames.tooltip=隊伍顏色只接受帶底線的小寫名稱，例如 dark_purple (26.2)。
+config.gamedropsbackport.changes.bedBounce.tooltip=床會以 75%% 的速度把落在上面的東西彈回，而不是 66%% (26.2)。
+config.gamedropsbackport.changes.mushroomStew.tooltip=蘑菇煲用一個碗和任意兩種蘑菇製作 (26.3)。
+config.gamedropsbackport.changes.shieldBeforeTools.tooltip=副手持盾時，使用鋤頭或鏟子會舉起盾牌；潛行可耕地或鏟出道路 (26.3)。
+config.gamedropsbackport.changes.endermenRiding.tooltip=騎乘著東西的終界使者會受到投射物傷害，並且不會傳送 (26.3)。
+config.gamedropsbackport.changes.teleportTargets.tooltip=終界使者不會傳送到基岩上，也不會傳送到火、仙人掌、岩漿等之中；界伏蚌不會傳送到基岩上 (26.3)。
+config.gamedropsbackport.changes.persistentMobsIdle.tooltip=持久生物 (例如有名字的生物) 在 32 格內沒有玩家時會停止閒逛 (26.3)。
+config.gamedropsbackport.changes.leaderZombieHealth.tooltip=殭屍首領生成時，提高後的最大生命值是滿的 (26.1)。
+config.gamedropsbackport.changes.witchCloseThrows.tooltip=女巫在 2 格內投擲藥水更慢，因此近距離不再投空 (26.1)。
+config.gamedropsbackport.changes.peacefulSpawnEggs.tooltip=在和平難度下，發射器會保留怪物的生怪蛋而不是用掉它們 (26.2)。
+config.gamedropsbackport.changes.sunDamageEnchantments.tooltip=耐久對殭屍或骷髏為抵禦陽光而戴的頭盔也有效 (26.3)。
+config.gamedropsbackport.changes.spectatorPortals.tooltip=旁觀者可以穿過地獄傳送門、終界傳送門和終界閘道 (26.3)。
 # --- end config tooltips ---
 
 # --- common ---
@@ -292,3 +308,48 @@ subtitles.gamedropsbackport.item.axe.strip=斧頭剝皮
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=凝灰岩
+
+# --- changes ---
+config.gamedropsbackport.changes=對現有事物的更改
+config.gamedropsbackport.changes.enabled=啟用
+config.gamedropsbackport.changes.timeCommand=/time 中的世界時鐘
+config.gamedropsbackport.changes.gameRuleMessages=/gamerule 訊息
+config.gamedropsbackport.changes.teamColorNames=嚴格的隊伍顏色名稱
+config.gamedropsbackport.changes.bedBounce=床的彈跳
+config.gamedropsbackport.changes.mushroomStew=任意兩種蘑菇的煲
+config.gamedropsbackport.changes.shieldBeforeTools=盾牌優先於鋤頭和鏟子
+config.gamedropsbackport.changes.endermenRiding=乘坐載具的終界使者
+config.gamedropsbackport.changes.teleportTargets=安全的傳送目標
+config.gamedropsbackport.changes.persistentMobsIdle=持久生物會休息
+config.gamedropsbackport.changes.leaderZombieHealth=殭屍首領生命值
+config.gamedropsbackport.changes.witchCloseThrows=女巫近距離投擲
+config.gamedropsbackport.changes.peacefulSpawnEggs=和平難度的生怪蛋
+config.gamedropsbackport.changes.sunDamageEnchantments=對抗陽光的耐久
+config.gamedropsbackport.changes.spectatorPortals=旁觀者使用傳送門
+commands.gamedropsbackport.time.usage=/time [of <clock>] (set <time>|<time marker>) | (add <time>) | pause | resume | (rate <rate>) | (query time|<timeline> [repetition]), 或 /time query gametime
+commands.time.no_default_clock=維度 %s 中沒有預設時鐘
+commands.time.no_time_marker_found=時鐘 %2$s 不存在時間標記 %1$s
+commands.time.pause=已暫停時鐘 %s
+commands.time.pause.already_paused=時鐘 %s 原已暫停
+commands.time.pause.already_running=時鐘 %s 原已在執行中
+commands.time.query.absolute=時鐘 %s 處於 %s 刻
+commands.time.query.gametime=遊戲時間為 %s 刻
+commands.time.query.timeline=時間軸 %s 處於 %s 刻
+commands.time.query.timeline.repetitions=時間軸 %s 已重複 %s 次
+commands.time.rate=時鐘 %s 的速度已設定為正常速度的 %s 倍
+commands.time.rate.already_same=時鐘 %s 的速度原已設為正常速度的 %s 倍
+commands.time.resume=已恢復時鐘 %s
+commands.time.set.absolute=已將 %s 設為 %s 刻
+commands.time.set.already_at_time=時鐘 %s 原已設為 %s 刻
+commands.time.set.already_at_time_marker=時鐘 %s 原已處於時間標記 %s
+commands.time.set.time_marker=已將 %s 設為時間標記 %s
+commands.time.wrong_timeline_for_clock=時間軸 %s 對時鐘 %s 無效
+commands.gamerule.not_set=遊戲規則 %s 原已設為 %s
+commands.gamerule.query=遊戲規則 %s 目前設為 %s
+commands.gamerule.set=遊戲規則 %s 已設為 %s
+argument.resource.not_found=無法找到類型為 '%2$s' 的元素 '%1$s'
+argument.time.invalid_unit=無效的單位
+argument.time.tick_count_too_low=刻數不能低於 %s，但實際為 %s
+argument.float.big=單精度浮點數不能多於 %s，但實際為 %s
+argument.float.low=單精度浮點數不能少於 %s，但實際為 %s
+parsing.float.invalid=無效的單精度浮點數 '%s'

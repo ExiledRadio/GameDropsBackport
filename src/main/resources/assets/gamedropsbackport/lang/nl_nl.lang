@@ -18,6 +18,22 @@ config.gamedropsbackport.softBlocks.tooltip=Trappen en platen van wol en beton, 
 config.gamedropsbackport.softBlocks.enabled.tooltip=Uit wordt er niets geregistreerd, en een wereld die ze heeft, raakt ze kwijt.
 config.gamedropsbackport.camps.tooltip=Verlaten kampen en ontdekkingskaarten.
 config.gamedropsbackport.camps.enabled.tooltip=Verlaten kampen ontstaan in nieuw gegenereerde chunks.
+config.gamedropsbackport.changes.tooltip=De veranderingen van 26.x aan commando's, mobs, blokken en voorwerpen die 1.12.2 al heeft.
+config.gamedropsbackport.changes.enabled.tooltip=Uit zijn alle veranderingen hieronder uit en is het gedrag van 1.12.2 terug.
+config.gamedropsbackport.changes.timeCommand.tooltip=/time werkt met wereldklokken: set day, noon, night en midnight gaan vooruit naar de volgende; pause, resume en rate; of <clock>; query voor tijd en tijdlijnen; de berichten van 26.1 (26.1).
+config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule antwoordt met de berichten van 26.x, en een regel op zijn huidige waarde zetten is een fout (26.3).
+config.gamedropsbackport.changes.teamColorNames.tooltip=Teamkleuren accepteren alleen hun kleine letters met underscores, zoals dark_purple (26.2).
+config.gamedropsbackport.changes.bedBounce.tooltip=Bedden gooien wat erop valt terug omhoog met 75%% van zijn snelheid in plaats van 66%% (26.2).
+config.gamedropsbackport.changes.mushroomStew.tooltip=Paddenstoelenstoofpot wordt gemaakt van een kom en twee willekeurige paddenstoelen (26.3).
+config.gamedropsbackport.changes.shieldBeforeTools.tooltip=Met een schild in de offhand heft het gebruiken van een schoffel of schep het schild op; sluip om te ploegen of paden te maken (26.3).
+config.gamedropsbackport.changes.endermenRiding.tooltip=Endermen die op iets rijden krijgen schade van projectielen en teleporteren nooit (26.3).
+config.gamedropsbackport.changes.teleportTargets.tooltip=Endermen teleporteren nooit naar bedrock of in vuur, cactussen, magma en dergelijke; shulkers nooit naar bedrock (26.3).
+config.gamedropsbackport.changes.persistentMobsIdle.tooltip=Blijvende mobs (bijvoorbeeld benoemde) stoppen met rondlopen als er geen speler binnen 32 blokken is (26.3).
+config.gamedropsbackport.changes.leaderZombieHealth.tooltip=Leiderzombies spawnen met hun verhoogde maximale gezondheid gevuld (26.1).
+config.gamedropsbackport.changes.witchCloseThrows.tooltip=Heksen gooien hun drankjes langzamer binnen 2 blokken, zodat ze van dichtbij niet meer missen (26.1).
+config.gamedropsbackport.changes.peacefulSpawnEggs.tooltip=Op Vreedzaam houden dispensers de spawn-eieren van monsters vast in plaats van ze te gebruiken (26.2).
+config.gamedropsbackport.changes.sunDamageEnchantments.tooltip=Onbreekbaarheid werkt op de helm die een zombie of skelet draagt tegen de zon (26.3).
+config.gamedropsbackport.changes.spectatorPortals.tooltip=Toeschouwers gaan door Netherportalen, eindportalen en eindpoorten (26.3).
 # --- end config tooltips ---
 
 # --- common ---
@@ -292,3 +308,48 @@ subtitles.gamedropsbackport.item.axe.strip=Bijl schraapt
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=Tufsteen
+
+# --- changes ---
+config.gamedropsbackport.changes=Veranderingen aan bestaande dingen
+config.gamedropsbackport.changes.enabled=Ingeschakeld
+config.gamedropsbackport.changes.timeCommand=Wereldklokken in /time
+config.gamedropsbackport.changes.gameRuleMessages=/gamerule-berichten
+config.gamedropsbackport.changes.teamColorNames=Strikte teamkleurnamen
+config.gamedropsbackport.changes.bedBounce=Bedstuiter
+config.gamedropsbackport.changes.mushroomStew=Stoofpot van twee willekeurige paddenstoelen
+config.gamedropsbackport.changes.shieldBeforeTools=Schild voor schoffels en scheppen
+config.gamedropsbackport.changes.endermenRiding=Endermen in voertuigen
+config.gamedropsbackport.changes.teleportTargets=Veilige teleportdoelen
+config.gamedropsbackport.changes.persistentMobsIdle=Blijvende mobs rusten
+config.gamedropsbackport.changes.leaderZombieHealth=Gezondheid van leiderzombies
+config.gamedropsbackport.changes.witchCloseThrows=Heksenworpen van dichtbij
+config.gamedropsbackport.changes.peacefulSpawnEggs=Spawn-eieren op Vreedzaam
+config.gamedropsbackport.changes.sunDamageEnchantments=Onbreekbaarheid tegen de zon
+config.gamedropsbackport.changes.spectatorPortals=Toeschouwers gebruiken portalen
+commands.gamedropsbackport.time.usage=/time [of <clock>] (set <time>|<time marker>) | (add <time>) | pause | resume | (rate <rate>) | (query time|<timeline> [repetition]), of /time query gametime
+commands.time.no_default_clock=Dimensie %s heeft geen standaardklok
+commands.time.no_time_marker_found=Klok %2$s heeft tijdstempel %1$s niet
+commands.time.pause=Klok %s gepauzeerd
+commands.time.pause.already_paused=Klok %s is al gepauzeerd
+commands.time.pause.already_running=Klok %s loopt al
+commands.time.query.absolute=Klok %s staat op %s tick(s)
+commands.time.query.gametime=De speltijd is %s tick(s)
+commands.time.query.timeline=Tijdlijn %s staat op %s tick(s)
+commands.time.query.timeline.repetitions=Tijdlijn %s is %s keer herhaald
+commands.time.rate=Klok %s gaat nu %s× de normale snelheid
+commands.time.rate.already_same=Klok %s gaat al %s× de normale snelheid
+commands.time.resume=Klok %s hervat
+commands.time.set.absolute=%s op %s tick(s) gezet
+commands.time.set.already_at_time=Klok %s staat al op %s tick(s)
+commands.time.set.already_at_time_marker=Klok %s staat al op tijdstempel %s
+commands.time.set.time_marker=%s op tijdstempel %s gezet
+commands.time.wrong_timeline_for_clock=Tijdlijn %s is ongeldig voor klok %s
+commands.gamerule.not_set=Spelregel %s is al ingesteld op %s
+commands.gamerule.query=Spelregel %s is op dit moment '%s'
+commands.gamerule.set=Spelregel %s gewijzigd naar '%s'
+argument.resource.not_found=Element '%s' met type '%s' niet gevonden
+argument.time.invalid_unit=Ongeldige eenheid
+argument.time.tick_count_too_low=Aantal ticks mag niet lager zijn dan %s: %s gevonden
+argument.float.big=Zwevendekommagetal mag niet hoger zijn dan %s: %s gevonden
+argument.float.low=Zwevendekommagetal mag niet lager zijn dan %s: %s gevonden
+parsing.float.invalid=Ongeldig zwevendekommagetal: %s

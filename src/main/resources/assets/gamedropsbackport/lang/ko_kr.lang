@@ -18,6 +18,22 @@ config.gamedropsbackport.softBlocks.tooltip=양털과 콘크리트 계단과 반
 config.gamedropsbackport.softBlocks.enabled.tooltip=끄면 아무것도 등록되지 않으며, 이것들이 있는 세계에서는 사라집니다.
 config.gamedropsbackport.camps.tooltip=버려진 야영지와 탐험가 지도.
 config.gamedropsbackport.camps.enabled.tooltip=버려진 야영지가 새로 생성되는 청크에 생성됩니다.
+config.gamedropsbackport.changes.tooltip=1.12.2에 이미 있는 명령어, 몹, 블록, 아이템에 대한 26.x의 변경 사항입니다.
+config.gamedropsbackport.changes.enabled.tooltip=끄면 아래의 모든 변경이 꺼지고 1.12.2의 동작으로 돌아갑니다.
+config.gamedropsbackport.changes.timeCommand.tooltip=/time이 월드 시계로 동작합니다. set day, noon, night, midnight은 다음 해당 시각까지 진행하고, pause, resume, rate, of <clock>, 시간과 타임라인 query도 쓸 수 있습니다. 메시지는 26.1의 것입니다 (26.1).
+config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule이 26.x의 메시지로 응답하며, 규칙을 현재 값으로 설정하면 오류가 됩니다 (26.3).
+config.gamedropsbackport.changes.teamColorNames.tooltip=팀 색상은 dark_purple처럼 밑줄이 있는 소문자 이름만 받습니다 (26.2).
+config.gamedropsbackport.changes.bedBounce.tooltip=침대는 위에 떨어진 것을 66%%가 아닌 75%%의 속도로 다시 위로 튕겨 냅니다 (26.2).
+config.gamedropsbackport.changes.mushroomStew.tooltip=버섯 스튜는 그릇과 아무 버섯 두 개로 만듭니다 (26.3).
+config.gamedropsbackport.changes.shieldBeforeTools.tooltip=보조 손에 방패를 들고 있으면 괭이나 삽을 쓸 때 방패를 올립니다. 웅크리면 땅을 갈거나 길을 만들 수 있습니다 (26.3).
+config.gamedropsbackport.changes.endermenRiding.tooltip=무언가를 타고 있는 엔더맨은 발사체에 피해를 입고 절대 순간이동하지 않습니다 (26.3).
+config.gamedropsbackport.changes.teleportTargets.tooltip=엔더맨은 기반암 위나 불, 선인장, 마그마 등 속으로 순간이동하지 않으며, 셜커는 기반암 위로 순간이동하지 않습니다 (26.3).
+config.gamedropsbackport.changes.persistentMobsIdle.tooltip=지속되는 몹 (예를 들어 이름이 붙은 몹) 은 32블록 안에 플레이어가 없으면 돌아다니지 않습니다 (26.3).
+config.gamedropsbackport.changes.leaderZombieHealth.tooltip=대장 좀비는 늘어난 최대 체력이 가득 찬 채로 생성됩니다 (26.1).
+config.gamedropsbackport.changes.witchCloseThrows.tooltip=마녀는 2블록 안에서는 물약을 더 느리게 던지므로 가까이서 빗나가지 않습니다 (26.1).
+config.gamedropsbackport.changes.peacefulSpawnEggs.tooltip=평화로움 난이도에서 디스펜서는 몬스터의 스폰 알을 소모하지 않고 그대로 가지고 있습니다 (26.2).
+config.gamedropsbackport.changes.sunDamageEnchantments.tooltip=내구성은 좀비나 스켈레톤이 햇빛을 막으려 쓴 투구에도 적용됩니다 (26.3).
+config.gamedropsbackport.changes.spectatorPortals.tooltip=관전자는 네더 포탈, 엔드 포탈, 엔드 관문을 통과합니다 (26.3).
 # --- end config tooltips ---
 
 # --- common ---
@@ -292,3 +308,48 @@ subtitles.gamedropsbackport.item.axe.strip=도끼로 긁어냄
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=응회암
+
+# --- changes ---
+config.gamedropsbackport.changes=기존 요소 변경
+config.gamedropsbackport.changes.enabled=활성화
+config.gamedropsbackport.changes.timeCommand=/time의 월드 시계
+config.gamedropsbackport.changes.gameRuleMessages=/gamerule 메시지
+config.gamedropsbackport.changes.teamColorNames=엄격한 팀 색상 이름
+config.gamedropsbackport.changes.bedBounce=침대 튕김
+config.gamedropsbackport.changes.mushroomStew=아무 버섯 두 개로 만든 스튜
+config.gamedropsbackport.changes.shieldBeforeTools=괭이와 삽보다 방패 우선
+config.gamedropsbackport.changes.endermenRiding=탈것에 탄 엔더맨
+config.gamedropsbackport.changes.teleportTargets=안전한 순간이동 목적지
+config.gamedropsbackport.changes.persistentMobsIdle=지속되는 몹은 쉼
+config.gamedropsbackport.changes.leaderZombieHealth=대장 좀비 체력
+config.gamedropsbackport.changes.witchCloseThrows=마녀의 근거리 투척
+config.gamedropsbackport.changes.peacefulSpawnEggs=평화로움의 스폰 알
+config.gamedropsbackport.changes.sunDamageEnchantments=햇빛에 대한 내구성
+config.gamedropsbackport.changes.spectatorPortals=관전자의 포탈 이용
+commands.gamedropsbackport.time.usage=/time [of <clock>] (set <time>|<time marker>) | (add <time>) | pause | resume | (rate <rate>) | (query time|<timeline> [repetition]), 또는 /time query gametime
+commands.time.no_default_clock=차원 %s에 기본 시계가 없습니다
+commands.time.no_time_marker_found=시간 표지 %s이(가) 시계 %s에 존재하지 않습니다
+commands.time.pause=시계 %s을(를) 멈췄습니다
+commands.time.pause.already_paused=시계 %s은(는) 이미 일시 정지되어 있습니다
+commands.time.pause.already_running=시계 %s은(는) 이미 진행하고 있습니다
+commands.time.query.absolute=시계 %s의 위치는 %s틱입니다
+commands.time.query.gametime=게임 시간은 %s틱입니다
+commands.time.query.timeline=시간선 %s의 위치는 %s틱입니다
+commands.time.query.timeline.repetitions=시간선 %s은(는) %s번의 반복을 지났습니다
+commands.time.rate=시계 %s은(는) 이제 정상 속도의 %s배로 진행됩니다
+commands.time.rate.already_same=시계 %s은(는) 이미 %sx 정상 속도로 진행하고 있습니다
+commands.time.resume=시계 %s을(를) 재개했습니다
+commands.time.set.absolute=%s을(를) %s틱으로 설정했습니다
+commands.time.set.already_at_time=시계 %s은(는) 이미 %s틱으로 설정되어 있습니다
+commands.time.set.already_at_time_marker=시계 %s은(는) 이미 시간 표지 %s에 있습니다
+commands.time.set.time_marker=%s을(를) 시간 표지 %s(으)로 설정했습니다
+commands.time.wrong_timeline_for_clock=시간선 %s은(는) 시계 %s에 유효하지 않습니다
+commands.gamerule.not_set=%s 게임 규칙은 이미 %s(으)로 설정되어 있습니다
+commands.gamerule.query=%s 게임 규칙이 현재 %s(으)로 설정되어 있습니다
+commands.gamerule.set=%s 게임 규칙을 %s(으)로 설정했습니다
+argument.resource.not_found='%2$s' 유형의 '%1$s' 요소를 찾을 수 없습니다
+argument.time.invalid_unit=잘못된 단위입니다
+argument.time.tick_count_too_low=틱 수는 %s 이상이어야 하는데, %s이(가) 입력되었습니다
+argument.float.big=float는 %s 이하여야 하는데, %s이(가) 입력되었습니다
+argument.float.low=float는 %s 이상이어야 하는데, %s이(가) 입력되었습니다
+parsing.float.invalid='%s'은(는) 잘못된 float입니다

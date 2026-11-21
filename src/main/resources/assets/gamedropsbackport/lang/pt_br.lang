@@ -18,6 +18,22 @@ config.gamedropsbackport.softBlocks.tooltip=Escadas e lajes de lã e concreto, a
 config.gamedropsbackport.softBlocks.enabled.tooltip=Desativado, nada é registrado, e um mundo que já os tem os perde.
 config.gamedropsbackport.camps.tooltip=Acampamentos abandonados e mapas de explorador.
 config.gamedropsbackport.camps.enabled.tooltip=Acampamentos abandonados são gerados em chunks recém-gerados.
+config.gamedropsbackport.changes.tooltip=As mudanças da 26.x em comandos, criaturas, blocos e itens que a 1.12.2 já tem.
+config.gamedropsbackport.changes.enabled.tooltip=Desativado, todas as mudanças abaixo ficam desligadas e o comportamento da 1.12.2 volta.
+config.gamedropsbackport.changes.timeCommand.tooltip=/time funciona com relógios do mundo: set day, noon, night e midnight avançam até o próximo; pause, resume e rate; of <clock>; query para a hora e as linhas do tempo; as mensagens da 26.1 (26.1).
+config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule responde com as mensagens da 26.x, e definir uma regra com o valor atual é um erro (26.3).
+config.gamedropsbackport.changes.teamColorNames.tooltip=As cores de equipe só aceitam seus nomes em minúsculas com sublinhados, como dark_purple (26.2).
+config.gamedropsbackport.changes.bedBounce.tooltip=As camas devolvem para cima o que cai nelas a 75%% da velocidade em vez de 66%% (26.2).
+config.gamedropsbackport.changes.mushroomStew.tooltip=O ensopado de cogumelos é feito com uma tigela e quaisquer dois cogumelos (26.3).
+config.gamedropsbackport.changes.shieldBeforeTools.tooltip=Com um escudo na mão secundária, usar uma enxada ou uma pá levanta o escudo; agache-se para arar ou fazer trilhas (26.3).
+config.gamedropsbackport.changes.endermenRiding.tooltip=Endermen montados em algo sofrem dano de projéteis e nunca se teletransportam (26.3).
+config.gamedropsbackport.changes.teleportTargets.tooltip=Endermen nunca se teletransportam para a bedrock nem para dentro de fogo, cactos, magma e similares; shulkers nunca para a bedrock (26.3).
+config.gamedropsbackport.changes.persistentMobsIdle.tooltip=Criaturas persistentes (as com nome, por exemplo) param de vagar quando nenhum jogador está a menos de 32 blocos (26.3).
+config.gamedropsbackport.changes.leaderZombieHealth.tooltip=Zumbis líderes surgem com a vida máxima aumentada já cheia (26.1).
+config.gamedropsbackport.changes.witchCloseThrows.tooltip=Bruxas lançam suas poções mais devagar a menos de 2 blocos, então não erram mais de perto (26.1).
+config.gamedropsbackport.changes.peacefulSpawnEggs.tooltip=Na dificuldade Pacífico, os dispensadores guardam os ovos geradores de monstros em vez de gastá-los (26.2).
+config.gamedropsbackport.changes.sunDamageEnchantments.tooltip=Inquebrável funciona no capacete que um zumbi ou esqueleto usa contra o sol (26.3).
+config.gamedropsbackport.changes.spectatorPortals.tooltip=Espectadores atravessam portais do Nether, portais do End e portais de passagem do End (26.3).
 # --- end config tooltips ---
 
 # --- common ---
@@ -292,3 +308,48 @@ subtitles.gamedropsbackport.item.axe.strip=Machado descasca
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=Tufo
+
+# --- changes ---
+config.gamedropsbackport.changes=Mudanças em coisas existentes
+config.gamedropsbackport.changes.enabled=Ativado
+config.gamedropsbackport.changes.timeCommand=Relógios do mundo em /time
+config.gamedropsbackport.changes.gameRuleMessages=Mensagens de /gamerule
+config.gamedropsbackport.changes.teamColorNames=Nomes de cor de equipe estritos
+config.gamedropsbackport.changes.bedBounce=Quique da cama
+config.gamedropsbackport.changes.mushroomStew=Ensopado com quaisquer dois cogumelos
+config.gamedropsbackport.changes.shieldBeforeTools=Escudo antes de enxadas e pás
+config.gamedropsbackport.changes.endermenRiding=Endermen em veículos
+config.gamedropsbackport.changes.teleportTargets=Destinos de teletransporte seguros
+config.gamedropsbackport.changes.persistentMobsIdle=Criaturas persistentes descansam
+config.gamedropsbackport.changes.leaderZombieHealth=Vida do zumbi líder
+config.gamedropsbackport.changes.witchCloseThrows=Lançamentos da bruxa de perto
+config.gamedropsbackport.changes.peacefulSpawnEggs=Ovos geradores no Pacífico
+config.gamedropsbackport.changes.sunDamageEnchantments=Inquebrável contra o sol
+config.gamedropsbackport.changes.spectatorPortals=Espectadores usam portais
+commands.gamedropsbackport.time.usage=/time [of <clock>] (set <time>|<time marker>) | (add <time>) | pause | resume | (rate <rate>) | (query time|<timeline> [repetition]), ou /time query gametime
+commands.time.no_default_clock=Não há um relógio padrão na dimensão %s
+commands.time.no_time_marker_found=Marcador de tempo %s inexistente para o relógio %s
+commands.time.pause=Você pausou o relógio %s
+commands.time.pause.already_paused=O relógio %s já está pausado
+commands.time.pause.already_running=O relógio %s já está em execução
+commands.time.query.absolute=Relógio %s definido para %s tique(s)
+commands.time.query.gametime=Tempo do jogo: %s tique(s)
+commands.time.query.timeline=Linha do tempo %s com %s tique(s)
+commands.time.query.timeline.repetitions=A linha do tempo %s passou %s repetição(ões)
+commands.time.rate=O relógio %s avançará %sx mais rápido
+commands.time.rate.already_same=O relógio %s já está avançando %sx mais rápido
+commands.time.resume=Você retomou o relógio %s
+commands.time.set.absolute=Você definiu %s para %s tique(s)
+commands.time.set.already_at_time=Relógio %s já definido para %s tique(s)
+commands.time.set.already_at_time_marker=O relógio %s já está no marcador de tempo %s
+commands.time.set.time_marker=Você definiu %s para o marcador de tempo %s
+commands.time.wrong_timeline_for_clock=A linha do tempo %s não é válida para o relógio %s
+commands.gamerule.not_set=Regra do jogo %s já definida para %s
+commands.gamerule.query=Regra do jogo %s definida como %s
+commands.gamerule.set=Regra do jogo %s alterada para %s
+argument.resource.not_found=Nenhum elemento "%s" encontrado do tipo "%s"
+argument.time.invalid_unit=Unidade inválida
+argument.time.tick_count_too_low=O número de tiques não deve ser menor que %s (encontrado: %s)
+argument.float.big=O valor float não deve ser maior que %s (encontrado: %s)
+argument.float.low=O valor float não deve ser menor que %s (encontrado: %s)
+parsing.float.invalid=Valor float inválido: %s

@@ -63,6 +63,11 @@ public final class ModConfig {
     @Config.Comment("Abandoned camps and explorer maps.")
     public static final Camps camps = new Camps();
 
+    @Setting.Feature(icon = "minecraft:clock")
+    @Config.LangKey("config.gamedropsbackport.changes")
+    @Config.Comment("26.x's changes to commands, mobs, blocks and items 1.12.2 already has.")
+    public static final Changes changes = new Changes();
+
     // ------------------------------------------------------------------------------------------
 
     public static final class Babies {
@@ -144,6 +149,74 @@ public final class ModConfig {
 
         // --- Camps fields ---
         // --- end Camps ---
+    }
+
+    public static final class Changes {
+        @Config.Comment("Off, every change below is off and 1.12.2's behavior is back.")
+        @Config.LangKey("config.gamedropsbackport.changes.enabled")
+        public boolean enabled = true;
+
+        // --- Changes fields ---
+        @Config.Comment({"/time runs on world clocks: set day, noon, night and midnight go forward to the next one; pause,",
+                "resume and rate; of <clock>; query time and timelines; 26.1's messages (26.1)."})
+        @Config.LangKey("config.gamedropsbackport.changes.timeCommand")
+        public boolean timeCommand = true;
+
+        @Config.Comment("/gamerule answers with 26.x's messages, and setting a rule to its current value is an error (26.3).")
+        @Config.LangKey("config.gamedropsbackport.changes.gameRuleMessages")
+        public boolean gameRuleMessages = true;
+
+        @Config.Comment("Team colors take only their lowercase names with underscores, such as dark_purple (26.2).")
+        @Config.LangKey("config.gamedropsbackport.changes.teamColorNames")
+        public boolean teamColorNames = true;
+
+        @Config.Comment("Beds send what falls on them back up at 75% of its speed instead of 66% (26.2).")
+        @Config.LangKey("config.gamedropsbackport.changes.bedBounce")
+        public boolean bedBounce = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Mushroom stew is made from a bowl and any two mushrooms (26.3).")
+        @Config.LangKey("config.gamedropsbackport.changes.mushroomStew")
+        public boolean mushroomStew = true;
+
+        @Config.Comment({"With a shield in the off hand, using a hoe or shovel raises the shield; sneak to till or make paths",
+                "(26.3)."})
+        @Config.LangKey("config.gamedropsbackport.changes.shieldBeforeTools")
+        public boolean shieldBeforeTools = true;
+
+        @Config.Comment("Endermen riding something take damage from projectiles and never teleport (26.3).")
+        @Config.LangKey("config.gamedropsbackport.changes.endermenRiding")
+        public boolean endermenRiding = true;
+
+        @Config.Comment({"Endermen never teleport onto bedrock or into fire, cactus, magma and the like; shulkers never onto",
+                "bedrock (26.3)."})
+        @Config.LangKey("config.gamedropsbackport.changes.teleportTargets")
+        public boolean teleportTargets = true;
+
+        @Config.Comment("Persistent mobs (named ones, for example) stop wandering when no player is within 32 blocks (26.3).")
+        @Config.LangKey("config.gamedropsbackport.changes.persistentMobsIdle")
+        public boolean persistentMobsIdle = true;
+
+        @Config.Comment("Leader zombies spawn with their raised maximum health filled (26.1).")
+        @Config.LangKey("config.gamedropsbackport.changes.leaderZombieHealth")
+        public boolean leaderZombieHealth = true;
+
+        @Config.Comment("Witches throw their potions more slowly within 2 blocks, so they no longer miss up close (26.1).")
+        @Config.LangKey("config.gamedropsbackport.changes.witchCloseThrows")
+        public boolean witchCloseThrows = true;
+
+        @Config.Comment("On Peaceful, dispensers keep the spawn eggs of monsters instead of using them up (26.2).")
+        @Config.LangKey("config.gamedropsbackport.changes.peacefulSpawnEggs")
+        public boolean peacefulSpawnEggs = true;
+
+        @Config.Comment("Unbreaking works on the helmet a zombie or skeleton wears against the sun (26.3).")
+        @Config.LangKey("config.gamedropsbackport.changes.sunDamageEnchantments")
+        public boolean sunDamageEnchantments = true;
+
+        @Config.Comment("Spectators go through nether portals, end portals and end gateways (26.3).")
+        @Config.LangKey("config.gamedropsbackport.changes.spectatorPortals")
+        public boolean spectatorPortals = true;
+        // --- end Changes ---
     }
 
     // ------------------------------------------------------------------------------------------

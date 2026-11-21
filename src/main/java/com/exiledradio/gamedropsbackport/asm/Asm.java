@@ -57,6 +57,32 @@ final class Asm {
         m.instructions.insert(head);
     }
 
+    /**
+     * Puts {@code if (test) { body }} at the head of a method: the test's instructions (leaving an int), a jump over the
+     * body to a new label carrying an {@code F_SAME} frame. The body must end in a return.
+     *
+     * @return false, changing nothing, when the method's first instruction is a frame (two frames at one offset)
+     */
+    static boolean ifAtHead(MethodNode m, InsnList test, InsnList body) {
+        for (org.objectweb.asm.tree.AbstractInsnNode insn = m.instructions.getFirst(); insn != null; insn = insn.getNext()) {
+            if (insn instanceof FrameNode) {
+                return false;
+            }
+            if (insn.getOpcode() >= 0) {
+                break;
+            }
+        }
+        InsnList head = new InsnList();
+        head.add(test);
+        LabelNode go = new LabelNode();
+        head.add(new JumpInsnNode(Opcodes.IFEQ, go));
+        head.add(body);
+        head.add(go);
+        head.add(new FrameNode(Opcodes.F_SAME, 0, null, 0, null));
+        m.instructions.insert(head);
+        return true;
+    }
+
     static MethodNode method(ClassNode node, String mcp, String srg, String desc) {
         for (MethodNode m : node.methods) {
             if ((mcp.equals(m.name) || srg.equals(m.name)) && desc.equals(m.desc)) {

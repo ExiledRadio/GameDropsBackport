@@ -18,6 +18,22 @@ config.gamedropsbackport.softBlocks.tooltip=Escaleras y losas de lana y concreto
 config.gamedropsbackport.softBlocks.enabled.tooltip=Si está desactivado, no se registra nada y un mundo que ya los tenga los pierde.
 config.gamedropsbackport.camps.tooltip=Campamentos abandonados y mapas de explorador.
 config.gamedropsbackport.camps.enabled.tooltip=Los campamentos abandonados se generan en los chunks nuevos.
+config.gamedropsbackport.changes.tooltip=Los cambios de la 26.x a comandos, monstruos, bloques y objetos que la 1.12.2 ya tiene.
+config.gamedropsbackport.changes.enabled.tooltip=Desactivado, todos los cambios de abajo se apagan y vuelve el comportamiento de la 1.12.2.
+config.gamedropsbackport.changes.timeCommand.tooltip=/time funciona con relojes del mundo: set day, noon, night y midnight avanzan hasta el siguiente; pause, resume y rate; of <clock>; query para la hora y las líneas de tiempo; los mensajes de la 26.1 (26.1).
+config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule responde con los mensajes de la 26.x, y poner una regla en su valor actual es un error (26.3).
+config.gamedropsbackport.changes.teamColorNames.tooltip=Los colores de equipo solo aceptan sus nombres en minúsculas con guiones bajos, como dark_purple (26.2).
+config.gamedropsbackport.changes.bedBounce.tooltip=Las camas devuelven hacia arriba lo que cae sobre ellas al 75%% de su velocidad en lugar del 66%% (26.2).
+config.gamedropsbackport.changes.mushroomStew.tooltip=El estofado de champiñones se hace con un cuenco y cualquier pareja de hongos (26.3).
+config.gamedropsbackport.changes.shieldBeforeTools.tooltip=Con un escudo en la mano secundaria, usar una azada o una pala levanta el escudo; agáchate para labrar o hacer caminos (26.3).
+config.gamedropsbackport.changes.endermenRiding.tooltip=Los Enderman que van montados en algo reciben daño de los proyectiles y nunca se teletransportan (26.3).
+config.gamedropsbackport.changes.teleportTargets.tooltip=Los Enderman nunca se teletransportan sobre la roca madre ni al fuego, cactus, magma y similares; los shulker nunca sobre la roca madre (26.3).
+config.gamedropsbackport.changes.persistentMobsIdle.tooltip=Los monstruos persistentes (los que tienen nombre, por ejemplo) dejan de vagar cuando no hay ningún jugador a menos de 32 bloques (26.3).
+config.gamedropsbackport.changes.leaderZombieHealth.tooltip=Los zombis líder aparecen con su salud máxima aumentada ya llena (26.1).
+config.gamedropsbackport.changes.witchCloseThrows.tooltip=Las brujas lanzan sus pociones más despacio a menos de 2 bloques, así que ya no fallan de cerca (26.1).
+config.gamedropsbackport.changes.peacefulSpawnEggs.tooltip=En dificultad Pacífico, los dispensadores conservan los huevos generadores de monstruos en lugar de gastarlos (26.2).
+config.gamedropsbackport.changes.sunDamageEnchantments.tooltip=Irrompibilidad funciona en el casco que lleva un zombi o un esqueleto contra el sol (26.3).
+config.gamedropsbackport.changes.spectatorPortals.tooltip=Los espectadores atraviesan portales del Nether, portales del End y pasarelas del End (26.3).
 # --- end config tooltips ---
 
 # --- common ---
@@ -292,3 +308,48 @@ subtitles.gamedropsbackport.item.axe.strip=Hacha raspando
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=Toba
+
+# --- changes ---
+config.gamedropsbackport.changes=Cambios en cosas existentes
+config.gamedropsbackport.changes.enabled=Activado
+config.gamedropsbackport.changes.timeCommand=Relojes del mundo en /time
+config.gamedropsbackport.changes.gameRuleMessages=Mensajes de /gamerule
+config.gamedropsbackport.changes.teamColorNames=Nombres de color de equipo estrictos
+config.gamedropsbackport.changes.bedBounce=Rebote de la cama
+config.gamedropsbackport.changes.mushroomStew=Estofado con dos hongos cualesquiera
+config.gamedropsbackport.changes.shieldBeforeTools=Escudo antes que azadas y palas
+config.gamedropsbackport.changes.endermenRiding=Endermen en vehículos
+config.gamedropsbackport.changes.teleportTargets=Destinos de teletransporte seguros
+config.gamedropsbackport.changes.persistentMobsIdle=Los monstruos persistentes descansan
+config.gamedropsbackport.changes.leaderZombieHealth=Salud del zombi líder
+config.gamedropsbackport.changes.witchCloseThrows=Lanzamientos de la bruja de cerca
+config.gamedropsbackport.changes.peacefulSpawnEggs=Huevos generadores en Pacífico
+config.gamedropsbackport.changes.sunDamageEnchantments=Irrompibilidad contra el sol
+config.gamedropsbackport.changes.spectatorPortals=Los espectadores usan portales
+commands.gamedropsbackport.time.usage=/time [of <clock>] (set <time>|<time marker>) | (add <time>) | pause | resume | (rate <rate>) | (query time|<timeline> [repetition]), o /time query gametime
+commands.time.no_default_clock=No hay reloj predeterminado en la dimensión %s
+commands.time.no_time_marker_found=El marcador de tiempo %s no existe para el reloj %s
+commands.time.pause=Reloj %s en pausa
+commands.time.pause.already_paused=El reloj %s ya está en pausa
+commands.time.pause.already_running=El reloj %s ya está ejecutándose
+commands.time.query.absolute=El reloj %s está en %s tic(s)
+commands.time.query.gametime=El tiempo del juego es de %s tic(s)
+commands.time.query.timeline=La línea de tiempo %s está en %s tic(s)
+commands.time.query.timeline.repetitions=La línea de tiempo %s se ha repetido %s veces
+commands.time.rate=El reloj %s ahora avanzará a la velocidad normal %sx
+commands.time.rate.already_same=El reloj %s ya está avanzando al ritmo normal x%s
+commands.time.resume=Reloj %s reanudado
+commands.time.set.absolute=%s establecido en %s tic(s)
+commands.time.set.already_at_time=El reloj %s ya está en %s tic(s)
+commands.time.set.already_at_time_marker=El reloj %s ya está en el marcador de tiempo %s
+commands.time.set.time_marker=%s establecido al marcador de tiempo %s
+commands.time.wrong_timeline_for_clock=La línea de tiempo %s no es válida para el reloj %s
+commands.gamerule.not_set=La regla %s ya está establecida como %s
+commands.gamerule.query=La regla %s está establecida como "%s"
+commands.gamerule.set=La regla %s cambió a "%s"
+argument.resource.not_found=No se pudo encontrar el elemento "%s" de tipo "%s"
+argument.time.invalid_unit=Unidad no válida
+argument.time.tick_count_too_low=El número de tics no puede ser menor que %s: encontrado %s
+argument.float.big=El valor float no puede ser mayor que %s: encontrado %s
+argument.float.low=El valor float no puede ser menor que %s: encontrado: %s
+parsing.float.invalid=Valor float no válido: %s

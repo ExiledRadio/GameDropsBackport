@@ -18,6 +18,22 @@ config.gamedropsbackport.softBlocks.tooltip=羊毛とコンクリートの階段
 config.gamedropsbackport.softBlocks.enabled.tooltip=オフにすると何も登録されず、これらがあるワールドからは失われます。
 config.gamedropsbackport.camps.tooltip=放棄されたキャンプと探検家の地図。
 config.gamedropsbackport.camps.enabled.tooltip=放棄されたキャンプは新しく生成されたチャンクに生成されます。
+config.gamedropsbackport.changes.tooltip=1.12.2にすでにあるコマンド、モブ、ブロック、アイテムへの26.xの変更です。
+config.gamedropsbackport.changes.enabled.tooltip=オフにすると、以下の変更はすべてオフになり、1.12.2の挙動に戻ります。
+config.gamedropsbackport.changes.timeCommand.tooltip=/timeがワールドクロックで動作します。set day、noon、night、midnightは次のその時刻まで進み、pause、resume、rate、of <clock>、時間とタイムラインのqueryも使えます。メッセージは26.1のものです (26.1)。
+config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gameruleが26.xのメッセージで応答し、ルールを現在の値に設定するとエラーになります (26.3)。
+config.gamedropsbackport.changes.teamColorNames.tooltip=チームの色は、dark_purpleのように小文字とアンダースコアの名前だけを受け付けます (26.2)。
+config.gamedropsbackport.changes.bedBounce.tooltip=ベッドは上に落ちたものを、66%%ではなく75%%の速さで跳ね返します (26.2)。
+config.gamedropsbackport.changes.mushroomStew.tooltip=キノコシチューは、ボウルと好きなキノコ2つで作れます (26.3)。
+config.gamedropsbackport.changes.shieldBeforeTools.tooltip=オフハンドに盾を持っているとき、クワやシャベルを使うと盾を構えます。スニークで耕したり道を作ったりできます (26.3)。
+config.gamedropsbackport.changes.endermenRiding.tooltip=何かに乗っているエンダーマンは、飛び道具のダメージを受け、テレポートしません (26.3)。
+config.gamedropsbackport.changes.teleportTargets.tooltip=エンダーマンは岩盤や、火、サボテン、マグマなどの中にテレポートしません。シュルカーは岩盤にテレポートしません (26.3)。
+config.gamedropsbackport.changes.persistentMobsIdle.tooltip=永続的なモブ (名前付きなど) は、32ブロック以内にプレイヤーがいないと歩き回らなくなります (26.3)。
+config.gamedropsbackport.changes.leaderZombieHealth.tooltip=ゾンビリーダーは、増えた最大体力が満タンの状態でスポーンします (26.1)。
+config.gamedropsbackport.changes.witchCloseThrows.tooltip=ウィッチは2ブロック以内ではポーションをゆっくり投げるため、近くで外さなくなります (26.1)。
+config.gamedropsbackport.changes.peacefulSpawnEggs.tooltip=ピースフルでは、ディスペンサーはモンスターのスポーンエッグを使い切らずに保持します (26.2)。
+config.gamedropsbackport.changes.sunDamageEnchantments.tooltip=耐久力は、ゾンビやスケルトンが日光よけにかぶるヘルメットにも効きます (26.3)。
+config.gamedropsbackport.changes.spectatorPortals.tooltip=スペクテイターはネザーポータル、エンドポータル、エンドゲートウェイを通れます (26.3)。
 # --- end config tooltips ---
 
 # --- common ---
@@ -292,3 +308,48 @@ subtitles.gamedropsbackport.item.axe.strip=斧で剥がす
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=凝灰岩
+
+# --- changes ---
+config.gamedropsbackport.changes=既存の要素の変更
+config.gamedropsbackport.changes.enabled=有効
+config.gamedropsbackport.changes.timeCommand=/timeのワールドクロック
+config.gamedropsbackport.changes.gameRuleMessages=/gameruleのメッセージ
+config.gamedropsbackport.changes.teamColorNames=厳格なチームカラー名
+config.gamedropsbackport.changes.bedBounce=ベッドの跳ね返り
+config.gamedropsbackport.changes.mushroomStew=好きなキノコ2つのシチュー
+config.gamedropsbackport.changes.shieldBeforeTools=クワとシャベルより盾を優先
+config.gamedropsbackport.changes.endermenRiding=乗り物に乗ったエンダーマン
+config.gamedropsbackport.changes.teleportTargets=安全なテレポート先
+config.gamedropsbackport.changes.persistentMobsIdle=永続的なモブは休む
+config.gamedropsbackport.changes.leaderZombieHealth=ゾンビリーダーの体力
+config.gamedropsbackport.changes.witchCloseThrows=ウィッチの近距離投擲
+config.gamedropsbackport.changes.peacefulSpawnEggs=ピースフルのスポーンエッグ
+config.gamedropsbackport.changes.sunDamageEnchantments=日光に対する耐久力
+config.gamedropsbackport.changes.spectatorPortals=スペクテイターのポータル利用
+commands.gamedropsbackport.time.usage=/time [of <clock>] (set <time>|<time marker>) | (add <time>) | pause | resume | (rate <rate>) | (query time|<timeline> [repetition]), または /time query gametime
+commands.time.no_default_clock=ディメンション「%s」にはデフォルトの時計がありません
+commands.time.no_time_marker_found=タイムマーカー「%s」は時計「%s」に存在しません
+commands.time.pause=時計「%s」を一時停止しました
+commands.time.pause.already_paused=時計「%s」は既に一時停止しています
+commands.time.pause.already_running=時計「%s」は既に動作中です
+commands.time.query.absolute=時計「%s」は%sティックです
+commands.time.query.gametime=ゲーム時間は%sティックです
+commands.time.query.timeline=タイムライン「%s」は%sティックです
+commands.time.query.timeline.repetitions=タイムライン「%s」は%s回繰り返されています
+commands.time.rate=時計「%s」の進行速度を通常の%s倍に変更しました
+commands.time.rate.already_same=時計「%s」の進行速度は既に通常の%s倍です
+commands.time.resume=時計「%s」を再開しました
+commands.time.set.absolute=%sを%sティックに設定しました
+commands.time.set.already_at_time=時計「%s」は既に%sティックに設定されています
+commands.time.set.already_at_time_marker=時計「%s」は既にタイムマーカー「%s」の位置になっています
+commands.time.set.time_marker=%sをタイムマーカー「%s」に設定しました
+commands.time.wrong_timeline_for_clock=タイムライン「%s」は時計「%s」に対して無効です
+commands.gamerule.not_set=ゲームルール%sは既に%sに設定されています
+commands.gamerule.query=ゲームルール「%s」は%sに設定されています
+commands.gamerule.set=ゲームルール「%s」が%sに設定されました
+argument.resource.not_found=タイプ「%2$s」の要素「%1$s」が見つかりませんでした
+argument.time.invalid_unit=無効な単位です
+argument.time.tick_count_too_low=このティック値は%s以上でなくてはならないため、%sは適しません
+argument.float.big=この浮動小数点数は%s以下でなくてはならないため、%sは適しません
+argument.float.low=この浮動小数点数は%s以上でなくてはならないため、%sは適しません
+parsing.float.invalid=「%s」は無効な浮動小数点数です

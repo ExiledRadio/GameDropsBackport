@@ -18,6 +18,22 @@ config.gamedropsbackport.softBlocks.tooltip=Сходи та плити з вов
 config.gamedropsbackport.softBlocks.enabled.tooltip=Коли налаштування вимкнене, нічого не реєструється, а світ, у якому вони є, їх утрачає.
 config.gamedropsbackport.camps.tooltip=Покинуті табори та мапи дослідника.
 config.gamedropsbackport.camps.enabled.tooltip=Покинуті табори з'являються в нових чанках.
+config.gamedropsbackport.changes.tooltip=Зміни з 26.x в командах, мобах, блоках і предметах, які вже є в 1.12.2.
+config.gamedropsbackport.changes.enabled.tooltip=Якщо вимкнено, усі зміни нижче вимкнені й повертається поведінка 1.12.2.
+config.gamedropsbackport.changes.timeCommand.tooltip=/time працює зі світовими годинниками: set day, noon, night і midnight переводять час уперед до наступного; pause, resume і rate; of <clock>; query часу й шкал часу; повідомлення з 26.1 (26.1).
+config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule відповідає повідомленнями з 26.x, а встановлення правила в його поточне значення є помилкою (26.3).
+config.gamedropsbackport.changes.teamColorNames.tooltip=Кольори команд приймають лише свої назви малими літерами з підкресленнями, наприклад dark_purple (26.2).
+config.gamedropsbackport.changes.bedBounce.tooltip=Ліжка підкидають те, що впало на них, назад угору зі швидкістю 75%% замість 66%% (26.2).
+config.gamedropsbackport.changes.mushroomStew.tooltip=Грибне рагу робиться з миски та будь-яких двох грибів (26.3).
+config.gamedropsbackport.changes.shieldBeforeTools.tooltip=Зі щитом у другій руці використання мотики чи лопати піднімає щит; присядьте, щоб зорати землю або зробити стежку (26.3).
+config.gamedropsbackport.changes.endermenRiding.tooltip=Ендермени, які на чомусь їдуть, отримують шкоду від снарядів і ніколи не телепортуються (26.3).
+config.gamedropsbackport.changes.teleportTargets.tooltip=Ендермени ніколи не телепортуються на корінну породу чи у вогонь, кактуси, магму тощо; шалкери ніколи на корінну породу (26.3).
+config.gamedropsbackport.changes.persistentMobsIdle.tooltip=Постійні моби (наприклад, з іменем) перестають блукати, коли в радіусі 32 блоків немає гравців (26.3).
+config.gamedropsbackport.changes.leaderZombieHealth.tooltip=Зомбі-лідери з'являються з повністю відновленим підвищеним максимальним здоров'ям (26.1).
+config.gamedropsbackport.changes.witchCloseThrows.tooltip=Відьми кидають зілля повільніше в межах 2 блоків, тож зблизька вони більше не схибляють (26.1).
+config.gamedropsbackport.changes.peacefulSpawnEggs.tooltip=На складності Мирна роздавачі зберігають яйця виклику монстрів, а не витрачають їх (26.2).
+config.gamedropsbackport.changes.sunDamageEnchantments.tooltip=Міцність діє на шолом, який зомбі чи скелет носить проти сонця (26.3).
+config.gamedropsbackport.changes.spectatorPortals.tooltip=Спостерігачі проходять крізь портали в Незер, портали Енду та шлюзи Енду (26.3).
 # --- end config tooltips ---
 
 # --- common ---
@@ -292,3 +308,48 @@ subtitles.gamedropsbackport.item.axe.strip=Сокира скрегоче
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=Туф
+
+# --- changes ---
+config.gamedropsbackport.changes=Зміни наявного
+config.gamedropsbackport.changes.enabled=Увімкнено
+config.gamedropsbackport.changes.timeCommand=Світові годинники в /time
+config.gamedropsbackport.changes.gameRuleMessages=Повідомлення /gamerule
+config.gamedropsbackport.changes.teamColorNames=Суворі назви кольорів команд
+config.gamedropsbackport.changes.bedBounce=Підстрибування на ліжку
+config.gamedropsbackport.changes.mushroomStew=Рагу з будь-яких двох грибів
+config.gamedropsbackport.changes.shieldBeforeTools=Щит раніше мотик і лопат
+config.gamedropsbackport.changes.endermenRiding=Ендермени в транспорті
+config.gamedropsbackport.changes.teleportTargets=Безпечні цілі телепортації
+config.gamedropsbackport.changes.persistentMobsIdle=Постійні моби відпочивають
+config.gamedropsbackport.changes.leaderZombieHealth=Здоров'я зомбі-лідера
+config.gamedropsbackport.changes.witchCloseThrows=Кидки відьми зблизька
+config.gamedropsbackport.changes.peacefulSpawnEggs=Яйця виклику на Мирній
+config.gamedropsbackport.changes.sunDamageEnchantments=Міцність проти сонця
+config.gamedropsbackport.changes.spectatorPortals=Спостерігачі користуються порталами
+commands.gamedropsbackport.time.usage=/time [of <clock>] (set <time>|<time marker>) | (add <time>) | pause | resume | (rate <rate>) | (query time|<timeline> [repetition]), або /time query gametime
+commands.time.no_default_clock=У вимірі %s немає усталеного годинника
+commands.time.no_time_marker_found=Позначка часу %s відсутня для годинника %s
+commands.time.pause=Призупинено годинник %s
+commands.time.pause.already_paused=Годинник %s уже призупинено
+commands.time.pause.already_running=Годинник %s уже працює
+commands.time.query.absolute=Годинник %s — на %s тактах
+commands.time.query.gametime=Ігровий час — %s тактів
+commands.time.query.timeline=Часова шкала %s — на %s тактах
+commands.time.query.timeline.repetitions=Часова шкала %s пройшла %s повторень
+commands.time.rate=Годинник %s тепер працюватиме зі звичайною швидкістю %sx
+commands.time.rate.already_same=Годинник %s уже працює зі звичайною швидкістю %sx
+commands.time.resume=Відновлено годинник %s
+commands.time.set.absolute=Установлено %s на %s тактів
+commands.time.set.already_at_time=Годинник %s уже встановлено на %s тактів
+commands.time.set.already_at_time_marker=Годинник %s уже на часовій позначці %s
+commands.time.set.time_marker=Установлено %s на позначку часу %s
+commands.time.wrong_timeline_for_clock=Часова шкала %s недійсна для годинника %s
+commands.gamerule.not_set=Ігрове правило «%s» вже встановлене на: %s
+commands.gamerule.query=Ігрове правило «%s» наразі встановлене на: %s
+commands.gamerule.set=Ігрове правило «%s» тепер установлено на: %s
+argument.resource.not_found=Не можна знайти елемент «%s» типу «%s»
+argument.time.invalid_unit=Помилкова одиниця
+argument.time.tick_count_too_low=Кількість тактів має бути не меншою ніж %s; знайдено %s
+argument.float.big=Число з рухомою комою повинне бути не більшим ніж %s; знайдено %s
+argument.float.low=Число з рухомою комою повинне бути не меншим ніж %s; знайдено %s
+parsing.float.invalid=Неприпустиме число з рухомою комою «%s»

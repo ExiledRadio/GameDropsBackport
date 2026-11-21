@@ -51,6 +51,7 @@ another's classes.
 | 5 | Poplar and the dappled forest | 26.3 | `poplar` | `poplar` | 6-10 | 25-29 | decision 1 for the biome only |
 | 6 | Wool and concrete shapes, cushions, straw beds | 26.3 | `softblocks` | `softBlocks` | 11-15 | 30-34 | nothing |
 | 7 | Abandoned camps and explorer maps | 26.3 | `camps` | `camps` | none | 35-39 | Backport Core (templates, terrain) |
+| 8 | Changes to existing things | 26.1-26.3 | `changes` | `changes` | none | 40-44 | nothing |
 
 Ports (block 25920-25939): the main checkout's dev server uses 25920; a stream worktree uses `25920 + row`
 (25921-25927). Later 26.x streams take the next rows, up to 25939.
@@ -170,6 +171,31 @@ Where it differs from 26.3:
   Maps search Core's 100 rings, not 26.3's 50, and do not skip structures already on a map.
 - Explorer maps cannot be copied in a crafting grid or cartography table (1.12.2's recipe takes only filled maps).
 
+### 8. Changes to existing things (26.1-26.3)
+
+26.1 to 26.3's changes to commands, game rules, mobs, blocks, items and world rules 1.12.2 already has, one setting
+each under `changes` (Tricky Trials' stream 25 is the model). The full list, with what 1.12.2 does and what other
+family mods already change, is `docs/streams/changes.md`; patches P1-P5 are in `docs/PATCHES.md`. Port 25928 (row 8).
+
+| Change | Version | Setting | 1.12.2 now | Other family mods |
+| --- | --- | --- | --- | --- |
+| `/time` on world clocks: `set day/noon/night/midnight` go forward to the next marker; `of <clock>`, `pause`, `resume`, `rate`, `query time`, timelines; 26.1's messages | 26.1 | `timeCommand` | `set day` jumps back to tick 1000; no clocks | none (Core replaces only `/locate`, `/seed`) |
+| `/gamerule` messages; setting the same value is an error | 26.3 | `gameRuleMessages` | "Game rule %s has been updated to %s" | Tricky Trials adds 1.21's rules, not the command |
+| Team color names only as `dark_purple` | 26.2 | `teamColorNames` | `darkpurple`, `DarkPurple` accepted | none |
+| Bed bounce 0.75 | 26.2 | `bedBounce` | 0.66 | none (the shelf mushroom has its own) |
+| Mushroom stew from any two of `#mushrooms` | 26.3 | `mushroomStew` | one brown, one red | the poplar stream's shelf mushroom joins the tag |
+| Shield before hoe and shovel | 26.3 | `shieldBeforeTools` | the tool is used | Tricky Trials does the axe (1.21's same rule) |
+| Riding endermen take projectile damage, never teleport | 26.3 | `endermenRiding` | they dodge and teleport | none |
+| Endermen avoid bedrock and dangerous blocks; shulkers bedrock | 26.3 | `teleportTargets` | any solid block | none (Trails & Tales' `EnderTeleportEvent` is for pearls) |
+| Persistent mobs stop wandering with no player near | 26.3 | `persistentMobsIdle` | always wander | Nether Update's P10 guards the same method's head, for riders |
+| Leader zombies spawn at full raised health | 26.1 | `leaderZombieHealth` | health stays 20 | none |
+| Witches throw at 0.45 within 2 blocks | 26.1 | `witchCloseThrows` | always 0.75 | none |
+| Dispensers keep monster spawn eggs on Peaceful | 26.2 | `peacefulSpawnEggs` | egg used up | none |
+| Unbreaking on a helmet worn against the sun | 26.3 | `sunDamageEnchantments` | ignored | Update Aquatic's drowned and Tricky Trials' bogged are their owners' |
+| Spectators use nether portals, end portals, end gateways | 26.3 | `spectatorPortals` | they pass through | none |
+
+**Built (2026-11-21):** all of the above. Self-test `changes`. Not built, with reasons: `docs/streams/changes.md`.
+
 ### Later 26.x
 
 Each later 26.x release joins this plan as its own streams when it ships (26.4 is in snapshots now), with the next
@@ -217,3 +243,4 @@ behavior needs them. Design questions vanilla already answers are not asked.
 1. Scaffold and this plan: **done** (0.1.0).
 2. The streams in release order: babies, sulfur, sulfur cube, sulfur caves, poplar, soft blocks.
 3. Abandoned camps and explorer maps once Backport Core has the template loader.
+4. Changes to existing things (stream 8): **built**.

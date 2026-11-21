@@ -289,3 +289,6 @@ tile.gamedropsbackport.yellow_poplar_leaves.name=Żółte topolowe liście
 subtitles.gamedropsbackport.block.poplar_leaves.ambient=Szelest liści
 subtitles.gamedropsbackport.block.shelf_mushroom.bounce=Coś podskakuje na hubie
 subtitles.gamedropsbackport.item.axe.strip=Siekiera zeskrobuje
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tuf

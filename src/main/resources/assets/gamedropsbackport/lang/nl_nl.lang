@@ -289,3 +289,6 @@ tile.gamedropsbackport.yellow_poplar_leaves.name=Gele populierenbladeren
 subtitles.gamedropsbackport.block.poplar_leaves.ambient=Bladeren ruisen
 subtitles.gamedropsbackport.block.shelf_mushroom.bounce=Iets stuitert op een elfenbankje
 subtitles.gamedropsbackport.item.axe.strip=Bijl schraapt
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tufsteen

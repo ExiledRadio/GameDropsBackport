@@ -289,3 +289,6 @@ tile.gamedropsbackport.yellow_poplar_leaves.name=Folhas de Álamo Amarelas
 subtitles.gamedropsbackport.block.poplar_leaves.ambient=Folhas farfalham
 subtitles.gamedropsbackport.block.shelf_mushroom.bounce=Algo salta num Políporo
 subtitles.gamedropsbackport.item.axe.strip=Machado descasca
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tufo

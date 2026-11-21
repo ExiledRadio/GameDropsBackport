@@ -288,3 +288,6 @@ tile.gamedropsbackport.yellow_poplar_leaves.name=Yellow Poplar Leaves
 subtitles.gamedropsbackport.block.poplar_leaves.ambient=Leaves rustling
 subtitles.gamedropsbackport.block.shelf_mushroom.bounce=Something bounces on a Shelf Mushroom
 subtitles.gamedropsbackport.item.axe.strip=Axe strips
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tuff

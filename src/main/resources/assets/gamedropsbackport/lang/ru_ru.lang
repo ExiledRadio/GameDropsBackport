@@ -289,3 +289,6 @@ tile.gamedropsbackport.yellow_poplar_leaves.name=Жёлтые тополиные
 subtitles.gamedropsbackport.block.poplar_leaves.ambient=Шелест листьев
 subtitles.gamedropsbackport.block.shelf_mushroom.bounce=Что-то отскочило от трутовика
 subtitles.gamedropsbackport.item.axe.strip=Обтёсывание топором
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Туф

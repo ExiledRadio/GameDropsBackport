@@ -289,3 +289,6 @@ tile.gamedropsbackport.yellow_poplar_leaves.name=Hojas de álamo amarillas
 subtitles.gamedropsbackport.block.poplar_leaves.ambient=Hojas crujen
 subtitles.gamedropsbackport.block.shelf_mushroom.bounce=Algo rebota en un políporo
 subtitles.gamedropsbackport.item.axe.strip=Hacha raspa
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Toba

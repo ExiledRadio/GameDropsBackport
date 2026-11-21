@@ -289,3 +289,6 @@ tile.gamedropsbackport.yellow_poplar_leaves.name=黄色杨树树叶
 subtitles.gamedropsbackport.block.poplar_leaves.ambient=树叶：沙沙作响
 subtitles.gamedropsbackport.block.shelf_mushroom.bounce=某物：在层孔菇上弹跳
 subtitles.gamedropsbackport.item.axe.strip=斧：削皮
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=凝灰岩

@@ -289,3 +289,6 @@ tile.gamedropsbackport.yellow_poplar_leaves.name=Gelbes Pappellaub
 subtitles.gamedropsbackport.block.poplar_leaves.ambient=Laub raschelt
 subtitles.gamedropsbackport.block.shelf_mushroom.bounce=Baumpilz federt etwas
 subtitles.gamedropsbackport.item.axe.strip=Axt schabt
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tuffstein

@@ -46,10 +46,11 @@ public final class GameDropsBackport {
         // Core's settings screen lists the family members it knows by itself; this mod is newer than Core 1.4.0's
         // list, so it registers its page.
         BackportSettings.register(MOD_ID, ModConfig.class);
-        com.exiledradio.gamedropsbackport.sulfur.SulfurContent.preInit();
         com.exiledradio.gamedropsbackport.network.NetworkHandler.init();
+        com.exiledradio.gamedropsbackport.sulfur.SulfurContent.preInit();
         com.exiledradio.gamedropsbackport.poplar.PoplarContent.preInit(event.getSide().isClient());
         CampsContent.preInit();
+        com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.preInit();
     }
 
     @Mod.EventHandler
@@ -58,6 +59,7 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.babies.BabiesContent.init();
         com.exiledradio.gamedropsbackport.poplar.PoplarContent.init();
         CampsContent.init();
+        com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.init();
     }
 
     @Mod.EventHandler
@@ -71,6 +73,7 @@ public final class GameDropsBackport {
             }
         }
         com.exiledradio.gamedropsbackport.sulfurcube.SulfurCubes.postInit();
+        com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.postInit();
     }
 
     /**

@@ -289,3 +289,6 @@ tile.gamedropsbackport.yellow_poplar_leaves.name=Foglie di pioppo gialle
 subtitles.gamedropsbackport.block.poplar_leaves.ambient=Fruscio di foglie
 subtitles.gamedropsbackport.block.shelf_mushroom.bounce=Rimbalzo su fungo
 subtitles.gamedropsbackport.item.axe.strip=Ascia scorteccia
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tufo

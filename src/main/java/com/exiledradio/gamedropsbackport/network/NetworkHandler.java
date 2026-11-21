@@ -33,5 +33,8 @@ public final class NetworkHandler {
         // 5-9 babies
         channel.registerMessage(com.exiledradio.gamedropsbackport.babies.AgeLockMessage.Handler.class,
                 com.exiledradio.gamedropsbackport.babies.AgeLockMessage.class, 5, Side.CLIENT);
+        // 20-24 sulfurCaves
+        channel.registerMessage(com.exiledradio.gamedropsbackport.sulfurcaves.SulfurNet.Handler.class,
+                com.exiledradio.gamedropsbackport.sulfurcaves.SulfurNet.InsideMessage.class, 20, Side.CLIENT);
     }
 }

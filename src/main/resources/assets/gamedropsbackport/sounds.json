@@ -1982,5 +1982,127 @@
       }
     ],
     "subtitle": "subtitles.gamedropsbackport.item.axe.strip"
+  },
+  "block.tuff.break": {
+    "sounds": [
+      "gamedropsbackport:block/tuff/break1",
+      "gamedropsbackport:block/tuff/break2",
+      "gamedropsbackport:block/tuff/break3",
+      "gamedropsbackport:block/tuff/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.tuff.step": {
+    "sounds": [
+      "gamedropsbackport:block/tuff/step1",
+      "gamedropsbackport:block/tuff/step2",
+      "gamedropsbackport:block/tuff/step3",
+      "gamedropsbackport:block/tuff/step4",
+      "gamedropsbackport:block/tuff/step5",
+      "gamedropsbackport:block/tuff/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.tuff.place": {
+    "sounds": [
+      "gamedropsbackport:block/tuff/break1",
+      "gamedropsbackport:block/tuff/break2",
+      "gamedropsbackport:block/tuff/break3",
+      "gamedropsbackport:block/tuff/break4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.tuff.hit": {
+    "sounds": [
+      "gamedropsbackport:block/tuff/step1",
+      "gamedropsbackport:block/tuff/step2",
+      "gamedropsbackport:block/tuff/step3",
+      "gamedropsbackport:block/tuff/step4",
+      "gamedropsbackport:block/tuff/step5",
+      "gamedropsbackport:block/tuff/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.tuff.fall": {
+    "sounds": [
+      "gamedropsbackport:block/tuff/step1",
+      "gamedropsbackport:block/tuff/step2",
+      "gamedropsbackport:block/tuff/step3",
+      "gamedropsbackport:block/tuff/step4",
+      "gamedropsbackport:block/tuff/step5",
+      "gamedropsbackport:block/tuff/step6"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.generic.fall"
+  },
+  "music.overworld.sulfur_caves": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:music/game/an_ordinary_day",
+        "stream": true
+      },
+      {
+        "name": "minecraft:music/game/hal4",
+        "stream": true
+      },
+      {
+        "name": "gamedropsbackport:music/game/deeper",
+        "stream": true,
+        "volume": 0.4
+      },
+      {
+        "name": "gamedropsbackport:music/game/ebb",
+        "stream": true,
+        "volume": 0.4,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:music/game/eld_unknown",
+        "stream": true,
+        "volume": 0.4
+      },
+      {
+        "name": "gamedropsbackport:music/game/endless",
+        "stream": true,
+        "volume": 0.4
+      },
+      {
+        "name": "gamedropsbackport:music/game/infinite_amethyst",
+        "stream": true,
+        "volume": 0.4
+      },
+      {
+        "name": "minecraft:music/game/nuance1",
+        "stream": true
+      },
+      {
+        "name": "gamedropsbackport:music/game/nightly",
+        "stream": true,
+        "weight": 2
+      },
+      {
+        "name": "minecraft:music/game/nuance2",
+        "stream": true
+      },
+      {
+        "name": "gamedropsbackport:music/game/pokopoko",
+        "stream": true,
+        "volume": 0.8
+      },
+      {
+        "name": "gamedropsbackport:music/game/shores",
+        "stream": true,
+        "volume": 0.4,
+        "weight": 2
+      },
+      {
+        "name": "minecraft:music/game/hal1",
+        "stream": true
+      },
+      {
+        "name": "gamedropsbackport:music/game/wending",
+        "stream": true,
+        "volume": 0.4
+      }
+    ]
   }
 }

@@ -90,7 +90,7 @@ Ports (block 25920-25939): the main checkout's dev server uses 25920; a stream w
   (28 blocks, Tricky Trials' tuff shapes); **potent sulfur** (9 sulfur; bubbles, nausea gas over 1-4 water,
   eruptions over magma every 50 s, constantly over lava); **sulfur spikes** (stalactite and stalagmite,
   breaking unsupported, falling for damage, broken by thrown tridents; 4 make a sulfur block).
-- Music disc **Bounce** (sulfur cave minecart chests; comparator 8).
+- Music disc **Bounce** (mineshaft minecart chests; comparator 8).
 - **Built** (stream 2, 0.1.0): every block above under 26.3's names (`SulfurContent` lists them). The disc is
   registered; its loot (abandoned mineshaft chests, weight 10 in the 3-roll rail pool, only inside sulfur caves)
   needs the biome, so stream 4 adds it.
@@ -115,6 +115,14 @@ Ports (block 25920-25939): the main checkout's dev server uses 25920; a stream w
 - The **sulfur caves** biome (bands of sulfur and cinnabar, sulfur pools with potent sulfur, cave spiders
   instead of spiders) and **sulfur springs** above it in four sizes. 1.12.2 has no underground biomes:
   decision 2 below.
+- **Built** (stream 4): `sulfurcaves.SulfurCaves` says where (Caves & Cliffs' 1.18 terrain: 26.2's climate box
+  over its climate noise at real heights, its lush caves, dripstone caves and deep dark kept; other worlds: our
+  own patches under low land, as rare and as large as 26.2's, at 26.2's depth, two thirds of it in a 0-255 world;
+  superflat: the preset's biome). `SulfurCavesGen` lays the bands, then 26.3's `rooted_sulfur_spring` (root system
+  and the ten spring templates), `sulfur_pool`, `sulfur_spike_cluster` and `sulfur_spike` with their placed-feature
+  counts. The biome's spawns (sulfur cube once stream 3 registers `sulfur_cube`), music and fog color; a tuff copy
+  where no family mod has tuff. Bounce is in every mineshaft chest's rail pool (26.3's table has no biome
+  condition). Deviations and the Caves & Cliffs request: `docs/streams/sulfurcaves.md`.
 
 ### 5. Poplar and the dappled forest (26.3)
 

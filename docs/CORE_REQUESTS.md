@@ -131,3 +131,17 @@ Wanted: `GameEvent.BOUNCE` (26.3's vibration frequency for it), so sculk sensors
 Meanwhile: a cube's bounce emits nothing. Its other events (`prime_fuse`, `shear`, `entity_interact`, `entity_place`)
 go through `GameEvents.emit`.
 
+## SC-1. Sulfur caves in Caves & Cliffs' 1.18 terrain (stream 4)
+
+26.2 adds `minecraft:sulfur_caves` to `OverworldBiomeBuilder.addUndergroundBiomes` (continentalness -0.19 to 0.55,
+erosion 0.45 to 1, weirdness -1.1 to -0.85, depth 0.2 to 0.9) and its bands to the underground material rule.
+Caves & Cliffs' terrain core has no 26.2 edition, so its biome source never names it.
+
+**Want:** a Caves & Cliffs edition for Game Drops Backport (as `Editions.PALE` is for Tricky Trials): the biome line,
+the bands in its surface rules before deepslate, `Biomes.byName("sulfur_caves")`, and the biome's 3D id through Core's
+`ModernGeneration.biomeId` (F3, spawning). A climate query in `ModernGeneration` would also do for the placement.
+
+**Meanwhile:** `sulfurcaves.ModernClimate` reads the terrain's climate noise by reflection and applies 26.2's box
+itself, the bands are laid at population (after the terrain's ores, which they cover), and F3 shows the column's
+biome. `SulfurCaves` switches to the terrain's own biome as soon as `Biomes.byName("sulfur_caves")` answers.
+

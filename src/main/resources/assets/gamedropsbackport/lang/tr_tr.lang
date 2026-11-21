@@ -289,3 +289,6 @@ tile.gamedropsbackport.yellow_poplar_leaves.name=Sarı Kavak Ağacı Yaprakları
 subtitles.gamedropsbackport.block.poplar_leaves.ambient=Yaprak hışırdaması
 subtitles.gamedropsbackport.block.shelf_mushroom.bounce=Bir şey Kav Mantarı üzerinde zıpladı
 subtitles.gamedropsbackport.item.axe.strip=Balta soydu
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tüf

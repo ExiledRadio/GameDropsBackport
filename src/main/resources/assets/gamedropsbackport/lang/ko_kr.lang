@@ -289,3 +289,6 @@ tile.gamedropsbackport.yellow_poplar_leaves.name=노란색 포플러나무 잎
 subtitles.gamedropsbackport.block.poplar_leaves.ambient=나뭇잎이 바스락거림
 subtitles.gamedropsbackport.block.shelf_mushroom.bounce=선반 버섯에 무언가가 튕김
 subtitles.gamedropsbackport.item.axe.strip=도끼로 긁어냄
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=응회암

@@ -289,3 +289,6 @@ tile.gamedropsbackport.yellow_poplar_leaves.name=Feuilles de peuplier jaunes
 subtitles.gamedropsbackport.block.poplar_leaves.ambient=Bruissement de feuilles
 subtitles.gamedropsbackport.block.shelf_mushroom.bounce=Rebond sur un polypore
 subtitles.gamedropsbackport.item.axe.strip=Hache qui écorce
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tuf

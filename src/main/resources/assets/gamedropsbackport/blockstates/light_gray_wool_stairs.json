@@ -1,0 +1,414 @@
+{
+  "variants": {
+    "color=cyan,facing=east,half=bottom,shape=inner_left": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "y": 270,
+      "uvlock": true
+    },
+    "color=cyan,facing=east,half=bottom,shape=inner_right": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs"
+    },
+    "color=cyan,facing=east,half=bottom,shape=outer_left": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "y": 270,
+      "uvlock": true
+    },
+    "color=cyan,facing=east,half=bottom,shape=outer_right": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs"
+    },
+    "color=cyan,facing=east,half=bottom,shape=straight": {
+      "model": "gamedropsbackport:cyan_wool_stairs"
+    },
+    "color=cyan,facing=east,half=top,shape=inner_left": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "x": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=east,half=top,shape=inner_right": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "color=cyan,facing=east,half=top,shape=outer_left": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "x": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=east,half=top,shape=outer_right": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "color=cyan,facing=east,half=top,shape=straight": {
+      "model": "gamedropsbackport:cyan_wool_stairs",
+      "x": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=north,half=bottom,shape=inner_left": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "y": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=north,half=bottom,shape=inner_right": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "y": 270,
+      "uvlock": true
+    },
+    "color=cyan,facing=north,half=bottom,shape=outer_left": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "y": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=north,half=bottom,shape=outer_right": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "y": 270,
+      "uvlock": true
+    },
+    "color=cyan,facing=north,half=bottom,shape=straight": {
+      "model": "gamedropsbackport:cyan_wool_stairs",
+      "y": 270,
+      "uvlock": true
+    },
+    "color=cyan,facing=north,half=top,shape=inner_left": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "color=cyan,facing=north,half=top,shape=inner_right": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "x": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=north,half=top,shape=outer_left": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "color=cyan,facing=north,half=top,shape=outer_right": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "x": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=north,half=top,shape=straight": {
+      "model": "gamedropsbackport:cyan_wool_stairs",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "color=cyan,facing=south,half=bottom,shape=inner_left": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs"
+    },
+    "color=cyan,facing=south,half=bottom,shape=inner_right": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "y": 90,
+      "uvlock": true
+    },
+    "color=cyan,facing=south,half=bottom,shape=outer_left": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs"
+    },
+    "color=cyan,facing=south,half=bottom,shape=outer_right": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "y": 90,
+      "uvlock": true
+    },
+    "color=cyan,facing=south,half=bottom,shape=straight": {
+      "model": "gamedropsbackport:cyan_wool_stairs",
+      "y": 90,
+      "uvlock": true
+    },
+    "color=cyan,facing=south,half=top,shape=inner_left": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "color=cyan,facing=south,half=top,shape=inner_right": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=south,half=top,shape=outer_left": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "color=cyan,facing=south,half=top,shape=outer_right": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=south,half=top,shape=straight": {
+      "model": "gamedropsbackport:cyan_wool_stairs",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "color=cyan,facing=west,half=bottom,shape=inner_left": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "y": 90,
+      "uvlock": true
+    },
+    "color=cyan,facing=west,half=bottom,shape=inner_right": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "y": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=west,half=bottom,shape=outer_left": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "y": 90,
+      "uvlock": true
+    },
+    "color=cyan,facing=west,half=bottom,shape=outer_right": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "y": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=west,half=bottom,shape=straight": {
+      "model": "gamedropsbackport:cyan_wool_stairs",
+      "y": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=west,half=top,shape=inner_left": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=west,half=top,shape=inner_right": {
+      "model": "gamedropsbackport:cyan_wool_inner_stairs",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "color=cyan,facing=west,half=top,shape=outer_left": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+    "color=cyan,facing=west,half=top,shape=outer_right": {
+      "model": "gamedropsbackport:cyan_wool_outer_stairs",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "color=cyan,facing=west,half=top,shape=straight": {
+      "model": "gamedropsbackport:cyan_wool_stairs",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=east,half=bottom,shape=inner_left": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "y": 270,
+      "uvlock": true
+    },
+    "color=silver,facing=east,half=bottom,shape=inner_right": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs"
+    },
+    "color=silver,facing=east,half=bottom,shape=outer_left": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "y": 270,
+      "uvlock": true
+    },
+    "color=silver,facing=east,half=bottom,shape=outer_right": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs"
+    },
+    "color=silver,facing=east,half=bottom,shape=straight": {
+      "model": "gamedropsbackport:light_gray_wool_stairs"
+    },
+    "color=silver,facing=east,half=top,shape=inner_left": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "x": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=east,half=top,shape=inner_right": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "color=silver,facing=east,half=top,shape=outer_left": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "x": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=east,half=top,shape=outer_right": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "color=silver,facing=east,half=top,shape=straight": {
+      "model": "gamedropsbackport:light_gray_wool_stairs",
+      "x": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=north,half=bottom,shape=inner_left": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "y": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=north,half=bottom,shape=inner_right": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "y": 270,
+      "uvlock": true
+    },
+    "color=silver,facing=north,half=bottom,shape=outer_left": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "y": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=north,half=bottom,shape=outer_right": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "y": 270,
+      "uvlock": true
+    },
+    "color=silver,facing=north,half=bottom,shape=straight": {
+      "model": "gamedropsbackport:light_gray_wool_stairs",
+      "y": 270,
+      "uvlock": true
+    },
+    "color=silver,facing=north,half=top,shape=inner_left": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "color=silver,facing=north,half=top,shape=inner_right": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "x": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=north,half=top,shape=outer_left": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "color=silver,facing=north,half=top,shape=outer_right": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "x": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=north,half=top,shape=straight": {
+      "model": "gamedropsbackport:light_gray_wool_stairs",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "color=silver,facing=south,half=bottom,shape=inner_left": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs"
+    },
+    "color=silver,facing=south,half=bottom,shape=inner_right": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "y": 90,
+      "uvlock": true
+    },
+    "color=silver,facing=south,half=bottom,shape=outer_left": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs"
+    },
+    "color=silver,facing=south,half=bottom,shape=outer_right": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "y": 90,
+      "uvlock": true
+    },
+    "color=silver,facing=south,half=bottom,shape=straight": {
+      "model": "gamedropsbackport:light_gray_wool_stairs",
+      "y": 90,
+      "uvlock": true
+    },
+    "color=silver,facing=south,half=top,shape=inner_left": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "color=silver,facing=south,half=top,shape=inner_right": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=south,half=top,shape=outer_left": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "color=silver,facing=south,half=top,shape=outer_right": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=south,half=top,shape=straight": {
+      "model": "gamedropsbackport:light_gray_wool_stairs",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "color=silver,facing=west,half=bottom,shape=inner_left": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "y": 90,
+      "uvlock": true
+    },
+    "color=silver,facing=west,half=bottom,shape=inner_right": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "y": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=west,half=bottom,shape=outer_left": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "y": 90,
+      "uvlock": true
+    },
+    "color=silver,facing=west,half=bottom,shape=outer_right": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "y": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=west,half=bottom,shape=straight": {
+      "model": "gamedropsbackport:light_gray_wool_stairs",
+      "y": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=west,half=top,shape=inner_left": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=west,half=top,shape=inner_right": {
+      "model": "gamedropsbackport:light_gray_wool_inner_stairs",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "color=silver,facing=west,half=top,shape=outer_left": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+    "color=silver,facing=west,half=top,shape=outer_right": {
+      "model": "gamedropsbackport:light_gray_wool_outer_stairs",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "color=silver,facing=west,half=top,shape=straight": {
+      "model": "gamedropsbackport:light_gray_wool_stairs",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    }
+  }
+}

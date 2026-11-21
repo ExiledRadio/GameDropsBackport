@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "color=white,half=bottom": {
+      "model": "gamedropsbackport:white_concrete_slab"
+    },
+    "color=white,half=top": {
+      "model": "gamedropsbackport:white_concrete_slab_top"
+    },
+    "color=orange,half=bottom": {
+      "model": "gamedropsbackport:orange_concrete_slab"
+    },
+    "color=orange,half=top": {
+      "model": "gamedropsbackport:orange_concrete_slab_top"
+    },
+    "color=magenta,half=bottom": {
+      "model": "gamedropsbackport:magenta_concrete_slab"
+    },
+    "color=magenta,half=top": {
+      "model": "gamedropsbackport:magenta_concrete_slab_top"
+    },
+    "color=light_blue,half=bottom": {
+      "model": "gamedropsbackport:light_blue_concrete_slab"
+    },
+    "color=light_blue,half=top": {
+      "model": "gamedropsbackport:light_blue_concrete_slab_top"
+    },
+    "color=yellow,half=bottom": {
+      "model": "gamedropsbackport:yellow_concrete_slab"
+    },
+    "color=yellow,half=top": {
+      "model": "gamedropsbackport:yellow_concrete_slab_top"
+    },
+    "color=lime,half=bottom": {
+      "model": "gamedropsbackport:lime_concrete_slab"
+    },
+    "color=lime,half=top": {
+      "model": "gamedropsbackport:lime_concrete_slab_top"
+    },
+    "color=pink,half=bottom": {
+      "model": "gamedropsbackport:pink_concrete_slab"
+    },
+    "color=pink,half=top": {
+      "model": "gamedropsbackport:pink_concrete_slab_top"
+    },
+    "color=gray,half=bottom": {
+      "model": "gamedropsbackport:gray_concrete_slab"
+    },
+    "color=gray,half=top": {
+      "model": "gamedropsbackport:gray_concrete_slab_top"
+    }
+  }
+}

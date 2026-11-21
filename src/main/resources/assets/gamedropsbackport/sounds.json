@@ -1,0 +1,94 @@
+{
+  "entity.cushion.place": {
+    "sounds": [
+      "gamedropsbackport:entity/cushion/place1",
+      "gamedropsbackport:entity/cushion/place2",
+      "gamedropsbackport:entity/cushion/place3",
+      "gamedropsbackport:entity/cushion/place4",
+      "gamedropsbackport:entity/cushion/place5",
+      "gamedropsbackport:entity/cushion/place6"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.cushion.place"
+  },
+  "entity.cushion.break": {
+    "sounds": [
+      "gamedropsbackport:entity/cushion/break1",
+      "gamedropsbackport:entity/cushion/break2",
+      "gamedropsbackport:entity/cushion/break3"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.cushion.break"
+  },
+  "entity.cushion.sit": {
+    "sounds": [
+      "gamedropsbackport:entity/cushion/sit1",
+      "gamedropsbackport:entity/cushion/sit2",
+      "gamedropsbackport:entity/cushion/sit3"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.cushion.sit"
+  },
+  "entity.cushion.get_up": {
+    "sounds": [
+      "gamedropsbackport:entity/cushion/get_up1",
+      "gamedropsbackport:entity/cushion/get_up2",
+      "gamedropsbackport:entity/cushion/get_up3"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.cushion.get_up"
+  },
+  "block.straw_bed.break": {
+    "sounds": [
+      "gamedropsbackport:block/straw_bed/break1",
+      "gamedropsbackport:block/straw_bed/break2",
+      "gamedropsbackport:block/straw_bed/break3",
+      "gamedropsbackport:block/straw_bed/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.straw_bed.step": {
+    "sounds": [
+      "gamedropsbackport:block/straw_bed/step1",
+      "gamedropsbackport:block/straw_bed/step2",
+      "gamedropsbackport:block/straw_bed/step3",
+      "gamedropsbackport:block/straw_bed/step4",
+      "gamedropsbackport:block/straw_bed/step5",
+      "gamedropsbackport:block/straw_bed/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.straw_bed.place": {
+    "sounds": [
+      "gamedropsbackport:block/straw_bed/place1",
+      "gamedropsbackport:block/straw_bed/place2",
+      "gamedropsbackport:block/straw_bed/place3",
+      "gamedropsbackport:block/straw_bed/place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.straw_bed.hit": {
+    "sounds": [
+      "gamedropsbackport:block/straw_bed/hit1",
+      "gamedropsbackport:block/straw_bed/hit2",
+      "gamedropsbackport:block/straw_bed/hit3",
+      "gamedropsbackport:block/straw_bed/hit4",
+      "gamedropsbackport:block/straw_bed/hit5",
+      "gamedropsbackport:block/straw_bed/hit6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.straw_bed.fall": {
+    "sounds": [
+      "gamedropsbackport:block/straw_bed/hit1",
+      "gamedropsbackport:block/straw_bed/hit2",
+      "gamedropsbackport:block/straw_bed/hit3",
+      "gamedropsbackport:block/straw_bed/hit4",
+      "gamedropsbackport:block/straw_bed/hit5",
+      "gamedropsbackport:block/straw_bed/hit6"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.generic.fall"
+  },
+  "block.straw_bed.break_leave": {
+    "sounds": [
+      "gamedropsbackport:block/straw_bed/break_leave"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.straw_bed.break_leave"
+  }
+}

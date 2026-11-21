@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "color=silver,half=bottom": {
+      "model": "gamedropsbackport:light_gray_wool_slab"
+    },
+    "color=silver,half=top": {
+      "model": "gamedropsbackport:light_gray_wool_slab_top"
+    },
+    "color=cyan,half=bottom": {
+      "model": "gamedropsbackport:cyan_wool_slab"
+    },
+    "color=cyan,half=top": {
+      "model": "gamedropsbackport:cyan_wool_slab_top"
+    },
+    "color=purple,half=bottom": {
+      "model": "gamedropsbackport:purple_wool_slab"
+    },
+    "color=purple,half=top": {
+      "model": "gamedropsbackport:purple_wool_slab_top"
+    },
+    "color=blue,half=bottom": {
+      "model": "gamedropsbackport:blue_wool_slab"
+    },
+    "color=blue,half=top": {
+      "model": "gamedropsbackport:blue_wool_slab_top"
+    },
+    "color=brown,half=bottom": {
+      "model": "gamedropsbackport:brown_wool_slab"
+    },
+    "color=brown,half=top": {
+      "model": "gamedropsbackport:brown_wool_slab_top"
+    },
+    "color=green,half=bottom": {
+      "model": "gamedropsbackport:green_wool_slab"
+    },
+    "color=green,half=top": {
+      "model": "gamedropsbackport:green_wool_slab_top"
+    },
+    "color=red,half=bottom": {
+      "model": "gamedropsbackport:red_wool_slab"
+    },
+    "color=red,half=top": {
+      "model": "gamedropsbackport:red_wool_slab_top"
+    },
+    "color=black,half=bottom": {
+      "model": "gamedropsbackport:black_wool_slab"
+    },
+    "color=black,half=top": {
+      "model": "gamedropsbackport:black_wool_slab_top"
+    }
+  }
+}

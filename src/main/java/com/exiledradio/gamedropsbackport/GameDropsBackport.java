@@ -1,6 +1,7 @@
 package com.exiledradio.gamedropsbackport;
 
 import com.exiledradio.backportcore.settings.BackportSettings;
+import com.exiledradio.gamedropsbackport.camps.CampsContent;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -48,6 +49,7 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.sulfur.SulfurContent.preInit();
         com.exiledradio.gamedropsbackport.network.NetworkHandler.init();
         com.exiledradio.gamedropsbackport.poplar.PoplarContent.preInit(event.getSide().isClient());
+        CampsContent.preInit();
     }
 
     @Mod.EventHandler
@@ -55,6 +57,7 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.softblocks.SoftBlocks.init();
         com.exiledradio.gamedropsbackport.babies.BabiesContent.init();
         com.exiledradio.gamedropsbackport.poplar.PoplarContent.init();
+        CampsContent.init();
     }
 
     @Mod.EventHandler

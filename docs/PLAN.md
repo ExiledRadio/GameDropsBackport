@@ -134,6 +134,27 @@ Ports (block 25920-25939): the main checkout's dev server uses 25920; a stream w
   Aquatic's), trial chambers (Tricky Trials'), and buried variants, wherever their structure exists.
 - Needs Core's template loader, as Tricky Trials' trial chambers do.
 
+**Built (2026-11-21).** `tools/camps/generate.py` copies 26.3's structure set, 18 structures, pools, 297 templates,
+biome and structure tags and three loot tables unchanged. `camps.CampLayout` is 26.3's jigsaw placer (expansion hack,
+nameless feature jigsaws); `AbandonedCampStructure` picks the variant per candidate chunk as `createStructures` does
+(weighted draws, a fresh start random per try, the column's biome checked before the ground). Checked against vanilla
+26.3's own starts for seed 1013 (`tools/camps/oracle/`, 24 starts): 62 of 62 pieces match. `/locate structure
+minecraft:abandoned_camp_<biome>` and the 23 `#on_*` structure tags are Core's. The 16 explorer map items
+(`ExplorerMaps`) are made by the camp loot's `exploration_map`, only where `/locate` finds the structure; old filled
+explorer maps (1.12.2's cartographer, the other backports) become 26.3's items in a player's inventory, an opened
+container or a villager's offers (26.3's `ExplorerMapItemFix`, live). Self-test `camps`.
+
+Where it differs from 26.3:
+- Heights are 1.12.2's terrain's (the start is projected onto it); biomes are 1.12.2's per-column biome (Caves &
+  Cliffs' 3D noise biome where its terrain runs). A camp exists only where its biome's owner is installed.
+- Trees: 1.12.2's generators for the vanilla trees; cherry, pale oak and poplar grow from their owner's sapling (a
+  poplar's color is the sapling's). Bee nests on the `_bees` trees are left out.
+- Blocks no installed mod has are left out (Core's palette); barrels and copper chests fall back to chests (loot
+  kept), white wool stairs to white wool, cushions are left out without the soft blocks stream.
+- Container loot has no position in 1.12.2: the opening player's block is the origin (biome check, map search).
+  Maps search Core's 100 rings, not 26.3's 50, and do not skip structures already on a map.
+- Explorer maps cannot be copied in a crafting grid or cartography table (1.12.2's recipe takes only filled maps).
+
 ### Later 26.x
 
 Each later 26.x release joins this plan as its own streams when it ships (26.4 is in snapshots now), with the next

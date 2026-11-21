@@ -1,0 +1,2001 @@
+{
+ "seed": 1013,
+ "candidates": [
+  [
+   -148,
+   -137
+  ],
+  [
+   -124,
+   -86
+  ],
+  [
+   -136,
+   -59
+  ],
+  [
+   -141,
+   -24
+  ],
+  [
+   -146,
+   19
+  ],
+  [
+   -148,
+   39
+  ],
+  [
+   -144,
+   101
+  ],
+  [
+   -134,
+   120
+  ],
+  [
+   -106,
+   -129
+  ],
+  [
+   -97,
+   -106
+  ],
+  [
+   -89,
+   -68
+  ],
+  [
+   -84,
+   -9
+  ],
+  [
+   -85,
+   25
+  ],
+  [
+   -83,
+   55
+  ],
+  [
+   -106,
+   100
+  ],
+  [
+   -84,
+   117
+  ],
+  [
+   -48,
+   -124
+  ],
+  [
+   -68,
+   -91
+  ],
+  [
+   -71,
+   -53
+  ],
+  [
+   -53,
+   -29
+  ],
+  [
+   -51,
+   21
+  ],
+  [
+   -67,
+   55
+  ],
+  [
+   -64,
+   81
+  ],
+  [
+   -57,
+   128
+  ],
+  [
+   -27,
+   -140
+  ],
+  [
+   -27,
+   -91
+  ],
+  [
+   -33,
+   -49
+  ],
+  [
+   -20,
+   -26
+  ],
+  [
+   -22,
+   19
+  ],
+  [
+   -17,
+   44
+  ],
+  [
+   -35,
+   84
+  ],
+  [
+   -24,
+   123
+  ],
+  [
+   11,
+   -134
+  ],
+  [
+   15,
+   -94
+  ],
+  [
+   22,
+   -69
+  ],
+  [
+   14,
+   -11
+  ],
+  [
+   13,
+   4
+  ],
+  [
+   17,
+   45
+  ],
+  [
+   14,
+   91
+  ],
+  [
+   23,
+   124
+  ],
+  [
+   54,
+   -127
+  ],
+  [
+   46,
+   -84
+  ],
+  [
+   64,
+   -63
+  ],
+  [
+   40,
+   -17
+  ],
+  [
+   65,
+   9
+  ],
+  [
+   64,
+   37
+  ],
+  [
+   43,
+   81
+  ],
+  [
+   53,
+   114
+  ],
+  [
+   76,
+   -120
+  ],
+  [
+   91,
+   -109
+  ],
+  [
+   85,
+   -64
+  ],
+  [
+   81,
+   -18
+  ],
+  [
+   76,
+   19
+  ],
+  [
+   87,
+   47
+  ],
+  [
+   92,
+   83
+  ],
+  [
+   79,
+   114
+  ],
+  [
+   136,
+   -147
+  ],
+  [
+   130,
+   -87
+  ],
+  [
+   122,
+   -68
+  ],
+  [
+   112,
+   -15
+  ],
+  [
+   118,
+   16
+  ],
+  [
+   133,
+   60
+  ],
+  [
+   135,
+   100
+  ],
+  [
+   117,
+   135
+  ]
+ ],
+ "starts": [
+  {
+   "chunk": [
+    -148,
+    -137
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_forest",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/forest/tent_forest_4",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -2368,
+      113,
+      -2192
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 1,
+     "bb": [
+      -2375,
+      113,
+      -2199,
+      -2368,
+      120,
+      -2192
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/forest/campsite_forest_2",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -2357,
+      113,
+      -2191
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 1,
+     "bb": [
+      -2367,
+      113,
+      -2201,
+      -2357,
+      122,
+      -2191
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      -2359,
+      114,
+      -2199
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 0,
+     "bb": [
+      -2359,
+      114,
+      -2199,
+      -2359,
+      114,
+      -2199
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      -2362,
+      114,
+      -2193
+     ],
+     "rotation": "NONE",
+     "ground": 0,
+     "bb": [
+      -2362,
+      114,
+      -2193,
+      -2362,
+      114,
+      -2193
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    -124,
+    -86
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -136,
+    -59
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -141,
+    -24
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -146,
+    19
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -148,
+    39
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_snowy_taiga",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/snowy_taiga/tent_snowy_taiga_7",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -2368,
+      66,
+      624
+     ],
+     "rotation": "CLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      -2375,
+      66,
+      624,
+      -2368,
+      73,
+      631
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_barrel_7",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -2367,
+      66,
+      614
+     ],
+     "rotation": "CLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      -2376,
+      66,
+      614,
+      -2367,
+      68,
+      623
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    -144,
+    101
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_swamp",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/swamp/tent_swamp_6",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -2304,
+      90,
+      1616
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      -2304,
+      90,
+      1609,
+      -2297,
+      97,
+      1616
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_chest_7",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -2305,
+      90,
+      1626
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      -2305,
+      90,
+      1617,
+      -2296,
+      92,
+      1626
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    -134,
+    120
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -106,
+    -129
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -97,
+    -106
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -89,
+    -68
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -84,
+    -9
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -85,
+    25
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_forest",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/forest/tent_forest_7",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -1360,
+      85,
+      400
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      -1360,
+      85,
+      393,
+      -1353,
+      92,
+      400
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_special_13",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -1361,
+      85,
+      410
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      -1361,
+      85,
+      401,
+      -1352,
+      87,
+      410
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    -83,
+    55
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -106,
+    100
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -84,
+    117
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -48,
+    -124
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -68,
+    -91
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -71,
+    -53
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -53,
+    -29
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -51,
+    21
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_taiga",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/taiga/tent_taiga_7",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -816,
+      69,
+      336
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      -816,
+      69,
+      329,
+      -809,
+      77,
+      336
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      -811,
+      70,
+      332
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 0,
+     "bb": [
+      -811,
+      70,
+      332,
+      -811,
+      70,
+      332
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_special_10",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -817,
+      67,
+      346
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 3,
+     "bb": [
+      -817,
+      67,
+      337,
+      -808,
+      71,
+      346
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    -67,
+    55
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -64,
+    81
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -57,
+    128
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -27,
+    -140
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -27,
+    -91
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -33,
+    -49
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_taiga",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/taiga/tent_taiga_2",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -528,
+      74,
+      -784
+     ],
+     "rotation": "NONE",
+     "ground": 1,
+     "bb": [
+      -528,
+      74,
+      -784,
+      -521,
+      82,
+      -777
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_barrel_12",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -538,
+      73,
+      -785
+     ],
+     "rotation": "NONE",
+     "ground": 2,
+     "bb": [
+      -538,
+      73,
+      -785,
+      -529,
+      76,
+      -776
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      -525,
+      75,
+      -781
+     ],
+     "rotation": "NONE",
+     "ground": 0,
+     "bb": [
+      -525,
+      75,
+      -781,
+      -525,
+      75,
+      -781
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    -20,
+    -26
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_forest",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/forest/tent_forest_5",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -320,
+      62,
+      -416
+     ],
+     "rotation": "NONE",
+     "ground": 1,
+     "bb": [
+      -320,
+      62,
+      -416,
+      -313,
+      69,
+      -409
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_chest_2",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -330,
+      62,
+      -417
+     ],
+     "rotation": "NONE",
+     "ground": 1,
+     "bb": [
+      -330,
+      62,
+      -417,
+      -321,
+      64,
+      -408
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    -22,
+    19
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_taiga",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/taiga/tent_taiga_1",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -352,
+      75,
+      304
+     ],
+     "rotation": "CLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      -359,
+      75,
+      304,
+      -352,
+      82,
+      311
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_special_15",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -351,
+      73,
+      294
+     ],
+     "rotation": "CLOCKWISE_90",
+     "ground": 3,
+     "bb": [
+      -360,
+      73,
+      294,
+      -351,
+      77,
+      303
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    -17,
+    44
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_taiga",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/taiga/tent_taiga_4",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -272,
+      68,
+      704
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 1,
+     "bb": [
+      -279,
+      68,
+      697,
+      -272,
+      75,
+      704
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_special_2",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      -262,
+      66,
+      705
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 3,
+     "bb": [
+      -271,
+      66,
+      696,
+      -262,
+      70,
+      705
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    -35,
+    84
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    -24,
+    123
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    11,
+    -134
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    15,
+    -94
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    22,
+    -69
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_taiga",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/taiga/tent_taiga_2",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      352,
+      79,
+      -1104
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 1,
+     "bb": [
+      345,
+      79,
+      -1111,
+      352,
+      87,
+      -1104
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_chest_10",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      362,
+      79,
+      -1103
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 1,
+     "bb": [
+      353,
+      79,
+      -1112,
+      362,
+      81,
+      -1103
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      349,
+      80,
+      -1107
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 0,
+     "bb": [
+      349,
+      80,
+      -1107,
+      349,
+      80,
+      -1107
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    14,
+    -11
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    13,
+    4
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    17,
+    45
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    14,
+    91
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_birch_forest",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/birch_forest/tent_birch_forest_1",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      224,
+      62,
+      1456
+     ],
+     "rotation": "NONE",
+     "ground": 1,
+     "bb": [
+      224,
+      62,
+      1456,
+      231,
+      69,
+      1463
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      227,
+      63,
+      1460
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 0,
+     "bb": [
+      227,
+      63,
+      1460,
+      227,
+      63,
+      1460
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_special_4",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      214,
+      62,
+      1455
+     ],
+     "rotation": "NONE",
+     "ground": 1,
+     "bb": [
+      214,
+      62,
+      1455,
+      223,
+      64,
+      1464
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    23,
+    124
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_cherry_grove",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/cherry_grove/tent_cherry_grove_3",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      368,
+      93,
+      1984
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 1,
+     "bb": [
+      363,
+      93,
+      1977,
+      368,
+      100,
+      1984
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/cherry_grove/campsite_cherry_grove_3",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      389,
+      93,
+      1986
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 1,
+     "bb": [
+      369,
+      93,
+      1973,
+      389,
+      102,
+      1986
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      377,
+      94,
+      1978
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 0,
+     "bb": [
+      377,
+      94,
+      1978,
+      377,
+      94,
+      1978
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      382,
+      94,
+      1982
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 0,
+     "bb": [
+      382,
+      94,
+      1982,
+      382,
+      94,
+      1982
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      383,
+      94,
+      1977
+     ],
+     "rotation": "CLOCKWISE_90",
+     "ground": 0,
+     "bb": [
+      383,
+      94,
+      1977,
+      383,
+      94,
+      1977
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    54,
+    -127
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    46,
+    -84
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    64,
+    -63
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    40,
+    -17
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_snowy_taiga",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/snowy_taiga/tent_snowy_taiga_9",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      640,
+      63,
+      -272
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      640,
+      63,
+      -279,
+      647,
+      72,
+      -272
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      643,
+      64,
+      -276
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 0,
+     "bb": [
+      643,
+      64,
+      -276,
+      643,
+      64,
+      -276
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_barrel_6",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      639,
+      63,
+      -262
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      639,
+      63,
+      -271,
+      648,
+      65,
+      -262
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    65,
+    9
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_snowy_taiga",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/snowy_taiga/tent_snowy_taiga_3",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1040,
+      70,
+      144
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      1040,
+      70,
+      139,
+      1047,
+      77,
+      144
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_special_9",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1039,
+      68,
+      154
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 3,
+     "bb": [
+      1039,
+      68,
+      145,
+      1048,
+      72,
+      154
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    64,
+    37
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    43,
+    81
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_cherry_grove",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/cherry_grove/tent_cherry_grove_9",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      688,
+      112,
+      1296
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      688,
+      112,
+      1289,
+      695,
+      119,
+      1296
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_special_6",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      687,
+      111,
+      1306
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 2,
+     "bb": [
+      687,
+      111,
+      1297,
+      696,
+      114,
+      1306
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    53,
+    114
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_forest",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/forest/tent_forest_8",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      848,
+      88,
+      1824
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      848,
+      88,
+      1819,
+      855,
+      95,
+      1824
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/forest/campsite_forest_4",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      847,
+      86,
+      1834
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 3,
+     "bb": [
+      847,
+      86,
+      1825,
+      856,
+      95,
+      1834
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      855,
+      89,
+      1833
+     ],
+     "rotation": "NONE",
+     "ground": 0,
+     "bb": [
+      855,
+      89,
+      1833,
+      855,
+      89,
+      1833
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      854,
+      89,
+      1827
+     ],
+     "rotation": "NONE",
+     "ground": 0,
+     "bb": [
+      854,
+      89,
+      1827,
+      854,
+      89,
+      1827
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    76,
+    -120
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_savanna",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/savanna/tent_savanna_8",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1216,
+      76,
+      -1920
+     ],
+     "rotation": "CLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      1209,
+      76,
+      -1920,
+      1216,
+      83,
+      -1915
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_chest_12",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1217,
+      76,
+      -1930
+     ],
+     "rotation": "CLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      1208,
+      76,
+      -1930,
+      1217,
+      78,
+      -1921
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    91,
+    -109
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_savanna",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/savanna/tent_savanna_6",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1456,
+      97,
+      -1744
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      1456,
+      97,
+      -1751,
+      1463,
+      104,
+      -1744
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/savanna/campsite_savanna_3",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1453,
+      97,
+      -1731
+     ],
+     "rotation": "COUNTERCLOCKWISE_90",
+     "ground": 1,
+     "bb": [
+      1453,
+      97,
+      -1743,
+      1464,
+      106,
+      -1731
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      1462,
+      98,
+      -1737
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 0,
+     "bb": [
+      1462,
+      98,
+      -1737,
+      1462,
+      98,
+      -1737
+     ]
+    },
+    {
+     "location": null,
+     "type": "minecraft:feature_pool_element",
+     "pos": [
+      1457,
+      98,
+      -1737
+     ],
+     "rotation": "NONE",
+     "ground": 0,
+     "bb": [
+      1457,
+      98,
+      -1737,
+      1457,
+      98,
+      -1737
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    85,
+    -64
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    81,
+    -18
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    76,
+    19
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_swamp",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/swamp/tent_swamp_4",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1216,
+      62,
+      304
+     ],
+     "rotation": "NONE",
+     "ground": 1,
+     "bb": [
+      1216,
+      62,
+      304,
+      1223,
+      71,
+      311
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_special_8",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1206,
+      62,
+      303
+     ],
+     "rotation": "NONE",
+     "ground": 1,
+     "bb": [
+      1206,
+      62,
+      303,
+      1215,
+      64,
+      312
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    87,
+    47
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    92,
+    83
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    79,
+    114
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    136,
+    -147
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    130,
+    -87
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_savanna",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/savanna/tent_savanna_6",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      2080,
+      75,
+      -1392
+     ],
+     "rotation": "NONE",
+     "ground": 1,
+     "bb": [
+      2080,
+      75,
+      -1392,
+      2087,
+      82,
+      -1385
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_special_10",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      2070,
+      73,
+      -1393
+     ],
+     "rotation": "NONE",
+     "ground": 3,
+     "bb": [
+      2070,
+      73,
+      -1393,
+      2079,
+      77,
+      -1384
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    122,
+    -68
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_swamp",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/swamp/tent_swamp_6",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1952,
+      62,
+      -1088
+     ],
+     "rotation": "NONE",
+     "ground": 1,
+     "bb": [
+      1952,
+      62,
+      -1088,
+      1959,
+      69,
+      -1081
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_barrel_7",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1942,
+      62,
+      -1089
+     ],
+     "rotation": "NONE",
+     "ground": 1,
+     "bb": [
+      1942,
+      62,
+      -1089,
+      1951,
+      64,
+      -1080
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    112,
+    -15
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    118,
+    16
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_forest",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/forest/tent_forest_5",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1888,
+      71,
+      256
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 1,
+     "bb": [
+      1881,
+      71,
+      249,
+      1888,
+      78,
+      256
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_chest_7",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1898,
+      71,
+      257
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 1,
+     "bb": [
+      1889,
+      71,
+      248,
+      1898,
+      73,
+      257
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    133,
+    60
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_forest",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/forest/tent_forest_3",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      2128,
+      71,
+      960
+     ],
+     "rotation": "NONE",
+     "ground": 1,
+     "bb": [
+      2128,
+      71,
+      960,
+      2133,
+      78,
+      967
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_chest_8",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      2118,
+      71,
+      959
+     ],
+     "rotation": "NONE",
+     "ground": 1,
+     "bb": [
+      2118,
+      71,
+      959,
+      2127,
+      73,
+      968
+     ]
+    }
+   ]
+  },
+  {
+   "chunk": [
+    135,
+    100
+   ],
+   "valid": false,
+   "status": "minecraft:full"
+  },
+  {
+   "chunk": [
+    117,
+    135
+   ],
+   "valid": true,
+   "structure": "minecraft:abandoned_camp_savanna",
+   "pieces": [
+    {
+     "location": "minecraft:abandoned_camp/tent/savanna/tent_savanna_2",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1872,
+      62,
+      2160
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 1,
+     "bb": [
+      1865,
+      62,
+      2153,
+      1872,
+      69,
+      2160
+     ]
+    },
+    {
+     "location": "minecraft:abandoned_camp/camp/default/campsite_default_chest_4",
+     "type": "minecraft:legacy_single_pool_element",
+     "pos": [
+      1882,
+      62,
+      2161
+     ],
+     "rotation": "CLOCKWISE_180",
+     "ground": 1,
+     "bb": [
+      1873,
+      62,
+      2152,
+      1882,
+      64,
+      2161
+     ]
+    }
+   ]
+  }
+ ]
+}

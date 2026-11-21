@@ -189,6 +189,10 @@ def check_items(lines, lang):
 
 def check_sounds():
     sounds = json.loads(open(os.path.join(ASSETS, MODID, "sounds.json"), encoding="utf-8").read())
+    path = os.path.join(ASSETS, MODID, "sounds.json")
+    if not os.path.exists(path):
+        return 0
+    sounds = json.loads(open(path, encoding="utf-8").read())
     count = 0
     for event, spec in sounds.items():
         for sound in spec.get("sounds", []):

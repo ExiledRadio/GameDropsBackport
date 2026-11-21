@@ -29,6 +29,7 @@ public final class SelfTestRunner {
     private static final SelfTest[] TESTS = {
             new ScaffoldSelfTest(),
             new SulfurSelfTest(),
+            new SoftBlocksSelfTest(),
     };
 
     private final List<String> wanted;

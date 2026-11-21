@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "color=silver,half=bottom": {
+      "model": "gamedropsbackport:light_gray_concrete_slab"
+    },
+    "color=silver,half=top": {
+      "model": "gamedropsbackport:light_gray_concrete_slab_top"
+    },
+    "color=cyan,half=bottom": {
+      "model": "gamedropsbackport:cyan_concrete_slab"
+    },
+    "color=cyan,half=top": {
+      "model": "gamedropsbackport:cyan_concrete_slab_top"
+    },
+    "color=purple,half=bottom": {
+      "model": "gamedropsbackport:purple_concrete_slab"
+    },
+    "color=purple,half=top": {
+      "model": "gamedropsbackport:purple_concrete_slab_top"
+    },
+    "color=blue,half=bottom": {
+      "model": "gamedropsbackport:blue_concrete_slab"
+    },
+    "color=blue,half=top": {
+      "model": "gamedropsbackport:blue_concrete_slab_top"
+    },
+    "color=brown,half=bottom": {
+      "model": "gamedropsbackport:brown_concrete_slab"
+    },
+    "color=brown,half=top": {
+      "model": "gamedropsbackport:brown_concrete_slab_top"
+    },
+    "color=green,half=bottom": {
+      "model": "gamedropsbackport:green_concrete_slab"
+    },
+    "color=green,half=top": {
+      "model": "gamedropsbackport:green_concrete_slab_top"
+    },
+    "color=red,half=bottom": {
+      "model": "gamedropsbackport:red_concrete_slab"
+    },
+    "color=red,half=top": {
+      "model": "gamedropsbackport:red_concrete_slab_top"
+    },
+    "color=black,half=bottom": {
+      "model": "gamedropsbackport:black_concrete_slab"
+    },
+    "color=black,half=top": {
+      "model": "gamedropsbackport:black_concrete_slab_top"
+    }
+  }
+}

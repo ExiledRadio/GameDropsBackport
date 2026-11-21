@@ -50,6 +50,7 @@ public final class GameDropsBackport {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        com.exiledradio.gamedropsbackport.softblocks.SoftBlocks.init();
     }
 
     @Mod.EventHandler

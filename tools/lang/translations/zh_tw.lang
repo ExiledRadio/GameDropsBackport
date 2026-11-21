@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=廢棄營地與探險家地圖
 config.gamedropsbackport.camps.tooltip=廢棄營地和探險家地圖。
 config.gamedropsbackport.camps.enabled=啟用
 config.gamedropsbackport.camps.enabled.tooltip=廢棄營地會在新生成的區塊中生成。
+config.gamedropsbackport.babies.babyModels=幼年生物模型
+config.gamedropsbackport.babies.babyModels.tooltip=為 1.12.2 的幼年生物使用 26.1 的幼年模型和材質。關閉時，幼年生物是縮小的成年生物。

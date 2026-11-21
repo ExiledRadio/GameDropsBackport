@@ -71,7 +71,7 @@ final class ScaffoldSelfTest implements SelfTest {
             for (String key : categoryKeys) {
                 check.ok(groups.contains(key), "page group " + key);
             }
-            check.eq(7, page.entries.size(), "page settings (one enabled switch per category)");
+            check.ok(page.entries.size() >= 7, "page settings (an enabled switch per category, plus streams' own): " + page.entries.size());
         }
     }
 

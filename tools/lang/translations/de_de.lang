@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=Verlassene Lager und Entdeckerkarten
 config.gamedropsbackport.camps.tooltip=Verlassene Lager und Entdeckerkarten.
 config.gamedropsbackport.camps.enabled=Aktiviert
 config.gamedropsbackport.camps.enabled.tooltip=Verlassene Lager entstehen in neu generierten Chunks.
+config.gamedropsbackport.babies.babyModels=Jungtiermodelle
+config.gamedropsbackport.babies.babyModels.tooltip=Die Jungtiermodelle und -texturen aus 26.1 für die Jungtiere von 1.12.2. Ausgeschaltet sind Jungtiere verkleinerte ausgewachsene Tiere.

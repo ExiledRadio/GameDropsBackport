@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=버려진 야영지와 탐험가 지도
 config.gamedropsbackport.camps.tooltip=버려진 야영지와 탐험가 지도.
 config.gamedropsbackport.camps.enabled=활성화
 config.gamedropsbackport.camps.enabled.tooltip=버려진 야영지가 새로 생성되는 청크에 생성됩니다.
+config.gamedropsbackport.babies.babyModels=새끼 모델
+config.gamedropsbackport.babies.babyModels.tooltip=1.12.2의 새끼에게 26.1의 새끼 모델과 텍스처를 사용합니다. 끄면 새끼는 작게 줄인 어른 모습이 됩니다.

@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=Opuszczone obozowiska i mapy odkrywcy
 config.gamedropsbackport.camps.tooltip=Opuszczone obozowiska i mapy odkrywcy.
 config.gamedropsbackport.camps.enabled=Włączone
 config.gamedropsbackport.camps.enabled.tooltip=Opuszczone obozowiska generują się w nowo wygenerowanych chunkach.
+config.gamedropsbackport.babies.babyModels=Modele młodych
+config.gamedropsbackport.babies.babyModels.tooltip=Modele i tekstury młodych z 26.1 dla młodych z 1.12.2. Wyłączone: młode są pomniejszonymi dorosłymi.

@@ -72,6 +72,10 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Babies fields ---
+        @Setting.Look("backports")
+        @Config.Comment("26.1's baby models and textures for 1.12.2's babies. Off, babies are shrunken adults.")
+        @Config.LangKey("config.gamedropsbackport.babies.babyModels")
+        public boolean babyModels = true;
         // --- end Babies ---
     }
 

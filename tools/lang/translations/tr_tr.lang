@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=Terkedilmiş kamplar ve kâşif haritaları
 config.gamedropsbackport.camps.tooltip=Terkedilmiş kamplar ve kâşif haritaları.
 config.gamedropsbackport.camps.enabled=Etkin
 config.gamedropsbackport.camps.enabled.tooltip=Terkedilmiş kamplar yeni oluşturulan yığınlarda oluşur.
+config.gamedropsbackport.babies.babyModels=Yavru modelleri
+config.gamedropsbackport.babies.babyModels.tooltip=1.12.2 yavruları için 26.1'in yavru modelleri ve dokuları. Kapalıyken yavrular küçültülmüş yetişkinlerdir.

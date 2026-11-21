@@ -47,6 +47,7 @@ public final class SelfTestRunner {
             new CampsSelfTest(),
             new SulfurCubeSelfTest(),
             new com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesSelfTest(),
+            new LookFeelSelfTest(),
     };
 
     private final List<String> wanted;

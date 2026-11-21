@@ -1,0 +1,5 @@
+advancements.story.enter_the_nether.description=Zbuduj, odpal i przejdź przez portal do Netheru
+advancements.story.iron_tools.title=Żelazne zasady
+build.tooHigh=Górny limit wysokości budowania wynosi %s bloków
+options.languageWarning=Tłumaczenia mogą nie być w 100%% dokładne.
+selectWorld.load_folder_access=Nie można odczytać lub uzyskać dostępu do folderu, w którym zapisywane są światy gry!

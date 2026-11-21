@@ -18,6 +18,13 @@ config.gamedropsbackport.softBlocks.tooltip=Treppen und Stufen aus Wolle und Bet
 config.gamedropsbackport.softBlocks.enabled.tooltip=Ausgeschaltet wird nichts registriert, und eine Welt, die sie enthält, verliert sie.
 config.gamedropsbackport.camps.tooltip=Verlassene Lager und Entdeckerkarten.
 config.gamedropsbackport.camps.enabled.tooltip=Verlassene Lager entstehen in neu generierten Chunks.
+config.gamedropsbackport.lookAndFeel.tooltip=Die Menüs und Bildschirme von 26.x. Die Look-&-Feel-Seite von Backport Core hat dieselben Schalter.
+config.gamedropsbackport.lookAndFeel.enabled.tooltip=Aus: Diese Mod fügt keines der Menüs und Bildschirme von 26.x hinzu, und die eines älteren Backports bleiben.
+config.gamedropsbackport.lookAndFeel.panorama.tooltip=Das Titelbild-Panorama von 26.3: der gefleckte Wald mit einem verlassenen Lager.
+config.gamedropsbackport.lookAndFeel.splashes.tooltip=Die Änderungen der Splash-Texte von 26.1 bis 26.3.
+config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=Die Menümusik von 26.2: Ebb, Home, Memories, Nightly und Shores von fingerspit statt der fünf von 1.21.6.
+config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=Das Pausenmenü von 26.2: Fehler melden und Feedback geben als eine Reihe von Symbolknöpfen.
+config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Der Weltoptionen-Bildschirm von 26.3 im Pausenmenü statt „Im LAN öffnen“; Schwierigkeit verlässt die Optionen.
 # --- end config tooltips ---
 
 # --- common ---
@@ -35,6 +42,13 @@ config.gamedropsbackport.softBlocks=Woll- und Betonformen, Kissen und Strohbette
 config.gamedropsbackport.softBlocks.enabled=Aktiviert
 config.gamedropsbackport.camps=Verlassene Lager und Entdeckerkarten
 config.gamedropsbackport.camps.enabled=Aktiviert
+config.gamedropsbackport.lookAndFeel=Menüs und Bildschirme
+config.gamedropsbackport.lookAndFeel.enabled=Aktiviert
+config.gamedropsbackport.lookAndFeel.panorama=26.3-Panorama
+config.gamedropsbackport.lookAndFeel.splashes=26.x-Splash-Texte
+config.gamedropsbackport.lookAndFeel.menuMusic=26.2-Menümusik
+config.gamedropsbackport.lookAndFeel.pauseMenu=26.2-Pausenmenü
+config.gamedropsbackport.lookAndFeel.worldOptions=Weltoptionen-Bildschirm
 
 # --- sulfur ---
 item.gamedropsbackport.music_disc_bounce.name=Schallplatte
@@ -292,3 +306,44 @@ subtitles.gamedropsbackport.item.axe.strip=Axt schabt
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=Tuffstein
+
+# --- lookfeel ---
+music.game.ebb=fingerspit – Ebb
+music.game.home=fingerspit – Home
+music.game.memories=fingerspit – Memories
+music.game.nightly=fingerspit – Nightly
+music.game.shores=fingerspit – Shores
+options.worldOptions.button=Weltoptionen …
+options.worldOptions.title=Weltoptionen
+options.worldOptions.general.title=Allgemein
+options.worldOptions.multiplayer.title=Mehrspieler
+options.worldOptions.game_mode=Standardspielmodus
+options.worldOptions.game_mode.tooltip=Ändert den Standardspielmodus der Welt.
+options.worldOptions.personal_game_mode=Eigener Spielmodus
+options.worldOptions.personal_game_mode.tooltip=Ändert deinen Spielmodus in dieser Welt.
+options.worldOptions.game_mode.disabled.operator.tooltip=Das Ändern des Spielmodus erfordert Operatorrechte.
+options.worldOptions.game_mode.disabled.tooltip=Der Spielmodus kann in einer Hardcore‐Welt nicht geändert werden.
+options.worldOptions.allow_commands.tooltip=Erlaubt die Nutzung von Befehlen in dieser Welt.
+options.worldOptions.allow_commands.disabled.tooltip=Befehle sind in einer Hardcore‐Welt nicht erlaubt.
+options.worldOptions.difficulty.disabled.hardcore.tooltip=Die Schwierigkeit kann in einer Hardcore‐Welt nicht angepasst werden.
+options.worldOptions.difficulty.disabled.locked.tooltip=Die Schwierigkeit ist gesperrt.
+options.worldOptions.difficulty.disabled.operator.tooltip=Das Ändern der Schwierigkeit erfordert Operatorrechte.
+options.worldOptions.guest.command_access=Befehlszugriff
+options.worldOptions.guest.command_access.tooltip=Steuert, ob Spieler, die deiner Welt beitreten, Befehle verwenden können.
+options.worldOptions.guest.command_access.disabled.scope.tooltip=Der Befehlszugriff von Spielern, die deiner Welt beitreten, kann nicht angepasst werden, wenn der Mehrspielermodus der Welt auf „Aus“ ist.
+options.worldOptions.guest.command_access.disabled.commands.tooltip=Der Befehlszugriff von Spielern, die deiner Welt beitreten, kann nicht angepasst werden, wenn Befehle nicht erlaubt sind.
+options.worldOptions.guest.force_game_mode=Spielmodus erzwingen
+options.worldOptions.guest.force_game_mode.on.tooltip=Andere Spieler werden gezwungen sein, den Standardspielmodus der Welt zu nutzen.
+options.worldOptions.guest.force_game_mode.off.tooltip=Andere Spieler behalten ihren aktuellen Spielmodus bei, unabhängig vom Standardspielmodus der Welt.
+options.worldOptions.guest.force_game_mode.off.scope.tooltip=Diese Einstellung kann nicht angepasst werden, wenn der Mehrspielermodus der Welt auf „Aus“ ist.
+options.worldOptions.guest.force_game_mode.off.hardcore.tooltip=Diese Einstellung kann in einer Hardcore‐Welt nicht angepasst werden.
+options.worldOptions.guest.force_game_mode.off.commands.tooltip=Andere Spieler können ihren eigenen Spielmodus durch Befehle setzen.
+menu.multiplayerOptions.lan=Lokales Netzwerk
+menu.multiplayerOptions.network.lan.tooltip=Spieler im selben Netzwerk können beitreten.
+menu.multiplayerOptions.network.off.tooltip=Niemand kann beitreten.
+menu.multiplayerOptions.applyChanges=Änderungen übernehmen
+menu.multiplayerOptions.publish.started.lan=Diese Welt ist nun in deinem lokalen Netzwerk geöffnet. Die Portnummer ist %s
+lanServer.port=Portnummer
+lanServer.port.unavailable=Port nicht verfügbar. Lass das Eingabefeld leer oder gib eine andere Nummer zwischen 1024 und 65535 ein.
+lanServer.port.invalid=Kein gültiger Port. Lass das Eingabefeld leer oder gib eine Nummer zwischen 1024 und 65535 ein.
+gamedropsbackport.worldOptions.allowCommands=Cheats erlauben

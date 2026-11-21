@@ -18,6 +18,13 @@ config.gamedropsbackport.softBlocks.tooltip=Schody i płyty z wełny i betonu, p
 config.gamedropsbackport.softBlocks.enabled.tooltip=Po wyłączeniu nic nie jest rejestrowane, a świat, który je zawiera, traci je.
 config.gamedropsbackport.camps.tooltip=Opuszczone obozowiska i mapy odkrywcy.
 config.gamedropsbackport.camps.enabled.tooltip=Opuszczone obozowiska generują się w nowo wygenerowanych chunkach.
+config.gamedropsbackport.lookAndFeel.tooltip=Menu i ekrany z 26.x. Strona Look & Feel w Backport Core ma te same przełączniki.
+config.gamedropsbackport.lookAndFeel.enabled.tooltip=Wyłączone: ten mod nie dodaje żadnego menu ani ekranu z 26.x, a zostają te ze starszego backportu.
+config.gamedropsbackport.lookAndFeel.panorama.tooltip=Panorama ekranu tytułowego z 26.3: cętkowany las z opuszczonym obozem.
+config.gamedropsbackport.lookAndFeel.splashes.tooltip=Zmiany tekstów powitalnych od 26.1 do 26.3.
+config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=Muzyka menu z 26.2: Ebb, Home, Memories, Nightly i Shores od fingerspit zamiast pięciu z 1.21.6.
+config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=Menu pauzy z 26.2: Zgłoś błędy i Prześlij opinię jako jeden rząd przycisków z ikonami.
+config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Ekran Opcje świata z 26.3 w menu pauzy zamiast Otwórz w sieci LAN; poziom trudności znika z Opcji.
 # --- end config tooltips ---
 
 # --- common ---
@@ -35,6 +42,13 @@ config.gamedropsbackport.softBlocks=Kształty z wełny i betonu, poduszki i sło
 config.gamedropsbackport.softBlocks.enabled=Włączone
 config.gamedropsbackport.camps=Opuszczone obozowiska i mapy odkrywcy
 config.gamedropsbackport.camps.enabled=Włączone
+config.gamedropsbackport.lookAndFeel=Menu i ekrany
+config.gamedropsbackport.lookAndFeel.enabled=Włączone
+config.gamedropsbackport.lookAndFeel.panorama=Panorama z 26.3
+config.gamedropsbackport.lookAndFeel.splashes=Teksty powitalne z 26.x
+config.gamedropsbackport.lookAndFeel.menuMusic=Muzyka menu z 26.2
+config.gamedropsbackport.lookAndFeel.pauseMenu=Menu pauzy z 26.2
+config.gamedropsbackport.lookAndFeel.worldOptions=Ekran opcji świata
 
 # --- sulfur ---
 item.gamedropsbackport.music_disc_bounce.name=Płyta muzyczna
@@ -292,3 +306,44 @@ subtitles.gamedropsbackport.item.axe.strip=Siekiera zeskrobuje
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=Tuf
+
+# --- lookfeel ---
+music.game.ebb=fingerspit — Ebb
+music.game.home=fingerspit — Home
+music.game.memories=fingerspit — Memories
+music.game.nightly=fingerspit — Nightly
+music.game.shores=fingerspit — Shores
+options.worldOptions.button=Ustawienia świata…
+options.worldOptions.title=Ustawienia świata
+options.worldOptions.general.title=Ogólne
+options.worldOptions.multiplayer.title=Tryb wieloosobowy
+options.worldOptions.game_mode=Domyślny tryb gry
+options.worldOptions.game_mode.tooltip=Zmienia domyślny tryb gry w tym świecie.
+options.worldOptions.personal_game_mode=Osobisty tryb gry
+options.worldOptions.personal_game_mode.tooltip=Zmienia twój tryb gry na tym świecie.
+options.worldOptions.game_mode.disabled.operator.tooltip=Zmiana trybu gry wymaga uprawnień operatora.
+options.worldOptions.game_mode.disabled.tooltip=Nie można zmienić trybu gry w świecie hardcorowym.
+options.worldOptions.allow_commands.tooltip=Zezwala na korzystanie z poleceń w tym świecie.
+options.worldOptions.allow_commands.disabled.tooltip=Nie można zezwolić na polecenia w świecie hardcorowym.
+options.worldOptions.difficulty.disabled.hardcore.tooltip=Nie można zmienić poziomu trudności w świecie hardcorowym.
+options.worldOptions.difficulty.disabled.locked.tooltip=Poziom trudności jest zablokowany.
+options.worldOptions.difficulty.disabled.operator.tooltip=Zmiana poziomu trudności wymaga uprawnień operatora.
+options.worldOptions.guest.command_access=Dostęp do poleceń
+options.worldOptions.guest.command_access.tooltip=Określa, czy gracze dołączający do Twojego świata mogą wysyłać polecenia.
+options.worldOptions.guest.command_access.disabled.scope.tooltip=Nie można zmienić dostępu do poleceń dla graczy dołączających do Twojego świata, gdy LAN jest wyłączony.
+options.worldOptions.guest.command_access.disabled.commands.tooltip=Nie można zmienić dostępu do poleceń dla graczy dołączających do Twojego świata, gdy polecenia są niedozwolone.
+options.worldOptions.guest.force_game_mode=Wymuszony tryb gry
+options.worldOptions.guest.force_game_mode.on.tooltip=Inni gracze będą musieli grać na domyślnym trybie gry tego świata.
+options.worldOptions.guest.force_game_mode.off.tooltip=Inni gracze pozostaną przy obecnym trybie gry niezależnie od tego, jaki jest ustawiony domyślnie na tym świecie.
+options.worldOptions.guest.force_game_mode.off.scope.tooltip=Tego ustawienia nie można zmienić, gdy zakres trybu wieloosobowego na świecie jest wyłączony.
+options.worldOptions.guest.force_game_mode.off.hardcore.tooltip=Nie można zmienić tego ustawienia w świecie hardcorowym.
+options.worldOptions.guest.force_game_mode.off.commands.tooltip=Inni gracze będą mogli zmienić swój tryb gry za pomocą poleceń.
+menu.multiplayerOptions.lan=Sieć lokalna (LAN)
+menu.multiplayerOptions.network.lan.tooltip=Do gry mogą dołączyć gracze korzystający z tej samej sieci LAN.
+menu.multiplayerOptions.network.off.tooltip=Nikt nie może dołączyć.
+menu.multiplayerOptions.applyChanges=Zastosuj zmiany
+menu.multiplayerOptions.publish.started.lan=Ten świat jest teraz dostępny w sieci LAN. Numer portu: %s
+lanServer.port=Numer portu
+lanServer.port.unavailable=Port niedostępny. Pozostaw pole tekstowe puste lub podaj liczbę pomiędzy 1024 a 65535.
+lanServer.port.invalid=Nieprawidłowy port. Pozostaw pole tekstowe puste lub podaj liczbę pomiędzy 1024 a 65535.
+gamedropsbackport.worldOptions.allowCommands=Zezwalaj na polecenia

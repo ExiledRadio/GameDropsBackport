@@ -145,3 +145,21 @@ the bands in its surface rules before deepslate, `Biomes.byName("sulfur_caves")`
 itself, the bands are laid at population (after the terrain's ores, which they cover), and F3 shows the column's
 biome. `SulfurCaves` switches to the terrain's own biome as soon as `Biomes.byName("sulfur_caves")` answers.
 
+
+## Lf. Look and feel (stream 8)
+
+Done in Core 1.4.6 (branch `gd-lookfeel`): 26.2's pause icon row (`VanillaRevisions.pauseIconRow`, sprites from this
+mod) and `MenuBackground.contentFrame` for World Options' frame. Still open:
+
+1. **Borderless fullscreen** (26.1 added Exclusive Fullscreen, 26.3 made Borderless the default): 1.12.2's
+   fullscreen is always exclusive. Want: a Video option, Borderless by default from 26.3, an undecorated window the
+   size of the monitor. Meanwhile: 1.12.2's fullscreen.
+2. **F3** (26.1-26.3): the overlay's own GUI scale (Debug Options, "Auto"), `player_speed`, the day count split
+   from local difficulty, AM/AX mob counts. Want: these entries in Core's debug screen at 26.x. Meanwhile: 1.21.11's.
+3. **Option headings** (26.3): section headings bold, underlined and centered in the options lists. Want: Core's
+   `VideoSections` headings in that style from 26.3. Meanwhile: 1.21.11's style.
+4. **Creative order** (26.3): Ingredients and Building Blocks reorder the minerals; Natural Blocks goes Overworld,
+   Nether, End. Want: a 26.3 order file through `Contribution.creativeOrder`. Meanwhile: Tricky Trials' order.
+5. **Sign edit screen** (26.2, a Trails & Tales request): the sign drawn flat from `gui/signs/<wood>.png` at 3.9x
+   instead of the 3D model. Trails & Tales owns the screen (`sign.client.SignEditScreen`); it could draw the flat
+   texture when `Presentation.isAtLeast(LookArea.MENUS, "26.2")` and a pack has the texture. Meanwhile: 1.20's.

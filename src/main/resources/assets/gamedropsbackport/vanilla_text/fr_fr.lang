@@ -1,0 +1,5 @@
+advancements.story.enter_the_nether.description=Construisez, allumez et entrez dans un portail du Nether.
+advancements.story.iron_tools.title=Bonne pioche !
+build.tooHigh=La hauteur maximale de construction est de %s
+options.languageWarning=Certaines traductions peuvent être inexactes.
+selectWorld.load_folder_access=Impossible de lire ou d'accéder au dossier de sauvegardes !

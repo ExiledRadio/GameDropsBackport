@@ -18,6 +18,13 @@ config.gamedropsbackport.softBlocks.tooltip=Ступени и плиты из ш
 config.gamedropsbackport.softBlocks.enabled.tooltip=При выключенной настройке ничего не регистрируется, а мир, в котором они есть, их теряет.
 config.gamedropsbackport.camps.tooltip=Заброшенные лагеря и карты исследователя.
 config.gamedropsbackport.camps.enabled.tooltip=Заброшенные лагеря появляются в новых чанках.
+config.gamedropsbackport.lookAndFeel.tooltip=Меню и экраны 26.x. На странице Look & Feel в Backport Core те же переключатели.
+config.gamedropsbackport.lookAndFeel.enabled.tooltip=Выключено: мод не добавляет меню и экраны 26.x, и остаются те, что из более старого бэкпорта.
+config.gamedropsbackport.lookAndFeel.panorama.tooltip=Панорама титульного экрана 26.3: пятнистый лес с заброшенным лагерем.
+config.gamedropsbackport.lookAndFeel.splashes.tooltip=Изменения текстов заставки с 26.1 по 26.3.
+config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=Музыка меню 26.2: Ebb, Home, Memories, Nightly и Shores от fingerspit вместо пяти треков 1.21.6.
+config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=Меню паузы 26.2: «Сообщить об ошибке» и «Оставить отзыв» одним рядом кнопок-значков.
+config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Экран «Настройки мира» 26.3 в меню паузы вместо «Открыть для сети»; сложность уходит из настроек.
 # --- end config tooltips ---
 
 # --- common ---
@@ -35,6 +42,13 @@ config.gamedropsbackport.softBlocks=Формы из шерсти и бетона
 config.gamedropsbackport.softBlocks.enabled=Включено
 config.gamedropsbackport.camps=Заброшенные лагеря и карты исследователя
 config.gamedropsbackport.camps.enabled=Включено
+config.gamedropsbackport.lookAndFeel=Меню и экраны
+config.gamedropsbackport.lookAndFeel.enabled=Включено
+config.gamedropsbackport.lookAndFeel.panorama=Панорама 26.3
+config.gamedropsbackport.lookAndFeel.splashes=Заставки 26.x
+config.gamedropsbackport.lookAndFeel.menuMusic=Музыка меню 26.2
+config.gamedropsbackport.lookAndFeel.pauseMenu=Меню паузы 26.2
+config.gamedropsbackport.lookAndFeel.worldOptions=Экран настроек мира
 
 # --- sulfur ---
 item.gamedropsbackport.music_disc_bounce.name=Пластинка
@@ -292,3 +306,44 @@ subtitles.gamedropsbackport.item.axe.strip=Обтёсывание топором
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=Туф
+
+# --- lookfeel ---
+music.game.ebb=fingerspit — Ebb
+music.game.home=fingerspit — Home
+music.game.memories=fingerspit — Memories
+music.game.nightly=fingerspit — Nightly
+music.game.shores=fingerspit — Shores
+options.worldOptions.button=Настройки мира...
+options.worldOptions.title=Настройки мира
+options.worldOptions.general.title=Основные
+options.worldOptions.multiplayer.title=Сетевая игра
+options.worldOptions.game_mode=Стандартный режим игры
+options.worldOptions.game_mode.tooltip=Меняет режим игры по умолчанию этого мира.
+options.worldOptions.personal_game_mode=Личный режим игры
+options.worldOptions.personal_game_mode.tooltip=Меняет ваш режим игры в этом мире.
+options.worldOptions.game_mode.disabled.operator.tooltip=Изменение режима игры требует прав оператора.
+options.worldOptions.game_mode.disabled.tooltip=Изменение режима игры в Хардкоре недоступно.
+options.worldOptions.allow_commands.tooltip=Позволяет использовать команды в этом мире.
+options.worldOptions.allow_commands.disabled.tooltip=Использование команд в Хардкоре недоступно.
+options.worldOptions.difficulty.disabled.hardcore.tooltip=Изменение сложности в Хардкоре недоступно.
+options.worldOptions.difficulty.disabled.locked.tooltip=Сложность зафиксирована.
+options.worldOptions.difficulty.disabled.operator.tooltip=Изменение сложности требует прав оператора.
+options.worldOptions.guest.command_access=Доступ к командам
+options.worldOptions.guest.command_access.tooltip=Определяет, могут ли присоединившиеся игроки использовать команды.
+options.worldOptions.guest.command_access.disabled.scope.tooltip=Изменение доступа к командам для присоединившихся игроков недоступно, когда локальная игра отключена.
+options.worldOptions.guest.command_access.disabled.commands.tooltip=Изменение доступа к командам для присоединившихся игроков недоступно, если команды запрещены.
+options.worldOptions.guest.force_game_mode=Менять режим при входе
+options.worldOptions.guest.force_game_mode.on.tooltip=Другие игроки будут вынуждены играть в стандартном режиме игры.
+options.worldOptions.guest.force_game_mode.off.tooltip=У других игроков останется текущий режим игры вне зависимости от стандартного режима игры.
+options.worldOptions.guest.force_game_mode.off.scope.tooltip=Изменение этой опции недоступно, когда локальная игра отключена.
+options.worldOptions.guest.force_game_mode.off.hardcore.tooltip=Изменение этой опции в Хардкоре недоступно.
+options.worldOptions.guest.force_game_mode.off.commands.tooltip=Другие игроки могут изменить собственный режим игры с помощью команд.
+menu.multiplayerOptions.lan=Локальная сеть
+menu.multiplayerOptions.network.lan.tooltip=Игроки из одной сети могут присоединиться.
+menu.multiplayerOptions.network.off.tooltip=Никто не может присоединиться.
+menu.multiplayerOptions.applyChanges=Применить
+menu.multiplayerOptions.publish.started.lan=Этот мир теперь открыт для локальной сети. Порт: %s
+lanServer.port=Порт
+lanServer.port.unavailable=Порт недоступен. Оставьте поле пустым или введите другое число в диапазоне от 1024 до 65535.
+lanServer.port.invalid=Недействительный порт. Оставьте поле пустым или введите число от 1024 до 65535.
+gamedropsbackport.worldOptions.allowCommands=Использование читов

@@ -1,1 +1,24 @@
 biome.gamedropsbackport.dappled_forest = biome.minecraft.dappled_forest
+# lookfeel: Mojang's own 26.3 keys (".tooltip" keys are ours by default)
+options.worldOptions.game_mode.tooltip = options.worldOptions.game_mode.tooltip
+options.worldOptions.personal_game_mode.tooltip = options.worldOptions.personal_game_mode.tooltip
+options.worldOptions.game_mode.disabled.operator.tooltip = options.worldOptions.game_mode.disabled.operator.tooltip
+options.worldOptions.game_mode.disabled.tooltip = options.worldOptions.game_mode.disabled.tooltip
+options.worldOptions.allow_commands.tooltip = options.worldOptions.allow_commands.tooltip
+options.worldOptions.allow_commands.disabled.tooltip = options.worldOptions.allow_commands.disabled.tooltip
+options.worldOptions.difficulty.disabled.hardcore.tooltip = options.worldOptions.difficulty.disabled.hardcore.tooltip
+options.worldOptions.difficulty.disabled.locked.tooltip = options.worldOptions.difficulty.disabled.locked.tooltip
+options.worldOptions.difficulty.disabled.operator.tooltip = options.worldOptions.difficulty.disabled.operator.tooltip
+options.worldOptions.guest.command_access.tooltip = options.worldOptions.guest.command_access.tooltip
+options.worldOptions.guest.command_access.disabled.scope.tooltip = options.worldOptions.guest.command_access.disabled.scope.tooltip
+options.worldOptions.guest.command_access.disabled.commands.tooltip = options.worldOptions.guest.command_access.disabled.commands.tooltip
+options.worldOptions.guest.force_game_mode.on.tooltip = options.worldOptions.guest.force_game_mode.on.tooltip
+options.worldOptions.guest.force_game_mode.off.tooltip = options.worldOptions.guest.force_game_mode.off.tooltip
+options.worldOptions.guest.force_game_mode.off.scope.tooltip = options.worldOptions.guest.force_game_mode.off.scope.tooltip
+options.worldOptions.guest.force_game_mode.off.hardcore.tooltip = options.worldOptions.guest.force_game_mode.off.hardcore.tooltip
+options.worldOptions.guest.force_game_mode.off.commands.tooltip = options.worldOptions.guest.force_game_mode.off.commands.tooltip
+menu.multiplayerOptions.network.lan.tooltip = menu.multiplayerOptions.network.lan.tooltip
+menu.multiplayerOptions.network.off.tooltip = menu.multiplayerOptions.network.off.tooltip
+lanServer.port.unavailable = lanServer.port.unavailable
+lanServer.port.invalid = lanServer.port.invalid
+gamedropsbackport.worldOptions.allowCommands = selectWorld.allowCommands

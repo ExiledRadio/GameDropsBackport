@@ -1,0 +1,5 @@
+advancements.story.enter_the_nether.description=Bir Nether geçidi inşa edin, yakın ve geçide girin
+advancements.story.iron_tools.title=Demir Kazma Değil Mi?
+build.tooHigh=İnşa için yükseklik sınırı %s bloktur
+options.languageWarning=Dil çevirileri %%100 kesin olmayabilir
+selectWorld.load_folder_access=Oyun dünyalarının kaydedildiği dizin okunamıyor ve erişilemiyor!

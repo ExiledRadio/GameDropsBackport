@@ -1,0 +1,5 @@
+advancements.story.enter_the_nether.description=建造、激活并进入一座下界传送门
+advancements.story.iron_tools.title=这不是铁镐么？
+build.tooHigh=建筑高度上限是%s
+options.languageWarning=语言翻译不一定100%%准确。
+selectWorld.load_folder_access=无法读取或访问游戏世界存档所在的文件夹！

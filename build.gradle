@@ -97,6 +97,12 @@ jar {
     }
 }
 
+// The client self-test (-Pselftest=client) runs unattended: the window never grabs the mouse (Forge's MouseHelper reads
+// fml.noGrab), so the user's cursor stays theirs.
+if (selftest) {
+    runClient.systemProperty 'fml.noGrab', 'true'
+}
+
 // -PnoFluidlogged: runServer and runClient without Fluidlogged API on the classpath, to test the mod as a game
 // without it (nothing holds water). The classes are compiled as usual (against it), exactly as the release jar is.
 if (project.hasProperty('noFluidlogged')) {

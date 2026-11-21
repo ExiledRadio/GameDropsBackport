@@ -18,6 +18,13 @@ config.gamedropsbackport.softBlocks.tooltip=Trappen en platen van wol en beton, 
 config.gamedropsbackport.softBlocks.enabled.tooltip=Uit wordt er niets geregistreerd, en een wereld die ze heeft, raakt ze kwijt.
 config.gamedropsbackport.camps.tooltip=Verlaten kampen en ontdekkingskaarten.
 config.gamedropsbackport.camps.enabled.tooltip=Verlaten kampen ontstaan in nieuw gegenereerde chunks.
+config.gamedropsbackport.lookAndFeel.tooltip=De menu's en schermen van 26.x. De Look & Feel-pagina van Backport Core heeft dezelfde schakelaars.
+config.gamedropsbackport.lookAndFeel.enabled.tooltip=Uit: deze mod voegt geen van de menu's en schermen van 26.x toe, en die van een oudere backport blijven.
+config.gamedropsbackport.lookAndFeel.panorama.tooltip=Het panorama van het titelscherm van 26.3: het gevlekte bos met een verlaten kamp.
+config.gamedropsbackport.lookAndFeel.splashes.tooltip=De wijzigingen in de splashteksten van 26.1 tot en met 26.3.
+config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=De menumuziek van 26.2: Ebb, Home, Memories, Nightly en Shores van fingerspit in plaats van de vijf van 1.21.6.
+config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=Het pauzemenu van 26.2: Bugs melden en Feedback geven als één rij pictogramknoppen.
+config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Het Wereldopties-scherm van 26.3 in het pauzemenu in plaats van Openen voor LAN; Moeilijkheid verlaat Opties.
 # --- end config tooltips ---
 
 # --- common ---
@@ -35,6 +42,13 @@ config.gamedropsbackport.softBlocks=Wol- en betonvormen, kussens en strobedden
 config.gamedropsbackport.softBlocks.enabled=Ingeschakeld
 config.gamedropsbackport.camps=Verlaten kampen en ontdekkingskaarten
 config.gamedropsbackport.camps.enabled=Ingeschakeld
+config.gamedropsbackport.lookAndFeel=Menu's en schermen
+config.gamedropsbackport.lookAndFeel.enabled=Ingeschakeld
+config.gamedropsbackport.lookAndFeel.panorama=26.3-panorama
+config.gamedropsbackport.lookAndFeel.splashes=26.x-splashteksten
+config.gamedropsbackport.lookAndFeel.menuMusic=26.2-menumuziek
+config.gamedropsbackport.lookAndFeel.pauseMenu=26.2-pauzemenu
+config.gamedropsbackport.lookAndFeel.worldOptions=Wereldopties-scherm
 
 # --- sulfur ---
 item.gamedropsbackport.music_disc_bounce.name=Muziekplaat
@@ -292,3 +306,44 @@ subtitles.gamedropsbackport.item.axe.strip=Bijl schraapt
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=Tufsteen
+
+# --- lookfeel ---
+music.game.ebb=fingerspit - Ebb
+music.game.home=fingerspit - Home
+music.game.memories=fingerspit - Memories
+music.game.nightly=fingerspit - Nightly
+music.game.shores=fingerspit - Shores
+options.worldOptions.button=Wereldinstellingen
+options.worldOptions.title=Wereldinstellingen
+options.worldOptions.general.title=Algemeen
+options.worldOptions.multiplayer.title=Samen spelen
+options.worldOptions.game_mode=Standaardspelmodus
+options.worldOptions.game_mode.tooltip=Wijzigt de standaardspelmodus van de wereld.
+options.worldOptions.personal_game_mode=Eigen spelmodus
+options.worldOptions.personal_game_mode.tooltip=Wijzigt jouw spelmodus in deze wereld.
+options.worldOptions.game_mode.disabled.operator.tooltip=Je moet beheerdersrechten hebben om de spelmodus te veranderen.
+options.worldOptions.game_mode.disabled.tooltip=Kan spelmodus niet wijzigen in een hardcorewereld.
+options.worldOptions.allow_commands.tooltip=Bepaalt het gebruik van opdrachten in deze wereld.
+options.worldOptions.allow_commands.disabled.tooltip=Opdrachten zijn niet toegestaan in een hardcorewereld.
+options.worldOptions.difficulty.disabled.hardcore.tooltip=Kan moeilijkheidsgraad niet wijzigen in een hardcorewereld.
+options.worldOptions.difficulty.disabled.locked.tooltip=Moeilijkheidsgraad is vergrendeld.
+options.worldOptions.difficulty.disabled.operator.tooltip=Je moet beheerdersrechten hebben om de moeilijkheidsgraad te wijzigen.
+options.worldOptions.guest.command_access=Gebruik opdrachten
+options.worldOptions.guest.command_access.tooltip=Bepaalt of spelers die je wereld bezoeken opdrachten kunnen gebruiken.
+options.worldOptions.guest.command_access.disabled.scope.tooltip=Kan het gebruik van opdrachten door spelers die je wereld bezoeken niet wijzigen wanneer samen spelen is uitgeschakeld.
+options.worldOptions.guest.command_access.disabled.commands.tooltip=Het gebruik van opdrachten door spelers die je wereld bezoeken kan niet gewijzigd worden wanneer opdrachten niet zijn toegestaan.
+options.worldOptions.guest.force_game_mode=Spelmodus forceren
+options.worldOptions.guest.force_game_mode.on.tooltip=Andere spelers worden gedwongen in de standaardspelmodus van de wereld te spelen.
+options.worldOptions.guest.force_game_mode.off.tooltip=Andere spelers behouden hun huidige spelmodus, ongeacht de standaardspelmodus van de wereld.
+options.worldOptions.guest.force_game_mode.off.scope.tooltip=Kan deze instelling niet wijzigen wanneer "LAN" op "UIT" staat.
+options.worldOptions.guest.force_game_mode.off.hardcore.tooltip=Kan deze instelling niet wijzigen in een hardcorewereld.
+options.worldOptions.guest.force_game_mode.off.commands.tooltip=Andere spelers kunnen met opdrachten hun eigen spelmodus instellen.
+menu.multiplayerOptions.lan=LAN
+menu.multiplayerOptions.network.lan.tooltip=Spelers op hetzelfde netwerk kunnen deelnemen.
+menu.multiplayerOptions.network.off.tooltip=Niemand kan jouw wereld bezoeken.
+menu.multiplayerOptions.applyChanges=Wijzigingen toepassen
+menu.multiplayerOptions.publish.started.lan=Deze wereld is opengesteld voor LAN op poortnummer %s.
+lanServer.port=Poortnummer
+lanServer.port.unavailable=Poort niet beschikbaar. Laat het veld leeg of voer een ander poortnummer tussen 1024 en 65535 in.
+lanServer.port.invalid=Ongeldig poortnummer. Laat het veld leeg of voer een poortnummer tussen 1024 en 65535 in.
+gamedropsbackport.worldOptions.allowCommands=Cheats

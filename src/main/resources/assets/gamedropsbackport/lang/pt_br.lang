@@ -167,3 +167,6 @@ subtitles.gamedropsbackport.entity.cushion.break=Almofada quebrada
 subtitles.gamedropsbackport.entity.cushion.get_up=Almofada desocupada
 subtitles.gamedropsbackport.entity.cushion.place=Almofada colocada
 subtitles.gamedropsbackport.entity.cushion.sit=Almofada ocupada
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tufo

@@ -167,3 +167,6 @@ subtitles.gamedropsbackport.entity.cushion.break=Kissen reißt
 subtitles.gamedropsbackport.entity.cushion.get_up=Erhebt sich von Kissen
 subtitles.gamedropsbackport.entity.cushion.place=Kissen platziert
 subtitles.gamedropsbackport.entity.cushion.sit=Setzt sich auf Kissen
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tuffstein

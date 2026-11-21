@@ -167,3 +167,6 @@ subtitles.gamedropsbackport.entity.cushion.break=坐墊損壞
 subtitles.gamedropsbackport.entity.cushion.get_up=從坐墊起身
 subtitles.gamedropsbackport.entity.cushion.place=放置坐墊
 subtitles.gamedropsbackport.entity.cushion.sit=坐上坐墊
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=凝灰岩

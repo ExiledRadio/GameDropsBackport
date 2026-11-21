@@ -30,6 +30,7 @@ public final class SelfTestRunner {
             new ScaffoldSelfTest(),
             new SulfurSelfTest(),
             new SoftBlocksSelfTest(),
+            new com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesSelfTest(),
     };
 
     private final List<String> wanted;

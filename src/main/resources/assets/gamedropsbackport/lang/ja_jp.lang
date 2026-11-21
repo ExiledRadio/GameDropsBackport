@@ -167,3 +167,6 @@ subtitles.gamedropsbackport.entity.cushion.break=クッションが破壊され�
 subtitles.gamedropsbackport.entity.cushion.get_up=クッションから立ち上がる
 subtitles.gamedropsbackport.entity.cushion.place=クッションが設置される
 subtitles.gamedropsbackport.entity.cushion.sit=クッションに座る
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=凝灰岩

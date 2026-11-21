@@ -167,3 +167,6 @@ subtitles.gamedropsbackport.entity.cushion.break=Cojín rompiéndose
 subtitles.gamedropsbackport.entity.cushion.get_up=Levantándose de cojín
 subtitles.gamedropsbackport.entity.cushion.place=Cojín colocado
 subtitles.gamedropsbackport.entity.cushion.sit=Sentándose sobre cojín
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Toba

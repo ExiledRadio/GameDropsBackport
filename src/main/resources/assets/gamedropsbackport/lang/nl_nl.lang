@@ -167,3 +167,6 @@ subtitles.gamedropsbackport.entity.cushion.break=Kussen breekt
 subtitles.gamedropsbackport.entity.cushion.get_up=Kussen veert op
 subtitles.gamedropsbackport.entity.cushion.place=Kussen wordt geplaatst
 subtitles.gamedropsbackport.entity.cushion.sit=Kussen geeft mee
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tufsteen

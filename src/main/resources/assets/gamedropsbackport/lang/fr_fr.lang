@@ -167,3 +167,6 @@ subtitles.gamedropsbackport.entity.cushion.break=Coussin retiré
 subtitles.gamedropsbackport.entity.cushion.get_up=Coussin libéré
 subtitles.gamedropsbackport.entity.cushion.place=Coussin placé
 subtitles.gamedropsbackport.entity.cushion.sit=Coussin occupé
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tuf

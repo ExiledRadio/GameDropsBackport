@@ -167,3 +167,6 @@ subtitles.gamedropsbackport.entity.cushion.break=방석이 부서짐
 subtitles.gamedropsbackport.entity.cushion.get_up=방석에서 일어남
 subtitles.gamedropsbackport.entity.cushion.place=방석이 놓임
 subtitles.gamedropsbackport.entity.cushion.sit=방석에 앉음
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=응회암

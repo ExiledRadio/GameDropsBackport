@@ -187,6 +187,11 @@ def check_items(lines, lang):
     return len(lines)
 
 
+# 1.12.2's sounds live in its asset index, not its jar (music/game/hal1 and the like).
+OLD_INDEX_FILE = "G:/Sort this shit/Minecraft/Install/assets/indexes/1.12.json"
+OLD_SOUNDS = set(json.load(open(OLD_INDEX_FILE, encoding="utf-8"))["objects"]) if os.path.exists(OLD_INDEX_FILE) else set()
+
+
 def check_sounds():
     sounds = json.loads(open(os.path.join(ASSETS, MODID, "sounds.json"), encoding="utf-8").read())
     count = 0
@@ -196,7 +201,8 @@ def check_sounds():
             if isinstance(sound, dict) and sound.get("type") == "event":
                 continue
             sns, spath = split(name)
-            if read_asset(sns, "sounds/%s.ogg" % spath) is None:
+            if read_asset(sns, "sounds/%s.ogg" % spath) is None and not (
+                    sns == "minecraft" and "minecraft/sounds/%s.ogg" % spath in OLD_SOUNDS):
                 errors.append("sound %s: missing %s" % (event, name))
             count += 1
         if "subtitle" in spec and spec["subtitle"] + "=" not in LANG and spec["subtitle"] not in OLD_LANG:

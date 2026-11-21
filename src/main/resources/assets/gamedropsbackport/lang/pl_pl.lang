@@ -167,3 +167,6 @@ subtitles.gamedropsbackport.entity.cushion.break=Poduszka się niszczy
 subtitles.gamedropsbackport.entity.cushion.get_up=Wstawanie z poduszki
 subtitles.gamedropsbackport.entity.cushion.place=Umieszczenie poduszki
 subtitles.gamedropsbackport.entity.cushion.sit=Siadanie na poduszce
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tuf

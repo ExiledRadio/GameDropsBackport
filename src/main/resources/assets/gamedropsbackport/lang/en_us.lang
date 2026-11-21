@@ -166,3 +166,6 @@ subtitles.gamedropsbackport.entity.cushion.break=Cushion breaks
 subtitles.gamedropsbackport.entity.cushion.get_up=Gets up from Cushion
 subtitles.gamedropsbackport.entity.cushion.place=Cushion placed
 subtitles.gamedropsbackport.entity.cushion.sit=Sits on Cushion
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tuff

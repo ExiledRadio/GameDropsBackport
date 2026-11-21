@@ -167,3 +167,6 @@ subtitles.gamedropsbackport.entity.cushion.break=Minder kırıldı
 subtitles.gamedropsbackport.entity.cushion.get_up=Minderden kalktı
 subtitles.gamedropsbackport.entity.cushion.place=Minder yerleştirildi
 subtitles.gamedropsbackport.entity.cushion.sit=Mindere oturdu
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Tüf

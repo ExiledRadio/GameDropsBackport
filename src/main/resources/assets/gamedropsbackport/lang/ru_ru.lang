@@ -167,3 +167,6 @@ subtitles.gamedropsbackport.entity.cushion.break=Подушка сломана
 subtitles.gamedropsbackport.entity.cushion.get_up=С подушки встали
 subtitles.gamedropsbackport.entity.cushion.place=Подушка размещена
 subtitles.gamedropsbackport.entity.cushion.sit=На подушку сели
+
+# --- sulfurcaves ---
+tile.gamedropsbackport.tuff.name=Туф

@@ -47,12 +47,14 @@ public final class GameDropsBackport {
         BackportSettings.register(MOD_ID, ModConfig.class);
         com.exiledradio.gamedropsbackport.sulfur.SulfurContent.preInit();
         com.exiledradio.gamedropsbackport.network.NetworkHandler.init();
+        com.exiledradio.gamedropsbackport.poplar.PoplarContent.preInit(event.getSide().isClient());
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         com.exiledradio.gamedropsbackport.softblocks.SoftBlocks.init();
         com.exiledradio.gamedropsbackport.babies.BabiesContent.init();
+        com.exiledradio.gamedropsbackport.poplar.PoplarContent.init();
     }
 
     @Mod.EventHandler

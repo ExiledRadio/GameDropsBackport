@@ -28,3 +28,5 @@ config.gamedropsbackport.camps.enabled=Включено
 config.gamedropsbackport.camps.enabled.tooltip=Заброшенные лагеря появляются в новых чанках.
 config.gamedropsbackport.babies.babyModels=Модели детёнышей
 config.gamedropsbackport.babies.babyModels.tooltip=Модели и текстуры детёнышей из 26.1 для детёнышей 1.12.2. Если выключено, детёныши — уменьшенные взрослые.
+config.gamedropsbackport.poplar.generateBiome=Генерировать пёстрые леса
+config.gamedropsbackport.poplar.generateBiome.tooltip=Пёстрые леса появляются в новых чанках. Если выключено, биом не регистрируется.

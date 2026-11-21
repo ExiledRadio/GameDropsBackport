@@ -28,3 +28,5 @@ config.gamedropsbackport.camps.enabled=Увімкнено
 config.gamedropsbackport.camps.enabled.tooltip=Покинуті табори з'являються в нових чанках.
 config.gamedropsbackport.babies.babyModels=Моделі дитинчат
 config.gamedropsbackport.babies.babyModels.tooltip=Моделі й текстури дитинчат із 26.1 для дитинчат 1.12.2. Якщо вимкнено, дитинчата — зменшені дорослі.
+config.gamedropsbackport.poplar.generateBiome=Генерувати плямисті ліси
+config.gamedropsbackport.poplar.generateBiome.tooltip=Плямисті ліси з'являються в нових чанках. Якщо вимкнено, біом не реєструється.

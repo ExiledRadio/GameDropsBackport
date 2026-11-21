@@ -28,3 +28,5 @@ config.gamedropsbackport.camps.enabled=有効
 config.gamedropsbackport.camps.enabled.tooltip=放棄されたキャンプは新しく生成されたチャンクに生成されます。
 config.gamedropsbackport.babies.babyModels=子供のモデル
 config.gamedropsbackport.babies.babyModels.tooltip=1.12.2の子供に26.1の子供のモデルとテクスチャを使います。オフにすると、子供は大人を縮めた姿になります。
+config.gamedropsbackport.poplar.generateBiome=まだらな森を生成
+config.gamedropsbackport.poplar.generateBiome.tooltip=まだらな森は新しく生成されたチャンクに生成されます。オフにするとバイオームは登録されません。

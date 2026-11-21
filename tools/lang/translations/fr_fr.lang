@@ -28,3 +28,5 @@ config.gamedropsbackport.camps.enabled=Activé
 config.gamedropsbackport.camps.enabled.tooltip=Les camps abandonnés apparaissent dans les chunks nouvellement générés.
 config.gamedropsbackport.babies.babyModels=Modèles des bébés
 config.gamedropsbackport.babies.babyModels.tooltip=Les modèles et textures de bébés de la 26.1 pour les bébés de la 1.12.2. Désactivé, les bébés sont des adultes rétrécis.
+config.gamedropsbackport.poplar.generateBiome=Générer des forêts ambrées
+config.gamedropsbackport.poplar.generateBiome.tooltip=Les forêts ambrées apparaissent dans les chunks nouvellement générés. Désactivé, le biome n'est pas enregistré.

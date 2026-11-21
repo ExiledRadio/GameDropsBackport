@@ -28,3 +28,5 @@ config.gamedropsbackport.camps.enabled=Etkin
 config.gamedropsbackport.camps.enabled.tooltip=Terkedilmiş kamplar yeni oluşturulan yığınlarda oluşur.
 config.gamedropsbackport.babies.babyModels=Yavru modelleri
 config.gamedropsbackport.babies.babyModels.tooltip=1.12.2 yavruları için 26.1'in yavru modelleri ve dokuları. Kapalıyken yavrular küçültülmüş yetişkinlerdir.
+config.gamedropsbackport.poplar.generateBiome=Alacalı Ormanlar Oluştur
+config.gamedropsbackport.poplar.generateBiome.tooltip=Alacalı ormanlar yeni oluşturulan yığınlarda oluşur. Kapalıyken biyom kaydedilmez.

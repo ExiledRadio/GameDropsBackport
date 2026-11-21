@@ -43,6 +43,7 @@ public final class SelfTestRunner {
             new SulfurSelfTest(),
             new SoftBlocksSelfTest(),
             new BabiesSelfTest(),
+            new PoplarSelfTest(),
     };
 
     private final List<String> wanted;

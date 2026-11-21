@@ -1,0 +1,6 @@
+{
+  "parent": "gamedropsbackport:block/template_fence_gate_wall",
+  "textures": {
+    "texture": "gamedropsbackport:block/poplar_planks"
+  }
+}

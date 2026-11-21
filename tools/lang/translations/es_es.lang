@@ -28,3 +28,5 @@ config.gamedropsbackport.camps.enabled=Activado
 config.gamedropsbackport.camps.enabled.tooltip=Los campamentos abandonados se generan en los chunks nuevos.
 config.gamedropsbackport.babies.babyModels=Modelos de crías
 config.gamedropsbackport.babies.babyModels.tooltip=Los modelos y texturas de crías de la 26.1 para las crías de la 1.12.2. Desactivado, las crías son adultos encogidos.
+config.gamedropsbackport.poplar.generateBiome=Generar bosques moteados
+config.gamedropsbackport.poplar.generateBiome.tooltip=Los bosques moteados se generan en los chunks nuevos. Si está desactivado, el bioma no se registra.

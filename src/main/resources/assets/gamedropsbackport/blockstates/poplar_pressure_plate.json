@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=true": {
+      "model": "gamedropsbackport:poplar_pressure_plate_down"
+    },
+    "powered=false": {
+      "model": "gamedropsbackport:poplar_pressure_plate"
+    }
+  }
+}

@@ -349,10 +349,17 @@ public final class SulfurCavesSelfTest implements SelfTest {
         }
         if (check.ok(in != null, "a block in the sulfur caves")) {
             check.ok(SulfurCaves.at(w, in), "at() agrees with the mask");
-            List<Biome.SpawnListEntry> list = net.minecraftforge.event.ForgeEventFactory.getPotentialSpawns(w, EnumCreatureType.MONSTER, in,
-                    w.getChunkProvider().getPossibleCreatures(EnumCreatureType.MONSTER, in));
+            // Our handlers alone: on the bus, Caves & Cliffs' local mob cap (also LOW) can cancel first when the test world's
+            // cap is full, and then nothing spawns at all.
+            net.minecraftforge.event.world.WorldEvent.PotentialSpawns event = new net.minecraftforge.event.world.WorldEvent.PotentialSpawns(
+                    w, EnumCreatureType.MONSTER, in, new java.util.ArrayList<Biome.SpawnListEntry>(
+                    w.getChunkProvider().getPossibleCreatures(EnumCreatureType.MONSTER, in)));
+            new SulfurSpawns().spawns(event);
+            com.exiledradio.gamedropsbackport.sulfurcube.SulfurCubes.onPotentialSpawns(event);
+            List<Biome.SpawnListEntry> list = event.getList();
             check.ok(list.stream().anyMatch(e -> e.entityClass == EntityCaveSpider.class)
-                    && list.stream().noneMatch(e -> e.entityClass == EntitySpider.class), "spawns there are the sulfur caves'");
+                    && list.stream().noneMatch(e -> e.entityClass == EntitySpider.class), "spawns there are the sulfur caves': "
+                    + list.stream().map(e -> e.entityClass.getSimpleName()).collect(java.util.stream.Collectors.toList()));
             BlockPos sky = new BlockPos(in.getX(), 200, in.getZ());
             check.ok(!SulfurCaves.at(w, sky), "not in the sky above");
         }

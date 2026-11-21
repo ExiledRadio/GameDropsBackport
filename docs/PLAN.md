@@ -296,3 +296,17 @@ behavior needs them. Design questions vanilla already answers are not asked.
 2. The streams in release order: babies, sulfur, sulfur cube, sulfur caves, poplar, soft blocks.
 3. Abandoned camps and explorer maps once Backport Core has the template loader.
 4. Changes to existing things (stream 8): **built**.
+5. **1.0.0 release checks (2026-11-21)**, all on the E-cores:
+   - `tools/release_suite.sh`: 1697/0 alone; with `FAMILY=1` (Village & Pillage 2.7.2, Update Aquatic 1.2.1, Caves &
+     Cliffs 1.1.2, Wild Update 1.1.1, Trails & Tales 1.0.1, Tricky Trials 1.0.1 dev jars) no crash, id clash or
+     duplicate. Found there and fixed: the dappled forest never generated with Village & Pillage (its 1.14 layers are
+     rebuilt at the same priority) or behind Update Aquatic's, the cherry grove's and the pale garden's wrappers;
+     `DappledForestLayer` now runs last and walks every `GenLayer` field. Three test assumptions fixed (V&P's ocelot
+     sounds, Caves & Cliffs' local mob cap canceling the spawn event, the version).
+   - `runClient -Pselftest=client` (`ClientScenes`): every block state and item model, every item drawn, every block
+     placed, the babies' renderers, sulfur cube, cushion, poplar boat, the sign edit screen, straw bed sleep, cushion
+     seat, then the look and feel screens: 66/0. Found and fixed: the big shelf mushroom drew as the missing model; the
+     stew recipe broke vanilla's recipe advancement.
+   - ScanAll (family-notes/tools/verify), CLIENT and SERVER: all six P1-P5 targets verify vanilla and patched.
+   - `tools/release/boot-server.sh` with Backport Core 1.4.4's release jar, with and without Fluidlogged API 3.3.3:
+     PASS, PATCHCHECK ok 6. Release jar: 0 `/selftest/` entries.

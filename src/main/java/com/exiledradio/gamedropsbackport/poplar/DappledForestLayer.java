@@ -35,9 +35,10 @@ import java.util.Map;
  * Chunks already generated keep their biome.
  *
  * <h2>How</h2>
- * Forge's {@link WorldTypeEvent.InitBiomeGens} hands over the final layers; the chain is walked down (through
- * {@link GenLayerRiverMix}'s biome input and every {@code parent}) to vanilla's {@link GenLayerBiome}, and the layer
- * above it is given {@link Dappled} in its place, which reads the biome and the climate it came from at the same
+ * Forge's {@link WorldTypeEvent.InitBiomeGens} hands over the final layers, last of all handlers, so other mods' rebuilt
+ * stacks (Village &amp; Pillage's 1.14 layers) and wrappers (Update Aquatic's oceans, the cherry grove, the pale garden)
+ * are in. Every {@code GenLayer} field is walked down to vanilla's {@link GenLayerBiome}, and each layer reading it
+ * is given {@link Dappled} in its place, which reads the biome and the climate it came from at the same
  * cells. A world type with no {@code GenLayerBiome} (a single biome world, other mods' own generators) gets none.
  *
  * <p>Caves &amp; Cliffs' 1.18 terrain places biomes by climate and does not use these layers; it can place
@@ -51,7 +52,6 @@ public final class DappledForestLayer {
     static final int COOL = 3;
 
     private static Field parent;
-    private static Field biomeChain;
     private static Field settings;
 
     private DappledForestLayer() {
@@ -62,7 +62,7 @@ public final class DappledForestLayer {
         MinecraftForge.TERRAIN_GEN_BUS.register(DappledForestLayer.class);
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGH)
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onInitBiomeGens(WorldTypeEvent.InitBiomeGens event) {
         BiomeDappledForest dappled = PoplarContent.biome;
         GenLayer[] layers = event.getNewBiomeGens();
@@ -72,10 +72,9 @@ public final class DappledForestLayer {
         try {
             if (parent == null) {
                 parent = ObfuscationReflectionHelper.findField(GenLayer.class, "field_75909_a");
-                biomeChain = ObfuscationReflectionHelper.findField(GenLayerRiverMix.class, "field_75910_b");
                 settings = ObfuscationReflectionHelper.findField(GenLayerBiome.class, "field_175973_g");
             }
-            if (insert(layers[0], dappled, event.getSeed())) {
+            if (insert(layers, dappled, event.getSeed())) {
                 return;
             }
         } catch (RuntimeException | IllegalAccessException e) {
@@ -85,32 +84,75 @@ public final class DappledForestLayer {
         GameDropsBackport.LOGGER.debug("No GenLayerBiome in {}'s biome layers: no dappled forest.", event.getWorldType().getName());
     }
 
-    /** Walks down to the layer whose input is {@link GenLayerBiome} and gives it {@link Dappled} in between. */
-    static boolean insert(GenLayer top, BiomeDappledForest dappled, long seed) throws IllegalAccessException {
+    /**
+     * Finds vanilla's {@link GenLayerBiome} below the final layers, through every {@code GenLayer} field of every layer
+     * (vanilla's {@code parent}, {@link GenLayerRiverMix}'s biome input, and other mods' wrappers), and puts
+     * {@link Dappled} in its place wherever a layer reads it.
+     */
+    static boolean insert(GenLayer[] tops, BiomeDappledForest dappled, long seed) throws IllegalAccessException {
         Map<GenLayer, Boolean> seen = new IdentityHashMap<GenLayer, Boolean>();
-        GenLayer at = top;
-        while (at != null && seen.put(at, Boolean.TRUE) == null) {
-            GenLayer below = at instanceof GenLayerRiverMix ? (GenLayer) biomeChain.get(at) : (GenLayer) parent.get(at);
-            if (below instanceof Dappled) {
-                return true;
+        java.util.ArrayDeque<GenLayer> todo = new java.util.ArrayDeque<GenLayer>();
+        for (GenLayer top : tops) {
+            if (top != null) {
+                todo.add(top);
             }
-            if (below instanceof GenLayerBiome) {
-                ChunkGeneratorSettings s = (ChunkGeneratorSettings) settings.get(below);
-                if (s != null && s.fixedBiome >= 0) {
-                    return false;
-                }
-                Dappled layer = new Dappled((GenLayerBiome) below, (GenLayer) parent.get(below), dappled);
-                layer.initWorldGenSeed(seed);
-                if (at instanceof GenLayerRiverMix) {
-                    biomeChain.set(at, layer);
-                } else {
-                    parent.set(at, layer);
-                }
-                return true;
-            }
-            at = below;
         }
-        return false;
+        GenLayerBiome target = null;
+        while (!todo.isEmpty()) {
+            GenLayer at = todo.poll();
+            if (seen.put(at, Boolean.TRUE) != null) {
+                continue;
+            }
+            if (at instanceof Dappled) {
+                return true;
+            }
+            if (at instanceof GenLayerBiome && target == null) {
+                target = (GenLayerBiome) at;
+            }
+            for (Field f : layerFields(at.getClass())) {
+                Object below = f.get(at);
+                if (below instanceof GenLayer) {
+                    todo.add((GenLayer) below);
+                }
+            }
+        }
+        if (target == null) {
+            return false;
+        }
+        ChunkGeneratorSettings s = (ChunkGeneratorSettings) settings.get(target);
+        if (s != null && s.fixedBiome >= 0) {
+            return false;
+        }
+        Dappled layer = new Dappled(target, (GenLayer) parent.get(target), dappled);
+        layer.initWorldGenSeed(seed);
+        for (GenLayer at : seen.keySet()) {
+            for (Field f : layerFields(at.getClass())) {
+                if (f.get(at) == target) {
+                    f.set(at, layer);
+                }
+            }
+        }
+        return true;
+    }
+
+    private static final Map<Class<?>, java.util.List<Field>> FIELDS = new java.util.HashMap<Class<?>, java.util.List<Field>>();
+
+    /** Every instance field of a layer class and its superclasses that can hold a {@link GenLayer}. */
+    private static synchronized java.util.List<Field> layerFields(Class<?> cls) {
+        java.util.List<Field> list = FIELDS.get(cls);
+        if (list == null) {
+            list = new java.util.ArrayList<Field>();
+            for (Class<?> c = cls; c != null && c != Object.class; c = c.getSuperclass()) {
+                for (Field f : c.getDeclaredFields()) {
+                    if (!java.lang.reflect.Modifier.isStatic(f.getModifiers()) && GenLayer.class.isAssignableFrom(f.getType())) {
+                        f.setAccessible(true);
+                        list.add(f);
+                    }
+                }
+            }
+            FIELDS.put(cls, list);
+        }
+        return list;
     }
 
     /** {@link GenLayerBiome}'s output, with one cool plains cell in {@link #CHANCE} made dappled forest. */

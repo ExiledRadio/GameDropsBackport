@@ -1,0 +1,6 @@
+[16:14:02] [main/INFO]: P1 bed bounce: patched net.minecraft.block.BlockBed.onLanded.
+[16:14:05] [main/INFO]: P3 persistent mobs idle: patched net.minecraft.entity.EntityLiving.despawnEntity.
+[16:14:08] [main/INFO]: P5 sun helmet: patched net.minecraft.entity.monster.AbstractSkeleton.onLivingUpdate.
+[16:14:10] [main/INFO]: P2 riding endermen: patched net.minecraft.entity.monster.EntityEnderman.attackEntityFrom.
+[16:14:13] [main/INFO]: P4 witch throws: patched net.minecraft.entity.monster.EntityWitch.attackEntityWithRangedAttack.
+[16:14:15] [main/INFO]: P5 sun helmet: patched net.minecraft.entity.monster.EntityZombie.onLivingUpdate.

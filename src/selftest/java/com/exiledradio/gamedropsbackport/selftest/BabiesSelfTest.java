@@ -343,7 +343,9 @@ public final class BabiesSelfTest implements SelfTest {
 
         EntityOcelot cat = new EntityOcelot(world);
         SoundVariants.setVariant(cat, "royal");
-        check.eq(null, replaced(cat, "entity.cat.hurt"), "wild ocelot keeps its sounds");
+        String ocelot = replaced(cat, "entity.cat.hurt");
+        // Not ours; Village & Pillage gives the wild ocelot its own 1.14 sounds.
+        check.ok(ocelot == null || !ocelot.startsWith(M + ":"), "wild ocelot keeps its sounds: " + ocelot);
         cat.setTamed(true);
         check.eq(M + ":entity.cat_royal.purr", replaced(cat, "entity.cat.purr"), "royal cat");
         cat.setGrowingAge(-100);

@@ -418,6 +418,11 @@ final class PoplarSelfTest implements SelfTest {
         check.eq(0.6F, dappled.getDefaultTemperature(), "temperature");
         check.eq(0.6F, dappled.getRainfall(), "downfall");
         check.ok(dappled.getSpawnableList(net.minecraft.entity.EnumCreatureType.CREATURE).size() >= 5, "animals spawn");
+        if (com.exiledradio.backportcore.terrain.ModernGeneration.biomeId(world, BlockPos.ORIGIN) != null) {
+            // Caves & Cliffs' 1.18 biome source does not use 1.12.2's layers (CORE_REQUESTS.md 4).
+            GameDropsBackport.LOGGER.info("SELFTEST poplar biome map: skipped on Caves & Cliffs' 1.18 terrain");
+            return;
+        }
         // The 1:4 biome map, 6144 blocks around the spawn.
         int half = 768;
         BlockPos spawn = world.getSpawnPoint();

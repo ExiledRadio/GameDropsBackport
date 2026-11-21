@@ -425,27 +425,18 @@ final class SulfurSelfTest implements SelfTest {
     // ------------------------------------------------------------------------------- asset check input
 
     private static void dump(WorldServer world) throws Exception {
-        File states = world.getMinecraftServer().getFile("selftest-states.txt");
-        PrintWriter out = new PrintWriter(states, "UTF-8");
-        for (Block block : ForgeRegistries.BLOCKS) {
-            if (!GameDropsBackport.MOD_ID.equals(block.getRegistryName().getNamespace())) {
-                continue;
-            }
+        PrintWriter out = SelfTestRunner.statesOut();
+        for (Block block : Reg.blocks()) {
             String kind = Reg.multipartFiles().contains(block) ? "multipart" : "variants";
             for (IBlockState state : block.getBlockState().getValidStates()) {
                 out.println(block.getRegistryName() + "\t" + variant(state) + "\t" + kind);
             }
         }
         out.close();
-        PrintWriter items = new PrintWriter(world.getMinecraftServer().getFile("selftest-items.txt"), "UTF-8");
+        PrintWriter items = SelfTestRunner.itemsOut();
         for (Map.Entry<Item, String> e : Reg.itemModels().entrySet()) {
             ItemStack stack = new ItemStack(e.getKey());
             items.println(e.getKey().getRegistryName() + "\t0\t" + e.getValue() + "\t" + e.getKey().getTranslationKey(stack) + ".name");
-        }
-        for (Item item : ForgeRegistries.ITEMS) {
-            if (GameDropsBackport.MOD_ID.equals(item.getRegistryName().getNamespace()) && !Reg.itemModels().containsKey(item)) {
-                items.println(item.getRegistryName() + "\t-\tNO_MODEL_REQUEST\t-");
-            }
         }
         items.close();
     }

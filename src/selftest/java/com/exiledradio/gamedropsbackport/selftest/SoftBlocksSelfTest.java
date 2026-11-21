@@ -382,7 +382,7 @@ final class SoftBlocksSelfTest implements SelfTest {
     /** States and items for tools/check_assets.py, as the client's default state mapper names them. */
     private static void dumpAssets(Check check) throws Exception {
         File dir = FMLCommonHandler.instance().getMinecraftServerInstance().getDataDirectory();
-        PrintWriter states = new PrintWriter(new File(dir, "selftest-states.txt"), "UTF-8");
+        PrintWriter states = SelfTestRunner.statesOut();
         for (Block block : SoftBlocks.blocks()) {
             for (IBlockState state : block.getBlockState().getValidStates()) {
                 StringBuilder sb = new StringBuilder();
@@ -399,7 +399,7 @@ final class SoftBlocksSelfTest implements SelfTest {
             }
         }
         states.close();
-        PrintWriter items = new PrintWriter(new File(dir, "selftest-items.txt"), "UTF-8");
+        PrintWriter items = SelfTestRunner.itemsOut();
         List<String> seen = new ArrayList<String>();
         for (Item item : SoftBlocks.items()) {
             NonNullList<ItemStack> subs = NonNullList.create();

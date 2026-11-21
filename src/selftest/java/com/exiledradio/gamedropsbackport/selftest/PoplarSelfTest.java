@@ -491,7 +491,7 @@ final class PoplarSelfTest implements SelfTest {
 
     private void dump() throws Exception {
         net.minecraft.server.MinecraftServer server = world.getMinecraftServer();
-        PrintWriter out = new PrintWriter(server.getFile("selftest-states.txt"), "UTF-8");
+        PrintWriter out = SelfTestRunner.statesOut();
         for (Block block : Content.blocks()) {
             String kind = Content.multipartFiles().contains(block) ? "multipart" : "variants";
             for (IBlockState state : block.getBlockState().getValidStates()) {
@@ -499,7 +499,7 @@ final class PoplarSelfTest implements SelfTest {
             }
         }
         out.close();
-        out = new PrintWriter(server.getFile("selftest-items.txt"), "UTF-8");
+        out = SelfTestRunner.itemsOut();
         List<Item> seen = new ArrayList<Item>();
         for (Map.Entry<Item, Map<Integer, String>> e : Content.itemModels().entrySet()) {
             seen.add(e.getKey());
@@ -507,11 +507,6 @@ final class PoplarSelfTest implements SelfTest {
                 ItemStack stack = new ItemStack(e.getKey(), 1, m.getKey());
                 out.println(e.getKey().getRegistryName() + "\t" + m.getKey() + "\t" + m.getValue() + "\t"
                         + e.getKey().getTranslationKey(stack) + ".name");
-            }
-        }
-        for (Item item : ForgeRegistries.ITEMS) {
-            if (GameDropsBackport.MOD_ID.equals(item.getRegistryName().getNamespace()) && !seen.contains(item)) {
-                out.println(item.getRegistryName() + "\t-\tNO_MODEL_REQUEST\t-");
             }
         }
         out.close();

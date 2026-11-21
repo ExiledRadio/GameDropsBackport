@@ -68,12 +68,8 @@ public final class SelfTestRunner {
         MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
         WorldServer world = server.getWorld(0);
         Check check = new Check(world);
-        try {
-            dumpStates(server.getFile("selftest-states.txt"));
-            dumpItems(server.getFile("selftest-items.txt"));
-        } catch (Exception e) {
-            check.fail("dump: " + e);
-        }
+        STATES.clear();
+        ITEMS.clear();
         for (SelfTest test : TESTS) {
             if (this.wanted.contains("all") || this.wanted.contains(test.name())) {
                 check.section(test.name());
@@ -84,6 +80,12 @@ public final class SelfTestRunner {
                     check.fail(test.name() + " threw " + t);
                 }
             }
+        }
+        try {
+            dumpStates(server.getFile("selftest-states.txt"));
+            dumpItems(server.getFile("selftest-items.txt"));
+        } catch (Exception e) {
+            check.fail("dump: " + e);
         }
         GameDropsBackport.LOGGER.info("SELFTEST DONE pass={} fail={}", check.passed(), check.failed());
         try {
@@ -98,18 +100,60 @@ public final class SelfTestRunner {
         server.initiateShutdown();
     }
 
-    private static void dumpStates(File file) throws Exception {
-        PrintWriter out = new PrintWriter(file, "UTF-8");
-        for (Block block : ForgeRegistries.BLOCKS) {
-            if (!GameDropsBackport.MOD_ID.equals(block.getRegistryName().getNamespace())) {
-                continue;
+    /** Lines the tests give for selftest-states.txt and selftest-items.txt, in the order given. */
+    private static final List<String> STATES = new java.util.ArrayList<String>();
+    private static final List<String> ITEMS = new java.util.ArrayList<String>();
+
+    /**
+     * A writer whose lines go into selftest-states.txt when it is closed. A test that knows its blocks better than
+     * {@link #variant} does (multipart files, ignored properties) writes them here; the runner writes the file once,
+     * after every test, adding plain lines for the blocks no test listed. One file, so no test overwrites another.
+     */
+    static PrintWriter statesOut() {
+        return collector(STATES);
+    }
+
+    /** {@link #statesOut()} for selftest-items.txt: a stream's items with their real model names and metadata. */
+    static PrintWriter itemsOut() {
+        return collector(ITEMS);
+    }
+
+    private static PrintWriter collector(final List<String> into) {
+        final java.io.StringWriter buffer = new java.io.StringWriter();
+        return new PrintWriter(buffer) {
+            @Override
+            public void close() {
+                super.close();
+                for (String line : buffer.toString().split("\\r?\\n")) {
+                    if (!line.isEmpty()) {
+                        into.add(line);
+                    }
+                }
             }
-            for (IBlockState state : block.getBlockState().getValidStates()) {
-    /** For tools/check_assets.py: every valid state of every block of this mod, as its variant string. */
+        };
+    }
+
+    private static java.util.Set<String> firstColumn(List<String> lines) {
+        java.util.Set<String> out = new java.util.HashSet<String>();
+        for (String line : lines) {
+            out.add(line.split("\t", 2)[0]);
+        }
+        return out;
+    }
+
+    /**
+     * For tools/check_assets.py: the states the tests gave, then every valid state of every other block of this mod,
+     * as its variant string.
+     */
     private static void dumpStates(java.io.File file) throws Exception {
         PrintWriter out = new PrintWriter(file, "UTF-8");
+        java.util.Set<String> listed = firstColumn(STATES);
+        for (String line : STATES) {
+            out.println(line);
+        }
         for (net.minecraft.block.Block block : net.minecraftforge.fml.common.registry.ForgeRegistries.BLOCKS) {
-            if (!GameDropsBackport.MOD_ID.equals(block.getRegistryName().getNamespace())) {
+            if (!GameDropsBackport.MOD_ID.equals(block.getRegistryName().getNamespace())
+                    || listed.contains(block.getRegistryName().toString())) {
                 continue;
             }
             for (net.minecraft.block.state.IBlockState state : block.getBlockState().getValidStates()) {
@@ -120,11 +164,6 @@ public final class SelfTestRunner {
     }
 
     /** Vanilla's DefaultStateMapper string: properties sorted by name, name=value joined by commas. */
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    static String variant(IBlockState state) {
-        Map<String, String> sorted = new TreeMap<String, String>();
-        for (Map.Entry<IProperty<?>, Comparable<?>> e : state.getProperties().entrySet()) {
-            IProperty p = e.getKey();
     static String variant(net.minecraft.block.state.IBlockState state) {
         java.util.Map<String, String> sorted = new java.util.TreeMap<String, String>();
         for (java.util.Map.Entry<net.minecraft.block.properties.IProperty<?>, Comparable<?>> e : state.getProperties().entrySet()) {
@@ -135,7 +174,6 @@ public final class SelfTestRunner {
             return "normal";
         }
         StringBuilder b = new StringBuilder();
-        for (Map.Entry<String, String> e : sorted.entrySet()) {
         for (java.util.Map.Entry<String, String> e : sorted.entrySet()) {
             if (b.length() > 0) {
                 b.append(',');
@@ -145,17 +183,19 @@ public final class SelfTestRunner {
         return b.toString();
     }
 
-    private static void dumpItems(File file) throws Exception {
-        PrintWriter out = new PrintWriter(file, "UTF-8");
-        for (Item item : ForgeRegistries.ITEMS) {
-            if (GameDropsBackport.MOD_ID.equals(item.getRegistryName().getNamespace())) {
-                out.println(item.getRegistryName() + "	0	" + item.getRegistryName().getPath() + "	"
-                        + item.getTranslationKey(new ItemStack(item)) + ".name");
-    /** For tools/check_assets.py: every item of this mod, its model (its registry path) and translation key. */
+    /**
+     * For tools/check_assets.py: the items the tests gave, then every other item of this mod with its registry path
+     * as its model, and its translation key.
+     */
     private static void dumpItems(java.io.File file) throws Exception {
         PrintWriter out = new PrintWriter(file, "UTF-8");
+        java.util.Set<String> listed = firstColumn(ITEMS);
+        for (String line : ITEMS) {
+            out.println(line);
+        }
         for (net.minecraft.item.Item item : net.minecraftforge.fml.common.registry.ForgeRegistries.ITEMS) {
-            if (GameDropsBackport.MOD_ID.equals(item.getRegistryName().getNamespace())) {
+            if (GameDropsBackport.MOD_ID.equals(item.getRegistryName().getNamespace())
+                    && !listed.contains(item.getRegistryName().toString())) {
                 net.minecraft.item.ItemStack stack = new net.minecraft.item.ItemStack(item);
                 out.println(item.getRegistryName() + "	0	" + item.getRegistryName().getPath() + "	" + item.getTranslationKey(stack) + ".name");
             }

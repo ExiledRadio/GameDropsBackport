@@ -435,10 +435,9 @@ final class SulfurCubeSelfTest implements SelfTest {
         }
     }
 
-    /** The bucket, appended to the items another stream's test wrote (one runner writes the states file). */
+    /** The bucket, for the runner's selftest-items.txt. */
     private static void dump() throws Exception {
-        File dir = FMLCommonHandler.instance().getMinecraftServerInstance().getDataDirectory();
-        PrintWriter items = new PrintWriter(new FileWriter(new File(dir, "selftest-items.txt"), true));
+        PrintWriter items = SelfTestRunner.itemsOut();
         items.println(SulfurCubes.bucket.getRegistryName() + "\t0\tsulfur_cube_bucket\t"
                 + new ItemStack(SulfurCubes.bucket).getTranslationKey() + ".name");
         items.close();

@@ -1,7 +1,7 @@
 # Stream 8: look and feel (26.1 to 26.3)
 
 Package `lookfeel` (client side in `lookfeel/client`), config category `lookAndFeel` (five switches, all on), packet
-ids 40-44 (none used), dev-server port 25928. Branch `claude/gd-lookfeel-48b73a`. Requires Backport Core 1.4.6
+ids 40-44 (none used), dev-server port 25928. Branch `claude/gd-lookfeel-48b73a`. Requires Backport Core 1.4.4
 (branch `gd-lookfeel`: the 26.2 pause row and `MenuBackground.contentFrame`).
 
 Backport Core shows the newest installed version's single pieces. This mod registers 26.1, 26.2 and 26.3, so with it
@@ -53,7 +53,7 @@ and 26.3 client jars and asset indexes, and 26.3's decompiled `PauseScreen`, `Wo
 
 ## Tested
 
-*   `cmd //c "start /affinity FFFF0000 /b /wait bash tools/lookfeel_suite.sh"` (fresh world, seed 1013, Core 1.4.6):
+*   `cmd //c "start /affinity FFFF0000 /b /wait bash tools/lookfeel_suite.sh"` (fresh world, seed 1013, Core 1.4.4):
     **`SELFTEST DONE pass=1531 fail=0`**; `check_assets.py`: 83 blocks, 2890 states, 150 item models, 722 sound files,
     0 errors; `build_langs.py check`: 18/18, 0 errors, 0 warnings; `vanilla_text.py check`: 18 languages, 0 errors.
     Release jar: 0 `/selftest/` entries.

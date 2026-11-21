@@ -148,7 +148,7 @@ biome. `SulfurCaves` switches to the terrain's own biome as soon as `Biomes.byNa
 
 ## Lf. Look and feel (stream 8)
 
-Done in Core 1.4.6 (branch `gd-lookfeel`): 26.2's pause icon row (`VanillaRevisions.pauseIconRow`, sprites from this
+Done in Core 1.4.4 (branch `gd-lookfeel`): 26.2's pause icon row (`VanillaRevisions.pauseIconRow`, sprites from this
 mod) and `MenuBackground.contentFrame` for World Options' frame. Still open:
 
 1. **Borderless fullscreen** (26.1 added Exclusive Fullscreen, 26.3 made Borderless the default): 1.12.2's

@@ -51,7 +51,7 @@ another's classes.
 | 5 | Poplar and the dappled forest | 26.3 | `poplar` | `poplar` | 6-10 | 25-29 | decision 1 for the biome only |
 | 6 | Wool and concrete shapes, cushions, straw beds | 26.3 | `softblocks` | `softBlocks` | 11-15 | 30-34 | nothing |
 | 7 | Abandoned camps and explorer maps | 26.3 | `camps` | `camps` | none | 35-39 | Backport Core (templates, terrain) |
-| 8 | Look and feel | 26.1-26.3 | `lookfeel` | `lookAndFeel` | none | 40-44 | Backport Core 1.4.6 (pause icon row) |
+| 8 | Look and feel | 26.1-26.3 | `lookfeel` | `lookAndFeel` | none | 40-44 | Backport Core 1.4.4 (pause icon row) |
 | 8 | Changes to existing things | 26.1-26.3 | `changes` | `changes` | none | 40-44 | nothing |
 
 Ports (block 25920-25939): the main checkout's dev server uses 25920; a stream worktree uses `25920 + row`
@@ -195,7 +195,7 @@ splashes, menuMusic, pauseMenu, worldOptions), all on; Core's Look & Feel page l
 | 26.1 | The version only: its one splash change ("Java 16 + 1 + 4 * 2 = 25!") names a Java version, which Core leaves out on 1.12.2 | nothing |
 | 26.2 | Splash "Music by fingerspit!" ("Now on Vulkan 1.2!" is shipped, but Core leaves out runtime splashes on 1.12.2) | splash pool |
 | 26.2 | Menu music: fingerspit's Ebb, Home, Memories, Nightly and Shores replace 1.21.6's five (weight 1, volume 0.4); Music Toast names "fingerspit - Ebb" ... | menu pool, removal by path (has it) |
-| 26.2 | Pause menu: Report Bugs and Send Feedback become 20 by 20 icon buttons in one row under Advancements and Statistics (sprites `pause_menu/bug`, `pause_menu/social_interactions`) | **new**: the 26.2 pause layout (Core 1.4.6) |
+| 26.2 | Pause menu: Report Bugs and Send Feedback become 20 by 20 icon buttons in one row under Advancements and Statistics (sprites `pause_menu/bug`, `pause_menu/social_interactions`) | **new**: the 26.2 pause layout (Core 1.4.4) |
 | 26.3 | Panorama: the dappled forest with an abandoned camp, and its overlay | panorama (has it) |
 | 26.3 | Splash fix: straight quotes in "Don't touch your face!" and "Prepare, but don't hoard!" | splash pool |
 | 26.3 | Pause menu: World Options... in place of Open to LAN. General: Default Game Mode, Personal Game Mode, Allow Commands, Difficulty and its lock. Multiplayer: LAN, Port, Command Access, Force Game Mode. Apply Changes / Cancel | the pause slot (Core places button 7) |

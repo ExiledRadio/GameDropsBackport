@@ -26,7 +26,7 @@ import org.apache.logging.log4j.Logger;
         name = GameDropsBackport.MOD_NAME,
         version = GameDropsBackport.VERSION,
         acceptedMinecraftVersions = "[1.12.2]",
-        dependencies = "required-after:backportcore@[1.4.0,)"
+        dependencies = "required-after:backportcore@[1.4.3,)"
 )
 public final class GameDropsBackport {
 

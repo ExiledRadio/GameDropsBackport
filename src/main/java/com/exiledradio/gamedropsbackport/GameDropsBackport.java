@@ -1,6 +1,7 @@
 package com.exiledradio.gamedropsbackport;
 
 import com.exiledradio.backportcore.settings.BackportSettings;
+import com.exiledradio.gamedropsbackport.camps.CampsContent;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -45,10 +46,12 @@ public final class GameDropsBackport {
         // Core's settings screen lists the family members it knows by itself; this mod is newer than Core 1.4.0's
         // list, so it registers its page.
         BackportSettings.register(MOD_ID, ModConfig.class);
+        CampsContent.preInit();
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        CampsContent.init();
     }
 
     @Mod.EventHandler

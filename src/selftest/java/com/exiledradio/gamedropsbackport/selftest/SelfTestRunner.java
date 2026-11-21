@@ -28,6 +28,7 @@ public final class SelfTestRunner {
     /** Every stream's test. A stream adds its own line. */
     private static final SelfTest[] TESTS = {
             new ScaffoldSelfTest(),
+            new CampsSelfTest(),
     };
 
     private final List<String> wanted;
@@ -50,6 +51,12 @@ public final class SelfTestRunner {
         MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
         WorldServer world = server.getWorld(0);
         Check check = new Check(world);
+        try {
+            dumpStates(server.getFile("selftest-states.txt"));
+            dumpItems(server.getFile("selftest-items.txt"));
+        } catch (Exception e) {
+            check.fail("dump: " + e);
+        }
         for (SelfTest test : TESTS) {
             if (this.wanted.contains("all") || this.wanted.contains(test.name())) {
                 check.section(test.name());
@@ -72,5 +79,52 @@ public final class SelfTestRunner {
         } catch (Exception ignored) {
         }
         server.initiateShutdown();
+    }
+
+    /** For tools/check_assets.py: every valid state of every block of this mod, as its variant string. */
+    private static void dumpStates(java.io.File file) throws Exception {
+        PrintWriter out = new PrintWriter(file, "UTF-8");
+        for (net.minecraft.block.Block block : net.minecraftforge.fml.common.registry.ForgeRegistries.BLOCKS) {
+            if (!GameDropsBackport.MOD_ID.equals(block.getRegistryName().getNamespace())) {
+                continue;
+            }
+            for (net.minecraft.block.state.IBlockState state : block.getBlockState().getValidStates()) {
+                out.println(block.getRegistryName() + "	" + variant(state) + "	variants");
+            }
+        }
+        out.close();
+    }
+
+    /** Vanilla's DefaultStateMapper string: properties sorted by name, name=value joined by commas. */
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    static String variant(net.minecraft.block.state.IBlockState state) {
+        java.util.Map<String, String> sorted = new java.util.TreeMap<String, String>();
+        for (java.util.Map.Entry<net.minecraft.block.properties.IProperty<?>, Comparable<?>> e : state.getProperties().entrySet()) {
+            net.minecraft.block.properties.IProperty p = e.getKey();
+            sorted.put(p.getName(), p.getName((Comparable) e.getValue()));
+        }
+        if (sorted.isEmpty()) {
+            return "normal";
+        }
+        StringBuilder b = new StringBuilder();
+        for (java.util.Map.Entry<String, String> e : sorted.entrySet()) {
+            if (b.length() > 0) {
+                b.append(',');
+            }
+            b.append(e.getKey()).append('=').append(e.getValue());
+        }
+        return b.toString();
+    }
+
+    /** For tools/check_assets.py: every item of this mod, its model (its registry path) and translation key. */
+    private static void dumpItems(java.io.File file) throws Exception {
+        PrintWriter out = new PrintWriter(file, "UTF-8");
+        for (net.minecraft.item.Item item : net.minecraftforge.fml.common.registry.ForgeRegistries.ITEMS) {
+            if (GameDropsBackport.MOD_ID.equals(item.getRegistryName().getNamespace())) {
+                net.minecraft.item.ItemStack stack = new net.minecraft.item.ItemStack(item);
+                out.println(item.getRegistryName() + "	0	" + item.getRegistryName().getPath() + "	" + item.getTranslationKey(stack) + ".name");
+            }
+        }
+        out.close();
     }
 }

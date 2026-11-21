@@ -207,7 +207,20 @@ final class PoplarSelfTest implements SelfTest {
     // ---------------------------------------------------------------------------------------------
     // Scratch area: high in the sky over the spawn, cleared to air with a grass floor.
 
-    private BlockPos area(int index) {
+    private static boolean surrounded(Biome[] map, int side, int x, int z, int r, Biome biome) {
+        for (int dz = -r; dz <= r; dz++) {
+            for (int dx = -r; dx <= r; dx++) {
+                int xx = x + dx;
+                int zz = z + dz;
+                if (xx < 0 || zz < 0 || xx >= side || zz >= side || map[xx + zz * side] != biome) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+        private BlockPos area(int index) {
         BlockPos spawn = world.getSpawnPoint();
         return new BlockPos(spawn.getX() + 64 + index * 48, 150, spawn.getZ() + 64);
     }
@@ -310,6 +323,15 @@ final class PoplarSelfTest implements SelfTest {
     private void fallen() {
         int logsLying = 0;
         int stumps = 0;
+        for (int i = 0; i < 12; i++) {
+            // Generated and populated first: a lake or tree decorated afterwards would land on the logs.
+            BlockPos c = area(8 + i % 6).add(0, 0, 200 + (i / 6) * 30);
+            for (int dx = -2; dx <= 2; dx++) {
+                for (int dz = -2; dz <= 2; dz++) {
+                    world.getChunkProvider().provideChunk((c.getX() >> 4) + dx, (c.getZ() >> 4) + dz);
+                }
+            }
+        }
         for (int i = 0; i < 12; i++) {
             BlockPos at = area(8 + i % 6).add(0, 0, 200 + (i / 6) * 30);
             floor(at, 10, 4);
@@ -417,7 +439,9 @@ final class PoplarSelfTest implements SelfTest {
                     continue;
                 }
                 dap++;
-                if (found == null && x > 64 && z > 64 && x < side - 64 && z < side - 64) {
+                // A cell deep in the forest (9 by 9 cells of it, 36 blocks), so the patch is decorated as dappled forest
+                // whatever the biome layout around it (1.12.2's layers, or the modern ones once a 1.13+ version is installed).
+                if (found == null && x > 64 && z > 64 && x < side - 64 && z < side - 64 && surrounded(map, side, x, z, 4, dappled)) {
                     found = new BlockPos(((spawn.getX() >> 2) - half + x) << 2, 0, ((spawn.getZ() >> 2) - half + z) << 2);
                 }
                 for (Biome n : new Biome[] {map[x - 1 + z * side], map[x + 1 + z * side], map[x + (z - 1) * side], map[x + (z + 1) * side]}) {

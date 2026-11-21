@@ -1,0 +1,5 @@
+advancements.story.enter_the_nether.description=Build, light, and enter a Nether Portal
+advancements.story.iron_tools.title=Isn't It Iron Pick?
+build.tooHigh=The height limit for building is %s
+options.languageWarning=Language translations may not be 100%% accurate.
+selectWorld.load_folder_access=Unable to read or access the folder where game worlds are saved!

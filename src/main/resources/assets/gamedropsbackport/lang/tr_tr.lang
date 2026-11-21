@@ -18,6 +18,13 @@ config.gamedropsbackport.softBlocks.tooltip=Yün ve beton merdivenler ve basamak
 config.gamedropsbackport.softBlocks.enabled.tooltip=Kapalıyken hiçbir şey kaydedilmez ve bunları içeren bir dünya onları kaybeder.
 config.gamedropsbackport.camps.tooltip=Terkedilmiş kamplar ve kâşif haritaları.
 config.gamedropsbackport.camps.enabled.tooltip=Terkedilmiş kamplar yeni oluşturulan yığınlarda oluşur.
+config.gamedropsbackport.lookAndFeel.tooltip=26.x'in menüleri ve ekranları. Backport Core'un Look & Feel sayfasında aynı anahtarlar var.
+config.gamedropsbackport.lookAndFeel.enabled.tooltip=Kapalıyken bu mod 26.x'in menülerinden ve ekranlarından hiçbirini eklemez ve daha eski bir backport'unkiler kalır.
+config.gamedropsbackport.lookAndFeel.panorama.tooltip=26.3'ün başlık ekranı panoraması: terk edilmiş bir kampla benekli orman.
+config.gamedropsbackport.lookAndFeel.splashes.tooltip=26.1'den 26.3'e karşılama yazılarındaki değişiklikler.
+config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=26.2'nin menü müziği: 1.21.6'nın beş parçası yerine fingerspit'in Ebb, Home, Memories, Nightly ve Shores parçaları.
+config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=26.2'nin duraklatma menüsü: Hata bildir ve Geri bildirim gönder tek sıra simge düğmesi olarak.
+config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Duraklatma menüsünde LAN'a aç yerine 26.3'ün Dünya Seçenekleri ekranı; zorluk Seçenekler'den ayrılır.
 # --- end config tooltips ---
 
 # --- common ---
@@ -35,6 +42,13 @@ config.gamedropsbackport.softBlocks=Yün ve beton şekilleri, minderler ve hası
 config.gamedropsbackport.softBlocks.enabled=Etkin
 config.gamedropsbackport.camps=Terkedilmiş kamplar ve kâşif haritaları
 config.gamedropsbackport.camps.enabled=Etkin
+config.gamedropsbackport.lookAndFeel=Menüler ve ekranlar
+config.gamedropsbackport.lookAndFeel.enabled=Etkin
+config.gamedropsbackport.lookAndFeel.panorama=26.3 panoraması
+config.gamedropsbackport.lookAndFeel.splashes=26.x karşılama yazıları
+config.gamedropsbackport.lookAndFeel.menuMusic=26.2 menü müziği
+config.gamedropsbackport.lookAndFeel.pauseMenu=26.2 duraklatma menüsü
+config.gamedropsbackport.lookAndFeel.worldOptions=Dünya seçenekleri ekranı
 
 # --- sulfur ---
 item.gamedropsbackport.music_disc_bounce.name=Müzik Diski
@@ -292,3 +306,44 @@ subtitles.gamedropsbackport.item.axe.strip=Balta soydu
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=Tüf
+
+# --- lookfeel ---
+music.game.ebb=fingerspit - Ebb
+music.game.home=fingerspit - Home
+music.game.memories=fingerspit - Memories
+music.game.nightly=fingerspit - Nightly
+music.game.shores=fingerspit - Shores
+options.worldOptions.button=Dünya Seçenekleri...
+options.worldOptions.title=Dünya Seçenekleri
+options.worldOptions.general.title=Genel
+options.worldOptions.multiplayer.title=Çok Oyunculu
+options.worldOptions.game_mode=Varsayılan Oyun Modu
+options.worldOptions.game_mode.tooltip=Dünyanın varsayılan oyun modunu değiştirir.
+options.worldOptions.personal_game_mode=Kişisel Oyun Modu
+options.worldOptions.personal_game_mode.tooltip=Dünyadaki oyun modunuzu değiştirir.
+options.worldOptions.game_mode.disabled.operator.tooltip=Oyun kurallarını değiştirmek yönetici yetkisi gerektirir.
+options.worldOptions.game_mode.disabled.tooltip=Zorlayıcı dünyada oyun modu değiştirilemez.
+options.worldOptions.allow_commands.tooltip=Bu dünyada komut kullanımına izin verir.
+options.worldOptions.allow_commands.disabled.tooltip=Zorlayıcı dünyada komutlara izin verilmez.
+options.worldOptions.difficulty.disabled.hardcore.tooltip=Zorlayıcı dünyada zorluk değiştirilemez.
+options.worldOptions.difficulty.disabled.locked.tooltip=Zorluk kilitli.
+options.worldOptions.difficulty.disabled.operator.tooltip=Zorluğu değiştirmek yönetici yetkisi gerektirir.
+options.worldOptions.guest.command_access=Komut Erişimi
+options.worldOptions.guest.command_access.tooltip=Dünyanıza giren oyuncuların komut kullanabilmesini kontrol eder.
+options.worldOptions.guest.command_access.disabled.scope.tooltip="Yerel Ağ" seçeneği "KAPALI" iken dünyanıza giren oyuncuların erişimini değiştirilemez.
+options.worldOptions.guest.command_access.disabled.commands.tooltip=Komut erişimi kapalıyken dünyanıza giren oyuncuların erişimini değiştiremezsiniz.
+options.worldOptions.guest.force_game_mode=Oyun Modunu Zorla
+options.worldOptions.guest.force_game_mode.on.tooltip=Diğer oyuncular dünyanın varsayılan oyun modunda oynatılacaktır.
+options.worldOptions.guest.force_game_mode.off.tooltip=Diğer oyuncular dünyanın varsayılan oyun modu fark etmeden mevcut oyun modlarında kalacaktır.
+options.worldOptions.guest.force_game_mode.off.scope.tooltip="Yerel Ağ" seçeneği "KAPALI" iken bu ayar değiştirilemez.
+options.worldOptions.guest.force_game_mode.off.hardcore.tooltip=Zorlayıcı dünyada bu ayar değiştirilemez.
+options.worldOptions.guest.force_game_mode.off.commands.tooltip=Diğer oyuncular oyun modlarını komutlar ile ayarlayabilir.
+menu.multiplayerOptions.lan=Yerel Ağ
+menu.multiplayerOptions.network.lan.tooltip=Aynı ağdaki oyuncular girebilir.
+menu.multiplayerOptions.network.off.tooltip=Kimse giremez.
+menu.multiplayerOptions.applyChanges=Değişiklikleri Uygula
+menu.multiplayerOptions.publish.started.lan=Bu dünya artık yerel ağa açık. Port numarası %s
+lanServer.port=Bağlantı Noktası Numarası
+lanServer.port.unavailable=Bağlantı noktası kullanılamıyor. Düzenleme kutusunu boş bırakın veya 1024 ve 65535 arasında farklı bir sayı girin.
+lanServer.port.invalid=Bağlantı noktası geçersiz. Düzenleme kutusunu boş bırakın veya 1024 ve 65535 arasında farklı bir sayı girin.
+gamedropsbackport.worldOptions.allowCommands=Hilelere İzin Ver

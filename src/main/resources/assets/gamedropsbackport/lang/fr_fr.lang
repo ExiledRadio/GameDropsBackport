@@ -18,6 +18,13 @@ config.gamedropsbackport.softBlocks.tooltip=Escaliers et dalles en laine et en b
 config.gamedropsbackport.softBlocks.enabled.tooltip=Désactivé, rien n'est enregistré, et un monde qui en contient déjà les perd.
 config.gamedropsbackport.camps.tooltip=Camps abandonnés et cartes d'exploration.
 config.gamedropsbackport.camps.enabled.tooltip=Les camps abandonnés apparaissent dans les chunks nouvellement générés.
+config.gamedropsbackport.lookAndFeel.tooltip=Les menus et écrans de 26.x. La page Look & Feel de Backport Core a les mêmes interrupteurs.
+config.gamedropsbackport.lookAndFeel.enabled.tooltip=Désactivé, ce mod n'ajoute aucun des menus et écrans de 26.x, et ceux d'un backport plus ancien restent.
+config.gamedropsbackport.lookAndFeel.panorama.tooltip=Le panorama de l'écran titre de 26.3 : la forêt tachetée avec un camp abandonné.
+config.gamedropsbackport.lookAndFeel.splashes.tooltip=Les changements des messages d'accueil de 26.1 à 26.3.
+config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=La musique du menu de 26.2 : Ebb, Home, Memories, Nightly et Shores de fingerspit à la place des cinq de 1.21.6.
+config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=Le menu pause de 26.2 : Signaler des bugs et Donner son avis sur une seule ligne de boutons à icône.
+config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=L'écran Options du monde de 26.3 dans le menu pause, à la place d'Ouvrir au LAN ; la difficulté quitte les Options.
 # --- end config tooltips ---
 
 # --- common ---
@@ -35,6 +42,13 @@ config.gamedropsbackport.softBlocks=Formes en laine et en béton, coussins et li
 config.gamedropsbackport.softBlocks.enabled=Activé
 config.gamedropsbackport.camps=Camps abandonnés et cartes d'exploration
 config.gamedropsbackport.camps.enabled=Activé
+config.gamedropsbackport.lookAndFeel=Menus et écrans
+config.gamedropsbackport.lookAndFeel.enabled=Activé
+config.gamedropsbackport.lookAndFeel.panorama=Panorama de 26.3
+config.gamedropsbackport.lookAndFeel.splashes=Messages d'accueil de 26.x
+config.gamedropsbackport.lookAndFeel.menuMusic=Musique du menu de 26.2
+config.gamedropsbackport.lookAndFeel.pauseMenu=Menu pause de 26.2
+config.gamedropsbackport.lookAndFeel.worldOptions=Écran Options du monde
 
 # --- sulfur ---
 item.gamedropsbackport.music_disc_bounce.name=Disque
@@ -292,3 +306,44 @@ subtitles.gamedropsbackport.item.axe.strip=Hache qui écorce
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=Tuf
+
+# --- lookfeel ---
+music.game.ebb=fingerspit - Ebb
+music.game.home=fingerspit - Home
+music.game.memories=fingerspit - Memories
+music.game.nightly=fingerspit - Nightly
+music.game.shores=fingerspit - Shores
+options.worldOptions.button=Options du monde...
+options.worldOptions.title=Options du monde
+options.worldOptions.general.title=Général
+options.worldOptions.multiplayer.title=Multijoueur
+options.worldOptions.game_mode=Mode de jeu par défaut
+options.worldOptions.game_mode.tooltip=Change le mode de jeu par défaut du monde.
+options.worldOptions.personal_game_mode=Mode de jeu personnel
+options.worldOptions.personal_game_mode.tooltip=Change votre mode de jeu dans ce monde.
+options.worldOptions.game_mode.disabled.operator.tooltip=Le changement du mode de jeu nécessite des permissions d'opérateur.
+options.worldOptions.game_mode.disabled.tooltip=Impossible de changer le mode de jeu dans un monde Hardcore.
+options.worldOptions.allow_commands.tooltip=Permet l'utilisation des commandes dans ce monde.
+options.worldOptions.allow_commands.disabled.tooltip=Impossible d'autoriser les commandes dans un monde Hardcore.
+options.worldOptions.difficulty.disabled.hardcore.tooltip=Impossible de changer la difficulté dans un monde Hardcore.
+options.worldOptions.difficulty.disabled.locked.tooltip=La difficulté est verrouillée.
+options.worldOptions.difficulty.disabled.operator.tooltip=Le changement de la difficulté nécessite des permissions d'opérateur.
+options.worldOptions.guest.command_access=Accès aux commandes
+options.worldOptions.guest.command_access.tooltip=Détermine si les joueurs qui rejoignent votre monde peuvent utiliser des commandes.
+options.worldOptions.guest.command_access.disabled.scope.tooltip=Impossible de modifier l'accès aux commandes des joueurs qui rejoignent votre monde lorsque l'option "Réseau local" est désactivée.
+options.worldOptions.guest.command_access.disabled.commands.tooltip=Impossible de modifier le niveau d'accès aux commandes des joueurs qui rejoignent votre monde lorsque les commandes ne sont pas autorisées.
+options.worldOptions.guest.force_game_mode=Forcer le mode de jeu
+options.worldOptions.guest.force_game_mode.on.tooltip=Les autres joueurs seront forcés de jouer dans le mode de jeu par défaut du monde.
+options.worldOptions.guest.force_game_mode.off.tooltip=Les autres joueurs conserveront leur mode de jeu actuel, quel que soit le mode de jeu par défaut du monde.
+options.worldOptions.guest.force_game_mode.off.scope.tooltip=Impossible de modifier ce paramètre lorsque l'option "Réseau local" est désactivée.
+options.worldOptions.guest.force_game_mode.off.hardcore.tooltip=Impossible de modifier ce paramètre dans un monde Hardcore.
+options.worldOptions.guest.force_game_mode.off.commands.tooltip=Les autres joueurs peuvent définir leur propre mode de jeu à l'aide de commandes.
+menu.multiplayerOptions.lan=Réseau local
+menu.multiplayerOptions.network.lan.tooltip=Les joueurs sur le même réseau peuvent rejoindre le monde.
+menu.multiplayerOptions.network.off.tooltip=Personne ne peut rejoindre le monde.
+menu.multiplayerOptions.applyChanges=Appliquer les modifications
+menu.multiplayerOptions.publish.started.lan=Ce monde est maintenant ouvert au réseau local. Le numéro de port est %s
+lanServer.port=Numéro de port
+lanServer.port.unavailable=Port non disponible. Laissez le champ de saisie vide ou entrez un numéro différent compris entre 1024 et 65535.
+lanServer.port.invalid=Port non valide. Laissez le champ de saisie vide ou entrez un numéro compris entre 1024 et 65535.
+gamedropsbackport.worldOptions.allowCommands=Commandes

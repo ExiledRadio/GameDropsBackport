@@ -1,0 +1,5 @@
+advancements.story.enter_the_nether.description=Construye, activa y entra en un portal al Nether
+advancements.story.iron_tools.title=¿No es hierrónico?
+build.tooHigh=El límite de altura para la construcción es de %s bloques
+options.languageWarning=La traducción podría no ser 100%% precisa
+selectWorld.load_folder_access=¡No se pudo acceder o leer la carpeta donde se guardan los mundos!

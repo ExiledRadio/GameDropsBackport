@@ -18,6 +18,13 @@ config.gamedropsbackport.softBlocks.tooltip=Scale e lastre di lana e calcestruzz
 config.gamedropsbackport.softBlocks.enabled.tooltip=Se disattivato, non viene registrato nulla, e un mondo che li contiene già li perde.
 config.gamedropsbackport.camps.tooltip=Accampamenti abbandonati e mappe da esploratore.
 config.gamedropsbackport.camps.enabled.tooltip=Gli accampamenti abbandonati si generano nei chunk appena generati.
+config.gamedropsbackport.lookAndFeel.tooltip=I menu e le schermate di 26.x. La pagina Look & Feel di Backport Core ha gli stessi interruttori.
+config.gamedropsbackport.lookAndFeel.enabled.tooltip=Disattivato, questa mod non aggiunge nessuno dei menu e delle schermate di 26.x, e restano quelli di un backport più vecchio.
+config.gamedropsbackport.lookAndFeel.panorama.tooltip=Il panorama della schermata del titolo di 26.3: la foresta screziata con un accampamento abbandonato.
+config.gamedropsbackport.lookAndFeel.splashes.tooltip=Le modifiche alle frasi del titolo da 26.1 a 26.3.
+config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=La musica del menu di 26.2: Ebb, Home, Memories, Nightly e Shores di fingerspit al posto delle cinque di 1.21.6.
+config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=Il menu di pausa di 26.2: Segnala bug e Invia feedback come una riga di pulsanti a icona.
+config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=La schermata Opzioni mondo di 26.3 nel menu di pausa, al posto di Apri in LAN; la difficoltà lascia le Opzioni.
 # --- end config tooltips ---
 
 # --- common ---
@@ -35,6 +42,13 @@ config.gamedropsbackport.softBlocks=Forme di lana e calcestruzzo, cuscini e pagl
 config.gamedropsbackport.softBlocks.enabled=Attivato
 config.gamedropsbackport.camps=Accampamenti abbandonati e mappe da esploratore
 config.gamedropsbackport.camps.enabled=Attivato
+config.gamedropsbackport.lookAndFeel=Menu e schermate
+config.gamedropsbackport.lookAndFeel.enabled=Attivato
+config.gamedropsbackport.lookAndFeel.panorama=Panorama di 26.3
+config.gamedropsbackport.lookAndFeel.splashes=Frasi del titolo di 26.x
+config.gamedropsbackport.lookAndFeel.menuMusic=Musica del menu di 26.2
+config.gamedropsbackport.lookAndFeel.pauseMenu=Menu di pausa di 26.2
+config.gamedropsbackport.lookAndFeel.worldOptions=Schermata Opzioni mondo
 
 # --- sulfur ---
 item.gamedropsbackport.music_disc_bounce.name=Disco musicale
@@ -292,3 +306,44 @@ subtitles.gamedropsbackport.item.axe.strip=Ascia scorteccia
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=Tufo
+
+# --- lookfeel ---
+music.game.ebb=fingerspit — Ebb
+music.game.home=fingerspit — Home
+music.game.memories=fingerspit — Memories
+music.game.nightly=fingerspit — Nightly
+music.game.shores=fingerspit — Shores
+options.worldOptions.button=Mondo...
+options.worldOptions.title=Opzioni del mondo
+options.worldOptions.general.title=Generale
+options.worldOptions.multiplayer.title=Multigiocatore
+options.worldOptions.game_mode=Modalità di gioco predefinita
+options.worldOptions.game_mode.tooltip=Cambia la modalità di gioco predefinita del mondo.
+options.worldOptions.personal_game_mode=Modalità di gioco personale
+options.worldOptions.personal_game_mode.tooltip=Cambia la tua modalità di gioco in questo mondo.
+options.worldOptions.game_mode.disabled.operator.tooltip=La modalità di gioco può essere impostata solo dagli operatori.
+options.worldOptions.game_mode.disabled.tooltip=La modalità di gioco è bloccata nei mondi in modalità estrema.
+options.worldOptions.allow_commands.tooltip=Determina se i giocatori possono usare i comandi.
+options.worldOptions.allow_commands.disabled.tooltip=I comandi sono bloccati nei mondi in modalità estrema.
+options.worldOptions.difficulty.disabled.hardcore.tooltip=La difficoltà è bloccata nei mondi in modalità estrema.
+options.worldOptions.difficulty.disabled.locked.tooltip=La difficoltà è bloccata.
+options.worldOptions.difficulty.disabled.operator.tooltip=La difficoltà può essere cambiata solo dagli operatori.
+options.worldOptions.guest.command_access=Accesso ai comandi
+options.worldOptions.guest.command_access.tooltip=Determina se i giocatori che entrano nel tuo mondo possono eseguire comandi.
+options.worldOptions.guest.command_access.disabled.scope.tooltip=L'accesso ai comandi per i giocatori che entrano nel mondo è bloccato: la partita non è in multigiocatore.
+options.worldOptions.guest.command_access.disabled.commands.tooltip=L'accesso ai comandi per i giocatori che entrano nel mondo è bloccato: i comandi non sono consentiti.
+options.worldOptions.guest.force_game_mode=Modalità di gioco forzata
+options.worldOptions.guest.force_game_mode.on.tooltip=Gli altri giocatori possono giocare soltanto nella modalità di gioco predefinita.
+options.worldOptions.guest.force_game_mode.off.tooltip=Gli altri giocatori mantengono la loro modalità di gioco attuale indipendentemente da quella predefinita.
+options.worldOptions.guest.force_game_mode.off.scope.tooltip=Quest'impostazione è bloccata: la partita non è in multigiocatore.
+options.worldOptions.guest.force_game_mode.off.hardcore.tooltip=Quest'impostazione è bloccata nei mondi in modalità estrema.
+options.worldOptions.guest.force_game_mode.off.commands.tooltip=Gli altri giocatori possono cambiare la loro modalità di gioco con i comandi.
+menu.multiplayerOptions.lan=Partita in rete locale
+menu.multiplayerOptions.network.lan.tooltip=I giocatori sulla tua stessa rete possono entrare nel mondo.
+menu.multiplayerOptions.network.off.tooltip=Nessuno può entrare nel mondo.
+menu.multiplayerOptions.applyChanges=Modifica
+menu.multiplayerOptions.publish.started.lan=Mondo aperto in rete locale con numero di porta %s
+lanServer.port=Numero di porta
+lanServer.port.unavailable=Porta non disponibile. Lascia il riquadro vuoto o inserisci un numero diverso compreso tra 1024 e 65535.
+lanServer.port.invalid=Porta non valida. Lascia il riquadro vuoto o inserisci un numero tra 1024 e 65535.
+gamedropsbackport.worldOptions.allowCommands=Comandi

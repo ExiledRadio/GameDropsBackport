@@ -63,6 +63,11 @@ public final class ModConfig {
     @Config.Comment("Abandoned camps and explorer maps.")
     public static final Camps camps = new Camps();
 
+    @Setting.Feature(icon = "minecraft:painting")
+    @Config.LangKey("config.gamedropsbackport.lookAndFeel")
+    @Config.Comment("26.x's menus and screens. Backport Core's Look & Feel page has the same switches.")
+    public static final LookAndFeel lookAndFeel = new LookAndFeel();
+
     // ------------------------------------------------------------------------------------------
 
     public static final class Babies {
@@ -144,6 +149,44 @@ public final class ModConfig {
 
         // --- Camps fields ---
         // --- end Camps ---
+    }
+
+    public static final class LookAndFeel {
+        @Config.RequiresMcRestart
+        @Config.Comment("Off, this mod adds none of 26.x's menus and screens, and an older backport's stay.")
+        @Config.LangKey("config.gamedropsbackport.lookAndFeel.enabled")
+        public boolean enabled = true;
+
+        // --- LookAndFeel fields ---
+        @Config.RequiresMcRestart
+        @Setting.Look("title")
+        @Config.Comment("26.3's title screen panorama: the dappled forest with an abandoned camp.")
+        @Config.LangKey("config.gamedropsbackport.lookAndFeel.panorama")
+        public boolean panorama = true;
+
+        @Config.RequiresMcRestart
+        @Setting.Look("title")
+        @Config.Comment("26.1 to 26.3's splash text changes.")
+        @Config.LangKey("config.gamedropsbackport.lookAndFeel.splashes")
+        public boolean splashes = true;
+
+        @Config.RequiresMcRestart
+        @Setting.Look("music")
+        @Config.Comment("26.2's menu music: fingerspit's Ebb, Home, Memories, Nightly and Shores in place of 1.21.6's five.")
+        @Config.LangKey("config.gamedropsbackport.lookAndFeel.menuMusic")
+        public boolean menuMusic = true;
+
+        @Config.RequiresMcRestart
+        @Setting.Look("menus")
+        @Config.Comment("26.2's pause menu: Report Bugs and Send Feedback as one row of icon buttons.")
+        @Config.LangKey("config.gamedropsbackport.lookAndFeel.pauseMenu")
+        public boolean pauseMenu = true;
+
+        @Setting.Look("menus")
+        @Config.Comment("26.3's World Options screen on the pause menu, in place of Open to LAN; Difficulty leaves the Options screen.")
+        @Config.LangKey("config.gamedropsbackport.lookAndFeel.worldOptions")
+        public boolean worldOptions = true;
+        // --- end LookAndFeel ---
     }
 
     // ------------------------------------------------------------------------------------------

@@ -1,0 +1,5 @@
+advancements.story.enter_the_nether.description=Постройте, зажгите и войдите в портал Незера
+advancements.story.iron_tools.title=И кирка без дела ржавеет
+build.tooHigh=Максимальная высота строительства: %s
+options.languageWarning=Переводы могут содержать ошибки.
+selectWorld.load_folder_access=Не удалось получить доступ к папке с мирами!

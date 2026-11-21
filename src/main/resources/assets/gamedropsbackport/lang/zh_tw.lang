@@ -18,6 +18,13 @@ config.gamedropsbackport.softBlocks.tooltip=羊毛與混凝土樓梯和半磚、
 config.gamedropsbackport.softBlocks.enabled.tooltip=停用時不會註冊任何內容，已有這些內容的世界會失去它們。
 config.gamedropsbackport.camps.tooltip=廢棄營地和探險家地圖。
 config.gamedropsbackport.camps.enabled.tooltip=廢棄營地會在新生成的區塊中生成。
+config.gamedropsbackport.lookAndFeel.tooltip=26.x 的選單與畫面。Backport Core 的 Look & Feel 頁面有相同的開關。
+config.gamedropsbackport.lookAndFeel.enabled.tooltip=關閉時，本模組不加入 26.x 的選單與畫面，保留較舊移植模組的。
+config.gamedropsbackport.lookAndFeel.panorama.tooltip=26.3 標題畫面的全景圖：有廢棄營地的斑駁森林。
+config.gamedropsbackport.lookAndFeel.splashes.tooltip=26.1 至 26.3 的閃爍標語變更。
+config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=26.2 的選單音樂：以 fingerspit 的 Ebb、Home、Memories、Nightly 和 Shores 取代 1.21.6 的五首。
+config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=26.2 的暫停選單：回報錯誤與傳送意見回饋成為一排圖示按鈕。
+config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=暫停選單以 26.3 的世界選項畫面取代在區域網路上開放；難度移出選項畫面。
 # --- end config tooltips ---
 
 # --- common ---
@@ -35,6 +42,13 @@ config.gamedropsbackport.softBlocks=羊毛與混凝土形狀、坐墊和乾草�
 config.gamedropsbackport.softBlocks.enabled=啟用
 config.gamedropsbackport.camps=廢棄營地與探險家地圖
 config.gamedropsbackport.camps.enabled=啟用
+config.gamedropsbackport.lookAndFeel=選單與畫面
+config.gamedropsbackport.lookAndFeel.enabled=啟用
+config.gamedropsbackport.lookAndFeel.panorama=26.3 全景圖
+config.gamedropsbackport.lookAndFeel.splashes=26.x 閃爍標語
+config.gamedropsbackport.lookAndFeel.menuMusic=26.2 選單音樂
+config.gamedropsbackport.lookAndFeel.pauseMenu=26.2 暫停選單
+config.gamedropsbackport.lookAndFeel.worldOptions=世界選項畫面
 
 # --- sulfur ---
 item.gamedropsbackport.music_disc_bounce.name=唱片
@@ -292,3 +306,44 @@ subtitles.gamedropsbackport.item.axe.strip=斧頭剝皮
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=凝灰岩
+
+# --- lookfeel ---
+music.game.ebb=fingerspit - Ebb
+music.game.home=fingerspit - Home
+music.game.memories=fingerspit - Memories
+music.game.nightly=fingerspit - Nightly
+music.game.shores=fingerspit - Shores
+options.worldOptions.button=世界選項...
+options.worldOptions.title=世界選項
+options.worldOptions.general.title=一般
+options.worldOptions.multiplayer.title=多人遊戲
+options.worldOptions.game_mode=預設遊戲模式
+options.worldOptions.game_mode.tooltip=變更世界的預設遊戲模式。
+options.worldOptions.personal_game_mode=個人遊戲模式
+options.worldOptions.personal_game_mode.tooltip=變更你在這個世界的遊戲模式。
+options.worldOptions.game_mode.disabled.operator.tooltip=變更遊戲模式需要管理員權限。
+options.worldOptions.game_mode.disabled.tooltip=無法在極限模式世界中變更遊戲模式。
+options.worldOptions.allow_commands.tooltip=允許在這個世界中使用指令。
+options.worldOptions.allow_commands.disabled.tooltip=無法在極限模式世界中開啟「允許指令」。
+options.worldOptions.difficulty.disabled.hardcore.tooltip=無法在極限模式世界中變更難易度。
+options.worldOptions.difficulty.disabled.locked.tooltip=難易度已鎖定。
+options.worldOptions.difficulty.disabled.operator.tooltip=變更難易度需要管理員權限。
+options.worldOptions.guest.command_access=指令使用權限
+options.worldOptions.guest.command_access.tooltip=控制加入世界的玩家是否能使用指令。
+options.worldOptions.guest.command_access.disabled.scope.tooltip=當「區域網路」設為「關閉」時，無法變更加入世界玩家的指令使用權限。
+options.worldOptions.guest.command_access.disabled.commands.tooltip=當「允許指令」設為關閉時，無法變更加入世界玩家的指令使用權限。
+options.worldOptions.guest.force_game_mode=鎖定遊戲模式
+options.worldOptions.guest.force_game_mode.on.tooltip=其他玩家將強制以世界的預設遊戲模式遊玩。
+options.worldOptions.guest.force_game_mode.off.tooltip=不論世界的預設遊戲模式為何，其他玩家都會維持當前的遊戲模式。
+options.worldOptions.guest.force_game_mode.off.scope.tooltip=當「區域網路」設為「關閉」時，無法變更這項設定。
+options.worldOptions.guest.force_game_mode.off.hardcore.tooltip=無法在極限模式世界中變更這項設定。
+options.worldOptions.guest.force_game_mode.off.commands.tooltip=其他玩家可使用指令設定自己的遊戲模式。
+menu.multiplayerOptions.lan=區域網路
+menu.multiplayerOptions.network.lan.tooltip=處於同一網路上的玩家可加入。
+menu.multiplayerOptions.network.off.tooltip=沒有人可加入。
+menu.multiplayerOptions.applyChanges=套用變更
+menu.multiplayerOptions.publish.started.lan=這個世界已開放區域網路連線。連接埠號碼為 %s
+lanServer.port=連接埠號碼
+lanServer.port.unavailable=無法使用這個連接埠。 請將編輯欄留空，或是輸入一個 1024 到 65535 之間的新數值。
+lanServer.port.invalid=無效的連接埠。 請將編輯欄留空，或是輸入一個 1024 到 65535 之間的數值。
+gamedropsbackport.worldOptions.allowCommands=允許作弊

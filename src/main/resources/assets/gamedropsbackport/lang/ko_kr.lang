@@ -18,6 +18,13 @@ config.gamedropsbackport.softBlocks.tooltip=양털과 콘크리트 계단과 반
 config.gamedropsbackport.softBlocks.enabled.tooltip=끄면 아무것도 등록되지 않으며, 이것들이 있는 세계에서는 사라집니다.
 config.gamedropsbackport.camps.tooltip=버려진 야영지와 탐험가 지도.
 config.gamedropsbackport.camps.enabled.tooltip=버려진 야영지가 새로 생성되는 청크에 생성됩니다.
+config.gamedropsbackport.lookAndFeel.tooltip=26.x의 메뉴와 화면입니다. Backport Core의 Look & Feel 페이지에도 같은 스위치가 있습니다.
+config.gamedropsbackport.lookAndFeel.enabled.tooltip=끄면 이 모드는 26.x의 메뉴와 화면을 추가하지 않고, 이전 백포트의 것이 남습니다.
+config.gamedropsbackport.lookAndFeel.panorama.tooltip=26.3의 타이틀 화면 파노라마: 버려진 캠프가 있는 얼룩 숲.
+config.gamedropsbackport.lookAndFeel.splashes.tooltip=26.1부터 26.3까지의 스플래시 텍스트 변경.
+config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=26.2의 메뉴 음악: 1.21.6의 다섯 곡 대신 fingerspit의 Ebb, Home, Memories, Nightly, Shores.
+config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=26.2의 일시 정지 메뉴: 버그 신고와 피드백 보내기를 한 줄의 아이콘 버튼으로.
+config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=LAN에 공개 대신 일시 정지 메뉴에 26.3의 월드 옵션 화면. 난이도는 설정 화면에서 빠집니다.
 # --- end config tooltips ---
 
 # --- common ---
@@ -35,6 +42,13 @@ config.gamedropsbackport.softBlocks=양털과 콘크리트 모양, 방석, 밀�
 config.gamedropsbackport.softBlocks.enabled=활성화
 config.gamedropsbackport.camps=버려진 야영지와 탐험가 지도
 config.gamedropsbackport.camps.enabled=활성화
+config.gamedropsbackport.lookAndFeel=메뉴와 화면
+config.gamedropsbackport.lookAndFeel.enabled=활성화
+config.gamedropsbackport.lookAndFeel.panorama=26.3 파노라마
+config.gamedropsbackport.lookAndFeel.splashes=26.x 스플래시 텍스트
+config.gamedropsbackport.lookAndFeel.menuMusic=26.2 메뉴 음악
+config.gamedropsbackport.lookAndFeel.pauseMenu=26.2 일시 정지 메뉴
+config.gamedropsbackport.lookAndFeel.worldOptions=월드 옵션 화면
 
 # --- sulfur ---
 item.gamedropsbackport.music_disc_bounce.name=음반
@@ -292,3 +306,44 @@ subtitles.gamedropsbackport.item.axe.strip=도끼로 긁어냄
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=응회암
+
+# --- lookfeel ---
+music.game.ebb=fingerspit - Ebb
+music.game.home=fingerspit - Home
+music.game.memories=fingerspit - Memories
+music.game.nightly=fingerspit - Nightly
+music.game.shores=fingerspit - Shores
+options.worldOptions.button=세계 설정...
+options.worldOptions.title=세계 설정
+options.worldOptions.general.title=일반
+options.worldOptions.multiplayer.title=멀티플레이
+options.worldOptions.game_mode=기본 게임 모드
+options.worldOptions.game_mode.tooltip=세계의 기본 게임 모드를 변경합니다.
+options.worldOptions.personal_game_mode=개인 게임 모드
+options.worldOptions.personal_game_mode.tooltip=이 세계에서의 게임 모드를 변경합니다.
+options.worldOptions.game_mode.disabled.operator.tooltip=게임 모드를 변경하려면 관리자 권한이 필요합니다.
+options.worldOptions.game_mode.disabled.tooltip=하드코어 세계에서는 게임 모드를 변경할 수 없습니다.
+options.worldOptions.allow_commands.tooltip=세계에서 명령어 사용을 허용합니다.
+options.worldOptions.allow_commands.disabled.tooltip=하드코어 세계에서는 명령어를 허용할 수 없습니다.
+options.worldOptions.difficulty.disabled.hardcore.tooltip=하드코어 세계에서는 난이도를 변경할 수 없습니다.
+options.worldOptions.difficulty.disabled.locked.tooltip=난이도가 고정되어 있습니다.
+options.worldOptions.difficulty.disabled.operator.tooltip=난이도를 변경하려면 관리자 권한이 필요합니다.
+options.worldOptions.guest.command_access=명령어 접근
+options.worldOptions.guest.command_access.tooltip=세계에 참여하는 플레이어의 명령어 사용 가능 여부를 제어합니다.
+options.worldOptions.guest.command_access.disabled.scope.tooltip="LAN"이 "꺼짐"으로 설정되어 세계에 참여하는 플레이어의 명령어 접근 권한을 변경할 수 없습니다.
+options.worldOptions.guest.command_access.disabled.commands.tooltip=명령어가 허용되지 않아 세계에 참여하는 플레이어의 명령어 접근 권한을 변경할 수 없습니다.
+options.worldOptions.guest.force_game_mode=게임 모드 강제 고정
+options.worldOptions.guest.force_game_mode.on.tooltip=다른 플레이어가 강제로 세계의 기본 게임 모드로 플레이합니다.
+options.worldOptions.guest.force_game_mode.off.tooltip=다른 플레이어가 세계의 기본 게임 모드와 상관없이 현재 게임 모드를 유지합니다.
+options.worldOptions.guest.force_game_mode.off.scope.tooltip="LAN"이 "꺼짐"으로 설정되어 이 설정을 변경할 수 없습니다.
+options.worldOptions.guest.force_game_mode.off.hardcore.tooltip=하드코어 세계에서는 이 설정을 변경할 수 없습니다.
+options.worldOptions.guest.force_game_mode.off.commands.tooltip=다른 플레이어가 명령어로 자신의 게임 모드를 바꿀 수 있습니다.
+menu.multiplayerOptions.lan=LAN
+menu.multiplayerOptions.network.lan.tooltip=같은 네트워크에 있는 플레이어가 참여할 수 있습니다.
+menu.multiplayerOptions.network.off.tooltip=아무도 참여할 수 없습니다.
+menu.multiplayerOptions.applyChanges=변경 사항 적용
+menu.multiplayerOptions.publish.started.lan=이 세계가 이제 LAN에 공개됩니다. 포트 번호는 %s입니다
+lanServer.port=포트 번호
+lanServer.port.unavailable=포트를 사용할 수 없습니다. 편집 상자를 비워두거나 1024와 65535 사이의 다른 번호를 입력하세요.
+lanServer.port.invalid=올바른 포트가 아닙니다. 편집 상자를 비워두거나 1024와 65535 사이의 다른 번호를 입력하세요.
+gamedropsbackport.worldOptions.allowCommands=치트 허용

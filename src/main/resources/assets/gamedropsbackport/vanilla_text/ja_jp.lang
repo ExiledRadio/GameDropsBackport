@@ -1,0 +1,5 @@
+advancements.story.enter_the_nether.description=ネザーポータルを作り、着火し、入る
+advancements.story.iron_tools.title=鉄のツルハシで決まり
+build.tooHigh=建築高度上限は%sです
+options.languageWarning=正確な翻訳が行われていない可能性があります。
+selectWorld.load_folder_access=ワールドのフォルダーの読み込みまたは書き込みができないため、セーブできません！

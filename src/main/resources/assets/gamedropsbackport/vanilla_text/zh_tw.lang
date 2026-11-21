@@ -1,0 +1,5 @@
+advancements.story.enter_the_nether.description=建造、點燃並進入地獄傳送門
+advancements.story.iron_tools.title=莫非這是鐵鎬？
+build.tooHigh=建築高度上限為 %s
+options.languageWarning=語言翻譯並不一定是 100%% 精確。
+selectWorld.load_folder_access=無法讀取或存取遊戲世界存檔所在的資料夾！

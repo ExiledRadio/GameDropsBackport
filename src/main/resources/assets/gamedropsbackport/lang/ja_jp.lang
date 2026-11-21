@@ -18,6 +18,13 @@ config.gamedropsbackport.softBlocks.tooltip=羊毛とコンクリートの階段
 config.gamedropsbackport.softBlocks.enabled.tooltip=オフにすると何も登録されず、これらがあるワールドからは失われます。
 config.gamedropsbackport.camps.tooltip=放棄されたキャンプと探検家の地図。
 config.gamedropsbackport.camps.enabled.tooltip=放棄されたキャンプは新しく生成されたチャンクに生成されます。
+config.gamedropsbackport.lookAndFeel.tooltip=26.x のメニューと画面。Backport Core の Look & Feel ページにも同じスイッチがあります。
+config.gamedropsbackport.lookAndFeel.enabled.tooltip=オフにすると、このMODは 26.x のメニューと画面を追加せず、古いバックポートのものが残ります。
+config.gamedropsbackport.lookAndFeel.panorama.tooltip=26.3 のタイトル画面のパノラマ：廃キャンプのあるまだらの森。
+config.gamedropsbackport.lookAndFeel.splashes.tooltip=26.1 から 26.3 までのスプラッシュテキストの変更。
+config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=26.2 のメニュー音楽：1.21.6 の5曲の代わりに fingerspit の Ebb、Home、Memories、Nightly、Shores。
+config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=26.2 のポーズメニュー：バグ報告とフィードバックを1列のアイコンボタンに。
+config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=LAN に公開の代わりにポーズメニューに 26.3 のワールドオプション画面。難易度はオプション画面から移ります。
 # --- end config tooltips ---
 
 # --- common ---
@@ -35,6 +42,13 @@ config.gamedropsbackport.softBlocks=羊毛とコンクリートの形状、ク�
 config.gamedropsbackport.softBlocks.enabled=有効
 config.gamedropsbackport.camps=放棄されたキャンプと探検家の地図
 config.gamedropsbackport.camps.enabled=有効
+config.gamedropsbackport.lookAndFeel=メニューと画面
+config.gamedropsbackport.lookAndFeel.enabled=有効
+config.gamedropsbackport.lookAndFeel.panorama=26.3 のパノラマ
+config.gamedropsbackport.lookAndFeel.splashes=26.x のスプラッシュテキスト
+config.gamedropsbackport.lookAndFeel.menuMusic=26.2 のメニュー音楽
+config.gamedropsbackport.lookAndFeel.pauseMenu=26.2 のポーズメニュー
+config.gamedropsbackport.lookAndFeel.worldOptions=ワールドオプション画面
 
 # --- sulfur ---
 item.gamedropsbackport.music_disc_bounce.name=レコード
@@ -292,3 +306,44 @@ subtitles.gamedropsbackport.item.axe.strip=斧で剥がす
 
 # --- sulfurcaves ---
 tile.gamedropsbackport.tuff.name=凝灰岩
+
+# --- lookfeel ---
+music.game.ebb=fingerspit - Ebb
+music.game.home=fingerspit - Home
+music.game.memories=fingerspit - Memories
+music.game.nightly=fingerspit - Nightly
+music.game.shores=fingerspit - Shores
+options.worldOptions.button=ワールド設定…
+options.worldOptions.title=ワールド設定
+options.worldOptions.general.title=一般
+options.worldOptions.multiplayer.title=マルチプレイ
+options.worldOptions.game_mode=デフォルトゲームモード
+options.worldOptions.game_mode.tooltip=ワールドのデフォルトゲームモードを変更します。
+options.worldOptions.personal_game_mode=個人用ゲームモード
+options.worldOptions.personal_game_mode.tooltip=このワールドにおけるあなたのゲームモードを変更します。
+options.worldOptions.game_mode.disabled.operator.tooltip=ゲームモードの変更には管理者権限が必要です。
+options.worldOptions.game_mode.disabled.tooltip=ハードコアのワールドではゲームモードを変えることは出来ません。
+options.worldOptions.allow_commands.tooltip=ワールドにおけるコマンドの使用可否を設定します。
+options.worldOptions.allow_commands.disabled.tooltip=ハードコアのワールドではコマンドの許可をオンにできません。
+options.worldOptions.difficulty.disabled.hardcore.tooltip=ハードコアのワールドでは難易度を変えることは出来ません。
+options.worldOptions.difficulty.disabled.locked.tooltip=難易度はロックされています。
+options.worldOptions.difficulty.disabled.operator.tooltip=難易度の変更には管理者権限が必要です。
+options.worldOptions.guest.command_access=コマンドへのアクセス
+options.worldOptions.guest.command_access.tooltip=ワールドに参加したプレイヤーがコマンドを使用できるかどうかを制御します。
+options.worldOptions.guest.command_access.disabled.scope.tooltip=「LAN」が「オフ」の状態では、ワールドに参加しているプレイヤーのコマンドへのアクセスを変更できません。
+options.worldOptions.guest.command_access.disabled.commands.tooltip=コマンドが許可されていない状態では、ワールドに参加中のプレイヤーのコマンドへのアクセスを変更することはできません。
+options.worldOptions.guest.force_game_mode=ゲームモードの強制
+options.worldOptions.guest.force_game_mode.on.tooltip=ワールドにおける他プレイヤーのゲームモードをデフォルトゲームモードに強制します。
+options.worldOptions.guest.force_game_mode.off.tooltip=ワールドにおける他のプレイヤーのゲームモードをデフォルトゲームモードに関わらず維持します。
+options.worldOptions.guest.force_game_mode.off.scope.tooltip=「LAN」が「オフ」の状態ではこの設定を変更できません。
+options.worldOptions.guest.force_game_mode.off.hardcore.tooltip=ハードコアのワールドではこの設定を変更できません。
+options.worldOptions.guest.force_game_mode.off.commands.tooltip=他のプレイヤーがコマンドを使用して自身のゲームモードを設定できます。
+menu.multiplayerOptions.lan=LAN
+menu.multiplayerOptions.network.lan.tooltip=同じネットワーク上のプレイヤーが参加できます。
+menu.multiplayerOptions.network.off.tooltip=誰も参加できません。
+menu.multiplayerOptions.applyChanges=変更を適用
+menu.multiplayerOptions.publish.started.lan=このワールドはLANに公開されました。ポート番号は%sです
+lanServer.port=ポート番号
+lanServer.port.unavailable=このポートは利用できません。 編集ボックスを空にするか、1024から65535までの別の数値を入力してください。
+lanServer.port.invalid=無効なポートです。 編集ボックスを空にするか、1024から65535までの数値を入力してください。
+gamedropsbackport.worldOptions.allowCommands=チートの許可

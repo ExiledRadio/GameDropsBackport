@@ -27,7 +27,7 @@ import org.apache.logging.log4j.Logger;
         name = GameDropsBackport.MOD_NAME,
         version = GameDropsBackport.VERSION,
         acceptedMinecraftVersions = "[1.12.2]",
-        dependencies = "required-after:backportcore@[1.4.3,)"
+        dependencies = "required-after:backportcore@[1.4.6,)"
 )
 public final class GameDropsBackport {
 
@@ -51,6 +51,7 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.poplar.PoplarContent.preInit(event.getSide().isClient());
         CampsContent.preInit();
         com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.preInit();
+        com.exiledradio.gamedropsbackport.lookfeel.LookAndFeel.preInit(event.getSide().isClient());
     }
 
     @Mod.EventHandler

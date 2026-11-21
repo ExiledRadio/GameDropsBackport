@@ -51,6 +51,7 @@ another's classes.
 | 5 | Poplar and the dappled forest | 26.3 | `poplar` | `poplar` | 6-10 | 25-29 | decision 1 for the biome only |
 | 6 | Wool and concrete shapes, cushions, straw beds | 26.3 | `softblocks` | `softBlocks` | 11-15 | 30-34 | nothing |
 | 7 | Abandoned camps and explorer maps | 26.3 | `camps` | `camps` | none | 35-39 | Backport Core (templates, terrain) |
+| 8 | Look and feel | 26.1-26.3 | `lookfeel` | `lookAndFeel` | none | 40-44 | Backport Core 1.4.6 (pause icon row) |
 
 Ports (block 25920-25939): the main checkout's dev server uses 25920; a stream worktree uses `25920 + row`
 (25921-25927). Later 26.x streams take the next rows, up to 25939.
@@ -169,6 +170,58 @@ Where it differs from 26.3:
 - Container loot has no position in 1.12.2: the opening player's block is the origin (biome check, map search).
   Maps search Core's 100 rings, not 26.3's 50, and do not skip structures already on a map.
 - Explorer maps cannot be copied in a crafting grid or cartography table (1.12.2's recipe takes only filled maps).
+
+### 8. Look and feel (26.1-26.3; needs Backport Core)
+
+Backport Core's `presentation` module owns every single-slot piece (panorama, splash list, menu music, pause and
+options layouts, loading screen) and shows the newest installed version's. This mod registers 26.1, 26.2 and 26.3,
+so it is the newest backport and its pieces win over Tricky Trials' 1.21.11. Core's "Newest Look" can still pick an
+older version, and Core's Look & Feel page switches each area off.
+
+The versions are registered whatever the switches say. Like every other backport's, they also reach Core's content
+code (`Presentation.installedNewest`): with this mod alone, worlds now generate with Core's modern biome rules (1.13+
+biome point, layer rules) instead of 1.12.2's, as they already did with any other backport installed.
+
+Survey: the 1.21.11, 26.1, 26.1.2, 26.2 and 26.3 client jars and asset indexes (GUI textures, lang, splashes,
+`sounds.json`, decompiled `PauseScreen`, `WorldOptionsScreen`, `OptionsScreen`, `SignEditScreen`) and the wiki's
+version pages. The jars' panorama faces are 69-byte placeholders; the real ones are in the asset index.
+
+Built here (closest to 26.3). Config category `lookAndFeel`: `enabled` and one switch per row group (panorama,
+splashes, menuMusic, pauseMenu, worldOptions), all on; Core's Look & Feel page lists them under their sections.
+
+| Version | Change | Needs from Core |
+| --- | --- | --- |
+| 26.1 | The version only: its one splash change ("Java 16 + 1 + 4 * 2 = 25!") names a Java version, which Core leaves out on 1.12.2 | nothing |
+| 26.2 | Splash "Music by fingerspit!" ("Now on Vulkan 1.2!" is shipped, but Core leaves out runtime splashes on 1.12.2) | splash pool |
+| 26.2 | Menu music: fingerspit's Ebb, Home, Memories, Nightly and Shores replace 1.21.6's five (weight 1, volume 0.4); Music Toast names "fingerspit - Ebb" ... | menu pool, removal by path (has it) |
+| 26.2 | Pause menu: Report Bugs and Send Feedback become 20 by 20 icon buttons in one row under Advancements and Statistics (sprites `pause_menu/bug`, `pause_menu/social_interactions`) | **new**: the 26.2 pause layout (Core 1.4.6) |
+| 26.3 | Panorama: the dappled forest with an abandoned camp, and its overlay | panorama (has it) |
+| 26.3 | Splash fix: straight quotes in "Don't touch your face!" and "Prepare, but don't hoard!" | splash pool |
+| 26.3 | Pause menu: World Options... in place of Open to LAN. General: Default Game Mode, Personal Game Mode, Allow Commands, Difficulty and its lock. Multiplayer: LAN, Port, Command Access, Force Game Mode. Apply Changes / Cancel | the pause slot (Core places button 7) |
+| 26.3 | Options: Difficulty and its lock leave the in-world Options screen (moved to World Options in 26.1, the World Options button left Options in 26.3) | nothing |
+| 26.1-26.3 | Vanilla text as 26.3 words it (1.12.2 keys only): Enter the Nether's description, Isn't It Iron Pick?, the height limit, the language warning, the saves folder error | vanilla text (has it) |
+
+Not built, and why:
+
+- Online services: Friends list, button, toasts and options (26.2), Graphics API / Vulkan (26.2), Realms invite
+  codes and buttons (26.3), chat restrictions screen (26.1), player reporting. 1.12.2 has none of them.
+- World upgrade screens (26.1), Game Rules search (26.1; 1.12.2 has no game rules screen). World Options has no
+  Game Rules or Restrictions button for the same reason.
+- LAN can't be closed again once open: 1.12.2's server has no way to stop listening. The LAN switch stays on.
+- Exclusive Fullscreen (26.1) and Borderless as the default (26.3): 1.12.2's fullscreen is always exclusive; a
+  borderless mode is a Core Video request.
+- Quit Shortcuts (26.3, on by default: 1.12.2 already quits on Alt+F4), Right Click Emulation and Menu/Dock
+  Visibility (macOS only), the minimum window size: low value; left out.
+- F3: the overlay's own GUI scale (26.3), `player_speed`, day count split (26.1), AM/AX counts (26.2): Core's
+  debug screen; a Core request.
+- Options headings bold, underlined and centered (26.3): Core's option lists; a Core request.
+- Sign edit screen drawn from flat `gui/signs/<wood>.png` (26.2): Trails & Tales owns the sign edit screen; a
+  Trails & Tales request.
+- Creative tab order (26.3's mineral order): Core's creative order files; later.
+- GUI textures: none changed that 1.12.2 draws (26.3's enchanting table differs by 4 unused pixels).
+- In-game music: the fingerspit tracks also join the overworld biome pools (26.2); in-game music is Caves & Cliffs'
+  stream with Core's game music.
+- Loading screen: unchanged since 1.21.9 (Tricky Trials' drawer stays).
 
 ### Later 26.x
 

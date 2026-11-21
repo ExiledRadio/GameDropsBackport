@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=Verlaten kampen en ontdekkingskaarten
 config.gamedropsbackport.camps.tooltip=Verlaten kampen en ontdekkingskaarten.
 config.gamedropsbackport.camps.enabled=Ingeschakeld
 config.gamedropsbackport.camps.enabled.tooltip=Verlaten kampen ontstaan in nieuw gegenereerde chunks.
+config.gamedropsbackport.babies.babyModels=Jongenmodellen
+config.gamedropsbackport.babies.babyModels.tooltip=De jongenmodellen en -texturen van 26.1 voor de jongen van 1.12.2. Uit zijn jongen verkleinde volwassen dieren.

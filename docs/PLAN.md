@@ -69,6 +69,21 @@ Ports (block 25920-25939): the main checkout's dev server uses 25920; a stream w
   textures: listed for Backport Core's modern pack where a texture is enough (a Core request when this stream is
   built), and as our own renderers for vanilla's babies behind a switch.
 
+**Built (2026-11-21, `babies`):** everything above, no patches. Notes:
+- The age lock works on every `EntityAgeable` baby (any mod's) except villagers and skeleton and zombie horses; a
+  locked baby's age holds at -24000. A locked baby horse still eats food that heals it (1.12.2's `handleEating`
+  uses the item), but does not grow.
+- Sound variants are chosen when a mob first joins: random for a spawned mob, classic for a bred baby, an egg
+  chick and a mob from an older world. Pigs play 26.1's eat sound when fed. Baby cat, chicken, horse, pig and
+  wolf sounds included. Saved in the mob's Forge data (`gamedropsbackport:SoundVariant`).
+- Woodland mansion chests lose their name tags, as in 26.1.
+- Village & Pillage's polar bears never attack foxes, so nothing is needed for the baby rule. Nether Update's
+  strider riders already share their mount's warmth.
+- Baby models: our own renderers for 1.12.2's chicken, cow, mooshroom, pig, sheep, wolf, ocelot and cat, rabbit,
+  horse, donkey, mule, skeleton and zombie horse, llama, polar bear, villager (not with Village & Pillage), zombie,
+  husk, zombie villager and pig zombie (not with Nether Update), switch `babies.babyModels`. The rest are for
+  their owner mods (`docs/CORE_REQUESTS.md`).
+
 ### 2. Sulfur and cinnabar blocks (26.2)
 
 - **Sulfur** and **cinnabar**, each with polished, bricks and chiseled forms and their stairs, slabs and walls

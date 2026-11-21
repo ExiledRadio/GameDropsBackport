@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=放棄されたキャンプと探検家の地図
 config.gamedropsbackport.camps.tooltip=放棄されたキャンプと探検家の地図。
 config.gamedropsbackport.camps.enabled=有効
 config.gamedropsbackport.camps.enabled.tooltip=放棄されたキャンプは新しく生成されたチャンクに生成されます。
+config.gamedropsbackport.babies.babyModels=子供のモデル
+config.gamedropsbackport.babies.babyModels.tooltip=1.12.2の子供に26.1の子供のモデルとテクスチャを使います。オフにすると、子供は大人を縮めた姿になります。

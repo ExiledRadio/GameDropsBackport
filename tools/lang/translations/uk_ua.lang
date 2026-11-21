@@ -26,3 +26,5 @@ config.gamedropsbackport.camps=Покинуті табори та мапи до�
 config.gamedropsbackport.camps.tooltip=Покинуті табори та мапи дослідника.
 config.gamedropsbackport.camps.enabled=Увімкнено
 config.gamedropsbackport.camps.enabled.tooltip=Покинуті табори з'являються в нових чанках.
+config.gamedropsbackport.babies.babyModels=Моделі дитинчат
+config.gamedropsbackport.babies.babyModels.tooltip=Моделі й текстури дитинчат із 26.1 для дитинчат 1.12.2. Якщо вимкнено, дитинчата — зменшені дорослі.

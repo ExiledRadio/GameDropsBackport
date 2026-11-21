@@ -45,14 +45,24 @@ public final class GameDropsBackport {
         // Core's settings screen lists the family members it knows by itself; this mod is newer than Core 1.4.0's
         // list, so it registers its page.
         BackportSettings.register(MOD_ID, ModConfig.class);
+        com.exiledradio.gamedropsbackport.network.NetworkHandler.init();
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        com.exiledradio.gamedropsbackport.babies.BabiesContent.init();
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
+        if (event.getSide().isClient()) {
+            // Reached by name, so the dedicated server never loads a client class.
+            try {
+                Class.forName("com.exiledradio.gamedropsbackport.babies.client.BabyRenderers").getMethod("install").invoke(null);
+            } catch (ReflectiveOperationException e) {
+                LOGGER.error("Baby renderers failed to install", e);
+            }
+        }
     }
 
     /**

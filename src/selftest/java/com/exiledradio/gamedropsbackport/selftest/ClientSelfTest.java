@@ -134,6 +134,8 @@ public final class ClientSelfTest {
     private void scenes(Minecraft mc) {
         // Blocks, items, mobs and their screens first: World Options below switches the player to adventure.
         new ClientScenes(this, mc).add(this.steps);
+        // The other backports' babies (Trails & Tales, Wild Update), when their dev jars are on the classpath.
+        new FamilyBabyScene(this, mc).add(this.steps);
         // The pause menu: World Options... in Open to LAN's place, the 26.2 icon row under Advancements and Statistics.
         this.steps.add(() -> {
             mc.displayGuiScreen(new GuiIngameMenu());

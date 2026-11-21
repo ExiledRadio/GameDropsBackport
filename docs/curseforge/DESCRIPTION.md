@@ -83,9 +83,9 @@ Every feature can be turned off in Backport Core's settings screen, under Mod Op
 
 **[Caves & Cliffs Backport](https://www.curseforge.com/minecraft/mc-mods/caves-cliffs-backport)**: in its 1.18 worlds, sulfur caves sit at 26.2's depth among its lush caves, dripstone caves and deep dark. Note blocks on its copper play the trumpet.
 
-**[Wild Update Backport](https://www.curseforge.com/minecraft/mc-mods/wild-update-backport)**: poplar chest boats, wool stairs and slabs dampen vibrations, and explorer maps lead to ancient cities.
+**[Wild Update Backport](https://www.curseforge.com/minecraft/mc-mods/wild-update-backport)**: poplar chest boats, wool stairs and slabs dampen vibrations, explorer maps lead to ancient cities, and golden dandelions keep tadpoles from growing into frogs (Wild Update 1.1.3 or newer).
 
-**[Trails & Tales Backport](https://www.curseforge.com/minecraft/mc-mods/trails-tales-backport)**: cherry trees grow in the cherry grove camps.
+**[Trails & Tales Backport](https://www.curseforge.com/minecraft/mc-mods/trails-tales-backport)**: cherry trees grow in the cherry grove camps, and baby camels, snifflets and armadillos get 26.1's models and textures too (Trails & Tales 1.0.3 or newer). A golden dandelion takes a snifflet back to the start of its longer childhood.
 
 **[Tricky Trials Backport](https://www.curseforge.com/minecraft/mc-mods/tricky-trials-backport)**: leaf litter under the poplars, note blocks on its copper play the trumpet, and explorer maps lead to trial chambers. This mod's menu screens replace its 1.21.11 ones.
 

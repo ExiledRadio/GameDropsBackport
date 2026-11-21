@@ -1,6 +1,6 @@
 package com.exiledradio.gamedropsbackport.babies.client.render;
 
-import com.exiledradio.gamedropsbackport.ModConfig;
+import com.exiledradio.backportcore.presentation.VanillaRevisions;
 
 import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.client.renderer.entity.Render;
@@ -13,7 +13,9 @@ import java.lang.reflect.Method;
 
 /**
  * Stands in for vanilla's renderer of one mob: babies go to the 26.3 baby renderer while
- * {@code babies.enabled && babies.babyModels} (read every frame), everything else to vanilla's renderer untouched.
+ * Core's {@code VanillaRevisions.babyModels()} (read every frame: 26.1 installed, Core's textures switch on, and
+ * {@code babies.enabled && babies.babyModels}, the switch this mod hands Core), everything else to vanilla's renderer
+ * untouched. The other backports draw their own babies by the same answer.
  */
 public final class BabyWrapper<T extends EntityLiving> extends Render<T> {
 
@@ -33,7 +35,7 @@ public final class BabyWrapper<T extends EntityLiving> extends Render<T> {
     }
 
     private boolean useBaby(T entity) {
-        return ModConfig.babies.enabled && ModConfig.babies.babyModels && entity.isChild() && baby.handles(entity);
+        return entity.isChild() && VanillaRevisions.babyModels() && baby.handles(entity);
     }
 
     private Render<T> pick(T entity) {

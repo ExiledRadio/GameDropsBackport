@@ -1,5 +1,6 @@
 package com.exiledradio.gamedropsbackport.babies;
 
+import com.exiledradio.backportcore.mechanics.AgeLockable;
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
 import com.exiledradio.gamedropsbackport.network.NetworkHandler;
 
@@ -39,18 +40,21 @@ import java.util.WeakHashMap;
  *
  * <ul>
  *   <li>Works on every {@link EntityAgeable} baby (any mod's) except villagers and skeleton and zombie horses
- *       (26.3's {@code cannot_be_age_locked}). Each use resets the baby's age to the start, -24000, uses one
- *       dandelion (not in creative), plays {@code item.golden_dandelion.use} or {@code .unuse}, and starts a
- *       2-second cooldown on that mob. A locked baby never despawns.</li>
- *   <li>While locked the age stays at -24000, and food that only grows a baby ({@link EntityAnimal}'s breeding
- *       item) is refused and not used up. Saved as {@code AgeLocked} in the mob's Forge data.</li>
+ *       (26.3's {@code cannot_be_age_locked}), and on every mob that implements Backport Core's
+ *       {@link AgeLockable} (Wild Update's tadpole, always a baby). Each use resets the baby's age to the start
+ *       (-24000, or its {@link AgeLockable#startAge()}: a snifflet's -48000, a tadpole's 0), uses one dandelion
+ *       (not in creative), plays {@code item.golden_dandelion.use} or {@code .unuse}, and starts a 2-second
+ *       cooldown on that mob. A locked baby never despawns.</li>
+ *   <li>While locked the age stays at the start, and food that only grows a baby ({@link EntityAnimal}'s breeding
+ *       item) is refused and not used up (an {@code AgeLockable} owner refuses its own). Saved as
+ *       {@link AgeLockable#LOCKED} ({@code AgeLocked}) in the mob's Forge data.</li>
  *   <li>For 2 seconds after a use, particles drift down from above the mob (locked) or up (unlocked).</li>
  * </ul>
  */
 @Mod.EventBusSubscriber(modid = GameDropsBackport.MOD_ID)
 public final class AgeLock {
 
-    public static final String LOCKED = "AgeLocked";
+    public static final String LOCKED = AgeLockable.LOCKED;
     /** The age a baby is held at, recorded the first tick it is held (26.1: babies of undead horses keep theirs). */
     private static final String HELD_AGE = GameDropsBackport.MOD_ID + ":HeldAge";
     public static final int BABY_START_AGE = -24000;
@@ -65,7 +69,35 @@ public final class AgeLock {
     // ------------------------------------------------------------------------------------------
 
     public static boolean isLocked(Entity entity) {
-        return entity.getEntityData().getBoolean(LOCKED);
+        return AgeLockable.isLocked(entity);
+    }
+
+    /** @return true for a mob the lock knows: an {@link EntityAgeable} or an {@link AgeLockable} */
+    public static boolean lockable(Entity entity) {
+        return entity instanceof EntityLiving && (entity instanceof EntityAgeable || entity instanceof AgeLockable);
+    }
+
+    /** @return whether a {@link #lockable} mob is a baby */
+    public static boolean isBaby(EntityLiving mob) {
+        return mob instanceof AgeLockable ? ((AgeLockable) mob).isBaby() : ((EntityAgeable) mob).isChild();
+    }
+
+    /** @return a {@link #lockable} mob's age, in its own terms */
+    static int age(EntityLiving mob) {
+        return mob instanceof AgeLockable ? ((AgeLockable) mob).getAge() : ((EntityAgeable) mob).getGrowingAge();
+    }
+
+    static void setAge(EntityLiving mob, int age) {
+        if (mob instanceof AgeLockable) {
+            ((AgeLockable) mob).setAge(age);
+        } else {
+            ((EntityAgeable) mob).setGrowingAge(age);
+        }
+    }
+
+    /** @return the age a {@link #lockable} mob's babies start at (26.3's {@code getBabyStartAge}) */
+    public static int startAge(EntityLiving mob) {
+        return mob instanceof AgeLockable ? ((AgeLockable) mob).startAge() : BABY_START_AGE;
     }
 
     /** @return true for mobs 26.3 lists in {@code cannot_be_age_locked} */
@@ -78,12 +110,12 @@ public final class AgeLock {
     }
 
     /** @return true while this baby's age must not move */
-    static boolean held(EntityAgeable mob) {
-        return mob.getGrowingAge() < 0 && (isLocked(mob) || isUndeadHorse(mob));
+    static boolean held(EntityLiving mob) {
+        return isBaby(mob) && (isLocked(mob) || isUndeadHorse(mob));
     }
 
     /** Toggles the lock, as a golden dandelion does. Server side. */
-    public static void toggle(EntityAgeable mob, EntityPlayer player, ItemStack stack) {
+    public static void toggle(EntityLiving mob, EntityPlayer player, ItemStack stack) {
         boolean locked = !isLocked(mob);
         NBTTagCompound data = mob.getEntityData();
         if (locked) {
@@ -92,7 +124,7 @@ public final class AgeLock {
             data.removeTag(LOCKED);
         }
         data.removeTag(HELD_AGE);
-        mob.setGrowingAge(BABY_START_AGE);
+        setAge(mob, startAge(mob));
         LAST_USE.put(mob, mob.world.getTotalWorldTime());
         if (player != null && !player.capabilities.isCreativeMode) {
             stack.shrink(1);
@@ -117,12 +149,12 @@ public final class AgeLock {
 
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onInteract(PlayerInteractEvent.EntityInteract event) {
-        if (!BabiesContent.on() || !(event.getTarget() instanceof EntityAgeable)) {
+        if (!BabiesContent.on() || !lockable(event.getTarget())) {
             return;
         }
-        EntityAgeable mob = (EntityAgeable) event.getTarget();
+        EntityLiving mob = (EntityLiving) event.getTarget();
         ItemStack stack = event.getItemStack();
-        if (!mob.isChild()) {
+        if (!isBaby(mob)) {
             return;
         }
         if (!stack.isEmpty() && stack.getItem() == BabiesContent.goldenDandelionItem && !cannotBeLocked(mob)) {
@@ -143,10 +175,10 @@ public final class AgeLock {
     /** Fired before {@code onLivingUpdate} adds one to the age: the age is set one lower so it stays put. */
     @SubscribeEvent
     public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
-        if (!BabiesContent.on() || !(event.getEntity() instanceof EntityAgeable) || event.getEntity().world.isRemote) {
+        if (!BabiesContent.on() || !lockable(event.getEntity()) || event.getEntity().world.isRemote) {
             return;
         }
-        EntityAgeable mob = (EntityAgeable) event.getEntity();
+        EntityLiving mob = (EntityLiving) event.getEntity();
         if (!held(mob)) {
             return;
         }
@@ -155,10 +187,10 @@ public final class AgeLock {
         if (data.hasKey(HELD_AGE)) {
             age = data.getInteger(HELD_AGE);
         } else {
-            age = isLocked(mob) ? BABY_START_AGE : mob.getGrowingAge();
+            age = isLocked(mob) ? startAge(mob) : age(mob);
             data.setInteger(HELD_AGE, age);
         }
-        mob.setGrowingAge(age - 1);
+        setAge(mob, age - 1);
     }
 
     /** Skeleton and zombie horses lose 1.12.2's panic task (26.1: they no longer panic when hurt). */
@@ -185,7 +217,7 @@ public final class AgeLock {
     /** A player who starts seeing a locked baby learns it is locked (its client refuses food the same way). */
     @SubscribeEvent
     public static void onStartTracking(PlayerEvent.StartTracking event) {
-        if (BabiesContent.on() && event.getTarget() instanceof EntityAgeable && isLocked(event.getTarget())
+        if (BabiesContent.on() && lockable(event.getTarget()) && isLocked(event.getTarget())
                 && event.getEntityPlayer() instanceof EntityPlayerMP) {
             NetworkHandler.channel.sendTo(new AgeLockMessage(event.getTarget().getEntityId(), true, false),
                     (EntityPlayerMP) event.getEntityPlayer());

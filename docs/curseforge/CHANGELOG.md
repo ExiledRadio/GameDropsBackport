@@ -3,7 +3,7 @@
 First release: Minecraft's 26.1, 26.2 and 26.3 game drops on Minecraft 1.12.2.
 
 *   **The golden dandelion**: keeps a baby animal a baby, makes yellow dye and a suspicious stew of Saturation.
-*   **The babies**: 26.1's baby models and textures for 1.12.2's animals and zombies, 26.1's cat, pig, cow and chicken sound variants, and crafted name tags.
+*   **The babies**: 26.1's baby models and textures for 1.12.2's animals and zombies, 26.1's cat, pig, cow and chicken sound variants, and crafted name tags. With Trails & Tales Backport 1.0.3, its baby camels, snifflets and armadillos get theirs too; with Wild Update Backport 1.1.3, golden dandelions lock tadpoles.
 *   **Sulfur and cinnabar** in every stone shape, potent sulfur, sulfur spikes and the music disc Bounce.
 *   **The sulfur cube** and its 12 kinds by the block it holds.
 *   **Sulfur caves** and sulfur springs.

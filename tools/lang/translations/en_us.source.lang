@@ -1,7 +1,7 @@
 # The English each translations/<code>.lang entry was made from. Written by build_langs.py snapshot.
 config.gamedropsbackport.babies.tooltip=The golden dandelion, the new babies, name tag recipes and the adult sound variants.
 config.gamedropsbackport.babies.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
-config.gamedropsbackport.babies.babyModels.tooltip=26.1's baby models and textures for 1.12.2's babies. Off, babies are shrunken adults.
+config.gamedropsbackport.babies.babyModels.tooltip=26.1's baby models and textures for 1.12.2's babies and the other backports' (Trails & Tales' camels, snifflets and armadillos). Off, babies are shrunken adults.
 config.gamedropsbackport.sulfur.tooltip=Sulfur and cinnabar blocks, potent sulfur, sulfur spikes and the music disc Bounce.
 config.gamedropsbackport.sulfur.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
 config.gamedropsbackport.sulfurCube.tooltip=The sulfur cube.

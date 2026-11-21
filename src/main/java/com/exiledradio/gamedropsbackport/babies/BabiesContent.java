@@ -190,6 +190,15 @@ public final class BabiesContent {
     }
 
     /** From init: the wandering trader's two trades (read by Village &amp; Pillage, if installed). */
+    /**
+     * Pre-init, both sides: hands Core this stream's switch for 26.1's baby models
+     * ({@code VanillaRevisions.babyModels()}), which the other backports' baby renderers read too.
+     */
+    public static void preInit() {
+        com.exiledradio.backportcore.presentation.VanillaRevisions.setBabyModelSwitch(
+                () -> ModConfig.babies.enabled && ModConfig.babies.babyModels);
+    }
+
     public static void init() {
         if (!on()) {
             return;

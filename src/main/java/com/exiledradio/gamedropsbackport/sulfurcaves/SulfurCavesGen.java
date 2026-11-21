@@ -54,7 +54,8 @@ public final class SulfurCavesGen implements IWorldGenerator {
         if (!any) {
             return 0;
         }
-        int changed = bands(world, x0, z0);
+        // Caves & Cliffs' Game Drops edition lays the bands in its surface rules, before its ores and deepslate.
+        int changed = SulfurCaves.terrainHasSulfurCaves(world) ? 0 : bands(world, x0, z0);
         Random rand = new Random(LegacyRegions.mix(world.getSeed() ^ 0x26_02_5CL, chunkX, chunkZ));
         Features f = new Features(world, chunkX * 16, chunkZ * 16, rand);
         f.rootedSprings(x0, z0);

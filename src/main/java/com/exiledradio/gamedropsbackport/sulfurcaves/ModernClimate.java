@@ -48,7 +48,7 @@ final class ModernClimate {
             return null;
         }
         Object generator = ((WorldServer) world).getChunkProvider().chunkGenerator;
-        if (generator == null || !generator.getClass().getName().endsWith(GENERATOR)) {
+        if (generator == null || !generator.getClass().getName().endsWith(GENERATOR) || SulfurCaves.terrainHasSulfurCaves(world)) {
             return null;
         }
         synchronized (ModernClimate.class) {

@@ -9,6 +9,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.BiomeDictionary;
@@ -204,26 +205,43 @@ public final class SulfurCaves {
 
     private static Method biomeId;
     private static boolean looked;
-    private static Boolean knowsSulfurCaves;
+    private static Method editions;
+    private static int gameDropsEdition = -1;
 
     /** @return non-null when the world's 1.18 terrain has a 3D biome named {@link #BIOME}: then it is the answer */
     @Nullable
     private static String modernBiomeName(World world) {
-        if (modernBiome(world, BlockPos.ORIGIN) == null) {
-            return null;
+        return terrainHasSulfurCaves(world) ? BIOME : null;
+    }
+
+    /**
+     * @return true when the world is Caves &amp; Cliffs' 1.18 terrain made with its Game Drops edition
+     *     ({@code Editions.GAME_DROPS}): the terrain places the sulfur caves, lays their bands and names the biome
+     *     itself, so our climate box ({@link ModernClimate}) and the bands at population step aside. A 1.18 world made
+     *     before that edition (or without Game Drops) keeps them.
+     */
+    public static boolean terrainHasSulfurCaves(World world) {
+        if (!(world instanceof WorldServer)) {
+            return false;
         }
-        if (knowsSulfurCaves == null) {
-            boolean knows;
-            try {
-                Class<?> biomes = Class.forName("com.exiledradio.cavesandcliffsbackport.terrain.core.Biomes", false,
-                        SulfurCaves.class.getClassLoader());
-                knows = (Integer) biomes.getMethod("byName", String.class).invoke(null, "sulfur_caves") >= 0;
-            } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
-                knows = false;
+        Object generator = ((WorldServer) world).getChunkProvider().chunkGenerator;
+        if (generator == null || !generator.getClass().getName().equals("com.exiledradio.cavesandcliffsbackport.terrain.ModernGenerator")) {
+            return false;
+        }
+        try {
+            synchronized (SulfurCaves.class) {
+                if (gameDropsEdition < 0) {
+                    gameDropsEdition = Class.forName("com.exiledradio.cavesandcliffsbackport.terrain.core.Editions", false,
+                            generator.getClass().getClassLoader()).getField("GAME_DROPS").getInt(null);
+                    editions = generator.getClass().getMethod("editions");
+                }
             }
-            knowsSulfurCaves = knows;
+            return (((Integer) editions.invoke(generator)) & gameDropsEdition) != 0;
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
+            // A Caves & Cliffs without the edition.
+            gameDropsEdition = 0;
+            return false;
         }
-        return knowsSulfurCaves ? BIOME : null;
     }
 
     /** @return the 1.18 terrain's biome id at a block, or null in a world without it (Core's {@code ModernGeneration}) */

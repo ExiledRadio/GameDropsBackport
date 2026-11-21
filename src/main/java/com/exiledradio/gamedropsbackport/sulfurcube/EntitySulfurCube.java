@@ -534,7 +534,8 @@ public class EntitySulfurCube extends EntityAgeable {
 
     /**
      * 26.3's {@code restituteMovementAfterCollisions}: a cube that holds a block bounces off what it hits by its
-     * bounciness (and off slime blocks and beds by theirs); honey blocks and sneaking stop the bounce.
+     * bounciness (and off slime blocks and beds by theirs); honey blocks and sneaking stop the bounce. Each bounce
+     * emits the {@code bounce} game event.
      */
     @Override
     public void move(MoverType type, double x, double y, double z) {
@@ -589,6 +590,8 @@ public class EntitySulfurCube extends EntityAgeable {
         this.motionY = ny;
         this.motionZ = nz;
         if (bounced) {
+            // 26.2's bounce game event (Backport Core 1.4.4's GameEvent.BOUNCE): sculk hears a bouncing cube.
+            vibration(GameEvent.BOUNCE, this);
             this.velocityChanged = true;
         }
     }

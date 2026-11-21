@@ -11,8 +11,7 @@ Everything structural is 26.3's own file, unchanged, so no number is written by 
   * the three loot tables, into camps/loot_table/ where camps.CampLoot rolls them. 1.12.2 needs a table file to
     fire its load event, so each also gets an empty loot_tables/camps/<path>.json that CampLoot fills at load.
 
-Explorer maps: 26.3's sixteen map items (textures and names), and the map decoration sprites Backport Core does
-not ship yet, under its sprite folder (assets/backportcore/textures/map/decorations/).
+Explorer maps: 26.3's sixteen map items (textures and names). Their decoration sprites are Backport Core's (1.4.4).
 """
 import json
 import os
@@ -20,7 +19,6 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import assets  # noqa: E402
-import png_rgba  # noqa: E402
 
 M = assets.MODID
 
@@ -41,9 +39,6 @@ MAPS = ("abandoned_camp_map", "buried_ancient_city_map", "buried_mineshaft_map",
         "buried_trial_chambers_map", "desert_pyramid_map", "desert_village_map", "jungle_pyramid_map",
         "ocean_monument_map", "plains_village_map", "savanna_village_map", "snowy_village_map", "swamp_hut_map",
         "taiga_village_map", "warm_ocean_ruins_map", "woodland_mansion_map")
-# 26.3's decoration sprites that Backport Core 1.4.3 lacks (it has the villages, swamp hut, jungle temple,
-# trial chambers and red X).
-SPRITES = ("abandoned_camp", "ancient_city", "desert_pyramid", "mineshaft", "warm_ocean_ruins")
 
 counts = {"structure": 0, "json": 0, "loot": 0}
 for name in sorted(assets.JAR.namelist()):
@@ -79,12 +74,6 @@ for key in sorted(assets.VANILLA_LANG):
     if key.startswith("filled_map.") and key.endswith("_camp_map"):
         names[key] = assets.name(key)
 
-core = os.path.join(assets.ROOT, "src", "main", "resources", "assets", "backportcore", "textures", "map", "decorations")
-os.makedirs(core, exist_ok=True)
-for s in SPRITES:
-    with open(os.path.join(core, s + ".png"), "wb") as f:
-        f.write(png_rgba.keyed_to_rgba(assets.jar_bytes("assets/minecraft/textures/map/decorations/%s.png" % s)))
-
 assets.merge_lang("camps", ["%s=%s" % (k, v) for k, v in sorted(names.items())])
 print("camps: %(structure)d structure files, %(json)d pool, structure and tag files, %(loot)d loot tables" % counts)
-print("maps: %d items, %d decoration sprites" % (len(MAPS), len(SPRITES)))
+print("maps: %d items" % len(MAPS))

@@ -1,5 +1,6 @@
 package com.exiledradio.gamedropsbackport.camps;
 
+import com.exiledradio.backportcore.locate.StructureClaims;
 import com.exiledradio.backportcore.locate.StructureLocate;
 import com.exiledradio.backportcore.map.MapIcons;
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
@@ -134,23 +135,31 @@ public final class ExplorerMaps {
      *
      * @param destination a structure id or tag, {@code #minecraft:on_mineshaft_maps}
      * @param decoration  today's decoration id, {@code minecraft:mineshaft}
+     * @param searchRadius the function's {@code search_radius} (26.3: 50), in regions
+     * @param skipExisting the function's {@code skip_existing_chunks} (26.3: true): pass over the structures another
+     *                     map already leads to, and claim the one found (Backport Core's {@code StructureClaims})
      * @return the map, or null where no such structure can be found
      */
     @Nullable
-    public static ItemStack create(World world, BlockPos from, Item item, String destination, String decoration) {
+    public static ItemStack create(World world, BlockPos from, Item item, String destination, String decoration,
+                                   int searchRadius, boolean skipExisting) {
         if (!(world instanceof WorldServer)) {
             return null;
         }
-        BlockPos target = null;
+        StructureLocate.Found best = null;
         for (String id : CampSettings.structureTag(destination)) {
-            BlockPos found = locate((WorldServer) world, from, id);
-            if (found != null && (target == null || from.distanceSq(found) < from.distanceSq(target))) {
-                target = found;
+            StructureLocate.Found found = locate((WorldServer) world, from, id, searchRadius, skipExisting);
+            if (found != null && (best == null || from.distanceSq(found.pos) < from.distanceSq(best.pos))) {
+                best = found;
             }
         }
-        if (target == null) {
+        if (best == null) {
             return null;
         }
+        if (skipExisting && best.chunk != null) {
+            StructureClaims.of(world).claim(best.id, best.chunk.x, best.chunk.z);
+        }
+        BlockPos target = best.pos;
         Kind kind = KINDS.get(item.getRegistryName().getPath());
         MapDecoration.Type type = byDecoration(decoration, kind == null ? null : kind.type);
         if (type == null) {
@@ -163,14 +172,14 @@ public final class ExplorerMaps {
     }
 
     @Nullable
-    private static BlockPos locate(WorldServer world, BlockPos from, String id) {
+    private static StructureLocate.Found locate(WorldServer world, BlockPos from, String id, int rings, boolean skipExisting) {
         CampSettings.Variant camp = CampSettings.get().variant(id);
         if (!StructureLocate.known(id) || camp != null && !AbandonedCampStructure.possible(camp)) {
             return null;
         }
         try {
-            StructureLocate.Found found = StructureLocate.nearest(world, from, id);
-            return found == null ? null : found.pos;
+            // Each member is searched without claiming; create claims the nearest of them.
+            return StructureLocate.nearest(world, from, id, rings, skipExisting, false);
         } catch (StructureLocate.Unavailable e) {
             return null;
         } catch (RuntimeException e) {

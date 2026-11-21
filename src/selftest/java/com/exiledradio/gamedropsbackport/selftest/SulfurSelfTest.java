@@ -417,6 +417,12 @@ final class SulfurSelfTest implements SelfTest {
         ItemSulfurDisc disc = SulfurContent.bounce;
         check.ok(item("music_disc_bounce") == disc, "music_disc_bounce registered");
         check.eq(8, disc.comparatorSignal(), "Bounce comparator signal");
+        BlockPos box = new BlockPos(0, 120, 40);
+        check.world.setBlockState(box, Blocks.JUKEBOX.getDefaultState(), 2);
+        ((net.minecraft.block.BlockJukebox.TileEntityJukebox) check.world.getTileEntity(box)).setRecord(new ItemStack(disc));
+        check.eq(8, Blocks.JUKEBOX.getComparatorInputOverride(check.world.getBlockState(box), check.world, box),
+                "a comparator reads 8 from a jukebox playing Bounce (Backport Core's P41)");
+        check.world.setBlockState(box, Blocks.AIR.getDefaultState(), 2);
         check.eq(EnumRarity.UNCOMMON, disc.getRarity(new ItemStack(disc)), "Bounce rarity");
         check.eq(1, disc.getItemStackLimit(new ItemStack(disc)), "a disc stacks to 1");
         check.eq(Reg.id("music_disc.bounce"), disc.music().getRegistryName(), "Bounce sound event");

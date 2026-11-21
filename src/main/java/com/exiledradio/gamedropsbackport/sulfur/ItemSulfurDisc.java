@@ -9,9 +9,8 @@ import net.minecraft.util.SoundEvent;
  * Music disc Bounce on 1.12.2's record item, so the jukebox, "Now Playing", the tooltip line
  * ({@code item.record.bounce.desc}) and the record stat are vanilla's. Uncommon, as 26.3's.
  *
- * <p>It carries 26.3's comparator signal (8) under the name the family's jukebox patch reads
- * ({@code comparatorSignal()}; {@code docs/CORE_REQUESTS.md}). Until Backport Core shares that patch, 1.12.2's jukebox
- * counts the signal from the item id, as it does for every modded disc.
+ * <p>It carries 26.3's comparator signal (8) under the name Backport Core's jukebox patch reads
+ * ({@code comparatorSignal()}, patch P41 since Core 1.4.4), so a comparator next to a jukebox playing it gives 8.
  */
 public final class ItemSulfurDisc extends ItemRecord {
 

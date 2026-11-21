@@ -18,6 +18,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemMap;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
@@ -198,7 +199,7 @@ final class CampsSelfTest implements SelfTest {
             check.ok(ExplorerMaps.type(n) != null, n + " has a decoration type");
         }
         Item mineshaftMap = ForgeRegistries.ITEMS.getValue(new ResourceLocation(GameDropsBackport.MOD_ID, "buried_mineshaft_map"));
-        ItemStack map = ExplorerMaps.create(world, from, mineshaftMap, "#minecraft:on_mineshaft_maps", "minecraft:mineshaft");
+        ItemStack map = ExplorerMaps.create(world, from, mineshaftMap, "#minecraft:on_mineshaft_maps", "minecraft:mineshaft", 50, true);
         if (check.ok(map != null, "a buried mineshaft map is made (mineshafts exist)")) {
             check.ok(map.getItem() == mineshaftMap, "made as the buried mineshaft map item");
             MapData data = ((ItemMap) mineshaftMap).getMapData(map, world);
@@ -209,10 +210,21 @@ final class CampsSelfTest implements SelfTest {
         }
         Item campMap = ForgeRegistries.ITEMS.getValue(new ResourceLocation(GameDropsBackport.MOD_ID, "abandoned_camp_map"));
         String tag = "#minecraft:on_abandoned_camp_" + first.getKey().substring("minecraft:abandoned_camp_".length());
-        ItemStack toCamp = ExplorerMaps.create(world, from, campMap, first.getKey(), "minecraft:abandoned_camp");
+        ItemStack toCamp = ExplorerMaps.create(world, from, campMap, first.getKey(), "minecraft:abandoned_camp", 50, true);
         check.ok(toCamp != null, "a camp map to " + first.getKey() + " (" + tag + ")");
+        // 26.3's skip_existing_chunks: the next map leads to another camp (Backport Core's structure claims).
+        ItemStack next = ExplorerMaps.create(world, from, campMap, first.getKey(), "minecraft:abandoned_camp", 50, true);
+        if (check.ok(toCamp != null && next != null, "a second camp map")) {
+            NBTTagCompound da = toCamp.getTagCompound().getTagList("Decorations", 10).getCompoundTagAt(0);
+            NBTTagCompound db = next.getTagCompound().getTagList("Decorations", 10).getCompoundTagAt(0);
+            check.ok(da.getDouble("x") != db.getDouble("x") || da.getDouble("z") != db.getDouble("z"),
+                    "the second map leads to another camp (skip_existing_chunks)");
+        }
+        // Today's item names through Backport Core's ModernItems: cobweb is 1.12.2's web, red_dye is dye:1.
+        check.ok(CampLoot.stack("minecraft:cobweb").getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.WEB), "cobweb is web");
+        check.ok(CampLoot.stack("minecraft:red_dye").getMetadata() == 1, "red_dye is dye:1");
         // A structure no installed mod has: no map.
-        check.ok(ExplorerMaps.create(world, from, campMap, "minecraft:no_such_structure", "minecraft:abandoned_camp") == null,
+        check.ok(ExplorerMaps.create(world, from, campMap, "minecraft:no_such_structure", "minecraft:abandoned_camp", 50, true) == null,
                 "no map where the structure does not exist");
 
         // --- 26.3's ExplorerMapItemFix: a 1.12.2 cartographer's ocean explorer map

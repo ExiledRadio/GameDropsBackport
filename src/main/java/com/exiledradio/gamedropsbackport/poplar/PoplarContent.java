@@ -1,6 +1,7 @@
 package com.exiledradio.gamedropsbackport.poplar;
 
 import com.exiledradio.backportcore.ownership.BlockOwnership;
+import com.exiledradio.backportcore.structure.JigsawPools;
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
 import com.exiledradio.gamedropsbackport.ModConfig;
 import com.exiledradio.gamedropsbackport.poplar.wood.AxeStripping;
@@ -110,6 +111,16 @@ public final class PoplarContent {
             PoplarTrades.init();
             if (biome != null) {
                 biome.addFox();
+            }
+            // 26.3's red_poplar, orange_poplar and yellow_poplar placed features, which the camps' jigsaw pools grow:
+            // the worldgen poplar of that leaf color where a poplar sapling would survive. Registered at init, after the
+            // camps' preInit fallback (which grows a sapling, whose color is its own).
+            for (BlockPoplarLeaves.Color color : BlockPoplarLeaves.Color.values()) {
+                JigsawPools.feature("minecraft:" + color.name + "_poplar", (world, pos, random, feature) -> {
+                    if (sapling != null && sapling.canPlaceBlockAt(world, pos)) {
+                        PoplarFeatures.tree(world, random, pos, color, false);
+                    }
+                });
             }
         }
     }

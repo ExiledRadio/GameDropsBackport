@@ -1,13 +1,13 @@
 package com.exiledradio.gamedropsbackport.camps;
 
 import com.exiledradio.backportcore.ownership.ItemOwnership;
+import com.exiledradio.backportcore.structure.ModernItems;
 import com.exiledradio.backportcore.structure.ModernPalette;
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import net.minecraft.entity.Entity;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionType;
@@ -23,7 +23,6 @@ import net.minecraft.world.storage.loot.RandomValueRange;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -52,13 +51,6 @@ public final class CampLoot {
             "chests/abandoned_camp_secret_chest"};
     /** Our 1.12.2 table names to 26.3's paths. */
     static final Map<ResourceLocation, String> OURS = new HashMap<ResourceLocation, String>();
-    /** 1.13's item renames of the items these tables name. */
-    static final Map<String, String> RENAMED = new HashMap<String, String>();
-
-    static {
-        RENAMED.put("cobweb", "web");
-    }
-
     CampLoot() {
     }
 
@@ -114,7 +106,7 @@ public final class CampLoot {
             int rolls = intOf(pool.get("rolls"), random, 1);
             List<JsonObject> entries = new ArrayList<JsonObject>();
             for (JsonElement e : pool.getAsJsonArray("entries")) {
-                if (item(string(e.getAsJsonObject(), "name", "minecraft:air")) != null) {
+                if (!stack(string(e.getAsJsonObject(), "name", "minecraft:air")).isEmpty()) {
                     entries.add(e.getAsJsonObject());
                 }
             }
@@ -156,11 +148,10 @@ public final class CampLoot {
     @Nullable
     private static ItemStack expand(JsonObject entry, World world, @Nullable BlockPos origin, Random random) {
         String name = string(entry, "name", "minecraft:air");
-        Item item = item(name);
-        if (item == null) {
+        ItemStack stack = stack(name);
+        if (stack.isEmpty()) {
             return null;
         }
-        ItemStack stack = new ItemStack(item);
         JsonElement m = entry.get("modifier");
         List<JsonObject> modifiers = new ArrayList<JsonObject>();
         if (m != null && m.isJsonObject()) {
@@ -196,7 +187,8 @@ public final class CampLoot {
                         break;
                     }
                     ItemStack map = ExplorerMaps.create(world, origin, stack.getItem(), string(fn, "destination", ""),
-                            string(fn, "decoration", "minecraft:mansion"));
+                            string(fn, "decoration", "minecraft:mansion"), intOf(fn.get("search_radius"), random, 50),
+                            !fn.has("skip_existing_chunks") || fn.get("skip_existing_chunks").getAsBoolean());
                     if (map != null) {
                         if (stack.hasTagCompound() && stack.getTagCompound().hasKey("display", 10)) {
                             map.setTagInfo("display", stack.getTagCompound().getCompoundTag("display").copy());
@@ -264,20 +256,17 @@ public final class CampLoot {
     }
 
     /**
-     * Today's item name to the item: our own (the explorer maps, the soft blocks stream's cushions and straw beds),
-     * the family owner's (Backport Core's item ownership), then 1.12.2's under its 1.13 rename.
+     * Today's item name to a stack of one: our own item (the explorer maps, the soft blocks stream's cushions and
+     * straw beds), the family owner's (Backport Core's item ownership), then 1.12.2's item and metadata under today's
+     * name (Backport Core's {@code ModernItems}: {@code cobweb} is {@code web}); EMPTY when there is none.
      */
-    @Nullable
-    static Item item(String name) {
+    public static ItemStack stack(String name) {
         String path = name.substring(name.indexOf(':') + 1);
         Item owned = ItemOwnership.item(path, GameDropsBackport.MOD_ID);
         if (owned != null) {
-            return owned;
+            return new ItemStack(owned);
         }
-        String vanilla = RENAMED.containsKey(path) ? RENAMED.get(path) : path;
-        ResourceLocation id = new ResourceLocation("minecraft", vanilla);
-        Item item = ForgeRegistries.ITEMS.getValue(id);
-        return item == null || item == Items.AIR || !id.equals(item.getRegistryName()) ? null : item;
+        return ModernItems.stack(name);
     }
 
     static int intOf(@Nullable JsonElement e, Random random, int fallback) {

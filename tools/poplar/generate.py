@@ -210,6 +210,8 @@ named(W + "_wall_sign", W + "_sign")
 named(W + "_sign", kind="item")
 port_item_model(W + "_sign")
 sign_texture(W)
+# 26.2's flat sign for Trails & Tales' sign editing screen (it reads gui/signs/<wood> in the sign's namespace).
+assets.texture("gui/signs/" + W)
 
 # --- leaves, sapling, pot, boats -------------------------------------------------------------------
 for color in ("red", "orange", "yellow"):

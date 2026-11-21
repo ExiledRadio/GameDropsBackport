@@ -25,7 +25,6 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -285,19 +284,11 @@ public final class SoftBlocks {
                 GameDropsBackport.LOGGER.warn("Could not add the straw bed to the composter.", e);
             }
         }
-        // #dampens_vibrations: wool stairs and slabs (26.3). Backport Core 1.4.3 has no way to add to it yet.
-        try {
-            Method add = Class.forName("com.exiledradio.backportcore.gameevent.GameEventTags")
-                    .getMethod("addDampener", Block.class);
-            for (Block block : BLOCKS) {
-                if (block.getDefaultState().getMaterial() == net.minecraft.block.material.Material.CLOTH && block != strawBed) {
-                    add.invoke(null, block);
-                }
+        // #dampens_vibrations: wool stairs and slabs (26.3), through Backport Core 1.4.4's GameEventTags.
+        for (Block block : BLOCKS) {
+            if (block.getDefaultState().getMaterial() == net.minecraft.block.material.Material.CLOTH && block != strawBed) {
+                com.exiledradio.backportcore.gameevent.GameEventTags.addDampener(block);
             }
-        } catch (NoSuchMethodException | ClassNotFoundException e) {
-            GameDropsBackport.LOGGER.debug("Backport Core cannot add vibration dampeners yet; wool shapes do not dampen.");
-        } catch (ReflectiveOperationException | RuntimeException e) {
-            GameDropsBackport.LOGGER.warn("Could not make wool shapes dampen vibrations.", e);
         }
     }
 

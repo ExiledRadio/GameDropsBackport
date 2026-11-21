@@ -376,8 +376,35 @@ final class SulfurCubeSelfTest implements SelfTest {
     }
 
     private static void physics(Check check, WorldServer world) {
-        // Wool (light, bounciness 1): a falling cube bounces back up.
+        // Wool (light, bounciness 1): a falling cube bounces back up, and the bounce is a game event (26.2).
         EntitySulfurCube c = cube(world, ORIGIN.add(12, 0, 0), false);
+        final java.util.List<com.exiledradio.backportcore.gameevent.GameEvent> heard = new java.util.ArrayList<com.exiledradio.backportcore.gameevent.GameEvent>();
+        com.exiledradio.backportcore.gameevent.GameEvents.require("26.2", () -> true);
+        final net.minecraft.util.math.Vec3d ear = new net.minecraft.util.math.Vec3d(c.posX, ORIGIN.getY() + 1.0D, c.posZ);
+        com.exiledradio.backportcore.gameevent.GameEventListener listener = new com.exiledradio.backportcore.gameevent.GameEventListener() {
+            @Override
+            public com.exiledradio.backportcore.gameevent.PositionSource position() {
+                return new com.exiledradio.backportcore.gameevent.PositionSource.Block(ORIGIN.add(12, 1, 2));
+            }
+
+            @Override
+            public int radius() {
+                return 16;
+            }
+
+            @Override
+            public boolean immediate() {
+                return true;
+            }
+
+            @Override
+            public boolean handle(WorldServer w, com.exiledradio.backportcore.gameevent.GameEvent event, net.minecraft.util.math.Vec3d origin,
+                                  com.exiledradio.backportcore.gameevent.GameEventContext context) {
+                heard.add(event);
+                return false;
+            }
+        };
+        com.exiledradio.backportcore.gameevent.GameEvents.add(world, listener);
         c.equipItem(new ItemStack(Blocks.WOOL));
         c.setPosition(c.posX, ORIGIN.getY() + 3.0D, c.posZ);
         c.motionY = -0.8D;
@@ -387,6 +414,9 @@ final class SulfurCubeSelfTest implements SelfTest {
             up = Math.max(up, c.motionY);
         }
         check.ok(up > 0.3D, "a wool cube bounces off the floor: " + up);
+        com.exiledradio.backportcore.gameevent.GameEvents.flush(world);
+        com.exiledradio.backportcore.gameevent.GameEvents.remove(world, listener);
+        check.ok(heard.contains(com.exiledradio.backportcore.gameevent.GameEvent.BOUNCE), "its bounce is the bounce game event: " + heard);
         // A falling cube without a block does not bounce.
         EntitySulfurCube plain = cube(world, ORIGIN.add(14, 0, 0), false);
         plain.setPosition(plain.posX, ORIGIN.getY() + 3.0D, plain.posZ);

@@ -76,6 +76,29 @@ subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=Schwefelquelle b
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Reizgas tritt auf
 death.attack.gamedropsbackport.fallingStalactite=%1$s wurde von einem fallenden Stalaktiten aufgespießt
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s wurde im Kampf gegen %2$s von einem fallenden Stalaktiten aufgespießt
+# --- sulfurcube ---
+advancements.husbandry.uh_oh.description=Lass einen Schwefelwürfel einen TNT‐Block aufnehmen
+advancements.husbandry.uh_oh.title=Oh, oh
+death.attack.sulfurCubeHot.item=%2$s zeigte %1$s mit %3$s, dass nicht nur der Boden zu heiß ist
+death.attack.sulfurCubeHot.player=%2$s zeigte %1$s, dass nicht nur der Boden zu heiß ist
+death.attack.sulfurCubeHot=%1$s starb, da nicht nur der Boden zu heiß ist
+entity.gamedropsbackport.sulfur_cube.content=Enthält: %s
+entity.gamedropsbackport.sulfur_cube.name=Schwefelwürfel
+item.gamedropsbackport.sulfur_cube_bucket.name=Schwefelwürfeleimer
+subtitles.gamedropsbackport.entity.small_sulfur_cube.death=Kleiner Schwefelwürfel stirbt
+subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=Kleiner Schwefelwürfel nimmt zu
+subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=Kleiner Schwefelwürfel nimmt Schaden
+subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=Kleiner Schwefelwürfel springt
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=Schwefelwürfel gefüllt
+subtitles.gamedropsbackport.entity.sulfur_cube.bounce=Schwefelwürfel hüpft
+subtitles.gamedropsbackport.entity.sulfur_cube.death=Schwefelwürfel stirbt
+subtitles.gamedropsbackport.entity.sulfur_cube.eject=Block entnommen
+subtitles.gamedropsbackport.entity.sulfur_cube.hit=Schwefelwürfel getroffen
+subtitles.gamedropsbackport.entity.sulfur_cube.hurt=Schwefelwürfel nimmt Schaden
+subtitles.gamedropsbackport.entity.sulfur_cube.jump=Schwefelwürfel springt
+subtitles.gamedropsbackport.entity.sulfur_cube.push=Schwefelwürfel geschoben
+subtitles.gamedropsbackport.item.bucket.fill_sulfur_cube=Schwefelwürfel wird aufgenommen
+
 # --- softblocks ---
 entity.gamedropsbackport.cushion.name=Kissen
 item.gamedropsbackport.black_cushion.name=Schwarzes Kissen
@@ -161,7 +184,6 @@ tile.gamedropsbackport.yellow_concrete_slab.name=Gelbe Betonstufe
 tile.gamedropsbackport.yellow_concrete_stairs.name=Gelbe Betontreppe
 tile.gamedropsbackport.yellow_wool_slab.name=Gelbe Wollstufe
 tile.gamedropsbackport.yellow_wool_stairs.name=Gelbe Wolltreppe
-subtitles.gamedropsbackport.block.generic.fall=Etwas fällt auf einen Block
 subtitles.gamedropsbackport.block.straw_bed.break_leave=Strohbett zerfällt
 subtitles.gamedropsbackport.entity.cushion.break=Kissen reißt
 subtitles.gamedropsbackport.entity.cushion.get_up=Erhebt sich von Kissen

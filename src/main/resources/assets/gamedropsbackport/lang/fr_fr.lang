@@ -76,6 +76,29 @@ subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=Éruption de sou
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Gaz nocif qui apparaît
 death.attack.gamedropsbackport.fallingStalactite=%1$s s'est fait transpercer par une stalactite
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s s'est fait transpercer par une stalactite en combattant (un(e)) %2$s
+# --- sulfurcube ---
+advancements.husbandry.uh_oh.description=Faites absorber un bloc de TNT à un cube de soufre.
+advancements.husbandry.uh_oh.title=Ça va péter !
+death.attack.sulfurCubeHot.item=%2$s a montré à %1$s qu'il n'y a pas que le sol qui est fait de lave avec %3$s
+death.attack.sulfurCubeHot.player=%2$s a montré à %1$s qu'il n'y a pas que le sol qui est fait de lave
+death.attack.sulfurCubeHot=%1$s est mort(e) car il n'y a pas que le sol qui est fait de lave
+entity.gamedropsbackport.sulfur_cube.content=Contient : %s
+entity.gamedropsbackport.sulfur_cube.name=Cube de soufre
+item.gamedropsbackport.sulfur_cube_bucket.name=Cube de soufre dans un seau
+subtitles.gamedropsbackport.entity.small_sulfur_cube.death=Petit cube de soufre qui meurt
+subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=Petit cube de soufre qui absorbe
+subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=Petit cube de soufre blessé
+subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=Petit cube de soufre qui saute
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=Cube de soufre plein
+subtitles.gamedropsbackport.entity.sulfur_cube.bounce=Cube de soufre qui rebondit
+subtitles.gamedropsbackport.entity.sulfur_cube.death=Cube de soufre qui meurt
+subtitles.gamedropsbackport.entity.sulfur_cube.eject=Bloc retiré
+subtitles.gamedropsbackport.entity.sulfur_cube.hit=Cube de soufre touché
+subtitles.gamedropsbackport.entity.sulfur_cube.hurt=Cube de soufre blessé
+subtitles.gamedropsbackport.entity.sulfur_cube.jump=Cube de soufre qui saute
+subtitles.gamedropsbackport.entity.sulfur_cube.push=Cube de soufre poussé
+subtitles.gamedropsbackport.item.bucket.fill_sulfur_cube=Cube de soufre récupéré
+
 # --- softblocks ---
 entity.gamedropsbackport.cushion.name=Coussin
 item.gamedropsbackport.black_cushion.name=Coussin noir
@@ -161,7 +184,6 @@ tile.gamedropsbackport.yellow_concrete_slab.name=Dalle de béton jaune
 tile.gamedropsbackport.yellow_concrete_stairs.name=Escalier en béton jaune
 tile.gamedropsbackport.yellow_wool_slab.name=Dalle de laine jaune
 tile.gamedropsbackport.yellow_wool_stairs.name=Escalier en laine jaune
-subtitles.gamedropsbackport.block.generic.fall=Chute sur un bloc
 subtitles.gamedropsbackport.block.straw_bed.break_leave=Lit de paille détruit
 subtitles.gamedropsbackport.entity.cushion.break=Coussin retiré
 subtitles.gamedropsbackport.entity.cushion.get_up=Coussin libéré

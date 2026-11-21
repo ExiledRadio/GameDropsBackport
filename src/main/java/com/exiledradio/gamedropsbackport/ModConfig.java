@@ -38,7 +38,7 @@ public final class ModConfig {
     @Config.Comment("Sulfur and cinnabar blocks, potent sulfur, sulfur spikes and the music disc Bounce.")
     public static final Sulfur sulfur = new Sulfur();
 
-    @Setting.Feature(icon = "gamedropsbackport:sulfur_cube_spawn_egg|minecraft:slime_ball")
+    @Setting.Feature(icon = "gamedropsbackport:sulfur_cube_bucket|minecraft:slime_ball")
     @Config.LangKey("config.gamedropsbackport.sulfurCube")
     @Config.Comment("The sulfur cube.")
     public static final SulfurCube sulfurCube = new SulfurCube();

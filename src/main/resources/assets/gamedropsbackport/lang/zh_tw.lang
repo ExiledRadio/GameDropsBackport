@@ -76,6 +76,29 @@ subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=硫磺湧泉噴�
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=有毒氣體出現
 death.attack.gamedropsbackport.fallingStalactite=%1$s 被墜落的鐘乳石刺穿了
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s 在與 %2$s 戰鬥時被落下的鐘乳石刺穿
+# --- sulfurcube ---
+advancements.husbandry.uh_oh.description=讓硫磺立方怪吸收 TNT 方塊
+advancements.husbandry.uh_oh.title=不妙
+death.attack.sulfurCubeHot.item=%2$s 用 %3$s 讓 %1$s 察覺不只有地面可以是熔岩
+death.attack.sulfurCubeHot.player=%2$s 讓 %1$s 察覺不只有地面可以是熔岩
+death.attack.sulfurCubeHot=%1$s 察覺不只有地面可以是熔岩
+entity.gamedropsbackport.sulfur_cube.content=含有：%s
+entity.gamedropsbackport.sulfur_cube.name=硫磺立方怪
+item.gamedropsbackport.sulfur_cube_bucket.name=硫磺立方怪桶
+subtitles.gamedropsbackport.entity.small_sulfur_cube.death=小型硫磺立方怪死亡
+subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=小型硫磺立方怪增加質量
+subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=小型硫磺立方怪受傷
+subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=小型硫磺立方怪彈跳
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=硫磺立方怪填充
+subtitles.gamedropsbackport.entity.sulfur_cube.bounce=硫磺立方怪彈跳
+subtitles.gamedropsbackport.entity.sulfur_cube.death=硫磺立方怪死亡
+subtitles.gamedropsbackport.entity.sulfur_cube.eject=方塊被移除
+subtitles.gamedropsbackport.entity.sulfur_cube.hit=硫磺立方怪被擊中
+subtitles.gamedropsbackport.entity.sulfur_cube.hurt=硫磺立方怪受傷
+subtitles.gamedropsbackport.entity.sulfur_cube.jump=硫磺立方怪彈跳
+subtitles.gamedropsbackport.entity.sulfur_cube.push=硫磺立方怪被推動
+subtitles.gamedropsbackport.item.bucket.fill_sulfur_cube=撈起硫磺立方怪
+
 # --- softblocks ---
 entity.gamedropsbackport.cushion.name=坐墊
 item.gamedropsbackport.black_cushion.name=黑色坐墊
@@ -161,7 +184,6 @@ tile.gamedropsbackport.yellow_concrete_slab.name=黃色混凝土半磚
 tile.gamedropsbackport.yellow_concrete_stairs.name=黃色混凝土階梯
 tile.gamedropsbackport.yellow_wool_slab.name=黃色羊毛半磚
 tile.gamedropsbackport.yellow_wool_stairs.name=黃色羊毛階梯
-subtitles.gamedropsbackport.block.generic.fall=某物掉落在方塊上
 subtitles.gamedropsbackport.block.straw_bed.break_leave=乾草床損壞
 subtitles.gamedropsbackport.entity.cushion.break=坐墊損壞
 subtitles.gamedropsbackport.entity.cushion.get_up=從坐墊起身

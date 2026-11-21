@@ -55,6 +55,7 @@ public final class GameDropsBackport {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
+        com.exiledradio.gamedropsbackport.sulfurcube.SulfurCubes.postInit();
     }
 
     /**

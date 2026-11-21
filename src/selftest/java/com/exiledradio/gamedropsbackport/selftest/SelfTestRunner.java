@@ -30,6 +30,7 @@ public final class SelfTestRunner {
             new ScaffoldSelfTest(),
             new SulfurSelfTest(),
             new SoftBlocksSelfTest(),
+            new SulfurCubeSelfTest(),
     };
 
     private final List<String> wanted;

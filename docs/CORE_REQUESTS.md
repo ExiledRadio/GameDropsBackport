@@ -20,3 +20,15 @@ Wanted: `GameEventTags.addDampener(Block)`, counting the block in both `dampens(
 
 Meanwhile: `softblocks.SoftBlocks.init` calls `addDampener` by reflection when it exists, so wool stairs and slabs
 start dampening once Core has it; until then they do not.
+
+## 2. The `bounce` game event (stream 3, sulfur cube)
+
+26.2 adds `minecraft:bounce`, emitted when an entity bounces off a block or a wall (26.3's
+`Entity.restituteMovementAfterCollisions`: a sulfur cube holding a block, slime blocks, beds). Core 1.4.3's
+`gameevent.GameEvent` has no `BOUNCE`.
+
+Wanted: `GameEvent.BOUNCE` (26.3's vibration frequency for it), so sculk sensors hear bouncing cubes.
+
+Meanwhile: a cube's bounce emits nothing. Its other events (`prime_fuse`, `shear`, `entity_interact`, `entity_place`)
+go through `GameEvents.emit`.
+

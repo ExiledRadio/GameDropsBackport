@@ -76,6 +76,29 @@ subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=유황 샘이 �
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=유독 가스가 올라옴
 death.attack.gamedropsbackport.fallingStalactite=%1$s이(가) 떨어지는 종유석에 찔렸습니다
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s이(가) %2$s과(와) 싸우다가 떨어지는 종유석에 찔렸습니다
+# --- sulfurcube ---
+advancements.husbandry.uh_oh.description=유황 큐브가 TNT 블록을 흡수하게 하세요
+advancements.husbandry.uh_oh.title=폭탄 받아라
+death.attack.sulfurCubeHot.item=%3$s을(를) 사용한 %2$s이(가) %1$s에게 바닥만 용암인 것은 아니었음을 보여주었습니다
+death.attack.sulfurCubeHot.player=%2$s이(가) %1$s에게 바닥만 용암인 것은 아니었음을 보여주었습니다
+death.attack.sulfurCubeHot=%1$s이(가) 바닥만 용암인 것은 아니어서 죽었습니다
+entity.gamedropsbackport.sulfur_cube.content=내용물: %s
+entity.gamedropsbackport.sulfur_cube.name=유황 큐브
+item.gamedropsbackport.sulfur_cube_bucket.name=유황 큐브가 담긴 양동이
+subtitles.gamedropsbackport.entity.small_sulfur_cube.death=작은 유황 큐브가 죽음
+subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=작은 유황 큐브가 덩치를 키움
+subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=작은 유황 큐브가 상처를 입음
+subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=작은 유황 큐브가 통통 튐
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=유황 큐브가 참
+subtitles.gamedropsbackport.entity.sulfur_cube.bounce=유황 큐브가 튕김
+subtitles.gamedropsbackport.entity.sulfur_cube.death=유황 큐브가 죽음
+subtitles.gamedropsbackport.entity.sulfur_cube.eject=블록을 제거함
+subtitles.gamedropsbackport.entity.sulfur_cube.hit=유황 큐브를 밀침
+subtitles.gamedropsbackport.entity.sulfur_cube.hurt=유황 큐브가 상처를 입음
+subtitles.gamedropsbackport.entity.sulfur_cube.jump=유황 큐브가 통통 튐
+subtitles.gamedropsbackport.entity.sulfur_cube.push=유황 큐브가 밀려남
+subtitles.gamedropsbackport.item.bucket.fill_sulfur_cube=유황 큐브를 퍼냄
+
 # --- softblocks ---
 entity.gamedropsbackport.cushion.name=방석
 item.gamedropsbackport.black_cushion.name=검은색 방석
@@ -161,7 +184,6 @@ tile.gamedropsbackport.yellow_concrete_slab.name=노란색 콘크리트 반 블�
 tile.gamedropsbackport.yellow_concrete_stairs.name=노란색 콘크리트 계단
 tile.gamedropsbackport.yellow_wool_slab.name=노란색 양털 반 블록
 tile.gamedropsbackport.yellow_wool_stairs.name=노란색 양털 계단
-subtitles.gamedropsbackport.block.generic.fall=무언가가 블록 위로 떨어짐
 subtitles.gamedropsbackport.block.straw_bed.break_leave=밀짚 침대가 부서짐
 subtitles.gamedropsbackport.entity.cushion.break=방석이 부서짐
 subtitles.gamedropsbackport.entity.cushion.get_up=방석에서 일어남

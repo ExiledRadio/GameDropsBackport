@@ -76,6 +76,29 @@ subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=Sorgente sulfure
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Esalazione nociva
 death.attack.gamedropsbackport.fallingStalactite=Una stalattite ha infilzato %1$s
 death.attack.gamedropsbackport.fallingStalactite.player=Una stalattite ha infilzato %1$s mentre lottava con %2$s
+# --- sulfurcube ---
+advancements.husbandry.uh_oh.description=Fa' assorbire un blocco di TNT a un cubo di zolfo.
+advancements.husbandry.uh_oh.title=Come vola via una bomba
+death.attack.sulfurCubeHot.item=%2$s ha mostrato a %1$s che qualcos'altro oltre al pavimento era lava con %3$s
+death.attack.sulfurCubeHot.player=%2$s ha mostrato a %1$s che qualcos'altro oltre al pavimento era lava
+death.attack.sulfurCubeHot=%1$s ha scoperto che qualcos'altro oltre al pavimento era lava
+entity.gamedropsbackport.sulfur_cube.content=Contiene: %s
+entity.gamedropsbackport.sulfur_cube.name=Cubo di zolfo
+item.gamedropsbackport.sulfur_cube_bucket.name=Secchio con cubo di zolfo
+subtitles.gamedropsbackport.entity.small_sulfur_cube.death=Cubetto di zolfo muore
+subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=Cubetto di zolfo cresce
+subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=Cubetto di zolfo ferito
+subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=Cubetto di zolfo saltella
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=Cubo di zolfo riempito
+subtitles.gamedropsbackport.entity.sulfur_cube.bounce=Cubo di zolfo rimbalza
+subtitles.gamedropsbackport.entity.sulfur_cube.death=Cubo di zolfo muore
+subtitles.gamedropsbackport.entity.sulfur_cube.eject=Blocco rimosso
+subtitles.gamedropsbackport.entity.sulfur_cube.hit=Cubo di zolfo colpito
+subtitles.gamedropsbackport.entity.sulfur_cube.hurt=Cubo di zolfo ferito
+subtitles.gamedropsbackport.entity.sulfur_cube.jump=Cubo di zolfo saltella
+subtitles.gamedropsbackport.entity.sulfur_cube.push=Cubo di zolfo spinto
+subtitles.gamedropsbackport.item.bucket.fill_sulfur_cube=Cubo di zolfo catturato
+
 # --- softblocks ---
 entity.gamedropsbackport.cushion.name=Cuscino
 item.gamedropsbackport.black_cushion.name=Cuscino nero
@@ -161,7 +184,6 @@ tile.gamedropsbackport.yellow_concrete_slab.name=Lastra di calcestruzzo giallo
 tile.gamedropsbackport.yellow_concrete_stairs.name=Scalini di calcestruzzo giallo
 tile.gamedropsbackport.yellow_wool_slab.name=Lastra di lana gialla
 tile.gamedropsbackport.yellow_wool_stairs.name=Scalini di lana gialla
-subtitles.gamedropsbackport.block.generic.fall=Caduta su blocco
 subtitles.gamedropsbackport.block.straw_bed.break_leave=Pagliericcio distrutto
 subtitles.gamedropsbackport.entity.cushion.break=Cuscino rimosso
 subtitles.gamedropsbackport.entity.cushion.get_up=Cuscino liberato

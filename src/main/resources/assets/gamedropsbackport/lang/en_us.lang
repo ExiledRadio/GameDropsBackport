@@ -77,6 +77,29 @@ subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=Sulfur spring bu
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Noxious gas appears
 death.attack.gamedropsbackport.fallingStalactite=%1$s was skewered by a falling stalactite
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s was skewered by a falling stalactite while fighting %2$s
+# --- sulfurcube ---
+advancements.husbandry.uh_oh.description=Have a Sulfur Cube absorb a TNT block
+advancements.husbandry.uh_oh.title=Uh Oh
+death.attack.sulfurCubeHot.item=%2$s showed %1$s that not just the floor is lava using %3$s
+death.attack.sulfurCubeHot.player=%2$s showed %1$s that not just the floor is lava
+death.attack.sulfurCubeHot=%1$s died because not just the floor is lava
+entity.gamedropsbackport.sulfur_cube.content=Contains: %s
+entity.gamedropsbackport.sulfur_cube.name=Sulfur Cube
+item.gamedropsbackport.sulfur_cube_bucket.name=Bucket of Sulfur Cube
+subtitles.gamedropsbackport.entity.small_sulfur_cube.death=Small Sulfur Cube dies
+subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=Small Sulfur Cube puts on mass
+subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=Small Sulfur Cube hurts
+subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=Small Sulfur Cube bounces
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=Sulfur Cube full
+subtitles.gamedropsbackport.entity.sulfur_cube.bounce=Sulfur Cube bounces
+subtitles.gamedropsbackport.entity.sulfur_cube.death=Sulfur Cube dies
+subtitles.gamedropsbackport.entity.sulfur_cube.eject=Block removed
+subtitles.gamedropsbackport.entity.sulfur_cube.hit=Sulfur Cube hit
+subtitles.gamedropsbackport.entity.sulfur_cube.hurt=Sulfur Cube hurts
+subtitles.gamedropsbackport.entity.sulfur_cube.jump=Sulfur Cube bounces
+subtitles.gamedropsbackport.entity.sulfur_cube.push=Sulfur Cube pushed
+subtitles.gamedropsbackport.item.bucket.fill_sulfur_cube=Sulfur Cube scooped
+
 # --- softblocks ---
 entity.gamedropsbackport.cushion.name=Cushion
 item.gamedropsbackport.black_cushion.name=Black Cushion
@@ -162,7 +185,6 @@ tile.gamedropsbackport.yellow_concrete_slab.name=Yellow Concrete Slab
 tile.gamedropsbackport.yellow_concrete_stairs.name=Yellow Concrete Stairs
 tile.gamedropsbackport.yellow_wool_slab.name=Yellow Wool Slab
 tile.gamedropsbackport.yellow_wool_stairs.name=Yellow Wool Stairs
-subtitles.gamedropsbackport.block.generic.fall=Something falls on a block
 subtitles.gamedropsbackport.block.straw_bed.break_leave=Straw Bed breaks
 subtitles.gamedropsbackport.entity.cushion.break=Cushion breaks
 subtitles.gamedropsbackport.entity.cushion.get_up=Gets up from Cushion

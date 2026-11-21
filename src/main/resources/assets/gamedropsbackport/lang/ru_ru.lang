@@ -78,6 +78,29 @@ subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=Серный и�
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Ядовитый газ выделяется
 death.attack.gamedropsbackport.fallingStalactite=%1$s был пронзён обрушившимся сталактитом
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s был пронзён обрушившимся сталактитом, пока боролся с %2$s
+# --- sulfurcube ---
+advancements.husbandry.uh_oh.description=Дайте серному кубу поглотить динамит
+advancements.husbandry.uh_oh.title=Ой-ой
+death.attack.sulfurCubeHot.item=%2$s показал %1$s, что лавой может быть не только пол, используя %3$s
+death.attack.sulfurCubeHot.player=%2$s показал %1$s, что лавой может быть не только пол
+death.attack.sulfurCubeHot=%1$s обнаружил, что лавой может быть не только пол
+entity.gamedropsbackport.sulfur_cube.content=Содержит: %s
+entity.gamedropsbackport.sulfur_cube.name=Серный куб
+item.gamedropsbackport.sulfur_cube_bucket.name=Серный куб в ведре
+subtitles.gamedropsbackport.entity.small_sulfur_cube.death=Серный кубик погибает
+subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=Серный кубик набирает массу
+subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=Серный кубик ранен
+subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=Серный кубик прыгает
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=Серный куб заполнен
+subtitles.gamedropsbackport.entity.sulfur_cube.bounce=Серный куб отскакивает
+subtitles.gamedropsbackport.entity.sulfur_cube.death=Серный куб погибает
+subtitles.gamedropsbackport.entity.sulfur_cube.eject=Блок извлечён
+subtitles.gamedropsbackport.entity.sulfur_cube.hit=Серный куб ударен
+subtitles.gamedropsbackport.entity.sulfur_cube.hurt=Серный куб ранен
+subtitles.gamedropsbackport.entity.sulfur_cube.jump=Серный куб прыгает
+subtitles.gamedropsbackport.entity.sulfur_cube.push=Серный куб толкнут
+subtitles.gamedropsbackport.item.bucket.fill_sulfur_cube=Серный куб пойман
+
 # --- softblocks ---
 entity.gamedropsbackport.cushion.name=Подушка
 item.gamedropsbackport.black_cushion.name=Чёрная подушка
@@ -163,7 +186,6 @@ tile.gamedropsbackport.yellow_concrete_slab.name=Жёлтая бетонная �
 tile.gamedropsbackport.yellow_concrete_stairs.name=Жёлтые бетонные ступеньки
 tile.gamedropsbackport.yellow_wool_slab.name=Жёлтая шерстяная плита
 tile.gamedropsbackport.yellow_wool_stairs.name=Жёлтые шерстяные ступеньки
-subtitles.gamedropsbackport.block.generic.fall=Что-то упало на блок
 subtitles.gamedropsbackport.block.straw_bed.break_leave=Соломенная кровать сломана
 subtitles.gamedropsbackport.entity.cushion.break=Подушка сломана
 subtitles.gamedropsbackport.entity.cushion.get_up=С подушки встали

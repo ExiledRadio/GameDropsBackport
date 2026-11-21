@@ -78,6 +78,29 @@ subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=硫黄涌泉：�
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=有毒气体：冒出
 death.attack.gamedropsbackport.fallingStalactite=%1$s被下落的钟乳石刺穿了
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s在与%2$s战斗时被下落的钟乳石刺穿了
+# --- sulfurcube ---
+advancements.husbandry.uh_oh.description=让硫方怪吸收TNT方块
+advancements.husbandry.uh_oh.title=坏了
+death.attack.sulfurCubeHot.item=%2$s用%3$s让%1$s知道了不只有地板是熔岩做的
+death.attack.sulfurCubeHot.player=%2$s让%1$s知道了不只有地板是熔岩做的
+death.attack.sulfurCubeHot=%1$s发现了不只有地板是熔岩做的
+entity.gamedropsbackport.sulfur_cube.content=包含：%s
+entity.gamedropsbackport.sulfur_cube.name=硫方怪
+item.gamedropsbackport.sulfur_cube_bucket.name=硫方怪桶
+subtitles.gamedropsbackport.entity.small_sulfur_cube.death=小型硫方怪：死亡
+subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=小型硫方怪：增加质量
+subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=小型硫方怪：受伤
+subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=小型硫方怪：弹起
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=硫方怪：填充
+subtitles.gamedropsbackport.entity.sulfur_cube.bounce=硫方怪：弹起
+subtitles.gamedropsbackport.entity.sulfur_cube.death=硫方怪：死亡
+subtitles.gamedropsbackport.entity.sulfur_cube.eject=方块：被移除
+subtitles.gamedropsbackport.entity.sulfur_cube.hit=硫方怪：受击
+subtitles.gamedropsbackport.entity.sulfur_cube.hurt=硫方怪：受伤
+subtitles.gamedropsbackport.entity.sulfur_cube.jump=硫方怪：弹起
+subtitles.gamedropsbackport.entity.sulfur_cube.push=硫方怪：被推动
+subtitles.gamedropsbackport.item.bucket.fill_sulfur_cube=硫方怪：被装起
+
 # --- softblocks ---
 entity.gamedropsbackport.cushion.name=坐垫
 item.gamedropsbackport.black_cushion.name=黑色坐垫
@@ -163,7 +186,6 @@ tile.gamedropsbackport.yellow_concrete_slab.name=黄色混凝土台阶
 tile.gamedropsbackport.yellow_concrete_stairs.name=黄色混凝土楼梯
 tile.gamedropsbackport.yellow_wool_slab.name=黄色羊毛台阶
 tile.gamedropsbackport.yellow_wool_stairs.name=黄色羊毛楼梯
-subtitles.gamedropsbackport.block.generic.fall=某物：摔落到方块上
 subtitles.gamedropsbackport.block.straw_bed.break_leave=麦秆床：损坏
 subtitles.gamedropsbackport.entity.cushion.break=坐垫：损坏
 subtitles.gamedropsbackport.entity.cushion.get_up=离开坐垫

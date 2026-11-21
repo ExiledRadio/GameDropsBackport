@@ -78,6 +78,29 @@ subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=Manantial de azu
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Gas nocivo apareciendo
 death.attack.gamedropsbackport.fallingStalactite=%1$s fue atravesado/a por la caída de una estalactita
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s fue atravesado/a por una estalactita mientras peleaba con %2$s
+# --- sulfurcube ---
+advancements.husbandry.uh_oh.description=Haz que un cubo de azufre absorba un bloque de TNT
+advancements.husbandry.uh_oh.title=Ay mamá
+death.attack.sulfurCubeHot.item=%2$s le mostró a %1$s que no solo el suelo es lava con su %3$s
+death.attack.sulfurCubeHot.player=%2$s le mostró a %1$s que no solo el suelo es lava
+death.attack.sulfurCubeHot=%1$s murió debido a que no solo el suelo es lava
+entity.gamedropsbackport.sulfur_cube.content=Contiene: %s
+entity.gamedropsbackport.sulfur_cube.name=Cubo de azufre
+item.gamedropsbackport.sulfur_cube_bucket.name=Cubeta con cubo de azufre
+subtitles.gamedropsbackport.entity.small_sulfur_cube.death=Cubo de azufre pequeño muerto
+subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=Cubo de azufre pequeño ganando masa
+subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=Cubo de azufre pequeño herido
+subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=Cubo de azufre pequeño rebotando
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=Cubo de azufre lleno
+subtitles.gamedropsbackport.entity.sulfur_cube.bounce=Cubo de azufre rebotando
+subtitles.gamedropsbackport.entity.sulfur_cube.death=Cubo de azufre muerto
+subtitles.gamedropsbackport.entity.sulfur_cube.eject=Bloque removido
+subtitles.gamedropsbackport.entity.sulfur_cube.hit=Cubo de azufre golpeado
+subtitles.gamedropsbackport.entity.sulfur_cube.hurt=Cubo de azufre herido
+subtitles.gamedropsbackport.entity.sulfur_cube.jump=Cubo de azufre rebotando
+subtitles.gamedropsbackport.entity.sulfur_cube.push=Cubo de azufre empujado
+subtitles.gamedropsbackport.item.bucket.fill_sulfur_cube=Cubo de azufre recogido
+
 # --- softblocks ---
 entity.gamedropsbackport.cushion.name=Cojín
 item.gamedropsbackport.black_cushion.name=Cojín negro
@@ -163,7 +186,6 @@ tile.gamedropsbackport.yellow_concrete_slab.name=Losa de concreto amarillo
 tile.gamedropsbackport.yellow_concrete_stairs.name=Escaleras de concreto amarillo
 tile.gamedropsbackport.yellow_wool_slab.name=Losa de lana amarilla
 tile.gamedropsbackport.yellow_wool_stairs.name=Escaleras de lana amarilla
-subtitles.gamedropsbackport.block.generic.fall=Algo cae sobre un bloque
 subtitles.gamedropsbackport.block.straw_bed.break_leave=Cama de paja rompiéndose
 subtitles.gamedropsbackport.entity.cushion.break=Cojín rompiéndose
 subtitles.gamedropsbackport.entity.cushion.get_up=Levantándose de cojín

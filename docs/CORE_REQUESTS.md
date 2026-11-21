@@ -119,3 +119,15 @@ The camps' pools grow `cherry_checked`, `cherry_bees_005` (Trails & Tales), `pal
 `red_poplar`, `orange_poplar`, `yellow_poplar` (this mod's poplar stream). **Meanwhile:** `camps.CampTrees` grows
 the owner's sapling (a poplar's leaf color is then the sapling's, not the feature's). Ask each owner to register its
 own placer with `JigsawPools.feature("minecraft:<feature>", ...)` in init, which wins over ours.
+
+## 2. The `bounce` game event (stream 3, sulfur cube)
+
+26.2 adds `minecraft:bounce`, emitted when an entity bounces off a block or a wall (26.3's
+`Entity.restituteMovementAfterCollisions`: a sulfur cube holding a block, slime blocks, beds). Core 1.4.3's
+`gameevent.GameEvent` has no `BOUNCE`.
+
+Wanted: `GameEvent.BOUNCE` (26.3's vibration frequency for it), so sculk sensors hear bouncing cubes.
+
+Meanwhile: a cube's bounce emits nothing. Its other events (`prime_fuse`, `shear`, `entity_interact`, `entity_place`)
+go through `GameEvents.emit`.
+

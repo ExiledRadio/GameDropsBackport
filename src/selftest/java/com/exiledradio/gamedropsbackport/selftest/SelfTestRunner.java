@@ -45,6 +45,7 @@ public final class SelfTestRunner {
             new BabiesSelfTest(),
             new PoplarSelfTest(),
             new CampsSelfTest(),
+            new SulfurCubeSelfTest(),
     };
 
     private final List<String> wanted;

@@ -70,6 +70,7 @@ public final class GameDropsBackport {
                 LOGGER.error("Baby renderers failed to install", e);
             }
         }
+        com.exiledradio.gamedropsbackport.sulfurcube.SulfurCubes.postInit();
     }
 
     /**

@@ -78,6 +78,29 @@ subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=Jato de fonte su
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Gás tóxico aparece
 death.attack.gamedropsbackport.fallingStalactite=Uma estalactite atingiu %1$s
 death.attack.gamedropsbackport.fallingStalactite.player=Uma estalactite atingiu %1$s enquanto lutava com %2$s
+# --- sulfurcube ---
+advancements.husbandry.uh_oh.description=Faça um Cubo de Enxofre absorver um bloco de TNT
+advancements.husbandry.uh_oh.title=Eita...
+death.attack.sulfurCubeHot.item=%2$s mostrou a %1$s que nem só o chão era lava enquanto usava %3$s
+death.attack.sulfurCubeHot.player=%2$s mostrou a %1$s que nem só o chão era lava
+death.attack.sulfurCubeHot=%1$s morreu porque nem só o chão era lava
+entity.gamedropsbackport.sulfur_cube.content=Contém: %s
+entity.gamedropsbackport.sulfur_cube.name=Cubo de Enxofre
+item.gamedropsbackport.sulfur_cube_bucket.name=Balde com Cubo de Enxofre
+subtitles.gamedropsbackport.entity.small_sulfur_cube.death=Cubo de Enxofre pequeno morre
+subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=Cubo de Enxofre pequeno absorve
+subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=Cubo de Enxofre Pequeno ferido
+subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=Cubo de Enxofre pequeno salta
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=Cubo de Enxofre cheio
+subtitles.gamedropsbackport.entity.sulfur_cube.bounce=Cubo de Enxofre quica
+subtitles.gamedropsbackport.entity.sulfur_cube.death=Cubo de Enxofre morre
+subtitles.gamedropsbackport.entity.sulfur_cube.eject=Bloco removido
+subtitles.gamedropsbackport.entity.sulfur_cube.hit=Cubo de Enxofre atingido
+subtitles.gamedropsbackport.entity.sulfur_cube.hurt=Cubo de Enxofre ferido
+subtitles.gamedropsbackport.entity.sulfur_cube.jump=Cubo de Enxofre salta
+subtitles.gamedropsbackport.entity.sulfur_cube.push=Cubo de Enxofre empurrado
+subtitles.gamedropsbackport.item.bucket.fill_sulfur_cube=Cubo de Enxofre capturado
+
 # --- softblocks ---
 entity.gamedropsbackport.cushion.name=Almofada
 item.gamedropsbackport.black_cushion.name=Almofada Preta
@@ -163,7 +186,6 @@ tile.gamedropsbackport.yellow_concrete_slab.name=Laje de Concreto Amarelo
 tile.gamedropsbackport.yellow_concrete_stairs.name=Escadas de Concreto Amarelo
 tile.gamedropsbackport.yellow_wool_slab.name=Laje de Lã Amarela
 tile.gamedropsbackport.yellow_wool_stairs.name=Escadas de Lã Amarela
-subtitles.gamedropsbackport.block.generic.fall=Algo cai num bloco
 subtitles.gamedropsbackport.block.straw_bed.break_leave=Cama de Palha quebrada
 subtitles.gamedropsbackport.entity.cushion.break=Almofada quebrada
 subtitles.gamedropsbackport.entity.cushion.get_up=Almofada desocupada

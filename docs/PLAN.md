@@ -102,6 +102,13 @@ Ports (block 25920-25939): the main checkout's dev server uses 25920; a stream w
   archetypes by the block held (bouncy, sticky, hot, explosive with TNT: a 6 s fuse from fire or redstone,
   0.75-3 s from an explosion, ...). Large cubes can be bucketed; small ones grow on slimeballs.
   Advancement *Uh Oh*; the hot cube's death message.
+- **Built** (stream 3, 0.1.0): `sulfurcube.SulfurCubes` registers it (entity id 1, no packets). The 12 archetypes'
+  values are in `Archetype`; `ArchetypeItems` maps 26.3's item tags to 1.12.2's blocks, stream 2's sulfur and
+  cinnabar, and other family mods' blocks by name. Spawning: monster category, weight 100, groups of 2-4, any light,
+  where the biome is `gamedropsbackport:sulfur_caves` or underground on sulfur, cinnabar or potent sulfur (stream 4
+  can rely on either). Not like vanilla: 26.3's skull rendering inside a cube (no skull is swallowable) and the
+  `bounce` game event (Core request 2) are left out; a dispenser feeds a cube in front of it before the item's own
+  behavior, which runs when no cube is there.
 
 ### 4. Sulfur caves and springs (26.2)
 

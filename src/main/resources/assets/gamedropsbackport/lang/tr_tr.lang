@@ -78,6 +78,29 @@ subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=Sülfür kaynağ
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Zararlı gaz beliriyor
 death.attack.gamedropsbackport.fallingStalactite=%1$s düşen bir sarkıt tarafından şişlendi
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s, %2$s ile savaşırken düşen bir sarkıt tarafından şişlendi
+# --- sulfurcube ---
+advancements.husbandry.uh_oh.description=Bir Sülfür Küpünün içine TNT almasını sağlayın
+advancements.husbandry.uh_oh.title=Ayvayı Yedik
+death.attack.sulfurCubeHot.item=%2$s, %1$s oyuncusuna sadece zeminin lav olmadığını %3$s kullanarak gösterdi
+death.attack.sulfurCubeHot.player=%2$s, %1$s oyuncusuna sadece zeminin lav olmadığını gösterdi
+death.attack.sulfurCubeHot=%1$s öldü çünkü sadece zemin lav değildi
+entity.gamedropsbackport.sulfur_cube.content=İçeriği: %s
+entity.gamedropsbackport.sulfur_cube.name=Sülfür Küpü
+item.gamedropsbackport.sulfur_cube_bucket.name=Sülfür Küpü Kovası
+subtitles.gamedropsbackport.entity.small_sulfur_cube.death=Küçük Sülfür Küpü öldü
+subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=Küçük Sülfür Küpü genişledi
+subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=Küçük Sülfür Küpü hasar aldı
+subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=Küçük Sülfür Küpü sekti
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=Sülfür Küpü doldu
+subtitles.gamedropsbackport.entity.sulfur_cube.bounce=Sülfür Küpü sekti
+subtitles.gamedropsbackport.entity.sulfur_cube.death=Sülfür Küpü öldü
+subtitles.gamedropsbackport.entity.sulfur_cube.eject=Blok kaldırıldı
+subtitles.gamedropsbackport.entity.sulfur_cube.hit=Sülfür Küpü darbe aldı
+subtitles.gamedropsbackport.entity.sulfur_cube.hurt=Sülfür Küpü hasar aldı
+subtitles.gamedropsbackport.entity.sulfur_cube.jump=Sülfür Küpü sekti
+subtitles.gamedropsbackport.entity.sulfur_cube.push=Sülfür Küpü itildi
+subtitles.gamedropsbackport.item.bucket.fill_sulfur_cube=Sülfür Küp yakalandı
+
 # --- softblocks ---
 entity.gamedropsbackport.cushion.name=Minder
 item.gamedropsbackport.black_cushion.name=Siyah Minder
@@ -163,7 +186,6 @@ tile.gamedropsbackport.yellow_concrete_slab.name=Sarı Beton Basamak
 tile.gamedropsbackport.yellow_concrete_stairs.name=Sarı Beton Merdiven
 tile.gamedropsbackport.yellow_wool_slab.name=Sarı Yün Basamak
 tile.gamedropsbackport.yellow_wool_stairs.name=Sarı Yün Merdiven
-subtitles.gamedropsbackport.block.generic.fall=Bir şey bloğa düştü
 subtitles.gamedropsbackport.block.straw_bed.break_leave=Hasır Yatak kırıldı
 subtitles.gamedropsbackport.entity.cushion.break=Minder kırıldı
 subtitles.gamedropsbackport.entity.cushion.get_up=Minderden kalktı

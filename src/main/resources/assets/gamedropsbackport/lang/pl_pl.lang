@@ -78,6 +78,29 @@ subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=Siarkowy gejzer 
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Szkodliwy gaz ulatnia się
 death.attack.gamedropsbackport.fallingStalactite=Spadający stalaktyt zrobił z gracza %1$s szaszłyk
 death.attack.gamedropsbackport.fallingStalactite.player=Spadający stalaktyt zrobił z gracza %1$s szaszłyk podczas walki z %2$s
+# --- sulfurcube ---
+advancements.husbandry.uh_oh.description=Spraw, aby kostka siarki pochłonęła blok TNT
+advancements.husbandry.uh_oh.title=Ale siara
+death.attack.sulfurCubeHot.item=Gracz %2$s pokazał %1$s, że nie tylko podłoga jest lawą za pomocą %3$s
+death.attack.sulfurCubeHot.player=Gracz %2$s pokazał %1$s, że nie tylko podłoga jest lawą
+death.attack.sulfurCubeHot=Gracz %1$s zginął, bo lawą okazała się nie tylko podłoga
+entity.gamedropsbackport.sulfur_cube.content=Zawiera: %s
+entity.gamedropsbackport.sulfur_cube.name=Kostka siarki
+item.gamedropsbackport.sulfur_cube_bucket.name=Wiadro z kostką siarki
+subtitles.gamedropsbackport.entity.small_sulfur_cube.death=Mała kostka siarki ginie
+subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=Mała kostka siarki przybiera na masie
+subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=Mała kostka siarki cierpi
+subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=Mała kostka siarki odbija się
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=Kostka siarki pochłania
+subtitles.gamedropsbackport.entity.sulfur_cube.bounce=Kostka siarki odbija się
+subtitles.gamedropsbackport.entity.sulfur_cube.death=Kostka siarki ginie
+subtitles.gamedropsbackport.entity.sulfur_cube.eject=Blok wypada
+subtitles.gamedropsbackport.entity.sulfur_cube.hit=Kostka siarki zostaje uderzona
+subtitles.gamedropsbackport.entity.sulfur_cube.hurt=Kostka siarki cierpi
+subtitles.gamedropsbackport.entity.sulfur_cube.jump=Kostka siarki odbija się
+subtitles.gamedropsbackport.entity.sulfur_cube.push=Kostka siarki zostaje pchnięta
+subtitles.gamedropsbackport.item.bucket.fill_sulfur_cube=Kostka siarki została zagarnięta
+
 # --- softblocks ---
 entity.gamedropsbackport.cushion.name=Poduszka
 item.gamedropsbackport.black_cushion.name=Czarna poduszka
@@ -163,7 +186,6 @@ tile.gamedropsbackport.yellow_concrete_slab.name=Żółta betonowa płyta
 tile.gamedropsbackport.yellow_concrete_stairs.name=Żółte betonowe schody
 tile.gamedropsbackport.yellow_wool_slab.name=Żółta wełniana płyta
 tile.gamedropsbackport.yellow_wool_stairs.name=Żółte wełniane schody
-subtitles.gamedropsbackport.block.generic.fall=Coś spada na blok
 subtitles.gamedropsbackport.block.straw_bed.break_leave=Słomiane łóżko się niszczy
 subtitles.gamedropsbackport.entity.cushion.break=Poduszka się niszczy
 subtitles.gamedropsbackport.entity.cushion.get_up=Wstawanie z poduszki

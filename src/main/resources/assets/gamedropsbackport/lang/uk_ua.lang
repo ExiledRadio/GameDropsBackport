@@ -78,6 +78,29 @@ subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=Сірчане �
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Шкідливий газ з’являється
 death.attack.gamedropsbackport.fallingStalactite=%1$s проткнуто падучим сталактитом
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s проткнуто падучим сталактитом під час битви з %2$s
+# --- sulfurcube ---
+advancements.husbandry.uh_oh.description=Дайте сіркокубу поглинути блок динаміту
+advancements.husbandry.uh_oh.title=Йой
+death.attack.sulfurCubeHot.item=%2$s показав %1$s, що не лише підлога є лавою, використавши %3$s
+death.attack.sulfurCubeHot.player=%2$s показав %1$s, що не лише підлога є лавою
+death.attack.sulfurCubeHot=%1$s загинув, бо не лише підлога є лавою
+entity.gamedropsbackport.sulfur_cube.content=Уміст: %s
+entity.gamedropsbackport.sulfur_cube.name=Сіркокуб
+item.gamedropsbackport.sulfur_cube_bucket.name=Відро із сіркокубом
+subtitles.gamedropsbackport.entity.small_sulfur_cube.death=Сіркокубик гине
+subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=Сіркокубик важчає
+subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=Сіркокубика поранено
+subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=Сіркокубик відстрибує
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=Сіркокуб повний
+subtitles.gamedropsbackport.entity.sulfur_cube.bounce=Сіркокуб відстрибує
+subtitles.gamedropsbackport.entity.sulfur_cube.death=Сіркокуб гине
+subtitles.gamedropsbackport.entity.sulfur_cube.eject=Блок прибрано
+subtitles.gamedropsbackport.entity.sulfur_cube.hit=Сіркокуба вдарено
+subtitles.gamedropsbackport.entity.sulfur_cube.hurt=Сіркокуба поранено
+subtitles.gamedropsbackport.entity.sulfur_cube.jump=Сіркокуб відстрибує
+subtitles.gamedropsbackport.entity.sulfur_cube.push=Сіркокуба відштовхнуто
+subtitles.gamedropsbackport.item.bucket.fill_sulfur_cube=Сіркокуба спіймано
+
 # --- softblocks ---
 entity.gamedropsbackport.cushion.name=Подушка
 item.gamedropsbackport.black_cushion.name=Чорна подушка
@@ -163,7 +186,6 @@ tile.gamedropsbackport.yellow_concrete_slab.name=Плита з жовтого б
 tile.gamedropsbackport.yellow_concrete_stairs.name=Сходи з жовтого бетону
 tile.gamedropsbackport.yellow_wool_slab.name=Плита з жовтої вовни
 tile.gamedropsbackport.yellow_wool_stairs.name=Сходи з жовтої вовни
-subtitles.gamedropsbackport.block.generic.fall=Щось падає на блок
 subtitles.gamedropsbackport.block.straw_bed.break_leave=Солом’яне ліжко ламається
 subtitles.gamedropsbackport.entity.cushion.break=Подушка ламається
 subtitles.gamedropsbackport.entity.cushion.get_up=Устає з подушки

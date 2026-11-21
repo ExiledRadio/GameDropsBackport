@@ -6,7 +6,8 @@
 # FAMILY=1 runs the server with the other backports' dev jars in eclipse/mods (Village & Pillage, Update Aquatic,
 # Caves & Cliffs, Wild Update, Trails & Tales, Tricky Trials; WORKSPACES points at their checkouts' parent) and logs
 # crashes, registry clashes and duplicate-content warnings; the jars are removed again afterwards. NOBUILD=1 skips the
-# release build. The world is deleted first. Results: build/release-suite.log.
+# release build (the jar a NOBUILD run leaves holds the self-tests: build again before shipping). The world is deleted
+# first. Results: build/release-suite.log.
 cd "$(dirname "$0")/.." || exit 1
 LOG=build/release-suite.log
 WORKSPACES=${WORKSPACES:-/e/MincraftModding/Workspaces}

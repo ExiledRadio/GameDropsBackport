@@ -13,8 +13,7 @@ import java.util.Map;
  * environment, by {@code -Dfml.coreMods.load}. A transformer only rewrites a call or adds a call to a hook in the
  * mod's own packages; the hook keeps 1.12.2's behavior while its stream is off.
  *
- * <p>No patches yet: the plugin is here from the start so the jar's manifest, the dev run's property and
- * {@code PatchCheck} never change when the first one is added.
+ * <p>The patches: the changes stream's P1-P5 ({@link ChangesTransformer}).
  */
 @IFMLLoadingPlugin.Name("Game Drops Backport Core")
 @IFMLLoadingPlugin.MCVersion("1.12.2")
@@ -25,12 +24,12 @@ public final class GameDropsCore implements IFMLLoadingPlugin {
     /** Every transformer, in the order they run. */
     @Override
     public String[] getASMTransformerClass() {
-        return new String[0];
+        return new String[]{"com.exiledradio.gamedropsbackport.asm.ChangesTransformer"};
     }
 
     /** The classes the transformers patch on both sides, for {@code PatchCheck}: each transformer's TARGETS. */
     public static String[] serverTargets() {
-        return new String[0];
+        return ChangesTransformer.TARGETS.clone();
     }
 
     /** The classes patched only on the client, for {@code PatchCheck}. */

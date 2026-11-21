@@ -75,6 +75,12 @@ public final class GameDropsBackport {
         }
         com.exiledradio.gamedropsbackport.sulfurcube.SulfurCubes.postInit();
         com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.postInit();
+        com.exiledradio.gamedropsbackport.changes.Changes.postInit();
+    }
+
+    @Mod.EventHandler
+    public void serverStarting(net.minecraftforge.fml.common.event.FMLServerStartingEvent event) {
+        com.exiledradio.gamedropsbackport.changes.Changes.serverStarting(event);
     }
 
     /**

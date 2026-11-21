@@ -1,0 +1,8 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "bottom": "gamedropsbackport:block/polished_cinnabar",
+    "side": "gamedropsbackport:block/polished_cinnabar",
+    "top": "gamedropsbackport:block/polished_cinnabar"
+  }
+}

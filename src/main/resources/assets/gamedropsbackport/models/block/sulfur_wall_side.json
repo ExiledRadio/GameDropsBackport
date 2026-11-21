@@ -1,0 +1,6 @@
+{
+  "parent": "gamedropsbackport:block/template_wall_side",
+  "textures": {
+    "wall": "gamedropsbackport:block/sulfur"
+  }
+}

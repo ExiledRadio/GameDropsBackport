@@ -45,6 +45,7 @@ public final class GameDropsBackport {
         // Core's settings screen lists the family members it knows by itself; this mod is newer than Core 1.4.0's
         // list, so it registers its page.
         BackportSettings.register(MOD_ID, ModConfig.class);
+        com.exiledradio.gamedropsbackport.sulfur.SulfurContent.preInit();
     }
 
     @Mod.EventHandler

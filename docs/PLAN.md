@@ -76,6 +76,9 @@ Ports (block 25920-25939): the main checkout's dev server uses 25920; a stream w
   eruptions over magma every 50 s, constantly over lava); **sulfur spikes** (stalactite and stalagmite,
   breaking unsupported, falling for damage, broken by thrown tridents; 4 make a sulfur block).
 - Music disc **Bounce** (sulfur cave minecart chests; comparator 8).
+- **Built** (stream 2, 0.1.0): every block above under 26.3's names (`SulfurContent` lists them). The disc is
+  registered; its loot (abandoned mineshaft chests, weight 10 in the 3-roll rail pool, only inside sulfur caves)
+  needs the biome, so stream 4 adds it.
 
 ### 3. Sulfur cube (26.2)
 

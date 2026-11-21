@@ -1,0 +1,6 @@
+{
+  "parent": "gamedropsbackport:block/pointed_dripstone",
+  "textures": {
+    "cross": "gamedropsbackport:block/sulfur_spike_up_tip_merge"
+  }
+}

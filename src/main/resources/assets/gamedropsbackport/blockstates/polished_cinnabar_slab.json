@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "gamedropsbackport:polished_cinnabar_slab"
+    },
+    "half=top": {
+      "model": "gamedropsbackport:polished_cinnabar_slab_top"
+    }
+  }
+}

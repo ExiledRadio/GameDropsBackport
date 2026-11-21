@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "potent_sulfur_state=dry": {
+      "model": "gamedropsbackport:potent_sulfur"
+    },
+    "potent_sulfur_state=wet": {
+      "model": "gamedropsbackport:potent_sulfur"
+    },
+    "potent_sulfur_state=dormant": {
+      "model": "gamedropsbackport:potent_sulfur"
+    },
+    "potent_sulfur_state=erupting": {
+      "model": "gamedropsbackport:potent_sulfur"
+    },
+    "potent_sulfur_state=continuous": {
+      "model": "gamedropsbackport:potent_sulfur"
+    }
+  }
+}

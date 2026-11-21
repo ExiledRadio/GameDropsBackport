@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "gamedropsbackport:sulfur_slab"
+    },
+    "half=top": {
+      "model": "gamedropsbackport:sulfur_slab_top"
+    }
+  }
+}

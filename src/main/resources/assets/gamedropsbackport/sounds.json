@@ -1,0 +1,376 @@
+{
+  "block.sulfur.break": {
+    "sounds": [
+      "gamedropsbackport:block/sulfur/break1",
+      "gamedropsbackport:block/sulfur/break2",
+      "gamedropsbackport:block/sulfur/break3",
+      "gamedropsbackport:block/sulfur/break4",
+      "gamedropsbackport:block/sulfur/break5",
+      "gamedropsbackport:block/sulfur/break6",
+      "gamedropsbackport:block/sulfur/break7"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.sulfur.step": {
+    "sounds": [
+      "gamedropsbackport:block/sulfur/step1",
+      "gamedropsbackport:block/sulfur/step2",
+      "gamedropsbackport:block/sulfur/step3",
+      "gamedropsbackport:block/sulfur/step4",
+      "gamedropsbackport:block/sulfur/step5",
+      "gamedropsbackport:block/sulfur/step6",
+      "gamedropsbackport:block/sulfur/step7"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.sulfur.place": {
+    "sounds": [
+      "gamedropsbackport:block/sulfur/place1",
+      "gamedropsbackport:block/sulfur/place2",
+      "gamedropsbackport:block/sulfur/place3",
+      "gamedropsbackport:block/sulfur/place4",
+      "gamedropsbackport:block/sulfur/place5",
+      "gamedropsbackport:block/sulfur/place6",
+      "gamedropsbackport:block/sulfur/place7",
+      "gamedropsbackport:block/sulfur/place8"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.sulfur.hit": {
+    "sounds": [
+      "gamedropsbackport:block/sulfur/hit1",
+      "gamedropsbackport:block/sulfur/hit2",
+      "gamedropsbackport:block/sulfur/hit3",
+      "gamedropsbackport:block/sulfur/hit4",
+      "gamedropsbackport:block/sulfur/hit5",
+      "gamedropsbackport:block/sulfur/hit6",
+      "gamedropsbackport:block/sulfur/hit7"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.sulfur.fall": {
+    "sounds": [
+      "gamedropsbackport:block/sulfur/hit1",
+      "gamedropsbackport:block/sulfur/hit2",
+      "gamedropsbackport:block/sulfur/hit3",
+      "gamedropsbackport:block/sulfur/hit4",
+      "gamedropsbackport:block/sulfur/hit5",
+      "gamedropsbackport:block/sulfur/hit6",
+      "gamedropsbackport:block/sulfur/hit7"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.generic.fall"
+  },
+  "block.cinnabar.break": {
+    "sounds": [
+      "gamedropsbackport:block/cinnabar/break1",
+      "gamedropsbackport:block/cinnabar/break2",
+      "gamedropsbackport:block/cinnabar/break3",
+      "gamedropsbackport:block/cinnabar/break4",
+      "gamedropsbackport:block/cinnabar/break5",
+      "gamedropsbackport:block/cinnabar/break6",
+      "gamedropsbackport:block/cinnabar/break7"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.cinnabar.step": {
+    "sounds": [
+      "gamedropsbackport:block/cinnabar/step1",
+      "gamedropsbackport:block/cinnabar/step2",
+      "gamedropsbackport:block/cinnabar/step3",
+      "gamedropsbackport:block/cinnabar/step4",
+      "gamedropsbackport:block/cinnabar/step5",
+      "gamedropsbackport:block/cinnabar/step6",
+      "gamedropsbackport:block/cinnabar/step7"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.cinnabar.place": {
+    "sounds": [
+      "gamedropsbackport:block/cinnabar/place1",
+      "gamedropsbackport:block/cinnabar/place2",
+      "gamedropsbackport:block/cinnabar/place3",
+      "gamedropsbackport:block/cinnabar/place4",
+      "gamedropsbackport:block/cinnabar/place5",
+      "gamedropsbackport:block/cinnabar/place6",
+      "gamedropsbackport:block/cinnabar/place7"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.cinnabar.hit": {
+    "sounds": [
+      "gamedropsbackport:block/cinnabar/hit1",
+      "gamedropsbackport:block/cinnabar/hit2",
+      "gamedropsbackport:block/cinnabar/hit3",
+      "gamedropsbackport:block/cinnabar/hit4",
+      "gamedropsbackport:block/cinnabar/hit5",
+      "gamedropsbackport:block/cinnabar/hit6",
+      "gamedropsbackport:block/cinnabar/hit7"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.cinnabar.fall": {
+    "sounds": [
+      "gamedropsbackport:block/cinnabar/hit1",
+      "gamedropsbackport:block/cinnabar/hit2",
+      "gamedropsbackport:block/cinnabar/hit3",
+      "gamedropsbackport:block/cinnabar/hit4",
+      "gamedropsbackport:block/cinnabar/hit5",
+      "gamedropsbackport:block/cinnabar/hit6",
+      "gamedropsbackport:block/cinnabar/hit7"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.generic.fall"
+  },
+  "block.potent_sulfur.break": {
+    "sounds": [
+      "gamedropsbackport:block/potent_sulfur/break1",
+      "gamedropsbackport:block/potent_sulfur/break2",
+      "gamedropsbackport:block/potent_sulfur/break3",
+      "gamedropsbackport:block/potent_sulfur/break4",
+      "gamedropsbackport:block/potent_sulfur/break5",
+      "gamedropsbackport:block/potent_sulfur/break6",
+      "gamedropsbackport:block/potent_sulfur/break7"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.potent_sulfur.step": {
+    "sounds": [
+      "gamedropsbackport:block/potent_sulfur/step1",
+      "gamedropsbackport:block/potent_sulfur/step2",
+      "gamedropsbackport:block/potent_sulfur/step3",
+      "gamedropsbackport:block/potent_sulfur/step4",
+      "gamedropsbackport:block/potent_sulfur/step5",
+      "gamedropsbackport:block/potent_sulfur/step6",
+      "gamedropsbackport:block/potent_sulfur/step7"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.potent_sulfur.place": {
+    "sounds": [
+      "gamedropsbackport:block/potent_sulfur/place1",
+      "gamedropsbackport:block/potent_sulfur/place2",
+      "gamedropsbackport:block/potent_sulfur/place3",
+      "gamedropsbackport:block/potent_sulfur/place4",
+      "gamedropsbackport:block/potent_sulfur/place5",
+      "gamedropsbackport:block/potent_sulfur/place6",
+      "gamedropsbackport:block/potent_sulfur/place7",
+      "gamedropsbackport:block/potent_sulfur/place8"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.potent_sulfur.hit": {
+    "sounds": [
+      "gamedropsbackport:block/potent_sulfur/hit1",
+      "gamedropsbackport:block/potent_sulfur/hit2",
+      "gamedropsbackport:block/potent_sulfur/hit3",
+      "gamedropsbackport:block/potent_sulfur/hit4",
+      "gamedropsbackport:block/potent_sulfur/hit5",
+      "gamedropsbackport:block/potent_sulfur/hit6",
+      "gamedropsbackport:block/potent_sulfur/hit7"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.potent_sulfur.fall": {
+    "sounds": [
+      "gamedropsbackport:block/potent_sulfur/hit1",
+      "gamedropsbackport:block/potent_sulfur/hit2",
+      "gamedropsbackport:block/potent_sulfur/hit3",
+      "gamedropsbackport:block/potent_sulfur/hit4",
+      "gamedropsbackport:block/potent_sulfur/hit5",
+      "gamedropsbackport:block/potent_sulfur/hit6",
+      "gamedropsbackport:block/potent_sulfur/hit7"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.generic.fall"
+  },
+  "block.sulfur_spike.break": {
+    "sounds": [
+      "gamedropsbackport:block/sulfur/break1",
+      "gamedropsbackport:block/sulfur/break2",
+      "gamedropsbackport:block/sulfur/break3",
+      "gamedropsbackport:block/sulfur/break4",
+      "gamedropsbackport:block/sulfur/break5",
+      "gamedropsbackport:block/sulfur/break6",
+      "gamedropsbackport:block/sulfur/break7"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.sulfur_spike.step": {
+    "sounds": [
+      "gamedropsbackport:block/sulfur/step1",
+      "gamedropsbackport:block/sulfur/step2",
+      "gamedropsbackport:block/sulfur/step3",
+      "gamedropsbackport:block/sulfur/step4",
+      "gamedropsbackport:block/sulfur/step5",
+      "gamedropsbackport:block/sulfur/step6",
+      "gamedropsbackport:block/sulfur/step7"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.sulfur_spike.place": {
+    "sounds": [
+      "gamedropsbackport:block/sulfur/place1",
+      "gamedropsbackport:block/sulfur/place2",
+      "gamedropsbackport:block/sulfur/place3",
+      "gamedropsbackport:block/sulfur/place4",
+      "gamedropsbackport:block/sulfur/place5",
+      "gamedropsbackport:block/sulfur/place6",
+      "gamedropsbackport:block/sulfur/place7",
+      "gamedropsbackport:block/sulfur/place8"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.sulfur_spike.hit": {
+    "sounds": [
+      "gamedropsbackport:block/sulfur/hit1",
+      "gamedropsbackport:block/sulfur/hit2",
+      "gamedropsbackport:block/sulfur/hit3",
+      "gamedropsbackport:block/sulfur/hit4",
+      "gamedropsbackport:block/sulfur/hit5",
+      "gamedropsbackport:block/sulfur/hit6",
+      "gamedropsbackport:block/sulfur/hit7"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.sulfur_spike.fall": {
+    "sounds": [
+      "gamedropsbackport:block/sulfur/hit1",
+      "gamedropsbackport:block/sulfur/hit2",
+      "gamedropsbackport:block/sulfur/hit3",
+      "gamedropsbackport:block/sulfur/hit4",
+      "gamedropsbackport:block/sulfur/hit5",
+      "gamedropsbackport:block/sulfur/hit6",
+      "gamedropsbackport:block/sulfur/hit7"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.generic.fall"
+  },
+  "block.sulfur_spike.land": {
+    "sounds": [
+      "gamedropsbackport:block/sulfur_spike/land1",
+      "gamedropsbackport:block/sulfur_spike/land2",
+      "gamedropsbackport:block/sulfur_spike/land3",
+      "gamedropsbackport:block/sulfur_spike/land4",
+      "gamedropsbackport:block/sulfur_spike/land5",
+      "gamedropsbackport:block/sulfur_spike/land6",
+      "gamedropsbackport:block/sulfur_spike/land7"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.potent_sulfur.noxious_gas": {
+    "sounds": [
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient1",
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient2",
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient3",
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient4",
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient5",
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient6",
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient7",
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient8",
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient9",
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient10",
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient11",
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient12",
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient13",
+      "gamedropsbackport:block/potent_sulfur/noxious_gas/ambient14"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas"
+  },
+  "block.potent_sulfur.geyser_eruption": {
+    "sounds": [
+      "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption1",
+      "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption2",
+      "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption3",
+      "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption4",
+      "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption5",
+      "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption6",
+      "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption7",
+      "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption8"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption"
+  },
+  "block.potent_sulfur.geyser_eruption_active": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption_active1",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption_active2",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption_active3",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption_active4",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption_active5",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption_active6",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption_active7",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/sulfur_spring/eruption_active8",
+        "volume": 2.0
+      }
+    ]
+  },
+  "block.potent_sulfur.geyser_continuous_eruption": {
+    "sounds": [
+      "gamedropsbackport:block/potent_sulfur/geyser_continuous/eruption1",
+      "gamedropsbackport:block/potent_sulfur/geyser_continuous/eruption2",
+      "gamedropsbackport:block/potent_sulfur/geyser_continuous/eruption3",
+      "gamedropsbackport:block/potent_sulfur/geyser_continuous/eruption4",
+      "gamedropsbackport:block/potent_sulfur/geyser_continuous/eruption5",
+      "gamedropsbackport:block/potent_sulfur/geyser_continuous/eruption6"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption"
+  },
+  "block.potent_sulfur.geyser_continuous_eruption_active": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/geyser_continuous/eruption_active1",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/geyser_continuous/eruption_active2",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/geyser_continuous/eruption_active3",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/geyser_continuous/eruption_active4",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/geyser_continuous/eruption_active5",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/geyser_continuous/eruption_active6",
+        "volume": 2.0
+      },
+      {
+        "name": "gamedropsbackport:block/potent_sulfur/geyser_continuous/eruption_active7",
+        "volume": 2.0
+      }
+    ]
+  },
+  "music_disc.bounce": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:records/bounce",
+        "stream": true
+      }
+    ]
+  }
+}

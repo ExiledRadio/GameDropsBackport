@@ -297,7 +297,8 @@ public final class ChangesSelfTest implements SelfTest {
     // mushroomStew ---------------------------------------------------------------------------------
 
     private static void stew(Check check, World world) {
-        check.ok(CraftingManager.getRecipe(new ResourceLocation("mushroom_stew")) == null, "1.12.2's stew recipe is replaced");
+        check.ok(CraftingManager.getRecipe(new ResourceLocation("mushroom_stew")) instanceof net.minecraftforge.oredict.ShapelessOreRecipe,
+                "1.12.2's stew recipe is replaced under its own id");
         Item shelf = Item.getByNameOrId("gamedropsbackport:shelf_mushroom");
         ItemStack red = new ItemStack(Blocks.RED_MUSHROOM);
         ItemStack brown = new ItemStack(Blocks.BROWN_MUSHROOM);

@@ -3,7 +3,7 @@
   "textures": {
     "large": "gamedropsbackport:block/shelf_mushroom_stage1",
     "mat1": "gamedropsbackport:block/shelf_mushroom_particle",
-    "particle": "#mat1"
+    "particle": "gamedropsbackport:block/shelf_mushroom_particle"
   },
   "elements": [
     {

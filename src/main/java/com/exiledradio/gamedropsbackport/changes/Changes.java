@@ -107,7 +107,8 @@ public final class Changes {
     /**
      * 26.3's {@code mushroom_stew}: shapeless, two of {@code #mushrooms} and a bowl. Replaces 1.12.2's
      * {@code minecraft:mushroom_stew} (one brown, one red), as Tricky Trials replaces the lead recipe. Low priority, so
-     * the poplar stream's shelf mushroom item is registered first.
+     * the poplar stream's shelf mushroom item is registered first. Ours keeps the id {@code minecraft:mushroom_stew}, so
+     * vanilla's recipe-book advancement for it still loads and unlocks it.
      */
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
@@ -117,7 +118,7 @@ public final class Changes {
         if (event.getRegistry() instanceof IForgeRegistryModifiable) {
             ((IForgeRegistryModifiable<IRecipe>) event.getRegistry()).remove(new ResourceLocation("mushroom_stew"));
         }
-        ResourceLocation id = new ResourceLocation(GameDropsBackport.MOD_ID, "mushroom_stew");
+        ResourceLocation id = new ResourceLocation("mushroom_stew");
         Ingredient mushroom = mushrooms();
         event.getRegistry().register(new ShapelessOreRecipe(new ResourceLocation("mushroom_stew"),
                 new ItemStack(Items.MUSHROOM_STEW), mushroom, mushroom, Items.BOWL).setRegistryName(id));

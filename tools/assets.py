@@ -164,6 +164,11 @@ def port_model(path, ours=None, textures_from_jar=True):
         tns, _, tpath = value.rpartition(":")
         if (tns or "minecraft") == "minecraft" and textures_from_jar:
             data["textures"][key] = texture(tpath)
+    # 1.12.2 resolves "#name" only through parents: a reference to a texture of the same model is written out.
+    textures = data.get("textures", {})
+    for key, value in list(textures.items()):
+        if value.startswith("#") and value[1:] in textures and not textures[value[1:]].startswith("#"):
+            textures[key] = textures[value[1:]]
     write_json("models/%s.json" % ours, data)
     return "%s:%s" % (MODID, ours)
 

@@ -284,7 +284,7 @@ behavior needs them. Design questions vanilla already answers are not asked.
 ## Build and test
 
 - `./gradlew build` never deploys unless `gdbDeployDir` is set in `~/.gradle/gradle.properties`.
-- `deps/` holds Backport Core's dev jar (not committed): copy `BackportCore/build/libs/BackportCore-1.4.0-dev.jar`.
+- `deps/` holds Backport Core's dev jar (not committed): copy `BackportCore/build/libs/BackportCore-<core_version>-dev.jar`.
 - Test: `./gradlew runServer -Pselftest=<stream>` (port in `eclipse/server.properties`), then
   `python -I tools/lang/build_langs.py check` with 0 errors, then `./gradlew build` last, then
   `tools/release/boot-server.sh G:/VBPTest/release-boot <log> build/libs/GameDropsBackport-<version>.jar <Core jar>`.

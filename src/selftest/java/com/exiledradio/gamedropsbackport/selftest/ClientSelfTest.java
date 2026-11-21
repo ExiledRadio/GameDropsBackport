@@ -132,6 +132,8 @@ public final class ClientSelfTest {
     }
 
     private void scenes(Minecraft mc) {
+        // Blocks, items, mobs and their screens first: World Options below switches the player to adventure.
+        new ClientScenes(this, mc).add(this.steps);
         // The pause menu: World Options... in Open to LAN's place, the 26.2 icon row under Advancements and Statistics.
         this.steps.add(() -> {
             mc.displayGuiScreen(new GuiIngameMenu());
@@ -245,7 +247,7 @@ public final class ClientSelfTest {
         return null;
     }
 
-    private void shot(String name) {
+    void shot(String name) {
         Minecraft mc = Minecraft.getMinecraft();
         ScreenShotHelper.saveScreenshot(this.shots, name, mc.displayWidth, mc.displayHeight, mc.getFramebuffer());
         File f = new File(new File(this.shots, "screenshots"), name);

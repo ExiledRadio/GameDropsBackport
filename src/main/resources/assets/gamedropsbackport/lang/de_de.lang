@@ -23,6 +23,7 @@ config.gamedropsbackport.lookAndFeel.enabled.tooltip=Aus: Diese Mod fügt keines
 config.gamedropsbackport.lookAndFeel.panorama.tooltip=Das Titelbild-Panorama von 26.3: der gefleckte Wald mit einem verlassenen Lager.
 config.gamedropsbackport.lookAndFeel.splashes.tooltip=Die Änderungen der Splash-Texte von 26.1 bis 26.3.
 config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=Die Menümusik von 26.2: Ebb, Home, Memories, Nightly und Shores von fingerspit statt der fünf von 1.21.6.
+config.gamedropsbackport.lookAndFeel.gameMusic.tooltip=Die Spielmusik von 26.2: Ebb, Home, Memories, Nightly und Shores von fingerspit laufen im Überlebens- und Kreativmodus zwischen den anderen Stücken.
 config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=Das Pausenmenü von 26.2: Fehler melden und Feedback geben als eine Reihe von Symbolknöpfen.
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Der Weltoptionen-Bildschirm von 26.3 im Pausenmenü statt „Im LAN öffnen“; Schwierigkeit verlässt die Optionen.
 config.gamedropsbackport.changes.tooltip=Änderungen von 26.x an Befehlen, Monstern, Blöcken und Items, die es in 1.12.2 schon gibt.
@@ -69,6 +70,7 @@ config.gamedropsbackport.lookAndFeel.enabled=Aktiviert
 config.gamedropsbackport.lookAndFeel.panorama=26.3-Panorama
 config.gamedropsbackport.lookAndFeel.splashes=26.x-Splash-Texte
 config.gamedropsbackport.lookAndFeel.menuMusic=26.2-Menümusik
+config.gamedropsbackport.lookAndFeel.gameMusic=26.2-Spielmusik
 config.gamedropsbackport.lookAndFeel.pauseMenu=26.2-Pausenmenü
 config.gamedropsbackport.lookAndFeel.worldOptions=Weltoptionen-Bildschirm
 

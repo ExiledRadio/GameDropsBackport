@@ -1,0 +1,36 @@
+{
+  "music.game": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:music/game/ebb",
+        "stream": true,
+        "volume": 0.4,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:music/game/home",
+        "stream": true,
+        "volume": 0.4,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:music/game/memories",
+        "stream": true,
+        "volume": 0.4,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:music/game/nightly",
+        "stream": true,
+        "volume": 0.4,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:music/game/shores",
+        "stream": true,
+        "volume": 0.4,
+        "weight": 2
+      }
+    ]
+  }
+}

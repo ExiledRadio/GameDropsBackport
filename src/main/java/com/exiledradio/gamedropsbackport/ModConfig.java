@@ -181,6 +181,12 @@ public final class ModConfig {
         public boolean menuMusic = true;
 
         @Config.RequiresMcRestart
+        @Setting.Look("music")
+        @Config.Comment("26.2's game music: fingerspit's Ebb, Home, Memories, Nightly and Shores play among the other tracks in survival and creative.")
+        @Config.LangKey("config.gamedropsbackport.lookAndFeel.gameMusic")
+        public boolean gameMusic = true;
+
+        @Config.RequiresMcRestart
         @Setting.Look("menus")
         @Config.Comment("26.2's pause menu: Report Bugs and Send Feedback as one row of icon buttons.")
         @Config.LangKey("config.gamedropsbackport.lookAndFeel.pauseMenu")

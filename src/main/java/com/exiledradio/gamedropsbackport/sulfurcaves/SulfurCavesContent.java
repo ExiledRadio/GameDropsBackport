@@ -66,6 +66,7 @@ public final class SulfurCavesContent {
     public static void init() {
         if (SulfurCaves.enabled()) {
             GameRegistry.registerWorldGenerator(new SulfurCavesGen(), 20);
+            Deferred.register();
         }
     }
 
@@ -155,6 +156,8 @@ public final class SulfurCavesContent {
         biome = new BiomeSulfurCaves();
         biome.setRegistryName(id("sulfur_caves"));
         event.getRegistry().register(biome);
+        // 26.3's water_color and water_fog_color, for whichever mod draws 1.13's water (Update Aquatic).
+        com.exiledradio.backportcore.water.WaterColors.register(biome, 0x34BF89, 0x17543C);
     }
 
     @SubscribeEvent

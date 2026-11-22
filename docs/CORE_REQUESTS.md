@@ -171,6 +171,18 @@ Wanted: `GameEvent.BOUNCE` (26.3's vibration frequency for it), so sculk sensors
 Meanwhile: a cube's bounce emits nothing. Its other events (`prime_fuse`, `shear`, `entity_interact`, `entity_place`)
 go through `GameEvents.emit`.
 
+## 3. Writes past the population window (stream 4)
+
+**Done** (Core 1.4.4, `worldgen.DeferredPlacement`): a handler id, a block box and data, run once every chunk the box
+touches is loaded and it and its -x, -z neighbors have populated; saved per dimension. `sulfurcaves.Deferred` hands it
+the far spike tries and a large spring's outer tuff.
+
+## 4. Underground biomes (stream 4)
+
+**Done** (Core 1.4.4, `worldgen.UndergroundBiomes`, patch P44): column and height spans of a biome, saved in the chunk
+and sent to players; F3's biome line, the grass, foliage and water blend and `WaterColors.at` read them.
+`SulfurCavesGen.registerBiome` registers each sulfur cave column of a population window.
+
 ## SC-1. Sulfur caves in Caves & Cliffs' 1.18 terrain (stream 4)
 
 26.2 adds `minecraft:sulfur_caves` to `OverworldBiomeBuilder.addUndergroundBiomes` (continentalness -0.19 to 0.55,

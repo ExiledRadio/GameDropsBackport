@@ -239,6 +239,18 @@ public final class ArchetypeItems {
         return a != null ? a : metas.get(-1);
     }
 
+    /**
+     * @return the archetype of what a cube holds: {@link #of}, or {@link Archetype#NONE} for something no archetype
+     *     names (a skull put in by command), null for nothing
+     */
+    public static Archetype held(ItemStack stack) {
+        if (stack.isEmpty()) {
+            return null;
+        }
+        Archetype a = of(stack);
+        return a != null ? a : Archetype.NONE;
+    }
+
     /** 26.3's {@code #sulfur_cube_swallowable}. */
     public static boolean swallowable(ItemStack stack) {
         return of(stack) != null;

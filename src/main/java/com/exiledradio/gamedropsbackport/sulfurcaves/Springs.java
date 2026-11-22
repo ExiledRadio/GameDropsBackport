@@ -159,6 +159,12 @@ final class Springs {
         IBlockState tuff = SulfurCavesContent.tuff();
         for (int i = 0; i < count; i++) {
             BlockPos p = at.add(trapezoid(reach), trapezoid(3), trapezoid(reach));
+            if (!f.inColumns(p, 0)) {
+                // Past the area (reach 9 or 10 from a spring near its edge): placed once that chunk is ready. At least
+                // 9 out, so never where the template (8 each way at most) goes.
+                Deferred.tuff(f.world, p);
+                continue;
+            }
             p = f.scan(p, EnumFacing.DOWN, 4, Features.Scan.ANY, Features.Scan.SOLID);
             if (p != null && f.solid(p)) {
                 f.set(p, tuff);

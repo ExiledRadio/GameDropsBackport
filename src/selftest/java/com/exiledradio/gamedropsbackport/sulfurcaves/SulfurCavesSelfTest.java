@@ -334,6 +334,54 @@ public final class SulfurCavesSelfTest implements SelfTest {
         check.ok(spikes > 0, "sulfur spikes in the caves (" + spikes + ")");
         check.eq(0, outside, "cinnabar underground far from the sulfur caves");
 
+        // Core's underground biomes: every sulfur cave column of the populated inside is registered at its heights.
+        int columns = 0, registered = 0, wrong = 0;
+        BlockPos regPos = null;
+        for (int x = (c0 + 1) * 16; x < c1 * 16; x += 3) {
+            for (int z = (d0 + 1) * 16; z < d1 * 16; z += 3) {
+                boolean[] mask = SulfurCaves.mask(w, x, z);
+                for (int i = 0; i < 128 - min; i += 5) {
+                    boolean want = mask != null && i < mask.length && mask[i];
+                    Biome got = com.exiledradio.backportcore.worldgen.UndergroundBiomes.at(w, new BlockPos(x, min + i, z));
+                    if (want) {
+                        columns++;
+                        if (got == SulfurCavesContent.biome) {
+                            registered++;
+                            regPos = new BlockPos(x, min + i, z);
+                        }
+                    } else if (got != null) {
+                        wrong++;
+                    }
+                }
+            }
+        }
+        // A column's mask is measured from its ground; one measured again now (the cache keeps 8192 columns) can differ by a
+        // block where later features changed the ground. Registered spans are what population laid the bands by.
+        GameDropsBackport.LOGGER.info("SELFTEST sulfur caves underground biomes: {} of {} mask samples registered, {} outside",
+                registered, columns, wrong);
+        check.ok(columns > 50 && registered >= columns * 0.99, "sulfur cave blocks are Core underground biomes (" + registered + " of " + columns + ")");
+        check.eq(0, wrong, "no underground biome outside the mask");
+        if (regPos != null) {
+            int[] colors = com.exiledradio.backportcore.water.WaterColors.at(w, regPos);
+            check.ok(colors != null && colors[0] == 0x34BF89, "water color there is the sulfur caves' #34bf89 ("
+                    + (colors == null ? "none" : Integer.toHexString(colors[0])) + ")");
+        }
+
+        // Deferred work: the area's edge windows left spikes and tuff waiting; one more ring of chunks runs some.
+        int waiting = com.exiledradio.backportcore.worldgen.DeferredPlacement.pending(w);
+        check.ok(waiting > 0, "spikes past the population windows wait in Core's queue (" + waiting + ")");
+        for (int cx = c0 - 1; cx <= c1 + 2; cx++) {
+            for (int cz = d0 - 1; cz <= d1 + 2; cz++) {
+                w.getChunk(cx, cz);
+            }
+        }
+        com.exiledradio.backportcore.worldgen.DeferredPlacement.flush(w);
+        int after = com.exiledradio.backportcore.worldgen.DeferredPlacement.pending(w);
+        GameDropsBackport.LOGGER.info("SELFTEST sulfur caves deferred work: {} waiting, {} after one more ring", waiting, after);
+        check.ok(after < waiting, "the next ring of chunks finishes waiting work (" + waiting + " then " + after
+                + " with the ring's own)");
+        deferredTuff(check, (c0 + 2) * 16 + 7, (d0 + 2) * 16 + 7);
+
         // Spawns: inside, the biome's list.
         BlockPos in = null;
         for (int x = p[0] - 8; x <= p[0] + 8 && in == null; x++) {
@@ -363,6 +411,24 @@ public final class SulfurCavesSelfTest implements SelfTest {
             BlockPos sky = new BlockPos(in.getX(), 200, in.getZ());
             check.ok(!SulfurCaves.at(w, sky), "not in the sky above");
         }
+    }
+
+    /** The deferred spring tuff on a prepared column of loaded, populated chunks: down through air to stone. */
+    private void deferredTuff(Check check, int x, int z) {
+        WorldServer w = check.world;
+        BlockPos top = new BlockPos(x, 200, z);
+        w.setBlockState(top, Blocks.AIR.getDefaultState(), 2);
+        w.setBlockState(top.down(), Blocks.AIR.getDefaultState(), 2);
+        w.setBlockState(top.down(2), Blocks.STONE.getDefaultState(), 2);
+        w.setBlockState(top.down(3), Blocks.STONE.getDefaultState(), 2);
+        int before = com.exiledradio.backportcore.worldgen.DeferredPlacement.pending(w);
+        Deferred.tuff(w, top);
+        check.eq(before + 1, com.exiledradio.backportcore.worldgen.DeferredPlacement.pending(w), "a spring's far tuff is queued");
+        com.exiledradio.backportcore.worldgen.DeferredPlacement.flush(w);
+        check.eq(SulfurCavesContent.tuff().getBlock(), w.getBlockState(top.down(2)).getBlock(), "and placed on the first solid block below");
+        check.eq(Blocks.AIR, w.getBlockState(top.down()).getBlock(), "not in the air above it");
+        w.setBlockState(top.down(2), Blocks.AIR.getDefaultState(), 2);
+        w.setBlockState(top.down(3), Blocks.AIR.getDefaultState(), 2);
     }
 
     private static boolean near(boolean[] mask, int i, int d) {

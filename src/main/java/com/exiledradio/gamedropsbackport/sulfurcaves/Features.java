@@ -18,20 +18,30 @@ import java.util.Random;
 
 /**
  * 26.3's sulfur cave features, placed as its {@code placed_feature} files say, inside the population area: the chunk
- * from {@code ax, az} and its three neighbors to +x and +z, 32 blocks square.
+ * from {@code ax, az} and its three neighbors to +x and +z, 32 blocks square. A try that would reach past it (a spike
+ * thrown far, a large spring's outer tuff) goes to Core's {@code DeferredPlacement}, which runs it once the chunks there
+ * are ready, as 26.3's 3 by 3 region would ({@link Deferred}).
  */
 final class Features {
 
     final World world;
     final int ax, az;
+    /** The area's far edges (exclusive): ax + 32 and az + 32 in population, the queued box's for deferred work. */
+    final int bx, bz;
     final Random rand;
     final int minY, maxY;
     final Block sulfur, cinnabar, potent, spike;
 
     Features(World world, int ax, int az, Random rand) {
+        this(world, ax, az, ax + 32, az + 32, rand);
+    }
+
+    Features(World world, int ax, int az, int bx, int bz, Random rand) {
         this.world = world;
         this.ax = ax;
         this.az = az;
+        this.bx = bx;
+        this.bz = bz;
         this.rand = rand;
         this.minY = SulfurCaves.minY(world);
         this.maxY = SulfurCaves.maxYExclusive(world);
@@ -44,8 +54,13 @@ final class Features {
     // ------------------------------------------------------------------------------------------------ access
 
     boolean in(BlockPos p) {
-        return p.getX() >= ax && p.getX() < ax + 32 && p.getZ() >= az && p.getZ() < az + 32 && p.getY() >= minY
+        return p.getX() >= ax && p.getX() < bx && p.getZ() >= az && p.getZ() < bz && p.getY() >= minY
                 && p.getY() < maxY;
+    }
+
+    /** @return true if the columns within {@code r} of {@code p} are all in the area */
+    boolean inColumns(BlockPos p, int r) {
+        return p.getX() - r >= ax && p.getX() + r < bx && p.getZ() - r >= az && p.getZ() + r < bz;
     }
 
     /** The block, or bedrock outside the area (never replaced, never air). */
@@ -267,15 +282,27 @@ final class Features {
             int n = between(1, 5);
             for (int i = 0; i < n; i++) {
                 BlockPos p = base.add(clampedNormal(3.0F, 10), clampedNormal(0.6F, 2), clampedNormal(3.0F, 10));
+                if (!inColumns(p, Deferred.SPIKE_REACH)) {
+                    // Its biome check, scan and spike would read or write past the area: later, with its own draws.
+                    if (p.getY() >= minY && p.getY() < maxY) {
+                        Deferred.spike(world, p, LegacyRegions.mix(world.getSeed() ^ 0x5B1CEL, p.getX() * 31 + t, p.getZ() * 31 + i)
+                                ^ p.getY());
+                    }
+                    continue;
+                }
                 if (!inSulfurCaves(p)) {
                     continue;
                 }
-                boolean down = rand.nextInt(2) == 0;
-                BlockPos q = scan(p, down ? EnumFacing.DOWN : EnumFacing.UP, 12, Scan.EMPTY_OR_WATER, Scan.SOLID);
-                if (q != null) {
-                    new Speleothems(this).single(down ? q.up() : q.down());
-                }
+                single(p, rand.nextInt(2) == 0);
             }
+        }
+    }
+
+    /** The {@code sulfur_spike} placement after its biome filter: scan to a floor or ceiling, then the speleothem. */
+    void single(BlockPos p, boolean down) {
+        BlockPos q = scan(p, down ? EnumFacing.DOWN : EnumFacing.UP, 12, Scan.EMPTY_OR_WATER, Scan.SOLID);
+        if (q != null) {
+            new Speleothems(this).single(down ? q.up() : q.down());
         }
     }
 

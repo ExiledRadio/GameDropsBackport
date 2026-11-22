@@ -6,7 +6,9 @@ import com.exiledradio.gamedropsbackport.poplar.boat.BoatWood;
 import com.exiledradio.gamedropsbackport.poplar.boat.EntityModBoat;
 import com.exiledradio.gamedropsbackport.poplar.wood.WoodSign;
 import com.exiledradio.gamedropsbackport.softblocks.EntityCushion;
+import com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent;
 import com.exiledradio.gamedropsbackport.sulfurcube.EntitySulfurCube;
+import com.exiledradio.backportcore.worldgen.UndergroundBiomes;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
@@ -28,6 +30,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -55,6 +58,9 @@ final class ClientScenes {
     private static final String[] BABIES = {"cow", "pig", "chicken", "sheep", "wolf", "ocelot", "rabbit", "horse", "donkey",
             "mule", "llama", "polar_bear", "mooshroom", "skeleton_horse", "zombie_horse", "zombie", "husk",
             "zombie_villager", "zombie_pigman", "villager"};
+
+    /** Where the client test registers an underground biome: beside the cubes, under the floor. */
+    private static final BlockPos UNDER = new BlockPos(-20, 2, 20);
 
     private final ClientSelfTest t;
     private final Minecraft mc;
@@ -214,7 +220,9 @@ final class ClientScenes {
                     spawn(w, e, -9 + k, 4, 10);
                 }
                 int[] sizes = {1, 2, 4};
-                ItemStack[] held = {new ItemStack(Blocks.SLIME_BLOCK), new ItemStack(Blocks.TNT), new ItemStack(Blocks.MAGMA), ItemStack.EMPTY};
+                // The last two hold heads, as only a command can give them (26.3 draws them by its custom head layer).
+                ItemStack[] held = {new ItemStack(Blocks.SLIME_BLOCK), new ItemStack(Blocks.TNT), new ItemStack(Blocks.MAGMA), ItemStack.EMPTY,
+                        new ItemStack(Items.SKULL, 1, 4), new ItemStack(Items.SKULL, 1, 1)};
                 for (int k = 0; k < held.length; k++) {
                     EntitySulfurCube cube = new EntitySulfurCube(w);
                     cube.setCubeSize(sizes[k % sizes.length], true);
@@ -253,13 +261,69 @@ final class ClientScenes {
                 }
             }
             this.t.ok(babies >= BABIES.length, "babies on the client: " + babies + " of " + BABIES.length);
-            check(EntitySulfurCube.class, 4, "RenderSulfurCube");
+            check(EntitySulfurCube.class, 6, "RenderSulfurCube");
             check(EntityCushion.class, 1, "RenderCushion");
             check(EntityModBoat.class, 1, null);
             this.t.shot("entities.png");
             this.mc.player.rotationPitch = 20;
             this.mc.player.rotationYaw = 0;
             return 5;
+        });
+        // The heads inside their cubes, close up; and Core's underground biomes on this client (F3, grass, water).
+        steps.add(() -> {
+            onServer(() -> {
+                serverPlayer().connection.setPlayerLocation(7.5, 4, 11.0, 0, 18);
+                WorldServer w = server();
+                for (int dx = -1; dx <= 1; dx++) {
+                    for (int dz = -1; dz <= 1; dz++) {
+                        UndergroundBiomes.set(w, UNDER.getX() + dx, UNDER.getZ() + dz, 0, 12, SulfurCavesContent.biome);
+                    }
+                }
+                UndergroundBiomes.set(w, 7, 11, 0, 12, SulfurCavesContent.biome);
+            });
+            return 30;
+        });
+        steps.add(() -> {
+            int heads = 0;
+            for (Entity e : this.mc.world.loadedEntityList) {
+                if (e instanceof EntitySulfurCube && ((EntitySulfurCube) e).getBodyItem().getItem() == Items.SKULL) {
+                    heads++;
+                }
+            }
+            this.t.ok(heads == 2, "cubes holding heads on the client: " + heads);
+            this.t.shot("cube_heads.png");
+            if (SulfurCavesContent.biome != null) {
+                this.t.ok(UndergroundBiomes.at(this.mc.world, UNDER) == SulfurCavesContent.biome,
+                        "underground biome spans reach the client: " + UndergroundBiomes.at(this.mc.world, UNDER));
+                this.t.ok(UndergroundBiomes.at(this.mc.world, UNDER.up(20)) == null, "not above the span");
+                int grass = net.minecraft.world.biome.BiomeColorHelper.getGrassColorAtPos(this.mc.world, UNDER);
+                this.t.ok(grass == 0xABA64F, "grass color there is the sulfur caves' (P44): " + Integer.toHexString(grass));
+                int water = net.minecraft.world.biome.BiomeColorHelper.getWaterColorAtPos(this.mc.world, UNDER);
+                this.t.ok(water == 0x34BF89, "water color there is the sulfur caves': " + Integer.toHexString(water));
+                int above = net.minecraft.world.biome.BiomeColorHelper.getGrassColorAtPos(this.mc.world, UNDER.up(20));
+                this.t.ok(above != 0xABA64F, "and the column's own above: " + Integer.toHexString(above));
+                java.util.List<String> left = new java.util.ArrayList<String>(java.util.Arrays.asList("Biome: Plains"));
+                com.exiledradio.backportcore.presentation.client.DebugText.apply(
+                        new com.exiledradio.backportcore.presentation.client.DebugText.Lines(left, new java.util.ArrayList<String>(), this.mc, 0F));
+                this.t.ok(("Biome: " + SulfurCavesContent.biome.getBiomeName()).equals(left.get(0)), "F3 names it where the player stands: " + left.get(0));
+                this.mc.gameSettings.showDebugInfo = true;
+            }
+            return 10;
+        });
+        steps.add(() -> {
+            this.t.shot("f3_underground.png");
+            this.mc.gameSettings.showDebugInfo = false;
+            onServer(() -> {
+                WorldServer w = server();
+                for (int dx = -1; dx <= 1; dx++) {
+                    for (int dz = -1; dz <= 1; dz++) {
+                        UndergroundBiomes.set(w, UNDER.getX() + dx, UNDER.getZ() + dz, 0, 12, null);
+                    }
+                }
+                UndergroundBiomes.set(w, 7, 11, 0, 12, null);
+                serverPlayer().connection.setPlayerLocation(0.5, 4, 0.5, 0, 20);
+            });
+            return 30;
         });
         steps.add(() -> {
             this.t.shot("blocks.png");

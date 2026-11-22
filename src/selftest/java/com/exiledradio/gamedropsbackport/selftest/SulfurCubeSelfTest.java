@@ -75,6 +75,7 @@ final class SulfurCubeSelfTest implements SelfTest {
         floor(world);
         sizes(check, world);
         swallowing(check, world);
+        skulls(check, world);
         immunity(check, world);
         tnt(check, world);
         splitting(check, world);
@@ -174,6 +175,38 @@ final class SulfurCubeSelfTest implements SelfTest {
         check.eq(8.0F, baby.getHealth(), "with full adult health");
         adult.setDead();
         baby.setDead();
+    }
+
+    /**
+     * 26.3: no archetype tag lists a skull, so none is swallowable; one put in by command (here the saved
+     * {@code body_item}) is held with no archetype: AI stopped, the default knockback, and drawn as a skull.
+     */
+    private static void skulls(Check check, WorldServer world) {
+        ItemStack skull = new ItemStack(Items.SKULL, 1, 1);
+        check.ok(!ArchetypeItems.swallowable(skull), "a skull is not swallowable (26.3's tags)");
+        check.eq(null, ArchetypeItems.of(skull), "no archetype names a skull");
+        check.eq(Archetype.NONE, ArchetypeItems.held(skull), "held anyway, it has none");
+        EntitySulfurCube c = cube(world, ORIGIN.east(8), false);
+        FakePlayer player = FakePlayerFactory.getMinecraft(world);
+        player.setHeldItem(EnumHand.MAIN_HAND, skull.copy());
+        check.ok(!c.processInteract(player, EnumHand.MAIN_HAND) || !c.hasBodyItem(), "a player cannot feed it a skull");
+        check.ok(!c.hasBodyItem(), "so it holds nothing");
+        NBTTagCompound tag = new NBTTagCompound();
+        c.writeEntityToNBT(tag);
+        tag.setTag("body_item", new ItemStack(Items.SKULL, 1, 4).writeToNBT(new NBTTagCompound()));
+        c.readEntityFromNBT(tag);
+        check.ok(c.hasBodyItem() && c.getBodyItem().getItem() == Items.SKULL, "a command puts a creeper head in");
+        check.eq(Archetype.NONE, c.archetype(), "with no archetype");
+        check.ok(!c.aiActive(), "its AI stops as with a block");
+        check.ok(!c.canExplode(), "it is no TNT cube");
+        check.eq(0.33F, Archetype.NONE.horizontalPower, "26.3's default knockback, horizontal");
+        check.eq(0.06F, Archetype.NONE.verticalPower, "and vertical");
+        check.eq(SulfurCubes.hit(Archetype.REGULAR), SulfurCubes.hit(Archetype.NONE), "26.3's default sounds are regular's");
+        NBTTagCompound saved = new NBTTagCompound();
+        c.writeEntityToNBT(saved);
+        check.eq(4, new ItemStack(saved.getCompoundTag("body_item")).getMetadata(), "the head is saved");
+        c.setDead();
+        player.setHeldItem(EnumHand.MAIN_HAND, ItemStack.EMPTY);
     }
 
     private static void swallowing(Check check, WorldServer world) {

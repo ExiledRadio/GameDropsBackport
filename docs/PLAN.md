@@ -224,8 +224,10 @@ Not built, and why:
 
 - Online services: Friends list, button, toasts and options (26.2), Graphics API / Vulkan (26.2), Realms invite
   codes and buttons (26.3), chat restrictions screen (26.1), player reporting. 1.12.2 has none of them.
-- World upgrade screens (26.1), Game Rules search (26.1; 1.12.2 has no game rules screen). World Options has no
-  Game Rules or Restrictions button for the same reason.
+- World Options' Restrictions button (26.3): 1.12.2 has no chat restrictions. (Game Rules... is built: Backport
+  Core 1.4.4's Game Rules screen with 26.1's search; so is Optimize World, 1.13's.)
+- 26.1's world upgrade screen (`FileFixerProgressScreen`): it moves 26.1's own files when an older world opens; a
+  1.12.2 world has none to move. Core's Optimize World (Edit World) is the 1.13 screen 26.3 still has.
 - Exclusive Fullscreen (26.1) and Borderless as the default (26.3): built in Core 1.4.4 (P42, Core's own option).
 - Quit Shortcuts (26.3, on by default: 1.12.2 already quits on Alt+F4), Right Click Emulation and Menu/Dock
   Visibility (macOS only), the minimum window size: low value; left out.

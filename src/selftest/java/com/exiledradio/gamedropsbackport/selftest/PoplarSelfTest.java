@@ -35,7 +35,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.io.PrintWriter;
@@ -105,13 +104,16 @@ final class PoplarSelfTest implements SelfTest {
         check.ok(!ForgeRegistries.BLOCKS.containsKey(Content.id("poplar_shelf")), "no shelf of ours (Tricky Trials')");
         boolean wild = Loader.isModLoaded("wildupdatebackport");
         check.eq(wild, ForgeRegistries.ITEMS.containsKey(Content.id("poplar_chest_boat")), "chest boat only with Wild Update");
-        EntityEntry boat = ForgeRegistries.ENTITIES.getValue(Content.id("boat"));
-        check.ok(boat != null, "boat entity");
-        if (boat != null) {
-            check.eq(6, net.minecraftforge.fml.common.registry.EntityRegistry.instance()
-                    .lookupModSpawn(boat.getEntityClass(), false).getModEntityId(), "boat entity id");
-        }
-        check.eq(wild, ForgeRegistries.ENTITIES.containsKey(Content.id("chest_boat")), "chest boat entity only with Wild Update");
+        check.ok(!ForgeRegistries.ENTITIES.containsKey(Content.id("boat")) && !ForgeRegistries.ENTITIES.containsKey(Content.id("chest_boat")),
+                "no boat entities of our own: the boats are Backport Core's");
+        com.exiledradio.backportcore.boat.BoatWood poplar = BoatWood.POPLAR.core();
+        check.ok(poplar != null && poplar.boatItem() == BoatContent.item(BoatWood.POPLAR, false), "poplar is Core's wood, with our boat");
+        check.ok(poplar != null && (poplar.chestBoatItem() != null) == wild
+                && poplar.chestBoatItem() == BoatContent.item(BoatWood.POPLAR, true), "and our chest boat with Wild Update");
+        check.eq(com.exiledradio.backportcore.boat.Boats.BOAT, com.exiledradio.backportcore.boat.Boats.renamedTo(Content.id("boat")),
+                "our old boats load as Core's");
+        check.eq(com.exiledradio.backportcore.boat.Boats.CHEST_BOAT, com.exiledradio.backportcore.boat.Boats.renamedTo(Content.id("chest_boat")),
+                "our old chest boats load as Core's");
         check.ok(PoplarContent.biome != null && ForgeRegistries.BIOMES.containsKey(Content.id("dappled_forest")), "biome registered");
         check.ok(TradeRegistry.traderTrades(TradeRegistry.TraderPool.ORDINARY).size() >= 2
                 && TradeRegistry.traderTrades(TradeRegistry.TraderPool.SPECIAL).size() >= 1, "trader trades added");

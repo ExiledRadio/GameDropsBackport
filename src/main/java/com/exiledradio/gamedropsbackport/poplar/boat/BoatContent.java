@@ -1,5 +1,7 @@
 package com.exiledradio.gamedropsbackport.poplar.boat;
 
+import com.exiledradio.backportcore.boat.Boats;
+import com.exiledradio.backportcore.boat.ItemWoodBoat;
 import com.exiledradio.gamedropsbackport.ModConfig;
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
 import com.exiledradio.gamedropsbackport.poplar.Content;
@@ -14,8 +16,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.EntityEntry;
-import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -26,15 +26,14 @@ import java.util.Map;
 /**
  * The poplar boat and, with Wild Update (the owner of chest boats, Rule 2), the poplar chest boat.
  *
- * <p>Two entities, ids 6 and 7 of this stream's block 6-10: {@code boat} and {@code chest_boat}, the wood in their
- * data (Trails &amp; Tales' boat code, the family's own). Recipes are 26.3's: five planks in a U make a boat; a boat
- * and a chest, shapeless, make the chest boat. Both burn for 1200 ticks.
+ * <p>The boats are Backport Core's ({@code backportcore:boat} and {@code chest_boat}, Core's {@code boat/}, our
+ * {@code docs/CORE_REQUESTS.md} 5): this registers poplar with Core, the items under our names, and the recipes, 26.3's:
+ * five planks in a U make a boat; a boat and a chest, shapeless, make the chest boat. Both burn for 1200 ticks. Worlds
+ * saved before (our own {@code gamedropsbackport:boat} and {@code chest_boat}, ids 6 and 7) load as Core's, wood and
+ * chest kept ({@link #preInit}).
  */
 @Mod.EventBusSubscriber(modid = GameDropsBackport.MOD_ID)
 public final class BoatContent {
-
-    public static final int BOAT_ID = 6;
-    public static final int CHEST_BOAT_ID = 7;
 
     private static final Map<String, Item> ITEMS = new HashMap<String, Item>();
 
@@ -43,6 +42,12 @@ public final class BoatContent {
 
     public static boolean enabled() {
         return ModConfig.poplar.enabled;
+    }
+
+    /** Our boats saved before Core 1.4.4 load as Core's, with or without poplar on. */
+    public static void preInit() {
+        Boats.renamed(Content.id("boat"), false);
+        Boats.renamed(Content.id("chest_boat"), true);
     }
 
     /** @return true if chest boats exist in this game: Wild Update owns them (1.19) */
@@ -57,31 +62,26 @@ public final class BoatContent {
     }
 
     @SubscribeEvent
-    public static void registerEntities(RegistryEvent.Register<EntityEntry> event) {
-        if (!enabled()) {
-            return;
-        }
-        event.getRegistry().register(EntityEntryBuilder.create().entity(EntityModBoat.class).id(Content.id("boat"), BOAT_ID)
-                .name(GameDropsBackport.MOD_ID + ".boat").tracker(80, 3, true).build());
-        if (!chestBoats()) {
-            return;
-        }
-        event.getRegistry().register(EntityEntryBuilder.create().entity(EntityModChestBoat.class).id(Content.id("chest_boat"), CHEST_BOAT_ID)
-                .name(GameDropsBackport.MOD_ID + ".chest_boat").tracker(80, 3, true).build());
-    }
-
-    @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         if (!enabled()) {
             return;
         }
-        for (BoatWood w : BoatWood.values()) {
+        for (final BoatWood w : BoatWood.values()) {
             if (!w.present()) {
                 continue;
             }
+            com.exiledradio.backportcore.boat.BoatWood wood = com.exiledradio.backportcore.boat.BoatWood.register(Content.id(w.name),
+                    () -> w.planks(1), w.raft)
+                    .setTextures(Content.id("textures/entity/boat/" + w.name + ".png"), Content.id("textures/entity/chest_boat/" + w.name + ".png"));
             for (boolean chest : chestBoats() ? new boolean[] {false, true} : new boolean[] {false}) {
                 String name = w.itemName(chest);
-                ITEMS.put(name, Content.item(event.getRegistry(), name, new ItemModBoat(w, chest)));
+                Item item = Content.item(event.getRegistry(), name, new ItemWoodBoat(wood, chest));
+                ITEMS.put(name, item);
+                if (chest) {
+                    wood.setChestBoatItem(item);
+                } else {
+                    wood.setBoatItem(item);
+                }
             }
         }
     }

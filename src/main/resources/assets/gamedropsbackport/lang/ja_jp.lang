@@ -293,8 +293,6 @@ item.gamedropsbackport.woodland_mansion_map.name=森の洋館の地図
 # --- poplar ---
 biome.gamedropsbackport.dappled_forest=まだらな森
 config.gamedropsbackport.poplar.generateBiome=まだらな森を生成
-entity.gamedropsbackport.boat.name=ポプラのボート
-entity.gamedropsbackport.chest_boat.name=チェスト付きのポプラのボート
 item.gamedropsbackport.poplar_boat.name=ポプラのボート
 item.gamedropsbackport.poplar_chest_boat.name=チェスト付きのポプラのボート
 item.gamedropsbackport.poplar_door.name=ポプラのドア

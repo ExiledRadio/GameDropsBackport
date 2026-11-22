@@ -292,8 +292,6 @@ item.gamedropsbackport.woodland_mansion_map.name=Woodland Mansion Map
 # --- poplar ---
 biome.gamedropsbackport.dappled_forest=Dappled Forest
 config.gamedropsbackport.poplar.generateBiome=Generate Dappled Forests
-entity.gamedropsbackport.boat.name=Poplar Boat
-entity.gamedropsbackport.chest_boat.name=Poplar Boat with Chest
 item.gamedropsbackport.poplar_boat.name=Poplar Boat
 item.gamedropsbackport.poplar_chest_boat.name=Poplar Boat with Chest
 item.gamedropsbackport.poplar_door.name=Poplar Door

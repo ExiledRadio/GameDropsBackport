@@ -5,7 +5,6 @@ import com.exiledradio.gamedropsbackport.poplar.BiomeDappledForest;
 import com.exiledradio.gamedropsbackport.poplar.BlockPoplarLeaves;
 import com.exiledradio.gamedropsbackport.poplar.Content;
 import com.exiledradio.gamedropsbackport.poplar.PoplarContent;
-import com.exiledradio.gamedropsbackport.poplar.boat.client.RenderModBoat;
 import com.exiledradio.gamedropsbackport.poplar.wood.WoodSign;
 import com.exiledradio.gamedropsbackport.poplar.wood.client.WoodSignRenderer;
 
@@ -37,7 +36,7 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * Client parts of the poplar stream: item and block models, the falling poplar leaves, the sign and boat renderers,
+ * Client parts of the poplar stream: item and block models, the falling poplar leaves, the sign renderer (the boats are Backport Core's),
  * and the dappled forest's fog.
  */
 public final class PoplarClient {
@@ -54,7 +53,6 @@ public final class PoplarClient {
         }
         MinecraftForge.EVENT_BUS.register(new Events());
         ClientRegistry.bindTileEntitySpecialRenderer(WoodSign.Tile.class, new WoodSignRenderer());
-        RenderModBoat.register();
     }
 
     /** Called from the leaves' random display tick: one leaf just under the block ({@code spawnParticleBelow}). */

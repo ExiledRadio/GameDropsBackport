@@ -293,8 +293,6 @@ item.gamedropsbackport.woodland_mansion_map.name=Mappa per magione della foresta
 # --- poplar ---
 biome.gamedropsbackport.dappled_forest=Foresta ambrata
 config.gamedropsbackport.poplar.generateBiome=Genera foreste ambrate
-entity.gamedropsbackport.boat.name=Barca di pioppo
-entity.gamedropsbackport.chest_boat.name=Barca di pioppo con baule
 item.gamedropsbackport.poplar_boat.name=Barca di pioppo
 item.gamedropsbackport.poplar_chest_boat.name=Barca di pioppo con baule
 item.gamedropsbackport.poplar_door.name=Porta di pioppo

@@ -293,8 +293,6 @@ item.gamedropsbackport.woodland_mansion_map.name=삼림 대저택 지도
 # --- poplar ---
 biome.gamedropsbackport.dappled_forest=얼룩덜룩한 숲
 config.gamedropsbackport.poplar.generateBiome=얼룩덜룩한 숲 생성
-entity.gamedropsbackport.boat.name=포플러나무 보트
-entity.gamedropsbackport.chest_boat.name=상자가 실린 포플러나무 보트
 item.gamedropsbackport.poplar_boat.name=포플러나무 보트
 item.gamedropsbackport.poplar_chest_boat.name=상자가 실린 포플러나무 보트
 item.gamedropsbackport.poplar_door.name=포플러나무 문

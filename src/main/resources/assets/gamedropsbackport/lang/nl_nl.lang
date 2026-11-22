@@ -293,8 +293,6 @@ item.gamedropsbackport.woodland_mansion_map.name=Kaart met boslandhuis
 # --- poplar ---
 biome.gamedropsbackport.dappled_forest=Populierenbos
 config.gamedropsbackport.poplar.generateBiome=Populierenbossen genereren
-entity.gamedropsbackport.boat.name=Populierenhouten boot
-entity.gamedropsbackport.chest_boat.name=Populierenhouten boot met kist
 item.gamedropsbackport.poplar_boat.name=Populierenhouten boot
 item.gamedropsbackport.poplar_chest_boat.name=Populierenhouten boot met kist
 item.gamedropsbackport.poplar_door.name=Populierenhouten deur

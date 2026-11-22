@@ -293,8 +293,6 @@ item.gamedropsbackport.woodland_mansion_map.name=Mapa de mansión del bosque
 # --- poplar ---
 biome.gamedropsbackport.dappled_forest=Bosque moteado
 config.gamedropsbackport.poplar.generateBiome=Generar bosques moteados
-entity.gamedropsbackport.boat.name=Bote de álamo
-entity.gamedropsbackport.chest_boat.name=Bote de álamo con cofre
 item.gamedropsbackport.poplar_boat.name=Bote de álamo
 item.gamedropsbackport.poplar_chest_boat.name=Bote de álamo con cofre
 item.gamedropsbackport.poplar_door.name=Puerta de álamo

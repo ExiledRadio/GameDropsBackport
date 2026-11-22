@@ -49,6 +49,8 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.network.NetworkHandler.init();
         com.exiledradio.gamedropsbackport.sulfur.SulfurContent.preInit();
         com.exiledradio.gamedropsbackport.poplar.PoplarContent.preInit(event.getSide().isClient());
+        // Boats are Backport Core's (boat/); ours saved before load as Core's.
+        com.exiledradio.gamedropsbackport.poplar.boat.BoatContent.preInit();
         CampsContent.preInit();
         com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.preInit();
         com.exiledradio.gamedropsbackport.lookfeel.LookAndFeel.preInit(event.getSide().isClient());

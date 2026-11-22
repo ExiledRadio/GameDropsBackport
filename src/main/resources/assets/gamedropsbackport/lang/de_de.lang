@@ -293,8 +293,6 @@ item.gamedropsbackport.woodland_mansion_map.name=Waldanwesenkarte
 # --- poplar ---
 biome.gamedropsbackport.dappled_forest=Rotlaubwald
 config.gamedropsbackport.poplar.generateBiome=Rotlaubwälder generieren
-entity.gamedropsbackport.boat.name=Pappelholzboot
-entity.gamedropsbackport.chest_boat.name=Pappelholztruhenboot
 item.gamedropsbackport.poplar_boat.name=Pappelholzboot
 item.gamedropsbackport.poplar_chest_boat.name=Pappelholztruhenboot
 item.gamedropsbackport.poplar_door.name=Pappelholztür

@@ -293,8 +293,6 @@ item.gamedropsbackport.woodland_mansion_map.name=Мапа лісового ма�
 # --- poplar ---
 biome.gamedropsbackport.dappled_forest=Плямистий ліс
 config.gamedropsbackport.poplar.generateBiome=Генерувати плямисті ліси
-entity.gamedropsbackport.boat.name=Тополевий човен
-entity.gamedropsbackport.chest_boat.name=Тополевий човен зі скринею
 item.gamedropsbackport.poplar_boat.name=Тополевий човен
 item.gamedropsbackport.poplar_chest_boat.name=Тополевий човен зі скринею
 item.gamedropsbackport.poplar_door.name=Тополеві двері

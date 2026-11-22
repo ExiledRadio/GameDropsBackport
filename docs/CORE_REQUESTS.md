@@ -107,12 +107,10 @@ The 1.18 terrain's biome provider builds no `GenLayer`s, so `DappledForestLayer`
 
 ## 5. One boat registry (family) — stream 5
 
-**Not done**: a family refactor of three mods' boat entities (Wild Update request 4, Tricky Trials #9, this mod) that has to move saved boats to new entity ids. That is not a hookup and should be its own task. This mod's boats work and are saved by wood name.
-
-**Want:** Core's shared boat and chest boat (Wild Update's request 4, Tricky Trials' #9).
-
-**Meanwhile:** the poplar boat and chest boat are this mod's own entities (`gamedropsbackport:boat`, id 6, and
-`chest_boat`, id 7, the chest boat only with Wild Update), Trails & Tales' boat code, the wood saved by name.
+**Done** (`core-boats`): Core 1.4.4's `boat/` (`BoatWood`, `backportcore:boat` and `chest_boat`, `ItemWoodBoat`). Poplar
+is Core's wood; the poplar boat and (with Wild Update) chest boat are Core's entities, our items. Our
+`gamedropsbackport:boat` and `chest_boat` (ids 6 and 7) saved before load as Core's (`Boats.renamed`), wood, chest and
+passengers kept. Wild Update, Trails & Tales and Tricky Trials moved too.
 ## 1. Map decoration sprites for 26.3's explorer maps (stream 7, camps)
 
 **Done** (`gd-hookups`): Core 1.4.4 ships the five sprites; this jar and `tools/camps/generate.py` no longer do.

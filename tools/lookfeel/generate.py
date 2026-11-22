@@ -20,9 +20,10 @@ for face in range(6):
 assets.write("textures/gui/title/background/panorama_overlay.png",
              png_rgba.keyed_to_rgba(assets._object("minecraft/textures/gui/title/background/panorama_overlay.png")))
 
-# 26.2's pause-menu sprites (Backport Core draws them when we supply them).
-for sprite in ("bug", "social_interactions"):
-    path = "textures/gui/sprites/pause_menu/%s.png" % sprite
+# 26.2's pause-menu row sprites (Report Bugs, Give Feedback, Friends, Player Reporting) and the system toast the two
+# unavailable ones show (Backport Core draws them when we supply them).
+for path in ("pause_menu/bug", "pause_menu/social_interactions", "friends/friends", "pause_menu/player_reporting", "toast/system"):
+    path = "textures/gui/sprites/%s.png" % path
     assets.write("vanilla/" + path, png_rgba.keyed_to_rgba(assets.jar_bytes("assets/minecraft/" + path)))
 
 # 26.2's menu tracks (fingerspit). The sulfur caves stream already ships some under the same paths.

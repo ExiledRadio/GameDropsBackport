@@ -213,7 +213,7 @@ splashes, menuMusic, pauseMenu, worldOptions), all on; Core's Look & Feel page l
 | 26.1 | The version only: its one splash change ("Java 16 + 1 + 4 * 2 = 25!") names a Java version, which Core leaves out on 1.12.2 | nothing |
 | 26.2 | Splash "Music by fingerspit!" ("Now on Vulkan 1.2!" is shipped, but Core leaves out runtime splashes on 1.12.2) | splash pool |
 | 26.2 | Menu music: fingerspit's Ebb, Home, Memories, Nightly and Shores replace 1.21.6's five (weight 2, volume 0.4, as 26.3's sounds.json); Music Toast names "fingerspit - Ebb" ... | menu pool, removal by path (has it) |
-| 26.2 | Pause menu: Report Bugs and Send Feedback become 20 by 20 icon buttons in one row under Advancements and Statistics (sprites `pause_menu/bug`, `pause_menu/social_interactions`) | **new**: the 26.2 pause layout (Core 1.4.4) |
+| 26.2 | Pause menu: Report Bugs, Give Feedback, Friends and Player Reporting become 20 by 20 icon buttons in one row under Advancements and Statistics (sprites `pause_menu/bug`, `pause_menu/social_interactions`, `friends/friends`, `pause_menu/player_reporting`; Friends and Player Reporting show "Not available in this version" on 26.3's system toast, `toast/system`) | **new**: the 26.2 pause layout (Core 1.4.4) |
 | 26.3 | Panorama: the dappled forest with an abandoned camp, and its overlay | panorama (has it) |
 | 26.3 | Splash fix: straight quotes in "Don't touch your face!" and "Prepare, but don't hoard!" | splash pool |
 | 26.3 | Pause menu: World Options... in place of Open to LAN. General: Default Game Mode, Personal Game Mode, Allow Commands, Difficulty and its lock. Multiplayer: LAN, Port, Command Access, Force Game Mode. Apply Changes / Cancel | the pause slot (Core places button 7) |

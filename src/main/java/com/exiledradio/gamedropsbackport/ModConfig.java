@@ -188,7 +188,7 @@ public final class ModConfig {
 
         @Config.RequiresMcRestart
         @Setting.Look("menus")
-        @Config.Comment("26.2's pause menu: Report Bugs and Send Feedback as one row of icon buttons.")
+        @Config.Comment("26.2's pause menu: Report Bugs, Give Feedback, Friends and Player Reporting as one row of icon buttons.")
         @Config.LangKey("config.gamedropsbackport.lookAndFeel.pauseMenu")
         public boolean pauseMenu = true;
 

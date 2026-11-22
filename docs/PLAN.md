@@ -218,7 +218,9 @@ Not built, and why:
 - Options headings bold, underlined and centered (26.3): Core's option lists; a Core request.
 - Sign edit screen drawn from flat `gui/signs/<wood>.png` (26.2): Trails & Tales owns the sign edit screen; a
   Trails & Tales request.
-- Creative tab order (26.3's mineral order): Core's creative order files; later.
+- Creative tab order (26.3's, the mineral order and Natural Blocks' Overworld, Nether, End): Core 1.4.4 lists every
+  vanilla tab in 26.3's order once this mod is installed (`creative.client.ModernOrder`, Core's `docs/CREATIVE_TABS.md`).
+  Nothing to register here: Core decides it by version, and this mod's items are found by their placements.
 - GUI textures: none changed that 1.12.2 draws (26.3's enchanting table differs by 4 unused pixels).
 - In-game music: the fingerspit tracks also join the overworld biome pools (26.2); in-game music is Caves & Cliffs'
   stream with Core's game music.

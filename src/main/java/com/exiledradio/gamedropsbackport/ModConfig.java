@@ -82,7 +82,7 @@ public final class ModConfig {
 
         // --- Babies fields ---
         @Setting.Look("backports")
-        @Config.Comment("26.1's baby models and textures for 1.12.2's babies. Off, babies are shrunken adults.")
+        @Config.Comment("26.1's baby models and textures for 1.12.2's babies and the other backports' (Trails & Tales' camels, snifflets and armadillos). Off, babies are shrunken adults.")
         @Config.LangKey("config.gamedropsbackport.babies.babyModels")
         public boolean babyModels = true;
         // --- end Babies ---

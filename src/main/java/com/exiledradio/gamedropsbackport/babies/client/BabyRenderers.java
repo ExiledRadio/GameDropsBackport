@@ -71,7 +71,8 @@ import net.minecraftforge.fml.common.Loader;
 import java.util.Map;
 
 /**
- * 26.1's baby models for 1.12.2's babies, behind {@code babies.babyModels}: each vanilla renderer below is wrapped
+ * 26.1's baby models for 1.12.2's babies, behind Core's {@code VanillaRevisions.babyModels()} (this mod hands it
+ * {@code babies.babyModels}): each vanilla renderer below is wrapped
  * by a {@link BabyWrapper} sending babies to a 26.3 baby renderer. Shadows are 26.3's adult radii, which 1.12
  * halves for children as 26.3 does.
  */

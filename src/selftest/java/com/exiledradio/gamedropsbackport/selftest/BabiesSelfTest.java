@@ -195,6 +195,71 @@ public final class BabiesSelfTest implements SelfTest {
         return e;
     }
 
+    /** A test baby as Wild Update's tadpole: not EntityAgeable, its age counting up from 0 in onLivingUpdate. */
+    static final class TestTadpole extends net.minecraft.entity.EntityCreature
+            implements com.exiledradio.backportcore.mechanics.AgeLockable {
+        private int age;
+
+        TestTadpole(net.minecraft.world.World world) {
+            super(world);
+        }
+
+        @Override
+        public void onLivingUpdate() {
+            super.onLivingUpdate();
+            if (!this.world.isRemote) {
+                this.age++;
+            }
+        }
+
+        @Override
+        public boolean isBaby() {
+            return true;
+        }
+
+        @Override
+        public int getAge() {
+            return this.age;
+        }
+
+        @Override
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        @Override
+        public int startAge() {
+            return 0;
+        }
+    }
+
+    /** A test baby as Trails & Tales' snifflet: an EntityAgeable starting at -48000. */
+    static final class TestSnifflet extends EntityCow implements com.exiledradio.backportcore.mechanics.AgeLockable {
+        TestSnifflet(net.minecraft.world.World world) {
+            super(world);
+        }
+
+        @Override
+        public boolean isBaby() {
+            return isChild();
+        }
+
+        @Override
+        public int getAge() {
+            return getGrowingAge();
+        }
+
+        @Override
+        public void setAge(int age) {
+            setGrowingAge(age);
+        }
+
+        @Override
+        public int startAge() {
+            return -48000;
+        }
+    }
+
     private static void tick(Entity e, int n) {
         for (int i = 0; i < n; i++) {
             e.onUpdate();
@@ -236,6 +301,26 @@ public final class BabiesSelfTest implements SelfTest {
         player.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(Items.WHEAT, 4));
         player.interactOn(calf, EnumHand.MAIN_HAND);
         check.eq(3, player.getHeldItem(EnumHand.MAIN_HAND).getCount(), "unlocked calf eats wheat");
+
+        // Backport Core's AgeLockable: a baby that is not EntityAgeable (as Wild Update's tadpole, counting up from 0)
+        // and an EntityAgeable with its own start age (as Trails & Tales' snifflet, -48000).
+        TestTadpole tadpole = spawn(world, new TestTadpole(world), base.add(6, 0, 0));
+        tadpole.setAge(500);
+        player.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(BabiesContent.goldenDandelionItem, 2));
+        player.interactOn(tadpole, EnumHand.MAIN_HAND);
+        check.ok(AgeLock.isLocked(tadpole), "an AgeLockable mob that is not EntityAgeable is locked");
+        check.eq(0, tadpole.getAge(), "back to its own start age");
+        tick(tadpole, 20);
+        check.eq(0, tadpole.getAge(), "and held there");
+        TestSnifflet snifflet = spawn(world, new TestSnifflet(world), base.add(8, 0, 0));
+        snifflet.setGrowingAge(-1000);
+        player.interactOn(snifflet, EnumHand.MAIN_HAND);
+        check.ok(AgeLock.isLocked(snifflet), "an AgeLockable EntityAgeable is locked");
+        check.eq(-48000, snifflet.getGrowingAge(), "back to its startAge, not -24000");
+        tick(snifflet, 20);
+        check.eq(-48000, snifflet.getGrowingAge(), "and held there");
+        tadpole.setDead();
+        snifflet.setDead();
 
         // Adults, villagers and undead horses are not locked.
         EntityCow cow = spawn(world, new EntityCow(world), base.add(-2, 0, 0));

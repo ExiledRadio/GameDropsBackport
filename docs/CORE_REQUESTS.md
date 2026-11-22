@@ -26,18 +26,29 @@ Meanwhile: `softblocks.SoftBlocks.init` calls `addDampener` by reflection when i
 start dampening once Core has it; until then they do not.
 ## Stream 1 (babies)
 
-**Item 4 partly done** (`gd-hookups`): Wild Update 1.1.2 leaves the name tag out of ancient city chests when this mod is installed. The master librarian (Village & Pillage) is not changed: V&P already replaces the name tag with candles where a candle mod exists, and what a 26.x master librarian sells without one is V&P's call. Items 1-3 are still open.
+**Item 4 partly done** (`gd-hookups`): Wild Update 1.1.2 leaves the name tag out of ancient city chests when this mod is installed. The master librarian (Village & Pillage) is not changed: V&P already replaces the name tag with candles where a candle mod exists, and what a 26.x master librarian sells without one is V&P's call.
+
+**Item 2 done, item 1 done for Trails & Tales** (`gd-babies`): Core 1.4.4's `mechanics.AgeLockable` (`isBaby`,
+`getAge`/`setAge`, `startAge`; the lock is `AgeLocked` in the mob's Forge data, `AgeLockable.isLocked`) and
+`VanillaRevisions.babyModels()` (26.1 installed, Core's textures switch on, and this mod's `babies.babyModels`, handed
+over by `BabiesContent.preInit` through `setBabyModelSwitch`). `babies.AgeLock` holds any `AgeLockable` as it holds an
+`EntityAgeable`, and `BabyWrapper` asks `babyModels()` too. Wild Update 1.1.3's tadpole locks (start age 0, no
+slimeballs while locked, the bucket keeps `AgeLocked`); Trails & Tales 1.0.3's snifflet starts again at -48000, and
+its camel, sniffer and armadillo draw 26.3's baby models (`BabyCamelModel`, the `sniffer_baby` layer, which 26.3 draws
+with the adult's `SnifferModel` animations, and `BabyArmadilloModel`), animations (`tools/babies/animations.py`) and
+`*_baby.png`/`snifflet.png` textures while `babyModels()` is true. The armadillo is Trails & Tales', not Tricky
+Trials'. Items 1 (Village & Pillage, Buzzy Bees, Update Aquatic, Nether Update, Caves & Cliffs) and 3 are still open.
 
 1. **Baby models of other family mods' mobs.** 26.1 redrew every baby but the nautilus and the ghastling, each with
    a new model, not only a texture, so none can go into Core's modern pack: each owner needs its own baby renderer
    (26.3's `Baby*Model` classes and `*_baby.png` textures). Owners: Village & Pillage (fox, cat, panda, its
    villagers' biome overlays), Buzzy Bees (bee), Update Aquatic (dolphin, turtle), Nether Update (strider, hoglin,
-   zoglin, piglin, zombified piglin), Caves & Cliffs (goat, axolotl, glow squid), Trails & Tales (camel, sniffer),
-   Tricky Trials (armadillo). Meanwhile: this mod draws only vanilla 1.12.2's babies.
+   zoglin, piglin, zombified piglin), Caves & Cliffs (goat, axolotl, glow squid), Trails & Tales (camel, sniffer,
+   armadillo: done). Meanwhile: this mod draws only vanilla 1.12.2's babies and the owners' that are done.
 2. **Age lock for babies that are not `EntityAgeable`.** The golden dandelion works on every `EntityAgeable` baby,
    any mod's. 26.1 also locks tadpoles (Wild Update) and gives snifflets a 48000-tick start age (Trails & Tales).
    Proposal: Core hosts a small interface (`isBaby`, `getAge`/`setAge`, `startAge`) that owners implement, and this
-   mod's `babies.AgeLock` uses it. Meanwhile: tadpoles are not lockable; a locked snifflet restarts at -24000.
+   mod's `babies.AgeLock` uses it. Done (see above).
 3. **Piglins and the golden dandelion** (Nether Update): 26.3 lists it in `piglin_loved`; piglins inspect it and take
    it. Needs a way for another mod to add to Nether Update's piglin-loved list. Meanwhile: piglins ignore it.
 4. **Name tags out of the master librarian's trades** (Village & Pillage) and **out of ancient city chests** (Wild

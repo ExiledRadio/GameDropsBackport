@@ -12,7 +12,7 @@ Baby animals and zombies get 26.1's new models and textures. Cats, pigs, cows an
 
 ![Baby animals in a paddock, with a golden dandelion in hand](gd1-babies.jpg)
 
-The other backports' babies join in. Trails & Tales' puppies of every wolf variant get 26.1's models, and the golden dandelion also keeps Wild Update's tadpoles and Trails & Tales' snifflets small.
+The other backports' babies join in. Their babies get 26.1's models when the backport has them, from Village & Pillage's foxes and pandas to Trails & Tales' camels, armadillos and puppies of every wolf variant, and the golden dandelion also keeps Wild Update's tadpoles and Trails & Tales' snifflets small.
 
 ![Puppies of several wolf variants and a snifflet](gd2-family-babies.jpg)
 
@@ -96,7 +96,7 @@ Every feature can be turned off in Backport Core's settings screen, under Mod Op
 
 **[Wild Update Backport](https://www.curseforge.com/minecraft/mc-mods/wild-update-backport)**: poplar chest boats, wool stairs and slabs dampen vibrations, explorer maps lead to ancient cities, and the golden dandelion keeps tadpoles from growing.
 
-**[Trails & Tales Backport](https://www.curseforge.com/minecraft/mc-mods/trails-tales-backport)**: cherry trees grow in the cherry grove camps, every wolf variant has 26.1's puppy, and the golden dandelion keeps snifflets small.
+**[Trails & Tales Backport](https://www.curseforge.com/minecraft/mc-mods/trails-tales-backport)**: cherry trees grow in the cherry grove camps, baby camels, snifflets, armadillos and every wolf variant's puppies get 26.1's models, and the golden dandelion keeps snifflets small.
 
 **[Tricky Trials Backport](https://www.curseforge.com/minecraft/mc-mods/tricky-trials-backport)**: leaf litter under the poplars, note blocks on its copper play the trumpet, explorer maps lead to trial chambers, and paintings show their names. This mod's menu screens replace its 1.21.11 ones.
 

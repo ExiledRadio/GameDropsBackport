@@ -52,6 +52,7 @@ public final class GameDropsBackport {
         CampsContent.preInit();
         com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.preInit();
         com.exiledradio.gamedropsbackport.lookfeel.LookAndFeel.preInit(event.getSide().isClient());
+        com.exiledradio.gamedropsbackport.babies.BabiesContent.preInit();
     }
 
     @Mod.EventHandler

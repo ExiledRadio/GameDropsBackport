@@ -157,8 +157,8 @@ Ports (block 25920-25939): the main checkout's dev server uses 25920; a stream w
 - Needs Core's template loader, as Tricky Trials' trial chambers do.
 
 **Built (2026-11-21).** `tools/camps/generate.py` copies 26.3's structure set, 18 structures, pools, 297 templates,
-biome and structure tags and three loot tables unchanged. `camps.CampLayout` is 26.3's jigsaw placer (expansion hack,
-nameless feature jigsaws); `AbandonedCampStructure` picks the variant per candidate chunk as `createStructures` does
+biome and structure tags and three loot tables unchanged. `camps.CampLayout` is 26.3's jigsaw start, then Core's `ModernJigsaw`
+(expansion hack, nameless feature jigsaws); `AbandonedCampStructure` picks the variant per candidate chunk as `createStructures` does
 (weighted draws, a fresh start random per try, the column's biome checked before the ground). Checked against vanilla
 26.3's own starts for seed 1013 (`tools/camps/oracle/`, 24 starts): 62 of 62 pieces match. `/locate structure
 minecraft:abandoned_camp_<biome>` and the 23 `#on_*` structure tags are Core's. The 16 explorer map items

@@ -287,8 +287,6 @@ item.gamedropsbackport.woodland_mansion_map.name=Карта лесного ос�
 # --- poplar ---
 biome.gamedropsbackport.dappled_forest=Пёстрый лес
 config.gamedropsbackport.poplar.generateBiome=Генерировать пёстрые леса
-entity.gamedropsbackport.boat.name=Тополевая лодка
-entity.gamedropsbackport.chest_boat.name=Тополевая грузовая лодка
 item.gamedropsbackport.poplar_boat.name=Тополевая лодка
 item.gamedropsbackport.poplar_chest_boat.name=Тополевая грузовая лодка
 item.gamedropsbackport.poplar_door.name=Тополевая дверь

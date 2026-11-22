@@ -38,9 +38,10 @@ public enum BoatWood {
         return b == null ? null : new ItemStack(b, count);
     }
 
-    public static BoatWood byIndex(int i) {
-        BoatWood[] all = values();
-        return i >= 0 && i < all.length ? all[i] : POPLAR;
+    /** @return Backport Core's wood for this one, or null when its boats are not in this game */
+    @Nullable
+    public com.exiledradio.backportcore.boat.BoatWood core() {
+        return com.exiledradio.backportcore.boat.BoatWood.find(com.exiledradio.gamedropsbackport.GameDropsBackport.MOD_ID + ":" + this.name);
     }
 
     @Nullable

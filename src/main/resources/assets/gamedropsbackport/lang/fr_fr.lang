@@ -287,8 +287,6 @@ item.gamedropsbackport.woodland_mansion_map.name=Carte de manoir des bois
 # --- poplar ---
 biome.gamedropsbackport.dappled_forest=Forêt ambrée
 config.gamedropsbackport.poplar.generateBiome=Générer des forêts ambrées
-entity.gamedropsbackport.boat.name=Bateau en peuplier
-entity.gamedropsbackport.chest_boat.name=Bateau de stockage en peuplier
 item.gamedropsbackport.poplar_boat.name=Bateau en peuplier
 item.gamedropsbackport.poplar_chest_boat.name=Bateau de stockage en peuplier
 item.gamedropsbackport.poplar_door.name=Porte en peuplier

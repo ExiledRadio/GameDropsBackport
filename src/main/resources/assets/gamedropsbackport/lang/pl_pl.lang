@@ -287,8 +287,6 @@ item.gamedropsbackport.woodland_mansion_map.name=Mapa do leśnego dworu
 # --- poplar ---
 biome.gamedropsbackport.dappled_forest=Pstrokaty las
 config.gamedropsbackport.poplar.generateBiome=Generuj pstrokate lasy
-entity.gamedropsbackport.boat.name=Topolowa łódka
-entity.gamedropsbackport.chest_boat.name=Topolowa łódka ze skrzynią
 item.gamedropsbackport.poplar_boat.name=Topolowa łódka
 item.gamedropsbackport.poplar_chest_boat.name=Topolowa łódka ze skrzynią
 item.gamedropsbackport.poplar_door.name=Topolowe drzwi

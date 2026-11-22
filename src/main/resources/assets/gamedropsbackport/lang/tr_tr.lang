@@ -287,8 +287,6 @@ item.gamedropsbackport.woodland_mansion_map.name=Çatılı Orman Malikânesi Kâ
 # --- poplar ---
 biome.gamedropsbackport.dappled_forest=Alacalı Orman
 config.gamedropsbackport.poplar.generateBiome=Alacalı Ormanlar Oluştur
-entity.gamedropsbackport.boat.name=Kavak Ağacı Tekne
-entity.gamedropsbackport.chest_boat.name=Sandıklı Kavak Ağacı Tekne
 item.gamedropsbackport.poplar_boat.name=Kavak Ağacı Tekne
 item.gamedropsbackport.poplar_chest_boat.name=Sandıklı Kavak Ağacı Tekne
 item.gamedropsbackport.poplar_door.name=Kavak Ağacı Kapı

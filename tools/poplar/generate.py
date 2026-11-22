@@ -232,8 +232,7 @@ for chest in (False, True):
     port_item_model(item)
     named(item, kind="item")
     assets.texture("entity/%s/%s" % ("chest_boat" if chest else "boat", W))
-lang.append("entity.%s.boat.name=%s" % (M, assets.name("entity.minecraft.poplar_boat")))
-lang.append("entity.%s.chest_boat.name=%s" % (M, assets.name("entity.minecraft.poplar_chest_boat")))
+# The boat entities are Backport Core's (its boat/), named there.
 
 # --- red shrub, shelf mushroom ---------------------------------------------------------------------
 port_blockstate("red_shrub", "red_shrub", {})

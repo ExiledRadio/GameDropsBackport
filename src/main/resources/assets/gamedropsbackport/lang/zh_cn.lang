@@ -287,8 +287,6 @@ item.gamedropsbackport.woodland_mansion_map.name=林地府邸地图
 # --- poplar ---
 biome.gamedropsbackport.dappled_forest=斑驳森林
 config.gamedropsbackport.poplar.generateBiome=生成斑驳森林
-entity.gamedropsbackport.boat.name=杨木船
-entity.gamedropsbackport.chest_boat.name=杨木运输船
 item.gamedropsbackport.poplar_boat.name=杨木船
 item.gamedropsbackport.poplar_chest_boat.name=杨木运输船
 item.gamedropsbackport.poplar_door.name=杨木门

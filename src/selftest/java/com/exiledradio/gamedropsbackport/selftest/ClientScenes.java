@@ -3,7 +3,7 @@ package com.exiledradio.gamedropsbackport.selftest;
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
 import com.exiledradio.gamedropsbackport.babies.client.render.BabyWrapper;
 import com.exiledradio.gamedropsbackport.poplar.boat.BoatWood;
-import com.exiledradio.gamedropsbackport.poplar.boat.EntityModBoat;
+import com.exiledradio.backportcore.boat.EntityWoodBoat;
 import com.exiledradio.gamedropsbackport.poplar.wood.WoodSign;
 import com.exiledradio.gamedropsbackport.softblocks.EntityCushion;
 import com.exiledradio.gamedropsbackport.sulfurcube.EntitySulfurCube;
@@ -226,7 +226,7 @@ final class ClientScenes {
                 EntityCushion cushion = new EntityCushion(w);
                 cushion.setColor(EnumDyeColor.RED);
                 spawn(w, cushion, 6, 4, 8);
-                EntityModBoat boat = new EntityModBoat(w, 8.5, 4, 12.5, BoatWood.byName("poplar"));
+                EntityWoodBoat boat = new EntityWoodBoat(w, 8.5, 4, 12.5, BoatWood.POPLAR.core());
                 w.spawnEntity(boat);
                 this.spawned.add(boat);
                 p.connection.setPlayerLocation(0.5, 4, 0.5, 0, 10);
@@ -255,7 +255,7 @@ final class ClientScenes {
             this.t.ok(babies >= BABIES.length, "babies on the client: " + babies + " of " + BABIES.length);
             check(EntitySulfurCube.class, 4, "RenderSulfurCube");
             check(EntityCushion.class, 1, "RenderCushion");
-            check(EntityModBoat.class, 1, null);
+            check(EntityWoodBoat.class, 1, "RenderWoodBoat");
             this.t.shot("entities.png");
             this.mc.player.rotationPitch = 20;
             this.mc.player.rotationYaw = 0;

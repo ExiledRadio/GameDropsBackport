@@ -33,7 +33,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
  * <ul>
  *   <li>The poplar wood set ({@link WoodSet}; 26.3's {@code BlockSetType.POPLAR} uses the defaults, which are 1.12.2's
  *       wooden sounds), red, orange and yellow poplar leaves, the poplar sapling (a red, orange or yellow poplar),
- *       the potted sapling and the boat ({@code boat.BoatContent}; the chest boat with Wild Update).</li>
+ *       the potted sapling and the boat ({@code boat.BoatContent}; the chest boat with Wild Update; Backport Core's entities).</li>
  *   <li>The red shrub ({@link BlockRedShrub}) and the shelf mushroom ({@link BlockShelfMushroom}).</li>
  *   <li>The dappled forest ({@link BiomeDappledForest}, placed by {@link DappledForestLayer}); its trees, fallen
  *       poplars and ground cover are all in {@link PoplarFeatures}, for other terrain to call.</li>

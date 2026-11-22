@@ -14,6 +14,8 @@ Baby animals and zombies get 26.1's new models and textures. Cats, pigs, cows an
 
 The other backports' babies join in. Their babies get 26.1's models when the backport has them, from Village & Pillage's foxes and pandas to Trails & Tales' camels, armadillos and puppies of every wolf variant, and the golden dandelion also keeps Wild Update's tadpoles and Trails & Tales' snifflets small.
 
+![Babies from the other backports](https://media.forgecdn.net/attachments/2256/834/11-gd-family-babies-jpg.jpg)
+
 ## Sulfur and cinnabar
 
 Sulfur and cinnabar come polished, as bricks and chiseled, with stairs, slabs and walls for each. Potent sulfur bubbles under water and lets out nauseating gas, and erupts over magma and lava. Sulfur spikes hang from ceilings and grow from floors, and fall when their support breaks.
@@ -65,6 +67,10 @@ Abandoned camps turn up in 18 biomes, each built to suit its biome, with loot of
 ## Menus and screens
 
 26.3's title screen panorama, menu music and splashes. The pause menu has World Options, with 26.3's Game Rules screen and its search, and a LAN switch that turns sharing off again. Optimize World is on the world's edit screen. Borderless fullscreen is the default, as in 26.x, and F3 has its own GUI scale. Every creative tab is in 26.3's order.
+
+![World Options in the pause menu](https://media.forgecdn.net/attachments/2256/835/12-gd-world-options-jpg.jpg)
+
+![The Game Rules screen](https://media.forgecdn.net/attachments/2256/836/13-gd-game-rules-jpg.jpg)
 
 ## The rest of 26.x
 

@@ -34,7 +34,7 @@ import java.util.function.IntSupplier;
 
 /**
  * {@code runClient -Pselftest=client}: the look and feel on a real client. The title screen (26.3's panorama), then
- * a superflat creative world: the pause menu (26.2's icon row, World Options...), the in-world Options screen
+ * a superflat creative world: the pause menu (26.2's icon row and its toast, World Options...), the in-world Options screen
  * (no Difficulty), and World Options itself (allow commands, a personal game mode, difficulty, open to LAN on a
  * chosen port). Photos go to {@code eclipse/gdclient/screenshots}; the result is logged as
  * {@code CLIENT SELFTEST DONE pass= fail=}.
@@ -267,12 +267,57 @@ public final class ClientSelfTest {
             GuiButton lan = button(mc.currentScreen, 7);
             GuiButton back = button(mc.currentScreen, 4);
             ok(lan != null && "World Options...".equals(lan.displayString) && lan.enabled, "pause: World Options... in Open to LAN's place");
-            ok(MenuScreens.ICONS.size() == 2, "pause: two icon buttons, " + MenuScreens.ICONS.size());
-            ok(!MenuScreens.ICONS.isEmpty() && back != null && MenuScreens.ICONS.get(0).y == back.y + 48
-                    && MenuScreens.ICONS.get(0).width == 20, "pause: the icon row is the third row, 20 wide");
+            List<MenuScreens.IconAction> icons = MenuScreens.ICONS;
+            StringBuilder row = new StringBuilder();
+            for (MenuScreens.IconAction b : icons) {
+                row.append(b.sprite.replace("textures/gui/sprites/", "")).append(" '").append(b.tooltip).append("' ")
+                        .append(b.x).append(',').append(b.y).append(' ').append(b.width).append('x').append(b.height)
+                        .append(b.enabled ? "" : " inactive").append("; ");
+            }
+            String desc = row.toString();
+            ok(icons.size() == 4, "pause: four icon buttons, " + desc);
+            String[] sprites = {"pause_menu/bug.png", "pause_menu/social_interactions.png", "friends/friends.png", "pause_menu/player_reporting.png"};
+            String[] tips = {"Report Bugs", "Give Feedback", "Friends", "There are no players to report in this world"};
+            boolean order = icons.size() == 4;
+            for (int i = 0; order && i < 4; i++) {
+                order = ("textures/gui/sprites/" + sprites[i]).equals(icons.get(i).sprite) && tips[i].equals(icons.get(i).tooltip);
+            }
+            ok(order, "pause: 26.3's order and tooltips (Report Bugs, Give Feedback, Friends, Player Reporting), " + desc);
+            int x0 = mc.currentScreen.width / 2 - 46;
+            boolean laid = icons.size() == 4 && back != null;
+            for (int i = 0; laid && i < 4; i++) {
+                MenuScreens.IconAction b = icons.get(i);
+                laid = b.x == x0 + 24 * i && b.y == back.y + 48 && b.width == 20 && b.height == 20;
+            }
+            ok(laid, "pause: 20 by 20 with 4 between, 92 wide and centered, the third row, " + desc);
+            ok(icons.size() == 4 && icons.get(0).enabled && icons.get(1).enabled && icons.get(2).enabled && !icons.get(3).enabled,
+                    "pause: alone in singleplayer, only Player Reporting is inactive, " + desc);
             GuiButton options = button(mc.currentScreen, 0);
             ok(options != null && lan != null && options.y == lan.y && lan.x == mc.currentScreen.width / 2 + 4, "pause: Options... and World Options... share a row");
             shot("pause.png");
+            // Clicks: the inactive Player Reporting does nothing; Friends shows the toast and the pause menu stays.
+            if (icons.size() == 4) {
+                GuiScreen pause = mc.currentScreen;
+                click(pause, icons.get(3));
+                ok(!com.exiledradio.backportcore.presentation.client.SystemToasts.showing(), "pause: an inactive Player Reporting shows nothing");
+                click(pause, icons.get(2));
+                ok(com.exiledradio.backportcore.presentation.client.SystemToasts.showing()
+                        && "Friends".equals(com.exiledradio.backportcore.presentation.client.SystemToasts.lastTitle)
+                        && "Not available in this version".equals(com.exiledradio.backportcore.presentation.client.SystemToasts.lastMessage)
+                        && mc.currentScreen == pause, "pause: Friends shows the system toast \"Not available in this version\" over the pause menu");
+            }
+            this.toastFrames = com.exiledradio.backportcore.presentation.client.SystemToasts.frames;
+            return 30;
+        });
+        this.steps.add(() -> {
+            int[] size = com.exiledradio.backportcore.presentation.client.SystemToasts.size();
+            ok(size != null && size[0] == 190 && size[1] == 32 && com.exiledradio.backportcore.presentation.client.SystemToasts.frames > this.toastFrames,
+                    "pause: the toast is drawn, 190 by 32 (26.3's system toast), " + (size == null ? "none" : size[0] + "x" + size[1]));
+            shot("pause_toast.png");
+            return 140; // the toast slides out (5 s and 0.6 s) before the next photos
+        });
+        this.steps.add(() -> {
+            ok(!com.exiledradio.backportcore.presentation.client.SystemToasts.showing(), "pause: the toast is gone after 5 s");
             mc.displayGuiScreen(new GuiOptions(mc.currentScreen, mc.gameSettings));
             return 20;
         });
@@ -528,6 +573,18 @@ public final class ClientSelfTest {
             }
         }
         return null;
+    }
+
+    private int toastFrames;
+
+    /** A left click on {@code b} through the screen, as the mouse would (its action and sound when active). */
+    private static void click(GuiScreen screen, GuiButton b) {
+        try {
+            java.lang.reflect.Method m = ReflectionHelper.findMethod(GuiScreen.class, "mouseClicked", "func_73864_a", int.class, int.class, int.class);
+            m.invoke(screen, b.x + 10, b.y + 10, 0);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     void shot(String name) {

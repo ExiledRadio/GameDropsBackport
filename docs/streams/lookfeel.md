@@ -20,7 +20,8 @@ and 26.3 client jars and asset indexes, and 26.3's decompiled `PauseScreen`, `Wo
 *   **Menu music**: fingerspit's Ebb, Home, Memories, Nightly and Shores, in place of 1.21.6's five, as in 26.2.
 *   **Game music**: the same five play among the other tracks in survival and creative, and in the biomes whose
     music 26.2 gave them (with Trails & Tales and Caves & Cliffs Backport, which play the biomes' music).
-*   **Pause menu**: Report Bugs and Send Feedback are one row of icon buttons (26.2), and World Options... takes Open
+*   **Pause menu**: Report Bugs, Give Feedback, Friends and Player Reporting are one row of icon buttons (26.2, as
+    26.3 has it); Friends and Player Reporting show a toast, "Not available in this version". World Options... takes Open
     to LAN's place (26.3).
 *   **World Options**: Default Game Mode, Personal Game Mode, Allow Cheats, Difficulty and its lock, Game Rules... (the
     world's game rules, with search; operators only, not in hardcore); LAN with a port of your choice, Command Access
@@ -72,7 +73,10 @@ and 26.3 client jars and asset indexes, and 26.3's decompiled `PauseScreen`, `Wo
 
 *   Restrictions... is left out of World Options: 1.12.2 has no chat restrictions.
 *   Not a host: Difficulty is shown inactive (1.12.2 has no packet to change a server's difficulty).
-*   The pause icon row has Report Bugs and Send Feedback only: Friends and Player Reporting are online services.
+*   The pause icon row is 26.3's, but Friends and Player Reporting are Mojang's online services: clicking either shows
+    26.3's system toast (drawn by Core), the button's name over "Not available in this version". Player Reporting is
+    inactive alone in your own world as in 26.3 ("There are no players to report in this world"; 1.12.2 counts the
+    players in the tab list, 26.3 every player seen); Friends never shows an incoming-request count.
 
 ## Tested
 
@@ -82,10 +86,12 @@ and 26.3 client jars and asset indexes, and 26.3's decompiled `PauseScreen`, `Wo
     Release jar: 0 `/selftest/` entries.
 *   Headless (`lookfeel`): the three versions are ours, the panorama is the newest (six square faces), the overlay,
     Core's splash pool with our files, Core's menu pool with a 1.21.6 track installed before us (menu1 and the five),
-    the tracks in the jar, the two sprites served through Core, the pause grid's numbers, vanilla text in 18
+    the tracks in the jar, the five sprites (four icons, `toast/system`) served through Core at 26.3's sizes, the pause grid's numbers, vanilla text in 18
     languages, and every `WorldOptionsRules` decision.
-*   Client (`./gradlew runClient -Pselftest=client`): **`CLIENT SELFTEST DONE pass=28 fail=0`**: title screen panorama;
-    pause menu (World Options... in Open to LAN's place, two 20-wide icons in the third row); Options without
+*   Client (`./gradlew runClient -Pselftest=client`): **`CLIENT SELFTEST DONE pass=118 fail=0`**: title screen panorama;
+    pause menu (World Options... in Open to LAN's place; the four icons in 26.3's order, sprites and tooltips, 20 by 20,
+    4 apart and centered in the third row, Player Reporting inactive alone; clicking it does nothing, clicking Friends
+    shows the 190 by 32 toast, gone after 5 s); Options without
     Difficulty; World Options before and after changes (Allow Cheats, Personal Game Mode to Adventure, Difficulty to
     Hard applied on the server); port 80 refused; LAN opened on a free port with Command Access; LAN stays on after.
     Screenshots: `eclipse/gdclient/screenshots`.

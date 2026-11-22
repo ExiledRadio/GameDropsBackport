@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
  * <ul>
  *   <li>26.1: the version only (its one splash change names a Java version, which Core leaves out);</li>
  *   <li>26.2: two splashes, fingerspit's five menu tracks in place of 1.21.6's five, and the pause menu's icon
- *       row (Core lays it out from the two sprites here);</li>
+ *       row (Core lays it out from the four sprites here, and draws the system toast from {@code toast/system});</li>
  *   <li>26.3: the dappled forest panorama and overlay, the curly-quote splash fix, vanilla text as 26.3 words it,
  *       and World Options... on the pause menu ({@code lookfeel.client}).</li>
  * </ul>
@@ -78,9 +78,11 @@ public final class LookAndFeel {
             }
         }
         if (cfg.pauseMenu) {
-            v262.replaceAsset("textures/gui/sprites/pause_menu/bug.png", vanilla("textures/gui/sprites/pause_menu/bug.png"))
-                    .replaceAsset("textures/gui/sprites/pause_menu/social_interactions.png",
-                            vanilla("textures/gui/sprites/pause_menu/social_interactions.png"));
+            // The icon row: Report Bugs, Give Feedback, Friends, Player Reporting; the system toast the last two show.
+            for (String sprite : PAUSE_SPRITES) {
+                String path = "textures/gui/sprites/" + sprite + ".png";
+                v262.replaceAsset(path, vanilla(path));
+            }
         }
         if (cfg.panorama) {
             v263.panorama(ID + ":textures/gui/title/background/panorama_")
@@ -88,6 +90,10 @@ public final class LookAndFeel {
         }
         v263.vanillaText(new ResourceLocation(ID, "vanilla_text"));
     }
+
+    /** 26.2's pause-menu row sprites and {@code toast/system}, in the row's order. */
+    static final String[] PAUSE_SPRITES = {"pause_menu/bug", "pause_menu/social_interactions", "friends/friends",
+            "pause_menu/player_reporting", "toast/system"};
 
     private static ResourceLocation texts(String file) {
         return new ResourceLocation(ID, "texts/" + file);

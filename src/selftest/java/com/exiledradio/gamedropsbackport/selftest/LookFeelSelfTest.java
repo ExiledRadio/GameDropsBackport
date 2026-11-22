@@ -122,13 +122,16 @@ final class LookFeelSelfTest implements SelfTest {
             check.ok(entries, "each streamed, weight 2, volume 0.4");
         }
 
-        // Pause menu: the two sprites (15 by 15) reach Core; the grid's numbers.
-        for (String sprite : new String[]{"bug", "social_interactions"}) {
-            String path = "textures/gui/sprites/pause_menu/" + sprite + ".png";
+        // Pause menu: the row's four sprites (drawn 15 by 15) and the system toast reach Core; the grid's numbers.
+        int[][] sizes = {{13, 13}, {20, 20}, {16, 16}, {15, 14}, {160, 64}};
+        String[] sprites = {"pause_menu/bug", "pause_menu/social_interactions", "friends/friends", "pause_menu/player_reporting", "toast/system"};
+        for (int i = 0; i < sprites.length; i++) {
+            String path = "textures/gui/sprites/" + sprites[i] + ".png";
             check.ok(Presentation.asset(path) != null, "Core serves " + path);
             BufferedImage img = image("vanilla/" + path);
-            // Drawn at 15 by 15 whatever its size (SpriteIconButton.sprite(id, 15, 15)): bug is 13, social_interactions 20.
-            check.ok(img != null && img.getWidth() == img.getHeight(), sprite + " is square");
+            // 26.3's own sizes: the icons are drawn at 15 by 15 whatever they are (SpriteIconButton.sprite(id, 15, 15)).
+            check.ok(img != null && img.getWidth() == sizes[i][0] && img.getHeight() == sizes[i][1], sprites[i] + " is 26.3's "
+                    + sizes[i][0] + " by " + sizes[i][1]);
         }
         check.ok(VanillaRevisions.pauseIconRow(), "the 26.2 pause row is on");
         check.ok(VanillaRevisions.pauseGridTop(240, 5) == 18, "pause grid top at 240 high");

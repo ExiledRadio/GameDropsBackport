@@ -206,8 +206,8 @@ mod) and `MenuBackground.contentFrame` for World Options' frame. Still open:
    26.3's own `CreativeModeTabs`. This mod registers nothing; its placed items are found by the item they stand for.
    On the way Core's creative table gained the items it lacked: this mod's poplar wood set, sulfur and cinnabar
    blocks (and Tricky Trials' copper lanterns and chains) had no creative tab at all before; they now sit with their
-   kinds in every look. The golden dandelion and the wool, concrete and poplar stairs that this mod lists itself are
-   found by name in 26.3's order.
+   kinds in every look. The golden dandelion (which this mod lists itself, unplaced) and the wool and concrete stairs
+   and slabs and cushions (placed after an anchor) are found by name in 26.3's order.
 5. **Sign edit screen** (26.2, a Trails & Tales request): the sign drawn flat from `gui/signs/<wood>.png` at 3.9x
    instead of the 3D model. Trails & Tales owns the screen (`sign.client.SignEditScreen`); it could draw the flat
    texture when `Presentation.isAtLeast(LookArea.MENUS, "26.2")` and a pack has the texture. Meanwhile: 1.20's.

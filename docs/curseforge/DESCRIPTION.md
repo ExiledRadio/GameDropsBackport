@@ -78,6 +78,8 @@ You also get 26.x's smaller changes to things 1.12.2 already has, such as `/time
 
 Every feature can be turned off in Backport Core's settings screen, under Mod Options.
 
+![The settings screen](https://media.forgecdn.net/attachments/2256/918/14-gd-settings-jpg.jpg)
+
 ## Not included
 
 *   Online services from 26.x: the friends list, Realms invite codes, chat restrictions and player reporting. 1.12.2 has none of them.

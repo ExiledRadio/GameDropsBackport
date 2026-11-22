@@ -27,6 +27,8 @@ import org.apache.logging.log4j.Logger;
         name = GameDropsBackport.MOD_NAME,
         version = GameDropsBackport.VERSION,
         acceptedMinecraftVersions = "[1.12.2]",
+        // Newer releases, read by Forge's update check and Backport Core's settings screen.
+        updateJSON = "https://raw.githubusercontent.com/ExiledRadio/BackportCore/main/updates/gamedropsbackport.json",
         dependencies = "required-after:backportcore@[1.4.4,)"
 )
 public final class GameDropsBackport {

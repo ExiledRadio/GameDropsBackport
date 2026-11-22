@@ -122,7 +122,7 @@ skipClaimed)` and a claim store.
 
 ## 3. 26.3's jigsaw rules in `Jigsaw` / `JigsawElement` (stream 7)
 
-**Not done (not worth it now)**: the three 26.x placers (`CampLayout`, `ChamberLayout`, `TrailLayout`) already generate as their versions do. Moving them onto one shared 26.x `Jigsaw` means re-checking three released structures piece by piece, and it touches Core's 1.16.5 `Jigsaw` that bastions and villages use. Worth doing when a fourth 26.x jigsaw structure arrives.
+**Done** (branch `core-jigsaw-26x` in Core, this mod, Tricky Trials and Trails & Tales): Core 1.4.4's `structure.ModernJigsaw`, beside the 1.16.5 `Jigsaw` (unchanged): priorities (`ModernTemplate.Jigsaw` and `JigsawElement.Connector` keep them), `ModernJigsaw.PoolAliases`, `Util.shuffle`, `namelessFeatures`, the expansion hack, junctions. `CampLayout`, `ChamberLayout` and `TrailLayout` keep their stubs and hand the start piece to it. Each lays out the same pieces and blocks as before on six seeds (`JigsawDumpSelfTest`, `-Pselftest=jigsawdump`).
 
 Core's `Jigsaw` is 1.16.5's, and `JigsawElement.Feature`'s connector is named `minecraft:bottom`. In 26.3 a feature
 element's jigsaw has no name, so it attaches to any target (`JigsawBlock.canAttach`: `target.name() == null`); the

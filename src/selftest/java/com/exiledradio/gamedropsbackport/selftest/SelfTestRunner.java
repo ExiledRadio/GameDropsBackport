@@ -45,6 +45,7 @@ public final class SelfTestRunner {
             new BabiesSelfTest(),
             new PoplarSelfTest(),
             new CampsSelfTest(),
+            new JigsawDumpSelfTest(),
             new SulfurCubeSelfTest(),
             new ChangesSelfTest(),
             new com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesSelfTest(),
@@ -74,7 +75,9 @@ public final class SelfTestRunner {
         STATES.clear();
         ITEMS.clear();
         for (SelfTest test : TESTS) {
-            if (this.wanted.contains("all") || this.wanted.contains(test.name())) {
+            // The jigsaw dump builds structures far out and writes large files: only when asked for by name.
+            boolean inAll = !(test instanceof JigsawDumpSelfTest);
+            if ((inAll && this.wanted.contains("all")) || this.wanted.contains(test.name())) {
                 check.section(test.name());
                 try {
                     test.run(check);

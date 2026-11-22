@@ -3,6 +3,7 @@ package com.exiledradio.gamedropsbackport.camps;
 import com.exiledradio.backportcore.structure.JigsawElement;
 import com.exiledradio.backportcore.structure.JigsawPiece;
 import com.exiledradio.backportcore.structure.JigsawPools;
+import com.exiledradio.backportcore.structure.ModernJigsaw;
 import com.exiledradio.backportcore.structure.ModernTemplate;
 import com.exiledradio.backportcore.structure.TemplatePlacement;
 import com.exiledradio.backportcore.structure.TerrainAdaptation;
@@ -28,7 +29,7 @@ import java.util.Random;
  * stream's cushions, where that stream is off: 1.12.2 would log each one it cannot make. Every camp template is a
  * rigid {@code legacy_single_pool_element} with no processors, which is all this does.
  */
-public class CampPiece extends JigsawPiece implements TerrainAdaptation.AdaptingPiece {
+public class CampPiece extends JigsawPiece implements TerrainAdaptation.AdaptingPiece, ModernJigsaw.Joined {
 
     /** 26.3's {@code JigsawJunction}s: source x, source ground y, source z, three ints each. */
     private int[] junctions = new int[0];
@@ -41,11 +42,8 @@ public class CampPiece extends JigsawPiece implements TerrainAdaptation.Adapting
         super(element, position, groundLevelDelta, rotation, box);
     }
 
-    void pivot(BlockPos pivot) {
-        this.pivot = pivot;
-    }
-
-    void addJunction(int x, int groundY, int z) {
+    @Override
+    public void addJunction(int x, int groundY, int z) {
         int n = this.junctions.length;
         this.junctions = Arrays.copyOf(this.junctions, n + 3);
         this.junctions[n] = x;

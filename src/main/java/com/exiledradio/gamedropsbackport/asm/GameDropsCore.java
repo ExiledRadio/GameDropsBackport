@@ -13,7 +13,7 @@ import java.util.Map;
  * environment, by {@code -Dfml.coreMods.load}. A transformer only rewrites a call or adds a call to a hook in the
  * mod's own packages; the hook keeps 1.12.2's behavior while its stream is off.
  *
- * <p>The patches: the changes stream's P1-P5 ({@link ChangesTransformer}); the camps' P6 ({@link LootOriginTransformer}).
+ * <p>The patches: the changes stream's P1-P5 ({@link ChangesTransformer}); the camps' P6 ({@link LootOriginTransformer}); the changes stream's P7 (spam counters).
  */
 @IFMLLoadingPlugin.Name("Game Drops Backport Core")
 @IFMLLoadingPlugin.MCVersion("1.12.2")

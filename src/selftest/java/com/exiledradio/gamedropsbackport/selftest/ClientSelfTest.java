@@ -3,6 +3,7 @@ package com.exiledradio.gamedropsbackport.selftest;
 import com.exiledradio.backportcore.presentation.Presentation;
 import com.exiledradio.backportcore.presentation.client.MenuScreens;
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
+import com.exiledradio.gamedropsbackport.lookfeel.client.Lan;
 import com.exiledradio.gamedropsbackport.lookfeel.client.WorldOptionsScreen;
 
 import net.minecraft.client.Minecraft;
@@ -272,7 +273,94 @@ public final class ClientSelfTest {
         });
         this.steps.add(() -> {
             List<String> labels = ((WorldOptionsScreen) mc.currentScreen).labels();
-            ok(labels.contains("LAN: ON (off)") && labels.contains("Command Access: ON"), "world options: LAN stays on once open");
+            ok(labels.contains("LAN: ON") && labels.contains("Command Access: ON"), "world options: open, LAN can be switched off (26.3)");
+            ok(Lan.tcpListeners(mc.getIntegratedServer()) == 1 && Lan.announcing(mc.getIntegratedServer()), "LAN: one listener, announced");
+            ok(listening(this.lanPort), "LAN: the port takes connections");
+            ((WorldOptionsScreen) mc.currentScreen).press("LAN");
+            labels = ((WorldOptionsScreen) mc.currentScreen).labels();
+            ok(labels.contains("LAN: OFF") && labels.contains("Apply Changes"), "world options: LAN off is a change to apply");
+            ((WorldOptionsScreen) mc.currentScreen).press("Apply Changes");
+            return 40;
+        });
+        this.steps.add(() -> {
+            net.minecraft.server.integrated.IntegratedServer server = mc.getIntegratedServer();
+            ok(!server.getPublic(), "world options: LAN off closes the world (26.3's unpublishServer)");
+            ok(Lan.tcpListeners(server) == 0, "LAN off: the listener is closed");
+            ok(!Lan.announcing(server), "LAN off: no longer announced");
+            ok(!listening(this.lanPort), "LAN off: the port refuses connections");
+            boolean everyone = ReflectionHelper.getPrivateValue(net.minecraft.server.management.PlayerList.class,
+                    server.getPlayerList(), "commandsAllowedForAll", "field_72407_n");
+            ok(!everyone, "LAN off: guests' command access cleared");
+            ok(mc.world != null && mc.player != null, "LAN off: the host stays in the world");
+            mc.displayGuiScreen(new WorldOptionsScreen(new GuiIngameMenu()));
+            return 5;
+        });
+        this.steps.add(() -> {
+            WorldOptionsScreen s = (WorldOptionsScreen) mc.currentScreen;
+            ok(s.labels().contains("LAN: OFF"), "world options: LAN shows off again");
+            s.press("LAN");
+            this.lanPort = freePort();
+            s.typePort(String.valueOf(this.lanPort));
+            s.press("Apply Changes");
+            return 40;
+        });
+        this.steps.add(() -> {
+            ok(mc.getIntegratedServer().getPublic() && listening(this.lanPort), "world options: opened to LAN again");
+            mc.displayGuiScreen(new WorldOptionsScreen(new GuiIngameMenu()));
+            return 5;
+        });
+        this.steps.add(() -> {
+            WorldOptionsScreen s = (WorldOptionsScreen) mc.currentScreen;
+            this.oldPort = this.lanPort;
+            this.lanPort = freePort();
+            s.typePort(String.valueOf(this.lanPort));
+            ok(s.labels().contains("Apply Changes"), "world options: a new port while open is a change (26.3's lanPortChanged)");
+            s.press("Apply Changes");
+            return 40;
+        });
+        this.steps.add(() -> {
+            ok(mc.getIntegratedServer().getPublic() && listening(this.lanPort) && !listening(this.oldPort),
+                    "world options: moved to the new port, the old one closed");
+            ok(Lan.tcpListeners(mc.getIntegratedServer()) == 1, "one listener after the move");
+            mc.displayGuiScreen(null);
+            mc.player.sendChatMessage("/unpublish");
+            return 30;
+        });
+        this.steps.add(() -> {
+            ok(!mc.getIntegratedServer().getPublic() && !listening(this.lanPort), "/unpublish closes the world (26.2)");
+            mc.player.sendChatMessage("/unpublish");
+            return 30;
+        });
+        this.steps.add(() -> {
+            ok(chatHas(mc, "No multiplayer game published"), "/unpublish again: 'No multiplayer game published'");
+            mc.player.sendChatMessage("/publish");
+            return 30;
+        });
+        this.steps.add(() -> {
+            ok(mc.getIntegratedServer().getPublic(), "1.12.2's /publish still opens it");
+            mc.player.sendChatMessage("/unpublish");
+            return 30;
+        });
+        this.steps.add(() -> {
+            ok(!mc.getIntegratedServer().getPublic() && Lan.tcpListeners(mc.getIntegratedServer()) == 0,
+                    "/unpublish closes a world /publish opened");
+            // hostGameModeDefault (26.2), on for this check only.
+            com.exiledradio.gamedropsbackport.ModConfig.changes.hostGameModeDefault = true;
+            mc.player.sendChatMessage("/gamemode survival");
+            return 30;
+        });
+        this.steps.add(() -> {
+            ok(mc.getIntegratedServer().worlds[0].getWorldInfo().getGameType() == GameType.SURVIVAL,
+                    "hostGameModeDefault: the host's /gamemode survival makes survival the default (26.2), "
+                            + mc.getIntegratedServer().worlds[0].getWorldInfo().getGameType());
+            com.exiledradio.gamedropsbackport.ModConfig.changes.hostGameModeDefault = false;
+            mc.player.sendChatMessage("/gamemode creative");
+            return 30;
+        });
+        this.steps.add(() -> {
+            ok(mc.playerController.getCurrentGameType() == GameType.CREATIVE
+                            && mc.getIntegratedServer().worlds[0].getWorldInfo().getGameType() == GameType.SURVIVAL,
+                    "hostGameModeDefault off (the default): /gamemode leaves the default alone (26.3)");
             mc.displayGuiScreen(null);
             return 5;
         });
@@ -295,6 +383,28 @@ public final class ClientSelfTest {
                 if (d.getType() == net.minecraft.world.storage.MapDecoration.Type.PLAYER_OFF_LIMITS) {
                     return true;
                 }
+            }
+        }
+        return false;
+    }
+
+    private int oldPort;
+
+    private static boolean listening(int port) {
+        try (java.net.Socket socket = new java.net.Socket()) {
+            socket.connect(new java.net.InetSocketAddress("127.0.0.1", port), 500);
+            return true;
+        } catch (java.io.IOException e) {
+            return false;
+        }
+    }
+
+    private static boolean chatHas(Minecraft mc, String text) {
+        List<net.minecraft.client.gui.ChatLine> lines = ReflectionHelper.getPrivateValue(net.minecraft.client.gui.GuiNewChat.class,
+                mc.ingameGUI.getChatGUI(), "chatLines", "field_146252_h");
+        for (net.minecraft.client.gui.ChatLine line : lines) {
+            if (line.getChatComponent().getUnformattedText().contains(text)) {
+                return true;
             }
         }
         return false;

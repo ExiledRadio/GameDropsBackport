@@ -226,7 +226,6 @@ Not built, and why:
   codes and buttons (26.3), chat restrictions screen (26.1), player reporting. 1.12.2 has none of them.
 - World upgrade screens (26.1), Game Rules search (26.1; 1.12.2 has no game rules screen). World Options has no
   Game Rules or Restrictions button for the same reason.
-- LAN can't be closed again once open: 1.12.2's server has no way to stop listening. The LAN switch stays on.
 - Exclusive Fullscreen (26.1) and Borderless as the default (26.3): built in Core 1.4.4 (P42, Core's own option).
 - Quit Shortcuts (26.3, on by default: 1.12.2 already quits on Alt+F4), Right Click Emulation and Menu/Dock
   Visibility (macOS only), the minimum window size: low value; left out.
@@ -245,7 +244,7 @@ Not built, and why:
 
 26.1 to 26.3's changes to commands, game rules, mobs, blocks, items and world rules 1.12.2 already has, one setting
 each under `changes` (Tricky Trials' stream 25 is the model). The full list, with what 1.12.2 does and what other
-family mods already change, is `docs/streams/changes.md`; patches P1-P5 are in `docs/PATCHES.md`. Port 25928 (row 8).
+family mods already change, is `docs/streams/changes.md`; patches P1-P6 are in `docs/PATCHES.md`. Port 25928 (row 8).
 
 | Change | Version | Setting | 1.12.2 now | Other family mods |
 | --- | --- | --- | --- | --- |
@@ -263,8 +262,14 @@ family mods already change, is `docs/streams/changes.md`; patches P1-P5 are in `
 | Dispensers keep monster spawn eggs on Peaceful | 26.2 | `peacefulSpawnEggs` | egg used up | none |
 | Unbreaking on a helmet worn against the sun | 26.3 | `sunDamageEnchantments` | ignored | Update Aquatic's drowned and Tricky Trials' bogged are their owners' |
 | Spectators use nether portals, end portals, end gateways | 26.3 | `spectatorPortals` | they pass through | none |
+| Ocelots spawn on Peaceful (the monster pass runs, its monsters refused) | 26.2 | `ocelotsPeaceful` | Peaceful skips the whole monster category | none (Nether Update's piglins and Tricky Trials' zombie horses are their owners') |
+| Separate chat and command spam counters; `chat-spam-threshold-seconds`, `command-spam-threshold-seconds` | 26.2 | `spamThresholds` | one counter for both, kicked over 200 | none |
+| The host's `/gamemode` sets the default game mode (off by default: 26.3 dropped it) | 26.2 | `hostGameModeDefault` | the default stays | none |
+| `/advancement grant\|revoke` for several players, 26.3's counts and messages | 26.2, 26.3 | `advancementCounts` | one player; 1.12.2's messages | none |
+| `/scoreboard teams join\|leave` answer with 26.3's `/team` counts | 26.3 | `teamJoinCounts` | 1.12.2's messages; leaving while in no team is an error | none |
+| `/unpublish` | 26.2 | `unpublish` | none | World Options' LAN switch closes LAN the same way (`lookfeel`) |
 
-**Built (2026-11-21):** all of the above. Self-test `changes`. Not built, with reasons: `docs/streams/changes.md`.
+**Built (2026-11-21):** all of the above (the last six on branch `gd-changes-gaps`, with `/swing` in Backport Core). Self-test `changes`. Not built, with reasons: `docs/streams/changes.md`.
 
 ### Later 26.x
 

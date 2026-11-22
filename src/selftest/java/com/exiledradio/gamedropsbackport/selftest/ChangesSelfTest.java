@@ -164,6 +164,7 @@ public final class ChangesSelfTest implements SelfTest {
         spawnEggs(check, world, origin);
         sunHelmet(check);
         spectators(check, world, origin);
+        ChangesGapsSelfTest.run(check, server, world);
         clear(world, origin, 10);
     }
 

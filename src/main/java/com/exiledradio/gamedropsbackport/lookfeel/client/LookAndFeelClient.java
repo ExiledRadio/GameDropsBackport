@@ -34,6 +34,10 @@ public final class LookAndFeelClient {
 
     public static void register() {
         MinecraftForge.EVENT_BUS.register(new LookAndFeelClient());
+        // 26.2's /unpublish closes the integrated server's LAN as World Options' LAN switch does.
+        com.exiledradio.gamedropsbackport.changes.UnpublishCommand.unpublisher = server ->
+                server instanceof net.minecraft.server.integrated.IntegratedServer
+                        && Lan.unpublish((net.minecraft.server.integrated.IntegratedServer) server);
         if ("client".equals(System.getProperty(GameDropsBackport.MOD_ID + ".selftest"))) {
             try {
                 Class.forName("com.exiledradio.gamedropsbackport.selftest.ClientSelfTest").getMethod("register").invoke(null);

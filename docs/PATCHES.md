@@ -8,7 +8,7 @@ Inserted code loads method parameters only at a method's head (Mojang's ProGuard
 other patches swap one instruction for a static call with the same stack shape. A head insertion is skipped when the
 method starts on a frame.
 
-## Stream 8, changes (`asm/ChangesTransformer`, hooks in `changes/ChangeHooks`)
+## Stream 8, changes (`asm/ChangesTransformer`, hooks in `changes/ChangeHooks` and `changes/SpamCounters`)
 
 | # | Class and method | Change | Off |
 | --- | --- | --- | --- |
@@ -17,6 +17,7 @@ method starts on a frame.
 | P3 | `EntityLiving.despawnEntity` | Head: `if (persistentDespawn(this)) return;` For a persistent mob, idle time is zeroed only with a player within 32 blocks. Nether Update's P10 guards the same head for riders; the two compose (each its own jump). | The test is false. |
 | P4 | `EntityWitch.attackEntityWithRangedAttack` | Its `EntityPotion.shoot(DDDFF)` becomes `ChangeHooks.witchShoot` (0.45 within 2 blocks). | Calls `shoot` unchanged. |
 | P5 | `EntityZombie.onLivingUpdate`, `AbstractSkeleton.onLivingUpdate` | The helmet's `ItemStack.setItemDamage(I)` becomes `ChangeHooks.sunDamage` (`attemptDamageItem`, so Unbreaking counts). | Calls `setItemDamage` unchanged. |
+| P7 | `NetHandlerPlayServer.processChatMessage` | Head: `if (SpamCounters.chatPacket(this, packet)) return;` (never true; on the server thread it notes whether the message is a command). The spam limit `200` becomes `aload 0` + `SpamCounters.spamLimit(this)`: 26.2's two counters count the message and kick at their thresholds, and 1.12.2's own counter gets a limit it never passes. `this` is read again right after, so it is live in every frame. | `spamLimit` returns 200; `chatPacket` does nothing. |
 
 ## Stream 7, camps (`asm/LootOriginTransformer`, hooks in `camps/LootOrigin`)
 

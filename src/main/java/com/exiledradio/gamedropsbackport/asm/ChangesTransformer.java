@@ -25,6 +25,8 @@ import org.objectweb.asm.tree.VarInsnNode;
  *       {@code ChangeHooks.witchShoot}.</li>
  *   <li><b>P5</b> {@code EntityZombie.onLivingUpdate}, {@code AbstractSkeleton.onLivingUpdate}: the helmet's
  *       {@code setItemDamage} becomes {@code ChangeHooks.sunDamage}.</li>
+ *   <li><b>P7</b> {@code NetHandlerPlayServer.processChatMessage}: at the head, {@code SpamCounters.chatPacket(this,
+ *       packet)} (never returns); the spam limit 200 becomes {@code SpamCounters.spamLimit(this)}.</li>
  * </ul>
  */
 public final class ChangesTransformer implements IClassTransformer {
@@ -37,9 +39,11 @@ public final class ChangesTransformer implements IClassTransformer {
     static final String WITCH = "net.minecraft.entity.monster.EntityWitch";
     static final String ZOMBIE = "net.minecraft.entity.monster.EntityZombie";
     static final String SKELETON = "net.minecraft.entity.monster.AbstractSkeleton";
+    static final String NET_PLAY = "net.minecraft.network.NetHandlerPlayServer";
+    static final String SPAM = "com/exiledradio/gamedropsbackport/changes/SpamCounters";
 
     /** For PatchCheck: every class patched here (all on both sides). */
-    static final String[] TARGETS = {BED, ENDERMAN, LIVING, WITCH, ZOMBIE, SKELETON};
+    static final String[] TARGETS = {BED, ENDERMAN, LIVING, WITCH, ZOMBIE, SKELETON, NET_PLAY};
 
     /** Set once each patch is applied; the self-test reads them. */
     public static volatile boolean appliedP1;
@@ -47,6 +51,7 @@ public final class ChangesTransformer implements IClassTransformer {
     public static volatile boolean appliedP3;
     public static volatile boolean appliedP4;
     public static volatile int appliedP5;
+    public static volatile boolean appliedP6;
 
     private static final String D_DAMAGE = "Lnet/minecraft/util/DamageSource;";
 
@@ -70,6 +75,9 @@ public final class ChangesTransformer implements IClassTransformer {
             }
             if (ZOMBIE.equals(transformedName) || SKELETON.equals(transformedName)) {
                 return sunHelmet(bytes, transformedName);
+            }
+            if (NET_PLAY.equals(transformedName)) {
+                return chat(bytes);
             }
         } catch (RuntimeException e) {
             Asm.LOG.error("Changes patch of {} failed; the class is left as it was.", transformedName, e);
@@ -212,6 +220,50 @@ public final class ChangesTransformer implements IClassTransformer {
         }
         appliedP5++;
         Asm.LOG.info("P5 sun helmet: patched {}.onLivingUpdate.", target);
+        return Asm.write(node);
+    }
+
+    // P7 -------------------------------------------------------------------------------------------
+
+    private static byte[] chat(byte[] bytes) {
+        ClassNode node = Asm.read(bytes);
+        String packet = "Lnet/minecraft/network/play/client/CPacketChatMessage;";
+        MethodNode m = Asm.method(node, "processChatMessage", "func_147354_a", "(" + packet + ")V");
+        if (m == null) {
+            Asm.LOG.warn("P7 spam counters: {}.processChatMessage not found; patch skipped.", NET_PLAY);
+            return bytes;
+        }
+        AbstractInsnNode limit = null;
+        int n = 0;
+        for (AbstractInsnNode insn : m.instructions.toArray()) {
+            if (insn.getOpcode() == Opcodes.SIPUSH && ((org.objectweb.asm.tree.IntInsnNode) insn).operand == 200) {
+                limit = insn;
+                n++;
+            }
+        }
+        if (n != 1) {
+            Asm.LOG.warn("P7 spam counters: {} spam limits in {}.processChatMessage; patch skipped.", n, NET_PLAY);
+            return bytes;
+        }
+        InsnList test = new InsnList();
+        test.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        test.add(new VarInsnNode(Opcodes.ALOAD, 1));
+        test.add(new MethodInsnNode(Opcodes.INVOKESTATIC, SPAM, "chatPacket",
+                "(Lnet/minecraft/network/NetHandlerPlayServer;" + packet + ")Z", false));
+        InsnList body = new InsnList();
+        body.add(new InsnNode(Opcodes.RETURN));
+        if (!Asm.ifAtHead(m, test, body)) {
+            Asm.LOG.warn("P7 spam counters: {}.processChatMessage starts on a frame; patch skipped.", NET_PLAY);
+            return bytes;
+        }
+        // The limit: `this` (slot 0, read again right after) and the hook, in place of the constant; same stack.
+        InsnList call = new InsnList();
+        call.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        call.add(new MethodInsnNode(Opcodes.INVOKESTATIC, SPAM, "spamLimit", "(Lnet/minecraft/network/NetHandlerPlayServer;)I", false));
+        m.instructions.insertBefore(limit, call);
+        m.instructions.remove(limit);
+        appliedP6 = true;
+        Asm.LOG.info("P7 spam counters: patched {}.processChatMessage.", NET_PLAY);
         return Asm.write(node);
     }
 }

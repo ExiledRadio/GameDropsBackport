@@ -250,6 +250,7 @@ waterlogged leaves hold their source and spread nothing. Under Fluidlogged API w
 waterlogged poplar leaves (and Trails & Tales' cherry leaves): its `IFluidloggable.canFluidFlow` default asks the face
 shape, and Core's `FluidloggedWaterloggable` does not override it. **Want:** a `Waterloggable` answer for it (say
 `canWaterFlow(state, world, pos, side)`, default Fluidlogged API's face-shape rule) that `FluidloggedWaterloggable`
-passes on as `canFluidFlow`; our leaves would answer false. **Meanwhile:** leaves leak where air is beside them.
-The self-test logs the sides and does not fail on it. (Which sides water takes out of a stair, slab, wall, fence or
+passes on as `canFluidFlow`; our leaves would answer false. **Done** in Core 1.4.4: `Waterloggable.waterFlowsThrough`
+(null leaves it to Fluidlogged API); poplar leaves, Trails & Tales' cherry and Wild Update's mangrove leaves answer false,
+and the self-test checks no water leaves them. (Which sides water takes out of a stair, slab, wall, fence or
 trapdoor varies with Fluidlogged API's flow toward the cheapest way down; the test asks only that it leaves.)

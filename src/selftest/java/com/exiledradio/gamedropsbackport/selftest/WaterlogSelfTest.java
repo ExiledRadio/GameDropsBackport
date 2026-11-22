@@ -196,7 +196,7 @@ public final class WaterlogSelfTest implements SelfTest {
         // Each alone in the middle of its own area. Which sides the water then takes is Fluidlogged API's flow (it runs
         // toward the cheapest way down, as 1.12.2's water, and in a full run often takes one side only), so the test asks
         // only that it leaves the block, and logs how many sides. 26.3's water never leaves waterlogged leaves (a full
-        // collision box); Fluidlogged API's does: logged, not failed (docs/CORE_REQUESTS.md, W-1).
+        // collision box): Core's Waterloggable.waterFlowsThrough answers Fluidlogged API's canFluidFlow (W-1).
         Block[] outflow = {slab, fence, wall, sign, trapdoor, leaves};
         for (int i = 0; i < outflow.length; i++) {
             BlockPos logged = area(c).add(16, 0, 16);
@@ -211,7 +211,7 @@ public final class WaterlogSelfTest implements SelfTest {
                 }
             }
             if (outflow[i] == leaves) {
-                GameDropsBackport.LOGGER.info("SELFTEST waterlog: water runs out of {} sides of waterlogged {} (26.3: none)", sides, n);
+                c.ok(sides == 0, "no water runs out of waterlogged " + n + ", as 26.3's full collision box (" + sides + " sides)");
             } else {
                 c.ok(wet ? sides >= 1 : sides == 0, (wet ? "water flows out of a waterlogged " : "no water flows out of ") + n + " (" + sides + " sides)");
             }

@@ -279,4 +279,11 @@ public class BlockPoplarLeaves extends BlockLeaves implements Waterloggable {
         return path.equals("poplar_log") || path.equals("pale_oak_log") || path.equals("mangrove_log")
                 || path.equals("cherry_log");
     }
+
+    /** A full collision box: water neither runs out of waterlogged leaves nor in (26.3's canPassThroughWall). */
+    @Override
+    public Boolean waterFlowsThrough(IBlockState state, net.minecraft.world.IBlockAccess world, BlockPos pos,
+                                     net.minecraft.util.EnumFacing side) {
+        return false;
+    }
 }

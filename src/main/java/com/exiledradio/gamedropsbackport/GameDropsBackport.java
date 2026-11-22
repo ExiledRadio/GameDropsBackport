@@ -77,6 +77,7 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.sulfurcube.SulfurCubes.postInit();
         com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.postInit();
         com.exiledradio.gamedropsbackport.changes.Changes.postInit();
+        CampsContent.postInit();
     }
 
     @Mod.EventHandler

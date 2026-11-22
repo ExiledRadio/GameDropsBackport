@@ -41,8 +41,9 @@ import java.util.Random;
  *
  * <p>What the camp tables use: item entries, {@code set_count}, {@code set_name} (the camp maps' names),
  * {@code set_potion}, {@code exploration_map} with {@code filtered} (no structure: no map), and the
- * {@code inverted location_check} on the biome. 1.12.2's container loot has no position; the player opening it
- * stands within reach of it, so the player's block is the loot's origin.
+ * {@code inverted location_check} on the biome. The origin is the container's block, as 26.3's {@code ORIGIN}
+ * (patch P6, {@link LootOrigin}); a roll outside a container (a minecart's, a command's) falls back to the opening
+ * player's block.
  */
 public final class CampLoot {
 
@@ -51,6 +52,8 @@ public final class CampLoot {
             "chests/abandoned_camp_secret_chest"};
     /** Our 1.12.2 table names to 26.3's paths. */
     static final Map<ResourceLocation, String> OURS = new HashMap<ResourceLocation, String>();
+    /** For the self-test: the origin of the last container roll. */
+    public static volatile BlockPos lastOrigin;
     CampLoot() {
     }
 
@@ -82,8 +85,12 @@ public final class CampLoot {
 
         @Override
         public void addLoot(Collection<ItemStack> stacks, Random rand, LootContext context) {
+            BlockPos origin = LootOrigin.of(context.getWorld());
             Entity player = context.getKillerPlayer();
-            BlockPos origin = player == null ? null : new BlockPos(player);
+            if (origin == null && player != null) {
+                origin = new BlockPos(player);
+            }
+            lastOrigin = origin;
             stacks.addAll(roll(context.getWorld(), origin, this.table, rand));
         }
 

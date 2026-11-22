@@ -17,3 +17,10 @@ method starts on a frame.
 | P3 | `EntityLiving.despawnEntity` | Head: `if (persistentDespawn(this)) return;` For a persistent mob, idle time is zeroed only with a player within 32 blocks. Nether Update's P10 guards the same head for riders; the two compose (each its own jump). | The test is false. |
 | P4 | `EntityWitch.attackEntityWithRangedAttack` | Its `EntityPotion.shoot(DDDFF)` becomes `ChangeHooks.witchShoot` (0.45 within 2 blocks). | Calls `shoot` unchanged. |
 | P5 | `EntityZombie.onLivingUpdate`, `AbstractSkeleton.onLivingUpdate` | The helmet's `ItemStack.setItemDamage(I)` becomes `ChangeHooks.sunDamage` (`attemptDamageItem`, so Unbreaking counts). | Calls `setItemDamage` unchanged. |
+
+## Stream 7, camps (`asm/LootOriginTransformer`, hooks in `camps/LootOrigin`)
+
+| # | Class and method | Change | Off |
+| --- | --- | --- | --- |
+| P6 | `TileEntityLockableLoot.fillWithLoot` | Head: `LootOrigin.enter(this)` (only `this` read); `LootOrigin.exit()` before each return. The camp loot (`CampLoot`) takes the container's block as 26.3's `ORIGIN` (biome check, map search) instead of the opening player's; outside a container it falls back to the player. Covers every subclass that inherits it (chests, Village & Pillage's barrel). | Only records; nothing but the camp tables reads it. |
+

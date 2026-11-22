@@ -34,11 +34,12 @@ import java.util.function.Supplier;
  *
  * <ul>
  *   <li>oak, fancy oak, birch, tall ("super") birch, spruce, pine, mega spruce and pine, jungle, mega jungle and
- *       acacia: 1.12.2's own generators, which make the same shapes. The {@code _bees} variants' bee nests need a bee
- *       backport and are left out.</li>
+ *       acacia: 1.12.2's own generators, which make the same shapes. The {@code _bees} variants get 26.3's bee nest
+ *       decorator at post-init ({@link CampBees}) where Buzzy Bees is installed.</li>
  *   <li>cherry, pale oak and the three poplars: their owners' trees, grown from the owner's sapling (found by today's
  *       name through Backport Core's palette). The owning stream may register a placer of its own for these feature
- *       names with {@link JigsawPools#feature}; registered later, it wins. Without the owner, no tree.</li>
+ *       names with {@link JigsawPools#feature}; registered later, it wins. Without the owner, no tree. The
+ *       {@code cherry_bees_005} tree gets its nest as the vanilla {@code _bees} trees do, whoever places it.</li>
  *   <li>bamboo ({@code bamboo_no_podzol}): 26.3's {@code BambooFeature}, a stalk of 5-16, with the owner's bamboo.</li>
  * </ul>
  * Each placer, like the {@code _checked} filters, places nothing where the sapling could not stand.
@@ -107,37 +108,39 @@ final class CampTrees {
 
     /** Places the owner's sapling (four for a two-by-two tree) and grows it, as bone meal would. */
     static void sapling(String feature, String saplingName, boolean twoByTwo) {
-        JigsawPools.feature(feature, (world, pos, random, json) -> {
-            if (!soil(world, pos)) {
+        JigsawPools.feature(feature, (world, pos, random, json) -> growSapling(world, pos, random, saplingName, twoByTwo));
+    }
+
+    private static void growSapling(World world, BlockPos pos, Random random, String saplingName, boolean twoByTwo) {
+        if (!soil(world, pos)) {
+            return;
+        }
+        IBlockState sapling = ModernPalette.resolve(saplingName).state;
+        if (sapling == null || !(sapling.getBlock() instanceof IGrowable)) {
+            return;
+        }
+        BlockPos[] spots = twoByTwo ? new BlockPos[] {pos, pos.east(), pos.south(), pos.south().east()} : new BlockPos[] {pos};
+        for (BlockPos p : spots) {
+            if (!world.isAirBlock(p) && !world.getBlockState(p).getBlock().isReplaceable(world, p)) {
                 return;
             }
-            IBlockState sapling = ModernPalette.resolve(saplingName).state;
-            if (sapling == null || !(sapling.getBlock() instanceof IGrowable)) {
-                return;
+        }
+        for (BlockPos p : spots) {
+            world.setBlockState(p, sapling, 2);
+        }
+        Block block = sapling.getBlock();
+        for (int i = 0; i < 4 && world.getBlockState(pos).getBlock() == block; i++) {
+            if (block instanceof BlockSapling) {
+                ((BlockSapling) block).generateTree(world, pos, world.getBlockState(pos), random);
+            } else {
+                ((IGrowable) block).grow(world, random, pos, world.getBlockState(pos));
             }
-            BlockPos[] spots = twoByTwo ? new BlockPos[] {pos, pos.east(), pos.south(), pos.south().east()} : new BlockPos[] {pos};
-            for (BlockPos p : spots) {
-                if (!world.isAirBlock(p) && !world.getBlockState(p).getBlock().isReplaceable(world, p)) {
-                    return;
-                }
+        }
+        for (BlockPos p : spots) {
+            if (world.getBlockState(p).getBlock() == block) {
+                world.setBlockToAir(p);
             }
-            for (BlockPos p : spots) {
-                world.setBlockState(p, sapling, 2);
-            }
-            Block block = sapling.getBlock();
-            for (int i = 0; i < 4 && world.getBlockState(pos).getBlock() == block; i++) {
-                if (block instanceof BlockSapling) {
-                    ((BlockSapling) block).generateTree(world, pos, world.getBlockState(pos), random);
-                } else {
-                    ((IGrowable) block).grow(world, random, pos, world.getBlockState(pos));
-                }
-            }
-            for (BlockPos p : spots) {
-                if (world.getBlockState(p).getBlock() == block) {
-                    world.setBlockToAir(p);
-                }
-            }
-        });
+        }
     }
 
     /** 26.3's {@code BambooFeature} without podzol: 5-16 stalks, the top three leafed. */

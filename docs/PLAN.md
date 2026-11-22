@@ -166,16 +166,29 @@ minecraft:abandoned_camp_<biome>` and the 23 `#on_*` structure tags are Core's. 
 explorer maps (1.12.2's cartographer, the other backports) become 26.3's items in a player's inventory, an opened
 container or a villager's offers (26.3's `ExplorerMapItemFix`, live). Self-test `camps`.
 
+**Gaps built (2026-11-21, `gd-camps-gaps`).** Map cloning, loot at the container, bee nests, off-map facing (Core),
+and the map search checked against 26.3; the lines below say what still differs.
+
 Where it differs from 26.3:
 - Heights are 1.12.2's terrain's (the start is projected onto it); biomes are 1.12.2's per-column biome (Caves &
   Cliffs' 3D noise biome where its terrain runs). A camp exists only where its biome's owner is installed.
 - Trees: 1.12.2's generators for the vanilla trees; cherry, pale oak and poplar grow from their owner's sapling (a
-  poplar's color is the sapling's). Bee nests on the `_bees` trees are left out.
+  poplar's color is the sapling's). The `_bees` trees (`cherry_bees_005`, `fancy_oak_bees_002`, `birch_bees_002`,
+  `super_birch_bees_0002`) get 26.3's `BeehiveDecorator` with Buzzy Bees' nest and 2-3 bees (`camps.CampBees`, after
+  whichever placer grows the tree, Trails & Tales' cherry included); the tree's logs and leaves are found by comparing
+  its box before and after. Without Buzzy Bees no nest. Buzzy Bees' own after-population scan can still add its biome
+  chance's nest to a camp's oak or birch, as it does to any 1.12.2 tree.
 - Blocks no installed mod has are left out (Core's palette); barrels and copper chests fall back to chests (loot
   kept), white wool stairs to white wool, cushions are left out without the soft blocks stream.
-- Container loot has no position in 1.12.2: the opening player's block is the origin (biome check, map search).
-  Maps search Core's 100 rings, not 26.3's 50, and do not skip structures already on a map.
-- Explorer maps cannot be copied in a crafting grid or cartography table (1.12.2's recipe takes only filled maps).
+- Container loot rolls at the container (patch P6, 26.3's `ORIGIN`), with or without a player (a hopper's read);
+  only a roll outside a container (a minecart's) falls back to the opening player's block. Maps search 26.3's 50 rings
+  (the function's `search_radius`) and skip structures already on a map (`skip_existing_chunks`, Core 1.4.4's
+  `StructureClaims`); structures 1.12.2 finds by its own finders (mineshafts) are never skipped.
+- Explorer maps copy in a crafting grid as 26.3's `map_cloning` (one map and 1-8 empty maps, all its data kept;
+  `camps.ExplorerMapCloning`). The cartography table is Village & Pillage's: its copy slot is that mod's to open to the
+  explorer map items (`ItemMap` subclasses, `gamedropsbackport:*_map`), handed to its own session. They cannot be
+  zoomed (26.3's `#extendable_maps` holds only `filled_map`).
+- Off-map player markers keep their facing and use 26.3's pointed sprites (Core 1.4.4's P43, with any 26.3 backport).
 
 ### 8. Look and feel (26.1-26.3; needs Backport Core)
 

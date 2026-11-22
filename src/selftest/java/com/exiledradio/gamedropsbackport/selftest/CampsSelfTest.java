@@ -6,6 +6,7 @@ import com.exiledradio.backportcore.structure.JigsawPools;
 import com.exiledradio.backportcore.structure.ScatteredStructure;
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
 import com.exiledradio.gamedropsbackport.camps.AbandonedCampStructure;
+import com.exiledradio.gamedropsbackport.camps.CampBees;
 import com.exiledradio.gamedropsbackport.camps.CampLoot;
 import com.exiledradio.gamedropsbackport.camps.CampPiece;
 import com.exiledradio.gamedropsbackport.camps.CampSettings;
@@ -238,6 +239,181 @@ final class CampsSelfTest implements SelfTest {
         check.ok(!upgraded.getTagCompound().getCompoundTag("display").hasKey("LocName"), "and loses its old name");
         ItemStack plain = ItemMap.setupNewMap(world, 0, 0, (byte) 0, true, false);
         check.ok(upgrade(plain).getItem() == Items.FILLED_MAP, "a plain map stays a filled map");
+
+        gaps(check, world, from, toCamp != null ? toCamp : map);
+    }
+
+    /** What stream 7 first left out: the loot's origin (P6), map cloning, the {@code _bees} trees' nests. */
+    private static void gaps(Check check, WorldServer world, BlockPos from, ItemStack explorerMap) throws Exception {
+        // --- P6: container loot rolls at the container (26.3's ORIGIN), not at the player
+        check.ok(com.exiledradio.gamedropsbackport.asm.LootOriginTransformer.appliedP6, "P6 applied (TileEntityLockableLoot.fillWithLoot)");
+        ResourceLocation common = new ResourceLocation(GameDropsBackport.MOD_ID, "camps/chests/abandoned_camp_common_chest");
+        BlockPos chestAt = world.getTopSolidOrLiquidBlock(from.add(40, 0, 40));
+        world.setBlockState(chestAt, Blocks.CHEST.getDefaultState(), 2);
+        TileEntityChest chest = (TileEntityChest) world.getTileEntity(chestAt);
+        chest.setLootTable(common, 1013L);
+        net.minecraftforge.common.util.FakePlayer player = net.minecraftforge.common.util.FakePlayerFactory.getMinecraft(world);
+        player.setPosition(from.getX() - 300, 120, from.getZ() - 300);
+        CampLoot.lastOrigin = null;
+        java.lang.reflect.Method fill = net.minecraft.tileentity.TileEntityLockableLoot.class.getDeclaredMethod(fillName(),
+                net.minecraft.entity.player.EntityPlayer.class);
+        fill.setAccessible(true);
+        fill.invoke(chest, player);
+        check.eq(chestAt, CampLoot.lastOrigin, "a chest opened by a player 300 blocks away rolls at the chest");
+        check.ok(chest.getLootTable() == null && !chest.isEmpty(), "the chest was filled");
+        world.setBlockState(chestAt.up(), Blocks.CHEST.getDefaultState(), 2);
+        TileEntityChest pulled = (TileEntityChest) world.getTileEntity(chestAt.up());
+        pulled.setLootTable(common, 7L);
+        CampLoot.lastOrigin = null;
+        pulled.getStackInSlot(0); // a hopper's or a comparator's read: fillWithLoot(null)
+        check.eq(chestAt.up(), CampLoot.lastOrigin, "a chest filled with no player (a hopper) rolls at the chest");
+        int campMaps = 0;
+        for (int i = 0; i < 12; i++) {
+            BlockPos p = chestAt.add(2 + i, 0, 0);
+            world.setBlockState(p, Blocks.CHEST.getDefaultState(), 2);
+            TileEntityChest c = (TileEntityChest) world.getTileEntity(p);
+            c.setLootTable(common, 100L + i);
+            for (int slot = 0; slot < c.getSizeInventory(); slot++) {
+                ItemStack st = c.getStackInSlot(slot);
+                campMaps += !st.isEmpty() && st.getItem().getRegistryName().getPath().equals("abandoned_camp_map") ? 1 : 0;
+            }
+        }
+        GameDropsBackport.LOGGER.info("SELFTEST camps: 12 player-less common chests gave {} camp maps", campMaps);
+        CampLoot.lastOrigin = null;
+        check.ok(CampLoot.roll(world, from, "chests/abandoned_camp_common_chest", new Random(3)).size() > 0 && CampLoot.lastOrigin == null,
+                "a roll outside a container leaves the origin alone");
+
+        // --- 26.3's map_cloning for the explorer maps
+        if (check.ok(explorerMap != null, "an explorer map to copy")) {
+            net.minecraft.inventory.InventoryCrafting grid = new net.minecraft.inventory.InventoryCrafting(new net.minecraft.inventory.Container() {
+                @Override
+                public boolean canInteractWith(net.minecraft.entity.player.EntityPlayer p) {
+                    return true;
+                }
+            }, 3, 3);
+            grid.setInventorySlotContents(4, explorerMap.copy());
+            grid.setInventorySlotContents(0, new ItemStack(Items.MAP));
+            grid.setInventorySlotContents(8, new ItemStack(Items.MAP));
+            net.minecraft.item.crafting.IRecipe r = net.minecraft.item.crafting.CraftingManager.findMatchingRecipe(grid, world);
+            check.ok(r instanceof com.exiledradio.gamedropsbackport.camps.ExplorerMapCloning, "explorer map + 2 empty maps: map cloning " + r);
+            ItemStack out = r == null ? ItemStack.EMPTY : r.getCraftingResult(grid);
+            check.ok(out.getItem() == explorerMap.getItem() && out.getCount() == 3 && out.getMetadata() == explorerMap.getMetadata()
+                    && ItemStack.areItemStackTagsEqual(out, explorerMap), "three copies of the same map, data kept: " + out);
+            for (int i = 0; i < 9; i++) {
+                grid.setInventorySlotContents(i, i == 4 ? explorerMap.copy() : new ItemStack(Items.MAP));
+            }
+            r = net.minecraft.item.crafting.CraftingManager.findMatchingRecipe(grid, world);
+            check.ok(r != null && r.getCraftingResult(grid).getCount() == 9, "8 empty maps make 9");
+            grid.clear();
+            grid.setInventorySlotContents(0, explorerMap.copy());
+            check.ok(net.minecraft.item.crafting.CraftingManager.findMatchingRecipe(grid, world) == null, "no empty map: no recipe");
+            grid.setInventorySlotContents(1, explorerMap.copy());
+            grid.setInventorySlotContents(2, new ItemStack(Items.MAP));
+            check.ok(net.minecraft.item.crafting.CraftingManager.findMatchingRecipe(grid, world) == null, "two explorer maps: no recipe");
+            grid.clear();
+            grid.setInventorySlotContents(0, explorerMap.copy());
+            grid.setInventorySlotContents(1, new ItemStack(Items.PAPER));
+            check.ok(net.minecraft.item.crafting.CraftingManager.findMatchingRecipe(grid, world) == null, "paper is not an empty map");
+            grid.clear();
+            grid.setInventorySlotContents(0, ItemMap.setupNewMap(world, 0, 0, (byte) 0, true, false));
+            grid.setInventorySlotContents(1, new ItemStack(Items.MAP));
+            r = net.minecraft.item.crafting.CraftingManager.findMatchingRecipe(grid, world);
+            check.ok(r != null && !(r instanceof com.exiledradio.gamedropsbackport.camps.ExplorerMapCloning)
+                    && r.getCraftingResult(grid).getItem() == Items.FILLED_MAP, "a filled map still copies by 1.12.2's recipe");
+        }
+
+        // --- 26.3's BeehiveDecorator on the _bees trees
+        check.ok(Math.abs(CampBees.probability("minecraft:cherry_bees_005") - 0.05F) < 1e-6
+                && Math.abs(CampBees.probability("minecraft:fancy_oak_bees_002") - 0.02F) < 1e-6
+                && Math.abs(CampBees.probability("minecraft:super_birch_bees_0002") - 0.002F) < 1e-6
+                && CampBees.probability("minecraft:oak_checked") == 0.0F, "bee probabilities from the feature names");
+        for (String id : new String[] {"minecraft:cherry_bees_005", "minecraft:fancy_oak_bees_002", "minecraft:birch_bees_002",
+                "minecraft:super_birch_bees_0002"}) {
+            JigsawPools.FeaturePlacer placer = JigsawPools.placer(id);
+            check.ok(placer != null && placer.getClass().getName().endsWith("CampBees$Placer"), id + " places its tree, then the nest: " + placer);
+        }
+        net.minecraft.block.state.IBlockState nest = CampBees.nest();
+        boolean bees = net.minecraftforge.fml.common.Loader.isModLoaded("buzzybeesbackport");
+        check.eq(bees, nest != null, "a bee nest exactly when Buzzy Bees is installed");
+        BlockPos base = new BlockPos(from.getX() + 200, 150, from.getZ() + 200);
+        List<BlockPos> logs = new java.util.ArrayList<BlockPos>();
+        List<BlockPos> leaves = new java.util.ArrayList<BlockPos>();
+        for (int y = 0; y < 6; y++) {
+            world.setBlockState(base.up(y), Blocks.LOG.getDefaultState(), 2);
+            logs.add(base.up(y));
+        }
+        for (int y = 3; y < 7; y++) {
+            for (int dx = -2; dx <= 2; dx++) {
+                for (int dz = -2; dz <= 2; dz++) {
+                    if (Math.abs(dx) + Math.abs(dz) > 1) {
+                        BlockPos p = base.add(dx, y, dz);
+                        world.setBlockState(p, Blocks.LEAVES.getDefaultState(), 2);
+                        leaves.add(p);
+                    }
+                }
+            }
+        }
+        Collections.reverse(logs);
+        boolean placed = CampBees.decorate(world, new Random(5), 1.0F, logs, leaves);
+        check.eq(bees, placed, "a nest with probability 1 (Buzzy Bees: " + bees + ")");
+        if (bees && placed) {
+            // max(lowest leaf 3 - 1, lowest log 0 + 1) = 2, beside the trunk to the east, south or west.
+            BlockPos at = null;
+            for (net.minecraft.util.EnumFacing f : net.minecraft.util.EnumFacing.HORIZONTALS) {
+                if (world.getBlockState(base.up(2).offset(f)).getBlock() == nest.getBlock()) {
+                    at = base.up(2).offset(f);
+                    check.ok(f != net.minecraft.util.EnumFacing.NORTH, "not on the north side");
+                }
+            }
+            if (check.ok(at != null, "the nest is on the trunk one below the lowest leaves")) {
+                check.ok(String.valueOf(world.getBlockState(at)).contains("facing=south"), "facing south: " + world.getBlockState(at));
+                NBTTagCompound te = world.getTileEntity(at).writeToNBT(new NBTTagCompound());
+                int n = te.getTagList("Bees", 10).tagCount();
+                check.ok(n >= 2 && n <= 3, "2-3 bees inside: " + n);
+                NBTTagCompound bee = te.getTagList("Bees", 10).getCompoundTagAt(0);
+                check.ok(bee.getInteger("TicksInHive") < 599 && bee.getInteger("MinOccupationTicks") == 600
+                        && bee.getCompoundTag("EntityData").getString("id").endsWith(":bee"), "a resting bee: " + bee);
+            }
+            // Every side at the nest's height blocked: no nest, as 26.3.
+            BlockPos base2 = base.add(20, 0, 0);
+            List<BlockPos> logs2 = new java.util.ArrayList<BlockPos>();
+            for (int y = 0; y < 4; y++) {
+                world.setBlockState(base2.up(y), Blocks.LOG.getDefaultState(), 2);
+                logs2.add(base2.up(y));
+                for (net.minecraft.util.EnumFacing f : net.minecraft.util.EnumFacing.HORIZONTALS) {
+                    if (y > 0) {
+                        world.setBlockState(base2.up(y).offset(f), Blocks.STONE.getDefaultState(), 2);
+                    }
+                }
+            }
+            check.ok(!CampBees.decorate(world, new Random(6), 1.0F, logs2, Collections.<BlockPos>emptyList()), "a blocked trunk gets no nest");
+            // A real tree: 1.12.2's oak (6-8 tall: a 4-tall one has leaves beside the nest's layer, no nest in 26.3
+            // either) through the decorator, its logs and leaves found by looking.
+            BlockPos treeAt = base.add(-40, 0, 0);
+            for (BlockPos p : BlockPos.getAllInBoxMutable(treeAt.add(-4, -1, -4), treeAt.add(4, 12, 4))) {
+                world.setBlockState(p, p.getY() == treeAt.getY() - 1 ? Blocks.GRASS.getDefaultState() : Blocks.AIR.getDefaultState(), 2);
+            }
+            CampBees.grow(world, treeAt, new Random(11), 1.0F,
+                    () -> new net.minecraft.world.gen.feature.WorldGenTrees(false, 6, Blocks.LOG.getDefaultState(),
+                            Blocks.LEAVES.getDefaultState().withProperty(net.minecraft.block.BlockLeaves.CHECK_DECAY, false), false)
+                            .generate(world, new Random(11), treeAt));
+            int nests = 0;
+            for (BlockPos p : BlockPos.getAllInBoxMutable(treeAt.add(-3, 0, -3), treeAt.add(3, 10, 3))) {
+                nests += world.getBlockState(p).getBlock() == nest.getBlock() ? 1 : 0;
+            }
+            check.eq(1, nests, "a grown oak through the decorator (probability 1) has one nest, trunk "
+                    + world.getBlockState(treeAt) + " " + world.getBlockState(treeAt.up(5)));
+        }
+    }
+
+    private static String fillName() {
+        for (java.lang.reflect.Method m : net.minecraft.tileentity.TileEntityLockableLoot.class.getDeclaredMethods()) {
+            if (m.getParameterCount() == 1 && m.getParameterTypes()[0] == net.minecraft.entity.player.EntityPlayer.class
+                    && m.getReturnType() == void.class && (m.getName().equals("fillWithLoot") || m.getName().equals("func_184281_d"))) {
+                return m.getName();
+            }
+        }
+        return "fillWithLoot";
     }
 
     /**

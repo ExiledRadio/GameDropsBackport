@@ -21,7 +21,9 @@ and 26.3 client jars and asset indexes, and 26.3's decompiled `PauseScreen`, `Wo
 *   **Pause menu**: Report Bugs and Send Feedback are one row of icon buttons (26.2), and World Options... takes Open
     to LAN's place (26.3).
 *   **World Options**: Default Game Mode, Personal Game Mode, Allow Cheats, Difficulty and its lock; LAN with a port
-    of your choice, Command Access and Force Game Mode for other players. Changes apply with Apply Changes.
+    of your choice, Command Access and Force Game Mode for other players. Changes apply with Apply Changes. LAN
+    switches off again (the world closes: other players leave, the port stops listening and the world is no longer
+    announced), and a new port while open moves it there.
     Difficulty is no longer on the Options screen in a world.
 *   Vanilla text as 26.3 words it: "Isn't It Iron Pick?", "Build, light, and enter a Nether Portal" and others.
 
@@ -38,7 +40,13 @@ and 26.3 client jars and asset indexes, and 26.3's decompiled `PauseScreen`, `Wo
     integrated server's thread with 1.12.2's own calls: `setAllowCommands`, `setGameType` (/defaultgamemode's),
     `EntityPlayerMP.setGameType`, `setDifficultyForAllWorlds`, the difficulty lock, `PlayerList.setCommandsAllowedForAll`,
     and `PlayerList.setGameType` (null for Force Game Mode off: guests keep their own mode), then each player's
-    permission level. `Lan.publish` is `shareToLAN` with the chosen port.
+    permission level. `Lan.publish` is `shareToLAN` with the chosen port. `Lan.unpublish` is 26.3's
+    `unpublishServer`: the TCP endpoints of `NetworkSystem` closed and removed (the local channel the host plays
+    through stays), every other player disconnected with "Server closed", the LAN announcer interrupted, `isPublic`
+    cleared, and the guests' command access and forced mode reset. Applying runs 26.3's `changeMultiplayerScope`:
+    unpublish when open and switched off or given another port ("This world is no longer open to multiplayer"),
+    then publish when wanted. The port shown while open is the one World Options opened it on, else the LAN
+    announcer's (1.12.2's `/publish`). The changes stream's `/unpublish` calls the same `Lan.unpublish`.
 *   Assets: `tools/lookfeel/generate.py` (panorama faces from the asset index, since the jar has placeholders;
     sprites; the three tracks the sulfur caves stream did not already ship; splash files diffed from the jars;
     vanilla text; names). Lang: Mojang's own 26.3 keys (forced in `vanilla_map.txt` where `.tooltip` would make them
@@ -47,7 +55,6 @@ and 26.3 client jars and asset indexes, and 26.3's decompiled `PauseScreen`, `Wo
 ## Where it differs from 26.3
 
 *   Game Rules... and Restrictions... are left out of World Options: 1.12.2 has neither screen.
-*   Once open to LAN, the LAN switch and port stay: 1.12.2's server cannot stop listening.
 *   Not a host: Difficulty is shown inactive (1.12.2 has no packet to change a server's difficulty).
 *   The pause icon row has Report Bugs and Send Feedback only: Friends and Player Reporting are online services.
 

@@ -41,8 +41,9 @@ import javax.annotation.Nullable;
  *   <li>General (a host): Default Game Mode, Personal Game Mode (308 wide), Allow Commands, Difficulty and its lock.
  *       Not a host: Difficulty alone, inactive (1.12.2 has no packet to change a server's difficulty). 26.3's Game
  *       Rules... and Restrictions... are left out: 1.12.2 has neither screen.</li>
- *   <li>Multiplayer (a host): LAN, Port, Command Access, Force Game Mode. 1.12.2's server cannot stop listening, so
- *       once the world is open to LAN the LAN switch and the port stay as they are.</li>
+ *   <li>Multiplayer (a host): LAN, Port, Command Access, Force Game Mode. Turning LAN off closes the world again
+ *       ({@link Lan#unpublish}); a new port while open closes it and opens it on that port, as 26.3's
+ *       {@code changeMultiplayerScope}.</li>
  * </ul>
  */
 @SideOnly(Side.CLIENT)
@@ -121,7 +122,7 @@ public final class WorldOptionsScreen extends GuiScreen {
             GameType joiners = ReflectionHelper.getPrivateValue(PlayerList.class, players, "gameType", "field_72410_m");
             this.initialAccess = this.wantedAccess = this.initialLan && everyone;
             this.initialForce = this.wantedForce = !this.initialLan || joiners != null;
-            this.initialPort = this.initialLan ? publishedPort : -1;
+            this.initialPort = this.initialLan ? Lan.port(this.server) : -1;
         }
     }
 
@@ -216,7 +217,7 @@ public final class WorldOptionsScreen extends GuiScreen {
                     WorldOptionsRules.gameModeTooltip(this.hardcore, this.wantedAllow, "options.worldOptions.personal_game_mode.tooltip"));
             this.allow.set(this.wantedAllow ? on : off, !this.hardcore,
                     this.hardcore ? "options.worldOptions.allow_commands.disabled.tooltip" : "options.worldOptions.allow_commands.tooltip");
-            this.lan.set(this.wantedLan ? on : off, !this.initialLan,
+            this.lan.set(this.wantedLan ? on : off, true,
                     this.wantedLan ? "menu.multiplayerOptions.network.lan.tooltip" : "menu.multiplayerOptions.network.off.tooltip");
             this.wantedAccess = WorldOptionsRules.commandAccessValue(this.wantedLan, this.wantedAllow, this.wantedAccess);
             this.access.set(this.wantedAccess ? on : off, WorldOptionsRules.commandAccessActive(this.wantedLan, this.wantedAllow),
@@ -224,7 +225,7 @@ public final class WorldOptionsScreen extends GuiScreen {
             this.wantedForce = WorldOptionsRules.forceValue(this.hardcore, this.wantedLan, this.wantedAccess, this.wantedForce);
             this.force.set(this.wantedForce ? on : off, WorldOptionsRules.forceActive(this.hardcore, this.wantedLan, this.wantedAccess),
                     WorldOptionsRules.forceTooltip(this.hardcore, this.wantedLan, this.wantedAccess, this.wantedForce));
-            boolean portOn = this.wantedLan && !this.initialLan;
+            boolean portOn = this.wantedLan;
             this.port.setEnabled(portOn);
             this.portEnabled = portOn;
             if (!this.wantedLan) {
@@ -275,10 +276,28 @@ public final class WorldOptionsScreen extends GuiScreen {
         if (this.host) {
             changed |= this.wantedDefault != this.initialDefault || this.wantedPersonal != this.initialPersonal
                     || this.wantedAllow != this.initialAllow || this.wantedLan != this.initialLan
-                    || this.wantedAccess != this.initialAccess || this.wantedForce != this.initialForce;
+                    || this.wantedAccess != this.initialAccess || this.wantedForce != this.initialForce
+                    || lanPortChanged();
         }
-        boolean portOk = !this.host || !this.wantedLan || this.initialLan || this.portErrorKey == null;
+        boolean portOk = !this.host || !this.wantedLan || this.portErrorKey == null;
         return changed && portOk;
+    }
+
+    /** 26.3's {@code lanPortChanged}: open, kept open, and a port other than the one it is open on (blank: a new one). */
+    boolean lanPortChanged() {
+        if (!this.host || !this.initialLan || !this.wantedLan || this.port == null) {
+            return false;
+        }
+        String text = this.port.getText().trim();
+        if (text.isEmpty()) {
+            // 26.3's tryParsePort: blank picks a free port, so a known port changes; an unknown one stays.
+            return this.initialPort > 0;
+        }
+        try {
+            return Integer.parseInt(text) != this.initialPort;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     // ---- input --------------------------------------------------------------------------------------------------
@@ -331,6 +350,10 @@ public final class WorldOptionsScreen extends GuiScreen {
             this.wantedLan = !this.wantedLan;
             this.wantedAccess = this.initialAccess;
             this.wantedForce = this.initialForce;
+            if (this.wantedLan && this.initialLan && this.port != null) {
+                // updatePortControlsState: back on, the port it is open on.
+                this.port.setText(this.initialPort > 0 ? String.valueOf(this.initialPort) : "");
+            }
         } else if (button == this.access) {
             this.wantedAccess = !this.wantedAccess;
         } else if (button == this.force) {
@@ -404,7 +427,10 @@ public final class WorldOptionsScreen extends GuiScreen {
         final GameType defaultMode = this.wantedDefault;
         final GameType personal = this.wantedPersonal;
         final boolean allowCommands = this.wantedAllow;
-        final boolean publish = this.wantedLan && !this.initialLan;
+        final boolean portChanged = lanPortChanged();
+        // changeMultiplayerScope: unpublish when open and turned off or moved, then publish when wanted.
+        final boolean unpublish = this.initialLan && (!this.wantedLan || portChanged);
+        final boolean publish = this.wantedLan && (!this.initialLan || portChanged);
         final boolean lanOpen = this.wantedLan;
         final boolean commandAccess = this.wantedAccess;
         final boolean forceMode = this.wantedForce;
@@ -442,6 +468,7 @@ public final class WorldOptionsScreen extends GuiScreen {
                     owner.setGameType(personal);
                 }
             }
+            final boolean stopped = unpublish && Lan.unpublish(server);
             boolean published = false;
             if (publish) {
                 published = Lan.publish(server, port);
@@ -454,6 +481,10 @@ public final class WorldOptionsScreen extends GuiScreen {
             }
             for (EntityPlayerMP player : players.getPlayers()) {
                 players.updatePermissionLevel(player);
+            }
+            if (stopped) {
+                mc.addScheduledTask(() -> mc.ingameGUI.getChatGUI().printChatMessage(
+                        new TextComponentTranslation("menu.multiplayerOptions.publish.stopped")));
             }
             if (publish) {
                 final boolean ok = published;

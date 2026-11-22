@@ -78,10 +78,17 @@ public final class Changes {
         return ModConfig.changes.enabled && setting;
     }
 
-    /** Registers the two commands (both fall back to 1.12.2's own while their setting is off). */
+    /** Registers the commands this stream replaces or adds, and reads the spam thresholds. */
     public static void serverStarting(net.minecraftforge.fml.common.event.FMLServerStartingEvent event) {
         event.registerServerCommand(new TimeCommand());
         event.registerServerCommand(new GameRuleCommand());
+        // Each falls back to 1.12.2's own while its setting is off (/unpublish is only there while it is on).
+        event.registerServerCommand(new AdvancementCountsCommand());
+        event.registerServerCommand(new HostGameModeCommand());
+        if (on(ModConfig.changes.unpublish)) {
+            event.registerServerCommand(new UnpublishCommand());
+        }
+        SpamCounters.serverStarting(event.getServer());
     }
 
     public static void postInit() {
@@ -147,6 +154,11 @@ public final class Changes {
     @SubscribeEvent
     public static void onCommand(CommandEvent event) {
         String[] args = event.getParameters();
+        if ("scoreboard".equals(event.getCommand().getName())
+                && TeamCounts.handle(event.getCommand(), event.getSender(), args)) {
+            event.setCanceled(true);
+            return;
+        }
         if (!"scoreboard".equals(event.getCommand().getName()) || args.length < 5 || !"teams".equalsIgnoreCase(args[0])
                 || !"option".equalsIgnoreCase(args[1]) || !"color".equalsIgnoreCase(args[3])
                 || !on(ModConfig.changes.teamColorNames)) {

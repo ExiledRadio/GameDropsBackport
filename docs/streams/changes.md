@@ -2,7 +2,7 @@
 
 26.1, 26.2 and 26.3's changes to commands, game rules, mobs, blocks, items and world rules that 1.12.2 already has.
 Package `changes`, config category `changes` (one switch per change, on by default, under the stream's `enabled`),
-self-test `-Pselftest=changes`, suite `tools/changes_suite.sh`. Patches P1-P5 (`docs/PATCHES.md`). Tricky Trials'
+self-test `-Pselftest=changes`, suite `tools/changes_suite.sh`. Patches P1-P6 (`docs/PATCHES.md`). Tricky Trials'
 stream 25 (`tweaks`) is the model.
 
 Sources: minecraft.wiki's *Java Edition 26.1*, *26.2* and *26.3* pages (Changes, and Fixes where they change
@@ -28,6 +28,12 @@ unobfuscated), its data (`world_clock`, `timeline`, tags, recipes) and the Engli
 | `peacefulSpawnEggs` | 26.2 | On Peaceful, a dispenser keeps a monster's spawn egg (it still clicks). | The spawn egg's dispenser behavior wrapped at post-init. |
 | `sunDamageEnchantments` | 26.3 | Unbreaking works on the helmet a zombie or skeleton wears against the sun. | P5. |
 | `spectatorPortals` | 26.3 | Spectators go through nether portals (to an existing portal), end portals and end gateways. | Player tick: the portal blocks a spectator overlaps. |
+| `ocelotsPeaceful` | 26.2 | Ocelots spawn in jungles on Peaceful (MC-1788). 26.x runs the monster category on every difficulty (only `spawn_monsters` stops it) and refuses each monster on Peaceful by itself, so the ocelots its jungles list with the monsters still spawn, at Normal's rate. | `PeacefulSpawning`: on Peaceful, after each world tick, 1.12.2's own `WorldEntitySpawner` runs the monster category once more (same caps, chunks, packs and rules); Forge's spawn check refuses every `IMob` it picks, at highest and lowest priority. `doMobSpawning` and the dedicated server's `spawn-monsters=false` still stop it. |
+| `spamThresholds` | 26.2 | Chat and commands have separate spam counters (MC-302268): each message adds 20, each tick takes 1 off, and the player is kicked ("Kicked for spamming") when a message leaves its counter at 20 times `chat-spam-threshold-seconds` or `command-spam-threshold-seconds` (server.properties, 10 each, written on start; 0 never kicks). Open to LAN never kicks (26.2's `IntegratedServer` returns 0). Operators and the host are never kicked. | P6 (`SpamCounters`). |
+| `hostGameModeDefault` | 26.2 | The host's `/gamemode` (and F3 + N, which runs it) also sets the world's default game mode. **Off by default**: 26.3's `GameModeCommand` dropped it when World Options split Personal Game Mode from Default Game Mode. | `HostGameModeCommand` (1.12.2's, subclassed): `setGameType` (`/defaultgamemode`'s call) after a host's change. |
+| `advancementCounts` | 26.2, 26.3 | `/advancement grant\|revoke` takes any number of players (`@a`) and answers once, as 26.3's `CommandResponseTracker`: `one`/`many` advancements to `one` changed player by name or to `many` (how many changed); "many" counts the advancements asked for, the failure counts the players asked for; nothing changed is the error. 26.3's keys and English. | `AdvancementCountsCommand` (1.12.2's, subclassed; it reads its own selectors). `test` stays 1.12.2's. |
+| `teamJoinCounts` | 26.3 | `/scoreboard teams join` and `leave` answer as 26.3's `/team`: the one member that joined or left by name, otherwise how many ("Added 2 members to team [x]", "Removed 0 members from any team"); members already out of a team are no error. An unknown team is "Unknown team". | `CommandEvent` (`TeamCounts`), 1.12.2's reading of the members. |
+| `unpublish` | 26.2 | `/unpublish` (permission level 4): a world open to LAN is closed again; "No multiplayer game published" otherwise and on a dedicated server. | `UnpublishCommand`; the closing is `lookfeel.client.Lan.unpublish`, shared with World Options' LAN switch (see `lookfeel.md`). |
 
 ## Not the same as vanilla
 
@@ -38,6 +44,13 @@ unobfuscated), its data (`world_clock`, `timeline`, tags, recipes) and the Engli
 - `/gamerule` with no arguments still lists the rules, and a value can still create a rule (1.12.2's forms).
 - A spectator in a nether portal with no portal on the other side arrives at the scaled position; 26.3 refuses the trip.
 - A shulker whose teleport is refused has already turned to its new face; it finds a valid one on its next tick.
+- Peaceful ocelots: 1.12.2's spawner picks one list entry per pack, so ocelots come as often as on Normal, where
+  zombies and skeletons take most picks; 26.x picks the same way. Another mod's non-monster listed with the monsters
+  spawns on Peaceful too, as it would in 26.x.
+- Spam: a chat message another mod cancels (`ServerChatEvent`) is not counted, as 1.12.2 counts it after the event.
+- `/advancement`: 26.3 counts "many" as the advancements asked for, not those changed (26.2 counted those changed).
+- `/scoreboard teams join` again to the same team counts the member, as 26.3's `addPlayerToTeam` (leave and re-add)
+  does.
 
 ## Not built
 
@@ -47,18 +60,15 @@ unobfuscated), its data (`world_clock`, `timeline`, tags, recipes) and the Engli
 - **Named paintings show their name** (26.3): 1.12.2 paintings cannot be named (name tags work on mobs, and the painting
   item's name is not kept). Needs the item-to-entity name copy too; Tricky Trials' painting variants stream places
   paintings, so it belongs there.
-- **Ocelots on Peaceful** (26.2): 1.12.2 spawns ocelots with monsters; Peaceful skips that category entirely, so it
-  needs a spawner pass of its own.
-- **Chat and command spam counters** (26.2 `chat-spam-threshold-seconds`, `command-spam-threshold-seconds`): 1.12.2's
-  single counter already kicks at the same rate (10 s); separate counters and the server.properties keys are left.
-- **Host's game mode becomes the default** (26.2): only in 26.2's World Options screen as far as the code shows; left.
-- **/advancement and /team join counts** (26.2, 26.3): 1.12.2's commands are other commands with other messages.
 - **Trade enchanting cost, trades appearing while the screen is open** (26.1, 26.3): villagers are Village & Pillage's.
 
 ## Owned elsewhere or already 1.12.2's
 
 - Name tag recipe and trader trade, skeleton and zombie horses not panicking, the 26.1 sound variants: stream 1.
 - Explorer map items, their names and conversion: stream 7. Wool and concrete shapes: stream 6.
+- Piglins and zombie horses on Peaceful (26.2, the ocelots' bullet): Nether Update's piglins and Tricky Trials'
+  zombie horses (1.12.2 spawns none naturally). `ocelotsPeaceful` lets through any non-monster a mod lists with the
+  monsters, so a piglin that is not an `IMob` would already spawn.
 - Game rule snake_case ids (`minecraft:advance_time`, ...): 1.21.11's, Tricky Trials' scope (out of it there).
 - `/locate`'s "within a reasonable distance": Backport Core's `/locate` already has 26.3's text.
 - Hostile spawn eggs refused for players on Peaceful: 1.21.x's, Tricky Trials'.
@@ -67,5 +77,21 @@ unobfuscated), its data (`world_clock`, `timeline`, tags, recipes) and the Engli
 - Already 1.12.2's: zombie reinforcements leaving creative players alone, the dragon respawn needing all 4 crystals,
   feeding a wolf the last item healing fully, baby zombie height (0.975), `/give`'s amount limit being an error,
   `/publish` without a game mode, wolves doing no damage on Peaceful.
-- Technical or data-driven (skipped): data components, the World Options screen, game rules file, weather file,
-  knockback resistance's minimum, brewing and furnace fuel tags, `/swing`, `/fetchprofile`, `/posteffect`.
+- Technical or data-driven (skipped): data components, game rules file, weather file, knockback resistance's
+  minimum, brewing and furnace fuel tags, `/fetchprofile`, `/posteffect`.
+- `/swing` (26.x, with 26.3's `animation` and `duration`): Backport Core's, with its other commands (`commands.swing`).
+- The World Options screen and closing LAN from it: the look and feel stream (`lookfeel.md`).
+
+## Tested (gd-changes-gaps, 2026-11-21, E-cores)
+
+- `runServer -Pselftest=all` on a fresh world (seed 1013): `SELFTEST DONE pass=1794 fail=0`; the `changes` group alone
+  172/0 (`ChangesGapsSelfTest`: the Peaceful pass's spawn check, both spam counters through a real chat packet (P6),
+  the server.properties keys, `/advancement` and team replies with two real server players, `/unpublish` on a
+  dedicated server). `check_assets.py` 0 errors; `build_langs.py check` 18/18, 0 errors, 0 warnings.
+- `runClient -Pselftest=client`: `CLIENT SELFTEST DONE pass=86 fail=0`: World Options' LAN switch off closes the
+  listener (a socket to the port is refused), the announcer and guests' command access; reopening; moving to a new
+  port closes the old one; `/unpublish` (and after 1.12.2's `/publish`); `hostGameModeDefault` on and off.
+- `tools/release/boot-server.sh` with Backport Core 1.4.4 (`gd-changes-gaps`) and the release jar, with and without
+  Fluidlogged API 3.3.3: PASS, `PATCHCHECK ok 7`; server.properties gets both spam keys. Release jar: 0 `/selftest/`.
+- Not tested in a real game: an ocelot spawning on Peaceful in a jungle (the pass and its spawn check are; a world
+  with a player in a jungle is not), and a real second player being kicked for spam.

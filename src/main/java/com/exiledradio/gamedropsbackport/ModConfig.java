@@ -258,6 +258,34 @@ public final class ModConfig {
         @Config.Comment("Spectators go through nether portals, end portals and end gateways (26.3).")
         @Config.LangKey("config.gamedropsbackport.changes.spectatorPortals")
         public boolean spectatorPortals = true;
+
+        @Config.Comment("Ocelots spawn in jungles on Peaceful too: the monster spawn pass runs, its monsters refused (26.2).")
+        @Config.LangKey("config.gamedropsbackport.changes.ocelotsPeaceful")
+        public boolean ocelotsPeaceful = true;
+
+        @Config.Comment({"Chat and commands have their own spam counters, set by chat-spam-threshold-seconds and",
+                "command-spam-threshold-seconds in server.properties (10 each; 0 never kicks). Open to LAN never kicks (26.2)."})
+        @Config.LangKey("config.gamedropsbackport.changes.spamThresholds")
+        public boolean spamThresholds = true;
+
+        @Config.Comment({"The host changing their own game mode with /gamemode (or F3 + N) also changes the world's default",
+                "game mode (26.2; 26.3 took this back out, so it is off by default)."})
+        @Config.LangKey("config.gamedropsbackport.changes.hostGameModeDefault")
+        public boolean hostGameModeDefault = false;
+
+        @Config.Comment({"/advancement grant and revoke take several players and answer as 26.3 does: how many players",
+                "and advancements, and an error only when nothing changed (26.2, 26.3)."})
+        @Config.LangKey("config.gamedropsbackport.changes.advancementCounts")
+        public boolean advancementCounts = true;
+
+        @Config.Comment({"/scoreboard teams join and leave answer as 26.3's /team does: the members that joined or left,",
+                "and no error for those already out of a team (26.3)."})
+        @Config.LangKey("config.gamedropsbackport.changes.teamJoinCounts")
+        public boolean teamJoinCounts = true;
+
+        @Config.Comment("/unpublish closes a world opened to LAN: other players leave and it stops being listed (26.2).")
+        @Config.LangKey("config.gamedropsbackport.changes.unpublish")
+        public boolean unpublish = true;
         // --- end Changes ---
     }
 

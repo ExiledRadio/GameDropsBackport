@@ -28,6 +28,7 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -42,6 +43,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.ArrayList;
@@ -61,6 +63,13 @@ final class ClientScenes {
 
     /** Where the client test registers an underground biome: beside the cubes, under the floor. */
     private static final BlockPos UNDER = new BlockPos(-20, 2, 20);
+    private static final String TT = "trailsandtalesbackport";
+    /** The poplar sign the edit screen opens on. */
+    private static final BlockPos SIGN = new BlockPos(0, 4, 4);
+    /** Trails &amp; Tales' 1.20 sign edit screen, in place of 1.12.2's {@link GuiEditSign} when it is installed. */
+    private static final String TT_SIGN_SCREEN = "com.exiledradio.trailsandtalesbackport.sign.client.SignEditScreen";
+    /** Trails &amp; Tales' wolf renderer (1.20.5's variants), which draws 26.1's puppy itself. */
+    static final String TT_WOLF_RENDER = "com.exiledradio.trailsandtalesbackport.wolf.client.RenderWolfVariant";
 
     private final ClientSelfTest t;
     private final Minecraft mc;
@@ -208,8 +217,7 @@ final class ClientScenes {
                     w.setBlockState(pos, block.getDefaultState(), 2);
                     i++;
                 }
-                BlockPos sign = new BlockPos(0, 4, 4);
-                w.setBlockState(sign, Block.REGISTRY.getObject(new ResourceLocation(GameDropsBackport.MOD_ID, "poplar_sign")).getDefaultState());
+                w.setBlockState(SIGN, Block.REGISTRY.getObject(new ResourceLocation(GameDropsBackport.MOD_ID, "poplar_sign")).getDefaultState());
                 for (int k = 0; k < BABIES.length; k++) {
                     Entity e = EntityList.createEntityByIDFromName(new ResourceLocation(BABIES[k]), w);
                     if (e instanceof EntityAgeable) {
@@ -238,15 +246,25 @@ final class ClientScenes {
                 w.spawnEntity(boat);
                 this.spawned.add(boat);
                 p.connection.setPlayerLocation(0.5, 4, 0.5, 0, 10);
-                TileEntity te = w.getTileEntity(sign);
-                if (te instanceof TileEntitySign) {
-                    p.openEditSign((TileEntitySign) te);
-                }
             });
             return 40;
         });
         steps.add(() -> {
-            this.t.ok(this.mc.currentScreen instanceof GuiEditSign, "poplar sign: the edit screen opens, " + this.mc.currentScreen);
+            // Opened once the client has the sign (as when a player places one): opened in the tick that sets the
+            // block, the client edits a sign of its own outside the world, which Trails & Tales' 1.20 screen closes on.
+            onServer(() -> {
+                TileEntity te = server().getTileEntity(SIGN);
+                if (te instanceof TileEntitySign) {
+                    serverPlayer().openEditSign((TileEntitySign) te);
+                }
+            });
+            return 20;
+        });
+        steps.add(() -> {
+            // Trails & Tales replaces 1.12.2's GuiEditSign with 1.20's sign screen (its own class) when it is installed.
+            GuiScreen screen = this.mc.currentScreen;
+            boolean ttScreen = screen != null && Loader.isModLoaded(TT) && TT_SIGN_SCREEN.equals(screen.getClass().getName());
+            this.t.ok(screen instanceof GuiEditSign || ttScreen, "poplar sign: the edit screen opens, " + screen);
             this.t.shot("sign_edit.png");
             this.mc.displayGuiScreen(null);
             return 40;
@@ -257,6 +275,12 @@ final class ClientScenes {
                 Render<Entity> r = this.mc.getRenderManager().getEntityRenderObject(e);
                 if (e instanceof EntityLiving && ((EntityLiving) e).isChild() && !(e instanceof EntitySulfurCube)) {
                     babies++;
+                    if (e instanceof EntityWolf && Loader.isModLoaded(TT)) {
+                        // Trails & Tales' variant renderer draws its own 26.1 puppies (checked in FamilyBabyScene).
+                        this.t.ok(r != null && TT_WOLF_RENDER.equals(r.getClass().getName()),
+                                "baby wolf: Trails & Tales' variant renderer, " + (r == null ? null : r.getClass().getSimpleName()));
+                        continue;
+                    }
                     this.t.ok(r instanceof BabyWrapper, "baby " + EntityList.getKey(e) + ": our renderer, " + (r == null ? null : r.getClass().getSimpleName()));
                 }
             }

@@ -134,6 +134,18 @@ final class LookFeelSelfTest implements SelfTest {
                     + sizes[i][0] + " by " + sizes[i][1]);
         }
         check.ok(VanillaRevisions.pauseIconRow(), "the 26.2 pause row is on");
+
+        // Title screen: Friends, Language, Accessibility reach Core (26.3's language and accessibility are 15 by 15).
+        for (String sprite : new String[] {"friends/friends", "icon/language", "icon/accessibility"}) {
+            String path = "textures/gui/sprites/" + sprite + ".png";
+            check.ok(Presentation.asset(path) != null, "Core serves " + path + " to the title screen");
+        }
+        for (String sprite : new String[] {"icon/language", "icon/accessibility"}) {
+            BufferedImage img = image("vanilla/textures/gui/sprites/" + sprite + ".png");
+            check.ok(img != null && img.getWidth() == 15 && img.getHeight() == 15, sprite + " is 26.3's 15 by 15");
+        }
+        check.ok(Presentation.isAtLeast(com.exiledradio.backportcore.presentation.LookArea.TITLE, "26.2"),
+                "the title screen looks like 26.2 (Core 1.4.5 lays out its icon row)");
         check.ok(VanillaRevisions.pauseGridTop(240, 5) == 18, "pause grid top at 240 high");
 
         // Vanilla text: 26.3's English, 18 languages.

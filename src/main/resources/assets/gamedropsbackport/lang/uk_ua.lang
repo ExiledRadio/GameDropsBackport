@@ -25,6 +25,7 @@ config.gamedropsbackport.lookAndFeel.splashes.tooltip=Зміни текстів 
 config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=Музика меню 26.2: Ebb, Home, Memories, Nightly та Shores від fingerspit замість п'яти треків 1.21.6.
 config.gamedropsbackport.lookAndFeel.gameMusic.tooltip=Ігрова музика 26.2: Ebb, Home, Memories, Nightly та Shores від fingerspit звучать серед інших треків у режимах виживання й творчості.
 config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=Меню паузи 26.2: «Повідомити про помилку», «Надіслати відгук», «Друзі» та «Скарги на гравців» одним рядом кнопок-значків.
+config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=Титульний екран 26.2: Друзі, Мова та Спеціальні можливості одним рядом кнопок-значків під Realms.
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Екран «Налаштування світу» 26.3 у меню паузи замість «Відкрити для мережі»; складність іде з налаштувань.
 config.gamedropsbackport.changes.tooltip=Зміни з 26.x в командах, мобах, блоках і предметах, які вже є в 1.12.2.
 config.gamedropsbackport.changes.enabled.tooltip=Якщо вимкнено, усі зміни нижче вимкнені й повертається поведінка 1.12.2.
@@ -72,6 +73,7 @@ config.gamedropsbackport.lookAndFeel.splashes=Заставки 26.x
 config.gamedropsbackport.lookAndFeel.menuMusic=Музика меню 26.2
 config.gamedropsbackport.lookAndFeel.gameMusic=Ігрова музика 26.2
 config.gamedropsbackport.lookAndFeel.pauseMenu=Меню паузи 26.2
+config.gamedropsbackport.lookAndFeel.titleScreen=Титульний екран 26.2
 config.gamedropsbackport.lookAndFeel.worldOptions=Екран налаштувань світу
 
 # --- sulfur ---

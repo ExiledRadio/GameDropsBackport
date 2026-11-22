@@ -84,6 +84,13 @@ public final class LookAndFeel {
                 v262.replaceAsset(path, vanilla(path));
             }
         }
+        if (cfg.titleScreen) {
+            // The title screen's icon row: Friends, Language, Accessibility (Core lays it out from these).
+            for (String sprite : TITLE_SPRITES) {
+                String path = "textures/gui/sprites/" + sprite + ".png";
+                v262.replaceAsset(path, vanilla(path));
+            }
+        }
         if (cfg.panorama) {
             v263.panorama(ID + ":textures/gui/title/background/panorama_")
                     .panoramaOverlay(new ResourceLocation(ID, "textures/gui/title/background/panorama_overlay.png"));
@@ -94,6 +101,9 @@ public final class LookAndFeel {
     /** 26.2's pause-menu row sprites and {@code toast/system}, in the row's order. */
     static final String[] PAUSE_SPRITES = {"pause_menu/bug", "pause_menu/social_interactions", "friends/friends",
             "pause_menu/player_reporting", "toast/system"};
+
+    /** 26.2's title-screen row sprites, in the row's order. */
+    static final String[] TITLE_SPRITES = {"friends/friends", "icon/language", "icon/accessibility"};
 
     private static ResourceLocation texts(String file) {
         return new ResourceLocation(ID, "texts/" + file);

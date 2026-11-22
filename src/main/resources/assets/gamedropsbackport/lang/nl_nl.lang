@@ -25,6 +25,7 @@ config.gamedropsbackport.lookAndFeel.splashes.tooltip=De wijzigingen in de splas
 config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=De menumuziek van 26.2: Ebb, Home, Memories, Nightly en Shores van fingerspit in plaats van de vijf van 1.21.6.
 config.gamedropsbackport.lookAndFeel.gameMusic.tooltip=De spelmuziek van 26.2: Ebb, Home, Memories, Nightly en Shores van fingerspit klinken tussen de andere nummers in overleven en creatief.
 config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=Het pauzemenu van 26.2: Bugs melden, Feedback geven, Vrienden en Spelers rapporteren als één rij pictogramknoppen.
+config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=Het titelscherm van 26.2: Vrienden, Taal en Toegankelijkheid als één rij pictogramknoppen onder Realms.
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Het Wereldopties-scherm van 26.3 in het pauzemenu in plaats van Openen voor LAN; Moeilijkheid verlaat Opties.
 config.gamedropsbackport.changes.tooltip=De veranderingen van 26.x aan commando's, mobs, blokken en voorwerpen die 1.12.2 al heeft.
 config.gamedropsbackport.changes.enabled.tooltip=Uit zijn alle veranderingen hieronder uit en is het gedrag van 1.12.2 terug.
@@ -72,6 +73,7 @@ config.gamedropsbackport.lookAndFeel.splashes=26.x-splashteksten
 config.gamedropsbackport.lookAndFeel.menuMusic=26.2-menumuziek
 config.gamedropsbackport.lookAndFeel.gameMusic=26.2-spelmuziek
 config.gamedropsbackport.lookAndFeel.pauseMenu=26.2-pauzemenu
+config.gamedropsbackport.lookAndFeel.titleScreen=26.2-titelscherm
 config.gamedropsbackport.lookAndFeel.worldOptions=Wereldopties-scherm
 
 # --- sulfur ---

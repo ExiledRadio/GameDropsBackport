@@ -25,6 +25,7 @@ config.gamedropsbackport.lookAndFeel.splashes.tooltip=26.1 至 26.3 的闪烁标
 config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=26.2 的菜单音乐：fingerspit 的 Ebb、Home、Memories、Nightly 和 Shores，取代 1.21.6 的五首。
 config.gamedropsbackport.lookAndFeel.gameMusic.tooltip=26.2 的游戏音乐：fingerspit 的 Ebb、Home、Memories、Nightly 和 Shores 在生存和创造模式中与其他曲目一同播放。
 config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=26.2 的暂停菜单：报告错误、发送反馈、好友和举报玩家成为一排图标按钮。
+config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=26.2 的标题屏幕：好友、语言和辅助功能作为 Realms 下方的一排图标按钮。
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=暂停菜单中以 26.3 的世界选项界面取代对局域网开放；难度从选项界面移出。
 config.gamedropsbackport.changes.tooltip=26.x 对 1.12.2 中已有的命令、生物、方块和物品所做的更改。
 config.gamedropsbackport.changes.enabled.tooltip=关闭时，下方所有更改都会关闭，恢复 1.12.2 的行为。
@@ -72,6 +73,7 @@ config.gamedropsbackport.lookAndFeel.splashes=26.x 闪烁标语
 config.gamedropsbackport.lookAndFeel.menuMusic=26.2 菜单音乐
 config.gamedropsbackport.lookAndFeel.gameMusic=26.2 游戏音乐
 config.gamedropsbackport.lookAndFeel.pauseMenu=26.2 暂停菜单
+config.gamedropsbackport.lookAndFeel.titleScreen=26.2 标题屏幕
 config.gamedropsbackport.lookAndFeel.worldOptions=世界选项界面
 
 # --- sulfur ---

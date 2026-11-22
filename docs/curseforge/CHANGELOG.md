@@ -11,7 +11,7 @@ First release: Minecraft's 26.1, 26.2 and 26.3 game drops on Minecraft 1.12.2.
 *   **Poplar** in every wood shape, with signs and boats, red shrubs, shelf mushrooms and the dappled forest.
 *   **Wool and concrete stairs and slabs**, cushions you can sit on and switch between, and straw beds.
 *   **Abandoned camps** in 18 biomes, and 26.3's explorer maps, which lead to camps, vanilla structures and the other backports' structures, and copy in a crafting grid.
-*   **Menus and screens**: 26.3's title screen panorama, menu music and splashes, the pause menu with its icon buttons and World Options, the Game Rules screen with search, Optimize World, borderless fullscreen and 26.3's creative tab order.
+*   **Menus and screens**: 26.3's title screen panorama and its row of Friends, Language and Accessibility icons (with Backport Core 1.4.5), menu music and splashes, the pause menu with its icon buttons and World Options, the Game Rules screen with search, Optimize World, borderless fullscreen and 26.3's creative tab order.
 *   **Spawn eggs** with their newer textures, for vanilla's and the backports' mobs.
 *   **26.x's smaller changes** to things 1.12.2 already has: `/time` with world clocks, `/swing`, `/unpublish`, bed bounce, riding endermen, ocelots on Peaceful, separate chat and command spam limits, today's `/advancement` and `/team` replies, and more.
 *   **Waterlogging** with Fluidlogged API (optional): the new stairs, slabs, walls, sulfur spikes, and poplar fences, trapdoors, signs and leaves hold water.

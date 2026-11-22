@@ -25,6 +25,7 @@ config.gamedropsbackport.lookAndFeel.splashes.tooltip=26.1 から 26.3 までの
 config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=26.2 のメニュー音楽：1.21.6 の5曲の代わりに fingerspit の Ebb、Home、Memories、Nightly、Shores。
 config.gamedropsbackport.lookAndFeel.gameMusic.tooltip=26.2 のゲーム音楽：fingerspit の Ebb、Home、Memories、Nightly、Shores がサバイバルとクリエイティブで他の曲と一緒に流れます。
 config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=26.2 のポーズメニュー：バグ報告、フィードバック、フレンド、プレイヤーの通報を1列のアイコンボタンに。
+config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=26.2 のタイトル画面: フレンド、言語、アクセシビリティを Realms の下に1列のアイコンボタンとして表示します。
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=LAN に公開の代わりにポーズメニューに 26.3 のワールドオプション画面。難易度はオプション画面から移ります。
 config.gamedropsbackport.changes.tooltip=1.12.2にすでにあるコマンド、モブ、ブロック、アイテムへの26.xの変更です。
 config.gamedropsbackport.changes.enabled.tooltip=オフにすると、以下の変更はすべてオフになり、1.12.2の挙動に戻ります。
@@ -72,6 +73,7 @@ config.gamedropsbackport.lookAndFeel.splashes=26.x のスプラッシュテキ�
 config.gamedropsbackport.lookAndFeel.menuMusic=26.2 のメニュー音楽
 config.gamedropsbackport.lookAndFeel.gameMusic=26.2 のゲーム音楽
 config.gamedropsbackport.lookAndFeel.pauseMenu=26.2 のポーズメニュー
+config.gamedropsbackport.lookAndFeel.titleScreen=26.2 のタイトル画面
 config.gamedropsbackport.lookAndFeel.worldOptions=ワールドオプション画面
 
 # --- sulfur ---

@@ -192,6 +192,12 @@ public final class ModConfig {
         @Config.LangKey("config.gamedropsbackport.lookAndFeel.pauseMenu")
         public boolean pauseMenu = true;
 
+        @Config.RequiresMcRestart
+        @Setting.Look("title")
+        @Config.Comment("26.2's title screen: Friends, Language and Accessibility as one row of icon buttons under Realms.")
+        @Config.LangKey("config.gamedropsbackport.lookAndFeel.titleScreen")
+        public boolean titleScreen = true;
+
         @Setting.Look("menus")
         @Config.Comment("26.3's World Options screen on the pause menu, in place of Open to LAN; Difficulty leaves the Options screen.")
         @Config.LangKey("config.gamedropsbackport.lookAndFeel.worldOptions")

@@ -7,6 +7,7 @@ First release: Minecraft's 26.1, 26.2 and 26.3 game drops on Minecraft 1.12.2.
 *   **Sulfur and cinnabar** in every stone shape, potent sulfur, sulfur spikes and the music disc Bounce.
 *   **The sulfur cube** and its 12 kinds by the block it holds.
 *   **Sulfur caves** and sulfur springs.
+*   **fingerspit's music**: Ebb, Home, Memories, Nightly and Shores on the title screen and among the music in survival and creative, and in forests, jungles, badlands, deserts, cherry groves, mountains and caves with Trails & Tales and Caves & Cliffs Backport.
 *   **Poplar** in every wood shape, with signs and boats, red shrubs, shelf mushrooms and the dappled forest.
 *   **Wool and concrete stairs and slabs**, cushions and straw beds.
 *   **Abandoned camps** in 18 biomes and 26.3's explorer maps.

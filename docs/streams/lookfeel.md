@@ -18,6 +18,8 @@ and 26.3 client jars and asset indexes, and 26.3's decompiled `PauseScreen`, `Wo
 *   **Title screen**: 26.3's panorama, the dappled forest with an abandoned camp; the 26.x splashes ("Java 16 + 1 +
     4 * 2 = 25!", "Now on Vulkan 1.2!", "Music by fingerspit!", and straight quotes in two older ones).
 *   **Menu music**: fingerspit's Ebb, Home, Memories, Nightly and Shores, in place of 1.21.6's five, as in 26.2.
+*   **Game music**: the same five play among the other tracks in survival and creative, and in the biomes whose
+    music 26.2 gave them (with Trails & Tales and Caves & Cliffs Backport, which play the biomes' music).
 *   **Pause menu**: Report Bugs and Send Feedback are one row of icon buttons (26.2), and World Options... takes Open
     to LAN's place (26.3).
 *   **World Options**: Default Game Mode, Personal Game Mode, Allow Cheats, Difficulty and its lock; LAN with a port
@@ -30,6 +32,15 @@ and 26.3 client jars and asset indexes, and 26.3's decompiled `PauseScreen`, `Wo
 *   `LookAndFeel.preInit` (both sides) hands Core one `Contribution` per drop: 26.1 (splash), 26.2 (splashes, the
     menu tracks, the two pause sprites), 26.3 (panorama and overlay, splash fix, `vanilla_text/`). 1.21.6's menu
     tracks are removed by path, whichever backport plays them.
+*   **Game music** (`music.client.GameMusicPack`, switch `lookAndFeel.gameMusic`): a built-in pack serving
+    `minecraft:sounds.json` from `gamedropsbackport_packs/game_music/` whose `music.game` adds the five at 26.3's
+    weight 2, volume 0.4, streamed, replacing nothing (Caves & Cliffs' and Trails & Tales' game music packs do the
+    same); the creative music lists `music.game` by reference, so it gains them too. Installed from
+    `LookAndFeelClient.register` in client pre-init, before the sound handler first reads the lists. The biome lists
+    are their owners': Trails & Tales' `BiomeMusic` (1.20's lists, all 17 music biomes) and Caves & Cliffs' 1.18 lists
+    (its eight, when Trails & Tales is absent) add 26.2's entries when this mod's track files are installed; the
+    sulfur caves' list is ours (already 26.3's). 26.2 also put Ebb in the swamp's list; no backport plays swamp
+    music (1.19's), so it is not anywhere.
 *   `lookfeel.client.LookAndFeelClient` (events, no patch): on `GuiIngameMenu`, button 7 (which Core places) reads
     World Options... and opens `WorldOptionsScreen`; on `GuiOptions` in a world, Difficulty (108) and its lock (109)
     are removed. Both only while `worldOptions` is on and the menus' look is 26.3 (`WorldOptionsRules.active`).

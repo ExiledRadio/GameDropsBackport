@@ -101,6 +101,7 @@ public final class ClientSelfTest {
                 ok(Presentation.panoramas().get(Presentation.panoramas().size() - 1).faces[0].getNamespace().equals(GameDropsBackport.MOD_ID),
                         "title screen: our panorama is the newest");
                 shot("title.png");
+                gameMusic(mc);
                 this.phase = 1;
                 this.ticks = 0;
                 FileUtils.deleteQuietly(new File(new File(mc.gameDir, "saves"), WORLD));
@@ -129,6 +130,77 @@ public final class ClientSelfTest {
             this.fail++;
             finish(mc);
         }
+    }
+
+    /** 26.2's game music: the sound handler's music.game (and so the creative music) holds fingerspit's five. */
+    private void gameMusic(Minecraft mc) throws Exception {
+        ok(com.exiledradio.gamedropsbackport.music.client.GameMusicPack.installed, "game music: the built-in pack is installed");
+        net.minecraft.client.audio.SoundEventAccessor game = mc.getSoundHandler().getAccessor(new net.minecraft.util.ResourceLocation("music.game"));
+        java.util.Map<String, net.minecraft.client.audio.Sound> sounds = new java.util.TreeMap<String, net.minecraft.client.audio.Sound>();
+        int count = 0;
+        if (game != null) {
+            for (java.lang.reflect.Field f : net.minecraft.client.audio.SoundEventAccessor.class.getDeclaredFields()) {
+                if (java.util.List.class.isAssignableFrom(f.getType())) {
+                    f.setAccessible(true);
+                    for (Object o : (java.util.List<?>) f.get(game)) {
+                        count++;
+                        if (o instanceof net.minecraft.client.audio.Sound) {
+                            net.minecraft.client.audio.Sound s = (net.minecraft.client.audio.Sound) o;
+                            sounds.put(s.getSoundLocation().toString(), s);
+                        }
+                    }
+                }
+            }
+        }
+        boolean all = true;
+        for (String track : com.exiledradio.gamedropsbackport.lookfeel.LookAndFeel.MENU_26_2) {
+            net.minecraft.client.audio.Sound s = sounds.get(GameDropsBackport.MOD_ID + ":music/game/" + track);
+            all &= s != null && s.getWeight() == 2 && s.getVolume() == 0.4F && s.isStreaming();
+        }
+        ok(all, "game music: music.game holds fingerspit's five at weight 2, volume 0.4, streamed");
+        if (mc.getSoundHandler().getAccessor(new net.minecraft.util.ResourceLocation("ambient.cave")) != null) {
+            ok(sounds.containsKey("minecraft:music/game/calm1"), "game music: 1.12.2's own tracks stay (" + count + " entries)");
+        } else {
+            // An offline dev run has no 1.12.2 sounds.json (the asset download failed): nothing of vanilla's to keep.
+            GameDropsBackport.LOGGER.info("CLIENT SELFTEST note: no 1.12.2 sounds in this run; music.game has {} entries", count);
+        }
+        // The biome lists are their owners'; with them installed, they hold 26.2's tracks.
+        if (net.minecraftforge.fml.common.Loader.isModLoaded("trailsandtalesbackport")) {
+            java.util.Set<String> forest = soundNames(mc, "trailsandtalesbackport:music.overworld.forest");
+            ok(forest.contains(GameDropsBackport.MOD_ID + ":music/game/memories") && forest.contains(GameDropsBackport.MOD_ID + ":music/game/shores"),
+                    "biome music: Trails & Tales' forest list has Memories and Shores: " + forest.size() + " sounds");
+            java.util.Set<String> cherry = soundNames(mc, "trailsandtalesbackport:music.overworld.cherry_grove");
+            ok(cherry.contains(GameDropsBackport.MOD_ID + ":music/game/home") && cherry.contains(GameDropsBackport.MOD_ID + ":music/game/nightly"),
+                    "biome music: the cherry grove's has Home and Nightly");
+        }
+        if (net.minecraftforge.fml.common.Loader.isModLoaded("cavesandcliffsbackport")) {
+            java.util.Set<String> lush = soundNames(mc, "cavesandcliffsbackport:music.overworld.lush_caves");
+            ok(lush.contains(GameDropsBackport.MOD_ID + ":music/game/shores") && lush.contains("cavesandcliffsbackport:music/game/left_to_bloom"),
+                    "biome music: Caves & Cliffs' lush caves list keeps 1.18's and has Shores: " + lush);
+            java.util.Set<String> frozen = soundNames(mc, "cavesandcliffsbackport:music.overworld.frozen_peaks");
+            ok(frozen.contains(GameDropsBackport.MOD_ID + ":music/game/ebb") && frozen.contains(GameDropsBackport.MOD_ID + ":music/game/home"),
+                    "biome music: the frozen peaks' has Ebb and Home");
+        }
+    }
+
+    /** @return the sound files an event's accessor lists (one level: event references are not followed) */
+    private static java.util.Set<String> soundNames(Minecraft mc, String event) throws Exception {
+        java.util.Set<String> out = new java.util.TreeSet<String>();
+        net.minecraft.client.audio.SoundEventAccessor accessor = mc.getSoundHandler().getAccessor(new net.minecraft.util.ResourceLocation(event));
+        if (accessor == null) {
+            return out;
+        }
+        for (java.lang.reflect.Field f : net.minecraft.client.audio.SoundEventAccessor.class.getDeclaredFields()) {
+            if (java.util.List.class.isAssignableFrom(f.getType())) {
+                f.setAccessible(true);
+                for (Object o : (java.util.List<?>) f.get(accessor)) {
+                    if (o instanceof net.minecraft.client.audio.Sound) {
+                        out.add(((net.minecraft.client.audio.Sound) o).getSoundLocation().toString());
+                    }
+                }
+            }
+        }
+        return out;
     }
 
     private void scenes(Minecraft mc) {

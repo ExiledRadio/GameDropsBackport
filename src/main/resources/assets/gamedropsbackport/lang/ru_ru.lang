@@ -23,6 +23,7 @@ config.gamedropsbackport.lookAndFeel.enabled.tooltip=Выключено: мод 
 config.gamedropsbackport.lookAndFeel.panorama.tooltip=Панорама титульного экрана 26.3: пятнистый лес с заброшенным лагерем.
 config.gamedropsbackport.lookAndFeel.splashes.tooltip=Изменения текстов заставки с 26.1 по 26.3.
 config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=Музыка меню 26.2: Ebb, Home, Memories, Nightly и Shores от fingerspit вместо пяти треков 1.21.6.
+config.gamedropsbackport.lookAndFeel.gameMusic.tooltip=Игровая музыка 26.2: Ebb, Home, Memories, Nightly и Shores от fingerspit звучат среди других треков в режимах выживания и творчества.
 config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=Меню паузы 26.2: «Сообщить об ошибке» и «Оставить отзыв» одним рядом кнопок-значков.
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Экран «Настройки мира» 26.3 в меню паузы вместо «Открыть для сети»; сложность уходит из настроек.
 config.gamedropsbackport.changes.tooltip=Изменения из 26.x в командах, мобах, блоках и предметах, которые уже есть в 1.12.2.
@@ -63,6 +64,7 @@ config.gamedropsbackport.lookAndFeel.enabled=Включено
 config.gamedropsbackport.lookAndFeel.panorama=Панорама 26.3
 config.gamedropsbackport.lookAndFeel.splashes=Заставки 26.x
 config.gamedropsbackport.lookAndFeel.menuMusic=Музыка меню 26.2
+config.gamedropsbackport.lookAndFeel.gameMusic=Игровая музыка 26.2
 config.gamedropsbackport.lookAndFeel.pauseMenu=Меню паузы 26.2
 config.gamedropsbackport.lookAndFeel.worldOptions=Экран настроек мира
 

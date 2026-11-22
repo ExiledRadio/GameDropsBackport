@@ -23,6 +23,7 @@ config.gamedropsbackport.lookAndFeel.enabled.tooltip=끄면 이 모드는 26.x�
 config.gamedropsbackport.lookAndFeel.panorama.tooltip=26.3의 타이틀 화면 파노라마: 버려진 캠프가 있는 얼룩 숲.
 config.gamedropsbackport.lookAndFeel.splashes.tooltip=26.1부터 26.3까지의 스플래시 텍스트 변경.
 config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=26.2의 메뉴 음악: 1.21.6의 다섯 곡 대신 fingerspit의 Ebb, Home, Memories, Nightly, Shores.
+config.gamedropsbackport.lookAndFeel.gameMusic.tooltip=26.2의 게임 음악: fingerspit의 Ebb, Home, Memories, Nightly, Shores가 서바이벌과 크리에이티브에서 다른 곡들과 함께 재생됩니다.
 config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=26.2의 일시 정지 메뉴: 버그 신고와 피드백 보내기를 한 줄의 아이콘 버튼으로.
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=LAN에 공개 대신 일시 정지 메뉴에 26.3의 월드 옵션 화면. 난이도는 설정 화면에서 빠집니다.
 config.gamedropsbackport.changes.tooltip=1.12.2에 이미 있는 명령어, 몹, 블록, 아이템에 대한 26.x의 변경 사항입니다.
@@ -63,6 +64,7 @@ config.gamedropsbackport.lookAndFeel.enabled=활성화
 config.gamedropsbackport.lookAndFeel.panorama=26.3 파노라마
 config.gamedropsbackport.lookAndFeel.splashes=26.x 스플래시 텍스트
 config.gamedropsbackport.lookAndFeel.menuMusic=26.2 메뉴 음악
+config.gamedropsbackport.lookAndFeel.gameMusic=26.2 게임 음악
 config.gamedropsbackport.lookAndFeel.pauseMenu=26.2 일시 정지 메뉴
 config.gamedropsbackport.lookAndFeel.worldOptions=월드 옵션 화면
 

@@ -41,7 +41,7 @@ final class LookFeelSelfTest implements SelfTest {
     @Override
     public void run(Check check) throws Exception {
         ModConfig.LookAndFeel cfg = ModConfig.lookAndFeel;
-        check.ok(cfg.enabled && cfg.panorama && cfg.splashes && cfg.menuMusic && cfg.pauseMenu && cfg.worldOptions, "every switch on by default");
+        check.ok(cfg.enabled && cfg.panorama && cfg.splashes && cfg.menuMusic && cfg.gameMusic && cfg.pauseMenu && cfg.worldOptions, "every switch on by default");
         check.ok(Presentation.installedNewest().equals(GameVersion.parse("26.3")), "newest installed is 26.3, " + Presentation.installedNewest());
         check.ok(Presentation.isAtLeast("26.3"), "a dedicated server's look is the installed newest");
         for (String v : new String[]{"26.1", "26.2", "26.3"}) {
@@ -85,7 +85,7 @@ final class LookFeelSelfTest implements SelfTest {
         boolean volumes = true;
         for (MenuMusic.Track t : MenuMusic.pool(base, withOlder)) {
             names.add(t.soundName);
-            volumes &= t.soundName.startsWith("minecraft:") || t.volume == LookAndFeel.MENU_VOLUME;
+            volumes &= t.soundName.startsWith("minecraft:") || t.volume == LookAndFeel.MENU_VOLUME && t.weight == LookAndFeel.MENU_WEIGHT;
         }
         List<String> expected = new ArrayList<String>();
         expected.add("minecraft:music/menu/menu1");
@@ -95,9 +95,31 @@ final class LookFeelSelfTest implements SelfTest {
         Collections.sort(names);
         Collections.sort(expected);
         check.ok(names.equals(expected), "menu pool is menu1 and fingerspit's five: " + names);
-        check.ok(volumes, "the new tracks at 0.4");
+        check.ok(volumes, "the new tracks at weight 2, volume 0.4");
         for (String track : LookAndFeel.MENU_26_2) {
             check.ok(resource("sounds/music/game/" + track + ".ogg"), "track " + track + " in the jar");
+        }
+
+        // 26.2's game music: the built-in pack's music.game adds the five, weight 2, volume 0.4 (26.3's sounds.json).
+        InputStream gameIn = LookFeelSelfTest.class.getResourceAsStream("/" + ID + "_packs/game_music/assets/minecraft/sounds.json");
+        if (check.ok(gameIn != null, "the game music pack is in the jar")) {
+            com.google.gson.JsonObject pack = new com.google.gson.JsonParser().parse(
+                    new InputStreamReader(gameIn, StandardCharsets.UTF_8)).getAsJsonObject();
+            check.ok(pack.entrySet().size() == 1 && pack.has("music.game") && !pack.getAsJsonObject("music.game").has("replace"),
+                    "the pack adds to music.game only, replacing nothing");
+            List<String> game = new ArrayList<String>();
+            boolean entries = true;
+            for (com.google.gson.JsonElement e : pack.getAsJsonObject("music.game").getAsJsonArray("sounds")) {
+                com.google.gson.JsonObject o = e.getAsJsonObject();
+                game.add(o.get("name").getAsString());
+                entries &= o.get("weight").getAsInt() == 2 && o.get("volume").getAsFloat() == 0.4F && o.get("stream").getAsBoolean();
+            }
+            List<String> want = new ArrayList<String>();
+            for (String track : LookAndFeel.MENU_26_2) {
+                want.add(ID + ":music/game/" + track);
+            }
+            check.ok(game.equals(want), "music.game gains fingerspit's five: " + game);
+            check.ok(entries, "each streamed, weight 2, volume 0.4");
         }
 
         // Pause menu: the two sprites (15 by 15) reach Core; the grid's numbers.

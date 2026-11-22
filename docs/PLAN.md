@@ -194,7 +194,7 @@ splashes, menuMusic, pauseMenu, worldOptions), all on; Core's Look & Feel page l
 | --- | --- | --- |
 | 26.1 | The version only: its one splash change ("Java 16 + 1 + 4 * 2 = 25!") names a Java version, which Core leaves out on 1.12.2 | nothing |
 | 26.2 | Splash "Music by fingerspit!" ("Now on Vulkan 1.2!" is shipped, but Core leaves out runtime splashes on 1.12.2) | splash pool |
-| 26.2 | Menu music: fingerspit's Ebb, Home, Memories, Nightly and Shores replace 1.21.6's five (weight 1, volume 0.4); Music Toast names "fingerspit - Ebb" ... | menu pool, removal by path (has it) |
+| 26.2 | Menu music: fingerspit's Ebb, Home, Memories, Nightly and Shores replace 1.21.6's five (weight 2, volume 0.4, as 26.3's sounds.json); Music Toast names "fingerspit - Ebb" ... | menu pool, removal by path (has it) |
 | 26.2 | Pause menu: Report Bugs and Send Feedback become 20 by 20 icon buttons in one row under Advancements and Statistics (sprites `pause_menu/bug`, `pause_menu/social_interactions`) | **new**: the 26.2 pause layout (Core 1.4.4) |
 | 26.3 | Panorama: the dappled forest with an abandoned camp, and its overlay | panorama (has it) |
 | 26.3 | Splash fix: straight quotes in "Don't touch your face!" and "Prepare, but don't hoard!" | splash pool |
@@ -220,8 +220,9 @@ Not built, and why:
   Trails & Tales request.
 - Creative tab order (26.3's mineral order): Core's creative order files; later.
 - GUI textures: none changed that 1.12.2 draws (26.3's enchanting table differs by 4 unused pixels).
-- In-game music: the fingerspit tracks also join the overworld biome pools (26.2); in-game music is Caves & Cliffs'
-  stream with Core's game music.
+- In-game music (26.2), built: the fingerspit tracks join `music.game` (this mod's built-in pack, `lookAndFeel.gameMusic`)
+  and the biome lists 26.2 put them in, through their owners: Trails & Tales' 1.20 biome music and Caves & Cliffs' 1.18
+  lists, when this mod is installed. Not the swamp's (no backport plays swamp music).
 - Loading screen: unchanged since 1.21.9 (Tricky Trials' drawer stays).
 ### 8. Changes to existing things (26.1-26.3)
 

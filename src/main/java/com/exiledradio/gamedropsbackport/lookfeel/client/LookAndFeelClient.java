@@ -1,6 +1,7 @@
 package com.exiledradio.gamedropsbackport.lookfeel.client;
 
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
+import com.exiledradio.gamedropsbackport.ModConfig;
 import com.exiledradio.gamedropsbackport.lookfeel.WorldOptionsRules;
 
 import net.minecraft.client.Minecraft;
@@ -34,6 +35,10 @@ public final class LookAndFeelClient {
 
     public static void register() {
         MinecraftForge.EVENT_BUS.register(new LookAndFeelClient());
+        // 26.2's in-game music: fingerspit's tracks join music.game.
+        if (ModConfig.lookAndFeel.enabled && ModConfig.lookAndFeel.gameMusic) {
+            com.exiledradio.gamedropsbackport.music.client.GameMusicPack.install();
+        }
         if ("client".equals(System.getProperty(GameDropsBackport.MOD_ID + ".selftest"))) {
             try {
                 Class.forName("com.exiledradio.gamedropsbackport.selftest.ClientSelfTest").getMethod("register").invoke(null);

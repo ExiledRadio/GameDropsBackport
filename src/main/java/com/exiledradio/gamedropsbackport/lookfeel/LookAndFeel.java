@@ -30,9 +30,10 @@ public final class LookAndFeel {
             "music/game/os_piano",
     };
 
-    /** 26.2's menu tracks (fingerspit), as {@code music.menu} lists them: weight 1, volume 0.4. */
+    /** 26.2's menu tracks (fingerspit), as 26.3's {@code music.menu} lists them: weight 2, volume 0.4. */
     public static final String[] MENU_26_2 = {"ebb", "home", "memories", "nightly", "shores"};
 
+    public static final int MENU_WEIGHT = 2;
     public static final float MENU_VOLUME = 0.4F;
 
     private static boolean registered;
@@ -73,7 +74,7 @@ public final class LookAndFeel {
                 v262.removeMenuMusic(track);
             }
             for (String track : MENU_26_2) {
-                v262.addMenuMusic(ID + ":music/game/" + track, 1, MENU_VOLUME);
+                v262.addMenuMusic(ID + ":music/game/" + track, MENU_WEIGHT, MENU_VOLUME);
             }
         }
         if (cfg.pauseMenu) {

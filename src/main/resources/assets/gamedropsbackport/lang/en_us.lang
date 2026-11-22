@@ -22,6 +22,7 @@ config.gamedropsbackport.lookAndFeel.enabled.tooltip=Off, this mod adds none of 
 config.gamedropsbackport.lookAndFeel.panorama.tooltip=26.3's title screen panorama: the dappled forest with an abandoned camp.
 config.gamedropsbackport.lookAndFeel.splashes.tooltip=26.1 to 26.3's splash text changes.
 config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=26.2's menu music: fingerspit's Ebb, Home, Memories, Nightly and Shores in place of 1.21.6's five.
+config.gamedropsbackport.lookAndFeel.gameMusic.tooltip=26.2's game music: fingerspit's Ebb, Home, Memories, Nightly and Shores play among the other tracks in survival and creative.
 config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=26.2's pause menu: Report Bugs and Send Feedback as one row of icon buttons.
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=26.3's World Options screen on the pause menu, in place of Open to LAN; Difficulty leaves the Options screen.
 config.gamedropsbackport.changes.tooltip=26.x's changes to commands, mobs, blocks and items 1.12.2 already has.
@@ -62,6 +63,7 @@ config.gamedropsbackport.lookAndFeel.enabled=Enabled
 config.gamedropsbackport.lookAndFeel.panorama=26.3 Panorama
 config.gamedropsbackport.lookAndFeel.splashes=26.x Splash Texts
 config.gamedropsbackport.lookAndFeel.menuMusic=26.2 Menu Music
+config.gamedropsbackport.lookAndFeel.gameMusic=26.2 Game Music
 config.gamedropsbackport.lookAndFeel.pauseMenu=26.2 Pause Menu
 config.gamedropsbackport.lookAndFeel.worldOptions=World Options Screen
 

@@ -23,6 +23,7 @@ config.gamedropsbackport.lookAndFeel.enabled.tooltip=關閉時，本模組不加
 config.gamedropsbackport.lookAndFeel.panorama.tooltip=26.3 標題畫面的全景圖：有廢棄營地的斑駁森林。
 config.gamedropsbackport.lookAndFeel.splashes.tooltip=26.1 至 26.3 的閃爍標語變更。
 config.gamedropsbackport.lookAndFeel.menuMusic.tooltip=26.2 的選單音樂：以 fingerspit 的 Ebb、Home、Memories、Nightly 和 Shores 取代 1.21.6 的五首。
+config.gamedropsbackport.lookAndFeel.gameMusic.tooltip=26.2 的遊戲音樂：fingerspit 的 Ebb、Home、Memories、Nightly 和 Shores 在生存和創造模式中與其他曲目一同播放。
 config.gamedropsbackport.lookAndFeel.pauseMenu.tooltip=26.2 的暫停選單：回報錯誤與傳送意見回饋成為一排圖示按鈕。
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=暫停選單以 26.3 的世界選項畫面取代在區域網路上開放；難度移出選項畫面。
 config.gamedropsbackport.changes.tooltip=26.x 對 1.12.2 中已有的指令、生物、方塊和物品所做的更改。
@@ -63,6 +64,7 @@ config.gamedropsbackport.lookAndFeel.enabled=啟用
 config.gamedropsbackport.lookAndFeel.panorama=26.3 全景圖
 config.gamedropsbackport.lookAndFeel.splashes=26.x 閃爍標語
 config.gamedropsbackport.lookAndFeel.menuMusic=26.2 選單音樂
+config.gamedropsbackport.lookAndFeel.gameMusic=26.2 遊戲音樂
 config.gamedropsbackport.lookAndFeel.pauseMenu=26.2 暫停選單
 config.gamedropsbackport.lookAndFeel.worldOptions=世界選項畫面
 

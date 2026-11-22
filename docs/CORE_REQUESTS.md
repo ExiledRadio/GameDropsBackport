@@ -32,8 +32,8 @@ start dampening once Core has it; until then they do not.
 `getAge`/`setAge`, `startAge`; the lock is `AgeLocked` in the mob's Forge data, `AgeLockable.isLocked`) and
 `VanillaRevisions.babyModels()` (26.1 installed, Core's textures switch on, and this mod's `babies.babyModels`, handed
 over by `BabiesContent.preInit` through `setBabyModelSwitch`). `babies.AgeLock` holds any `AgeLockable` as it holds an
-`EntityAgeable`, and `BabyWrapper` asks `babyModels()` too. Wild Update 1.1.3's tadpole locks (start age 0, no
-slimeballs while locked, the bucket keeps `AgeLocked`); Trails & Tales 1.0.3's snifflet starts again at -48000, and
+`EntityAgeable`, and `BabyWrapper` asks `babyModels()` too. Wild Update 1.1.2's tadpole locks (start age 0, no
+slimeballs while locked, the bucket keeps `AgeLocked`); Trails & Tales 1.0.2's snifflet starts again at -48000, and
 its camel, sniffer and armadillo draw 26.3's baby models (`BabyCamelModel`, the `sniffer_baby` layer, which 26.3 draws
 with the adult's `SnifferModel` animations, and `BabyArmadilloModel`), animations (`tools/babies/animations.py`) and
 `*_baby.png`/`snifflet.png` textures while `babyModels()` is true. The armadillo is Trails & Tales', not Tricky

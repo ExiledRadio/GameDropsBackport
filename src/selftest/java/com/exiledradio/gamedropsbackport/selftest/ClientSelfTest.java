@@ -252,6 +252,40 @@ public final class ClientSelfTest {
                     "textures/map/decorations/player_off_limits.png")) != null, "map: the pointed sprite was drawn (texture loaded)");
             return 5;
         });
+        // 1.21.5's spawn eggs (Core's SpawnEggModels): at 26.3 each egg is its own texture, ours (the sulfur cube) too.
+        this.steps.add(() -> {
+            net.minecraft.entity.player.EntityPlayerMP sp = mc.getIntegratedServer().getPlayerList().getPlayerByUUID(mc.player.getUniqueID());
+            String[] mobs = {GameDropsBackport.MOD_ID + ":sulfur_cube", "minecraft:zombie", "minecraft:creeper", "minecraft:pig",
+                    "minecraft:mooshroom", "minecraft:zombie_pigman", "minecraft:ghast", "minecraft:chicken", "minecraft:villager"};
+            mc.getIntegratedServer().addScheduledTask(() -> {
+                for (int i = 0; i < mobs.length; i++) {
+                    net.minecraft.item.ItemStack egg = new net.minecraft.item.ItemStack(net.minecraft.init.Items.SPAWN_EGG);
+                    net.minecraft.item.ItemMonsterPlacer.applyEntityIdToItemStack(egg, new net.minecraft.util.ResourceLocation(mobs[i]));
+                    sp.inventory.setInventorySlotContents(i, egg);
+                }
+                sp.inventory.currentItem = 0;
+            });
+            mc.player.inventory.currentItem = 0;
+            mc.player.rotationPitch = 20.0F;
+            return 20;
+        });
+        this.steps.add(() -> {
+            String[][] want = {{GameDropsBackport.MOD_ID + ":sulfur_cube", "minecraft:item/sulfur_cube_spawn_egg"},
+                    {"minecraft:zombie", "minecraft:item/zombie_spawn_egg"}, {"minecraft:zombie_pigman", "minecraft:item/zombified_piglin_spawn_egg"}};
+            for (String[] w : want) {
+                net.minecraft.item.ItemStack egg = new net.minecraft.item.ItemStack(net.minecraft.init.Items.SPAWN_EGG);
+                net.minecraft.item.ItemMonsterPlacer.applyEntityIdToItemStack(egg, new net.minecraft.util.ResourceLocation(w[0]));
+                net.minecraft.client.renderer.block.model.IBakedModel m = mc.getRenderItem().getItemModelWithOverrides(egg, mc.world, mc.player);
+                boolean untinted = true;
+                for (net.minecraft.client.renderer.block.model.BakedQuad q : m.getQuads(null, null, 0L)) {
+                    untinted &= !q.hasTintIndex();
+                }
+                ok(w[1].equals(m.getParticleTexture().getIconName()) && untinted, "spawn eggs: " + w[0] + "'s egg is 26.3's " + w[1]
+                        + " (" + m.getParticleTexture().getIconName() + ", untinted " + untinted + ")");
+            }
+            shot("spawn_eggs.png");
+            return 5;
+        });
         this.steps.add(() -> {
             mc.player.rotationPitch = 0.0F;
             net.minecraft.entity.player.EntityPlayerMP sp = mc.getIntegratedServer().getPlayerList().getPlayerByUUID(mc.player.getUniqueID());

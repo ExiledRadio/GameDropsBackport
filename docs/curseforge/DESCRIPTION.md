@@ -52,7 +52,7 @@ Three hay bales make four straw beds. Sleep through the night on one without set
 
 ## Abandoned camps
 
-Abandoned camps turn up in 18 biomes, each built to suit its biome, with loot of their own. Their chests hold 26.3's explorer maps, which lead to camps, mineshafts, temples, villages, monuments, mansions, swamp huts and the structures of other backports.
+Abandoned camps turn up in 18 biomes, each built to suit its biome, with loot of their own. Their chests hold 26.3's explorer maps, which lead to camps, mineshafts, temples, villages, monuments, mansions, swamp huts and the structures of other backports. Copy one with empty maps in a crafting table.
 
 ![An abandoned camp in a taiga](TODO-abandoned-camp.jpg)
 
@@ -77,7 +77,7 @@ Every feature can be turned off in Backport Core's settings screen, under Mod Op
 
 **[Update Aquatic Backport](https://www.curseforge.com/minecraft/mc-mods/update-aquatic-backport)**: thrown tridents break sulfur spikes, and explorer maps lead to warm ocean ruins.
 
-**[Buzzy Bees Backport](https://www.curseforge.com/minecraft/mc-mods/buzzy-bees-backport)**: sulfur cubes swallow its honeycomb blocks and turn sticky.
+**[Buzzy Bees Backport](https://www.curseforge.com/minecraft/mc-mods/buzzy-bees-backport)**: sulfur cubes swallow its honeycomb blocks and turn sticky, and the camps' bee trees carry bee nests.
 
 **[Nether Update Backport](https://www.curseforge.com/minecraft/mc-mods/nether-update-backport)**: sulfur cubes swallow its blocks too, and its baby zombified piglins keep its own models.
 

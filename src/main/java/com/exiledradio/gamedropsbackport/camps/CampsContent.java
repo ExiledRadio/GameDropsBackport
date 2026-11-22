@@ -11,6 +11,7 @@ import com.exiledradio.gamedropsbackport.ModConfig;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,7 +32,8 @@ import java.util.List;
  *       pools' features ({@link CampTrees}); 26.3's chest, barrel and copper chest loot ({@link CampLoot});
  *       {@code /locate structure minecraft:abandoned_camp_<biome>} (Backport Core); the terrain's {@code beard_thin}
  *       where a world's generator adapts to structures.</li>
- *   <li>The sixteen explorer map items ({@link ExplorerMaps}), each made only where its structure exists.</li>
+ *   <li>The sixteen explorer map items ({@link ExplorerMaps}), each made only where its structure exists, copied
+ *       with empty maps in a crafting grid ({@link ExplorerMapCloning}).</li>
  * </ul>
  */
 @Mod.EventBusSubscriber(modid = GameDropsBackport.MOD_ID)
@@ -121,6 +123,13 @@ public final class CampsContent {
         MinecraftForge.EVENT_BUS.register(new ExplorerMaps.Events());
     }
 
+    /** Post-init: the bee nests on the {@code _bees} trees, whoever places the tree. */
+    public static void postInit() {
+        if (enabled()) {
+            CampBees.postInit();
+        }
+    }
+
     static final String[] STRUCTURE_TAGS = {"on_abandoned_camp_bamboo_jungle", "on_abandoned_camp_birch_forest",
             "on_abandoned_camp_cherry_grove", "on_abandoned_camp_dappled_forest", "on_abandoned_camp_flower_forest",
             "on_abandoned_camp_pale_garden", "on_abandoned_camp_swamp", "on_abandoned_camp_windswept_forest",
@@ -128,6 +137,14 @@ public final class CampsContent {
             "on_jungle_pyramid_maps", "on_mineshaft_maps", "on_ocean_monument_maps", "on_ocean_ruin_warm_maps",
             "on_plains_village_maps", "on_savanna_village_maps", "on_snowy_village_maps", "on_swamp_hut_maps",
             "on_taiga_village_maps", "on_treasure_maps", "on_woodland_mansion_maps"};
+
+    /** 26.3's map cloning for the explorer maps ({@link ExplorerMapCloning}). */
+    @SubscribeEvent
+    public static void recipes(RegistryEvent.Register<IRecipe> event) {
+        if (enabled()) {
+            event.getRegistry().register(new ExplorerMapCloning().setRegistryName(GameDropsBackport.MOD_ID, "explorer_map_cloning"));
+        }
+    }
 
     @SubscribeEvent
     public static void items(RegistryEvent.Register<Item> event) {

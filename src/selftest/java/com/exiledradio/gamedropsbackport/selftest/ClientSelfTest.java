@@ -134,6 +134,54 @@ public final class ClientSelfTest {
     private void scenes(Minecraft mc) {
         // Blocks, items, mobs and their screens first: World Options below switches the player to adventure.
         new ClientScenes(this, mc).add(this.steps);
+        // 26.3's off-map player marker (Core's P43): a map 2000 blocks east, held, shows the pointed marker facing west.
+        this.steps.add(() -> {
+            net.minecraft.entity.player.EntityPlayerMP sp = mc.getIntegratedServer().getPlayerList().getPlayerByUUID(mc.player.getUniqueID());
+            mc.getIntegratedServer().addScheduledTask(() -> {
+                net.minecraft.item.ItemStack map = net.minecraft.item.ItemMap.setupNewMap(sp.world, sp.posX + 2000, sp.posZ, (byte) 0, true, true);
+                sp.inventory.setInventorySlotContents(sp.inventory.currentItem, map);
+                sp.inventory.setInventorySlotContents(40, net.minecraft.item.ItemStack.EMPTY);
+            });
+            mc.player.rotationYaw = 90.0F;
+            mc.player.rotationPitch = 70.0F;
+            return 60;
+        });
+        // A loaded server can be seconds behind: wait (up to 30 s) for the map and its marker to reach the client.
+        this.steps.add(() -> {
+            if (!offLimitsShown(mc)) {
+                this.step--; // this step again next tick
+                return 1;
+            }
+            return 20;
+        });
+        this.steps.add(() -> {
+            mc.player.rotationYaw = 90.0F;
+            mc.player.rotationPitch = 70.0F;
+            net.minecraft.item.ItemStack held = mc.player.getHeldItemMainhand();
+            net.minecraft.world.storage.MapData data = held.getItem() instanceof net.minecraft.item.ItemMap
+                    ? ((net.minecraft.item.ItemMap) held.getItem()).getMapData(held, mc.world) : null;
+            net.minecraft.world.storage.MapDecoration me = null;
+            if (data != null) {
+                for (net.minecraft.world.storage.MapDecoration d : data.mapDecorations.values()) {
+                    me = d.getType() == net.minecraft.world.storage.MapDecoration.Type.PLAYER_OFF_LIMITS ? d : me;
+                }
+            }
+            // Yaw 90 (west): (90 + 8) * 16 / 360 = 4; 1.12.2 gives 0.
+            ok(me != null && (me.getRotation() & 15) == 4, "map: the off-limits marker faces west on the client, " + me
+                    + (me == null ? "" : " rotation " + me.getRotation()));
+            ok(com.exiledradio.backportcore.map.MapFacing.spriteOf(net.minecraft.world.storage.MapDecoration.Type.PLAYER_OFF_LIMITS) != null,
+                    "map: 26.3's pointed off-limits sprite");
+            shot("map_off_limits.png");
+            ok(mc.getTextureManager().getTexture(new net.minecraft.util.ResourceLocation("backportcore",
+                    "textures/map/decorations/player_off_limits.png")) != null, "map: the pointed sprite was drawn (texture loaded)");
+            return 5;
+        });
+        this.steps.add(() -> {
+            mc.player.rotationPitch = 0.0F;
+            net.minecraft.entity.player.EntityPlayerMP sp = mc.getIntegratedServer().getPlayerList().getPlayerByUUID(mc.player.getUniqueID());
+            mc.getIntegratedServer().addScheduledTask(() -> sp.inventory.setInventorySlotContents(sp.inventory.currentItem, net.minecraft.item.ItemStack.EMPTY));
+            return 5;
+        });
         // The pause menu: World Options... in Open to LAN's place, the 26.2 icon row under Advancements and Statistics.
         this.steps.add(() -> {
             mc.displayGuiScreen(new GuiIngameMenu());
@@ -226,6 +274,28 @@ public final class ClientSelfTest {
             mc.displayGuiScreen(null);
             return 5;
         });
+    }
+
+    private int mapWaits;
+
+    /** True once the held map shows an off-limits marker, or after 600 tries. */
+    private boolean offLimitsShown(Minecraft mc) {
+        mc.player.rotationYaw = 90.0F;
+        mc.player.rotationPitch = 70.0F;
+        if (++this.mapWaits > 600) {
+            return true;
+        }
+        net.minecraft.item.ItemStack held = mc.player.getHeldItemMainhand();
+        net.minecraft.world.storage.MapData data = held.getItem() instanceof net.minecraft.item.ItemMap
+                ? ((net.minecraft.item.ItemMap) held.getItem()).getMapData(held, mc.world) : null;
+        if (data != null) {
+            for (net.minecraft.world.storage.MapDecoration d : data.mapDecorations.values()) {
+                if (d.getType() == net.minecraft.world.storage.MapDecoration.Type.PLAYER_OFF_LIMITS) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private static int freePort() {

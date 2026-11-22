@@ -9,7 +9,7 @@ First release: Minecraft's 26.1, 26.2 and 26.3 game drops on Minecraft 1.12.2.
 *   **Sulfur caves** and sulfur springs.
 *   **Poplar** in every wood shape, with signs and boats, red shrubs, shelf mushrooms and the dappled forest.
 *   **Wool and concrete stairs and slabs**, cushions and straw beds.
-*   **Abandoned camps** in 18 biomes and 26.3's explorer maps.
+*   **Abandoned camps** in 18 biomes (with bee nests on their bee trees when Buzzy Bees Backport is installed) and 26.3's explorer maps, which you can copy with empty maps in a crafting table.
 *   **26.x's smaller changes** to things 1.12.2 already has, and 26.3's title screen panorama, menu music, splashes and pause menu with World Options.
 *   Every feature has its own setting in Backport Core's settings screen.
 *   Translated into 18 languages.

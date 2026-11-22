@@ -485,6 +485,11 @@ final class SulfurCubeSelfTest implements SelfTest {
         k.attackEntityFrom(DamageSource.causePlayerDamage(player), 4.0F);
         check.ok(k.motionX > 0.2D, "a hit pushes it away: " + k.motionX);
         check.ok(k.motionY > 0.0D, "and up");
+        // 26.x's knockback resistance goes down to -2 (26.3's Attributes); explosion knockback resistance stays 0-1.
+        check.eq(-1.0D, Archetype.REGULAR.knockbackResistance, "regular: 26.3's -1 knockback resistance (double knockback)");
+        check.eq(-2.0D, Archetype.BOUNCY.knockbackResistance, "bouncy: 26.3's -2 (triple knockback)");
+        check.eq(-2.0D, Archetype.STICKY.knockbackResistance, "sticky: 26.3's -2");
+        check.eq(0.0D, Archetype.REGULAR.explosionKnockbackResistance, "explosion knockback resistance clamps at 0");
         for (EntitySulfurCube e : new EntitySulfurCube[]{c, plain, regular, slide, k}) {
             e.setDead();
         }

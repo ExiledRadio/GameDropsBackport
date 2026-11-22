@@ -3,25 +3,26 @@ package com.exiledradio.gamedropsbackport.sulfurcube;
 /**
  * 26.3's twelve sulfur cube archetypes ({@code data/minecraft/sulfur_cube_archetype/*.json}): what a cube becomes while it
  * holds a block. The values are the attribute modifiers' results on a cube's base values, already clamped as 26.3's
- * attribute ranges clamp them (knockback resistances and bounciness to 0-1).
+ * attribute ranges clamp them: knockback resistance to -2..1 (26.x lowered its minimum, so -1 doubles knockback and -2
+ * triples it), explosion knockback resistance and bounciness to 0-1.
  *
  * <p>Friction and air drag work as 26.3's {@code LivingEntity.computeModifiedFriction}: a block's (or the air's) loss
  * of speed per tick is multiplied by the modifier, so 0 keeps all speed and 2 doubles the loss.
  */
 public enum Archetype {
     //            kbRes  expRes bounce friction        airDrag          buoyant  hPower  vPower  pushCool pushThreshold
-    BOUNCY("bouncy", 0, 0, 0.9, 1 - 0.7, 1 - 0.99, true, 0.4125F, 0.105F, 0.7F, 0.3F),
-    EXPLOSIVE("explosive", 0, 0, 0.5, 1 - 0.7, 1 - 0.7, true, 0.4125F, 0.09F, 0.7F, 0.1F),
-    FAST_FLAT("fast_flat", 0, 0, 0.5, 1 - 0.8, 1 - 0.99, false, 0.9125F, 0.09F, 0.9F, 0.03F),
+    BOUNCY("bouncy", -2, 0, 0.9, 1 - 0.7, 1 - 0.99, true, 0.4125F, 0.105F, 0.7F, 0.3F),
+    EXPLOSIVE("explosive", -1, 0, 0.5, 1 - 0.7, 1 - 0.7, true, 0.4125F, 0.09F, 0.7F, 0.1F),
+    FAST_FLAT("fast_flat", -1, 0, 0.5, 1 - 0.8, 1 - 0.99, false, 0.9125F, 0.09F, 0.9F, 0.03F),
     FAST_SLIDING("fast_sliding", 0.5, 0.5, 0.1, 1 - 0.95, 1 - 0.99, false, 0.6625F, 0.09F, 1.0F, 0.05F),
     HIGH_RESISTANCE("high_resistance", 0.7, 0.7, 0.2, 1.0, 1 - 0.99, false, 0.4125F, 0.09F, 0.7F, 0.03F),
-    HOT("hot", 0, 0, 0.5, 1 - 0.7, 1 - 0.9, true, 0.4125F, 0.09F, 0.7F, 0.2F),
-    LIGHT("light", 0, 0, 1.0, 1 - 0.7, 1 + 0.8, true, 0.4125F, 0.18F, 0.7F, 0.2F),
-    REGULAR("regular", 0, 0, 0.5, 1 - 0.7, 1 - 0.9, true, 0.4125F, 0.09F, 0.5F, 0.2F),
+    HOT("hot", -1, 0, 0.5, 1 - 0.7, 1 - 0.9, true, 0.4125F, 0.09F, 0.7F, 0.2F),
+    LIGHT("light", -1, 0, 1.0, 1 - 0.7, 1 + 0.8, true, 0.4125F, 0.18F, 0.7F, 0.2F),
+    REGULAR("regular", -1, 0, 0.5, 1 - 0.7, 1 - 0.9, true, 0.4125F, 0.09F, 0.5F, 0.2F),
     SLOW_BOUNCY("slow_bouncy", 0.4, 0.4, 0.6, 1 - 0.7, 1 - 0.95, false, 0.4125F, 0.24F, 0.5F, 0.05F),
     SLOW_FLAT("slow_flat", 0.5, 0.5, 0.4, 1 - 0.6, 1 - 0.9, false, 0.4125F, 0.105F, 0.9F, 0.03F),
     SLOW_SLIDING("slow_sliding", 0.8, 0.8, 0.1, 1 - 0.95, 1 - 0.99, false, 0.4125F, 0.09F, 1.0F, 0.02F),
-    STICKY("sticky", 0, 0, 0.0, 2.0, 1 - 0.99, false, 0.4125F, 0.09F, 0.5F, 0.05F),
+    STICKY("sticky", -2, 0, 0.0, 2.0, 1 - 0.99, false, 0.4125F, 0.09F, 0.5F, 0.05F),
     /**
      * Something no archetype names (26.3's tags list no skull, so a skull is only ever in a cube by command): the base
      * attributes ({@code createSulfurCubeAttributes}, Attributes' defaults), not buoyant, the default knockback (0.33,

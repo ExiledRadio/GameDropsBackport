@@ -243,3 +243,13 @@ mod) and `MenuBackground.contentFrame` for World Options' frame. Still open:
    texture when `Presentation.isAtLeast(LookArea.MENUS, "26.2")` and a pack has the texture. Meanwhile: 1.20's.
    **Done**: Trails & Tales 1.0.2 draws `<sign's namespace>:textures/gui/signs/<wood>.png` at 3.9x when it exists.
    This mod ships poplar's and Trails & Tales cherry's and bamboo's; vanilla woods need a pack with `minecraft:` ones.
+## W-1. Water kept in leaves never flows out (waterlogging)
+
+26.3's water never leaves a waterlogged block whose collision box is a full cube (`FlowingFluid.canPassThroughWall`):
+waterlogged leaves hold their source and spread nothing. Under Fluidlogged API water runs out of every side of
+waterlogged poplar leaves (and Trails & Tales' cherry leaves): its `IFluidloggable.canFluidFlow` default asks the face
+shape, and Core's `FluidloggedWaterloggable` does not override it. **Want:** a `Waterloggable` answer for it (say
+`canWaterFlow(state, world, pos, side)`, default Fluidlogged API's face-shape rule) that `FluidloggedWaterloggable`
+passes on as `canFluidFlow`; our leaves would answer false. **Meanwhile:** leaves leak where air is beside them.
+The self-test logs the sides and does not fail on it. (Which sides water takes out of a stair, slab, wall, fence or
+trapdoor varies with Fluidlogged API's flow toward the cheapest way down; the test asks only that it leaves.)

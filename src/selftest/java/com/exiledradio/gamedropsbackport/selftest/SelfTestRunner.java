@@ -50,6 +50,7 @@ public final class SelfTestRunner {
             new ChangesSelfTest(),
             new com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesSelfTest(),
             new LookFeelSelfTest(),
+            new WaterlogSelfTest(),
     };
 
     private final List<String> wanted;

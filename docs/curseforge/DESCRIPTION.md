@@ -102,7 +102,7 @@ Every feature can be turned off in Backport Core's settings screen, under Mod Op
 
 **OptiFine**: works, shaders included.
 
-**Fluidlogged API** (optional): the new stairs and slabs hold water, and potent sulfur bubbles under water kept in a block. Without it they stay dry and everything else works.
+**Fluidlogged API** (optional): the new stairs, slabs and walls, sulfur spikes, and poplar fences, trapdoors, signs and leaves hold water, and potent sulfur bubbles under water kept in a block. Without it they stay dry and everything else works.
 
 ## Requirements
 

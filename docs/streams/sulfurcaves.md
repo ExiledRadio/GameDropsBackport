@@ -36,12 +36,23 @@ minecraft.wiki's *Sulfur Caves* and *Sulfur Spring*.
   sulfur and cinnabar each come out 38%, stone 24%.
 - Bands are laid at population, after 1.12's (or the 1.18 terrain's) ores and stone blobs, and cover them; 26.2's
   never land in the bands. Ores in the bands are therefore absent, as in vanilla.
-- Writes stay in the four chunks 1.12 guarantees: a spike thrown more than 8 blocks outside the window and the
-  outermost tuff of large springs (reach 9-10) are skipped there.
-- No F3 biome name, water color or grass color under ground (1.12.2 biomes are columns). Sky color only in superflat.
+- Writes past the four chunks 1.12 guarantees (a spike try within 3 columns of the window's edge or past it, the
+  outermost tuff of large springs, reach 9-10) wait in Core's `DeferredPlacement` (`sulfurcaves.Deferred`) and run once
+  every chunk they touch and those whose population could still write there have populated, saved with the world until
+  then: what 26.3's 3 by 3 region would show them. A deferred spike draws from its own random (seeded from the world seed
+  and the spot), so the chunk's other draws differ from a run without the queue. Chunks at the edge of the explored
+  world keep theirs waiting until their neighbors generate.
+- Under ground the biome is Core's `UndergroundBiomes`: every sulfur cave column a population lays is registered at its
+  heights (saved in the chunk, sent to players), so F3 says Sulfur Caves at the camera's block and grass, foliage and
+  water blend to `#aba64f`, `#77ab2f` and `#34bf89` there (Core's patch P44 on the color blend; Update Aquatic's water
+  through `WaterColors`, which also has the water fog `#17543c`). Chunks generated before Game Drops 1.0 registered
+  none. In Caves & Cliffs' Game Drops edition the terrain names the biome itself. Sky color only in superflat.
 - Sulfur cube spawns wait for stream 3's `gamedropsbackport:sulfur_cube`.
 
 ## Tests
 
 `-Pselftest=sulfurcaves`: registry, heights, templates, each feature on a prepared site, a real patch generated in
-new chunks (census: sulfur against cinnabar, spikes, pools, no cinnabar far outside the mask), spawns there.
+new chunks (census: sulfur against cinnabar, spikes, pools, no cinnabar far outside the mask), the patch's columns as
+Core underground biomes (and none outside), its water color, deferred work waiting at the area's edge and run by the
+next ring, a deferred spring tuff on a prepared column, spawns there. The client test (`-Pselftest=client`) checks the
+spans on the client, P44's grass and water colors, F3's line, and photographs cubes holding heads.

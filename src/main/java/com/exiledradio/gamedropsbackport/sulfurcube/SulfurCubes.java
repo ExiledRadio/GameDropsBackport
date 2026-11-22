@@ -85,6 +85,9 @@ public final class SulfurCubes {
 
     static {
         for (Archetype a : Archetype.values()) {
+            if (a == Archetype.NONE) {
+                continue;
+            }
             HIT.put(a, sound("entity.sulfur_cube." + a.id + ".hit"));
             PUSH.put(a, sound("entity.sulfur_cube." + a.id + ".push"));
         }
@@ -111,11 +114,11 @@ public final class SulfurCubes {
     }
 
     public static SoundEvent hit(Archetype a) {
-        return HIT.get(a);
+        return HIT.get(a == Archetype.NONE ? Archetype.REGULAR : a);
     }
 
     public static SoundEvent push(Archetype a) {
-        return PUSH.get(a);
+        return PUSH.get(a == Archetype.NONE ? Archetype.REGULAR : a);
     }
 
     public static List<SoundEvent> sounds() {

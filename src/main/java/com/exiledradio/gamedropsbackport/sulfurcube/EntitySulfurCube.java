@@ -179,7 +179,7 @@ public class EntitySulfurCube extends EntityAgeable {
         } else if (MAX_FUSE.equals(key)) {
             this.fuse = this.dataManager.get(MAX_FUSE);
         } else if (BODY.equals(key) && this.world.isRemote) {
-            this.archetype = ArchetypeItems.of(this.getBodyItem());
+            this.archetype = ArchetypeItems.held(this.getBodyItem());
         }
         super.notifyDataManagerChange(key);
     }
@@ -249,7 +249,7 @@ public class EntitySulfurCube extends EntityAgeable {
             held.setCount(1);
         }
         this.dataManager.set(BODY, held);
-        this.archetype = ArchetypeItems.of(held);
+        this.archetype = ArchetypeItems.held(held);
         if (!held.isEmpty()) {
             this.setAIMoveSpeed(0.0F);
             this.setMoveForward(0.0F);
@@ -1023,7 +1023,7 @@ public class EntitySulfurCube extends EntityAgeable {
         return (CubeMoveHelper) this.moveHelper;
     }
 
-    boolean aiActive() {
+    public boolean aiActive() {
         return !this.hasBodyItem();
     }
 

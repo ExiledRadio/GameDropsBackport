@@ -1,6 +1,7 @@
 package com.exiledradio.gamedropsbackport.sulfurcaves;
 
 import com.exiledradio.backportcore.worldgen.FlatWorlds;
+import com.exiledradio.backportcore.worldgen.UndergroundBiomes;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
@@ -26,8 +27,10 @@ import java.util.Random;
  * lichen), which 1.12 or the family's backports already place.
  *
  * <p>Writes stay inside the chunk and the three around its population window, which 1.12 guarantees are generated: a
- * try that would reach further (a spike thrown more than 8 blocks out, the outermost tuff of a large spring) skips that
- * block.
+ * try that would reach further (a spike thrown near or past the window's edge, the outermost tuff of a large spring)
+ * waits in Core's {@code DeferredPlacement} until the chunks there are ready ({@link Deferred}).
+ *
+ * <p>Each column of the window that is in the sulfur caves is registered with Core's {@code UndergroundBiomes}.
  */
 public final class SulfurCavesGen implements IWorldGenerator {
 
@@ -54,8 +57,13 @@ public final class SulfurCavesGen implements IWorldGenerator {
         if (!any) {
             return 0;
         }
-        // Caves & Cliffs' Game Drops edition lays the bands in its surface rules, before its ores and deepslate.
-        int changed = SulfurCaves.terrainHasSulfurCaves(world) ? 0 : bands(world, x0, z0);
+        // Caves & Cliffs' Game Drops edition lays the bands in its surface rules, before its ores and deepslate, and
+        // names the biome itself.
+        boolean terrainNames = SulfurCaves.terrainHasSulfurCaves(world);
+        int changed = terrainNames ? 0 : bands(world, x0, z0);
+        if (!terrainNames && !FlatWorlds.isFlat(world)) {
+            registerBiome(world, x0, z0);
+        }
         Random rand = new Random(LegacyRegions.mix(world.getSeed() ^ 0x26_02_5CL, chunkX, chunkZ));
         Features f = new Features(world, chunkX * 16, chunkZ * 16, rand);
         f.rootedSprings(x0, z0);
@@ -93,6 +101,26 @@ public final class SulfurCavesGen implements IWorldGenerator {
             }
         }
         return changed;
+    }
+
+    /**
+     * The window's columns into Core's underground biomes, so F3, grass, foliage and water colors (and anything reading
+     * {@code UndergroundBiomes}) see the sulfur caves at their heights. A superflat world's column biome is already
+     * ours.
+     */
+    static void registerBiome(World world, int x0, int z0) {
+        if (SulfurCavesContent.biome == null) {
+            return;
+        }
+        int min = SulfurCaves.minY(world);
+        for (int x = x0; x < x0 + 16; x++) {
+            for (int z = z0; z < z0 + 16; z++) {
+                boolean[] mask = SulfurCaves.mask(world, x, z);
+                if (mask != null) {
+                    UndergroundBiomes.setColumn(world, x, z, min, mask, SulfurCavesContent.biome);
+                }
+            }
+        }
     }
 
     /** 26.2's {@code sulfur_cave_bands}: null keeps the stone. */

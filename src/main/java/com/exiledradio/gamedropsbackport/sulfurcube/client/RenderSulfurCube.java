@@ -2,6 +2,7 @@ package com.exiledradio.gamedropsbackport.sulfurcube.client;
 
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
 import com.exiledradio.gamedropsbackport.sulfurcube.EntitySulfurCube;
+import com.mojang.authlib.GameProfile;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -11,13 +12,20 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.renderer.tileentity.TileEntitySkullRenderer;
+import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTUtil;
+import net.minecraft.tileentity.TileEntitySkull;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 
 /**
  * 26.3's {@code SulfurCubeRenderer} and {@code SulfurCubeInnerLayer}: the translucent outer gel around either the
  * inner core or the block the cube holds; squish while it hops (not while it holds a block), TNT's swell and flash
- * while primed.
+ * while primed. A skull (only ever there by command: 26.3's tags list none) is drawn as 26.3 draws it, by its custom
+ * head layer.
  */
 public class RenderSulfurCube extends RenderLiving<EntitySulfurCube> {
 
@@ -63,7 +71,8 @@ public class RenderSulfurCube extends RenderLiving<EntitySulfurCube> {
         // applySizeAndSquish
         float size = cube.getCubeSize();
         float squish = cube.prevSquish + (cube.squish - cube.prevSquish) * partialTicks;
-        float ss = cube.hasBodyItem() ? 0.0F : squish / (size * 0.5F + 1.0F);
+        // 26.3 squishes unless it draws a block (a held skull or other item squishes as an empty cube does).
+        float ss = showsBlock(cube.getBodyItem()) ? 0.0F : squish / (size * 0.5F + 1.0F);
         float w = 1.0F / (ss + 1.0F);
         GlStateManager.scale(w * size, 1.0F / w * size, w * size);
         float fuse = fuseLeft(cube, partialTicks);
@@ -87,6 +96,11 @@ public class RenderSulfurCube extends RenderLiving<EntitySulfurCube> {
     protected void renderModel(EntitySulfurCube cube, float limbSwing, float limbSwingAmount, float age, float yaw,
                                float pitch, float scale) {
         boolean visible = this.isVisible(cube);
+        ItemStack worn = cube.getBodyItem();
+        if (isSkull(worn)) {
+            // 26.3's CustomHeadLayer draws it whether or not the cube is invisible; the inner layer draws nothing.
+            this.renderSkull(worn, limbSwing);
+        }
         if (!visible) {
             super.renderModel(cube, limbSwing, limbSwingAmount, age, yaw, pitch, scale);
             return;
@@ -94,7 +108,9 @@ public class RenderSulfurCube extends RenderLiving<EntitySulfurCube> {
         boolean baby = cube.isChild();
         ItemStack held = cube.getBodyItem();
         IBlockState state = held.isEmpty() ? null : stateOf(held);
-        if (state != null) {
+        if (isSkull(held)) {
+            // Drawn above.
+        } else if (state != null) {
             this.renderBlock(cube, state, baby);
         } else {
             this.bindTexture(baby ? INNER_SMALL : INNER);
@@ -114,7 +130,49 @@ public class RenderSulfurCube extends RenderLiving<EntitySulfurCube> {
         GlStateManager.disableNormalize();
     }
 
-    private static IBlockState stateOf(ItemStack stack) {
+    /** @return true for what 26.3 draws as a skull (an {@code AbstractSkullBlock} item): 1.12.2's six heads */
+    static boolean isSkull(ItemStack stack) {
+        return !stack.isEmpty() && stack.getItem() instanceof ItemSkull;
+    }
+
+    /** @return true if the cube draws the held item as a block (26.3's non-empty {@code containedBlock}) */
+    static boolean showsBlock(ItemStack stack) {
+        return !stack.isEmpty() && !isSkull(stack) && stateOf(stack) != null;
+    }
+
+    /**
+     * 26.3's {@code CustomHeadLayer} with {@code SulfurCubeRenderer.CUSTOM_HEAD_TRANSFORMS}: scale 0.842 (19/16's
+     * inverse), the cube part's pose (none), down 0.625, then the skull at 1.1875 as on a mob's head. 1.12.2's own head
+     * layer does the last step the same way (its skull renderer flips back what it flips).
+     */
+    private void renderSkull(ItemStack stack, float limbSwing) {
+        GameProfile profile = null;
+        if (stack.hasTagCompound()) {
+            NBTTagCompound tag = stack.getTagCompound();
+            if (tag.hasKey("SkullOwner", 10)) {
+                profile = NBTUtil.readGameProfileFromNBT(tag.getCompoundTag("SkullOwner"));
+            } else if (tag.hasKey("SkullOwner", 8)) {
+                String name = tag.getString("SkullOwner");
+                if (!name.trim().isEmpty()) {
+                    profile = TileEntitySkull.updateGameProfile(new GameProfile(null, name));
+                    tag.setTag("SkullOwner", NBTUtil.writeGameProfile(new NBTTagCompound(), profile));
+                }
+            }
+        }
+        GlStateManager.pushMatrix();
+        GlStateManager.scale(SKULL_SCALE, SKULL_SCALE, SKULL_SCALE);
+        GlStateManager.translate(0.0F, SKULL_Y, 0.0F);
+        GlStateManager.scale(1.1875F, -1.1875F, -1.1875F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        TileEntitySkullRenderer.instance.renderSkull(-0.5F, 0.0F, -0.5F, EnumFacing.UP, 180.0F, stack.getMetadata(), profile, -1,
+                limbSwing);
+        GlStateManager.popMatrix();
+    }
+
+    /** 26.3's {@code COUNTER_SKULL_SCALE} and the transforms' skull y offset. */
+    static final float SKULL_SCALE = 0.84210527F, SKULL_Y = 0.625F;
+
+    static IBlockState stateOf(ItemStack stack) {
         Block block = Block.getBlockFromItem(stack.getItem());
         if (block == net.minecraft.init.Blocks.AIR) {
             return null;

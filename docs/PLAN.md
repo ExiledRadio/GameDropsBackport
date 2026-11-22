@@ -108,9 +108,11 @@ Ports (block 25920-25939): the main checkout's dev server uses 25920; a stream w
   values are in `Archetype`; `ArchetypeItems` maps 26.3's item tags to 1.12.2's blocks, stream 2's sulfur and
   cinnabar, and other family mods' blocks by name. Spawning: monster category, weight 100, groups of 2-4, any light,
   where the biome is `gamedropsbackport:sulfur_caves` or underground on sulfur, cinnabar or potent sulfur (stream 4
-  can rely on either). Not like vanilla: 26.3's skull rendering inside a cube (no skull is swallowable) and the
-  `bounce` game event (Core request 2) are left out; a dispenser feeds a cube in front of it before the item's own
-  behavior, which runs when no cube is there.
+  can rely on either). The `bounce` game event is Core 1.4.4's `GameEvent.BOUNCE` (Core request 2). A head is held as
+  26.3 holds one: no archetype tag lists a skull, so none is swallowable, but one given by command (`body_item`) stops
+  the cube with no archetype (`Archetype.NONE`: base attributes, the default knockback and sounds) and is drawn by
+  26.3's custom head layer (scale 0.842, 0.625 down, 1.1875). Not like vanilla: a dispenser feeds a cube in front of it
+  before the item's own behavior, which runs when no cube is there.
 
 ### 4. Sulfur caves and springs (26.2)
 
@@ -124,7 +126,10 @@ Ports (block 25920-25939): the main checkout's dev server uses 25920; a stream w
   and the ten spring templates), `sulfur_pool`, `sulfur_spike_cluster` and `sulfur_spike` with their placed-feature
   counts. The biome's spawns (sulfur cube once stream 3 registers `sulfur_cube`), music and fog color; a tuff copy
   where no family mod has tuff. Bounce is in every mineshaft chest's rail pool (26.3's table has no biome
-  condition). Deviations and the Caves & Cliffs request: `docs/streams/sulfurcaves.md`.
+  condition). Work past 1.12's population window (far spikes, a large spring's outer tuff) waits in Core 1.4.4's
+  `DeferredPlacement` until the chunks there are ready; every sulfur cave column is registered with Core's
+  `UndergroundBiomes` (F3's biome, grass, foliage and water colors at the block). Deviations and the Caves & Cliffs
+  request: `docs/streams/sulfurcaves.md`.
 
 ### 5. Poplar and the dappled forest (26.3)
 

@@ -21,9 +21,15 @@ public enum Archetype {
     SLOW_BOUNCY("slow_bouncy", 0.4, 0.4, 0.6, 1 - 0.7, 1 - 0.95, false, 0.4125F, 0.24F, 0.5F, 0.05F),
     SLOW_FLAT("slow_flat", 0.5, 0.5, 0.4, 1 - 0.6, 1 - 0.9, false, 0.4125F, 0.105F, 0.9F, 0.03F),
     SLOW_SLIDING("slow_sliding", 0.8, 0.8, 0.1, 1 - 0.95, 1 - 0.99, false, 0.4125F, 0.09F, 1.0F, 0.02F),
-    STICKY("sticky", 0, 0, 0.0, 2.0, 1 - 0.99, false, 0.4125F, 0.09F, 0.5F, 0.05F);
+    STICKY("sticky", 0, 0, 0.0, 2.0, 1 - 0.99, false, 0.4125F, 0.09F, 0.5F, 0.05F),
+    /**
+     * Something no archetype names (26.3's tags list no skull, so a skull is only ever in a cube by command): the base
+     * attributes ({@code createSulfurCubeAttributes}, Attributes' defaults), not buoyant, the default knockback (0.33,
+     * 0.06) and sound settings (regular's sounds, threshold 0.2, cooldown 0.5).
+     */
+    NONE("none", 0, 0, 0.0, 1.0, 1.0, false, 0.33F, 0.06F, 0.5F, 0.2F);
 
-    /** 26.3's {@code SulfurCubeArchetype.DEFAULT_KNOCKBACK_MODIFIERS}, used by no cube that holds a block. */
+    /** 26.3's {@code SulfurCubeArchetype.DEFAULT_KNOCKBACK_MODIFIERS} ({@link #NONE}'s). */
     public static final float DEFAULT_H_POWER = 0.33F;
     public static final float DEFAULT_V_POWER = 0.06F;
 

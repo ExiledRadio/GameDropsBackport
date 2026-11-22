@@ -3,19 +3,6 @@ GAME DROPS BACKPORT - SCREENSHOT SCENES
 
 Twelve pictures for the mod page. Each one goes with one section of the description.
 
-HOW TO SHOOT
-------------
-- Build every scene by hand. Don't use a random spot in the world. Put things where they belong: a chest at the camp, a
-  boat at the water's edge, saplings in pots or in the grass.
-- Mobs should stand still and face the camera or each other. Use NoAI, Silent, PersistenceRequired and Invulnerable on
-  every mob, and age-lock the babies with a golden dandelion so they stay small.
-- Keep the main subject 4 to 7 blocks from the camera. Fill the whole frame, with no empty sky or bare ground at the sides.
-- Hide the HUD (F1) unless the scene says otherwise. Shaders are welcome.
-- Install the whole family so every compat shows: Backport Core 1.4.4, Game Drops, Village & Pillage, Update Aquatic,
-  Buzzy Bees, Nether Update, Caves & Cliffs, Wild Update, Trails & Tales and Tricky Trials, plus Fluidlogged API.
-- Save each picture as a JPEG under 2 MB, with the file name given below.
-
-
 1. gd1-babies.jpg - The golden dandelion and the babies
 -------------------------------------------------------
 A fenced paddock on a flowery meadow, seen from its open gate. Inside are babies with their new 26.1 models: a calf next

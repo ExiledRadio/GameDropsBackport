@@ -56,11 +56,13 @@ unobfuscated), its data (`world_clock`, `timeline`, tags, recipes) and the Engli
 
 - **Sign click commands off by default** (26.3, `allow_op_features`): 26.3's data fix allows every sign of an older
   world; 1.12.2 cannot tell such a sign from one a command placed later, so doing it would break adventure maps' signs.
-- **Off-map player markers keep their facing** (26.3): 1.12.2's off-map marker is a round dot; turning it shows nothing.
-- **Named paintings show their name** (26.3): 1.12.2 paintings cannot be named (name tags work on mobs, and the painting
-  item's name is not kept). Needs the item-to-entity name copy too; Tricky Trials' painting variants stream places
-  paintings, so it belongs there.
-- **Trade enchanting cost, trades appearing while the screen is open** (26.1, 26.3): villagers are Village & Pillage's.
+
+## Built by other family mods
+
+- **Off-map player markers keep their facing** (26.3): Backport Core 1.4.4 (`map.MapFacing`, `asm.MapFacingTransformer`).
+- **Named paintings show their name** (26.3): Tricky Trials Backport (`decor.client.PaintingNameplate`, `PaintingTooltip`).
+- **Trade enchanting cost, trades appearing while the screen is open** (26.1, 26.3): Village & Pillage Backport
+  (`trade.EnchantedTrades`, `client.MerchantOverlay`).
 
 ## Owned elsewhere or already 1.12.2's
 

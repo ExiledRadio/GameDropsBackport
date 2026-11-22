@@ -37,7 +37,13 @@ slimeballs while locked, the bucket keeps `AgeLocked`); Trails & Tales 1.0.3's s
 its camel, sniffer and armadillo draw 26.3's baby models (`BabyCamelModel`, the `sniffer_baby` layer, which 26.3 draws
 with the adult's `SnifferModel` animations, and `BabyArmadilloModel`), animations (`tools/babies/animations.py`) and
 `*_baby.png`/`snifflet.png` textures while `babyModels()` is true. The armadillo is Trails & Tales', not Tricky
-Trials'. Items 1 (Village & Pillage, Buzzy Bees, Update Aquatic, Nether Update, Caves & Cliffs) and 3 are still open.
+Trials'.
+
+**Items 1, 3 and 4 done** (2026-11-22 check): Village & Pillage (fox, cat, panda, villagers), Buzzy Bees (bee), Update
+Aquatic (turtle), Nether Update (strider, hoglin and zoglin, piglin and zombified piglin) and Caves & Cliffs (goat,
+axolotl) have their `Baby*Model`s. Left: Update Aquatic's baby dolphin. The glow squid has no babies on 1.12.2 (1.17
+had none). Nether Update's `PiglinTasks` lists `gamedropsbackport:golden_dandelion` as piglin-loved. Village & Pillage's
+master librarian sells the name tag only up to 26.x (`ModernTrades`).
 
 1. **Baby models of other family mods' mobs.** 26.1 redrew every baby but the nautilus and the ghastling, each with
    a new model, not only a texture, so none can go into Core's modern pack: each owner needs its own baby renderer

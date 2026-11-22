@@ -152,6 +152,9 @@ final class LookFeelSelfTest implements SelfTest {
         List<String> en = lines(new ResourceLocation(ID, "vanilla_text/en_us.lang"));
         check.ok(en.contains("advancements.story.iron_tools.title=Isn't It Iron Pick?")
                 && en.contains("build.tooHigh=The height limit for building is %s"), "vanilla text in 26.3's words");
+        check.ok(en.contains("selectServer.direct=Direct Connection") && en.contains("resourcePack.openFolder=Open Pack Folder")
+                && en.contains("resourcePack.available.title=Available") && en.contains("resourcePack.selected.title=Selected"),
+                "the server list's and Resource Packs' 26.3 words");
         check.ok(Presentation.vanillaTexts().contains(new ResourceLocation(ID, "vanilla_text")), "vanilla text registered");
         String[] codes = {"de_de", "es_ar", "es_es", "es_mx", "es_uy", "es_ve", "fr_fr", "it_it", "ja_jp", "ko_kr", "nl_nl",
                 "pl_pl", "pt_br", "ru_ru", "tr_tr", "uk_ua", "zh_cn", "zh_tw"};

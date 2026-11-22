@@ -232,12 +232,14 @@ mod) and `MenuBackground.contentFrame` for World Options' frame. Still open:
    `VanillaRevisions.centeredOptionHeaders()`, Video Settings' section headers from 26.3.
 4. **Creative order** (26.3): Ingredients and Building Blocks reorder the minerals; Natural Blocks goes Overworld,
    Nether, End. Want: a 26.3 order file through `Contribution.creativeOrder`. Meanwhile: Tricky Trials' order.
-   **Not built** (Core 1.4.4, reasons in Core's `docs/PRESENTATION.md`): 26.3 reorders runs of minerals inside its own
-   tabs (Ingredients, Natural Blocks, 1.19.3's Building Blocks). 1.12.2's tabs are 1.19.2's and list items in registry
-   order, so the ores, mineral blocks and ingots are scattered among other items and no run exists to reorder (and
-   there is no Natural Blocks tab). An order file sorts every tab by one full list, so a 26.3 list would regroup each tab
-   into 26.3's layout and a minerals-only list would move them to the front of every tab: neither is an order any
-   vanilla version had. Tricky Trials' (1.19.2's) order stays.
+   **Done** in Core 1.4.4 (branch `core-creative-order`), not as an order file (one sorts whole tabs over the
+   placements) but as Core's own 26.3 step, `creative.client.ModernOrder`: from 26.3 every vanilla tab lists its
+   items in 26.3's creative order, 1.12.2's tabs reading 26.3's tabs (home tab first), from a table built by running
+   26.3's own `CreativeModeTabs`. This mod registers nothing; its placed items are found by the item they stand for.
+   On the way Core's creative table gained the items it lacked: this mod's poplar wood set, sulfur and cinnabar
+   blocks (and Tricky Trials' copper lanterns and chains) had no creative tab at all before; they now sit with their
+   kinds in every look. The golden dandelion (which this mod lists itself, unplaced) and the wool and concrete stairs
+   and slabs and cushions (placed after an anchor) are found by name in 26.3's order.
 5. **Sign edit screen** (26.2, a Trails & Tales request): the sign drawn flat from `gui/signs/<wood>.png` at 3.9x
    instead of the 3D model. Trails & Tales owns the screen (`sign.client.SignEditScreen`); it could draw the flat
    texture when `Presentation.isAtLeast(LookArea.MENUS, "26.2")` and a pack has the texture. Meanwhile: 1.20's.

@@ -337,3 +337,9 @@ behavior needs them. Design questions vanilla already answers are not asked.
    - ScanAll (family-notes/tools/verify), CLIENT and SERVER: all six P1-P5 targets verify vanilla and patched.
    - `tools/release/boot-server.sh` with Backport Core 1.4.4's release jar, with and without Fluidlogged API 3.3.3:
      PASS, PATCHCHECK ok 6. Release jar: 0 `/selftest/` entries.
+6. **Waterlogging pass (2026-11-22, branch `gd-waterlog`)**: every block checked against 26.3's `waterlogged`
+   property. Already done: sulfur and cinnabar stairs, slabs and walls, wool and concrete stairs and slabs, sulfur
+   spikes. Added: poplar stairs, slab, fence, trapdoor, sign, wall sign and leaves; poplar trees keep water sources in
+   their leaves. Not waterloggable in 26.3 and dry here: double slabs, poplar gate, door, button, pressure plate,
+   sapling, potted sapling, red shrub, shelf mushroom, potent sulfur, the stone blocks, the straw bed, the golden
+   dandelion and tuff. `-Pselftest=waterlog` (with and without Fluidlogged API, `-PnoFluidlogged`).

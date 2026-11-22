@@ -1,5 +1,7 @@
 package com.exiledradio.gamedropsbackport.poplar;
 
+import com.exiledradio.backportcore.waterlog.Waterlogging;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDeadBush;
 import net.minecraft.block.BlockDirt;
@@ -111,9 +113,13 @@ public final class PoplarFeatures {
             this.world.setBlockState(pos, state, 3);
         }
 
+        /**
+         * {@code FoliagePlacer.tryPlaceLeaf}: leaves keep a water source there (26.3 sets {@code waterlogged}); flowing
+         * water is replaced.
+         */
         void leaf(BlockPos pos, IBlockState state) {
             this.foliage.add(pos.toImmutable());
-            this.world.setBlockState(pos, state, 3);
+            Waterlogging.placeKeepingWater(this.world, pos, state, 3);
         }
     }
 

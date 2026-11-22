@@ -1,5 +1,7 @@
 package com.exiledradio.gamedropsbackport.poplar;
 
+import com.exiledradio.backportcore.waterlog.Waterloggable;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.BlockLeaves;
@@ -44,10 +46,12 @@ import java.util.Set;
  *       300 when a log of {@code #overworld_natural_logs} and three of the same leaves are beside it.</li>
  *   <li><b>Falling poplar leaves</b> (client), untinted, one time in a hundred: leaves are never colored by the
  *       biome.</li>
+ *   <li><b>Waterlogged</b> ({@link Waterloggable}, as every 26.3 leaf), with Fluidlogged API: a water source
+ *       only; dry without it.</li>
  * </ul>
  * Fancy and fast graphics follow vanilla's own leaves, which the game switches with the option.
  */
-public class BlockPoplarLeaves extends BlockLeaves {
+public class BlockPoplarLeaves extends BlockLeaves implements Waterloggable {
 
     /** The three leaf colors: map color and falling-leaf particle textures. */
     public enum Color {

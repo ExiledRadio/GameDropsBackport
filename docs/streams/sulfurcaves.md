@@ -54,5 +54,7 @@ minecraft.wiki's *Sulfur Caves* and *Sulfur Spring*.
 `-Pselftest=sulfurcaves`: registry, heights, templates, each feature on a prepared site, a real patch generated in
 new chunks (census: sulfur against cinnabar, spikes, pools, no cinnabar far outside the mask), the patch's columns as
 Core underground biomes (and none outside), its water color, deferred work waiting at the area's edge and run by the
-next ring, a deferred spring tuff on a prepared column, spawns there. The client test (`-Pselftest=client`) checks the
+next ring, a deferred spring tuff on a prepared column, spawns there. `-Pselftest=waterlog` places spikes through the
+features' `placeSpike` into a source, into flowing water and into air: waterlogged in both waters (26.3's
+`SpeleothemUtils`: `isWaterAt`), dry in air, and dry everywhere without Fluidlogged API. The client test (`-Pselftest=client`) checks the
 spans on the client, P44's grass and water colors, F3's line, and photographs cubes holding heads.

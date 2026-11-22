@@ -44,6 +44,11 @@ server port 25925. Assets: `python -I tools/poplar/generate.py`. Test: `tools/po
 *   **Leaves**: 1.12.2 leaves decaying at modern distance 7, untinted; `POPLAR_LEAVES` sounds (leaf litter's); the
     ambient rustle one time in 300 with a natural log and three of the same leaves beside; a falling leaf one time in a
     hundred (26.3's `PoplarProvider`, the pale oak leaf's numbers).
+*   **Waterlogging** (Backport Core's `Waterloggable`, with Fluidlogged API): as 26.3, the stairs, slab (not the
+    double slab), fence, trapdoor, standing and wall sign and the three leaves hold a water source, never flowing water
+    or lava; the gate, door, button, pressure plate, sapling, shrub and shelf mushroom do not. A tree's leaves keep a
+    water source where they grow (`FoliagePlacer.tryPlaceLeaf`) and replace flowing water. Without Fluidlogged API
+    everything is dry.
 *   **Red shrub**: `BushBlock`: 13 high, replaceable, no collision; bone meal spreads to a free side.
 *   **Shelf mushroom**: `facing` and `age` in metadata; 26.3's two boxes per size; support behind it; bounce
     restitution 0.75 (0.6 for anything not alive), fall damage halved, its bounce sound.
@@ -67,3 +72,4 @@ server port 25925. Assets: `python -I tools/poplar/generate.py`. Test: `tools/po
 *   No glow lichen, glow squids, cold animal variants or forest music (other mods' content, or none in 1.12.2).
 *   The 1.12.2 placement replaces one cool plains cell in three; 26.3's share comes from its noise.
 *   1.12.2's `Random`, so trees are not block-for-block 26.3's for a seed.
+*   Water runs out of waterlogged leaves under Fluidlogged API's flow; 26.3's never leaves them (`CORE_REQUESTS.md` W-1).

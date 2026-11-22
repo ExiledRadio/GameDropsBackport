@@ -1,0 +1,98 @@
+GAME DROPS BACKPORT - SCREENSHOT SCENES
+=======================================
+
+Twelve pictures for the mod page. Each one goes with one section of the description.
+
+HOW TO SHOOT
+------------
+- Build every scene by hand. Don't use a random spot in the world. Put things where they belong: a chest at the camp, a
+  boat at the water's edge, saplings in pots or in the grass.
+- Mobs should stand still and face the camera or each other. Use NoAI, Silent, PersistenceRequired and Invulnerable on
+  every mob, and age-lock the babies with a golden dandelion so they stay small.
+- Keep the main subject 4 to 7 blocks from the camera. Fill the whole frame, with no empty sky or bare ground at the sides.
+- Hide the HUD (F1) unless the scene says otherwise. Shaders are welcome.
+- Install the whole family so every compat shows: Backport Core 1.4.4, Game Drops, Village & Pillage, Update Aquatic,
+  Buzzy Bees, Nether Update, Caves & Cliffs, Wild Update, Trails & Tales and Tricky Trials, plus Fluidlogged API.
+- Save each picture as a JPEG under 2 MB, with the file name given below.
+
+
+1. gd1-babies.jpg - The golden dandelion and the babies
+-------------------------------------------------------
+A fenced paddock on a flowery meadow, seen from its open gate. Inside are babies with their new 26.1 models: a calf next
+to its mother, two chicks, a piglet or two, a lamb, a foal, a bunny and a kitten. Golden dandelions grow by the gate,
+with one potted on a fence post. Hold a golden dandelion in your hand (HUD on, hand visible).
+
+2. gd2-family-babies.jpg - The other backports' babies
+------------------------------------------------------
+A small clearing at the edge of a mixed forest. Three or four wolf puppies of different variants (pale, ashen, woods,
+striped and so on) play together, one wearing a collar. Beside them is a snifflet with an adult sniffer behind it. If
+there's a pond, add a few tadpoles in the shallows at the front.
+
+3. gd3-sulfur-blocks.jpg - Sulfur and cinnabar
+----------------------------------------------
+A small open-fronted bathhouse built from the new blocks: sulfur brick walls on a polished cinnabar base, chiseled
+sulfur pillars with chiseled cinnabar caps, and a band of cinnabar bricks. Arched windows are made of sulfur and
+cinnabar brick stairs, with stair benches and slab seats inside. In the middle is a pool of water over potent sulfur,
+bubbling and giving off gas, ringed with polished sulfur slabs. Stacks of plain sulfur, cinnabar and potent sulfur sit
+by the door, and sulfur walls make a low fence outside.
+
+4. gd4-sulfur-cube.jpg - The sulfur cube
+----------------------------------------
+Inside a sulfur cave, a group of sulfur cubes of mixed sizes, each holding a different block so their looks contrast:
+TNT, a slime block, magma, honeycomb, cinnabar, and one empty. Put the big one in the middle with the small ones in
+front. Behind them, sulfur spikes and part of a potent sulfur pool.
+
+5. gd5-sulfur-caves.jpg - Sulfur caves
+--------------------------------------
+A wide view down a sulfur cave in a real sulfur caves biome (check that F3 names it), so its own fog and colors show.
+Bands of sulfur and cinnabar run through the walls. Clusters of sulfur spikes hang from the roof and rise from the
+floor. At the far end is a pool of water over potent sulfur, lit by a shaft of daylight or a lava seep. A cave spider
+on the wall, or a sulfur cube on the floor, gives the scale.
+
+6. gd6-sulfur-spring.jpg - Sulfur spring
+----------------------------------------
+A large sulfur spring in a grassy valley: a pool rimmed with sulfur, cinnabar, granite and tuff, with spikes rising
+from the water and the rim. Take the shot during an eruption, when the plume rises out of the pool. It erupts about
+every 50 seconds, so wait for it.
+
+7. gd7-dappled-forest.jpg - The dappled forest
+----------------------------------------------
+Low to the ground beside a fallen poplar with shelf mushrooms of both sizes on it, looking up a gentle slope into red,
+orange and yellow poplars. The ground is the forest's orange grass, with leaf litter, red shrubs and ferns.
+
+8. gd8-poplar-wood.jpg - Poplar wood
+------------------------------------
+A woodcutter's cabin at the forest edge, built from every poplar shape: plank walls on stripped log posts, a stair roof
+with a slab ridge, a poplar door, trapdoor shutters, a slab porch with a fence and an open gate, and a button and a
+pressure plate. Outside are a poplar sign reading "Poplar Grove / Woodcutter", a potted poplar sapling, a woodpile of
+logs, wood and stripped wood, shelf mushrooms on the posts, red shrubs, and a poplar boat pulled up on the grass or
+moored at a stream.
+
+9. gd9-soft-blocks.jpg - Wool, concrete, cushions and straw beds
+----------------------------------------------------------------
+A garden terrace or patio:
+- a sofa of colored wool stairs, with wool slab arms and cushions of several colors on it;
+- a rug of two-color wool and wool slabs;
+- a coffee table of white concrete slabs;
+- wool slab stools with cushions;
+- concrete stairs as steps, and concrete slab planters;
+- two straw beds with a bit of hay under a lean-to roof of concrete stairs, at the side.
+Use a strong, matching palette so the colors read.
+
+10. gd10-abandoned-camp.jpg - Abandoned camps
+---------------------------------------------
+An abandoned camp under red poplars at the edge of the dappled forest. On one side, a cold campfire, log seats with
+cushions, a trodden path and the camp chest. On the other, a tent of white wool stairs over straw beds, with a
+cauldron and a barrel. A camp tree with a bee nest and a couple of bees, if one spawned. Open the camp chest first so
+it gives you its explorer map, then hold the map in your off hand (HUD on) so it shows beside the camp.
+
+11. gd11-game-rules.jpg - The Game Rules screen
+-----------------------------------------------
+In a world with cheats on, open the pause menu, then World Options, then Game Rules. Type something in the search box
+(for example "keep") so the list is filtered, and take the screenshot with the matching rule showing. This one is a
+plain screen capture, with nothing to build. A nice-looking world behind the menu helps.
+
+12. gd12-settings.jpg - The settings screen
+-------------------------------------------
+Options, then Mod Options, then Backport Core, then Game Drops: the Game Drops page with its feature list showing. A
+plain screen capture, with nothing to build.

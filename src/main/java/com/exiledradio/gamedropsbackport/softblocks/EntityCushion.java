@@ -262,9 +262,32 @@ public class EntityCushion extends Entity {
         if (player.isSneaking() || isBeingRidden()) {
             return false;
         }
-        if (!this.world.isRemote && player.startRiding(this)) {
-            playSound(SoftBlocks.cushionSit, 1.0F, 1.0F);
+        if (!this.world.isRemote) {
+            Entity seat = player.getRidingEntity();
+            // Leaving a seat sets 1.12.2's 60-tick ride cooldown, which startRiding checks before it dismounts; the
+            // switch has already been allowed here (not sneaking, this seat free), so it seats the rider by force.
+            boolean switched = seat instanceof EntityCushion && seat != this && leaveWithoutStepping(player, (EntityCushion) seat);
+            if (player.startRiding(this, switched)) {
+                playSound(SoftBlocks.cushionSit, 1.0F, 1.0F);
+            }
         }
+        return true;
+    }
+
+    /**
+     * Moving from one cushion to another: 1.12.2's {@code startRiding} first dismounts, and a living rider's dismount
+     * teleports it to a free spot beside the old seat, so the player stood up there and then slid over to the new
+     * cushion. This leaves the old seat as {@code Entity.dismountRidingEntity} does (no dismount spot), so the move
+     * goes straight from seat to seat.
+     */
+    private static boolean leaveWithoutStepping(EntityPlayer player, EntityCushion seat) {
+        try {
+            net.minecraftforge.fml.relauncher.ReflectionHelper.setPrivateValue(Entity.class, player, null,
+                    "ridingEntity", "field_184239_as");
+        } catch (RuntimeException e) {
+            return false; // startRiding dismounts as 1.12.2 does
+        }
+        seat.removePassenger(player);
         return true;
     }
 

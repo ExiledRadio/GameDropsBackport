@@ -289,6 +289,26 @@ final class SoftBlocksSelfTest implements SelfTest {
         check.ok(cushion.processInitialInteract(player, EnumHand.MAIN_HAND) && player.getRidingEntity() == cushion, "sit on it");
         cushion.updatePassenger(player);
         check.ok(Math.abs(player.posY - (cushion.posY - 0.35)) < 1.0E-6, "seated at 26.3's height: " + (player.posY - cushion.posY));
+
+        // Seat to seat: no stop at 1.12.2's dismount spot beside the first cushion on the way.
+        BlockPos o2 = o.east(2);
+        world.setBlockState(o2, Blocks.STONE.getDefaultState());
+        use(player, new ItemStack(SoftBlocks.cushion, 1, EnumDyeColor.LIME.getMetadata()), o2, EnumFacing.UP, 1.0F);
+        List<EntityCushion> second = cushionsAt(world, o2.up());
+        if (check.eq(1, second.size(), "second cushion placed")) {
+            EntityCushion next = second.get(0);
+            double x = player.posX, y = player.posY, z = player.posZ;
+            check.ok(next.processInitialInteract(player, EnumHand.MAIN_HAND) && player.getRidingEntity() == next
+                    && next.getPassengers().contains(player) && !cushion.isBeingRidden(), "sitting on another cushion moves the rider there");
+            check.ok(player.posX == x && player.posY == y && player.posZ == z,
+                    "switching seats does not stand the rider up beside the old one first: " + player.getPositionVector());
+            next.updatePassenger(player);
+            check.ok(Math.abs(player.posX - next.posX) < 1.0E-6 && Math.abs(player.posY - (next.posY - 0.35)) < 1.0E-6,
+                    "seated on the second cushion");
+            player.dismountRidingEntity();
+            next.setDead();
+            world.setBlockToAir(o2);
+        }
         player.dismountRidingEntity();
         player.setSneaking(true);
         check.ok(!cushion.processInitialInteract(player, EnumHand.MAIN_HAND), "sneaking does not sit");

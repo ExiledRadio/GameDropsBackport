@@ -209,16 +209,16 @@ Not built, and why:
 - World upgrade screens (26.1), Game Rules search (26.1; 1.12.2 has no game rules screen). World Options has no
   Game Rules or Restrictions button for the same reason.
 - LAN can't be closed again once open: 1.12.2's server has no way to stop listening. The LAN switch stays on.
-- Exclusive Fullscreen (26.1) and Borderless as the default (26.3): 1.12.2's fullscreen is always exclusive; a
-  borderless mode is a Core Video request.
+- Exclusive Fullscreen (26.1) and Borderless as the default (26.3): built in Core 1.4.4 (P42, Core's own option).
 - Quit Shortcuts (26.3, on by default: 1.12.2 already quits on Alt+F4), Right Click Emulation and Menu/Dock
   Visibility (macOS only), the minimum window size: low value; left out.
-- F3: the overlay's own GUI scale (26.3), `player_speed`, day count split (26.1), AM/AX counts (26.2): Core's
-  debug screen; a Core request.
+- F3: the overlay's own GUI scale (26.3), `player_speed`, day count split (26.1), AM/AX counts (26.2): built in Core
+  1.4.4 (`ModernDebugLines`, `DebugScale`).
 - Options headings bold, underlined and centered (26.3): Core's option lists; a Core request.
 - Sign edit screen drawn from flat `gui/signs/<wood>.png` (26.2): Trails & Tales owns the sign edit screen; a
   Trails & Tales request.
-- Creative tab order (26.3's mineral order): Core's creative order files; later.
+- Creative tab order (26.3's mineral order): not built. 1.12.2's tabs are 1.19.2's, in registry order, with the
+  minerals scattered; 26.3 reorders runs inside its own tabs that 1.12.2 lacks (Core's `docs/PRESENTATION.md`).
 - GUI textures: none changed that 1.12.2 draws (26.3's enchanting table differs by 4 unused pixels).
 - In-game music: the fingerspit tracks also join the overworld biome pools (26.2); in-game music is Caves & Cliffs'
   stream with Core's game music.

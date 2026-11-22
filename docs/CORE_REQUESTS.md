@@ -181,25 +181,40 @@ A 1.18 world made before the edition keeps `ModernClimate` and the bands.
 
 **Round 2** (`gd-hookups`): items 2 (all but the scale), 3 and 5 are done; 1 and 4 are still open.
 
+**Round 3** (Core 1.4.4, Core branch `claude/jolly-mendel-d629fd`): items 1 and 2's scale are done; 4 is answered (not
+built, and why). Nothing for this mod to call: Core does each by version, from this mod's 26.1 and 26.3.
+
 Done in Core 1.4.4 (branch `gd-lookfeel`): 26.2's pause icon row (`VanillaRevisions.pauseIconRow`, sprites from this
 mod) and `MenuBackground.contentFrame` for World Options' frame. Still open:
 
 1. **Borderless fullscreen** (26.1 added Exclusive Fullscreen, 26.3 made Borderless the default): 1.12.2's
    fullscreen is always exclusive. Want: a Video option, Borderless by default from 26.3, an undecorated window the
-   size of the monitor. Meanwhile: 1.12.2's fullscreen. **Not done**: LWJGL 2 makes a window undecorated only
-   when it creates one, so the toggle has to rebuild the window, which needs a patch on `Minecraft.toggleFullscreen`
-   and testing on real monitors. That is its own task.
+   size of the monitor. Meanwhile: 1.12.2's fullscreen. **Done** (Core 1.4.4, patch P42): Core's option
+   `backportcore:exclusive_fullscreen` ("Exclusive Fullscreen", Display after Fullscreen, 26.1's tooltips) from 26.1,
+   off by default from 26.3 (on at 26.1/26.2; the default follows the newest version until the player sets it). Off,
+   `Minecraft.toggleFullscreen` makes an undecorated window the monitor's size at 0, 0 (LWJGL 2 makes a new native
+   window on `Display.setDisplayMode`, keeping the GL context, and reads `org.lwjgl.opengl.Window.undecorated` then),
+   and puts the window back on the way out. Below 26.1, and under Cleanroom's LWJGL 3 (option hidden), 1.12.2's
+   fullscreen. Tested in Core's client self-test with a real round trip on the monitor.
 2. **F3** (26.1-26.3): the overlay's own GUI scale (Debug Options, "Auto"), `player_speed`, the day count split
    from local difficulty, AM/AX mob counts. Want: these entries in Core's debug screen at 26.x. Meanwhile: 1.21.11's.
    **Done except the scale**: Core's 26.1 step (`ModernDebugLines`) adds "Day #n" (split from Local Difficulty),
    "Speed: n blocks/tick" and the spawn line with 26.1's eight category abbreviations, and Debug Options lists
-   `day_count`, `player_speed` and `entity_spawn_counts` (Off in both profiles, as in 26.3). The overlay's own GUI
-   scale is not done: 1.12.2's F3 would have to be drawn at a scale of its own (a patch on `GuiOverlayDebug`).
+   `day_count`, `player_speed` and `entity_spawn_counts` (Off in both profiles, as in 26.3). **The overlay's own
+   GUI scale is done too** (Core 1.4.4, `DebugScale`, no patch): 26.3's 110-wide GUI Scale slider in Debug Options'
+   footer (Unchanged, Auto by default, 1 ... the largest the window fits; buttons 4 apart), and F3's columns, the
+   lagometer and Core's network charts drawn at it, never larger than the game's scale, as 26.3's `DebugScreenOverlay`.
 3. **Option headings** (26.3): section headings bold, underlined and centered in the options lists. Want: Core's
    `VideoSections` headings in that style from 26.3. Meanwhile: 1.21.11's style. **Done**:
    `VanillaRevisions.centeredOptionHeaders()`, Video Settings' section headers from 26.3.
 4. **Creative order** (26.3): Ingredients and Building Blocks reorder the minerals; Natural Blocks goes Overworld,
    Nether, End. Want: a 26.3 order file through `Contribution.creativeOrder`. Meanwhile: Tricky Trials' order.
+   **Not built** (Core 1.4.4, reasons in Core's `docs/PRESENTATION.md`): 26.3 reorders runs of minerals inside its own
+   tabs (Ingredients, Natural Blocks, 1.19.3's Building Blocks). 1.12.2's tabs are 1.19.2's and list items in registry
+   order, so the ores, mineral blocks and ingots are scattered among other items and no run exists to reorder (and
+   there is no Natural Blocks tab). An order file sorts every tab by one full list, so a 26.3 list would regroup each tab
+   into 26.3's layout and a minerals-only list would move them to the front of every tab: neither is an order any
+   vanilla version had. Tricky Trials' (1.19.2's) order stays.
 5. **Sign edit screen** (26.2, a Trails & Tales request): the sign drawn flat from `gui/signs/<wood>.png` at 3.9x
    instead of the 3D model. Trails & Tales owns the screen (`sign.client.SignEditScreen`); it could draw the flat
    texture when `Presentation.isAtLeast(LookArea.MENUS, "26.2")` and a pack has the texture. Meanwhile: 1.20's.

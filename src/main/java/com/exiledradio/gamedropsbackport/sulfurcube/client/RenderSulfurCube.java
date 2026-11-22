@@ -101,13 +101,18 @@ public class RenderSulfurCube extends RenderLiving<EntitySulfurCube> {
             // 26.3's CustomHeadLayer draws it whether or not the cube is invisible; the inner layer draws nothing.
             this.renderSkull(worn, limbSwing);
         }
-        if (!visible) {
-            super.renderModel(cube, limbSwing, limbSwingAmount, age, yaw, pitch, scale);
-            return;
-        }
         boolean baby = cube.isChild();
         ItemStack held = cube.getBodyItem();
         IBlockState state = held.isEmpty() ? null : stateOf(held);
+        if (!visible) {
+            // 26.3's SulfurCubeInnerLayer draws the swallowed block whether or not the cube is invisible; only the
+            // inner and outer gel are left out (or drawn faint for a spectator, by the superclass).
+            if (state != null && !isSkull(held)) {
+                this.renderBlock(cube, state, baby);
+            }
+            super.renderModel(cube, limbSwing, limbSwingAmount, age, yaw, pitch, scale);
+            return;
+        }
         if (isSkull(held)) {
             // Drawn above.
         } else if (state != null) {

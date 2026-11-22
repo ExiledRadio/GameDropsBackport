@@ -1,5 +1,10 @@
 advancements.story.enter_the_nether.description=Construisez, allumez et entrez dans un portail du Nether.
 advancements.story.iron_tools.title=Bonne pioche !
 build.tooHigh=La hauteur maximale de construction est de %s
+gui.toMenu=Retour à la liste des serveurs
+gui.toTitle=Retour au menu principal
+menu.savingLevel=Sauvegarde du monde...
 options.languageWarning=Certaines traductions peuvent être inexactes.
+outOfMemory.message=La mémoire de Minecraft est insuffisante.\n\nCela peut être dû à un bug dans le jeu ou au fait que la machine virtuelle Java ne dispose pas de suffisamment de mémoire.\n\nPour éviter la corruption du monde, la partie en cours s'est fermée. Nous avons essayé de libérer suffisamment de mémoire pour vous permettre de retourner au menu principal et de continuer à jouer, mais cela n'a peut-être pas fonctionné.\n\nVeuillez redémarrer le jeu si ce message s'affiche une nouvelle fois.
+outOfMemory.title=Mémoire insuffisante !
 selectWorld.load_folder_access=Impossible de lire ou d'accéder au dossier de sauvegardes !

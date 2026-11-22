@@ -1,5 +1,10 @@
 advancements.story.enter_the_nether.description=Baue, entzünde und betritt ein Netherportal
 advancements.story.iron_tools.title=Zu viel Eisen im Blut
 build.tooHigh=Die maximale Bauhöhe beträgt %s
+gui.toMenu=Zurück zur Serverauswahl
+gui.toTitle=Zurück zum Hauptmenü
+menu.savingLevel=Welt wird gespeichert
 options.languageWarning=Die Übersetzungen sind möglicherweise nicht ganz genau.
+outOfMemory.message=Minecraft hat keinen freien Arbeitsspeicher mehr.\n\nDies könnte an einem Fehler im Spiel liegen oder daran, dass der Java Virtual Machine zu wenig Arbeitsspeicher zugewiesen wurde.\n\nUm eine Beschädigung der Welt zu verhindern, wurde die aktuelle Spielsitzung beendet. Wir haben versucht, so viel Arbeitsspeicher freizugeben, sodass du zum Hauptmenü zurückkehren und weiterspielen kannst; möglicherweise hat es funktioniert.\n\nBitte starte das Spiel neu, wenn diese Meldung erneut angezeigt wird.
+outOfMemory.title=Kein freier Arbeitsspeicher mehr!
 selectWorld.load_folder_access=Auf den Ordner, in dem die Welten gespeichert sind, konnte nicht zugegriffen werden!

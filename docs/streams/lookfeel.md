@@ -69,6 +69,11 @@ and 26.3 client jars and asset indexes, and 26.3's decompiled `PauseScreen`, `Wo
     vanilla text; names). Lang: Mojang's own 26.3 keys (forced in `vanilla_map.txt` where `.tooltip` would make them
     ours); `tools/lang/vanilla_text.py` (copied from Tricky Trials) for `vanilla_text/`.
 
+*   For Backport Core 1.4.5's screens (registered in `LookAndFeel`): 26.3's `widget/checkbox` sprites (26.3), the
+    `gui/signs/<wood>` textures of the twelve vanilla woods (26.2, Trails & Tales' flat sign editor), `texts/credits.json`
+    and `postcredits.txt` (26.3, the End credits), and in `vanilla_text` 26.3's `gui.toMenu`, `gui.toTitle`,
+    `menu.savingLevel` and `outOfMemory.*` (the disconnected, "Saving world" and out of memory screens).
+
 ## Where it differs from 26.3
 
 *   Restrictions... is left out of World Options: 1.12.2 has no chat restrictions.

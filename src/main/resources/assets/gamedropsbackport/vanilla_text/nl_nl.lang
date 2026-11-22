@@ -1,5 +1,10 @@
 advancements.story.enter_the_nether.description=Bouw, activeer en ga door een Netherportaal
 advancements.story.iron_tools.title=IJzer met handen smeden
 build.tooHigh=Hoogtelimiet voor bouwen is %s
+gui.toMenu=Terug naar de serverlijst
+gui.toTitle=Terug naar het hoofdmenu
+menu.savingLevel=Wereld opslaan
 options.languageWarning=Vertalingen zijn mogelijk onnauwkeurig.
+outOfMemory.message=Minecraft heeft geen geheugen meer.\n\nDit kan veroorzaakt zijn door een probleem in het spel of omdat de Java Virtual Machine niet genoeg geheugen toegewezen heeft gekregen.\n\nOm wereldbeschadigingen te voorkomen, is het huidige spel gestopt. We hebben geprobeerd genoeg geheugen vrij te maken zodat je verder kan spelen, maar dit heeft mogelijk niet gewerkt.\n\nHerstart het spel als dit bericht nog eens verschijnt.
+outOfMemory.title=Geen geheugen meer!
 selectWorld.load_folder_access=Geen toegang tot de map waarin spelwerelden worden opgeslagen!

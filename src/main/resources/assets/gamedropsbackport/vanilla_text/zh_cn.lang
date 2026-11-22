@@ -1,5 +1,10 @@
 advancements.story.enter_the_nether.description=建造、激活并进入一座下界传送门
 advancements.story.iron_tools.title=这不是铁镐么？
 build.tooHigh=建筑高度上限是%s
+gui.toMenu=返回到服务器列表
+gui.toTitle=返回到标题屏幕
+menu.savingLevel=保存世界中
 options.languageWarning=语言翻译不一定100%%准确。
+outOfMemory.message=Minecraft已耗尽内存。\n\n原因可能是游戏存在漏洞，或分配给Java虚拟机的内存不足。\n\n为避免世界损坏，当前游戏已退出。我们已尝试腾出内存，让你可以回到主菜单并继续游戏，但这不一定奏效。\n\n如果你再次看见此消息，请重启游戏。
+outOfMemory.title=内存溢出！
 selectWorld.load_folder_access=无法读取或访问游戏世界存档所在的文件夹！

@@ -1,5 +1,10 @@
 advancements.story.enter_the_nether.description=ネザーポータルを作り、着火し、入る
 advancements.story.iron_tools.title=鉄のツルハシで決まり
 build.tooHigh=建築高度上限は%sです
+gui.toMenu=サーバーリストへ戻る
+gui.toTitle=タイトル画面へ戻る
+menu.savingLevel=ワールドを保存中
 options.languageWarning=正確な翻訳が行われていない可能性があります。
+outOfMemory.message=Minecraftのメモリが不足しました。\n\nこれはゲームのバグもしくはJava仮想マシンに十分なメモリが割り当てられていないことが原因であると考えられます。\n\nワールドの破損を防ぐため、プレイ中のゲームを終了しました。メインメニューに戻ってプレイを再開できるよう、十分なメモリを解放することを試みましたが、正常に行われなかった可能性があります。\n\nこのメッセージが再び表示された場合は、ゲームを再起動してください。
+outOfMemory.title=メモリが不足しています！
 selectWorld.load_folder_access=ワールドのフォルダーの読み込みまたは書き込みができないため、セーブできません！

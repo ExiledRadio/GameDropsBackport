@@ -1,5 +1,10 @@
 advancements.story.enter_the_nether.description=Construa, ative e entre num Portal do Nether
 advancements.story.iron_tools.title=Ferrou!
 build.tooHigh=A altura limite para construir é %s
+gui.toMenu=Voltar à lista de servidores
+gui.toTitle=Voltar ao menu principal
+menu.savingLevel=Salvando mundo
 options.languageWarning=A localização é um esforço colaborativo da comunidade.
+outOfMemory.message=O Minecraft está sem espaço de memória.\n\nIsso pode ser causado por um erro no jogo ou por não haver espaço suficiente alocado para a Java Virtual Machine.\n\nPara evitar a corrupção do mundo, o jogo atual foi fechado. Tentamos abrir espaço suficiente na memória para você voltar a jogar, mas isso pode não ter funcionado.\n\nReinicie o jogo se vir essa mensagem novamente.
+outOfMemory.title=Memória insuficiente!
 selectWorld.load_folder_access=Não foi possível ler ou acessar o armazenamento dos mundos!

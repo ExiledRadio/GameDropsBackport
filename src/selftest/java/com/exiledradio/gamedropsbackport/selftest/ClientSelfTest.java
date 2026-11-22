@@ -1,5 +1,6 @@
 package com.exiledradio.gamedropsbackport.selftest;
 
+import com.exiledradio.backportcore.gamerules.client.GameRulesScreen;
 import com.exiledradio.backportcore.presentation.Presentation;
 import com.exiledradio.backportcore.presentation.client.MenuScreens;
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
@@ -167,6 +168,7 @@ public final class ClientSelfTest {
             ok(labels.contains("Allow Cheats: OFF") && labels.contains("LAN: OFF"), "world options: commands and LAN off");
             ok(labels.contains("Command Access: OFF (off)") && labels.contains("Force Game Mode: ON (off)"), "world options: guests' rows off without LAN");
             ok(labels.contains("Apply Changes (off)"), "world options: nothing to apply yet");
+            ok(labels.contains("Edit Game Rules... (off)"), "world options: Game Rules... off without commands");
             shot("world_options.png");
             s.press("Allow Cheats");
             s.press("Personal Game Mode");
@@ -190,6 +192,33 @@ public final class ClientSelfTest {
             ok(mc.getIntegratedServer().worlds[0].getWorldInfo().getDifficulty() == EnumDifficulty.HARD, "world options: difficulty hard, "
                     + mc.getIntegratedServer().worlds[0].getWorldInfo().getDifficulty());
             ok(mc.getIntegratedServer().worlds[0].getWorldInfo().getGameType() == GameType.CREATIVE, "world options: default game mode kept");
+            mc.displayGuiScreen(new WorldOptionsScreen(new GuiIngameMenu()));
+            return 5;
+        });
+        // 26.3's Game Rules... (Backport Core's screen, 26.1's look: the search box in a 36-high header).
+        this.steps.add(() -> {
+            WorldOptionsScreen s = (WorldOptionsScreen) mc.currentScreen;
+            ok(s.labels().contains("Edit Game Rules..."), "world options: Game Rules... on with commands");
+            s.press("Edit Game Rules");
+            return 20;
+        });
+        this.steps.add(() -> {
+            ok(mc.currentScreen instanceof GameRulesScreen && ((GameRulesScreen) mc.currentScreen).received(), "game rules: the server's rules arrived");
+            GameRulesScreen r = (GameRulesScreen) mc.currentScreen;
+            ok(r.hasSearch() && r.top() == 36, "game rules: 26.1's look, the search box in the header");
+            ok(r.rows().contains("# Chat") && r.rows().contains("Keep inventory after death = false"), "game rules: 26.3's categories and names");
+            shot("game_rules.png");
+            r.setFilter("keep");
+            ok(r.rows().equals(java.util.Arrays.asList("# Player", "Keep inventory after death = false")), "game rules: search, " + r.rows());
+            shot("game_rules_search.png");
+            r.setFilter("");
+            r.set("keepInventory", "true");
+            r.pressDone();
+            return 20;
+        });
+        this.steps.add(() -> {
+            ok(mc.getIntegratedServer().worlds[0].getGameRules().getBoolean("keepInventory"), "game rules: Done set keepInventory on the server");
+            ok(mc.currentScreen instanceof WorldOptionsScreen, "game rules: back to World Options");
             mc.displayGuiScreen(new WorldOptionsScreen(new GuiIngameMenu()));
             return 5;
         });

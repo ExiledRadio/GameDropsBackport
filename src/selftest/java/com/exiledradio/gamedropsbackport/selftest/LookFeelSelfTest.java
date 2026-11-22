@@ -130,6 +130,12 @@ final class LookFeelSelfTest implements SelfTest {
         check.ok(WorldOptionsRules.gameModeTooltip(false, false, "t").endsWith("disabled.operator.tooltip")
                 && WorldOptionsRules.gameModeTooltip(true, true, "t").endsWith("game_mode.disabled.tooltip")
                 && "t".equals(WorldOptionsRules.gameModeTooltip(false, true, "t")), "game mode tooltips");
+        check.ok(WorldOptionsRules.gameRulesActive(false, true, true) && !WorldOptionsRules.gameRulesActive(true, true, true)
+                && !WorldOptionsRules.gameRulesActive(false, false, true) && !WorldOptionsRules.gameRulesActive(false, true, false)
+                && WorldOptionsRules.gameRulesTooltip(false, true, true) == null
+                && "editGamerule.inGame.disabled.hardcore.tooltip".equals(WorldOptionsRules.gameRulesTooltip(true, true, true))
+                && "editGamerule.inGame.disabled.tooltip".equals(WorldOptionsRules.gameRulesTooltip(false, false, true)),
+                "game rules: commands and Core's server needed, never hardcore");
         check.ok(!WorldOptionsRules.commandAccessActive(false, true) && !WorldOptionsRules.commandAccessActive(true, false)
                 && WorldOptionsRules.commandAccessActive(true, true) && !WorldOptionsRules.commandAccessValue(false, true, true),
                 "command access needs LAN and commands");

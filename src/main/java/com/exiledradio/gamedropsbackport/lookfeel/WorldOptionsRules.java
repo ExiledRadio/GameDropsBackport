@@ -26,6 +26,21 @@ public final class WorldOptionsRules {
                 : allowCommands ? tooltip : "options.worldOptions.game_mode.disabled.operator.tooltip";
     }
 
+    /**
+     * 26.3's Game Rules... ({@code createGameRulesButton}, then {@code updateButton}): only with commands (a host: as
+     * chosen on the screen; others: operator level 2), never in hardcore, and only with Backport Core on the server
+     * (it answers the screen).
+     */
+    public static boolean gameRulesActive(boolean hardcore, boolean commands, boolean serverHasCore) {
+        return !hardcore && commands && serverHasCore;
+    }
+
+    @javax.annotation.Nullable
+    public static String gameRulesTooltip(boolean hardcore, boolean commands, boolean serverHasCore) {
+        return hardcore ? "editGamerule.inGame.disabled.hardcore.tooltip"
+                : commands && serverHasCore ? null : "editGamerule.inGame.disabled.tooltip";
+    }
+
     /** {@code updateGuestCommandAccessButton}: on only with LAN and commands allowed; else off. */
     public static boolean commandAccessActive(boolean lan, boolean allowCommands) {
         return lan && allowCommands;

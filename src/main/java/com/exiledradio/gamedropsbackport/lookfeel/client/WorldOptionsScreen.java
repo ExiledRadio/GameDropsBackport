@@ -38,9 +38,10 @@ import javax.annotation.Nullable;
  * scrolling content of two two-column grids, and a footer with Apply Changes and Cancel. Changes apply only with
  * Apply Changes; locking the difficulty asks first.
  * <ul>
- *   <li>General (a host): Default Game Mode, Personal Game Mode (308 wide), Allow Commands, Difficulty and its lock.
- *       Not a host: Difficulty alone, inactive (1.12.2 has no packet to change a server's difficulty). 26.3's Game
- *       Rules... and Restrictions... are left out: 1.12.2 has neither screen.</li>
+ *   <li>General (a host): Default Game Mode, Personal Game Mode (308 wide), Allow Commands, Difficulty and its lock,
+ *       then Game Rules... (Backport Core's Game Rules screen, the server's rules; with commands, not in hardcore).
+ *       Not a host: Difficulty, inactive (1.12.2 has no packet to change a server's difficulty), and Game Rules...
+ *       (an operator). 26.3's Restrictions... is left out: 1.12.2 has no chat restrictions.</li>
  *   <li>Multiplayer (a host): LAN, Port, Command Access, Force Game Mode. 1.12.2's server cannot stop listening, so
  *       once the world is open to LAN the LAN switch and the port stay as they are.</li>
  * </ul>
@@ -90,6 +91,7 @@ public final class WorldOptionsScreen extends GuiScreen {
     private Cycle allow;
     private Cycle difficulty;
     private GuiLockIconButton lock;
+    private Cycle gameRules;
     private Cycle lan;
     private Cycle access;
     private Cycle force;
@@ -148,9 +150,12 @@ public final class WorldOptionsScreen extends GuiScreen {
             this.allow = add(new Cycle(left, y, 150, "gamedropsbackport.worldOptions.allowCommands", "options.worldOptions.allow_commands.tooltip"));
             this.difficulty = add(new Cycle(right, y, 130, "options.difficulty", null));
             this.lock = add(new GuiLockIconButton(nextId(), right + 130, y));
+            y += 24;
+            this.gameRules = add(new Cycle(left, y, 150, "editGamerule.inGame.button", null));
         } else {
-            this.difficulty = add(new Cycle(this.width / 2 - 75, y, 130, "options.difficulty", null));
-            this.lock = add(new GuiLockIconButton(nextId(), this.width / 2 + 55, y));
+            this.difficulty = add(new Cycle(left, y, 130, "options.difficulty", null));
+            this.lock = add(new GuiLockIconButton(nextId(), left + 130, y));
+            this.gameRules = add(new Cycle(right, y, 150, "editGamerule.inGame.button", null));
         }
         y += 20;
         if (this.host) {
@@ -240,6 +245,10 @@ public final class WorldOptionsScreen extends GuiScreen {
         this.difficulty.set(I18n.format(this.wantedDifficulty.getTranslationKey()), blocked == null, blocked);
         this.lock.setLocked(this.wantedLocked);
         this.lock.enabled = blocked == null;
+        boolean commands = this.host ? this.wantedAllow : com.exiledradio.backportcore.gamerules.client.GameRulesScreen.permitted(mc);
+        boolean core = com.exiledradio.backportcore.presentation.CommandUsageNetwork.serverHasCore() || this.host;
+        this.gameRules.label(I18n.format("editGamerule.inGame.button"), WorldOptionsRules.gameRulesActive(this.hardcore, commands, core),
+                WorldOptionsRules.gameRulesTooltip(this.hardcore, commands, core));
         this.apply.enabled = hasChanges();
         for (GuiButton b : this.content) {
             if (b.getClass() == Cycle.class) {
@@ -303,6 +312,10 @@ public final class WorldOptionsScreen extends GuiScreen {
                 applyChanges();
                 this.mc.displayGuiScreen(this.lastScreen);
             }
+            return;
+        }
+        if (button == this.gameRules) {
+            this.mc.displayGuiScreen(com.exiledradio.backportcore.gamerules.client.GameRulesScreen.inWorld(this));
             return;
         }
         if (!this.content.contains(button)) {
@@ -581,6 +594,13 @@ public final class WorldOptionsScreen extends GuiScreen {
 
         void set(String value, boolean active, @Nullable String tooltip) {
             this.displayString = I18n.format(this.nameKey).replaceAll(":$", "") + ": " + value;
+            this.enabled = active;
+            this.tooltip = tooltip;
+        }
+
+        /** A plain button's label (Game Rules...), not "Name: Value". */
+        void label(String text, boolean active, @Nullable String tooltip) {
+            this.displayString = text;
             this.enabled = active;
             this.tooltip = tooltip;
         }

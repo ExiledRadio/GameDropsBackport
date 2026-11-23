@@ -2,6 +2,7 @@
 
 First release: Minecraft's 26.1, 26.2 and 26.3 game drops on Minecraft 1.12.2.
 
+*   **Realistic Terrain Generation** (and RTG Unofficial): dappled forests generate in RTG worlds, on RTG's forest terrain, instead of turning into plains. Needs Backport Core 1.4.5.
 *   **The golden dandelion**: keeps a baby animal a baby until you feed it another, makes yellow dye and a suspicious stew of Saturation. Piglins love it.
 *   **The babies**: 26.1's baby models and textures for animals and zombies, 26.1's cat, pig, cow and chicken sound variants, and crafted name tags. The other backports' babies get 26.1's models too, and the golden dandelion keeps tadpoles and snifflets small.
 *   **Sulfur and cinnabar** in every stone shape, potent sulfur, sulfur spikes and the music disc Bounce.

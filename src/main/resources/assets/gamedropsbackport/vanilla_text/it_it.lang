@@ -1,7 +1,12 @@
 advancements.story.enter_the_nether.description=Costruisci, attiva e attraversa un portale per il Nether.
 advancements.story.iron_tools.title=Scintillante piccone metallico
 build.tooHigh=Altezza massima di costruzione: %s
+gui.toMenu=Torna alla lista dei server
+gui.toTitle=Torna al menù principale
+menu.savingLevel=Salvataggio del mondo...
 options.languageWarning=Alcune traduzioni potrebbero contenere imprecisioni.
+outOfMemory.message=Minecraft ha esaurito la memoria.\n\nCiò può essere causato da un errore del gioco o dal fatto che non sia stata allocata abbastanza memoria alla macchina virtuale di Java.\n\nPer prevenire il danneggiamento del mondo, la partita in corso è stata terminata. Abbiamo provato a liberare abbastanza memoria per permetterti di tornare al menù principale e ricominciare a giocare, ma potrebbe non aver funzionato.\n\nRiavvia il gioco se vedi di nuovo questo messaggio.
+outOfMemory.title=Memoria esaurita!
 selectWorld.load_folder_access=Impossibile leggere o accedere alla cartella dove sono salvati i mondi!
 selectServer.direct=Accesso diretto
 resourcePack.title=Pacchetti di risorse

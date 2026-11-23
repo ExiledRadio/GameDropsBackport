@@ -1,7 +1,12 @@
 advancements.story.enter_the_nether.description=Construí, activá y atravesá un portal al Nether.
 advancements.story.iron_tools.title=¿No es hierrónico?
 build.tooHigh=El límite de altura para la construcción es %s
+gui.toMenu=Volver a la lista de servidores
+gui.toTitle=Volver al menú principal
+menu.savingLevel=Guardando...
 options.languageWarning=Algunas traducciones pueden contener errores
+outOfMemory.message=Minecraft se quedó sin memoria.\n\nEsto podría deberse a un error en el juego o a que la máquina virtual de Java no tiene suficiente memoria asignada.\n\nPara evitar la corrupción de mundo, la partida actual se cerró. Hemos intentado liberar suficiente memoria para permitirte regresar al menú principal y volver a jugar, pero es posible que esto no haya funcionado.\n\nReiniciá el juego si volvés a ver este mensaje.
+outOfMemory.title=¡Sin memoria!
 selectWorld.load_folder_access=¡No se puede leer o acceder a la carpeta donde se guardan los mundos!
 selectServer.direct=Conexión directa
 resourcePack.title=Seleccionar paquetes de recursos

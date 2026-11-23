@@ -1,7 +1,12 @@
 advancements.story.enter_the_nether.description=Zbuduj, odpal i przejdź przez portal do Netheru
 advancements.story.iron_tools.title=Żelazne zasady
 build.tooHigh=Górny limit wysokości budowania wynosi %s bloków
+gui.toMenu=Wróć do listy serwerów
+gui.toTitle=Wróć do menu głównego
+menu.savingLevel=Zapisywanie świata
 options.languageWarning=Tłumaczenia mogą nie być w 100%% dokładne.
+outOfMemory.message=Minecraftowi skończyła się pamięć.\n\nMoże to być spowodowane błędem w grze lub przydzieleniem niewystarczającej ilości pamięci wirtualnej maszynie Java.\n\nW celu zapobiegnięcia uszkodzeniu świata bieżąca gra została zamknięta. Próbowaliśmy zwolnić wystarczająco dużo pamięci, by pozwolić na powrót do menu głównego i do gry, ale mogło się to nie udać.\n\nUruchom grę ponownie, jeśli znów zobaczysz ten komunikat.
+outOfMemory.title=Brak pamięci!
 selectWorld.load_folder_access=Nie można odczytać lub uzyskać dostępu do folderu, w którym zapisywane są światy gry!
 selectServer.direct=Połącz od razu
 resourcePack.title=Wybierz paczki zasobów

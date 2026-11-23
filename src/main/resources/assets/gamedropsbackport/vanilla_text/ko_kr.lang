@@ -1,7 +1,12 @@
 advancements.story.enter_the_nether.description=네더 차원문을 짓고, 불을 붙여 들어가세요
 advancements.story.iron_tools.title=이젠 철 좀 들어라
 build.tooHigh=건축 높이 제한은 %s입니다
+gui.toMenu=서버 목록으로 돌아가기
+gui.toTitle=타이틀 화면으로 돌아가기
+menu.savingLevel=세계 저장 중
 options.languageWarning=번역은 100%% 정확하지 않을 수 있습니다.
+outOfMemory.message=Minecraft가 메모리를 전부 사용해 버렸습니다.\n\nJava 가상 머신이 메모리를 충분하게 할당받지 못했거나, 게임의 버그로 인해 발생한 일일 수 있습니다.\n\n세계 손상을 방지하기 위해 진행 중이던 게임을 중단했습니다. 메인 메뉴로 돌아가 플레이를 이어가실 수 있도록 메모리를 충분히 확보하려 노력했으나, 잘 되지 않았을 수도 있습니다.\n\n이 메시지를 다시 보신다면 게임을 다시 시작해 주세요.
+outOfMemory.title=메모리 부족!
 selectWorld.load_folder_access=게임 세계가 저장되는 폴더를 읽거나 폴더에 접근할 수 없습니다!
 selectServer.direct=직접 연결
 resourcePack.title=리소스 팩 선택

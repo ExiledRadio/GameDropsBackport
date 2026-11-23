@@ -105,7 +105,26 @@ public final class LookAndFeel {
         } catch (ReflectiveOperationException e) {
             GameDropsBackport.LOGGER.warn("Look and feel: could not give Backport Core the High Contrast pack", e);
         }
+        // 26.2's flat sign editing (Trails & Tales' SignEditScreen draws gui/signs/<wood> once 26.2 is the newest).
+        for (String wood : SIGN_WOODS) {
+            String path = "textures/gui/signs/" + wood + ".png";
+            v262.replaceAsset(path, vanilla(path));
+        }
+        // 26.3's check box sprites (Core draws 1.20.2's check box from them) and its End credits.
+        for (String sprite : CHECKBOX_SPRITES) {
+            String path = "textures/gui/sprites/widget/" + sprite + ".png";
+            v263.replaceAsset(path, vanilla(path));
+        }
+        v263.replaceAsset("texts/credits.json", vanilla("texts/credits.json"))
+                .replaceAsset("texts/postcredits.txt", vanilla("texts/postcredits.txt"));
     }
+
+    /** 26.3's vanilla woods with a {@code gui/signs} texture (poplar's is this mod's own sign's). */
+    static final String[] SIGN_WOODS = {"acacia", "bamboo", "birch", "cherry", "crimson", "dark_oak", "jungle", "mangrove", "oak",
+            "pale_oak", "spruce", "warped"};
+
+    /** 26.3's {@code widget/checkbox} sprites. */
+    static final String[] CHECKBOX_SPRITES = {"checkbox", "checkbox_highlighted", "checkbox_selected", "checkbox_selected_highlighted"};
 
     /** 26.2's pause-menu row sprites and {@code toast/system}, in the row's order. */
     static final String[] PAUSE_SPRITES = {"pause_menu/bug", "pause_menu/social_interactions", "friends/friends",

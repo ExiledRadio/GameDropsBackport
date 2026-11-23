@@ -1,7 +1,12 @@
 advancements.story.enter_the_nether.description=建造、點燃並進入地獄傳送門
 advancements.story.iron_tools.title=莫非這是鐵鎬？
 build.tooHigh=建築高度上限為 %s
+gui.toMenu=返回伺服器清單
+gui.toTitle=返回標題畫面
+menu.savingLevel=正在儲存世界
 options.languageWarning=語言翻譯並不一定是 100%% 精確。
+outOfMemory.message=Minecraft 記憶體不足。\n\n可能是由於遊戲錯誤，或配置給 Java 虛擬機器的記憶體不足。\n\n為防止世界損毀，已結束目前遊戲。我們已嘗試釋放記憶體，讓您返回主選單並繼續遊玩，但這個方法也可能無法解決問題。\n\n如果您再次看到此訊息，請重新啟動遊戲。
+outOfMemory.title=記憶體不足！
 selectWorld.load_folder_access=無法讀取或存取遊戲世界存檔所在的資料夾！
 selectServer.direct=直接連線
 resourcePack.title=選擇資源包

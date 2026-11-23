@@ -163,6 +163,14 @@ final class LookFeelSelfTest implements SelfTest {
             langs += resource("vanilla_text/" + code + ".lang") ? 1 : 0;
         }
         check.ok(langs == codes.length, "vanilla text languages: " + langs);
+        check.ok(en.contains("gui.toMenu=Back to Server List") && en.contains("menu.savingLevel=Saving world")
+                && en.contains("outOfMemory.title=Out of memory!"), "vanilla text for Core 1.4.5's screens");
+
+        // Core 1.4.5's screens: the check box sprites, the vanilla woods' flat signs, the End credits.
+        for (String path : new String[] {"textures/gui/sprites/widget/checkbox.png", "textures/gui/sprites/widget/checkbox_selected_highlighted.png",
+                "textures/gui/signs/oak.png", "textures/gui/signs/pale_oak.png", "texts/credits.json", "texts/postcredits.txt"}) {
+            check.ok(Presentation.asset(path) != null && resource("vanilla/" + path), "Core serves " + path);
+        }
 
         // World Options' rules (26.3's WorldOptionsScreen).
         check.ok(WorldOptionsRules.gameModeActive(false, true) && !WorldOptionsRules.gameModeActive(true, true)

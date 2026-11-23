@@ -26,6 +26,18 @@ for path in ("pause_menu/bug", "pause_menu/social_interactions", "friends/friend
     path = "textures/gui/sprites/%s.png" % path
     assets.write("vanilla/" + path, png_rgba.keyed_to_rgba(assets.jar_bytes("assets/minecraft/" + path)))
 
+# 26.3's check box sprites (Backport Core draws 1.20.2's check box from them), 26.2's flat sign textures for the
+# twelve vanilla woods (Trails & Tales' sign editor), and the End credits (Core reads credits.json as 26.3 does).
+for path in ("checkbox", "checkbox_highlighted", "checkbox_selected", "checkbox_selected_highlighted"):
+    path = "textures/gui/sprites/widget/%s.png" % path
+    assets.write("vanilla/" + path, png_rgba.keyed_to_rgba(assets.jar_bytes("assets/minecraft/" + path)))
+for wood in ("acacia", "bamboo", "birch", "cherry", "crimson", "dark_oak", "jungle", "mangrove", "oak", "pale_oak", "spruce",
+             "warped"):
+    path = "textures/gui/signs/%s.png" % wood
+    assets.write("vanilla/" + path, png_rgba.keyed_to_rgba(assets.jar_bytes("assets/minecraft/" + path)))
+for path in ("texts/credits.json", "texts/postcredits.txt"):
+    assets.write("vanilla/" + path, assets.jar_bytes("assets/minecraft/" + path))
+
 # 26.2's menu tracks (fingerspit). The sulfur caves stream already ships some under the same paths.
 for track in ("ebb", "home", "memories", "nightly", "shores"):
     assets.write("sounds/music/game/%s.ogg" % track, assets._object("minecraft/sounds/music/game/%s.ogg" % track))
@@ -51,7 +63,11 @@ for version in ("26.2", "26.3"):
 # Vanilla text: 1.12.2 keys whose English 26.x reworded (between 1.21.11 and 26.3) and that mean the same in 1.12.2.
 REWORDED = ["advancements.story.enter_the_nether.description", "advancements.story.iron_tools.title", "build.tooHigh",
             "options.languageWarning", "selectWorld.load_folder_access"]
-assets.write("vanilla_text/en_us.lang", "".join("%s=%s\n" % (k, assets.name(k)) for k in REWORDED))
+# And the screens Backport Core lays out as 26.3's: the disconnected screen's button, "Saving world", out of memory.
+SCREENS = ["gui.toMenu", "gui.toTitle", "menu.savingLevel", "outOfMemory.title", "outOfMemory.message"]
+# One line per key: a line break is written as \n (vanilla_text.py does the same for the other languages).
+assets.write("vanilla_text/en_us.lang", "".join("%s=%s\n" % (k, assets.name(k).replace("\n", "\\n"))
+                                                for k in sorted(REWORDED + SCREENS)))
 
 # Names: the menu tracks' toast names and the World Options screen, by Mojang's 26.3 keys.
 KEYS = ["music.game.%s" % t for t in ("ebb", "home", "memories", "nightly", "shores")] + [

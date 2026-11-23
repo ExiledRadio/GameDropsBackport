@@ -1,7 +1,12 @@
 advancements.story.enter_the_nether.description=Bir Nether geçidi inşa edin, yakın ve geçide girin
 advancements.story.iron_tools.title=Demir Kazma Değil Mi?
 build.tooHigh=İnşa için yükseklik sınırı %s bloktur
+gui.toMenu=Sunucu Listesine Dön
+gui.toTitle=Ana Menüye Dön
+menu.savingLevel=Dünya kaydediliyor
 options.languageWarning=Dil çevirileri %%100 kesin olmayabilir
+outOfMemory.message=Minecraft’ın belleği tükendi.\n\nBu, oyundaki bir hatadan veya Java Sanal Makinesine yeterli bellek atanmamasından kaynaklanmış olabilir.\n\nDünya bozulmasını önlemek için geçerli oyun kapatıldı. Ana menüye geri dönüp oynamayı sürdürebilmeniz için yeterli bellek boşaltmaya çalıştık ancak işe yaramamış olabilir.\n\nBu iletiyi tekrar görürseniz lütfen oyunu yeniden başlatın.
+outOfMemory.title=Yetersiz bellek!
 selectWorld.load_folder_access=Oyun dünyalarının kaydedildiği dizin okunamıyor ve erişilemiyor!
 selectServer.direct=Doğrudan Bağlantı
 resourcePack.title=Kaynak Paketi Seç

@@ -96,6 +96,15 @@ public final class LookAndFeel {
                     .panoramaOverlay(new ResourceLocation(ID, "textures/gui/title/background/panorama_overlay.png"));
         }
         v263.vanillaText(new ResourceLocation(ID, "vanilla_text"));
+        // 26.3's built-in High Contrast pack (tools/lookfeel/high_contrast.py): Core serves it while its High Contrast
+        // option is on. Contribution.highContrast is Core 1.4.5's; on 1.4.4 there is no such option, so nothing to do.
+        try {
+            Contribution.class.getMethod("highContrast", ResourceLocation.class).invoke(v263, new ResourceLocation(ID, "vanilla/high_contrast"));
+        } catch (NoSuchMethodException e) {
+            // Core 1.4.4.
+        } catch (ReflectiveOperationException e) {
+            GameDropsBackport.LOGGER.warn("Look and feel: could not give Backport Core the High Contrast pack", e);
+        }
     }
 
     /** 26.2's pause-menu row sprites and {@code toast/system}, in the row's order. */

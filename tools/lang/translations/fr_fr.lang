@@ -10,6 +10,8 @@ config.gamedropsbackport.sulfurCube=Cube de soufre
 config.gamedropsbackport.sulfurCube.tooltip=Le cube de soufre.
 config.gamedropsbackport.sulfurCube.enabled=Activé
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Désactivé, rien n'est enregistré, et un monde qui en contient déjà les perd.
+config.gamedropsbackport.sulfurCube.extraBlocks=Blocs supplémentaires
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=D'autres blocs qu'un cube de soufre avale, un par ligne : modid:bloc=type ou modid:bloc@meta=type. Les types sont bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Les blocs qu'un autre mod inscrit dans le dictionnaire de minerais comme pierre, pierre taillée, bûches, planches, laine, minerais ou blocs de métal sont déjà avalés.
 config.gamedropsbackport.sulfurCaves=Cavernes et sources de soufre
 config.gamedropsbackport.sulfurCaves.tooltip=Les cavernes de soufre et les sources de soufre.
 config.gamedropsbackport.sulfurCaves.enabled=Activé

@@ -1,3 +1,7 @@
+# 1.0.1
+
+*   **Sulfur cubes swallow other mods' blocks** that those mods list in the ore dictionary as stone, cobblestone, logs, planks, wool, ores or metal blocks, as 26.3's item tags take other mods' blocks. The new `sulfurCube.extraBlocks` setting adds any other block, with the kind of cube it makes (`modid:block=kind`).
+
 # 1.0.0
 
 First release: Minecraft's 26.1, 26.2 and 26.3 game drops on Minecraft 1.12.2.

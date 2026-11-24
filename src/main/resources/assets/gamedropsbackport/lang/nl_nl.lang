@@ -9,6 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=Zwavel- en cinnaberblokken, reactief zwa
 config.gamedropsbackport.sulfur.enabled.tooltip=Uit wordt er niets geregistreerd, en een wereld die ze heeft, raakt ze kwijt.
 config.gamedropsbackport.sulfurCube.tooltip=De zwavelkubus.
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Uit wordt er niets geregistreerd, en een wereld die ze heeft, raakt ze kwijt.
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Meer blokken die een zwavelkubus inslikt, één per regel: modid:blok=soort of modid:blok@meta=soort. De soorten zijn bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Blokken die een andere mod in het ertswoordenboek opneemt als steen, keien, stammen, planken, wol, ertsen of metaalblokken worden al ingeslikt.
 config.gamedropsbackport.sulfurCaves.tooltip=De zwavelgrotten en zwavelbronnen.
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=Zwavelgrotten en zwavelbronnen ontstaan in nieuw gegenereerde chunks.
 config.gamedropsbackport.poplar.tooltip=Populierenhout, de rode struik, elfenbankjes en het populierenbos.
@@ -58,6 +59,7 @@ config.gamedropsbackport.sulfur=Zwavel en cinnaber
 config.gamedropsbackport.sulfur.enabled=Ingeschakeld
 config.gamedropsbackport.sulfurCube=Zwavelkubus
 config.gamedropsbackport.sulfurCube.enabled=Ingeschakeld
+config.gamedropsbackport.sulfurCube.extraBlocks=Extra blokken
 config.gamedropsbackport.sulfurCaves=Zwavelgrotten en -bronnen
 config.gamedropsbackport.sulfurCaves.enabled=Ingeschakeld
 config.gamedropsbackport.poplar=Populier en populierenbos

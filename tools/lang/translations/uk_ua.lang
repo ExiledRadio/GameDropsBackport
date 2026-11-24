@@ -10,6 +10,8 @@ config.gamedropsbackport.sulfurCube=Сіркокуб
 config.gamedropsbackport.sulfurCube.tooltip=Сіркокуб.
 config.gamedropsbackport.sulfurCube.enabled=Увімкнено
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Коли налаштування вимкнене, нічого не реєструється, а світ, у якому вони є, їх утрачає.
+config.gamedropsbackport.sulfurCube.extraBlocks=Додаткові блоки
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Інші блоки, які ковтає сірчаний куб, по одному в рядку: modid:block=вид або modid:block@meta=вид. Види: bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Блоки, які інший мод вносить до словника руд як камінь, кругляк, колоди, дошки, вовну, руди чи блоки металів, уже ковтаються.
 config.gamedropsbackport.sulfurCaves=Сірчані печери та джерела
 config.gamedropsbackport.sulfurCaves.tooltip=Сірчані печери та сірчані джерела.
 config.gamedropsbackport.sulfurCaves.enabled=Увімкнено

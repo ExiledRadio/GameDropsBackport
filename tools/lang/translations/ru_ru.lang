@@ -10,6 +10,8 @@ config.gamedropsbackport.sulfurCube=Серный куб
 config.gamedropsbackport.sulfurCube.tooltip=Серный куб.
 config.gamedropsbackport.sulfurCube.enabled=Включено
 config.gamedropsbackport.sulfurCube.enabled.tooltip=При выключенной настройке ничего не регистрируется, а мир, в котором они есть, их теряет.
+config.gamedropsbackport.sulfurCube.extraBlocks=Дополнительные блоки
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Другие блоки, которые глотает серный куб, по одному в строке: modid:block=вид или modid:block@meta=вид. Виды: bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Блоки, которые другой мод вносит в словарь руд как камень, булыжник, брёвна, доски, шерсть, руды или блоки металлов, уже глотаются.
 config.gamedropsbackport.sulfurCaves=Серные пещеры и источники
 config.gamedropsbackport.sulfurCaves.tooltip=Серные пещеры и серные источники.
 config.gamedropsbackport.sulfurCaves.enabled=Включено

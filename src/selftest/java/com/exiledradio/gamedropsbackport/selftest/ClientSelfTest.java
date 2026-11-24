@@ -206,6 +206,7 @@ public final class ClientSelfTest {
     }
 
     private void scenes(Minecraft mc) {
+        strawBedSleep(mc);
         // Blocks, items, mobs and their screens first: World Options below switches the player to adventure.
         new ClientScenes(this, mc).add(this.steps);
         // The other backports' babies (Trails & Tales, Wild Update), when their dev jars are on the classpath.
@@ -566,6 +567,102 @@ public final class ClientSelfTest {
             }
         }
         return false;
+    }
+
+    /**
+     * The straw bed through the real client path: a right click at night lays the player down (the sleep screen), and
+     * the screen's Leave Bed button gets them up again, closes the screen and breaks the bed.
+     */
+    private void strawBedSleep(Minecraft mc) {
+        final net.minecraft.util.math.BlockPos[] bed = new net.minecraft.util.math.BlockPos[2];
+        this.steps.add(() -> {
+            net.minecraft.entity.player.EntityPlayerMP sp = mc.getIntegratedServer().getPlayerList().getPlayerByUUID(mc.player.getUniqueID());
+            net.minecraft.util.math.BlockPos foot = new net.minecraft.util.math.BlockPos(sp).east(2);
+            bed[0] = foot;
+            bed[1] = foot.north();
+            mc.getIntegratedServer().addScheduledTask(() -> {
+                net.minecraft.block.state.IBlockState s = com.exiledradio.gamedropsbackport.softblocks.SoftBlocks.strawBed.getDefaultState()
+                        .withProperty(net.minecraft.block.BlockHorizontal.FACING, net.minecraft.util.EnumFacing.NORTH);
+                sp.world.setBlockState(bed[0], s.withProperty(net.minecraft.block.BlockBed.PART, net.minecraft.block.BlockBed.EnumPartType.FOOT), 3);
+                sp.world.setBlockState(bed[1], s.withProperty(net.minecraft.block.BlockBed.PART, net.minecraft.block.BlockBed.EnumPartType.HEAD), 3);
+                sp.world.setWorldTime(18000L);
+            });
+            return 40;
+        });
+        this.steps.add(() -> {
+            mc.playerController.processRightClickBlock(mc.player, mc.world, bed[0], net.minecraft.util.EnumFacing.UP,
+                    new net.minecraft.util.math.Vec3d(bed[0].getX() + 0.5, bed[0].getY() + 0.25, bed[0].getZ() + 0.5),
+                    net.minecraft.util.EnumHand.MAIN_HAND);
+            return 60;
+        });
+        this.steps.add(() -> {
+            ok(mc.player.isPlayerSleeping() && mc.currentScreen instanceof net.minecraft.client.gui.GuiSleepMP,
+                    "straw bed: a right click at night lays the player down (" + mc.player.isPlayerSleeping() + ", " + mc.currentScreen + ")");
+            shot("straw_bed_sleeping.png");
+            if (mc.currentScreen instanceof net.minecraft.client.gui.GuiSleepMP) {
+                GuiButton leave = button(mc.currentScreen, 1);
+                ok(leave != null, "straw bed: the sleep screen has Leave Bed");
+                if (leave != null) {
+                    click(mc.currentScreen, leave);
+                }
+            }
+            return 60;
+        });
+        this.steps.add(() -> {
+            net.minecraft.entity.player.EntityPlayerMP sp = mc.getIntegratedServer().getPlayerList().getPlayerByUUID(mc.player.getUniqueID());
+            ok(!sp.isPlayerSleeping(), "straw bed: Leave Bed wakes the player on the server");
+            ok(!mc.player.isPlayerSleeping() && !(mc.currentScreen instanceof net.minecraft.client.gui.GuiSleepMP),
+                    "straw bed: Leave Bed gets the player up on the client and closes the screen (" + mc.player.isPlayerSleeping()
+                            + ", " + mc.currentScreen + ")");
+            ok(sp.world.isAirBlock(bed[0]) && sp.world.isAirBlock(bed[1]), "straw bed: getting up breaks the bed");
+            shot("straw_bed_left.png");
+            mc.getIntegratedServer().addScheduledTask(() -> {
+                if (sp.isPlayerSleeping()) {
+                    sp.wakeUpPlayer(true, true, false);
+                }
+                sp.world.setBlockToAir(bed[1]);
+                sp.world.setBlockToAir(bed[0]);
+                sp.world.setWorldTime(6000L);
+            });
+            mc.displayGuiScreen(null);
+            return 40;
+        });
+        // The other way up: sleeping through the night (the server wakes every sleeper at dawn).
+        this.steps.add(() -> {
+            net.minecraft.entity.player.EntityPlayerMP sp = mc.getIntegratedServer().getPlayerList().getPlayerByUUID(mc.player.getUniqueID());
+            mc.getIntegratedServer().addScheduledTask(() -> {
+                net.minecraft.block.state.IBlockState s = com.exiledradio.gamedropsbackport.softblocks.SoftBlocks.strawBed.getDefaultState()
+                        .withProperty(net.minecraft.block.BlockHorizontal.FACING, net.minecraft.util.EnumFacing.NORTH);
+                sp.world.setBlockState(bed[0], s.withProperty(net.minecraft.block.BlockBed.PART, net.minecraft.block.BlockBed.EnumPartType.FOOT), 3);
+                sp.world.setBlockState(bed[1], s.withProperty(net.minecraft.block.BlockBed.PART, net.minecraft.block.BlockBed.EnumPartType.HEAD), 3);
+                sp.world.setWorldTime(18000L);
+            });
+            return 40;
+        });
+        this.steps.add(() -> {
+            mc.playerController.processRightClickBlock(mc.player, mc.world, bed[0], net.minecraft.util.EnumFacing.UP,
+                    new net.minecraft.util.math.Vec3d(bed[0].getX() + 0.5, bed[0].getY() + 0.25, bed[0].getZ() + 0.5),
+                    net.minecraft.util.EnumHand.MAIN_HAND);
+            return 200;
+        });
+        this.steps.add(() -> {
+            net.minecraft.entity.player.EntityPlayerMP sp = mc.getIntegratedServer().getPlayerList().getPlayerByUUID(mc.player.getUniqueID());
+            long time = sp.world.getWorldTime() % 24000L;
+            ok(time < 12000L, "straw bed: sleeping skips the night (time " + time + ")");
+            ok(!sp.isPlayerSleeping() && !mc.player.isPlayerSleeping() && !(mc.currentScreen instanceof net.minecraft.client.gui.GuiSleepMP),
+                    "straw bed: at dawn the player is up on both sides and the sleep screen is closed (" + mc.currentScreen + ")");
+            ok(sp.world.isAirBlock(bed[0]) && sp.world.isAirBlock(bed[1]), "straw bed: waking at dawn breaks the bed");
+            mc.getIntegratedServer().addScheduledTask(() -> {
+                if (sp.isPlayerSleeping()) {
+                    sp.wakeUpPlayer(true, true, false);
+                }
+                sp.world.setBlockToAir(bed[1]);
+                sp.world.setBlockToAir(bed[0]);
+                sp.world.setWorldTime(6000L);
+            });
+            mc.displayGuiScreen(null);
+            return 40;
+        });
     }
 
     private int oldPort;

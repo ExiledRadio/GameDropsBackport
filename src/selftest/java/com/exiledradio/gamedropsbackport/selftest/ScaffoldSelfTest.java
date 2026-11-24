@@ -32,7 +32,7 @@ final class ScaffoldSelfTest implements SelfTest {
     public void run(Check check) throws Exception {
         check.ok(Loader.isModLoaded(GameDropsBackport.MOD_ID), "the mod is loaded");
         check.ok(Loader.isModLoaded("backportcore"), "Backport Core is loaded");
-        check.eq("1.0.0", Loader.instance().getIndexedModList().get(GameDropsBackport.MOD_ID).getVersion(), "mod version");
+        check.eq("1.0.1", Loader.instance().getIndexedModList().get(GameDropsBackport.MOD_ID).getVersion(), "mod version");
 
         Set<String> lang = langKeys();
         check.ok(lang.size() > 0, "en_us.lang has keys");

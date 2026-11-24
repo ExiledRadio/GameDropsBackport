@@ -23,6 +23,10 @@ import java.util.Set;
  * <p>Each 26.3 name resolves to 1.12.2's item and metadata where 1.12.2 has the block (the flattening's old names);
  * otherwise to the block of that name from this mod or another family mod, when that mod is installed (Rule 2), and
  * to nothing when none is. Item tags become 1.12.2's ore dictionary names or 1.12.2's colored blocks.
+ *
+ * <p>Other mods add blocks to a 26.3 tag; a 1.12.2 mod lists its blocks in the ore dictionary instead. So each list also
+ * takes the ore dictionary names of the blocks it names (stone, cobblestone, blockIron, oreGold, blockWool, ...), and
+ * the {@code sulfurCube.extraBlocks} setting adds any other block, as a data pack would.
  */
 public final class ArchetypeItems {
 
@@ -123,9 +127,9 @@ public final class ArchetypeItems {
         LISTS.put(Archetype.FAST_SLIDING, "blue_ice packed_ice snow_block");
         LISTS.put(Archetype.HIGH_RESISTANCE, "soul_sand soul_soil");
         LISTS.put(Archetype.HOT, "magma_block");
-        LISTS.put(Archetype.LIGHT, "#wool");
+        LISTS.put(Archetype.LIGHT, "#wool ore:blockWool");
         LISTS.put(Archetype.REGULAR, "#concrete_powders mud muddy_mangrove_roots packed_mud coal_block dirt coarse_dirt "
-                + "rooted_dirt podzol grass_block clay bone_block");
+                + "rooted_dirt podzol grass_block clay bone_block ore:dirt ore:grass ore:blockCoal");
         LISTS.put(Archetype.SLOW_BOUNCY, "amethyst_block andesite basalt blackstone bricks calcite chiseled_cinnabar "
                 + "chiseled_deepslate chiseled_nether_bricks chiseled_polished_blackstone chiseled_quartz_block "
                 + "chiseled_red_sandstone chiseled_sandstone chiseled_stone_bricks chiseled_sulfur chiseled_tuff "
@@ -140,7 +144,11 @@ public final class ArchetypeItems {
                 + "quartz_bricks nether_quartz_ore quartz_pillar red_nether_bricks red_sandstone redstone_lamp sandstone "
                 + "sea_lantern smooth_basalt smooth_quartz smooth_red_sandstone smooth_sandstone smooth_stone stone "
                 + "stone_bricks sulfur sulfur_bricks tuff tuff_bricks warped_nylium #concrete #coal_ores #lapis_ores "
-                + "#redstone_ores #diamond_ores #emerald_ores #terracotta #glazed_terracotta");
+                + "#redstone_ores #diamond_ores #emerald_ores #terracotta #glazed_terracotta ore:stone ore:cobblestone "
+                + "ore:stoneGranite ore:stoneGranitePolished ore:stoneDiorite ore:stoneDioritePolished ore:stoneAndesite "
+                + "ore:stoneAndesitePolished ore:sandstone ore:obsidian ore:netherrack ore:endstone ore:blockQuartz "
+                + "ore:blockPrismarine ore:blockDiamond ore:blockEmerald ore:blockLapis ore:oreCoal ore:oreLapis "
+                + "ore:oreRedstone ore:oreDiamond ore:oreEmerald ore:oreQuartz");
         LISTS.put(Archetype.SLOW_FLAT, "iron_block gold_block raw_copper_block raw_gold_block raw_iron_block #gold_ores "
                 + "#iron_ores #copper_ores netherite_block ancient_debris copper_block exposed_copper weathered_copper "
                 + "oxidized_copper waxed_copper_block waxed_exposed_copper waxed_weathered_copper waxed_oxidized_copper "
@@ -149,7 +157,8 @@ public final class ArchetypeItems {
                 + "exposed_cut_copper weathered_cut_copper oxidized_cut_copper waxed_cut_copper waxed_exposed_cut_copper "
                 + "waxed_weathered_cut_copper waxed_oxidized_cut_copper chiseled_copper exposed_chiseled_copper "
                 + "weathered_chiseled_copper oxidized_chiseled_copper waxed_chiseled_copper waxed_exposed_chiseled_copper "
-                + "waxed_weathered_chiseled_copper waxed_oxidized_chiseled_copper");
+                + "waxed_weathered_chiseled_copper waxed_oxidized_chiseled_copper ore:blockIron ore:blockGold "
+                + "ore:blockCopper ore:oreIron ore:oreGold ore:oreCopper");
         LISTS.put(Archetype.SLOW_SLIDING, "brown_mushroom_block red_mushroom_block mushroom_stem mycelium #wart_blocks "
                 + "shroomlight");
         LISTS.put(Archetype.STICKY, "honeycomb_block");
@@ -175,24 +184,71 @@ public final class ArchetypeItems {
         for (Map.Entry<Archetype, String> e : LISTS.entrySet()) {
             for (String name : e.getValue().split(" ")) {
                 for (ItemStack stack : resolve(name)) {
-                    Map<Integer, Archetype> metas = BY_ITEM.get(stack.getItem());
-                    if (metas == null) {
-                        metas = new HashMap<Integer, Archetype>();
-                        BY_ITEM.put(stack.getItem(), metas);
-                    }
-                    int meta = stack.getMetadata() == OreDictionary.WILDCARD_VALUE ? -1 : stack.getMetadata();
-                    if (!metas.containsKey(meta)) {
-                        metas.put(meta, e.getKey());
-                    }
+                    add(stack, e.getKey());
                 }
             }
         }
+        for (String entry : com.exiledradio.gamedropsbackport.ModConfig.sulfurCube.extraBlocks) {
+            extra(entry);
+        }
+    }
+
+    private static void add(ItemStack stack, Archetype archetype) {
+        Map<Integer, Archetype> metas = BY_ITEM.get(stack.getItem());
+        if (metas == null) {
+            metas = new HashMap<Integer, Archetype>();
+            BY_ITEM.put(stack.getItem(), metas);
+        }
+        int meta = stack.getMetadata() == OreDictionary.WILDCARD_VALUE ? -1 : stack.getMetadata();
+        if (!metas.containsKey(meta)) {
+            metas.put(meta, archetype);
+        }
+    }
+
+    /** One {@code sulfurCube.extraBlocks} entry: {@code modid:block=kind} or {@code modid:block@meta=kind}. */
+    public static boolean extra(String entry) {
+        String s = entry.trim();
+        int eq = s.lastIndexOf('=');
+        if (s.isEmpty() || eq < 0) {
+            if (!s.isEmpty()) {
+                GameDropsBackport.LOGGER.warn("sulfurCube.extraBlocks: \"{}\" is not modid:block=kind", entry);
+            }
+            return false;
+        }
+        String id = s.substring(0, eq).trim();
+        String kind = s.substring(eq + 1).trim();
+        Archetype archetype = null;
+        for (Archetype a : Archetype.values()) {
+            if (a != Archetype.NONE && a.id.equalsIgnoreCase(kind)) {
+                archetype = a;
+            }
+        }
+        int meta = OreDictionary.WILDCARD_VALUE;
+        int at = id.indexOf('@');
+        try {
+            if (at >= 0) {
+                meta = Integer.parseInt(id.substring(at + 1).trim());
+                id = id.substring(0, at).trim();
+            }
+        } catch (NumberFormatException e) {
+            archetype = null;
+        }
+        Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
+        if (archetype == null || item == null || item == net.minecraft.init.Items.AIR) {
+            GameDropsBackport.LOGGER.warn("sulfurCube.extraBlocks: \"{}\" names no {}", entry,
+                    archetype == null ? "kind (bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, "
+                            + "regular, slow_bouncy, slow_flat, slow_sliding, sticky)" : "item");
+            return false;
+        }
+        add(new ItemStack(item, 1, meta), archetype);
+        return true;
     }
 
     /** @return the stacks (metadata WILDCARD for any) a 26.3 name or tag stands for here; empty when none exists */
     static List<ItemStack> resolve(String name) {
         Set<ItemStack> out = new LinkedHashSet<ItemStack>();
-        String[] forms = name.startsWith("#") ? TAGS.get(name) : OLD.get(name);
+        String[] forms = name.startsWith("ore:") ? new String[]{name}
+                : name.startsWith("#") ? TAGS.get(name) : OLD.get(name);
         if (forms == null) {
             forms = new String[]{name + "@0"};
         }

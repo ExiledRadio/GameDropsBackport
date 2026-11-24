@@ -10,6 +10,8 @@ config.gamedropsbackport.sulfurCube=Cubo de Enxofre
 config.gamedropsbackport.sulfurCube.tooltip=O cubo de enxofre.
 config.gamedropsbackport.sulfurCube.enabled=Ativado
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Desativado, nada é registrado, e um mundo que já os tem os perde.
+config.gamedropsbackport.sulfurCube.extraBlocks=Blocos extras
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Mais blocos que um cubo de enxofre engole, um por linha: modid:bloco=tipo ou modid:bloco@meta=tipo. Os tipos são bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Blocos que outro mod registra no dicionário de minérios como pedra, pedregulho, troncos, tábuas, lã, minérios ou blocos de metal já são engolidos.
 config.gamedropsbackport.sulfurCaves=Cavernas e fontes de enxofre
 config.gamedropsbackport.sulfurCaves.tooltip=As cavernas de enxofre e as fontes de enxofre.
 config.gamedropsbackport.sulfurCaves.enabled=Ativado

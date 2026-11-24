@@ -9,6 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=Schwefel- und Zinnoberblöcke, reaktiver
 config.gamedropsbackport.sulfur.enabled.tooltip=Ausgeschaltet wird nichts registriert, und eine Welt, die sie enthält, verliert sie.
 config.gamedropsbackport.sulfurCube.tooltip=Der Schwefelwürfel.
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Ausgeschaltet wird nichts registriert, und eine Welt, die sie enthält, verliert sie.
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Weitere Blöcke, die ein Schwefelwürfel verschluckt, einer pro Zeile: modid:block=art oder modid:block@meta=art. Die Arten sind bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Blöcke, die eine andere Mod im Erzwörterbuch als Stein, Bruchstein, Stämme, Bretter, Wolle, Erze oder Metallblöcke führt, werden bereits verschluckt.
 config.gamedropsbackport.sulfurCaves.tooltip=Die Schwefelhöhlen und Schwefelquellen.
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=Schwefelhöhlen und Schwefelquellen entstehen in neu generierten Chunks.
 config.gamedropsbackport.poplar.tooltip=Pappelholz, der rote Strauch, Baumpilze und der Rotlaubwald.
@@ -58,6 +59,7 @@ config.gamedropsbackport.sulfur=Schwefel und Zinnober
 config.gamedropsbackport.sulfur.enabled=Aktiviert
 config.gamedropsbackport.sulfurCube=Schwefelwürfel
 config.gamedropsbackport.sulfurCube.enabled=Aktiviert
+config.gamedropsbackport.sulfurCube.extraBlocks=Weitere Blöcke
 config.gamedropsbackport.sulfurCaves=Schwefelhöhlen und -quellen
 config.gamedropsbackport.sulfurCaves.enabled=Aktiviert
 config.gamedropsbackport.poplar=Pappel und Rotlaubwald

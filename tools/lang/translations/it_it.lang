@@ -10,6 +10,8 @@ config.gamedropsbackport.sulfurCube=Cubo di zolfo
 config.gamedropsbackport.sulfurCube.tooltip=Il cubo di zolfo.
 config.gamedropsbackport.sulfurCube.enabled=Attivato
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Se disattivato, non viene registrato nulla, e un mondo che li contiene già li perde.
+config.gamedropsbackport.sulfurCube.extraBlocks=Blocchi aggiuntivi
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Altri blocchi che un cubo di zolfo inghiotte, uno per riga: modid:blocco=tipo o modid:blocco@meta=tipo. I tipi sono bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. I blocchi che un'altra mod elenca nel dizionario dei minerali come pietra, pietrisco, tronchi, assi, lana, minerali o blocchi di metallo vengono già inghiottiti.
 config.gamedropsbackport.sulfurCaves=Caverne e sorgenti di zolfo
 config.gamedropsbackport.sulfurCaves.tooltip=Le caverne di zolfo e le sorgenti di zolfo.
 config.gamedropsbackport.sulfurCaves.enabled=Attivato

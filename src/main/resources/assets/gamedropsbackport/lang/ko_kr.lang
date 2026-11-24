@@ -9,6 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=유황과 진사 블록, 독한 유황, 
 config.gamedropsbackport.sulfur.enabled.tooltip=끄면 아무것도 등록되지 않으며, 이것들이 있는 세계에서는 사라집니다.
 config.gamedropsbackport.sulfurCube.tooltip=유황 큐브.
 config.gamedropsbackport.sulfurCube.enabled.tooltip=끄면 아무것도 등록되지 않으며, 이것들이 있는 세계에서는 사라집니다.
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=유황 큐브가 삼키는 블록을 한 줄에 하나씩 추가합니다: modid:block=종류 또는 modid:block@meta=종류. 종류는 bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky입니다. 다른 모드가 광석 사전에 돌, 조약돌, 원목, 판자, 양털, 광석, 금속 블록으로 등록한 블록은 이미 삼킵니다.
 config.gamedropsbackport.sulfurCaves.tooltip=유황 동굴과 유황천.
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=유황 동굴과 유황천이 새로 생성되는 청크에 생성됩니다.
 config.gamedropsbackport.poplar.tooltip=포플러나무 목재, 붉은 관목, 선반 버섯, 얼룩덜룩한 숲.
@@ -58,6 +59,7 @@ config.gamedropsbackport.sulfur=유황과 진사
 config.gamedropsbackport.sulfur.enabled=활성화
 config.gamedropsbackport.sulfurCube=유황 큐브
 config.gamedropsbackport.sulfurCube.enabled=활성화
+config.gamedropsbackport.sulfurCube.extraBlocks=추가 블록
 config.gamedropsbackport.sulfurCaves=유황 동굴과 유황천
 config.gamedropsbackport.sulfurCaves.enabled=활성화
 config.gamedropsbackport.poplar=포플러나무와 얼룩덜룩한 숲

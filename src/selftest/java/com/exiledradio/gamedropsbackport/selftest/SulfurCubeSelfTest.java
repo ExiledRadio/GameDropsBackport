@@ -110,6 +110,24 @@ final class SulfurCubeSelfTest implements SelfTest {
         check.eq(Archetype.BOUNCY, ArchetypeItems.of(new ItemStack(Blocks.LOG2, 1, 1)), "dark oak log");
         check.eq(Archetype.SLOW_BOUNCY, ArchetypeItems.of(new ItemStack(Blocks.STONE, 1, 1)), "granite");
         check.eq(Archetype.SLOW_BOUNCY, ArchetypeItems.of(new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 9)), "cyan terracotta");
+        // Other mods's blocks: by the ore dictionary names of the blocks 26.3's lists name, and by sulfurCube.extraBlocks.
+        for (String ore : new String[]{"stone", "cobblestone", "blockIron", "blockGold", "oreGold", "blockWool", "logWood", "plankWood"}) {
+            for (ItemStack s : net.minecraftforge.oredict.OreDictionary.getOres(ore, false)) {
+                check.ok(ArchetypeItems.of(s.getMetadata() == net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE
+                        ? new ItemStack(s.getItem()) : s) != null, "ore dictionary " + ore + ": " + s.getItem().getRegistryName() + " swallowed");
+            }
+        }
+        check.eq(Archetype.SLOW_FLAT, ArchetypeItems.of(new ItemStack(Blocks.IRON_BLOCK)), "iron block (also ore:blockIron)");
+        check.eq(null, ArchetypeItems.of(new ItemStack(Blocks.BARRIER)), "barrier before extraBlocks");
+        check.ok(ArchetypeItems.extra("minecraft:barrier=light"), "extraBlocks: minecraft:barrier=light accepted");
+        check.eq(Archetype.LIGHT, ArchetypeItems.of(new ItemStack(Blocks.BARRIER)), "extraBlocks: barrier swallowed as light");
+        check.ok(ArchetypeItems.extra("minecraft:stained_glass@14=Hot"), "extraBlocks: a meta and a kind in capitals");
+        check.eq(Archetype.HOT, ArchetypeItems.of(new ItemStack(Blocks.STAINED_GLASS, 1, 14)), "extraBlocks: red stained glass hot");
+        check.eq(null, ArchetypeItems.of(new ItemStack(Blocks.STAINED_GLASS, 1, 13)), "extraBlocks: other stained glass not");
+        check.ok(!ArchetypeItems.extra("minecraft:bedrock") && !ArchetypeItems.extra("minecraft:bedrock=sideways")
+                && !ArchetypeItems.extra("nomod:nothing=light") && !ArchetypeItems.extra("minecraft:bedrock@x=light"),
+                "extraBlocks: malformed entries are refused");
+        check.eq(null, ArchetypeItems.of(new ItemStack(Blocks.BEDROCK)), "extraBlocks: bedrock untouched by refused entries");
         check.eq(Archetype.FAST_FLAT, ArchetypeItems.of(new ItemStack(Blocks.SPONGE, 1, 1)), "wet sponge");
         check.eq(Archetype.FAST_FLAT, ArchetypeItems.of(new ItemStack(Blocks.LIT_PUMPKIN)), "jack o'lantern");
         check.eq(Archetype.REGULAR, ArchetypeItems.of(new ItemStack(Blocks.DIRT, 1, 1)), "coarse dirt");

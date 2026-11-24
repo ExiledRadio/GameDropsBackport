@@ -10,6 +10,8 @@ config.gamedropsbackport.sulfurCube=サルファーキューブ
 config.gamedropsbackport.sulfurCube.tooltip=サルファーキューブ。
 config.gamedropsbackport.sulfurCube.enabled=有効
 config.gamedropsbackport.sulfurCube.enabled.tooltip=オフにすると何も登録されず、これらがあるワールドからは失われます。
+config.gamedropsbackport.sulfurCube.extraBlocks=追加のブロック
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=硫黄キューブが飲み込むブロックを1行に1つずつ追加します: modid:block=種類 または modid:block@meta=種類。種類は bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky です。他のModが鉱石辞書に石、丸石、原木、板材、羊毛、鉱石、金属ブロックとして登録したブロックは、すでに飲み込まれます。
 config.gamedropsbackport.sulfurCaves=硫黄の洞窟と硫黄泉
 config.gamedropsbackport.sulfurCaves.tooltip=硫黄の洞窟と硫黄泉。
 config.gamedropsbackport.sulfurCaves.enabled=有効

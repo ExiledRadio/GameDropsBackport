@@ -10,6 +10,8 @@ config.gamedropsbackport.sulfurCube=Sülfür Küpü
 config.gamedropsbackport.sulfurCube.tooltip=Sülfür küpü.
 config.gamedropsbackport.sulfurCube.enabled=Etkin
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Kapalıyken hiçbir şey kaydedilmez ve bunları içeren bir dünya onları kaybeder.
+config.gamedropsbackport.sulfurCube.extraBlocks=Ek bloklar
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Bir kükürt küpünün yuttuğu başka bloklar, her satıra bir tane: modid:blok=tür veya modid:blok@meta=tür. Türler: bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Başka bir modun cevher sözlüğüne taş, kırıktaş, kütük, tahta, yün, cevher veya metal blok olarak kaydettiği bloklar zaten yutulur.
 config.gamedropsbackport.sulfurCaves=Sülfür mağaraları ve kaynakları
 config.gamedropsbackport.sulfurCaves.tooltip=Sülfür mağaraları ve sülfür kaynakları.
 config.gamedropsbackport.sulfurCaves.enabled=Etkin

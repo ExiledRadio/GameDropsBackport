@@ -8,6 +8,7 @@ config.gamedropsbackport.sulfur.tooltip=Sulfur and cinnabar blocks, potent sulfu
 config.gamedropsbackport.sulfur.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
 config.gamedropsbackport.sulfurCube.tooltip=The sulfur cube.
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=More blocks a sulfur cube swallows, one per line: modid:block=kind or modid:block@meta=kind. The kinds are bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding and sticky. Blocks another mod lists in the ore dictionary as stone, cobblestone, logs, planks, wool, ores or metal blocks are swallowed already.
 config.gamedropsbackport.sulfurCaves.tooltip=The sulfur caves and sulfur springs.
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=Sulfur caves and sulfur springs generate in newly generated chunks.
 config.gamedropsbackport.poplar.tooltip=Poplar wood, the red shrub, shelf mushrooms and the dappled forest.
@@ -57,6 +58,7 @@ config.gamedropsbackport.sulfur=Sulfur and Cinnabar
 config.gamedropsbackport.sulfur.enabled=Enabled
 config.gamedropsbackport.sulfurCube=Sulfur Cube
 config.gamedropsbackport.sulfurCube.enabled=Enabled
+config.gamedropsbackport.sulfurCube.extraBlocks=Extra Blocks
 config.gamedropsbackport.sulfurCaves=Sulfur Caves and Springs
 config.gamedropsbackport.sulfurCaves.enabled=Enabled
 config.gamedropsbackport.poplar=Poplar and the Dappled Forest

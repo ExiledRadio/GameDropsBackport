@@ -1,6 +1,7 @@
 # 1.0.1
 
 *   **Sulfur cubes swallow other mods' blocks** that those mods list in the ore dictionary as stone, cobblestone, logs, planks, wool, ores or metal blocks, as 26.3's item tags take other mods' blocks. The new `sulfurCube.extraBlocks` setting adds any other block, with the kind of cube it makes (`modid:block=kind`).
+*   **Fixed: the straw bed sat off-center in inventory slots**, higher than the other beds. It now lines up with them, as in 26.3.
 
 # 1.0.0
 

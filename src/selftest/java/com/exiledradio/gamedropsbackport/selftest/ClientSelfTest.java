@@ -206,6 +206,18 @@ public final class ClientSelfTest {
     }
 
     private void scenes(Minecraft mc) {
+        this.steps.add(() -> {
+            int[] bed = iconBox(mc, new net.minecraft.item.ItemStack(net.minecraft.init.Items.BED, 1, 14));
+            int[] straw = iconBox(mc, new net.minecraft.item.ItemStack(com.exiledradio.gamedropsbackport.softblocks.SoftBlocks.strawBed));
+            GameDropsBackport.LOGGER.info("CLIENT SELFTEST bed icon box {} straw bed icon box {}", java.util.Arrays.toString(bed),
+                    java.util.Arrays.toString(straw));
+            // As in 26.3, where both items lay their two halves out the same way: centered alike, standing on the same line
+            // (the straw bed is flatter, so its top is lower).
+            ok(Math.abs((bed[0] + bed[2]) - (straw[0] + straw[2])) <= 3 && Math.abs(bed[3] - straw[3]) <= 2,
+                    "straw bed icon centered and standing where the bed's is: bed " + java.util.Arrays.toString(bed) + " straw "
+                            + java.util.Arrays.toString(straw));
+            return 2;
+        });
         strawBedSleep(mc);
         // Blocks, items, mobs and their screens first: World Options below switches the player to adventure.
         new ClientScenes(this, mc).add(this.steps);
@@ -567,6 +579,49 @@ public final class ClientSelfTest {
             }
         }
         return false;
+    }
+
+    /**
+     * An item's inventory icon drawn alone at 4x into a 128x128 buffer: the box {minX, minY, maxX, maxY} of its pixels, in
+     * buffer pixels (the slot is 32..95, with room around it).
+     */
+    private static int[] iconBox(Minecraft mc, net.minecraft.item.ItemStack stack) {
+        net.minecraft.client.shader.Framebuffer fb = new net.minecraft.client.shader.Framebuffer(128, 128, true);
+        fb.setFramebufferColor(0.0F, 0.0F, 0.0F, 0.0F);
+        fb.framebufferClear();
+        fb.bindFramebuffer(true);
+        net.minecraft.client.renderer.GlStateManager.matrixMode(org.lwjgl.opengl.GL11.GL_PROJECTION);
+        net.minecraft.client.renderer.GlStateManager.pushMatrix();
+        net.minecraft.client.renderer.GlStateManager.loadIdentity();
+        net.minecraft.client.renderer.GlStateManager.ortho(0.0D, 32.0D, 32.0D, 0.0D, 1000.0D, 3000.0D);
+        net.minecraft.client.renderer.GlStateManager.matrixMode(org.lwjgl.opengl.GL11.GL_MODELVIEW);
+        net.minecraft.client.renderer.GlStateManager.pushMatrix();
+        net.minecraft.client.renderer.GlStateManager.loadIdentity();
+        net.minecraft.client.renderer.GlStateManager.translate(0.0F, 0.0F, -2000.0F);
+        net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+        mc.getRenderItem().renderItemAndEffectIntoGUI(stack, 8, 8);
+        net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+        java.nio.ByteBuffer buf = org.lwjgl.BufferUtils.createByteBuffer(128 * 128 * 4);
+        org.lwjgl.opengl.GL11.glReadPixels(0, 0, 128, 128, org.lwjgl.opengl.GL11.GL_RGBA, org.lwjgl.opengl.GL11.GL_UNSIGNED_BYTE, buf);
+        net.minecraft.client.renderer.GlStateManager.popMatrix();
+        net.minecraft.client.renderer.GlStateManager.matrixMode(org.lwjgl.opengl.GL11.GL_PROJECTION);
+        net.minecraft.client.renderer.GlStateManager.popMatrix();
+        net.minecraft.client.renderer.GlStateManager.matrixMode(org.lwjgl.opengl.GL11.GL_MODELVIEW);
+        fb.deleteFramebuffer();
+        mc.getFramebuffer().bindFramebuffer(true);
+        int[] box = {128, 128, -1, -1};
+        for (int y = 0; y < 128; y++) {
+            for (int x = 0; x < 128; x++) {
+                if ((buf.get((y * 128 + x) * 4 + 3) & 0xFF) > 16) {
+                    int sy = 127 - y; // glReadPixels counts rows from the bottom
+                    box[0] = Math.min(box[0], x);
+                    box[1] = Math.min(box[1], sy);
+                    box[2] = Math.max(box[2], x);
+                    box[3] = Math.max(box[3], sy);
+                }
+            }
+        }
+        return box;
     }
 
     /**

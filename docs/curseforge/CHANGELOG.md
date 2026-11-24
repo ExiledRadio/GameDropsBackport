@@ -7,7 +7,7 @@ First release: Minecraft's 26.1, 26.2 and 26.3 game drops on Minecraft 1.12.2.
 *   **The babies**: 26.1's baby models and textures for animals and zombies, 26.1's cat, pig, cow and chicken sound variants, and crafted name tags. The other backports' babies get 26.1's models too, and the golden dandelion keeps tadpoles and snifflets small.
 *   **Sulfur and cinnabar** in every stone shape, potent sulfur, sulfur spikes and the music disc Bounce.
 *   **The sulfur cube**, with 12 kinds by the block it swallows and 26.3's knockback.
-*   **Sulfur caves** and sulfur springs, named on the debug screen and with their own fog, water and plant colors.
+*   **Sulfur caves** and sulfur springs, named on the debug screen and with their own fog, water and plant colors. `/locate biome minecraft:sulfur_caves` finds them, also in worlds without Caves & Cliffs Backport's 1.18 terrain.
 *   **fingerspit's music**: Ebb, Home, Memories, Nightly and Shores on the title screen, in survival and creative, and in the biomes 26.x plays them in.
 *   **Poplar** in every wood shape, with signs and boats, red shrubs, shelf mushrooms and the dappled forest.
 *   **Wool and concrete stairs and slabs**, cushions you can sit on and switch between, and straw beds.
@@ -19,4 +19,4 @@ First release: Minecraft's 26.1, 26.2 and 26.3 game drops on Minecraft 1.12.2.
 *   Works with every other backport in the family, and with OptiFine and shaders.
 *   Every feature has its own setting in Backport Core's settings screen.
 *   Translated into 18 languages.
-*   Requires Backport Core 1.4.4 or newer.
+*   Requires Backport Core 1.4.5 or newer.

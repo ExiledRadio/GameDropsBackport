@@ -274,9 +274,9 @@ public final class SulfurCavesSelfTest implements SelfTest {
         WorldServer w = check.world;
         long seed = w.getSeed();
         int[] p = null;
-        for (int r = 1; r <= 12 && p == null; r++) {
+        for (int r = 1; r <= 40 && p == null; r++) {
             int[] q = LegacyRegions.nearest(seed, r * 3000, r * 2000, 4);
-            if (q != null && SulfurCaves.lowland(w.getBiomeProvider().getBiome(new BlockPos(q[0], 0, q[1]), null))) {
+            if (q != null && q[2] >= 40 && SulfurCaves.lowland(w.getBiomeProvider().getBiome(new BlockPos(q[0], 0, q[1]), null))) {
                 p = q;
             }
         }
@@ -284,6 +284,23 @@ public final class SulfurCavesSelfTest implements SelfTest {
             return;
         }
         GameDropsBackport.LOGGER.info("SELFTEST sulfur caves patch at {} {} radius {}", p[0], p[1], p[2]);
+        // /locate biome finds sulfur caves without loading chunks, on a column that has them, and not far off: patches
+        // are common enough to come across.
+        com.exiledradio.backportcore.locate.BiomeLocate.Found found = com.exiledradio.backportcore.locate.BiomeLocate.nearest(w,
+                new BlockPos(p[0] + 300, 64, p[1]), "minecraft:sulfur_caves");
+        check.ok(found != null && LegacyRegions.inPatch(seed, found.pos.getX(), found.pos.getZ())
+                        && SulfurCaves.lowland(w.getBiomeProvider().getBiome(found.pos, null))
+                        && Math.abs(found.pos.getX() - p[0] - 300) <= 2000 && Math.abs(found.pos.getZ() - p[1]) <= 2000,
+                "/locate biome minecraft:sulfur_caves finds a sulfur cave column within 2000 blocks (" + (found == null ? "none" : found.pos) + ")");
+        int patches = 0;
+        for (int cx = 0; cx < 40; cx++) {
+            for (int cz = 0; cz < 40; cz++) {
+                if (LegacyRegions.patch(seed, cx, cz) != null) {
+                    patches++;
+                }
+            }
+        }
+        check.ok(patches > 300 && patches < 500, "one cell in 4 holds a patch (" + patches + " of 1600)");
         int c0 = (p[0] >> 4) - 4, c1 = (p[0] >> 4) + 4, d0 = (p[1] >> 4) - 4, d1 = (p[1] >> 4) + 4;
         for (int cx = c0; cx <= c1 + 1; cx++) {
             for (int cz = d0; cz <= d1 + 1; cz++) {

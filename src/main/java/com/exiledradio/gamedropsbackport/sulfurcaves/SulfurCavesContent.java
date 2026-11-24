@@ -64,6 +64,7 @@ public final class SulfurCavesContent {
     }
 
     public static void init() {
+        LegacyRegions.locator();
         if (SulfurCaves.enabled()) {
             GameRegistry.registerWorldGenerator(new SulfurCavesGen(), 20);
             Deferred.register();

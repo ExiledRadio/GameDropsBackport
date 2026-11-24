@@ -42,6 +42,11 @@ final class ModernClimate {
         return state(world) != null;
     }
 
+    /** @return true for a world with Caves &amp; Cliffs' 1.18 terrain, whose own climate places the sulfur caves */
+    static boolean modern(World world) {
+        return state(world) != null;
+    }
+
     @Nullable
     private static Object[] state(World world) {
         if (!(world instanceof WorldServer)) {

@@ -11,17 +11,19 @@ import java.lang.reflect.Method;
  *
  * <p>26.2's climate box, measured over its climate noise (Caves &amp; Cliffs' exact 1.18 noise, seeds 1, 42 and 1144,
  * 16384 blocks square): 0.007% to 0.022% of all columns, 0.01% to 0.03% of land, in 6 to 12 patches of a median 2 to 18
- * chunks and at most 72. Here: one 1024-block cell in 25 holds a patch, a disc of radius 20 to 69 blocks around a
- * random point of the cell with a ragged edge (a 2D value noise moves the edge in or out by up to a third), only where
- * the center's biome and the column's are low land ({@link SulfurCaves#lowland}). That is 0.02% of columns, in patches
- * of 5 to 58 chunks.
+ * chunks and at most 72. That is too rare to come across in a 1.12.2 world, so here they are about 25 times as common:
+ * one 512-block cell in 4 holds a patch, a disc of radius 20 to 69 blocks around a random point of the cell with a
+ * ragged edge (a 2D value noise moves the edge in or out by up to a third), only where the center's biome and the
+ * column's are low land ({@link SulfurCaves#lowland}). That is about 0.3% of columns, a patch within a kilometer or so
+ * of most low land, in patches of 5 to 58 chunks. {@code /locate biome minecraft:sulfur_caves} finds them
+ * ({@link #locator}).
  *
  * <p>Depth: 26.2's 0.2 to 0.9, about 26 to 115 blocks under the ground, two thirds of that in a 0-255 world.
  */
 final class LegacyRegions {
 
-    static final int CELL = 1024;
-    static final int CHANCE = 25;
+    static final int CELL = 512;
+    static final int CHANCE = 4;
     static final int MIN_RADIUS = 20, RADIUS_SPREAD = 50;
 
     private LegacyRegions() {
@@ -113,6 +115,39 @@ final class LegacyRegions {
             mask[y - min] = true;
         }
         return mask;
+    }
+
+    /**
+     * {@code /locate biome} in a world without 1.18 terrain: 1.12.2's column biomes know nothing under ground, so this
+     * answers {@code sulfur_caves} where {@link #mask} would put the sulfur caves (the ground from Core's
+     * {@code TerrainHeights}, without loading chunks; sea level where it has no answer), within 32 blocks of the height the
+     * search asks, and the world's layers
+     * everywhere else.
+     */
+    static void locator() {
+        com.exiledradio.backportcore.locate.BiomeLocate.source(world -> {
+            if (!SulfurCaves.generates(world) || ModernClimate.modern(world)) {
+                return null;
+            }
+            com.exiledradio.backportcore.locate.BiomeLocate.Sampler layers = com.exiledradio.backportcore.locate.BiomeLocate.layers(world);
+            com.exiledradio.backportcore.terrain.TerrainHeights terrain = com.exiledradio.backportcore.terrain.TerrainHeights.forWorld(world);
+            long seed = world.getSeed();
+            double scale = SulfurCaves.extended(world) ? 128.0 : 128.0 * 256.0 / 384.0;
+            return (x, y, z) -> {
+                int[] p = patchAt(seed, x, z);
+                if (p != null && SulfurCaves.lowland(world.getBiomeProvider().getBiome(new BlockPos(p[0], 0, p[1]), null))
+                        && SulfurCaves.lowland(world.getBiomeProvider().getBiome(new BlockPos(x, 0, z), null))) {
+                    int ground = terrain != null ? terrain.height(x, z) : world.getSeaLevel();
+                    // The search steps 64 blocks up and down (26.x's), so each height it asks stands for the 64 blocks
+                    // around it; in a 0-255 world it asks 64, 128 and 192 only, all above the band.
+                    if (y - 32 <= ground - (int) Math.ceil(SulfurCaves.DEPTH_MIN * scale)
+                            && y + 31 >= ground - (int) Math.floor(SulfurCaves.DEPTH_MAX * scale)) {
+                        return "minecraft:sulfur_caves";
+                    }
+                }
+                return layers.biome(x, y, z);
+            };
+        });
     }
 
     private static Method lush, dripstone;

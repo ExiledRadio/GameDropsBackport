@@ -2,6 +2,9 @@
 
 *   **Sulfur cubes swallow other mods' blocks** that those mods list in the ore dictionary as stone, cobblestone, logs, planks, wool, ores or metal blocks, as 26.3's item tags take other mods' blocks. The new `sulfurCube.extraBlocks` setting adds any other block, with the kind of cube it makes (`modid:block=kind`).
 *   **Fixed: the straw bed sat off-center in inventory slots**, higher than the other beds. It now lines up with them, as in 26.3.
+*   **Fixed: straw beds in abandoned camps came apart.** In a camp built turned to the side, the two halves of a bed pointed the wrong way, so each broke off as soon as anything near it changed.
+*   **Fixed: trees and plants inside abandoned camps.** Leaves, trunks, grass and reeds that stood where a camp was built stayed inside its tents; they are cleared now, as in 26.3, where camps are built before trees grow.
+*   **Fixed: floating abandoned camps** in worlds without Caves & Cliffs Backport's 1.18 terrain. The ground under a camp's floor is filled in, as 26.3 shapes the ground under it.
 
 # 1.0.0
 

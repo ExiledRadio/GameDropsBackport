@@ -176,6 +176,68 @@ final class CampsSelfTest implements SelfTest {
             check.eq(0, drops.size(), "nothing dropped as an item while placing");
         }
 
+        // --- what a camp leaves in 1.12.2's ground: whole straw beds, no gap under a floor, no trees or plants where
+        // the template is air (1.12.2 populates those before structures)
+        clearGrowthRule(check, world, new BlockPos((at.x << 4) + 8, 200, (at.z << 4) + 8));
+        int camps = 0, beds = 0, lone = 0, columns = 0, gaps = 0, growth = 0;
+        StringBuilder where = new StringBuilder();
+        for (Map.Entry<String, ChunkPos> e : found.entrySet()) {
+            if (camps >= 6) {
+                break;
+            }
+            ChunkPos c = e.getValue();
+            LocateChecks.generateAround(world, c.x, c.z, 4);
+            StructureStart st = LocateChecks.savedStart(structure, c.x, c.z);
+            if (st == null || !st.isSizeableStructure()) {
+                continue;
+            }
+            camps++;
+            for (net.minecraft.world.gen.structure.StructureComponent comp : st.getComponents()) {
+                StructureBoundingBox bb = comp.getBoundingBox();
+                boolean tent = comp instanceof CampPiece && String.valueOf(((CampPiece) comp).element()).contains("/tent/");
+                for (BlockPos p : BlockPos.getAllInBoxMutable(bb.minX, bb.minY, bb.minZ, bb.maxX, bb.maxY, bb.maxZ)) {
+                    net.minecraft.block.state.IBlockState bs = world.getBlockState(p);
+                    if (com.exiledradio.gamedropsbackport.softblocks.SoftBlocks.strawBed != null
+                            && bs.getBlock() == com.exiledradio.gamedropsbackport.softblocks.SoftBlocks.strawBed) {
+                        beds++;
+                        BlockPos o = com.exiledradio.gamedropsbackport.softblocks.BlockStrawBed.other(bs, p.toImmutable());
+                        if (world.getBlockState(o).getBlock() != bs.getBlock()) {
+                            lone++;
+                            where.append(" lone bed half at ").append(p.toImmutable());
+                        }
+                    }
+                    net.minecraft.block.material.Material m = bs.getMaterial();
+                    if (tent && (m == net.minecraft.block.material.Material.LEAVES || m == net.minecraft.block.material.Material.VINE)) {
+                        growth++;
+                    }
+                }
+                if (comp instanceof CampPiece && ((CampPiece) comp).rigid()) {
+                    for (int x = bb.minX; x <= bb.maxX; x++) {
+                        for (int z = bb.minZ; z <= bb.maxZ; z++) {
+                            BlockPos bottom = new BlockPos(x, bb.minY, z);
+                            if (open(world, bottom)) {
+                                continue;
+                            }
+                            columns++;
+                            if (open(world, bottom.down())) {
+                                gaps++;
+                                if (gaps <= 5) {
+                                    where.append(" gap under ").append(bottom).append(" (").append(e.getKey()).append(")");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        GameDropsBackport.LOGGER.info("SELFTEST camps: quality over {} camps: {} bed halves, {} lone; {} floor columns, {} gaps; "
+                + "{} leaves or vines inside tents{}", camps, beds, lone, columns, gaps, growth, where);
+        check.ok(camps >= 3, "camps built for the quality checks: " + camps);
+        check.ok(beds > 0, "the camps have straw beds: " + beds);
+        check.eq(0, lone, "every straw bed half has its other half" + where);
+        check.ok(columns > 0, "camp floors found: " + columns);
+        check.eq(0, gaps, "no gap under a camp's floor (1.12.2 terrain)" + where);
+
         // --- loot
         Random random = new Random(1013);
         int common = 0, maps = 0;
@@ -484,5 +546,30 @@ final class CampsSelfTest implements SelfTest {
         java.lang.reflect.Method m = ExplorerMaps.class.getDeclaredMethod("upgrade", ItemStack.class);
         m.setAccessible(true);
         return (ItemStack) m.invoke(null, stack);
+    }
+
+    private static boolean open(WorldServer world, BlockPos pos) {
+        net.minecraft.block.state.IBlockState s = world.getBlockState(pos);
+        net.minecraft.block.material.Material m = s.getMaterial();
+        return s.getBlock().isAir(s, world, pos) || m.isLiquid() || m == net.minecraft.block.material.Material.LEAVES
+                || m == net.minecraft.block.material.Material.PLANTS || m == net.minecraft.block.material.Material.VINE
+                || s.getBlock().isReplaceable(world, pos);
+    }
+
+    /** Where a camp's template is air, a tree's or plant's block goes; ground and water stay. */
+    private static void clearGrowthRule(Check check, WorldServer world, BlockPos at) {
+        Object[][] cases = {{Blocks.LEAVES.getDefaultState(), true}, {Blocks.LOG.getDefaultState(), true},
+                {Blocks.TALLGRASS.getStateFromMeta(1), true}, {Blocks.REEDS.getDefaultState(), true}, {Blocks.VINE.getDefaultState(), true},
+                {Blocks.RED_FLOWER.getDefaultState(), true}, {Blocks.WATERLILY.getDefaultState(), true},
+                {Blocks.DIRT.getDefaultState(), false}, {Blocks.STONE.getDefaultState(), false}, {Blocks.WATER.getDefaultState(), false},
+                {Blocks.PLANKS.getDefaultState(), false}};
+        for (Object[] c : cases) {
+            net.minecraft.block.state.IBlockState s = (net.minecraft.block.state.IBlockState) c[0];
+            world.setBlockState(at, s, 2);
+            CampPiece.clearGrowth(world, at);
+            boolean cleared = world.isAirBlock(at);
+            check.eq(c[1], cleared, "a camp's air " + ((Boolean) c[1] ? "clears " : "keeps ") + s.getBlock().getRegistryName());
+        }
+        world.setBlockToAir(at);
     }
 }

@@ -68,7 +68,7 @@ public class BlockStrawBed extends BlockHorizontal {
     }
 
     /** The other half: from the foot toward the head, from the head back. */
-    static BlockPos other(IBlockState state, BlockPos pos) {
+    public static BlockPos other(IBlockState state, BlockPos pos) {
         EnumFacing f = state.getValue(FACING);
         return state.getValue(BlockBed.PART) == BlockBed.EnumPartType.FOOT ? pos.offset(f) : pos.offset(f.getOpposite());
     }
@@ -262,5 +262,18 @@ public class BlockStrawBed extends BlockHorizontal {
             }
         }
         return meta;
+    }
+
+    /** As 1.12.2's bed: a rotated structure turns both halves, so each still points at the other. */
+    @Override
+    @SuppressWarnings("deprecation")
+    public IBlockState withRotation(IBlockState state, net.minecraft.util.Rotation rot) {
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public IBlockState withMirror(IBlockState state, net.minecraft.util.Mirror mirror) {
+        return state.withRotation(mirror.toRotation(state.getValue(FACING)));
     }
 }

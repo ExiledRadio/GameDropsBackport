@@ -7,6 +7,17 @@ import com.exiledradio.backportcore.structure.ModernJigsaw;
 import com.exiledradio.backportcore.structure.ModernTemplate;
 import com.exiledradio.backportcore.structure.TemplatePlacement;
 import com.exiledradio.backportcore.structure.TerrainAdaptation;
+import com.exiledradio.backportcore.terrain.WorldHeights;
+import com.exiledradio.gamedropsbackport.softblocks.BlockStrawBed;
+import com.exiledradio.gamedropsbackport.softblocks.SoftBlocks;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockBed;
+import net.minecraft.block.BlockBush;
+import net.minecraft.block.BlockFalling;
+import net.minecraft.block.BlockLog;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;
@@ -63,9 +74,112 @@ public class CampPiece extends JigsawPiece implements TerrainAdaptation.Adapting
         TemplatePlacement placement = TemplatePlacement.of(this.pieceRotation, Mirror.NONE).clip(chunk).finalizeEntities(true)
                 .entities(ForgeRegistries.ENTITIES.containsKey(CUSHION));
         // legacy_single_pool_element: BlockIgnoreProcessor.STRUCTURE_AND_AIR, the template's air is not placed.
-        placement.processor((w, p, block, r) -> "minecraft:air".equals(block.name()) ? null : block);
+        // 26.3 builds camps before any tree or plant, so its ground has none where the template is air; 1.12.2
+        // populates trees and plants first, so those are taken out of the template's air here.
+        placement.processor((w, p, block, r) -> {
+            if ("minecraft:air".equals(block.name())) {
+                clearGrowth(w, p);
+                return null;
+            }
+            return block;
+        });
         template.place(world, this.position, placement);
+        StructureBoundingBox area = this.boundingBox.intersectsWith(chunk) ? new StructureBoundingBox(
+                Math.max(this.boundingBox.minX, chunk.minX), this.boundingBox.minY, Math.max(this.boundingBox.minZ, chunk.minZ),
+                Math.min(this.boundingBox.maxX, chunk.maxX), this.boundingBox.maxY, Math.min(this.boundingBox.maxZ, chunk.maxZ)) : null;
+        if (area != null) {
+            wholeBeds(world, area);
+            // 26.3 shapes the terrain under a camp (beard_thin); Caves & Cliffs' 1.18 generator does that here, before
+            // the chunk exists. Anywhere else the ground is already made, so the gap under the floor is filled now.
+            if (!WorldHeights.isCavesAndCliffsExtended(world)) {
+                groundBelow(world, area);
+            }
+        }
         return true;
+    }
+
+    /** A tree's or plant's block where the template has air: taken out (Core then takes the tree's cut-off leaves). */
+    public static void clearGrowth(World world, BlockPos pos) {
+        IBlockState s = world.getBlockState(pos);
+        Block b = s.getBlock();
+        Material m = s.getMaterial();
+        if (m == Material.LEAVES || m == Material.PLANTS || m == Material.VINE || m == Material.CACTUS
+                || m == Material.GOURD || b instanceof BlockLog || b instanceof BlockBush || b.isLeaves(s, world, pos)
+                || b.isWood(world, pos)) {
+            world.setBlockState(pos, Blocks.AIR.getDefaultState(), 2);
+        }
+    }
+
+    /**
+     * A straw bed half built here gets its other half now, also where that half is in the next chunk (which exists:
+     * 1.12.2 populates a chunk only once its neighbors exist). Otherwise anything placed beside the lone half before
+     * the next chunk builds its part tells it its other half is gone, and it breaks.
+     */
+    private static void wholeBeds(World world, StructureBoundingBox area) {
+        if (SoftBlocks.strawBed == null) {
+            return;
+        }
+        for (BlockPos pos : BlockPos.getAllInBoxMutable(area.minX, area.minY, area.minZ, area.maxX, area.maxY, area.maxZ)) {
+            IBlockState s = world.getBlockState(pos);
+            if (s.getBlock() != SoftBlocks.strawBed) {
+                continue;
+            }
+            BlockPos o = BlockStrawBed.other(s, pos.toImmutable());
+            if (area.isVecInside(o) || !world.isBlockLoaded(o) || world.getBlockState(o).getBlock() == SoftBlocks.strawBed) {
+                continue;
+            }
+            BlockBed.EnumPartType part = s.getValue(BlockBed.PART) == BlockBed.EnumPartType.FOOT
+                    ? BlockBed.EnumPartType.HEAD : BlockBed.EnumPartType.FOOT;
+            world.setBlockState(o, s.withProperty(BlockBed.PART, part).withProperty(BlockBed.OCCUPIED, false), 2);
+        }
+    }
+
+    /** How far down the ground is filled under a camp's floor (26.3's beard reaches 12 blocks). */
+    static final int FILL_DEPTH = 12;
+
+    /**
+     * Fills the gap between a camp piece's bottom layer and the ground under it with the biome's filler, as 26.3's
+     * beard gives it ground to stand on: only under columns where the piece has a block at its bottom.
+     */
+    private static void groundBelow(World world, StructureBoundingBox area) {
+        BlockPos.MutableBlockPos p = new BlockPos.MutableBlockPos();
+        for (int x = area.minX; x <= area.maxX; x++) {
+            for (int z = area.minZ; z <= area.maxZ; z++) {
+                p.setPos(x, area.minY, z);
+                if (open(world, p)) {
+                    continue;
+                }
+                IBlockState fill = filler(world, p);
+                for (int y = area.minY - 1; y >= area.minY - FILL_DEPTH && y >= WorldHeights.minY(world); y--) {
+                    p.setY(y);
+                    if (!open(world, p)) {
+                        break;
+                    }
+                    world.setBlockState(p, fill, 2);
+                }
+            }
+        }
+    }
+
+    /** Air, liquid, or a plant, leaf or anything a block may replace: not ground. */
+    private static boolean open(World world, BlockPos pos) {
+        IBlockState s = world.getBlockState(pos);
+        Material m = s.getMaterial();
+        return s.getBlock().isAir(s, world, pos) || m.isLiquid() || m == Material.LEAVES || m == Material.PLANTS
+                || m == Material.VINE || s.getBlock().isReplaceable(world, pos);
+    }
+
+    /** The biome's filler (dirt in most), sandstone for sand: nothing under a camp may fall. */
+    private static IBlockState filler(World world, BlockPos pos) {
+        IBlockState f = world.getBiome(pos).fillerBlock;
+        if (f.getBlock() == Blocks.SAND) {
+            return f.getValue(net.minecraft.block.BlockSand.VARIANT) == net.minecraft.block.BlockSand.EnumType.RED_SAND
+                    ? Blocks.RED_SANDSTONE.getDefaultState() : Blocks.SANDSTONE.getDefaultState();
+        }
+        if (f.getBlock() instanceof BlockFalling || f.getMaterial() == Material.AIR || f.getMaterial().isLiquid()) {
+            return Blocks.DIRT.getDefaultState();
+        }
+        return f;
     }
 
     @Override

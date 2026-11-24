@@ -88,6 +88,8 @@ Every feature can be turned off in Backport Core's settings screen, under Mod Op
 
 ## Compatibility
 
+**Dynamic Trees**: abandoned camps grow its trees where it grows the biome's trees.
+
 **[Village & Pillage Backport](https://www.curseforge.com/minecraft/mc-mods/villager-backport)**: villagers and the wandering trader trade as in 26.3, with this mod's items. The wandering trader sells golden dandelions, name tags, poplar saplings, logs and shelf mushrooms. Its composter takes the new plants and its stonecutter cuts concrete stairs and slabs. Cartography tables copy explorer maps, and village explorer maps lead to its villages.
 
 **[Update Aquatic Backport](https://www.curseforge.com/minecraft/mc-mods/update-aquatic-backport)**: thrown tridents break sulfur spikes, and explorer maps lead to warm ocean ruins.

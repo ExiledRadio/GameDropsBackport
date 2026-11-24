@@ -34,7 +34,8 @@ import java.util.function.Supplier;
  *
  * <ul>
  *   <li>oak, fancy oak, birch, tall ("super") birch, spruce, pine, mega spruce and pine, jungle, mega jungle and
- *       acacia: 1.12.2's own generators, which make the same shapes. The {@code _bees} variants get 26.3's bee nest
+ *       acacia: 1.12.2's own generators, which make the same shapes; Dynamic Trees' trees where it grows its own in
+ *       the biome. The {@code _bees} variants get 26.3's bee nest
  *       decorator at post-init ({@link CampBees}) where Buzzy Bees is installed.</li>
  *   <li>cherry, pale oak and the three poplars: their owners' trees, grown from the owner's sapling (found by today's
  *       name through Backport Core's palette). The owning stream may register a placer of its own for these feature
@@ -69,11 +70,12 @@ final class CampTrees {
         vanilla.put("minecraft:mega_jungle_tree_checked", () -> new WorldGenMegaJungle(false, 10, 20, jungleLog, jungleLeaf));
         for (Map.Entry<String, Supplier<WorldGenerator>> e : vanilla.entrySet()) {
             Supplier<WorldGenerator> gen = e.getValue();
-            JigsawPools.feature(e.getKey(), (world, pos, random, feature) -> grow(world, pos, random, gen.get()));
+            String name = e.getKey();
+            JigsawPools.feature(name, (world, pos, random, feature) -> grow(world, pos, random, name, gen));
         }
         // 26.3's jungle_tree: 4 + 0-8 tall with vines and cocoa, 1.12.2's small jungle tree.
-        JigsawPools.feature("minecraft:jungle_tree", (world, pos, random, feature) ->
-                grow(world, pos, random, new WorldGenTrees(false, 4 + random.nextInt(7), jungleLog, jungleLeaf, true)));
+        JigsawPools.feature("minecraft:jungle_tree", (world, pos, random, feature) -> grow(world, pos, random, "minecraft:jungle_tree",
+                () -> new WorldGenTrees(false, 4 + random.nextInt(7), jungleLog, jungleLeaf, true)));
 
         sapling("minecraft:cherry_checked", "minecraft:cherry_sapling", false);
         sapling("minecraft:cherry_bees_005", "minecraft:cherry_sapling", false);
@@ -95,10 +97,12 @@ final class CampTrees {
         return b == Blocks.GRASS || b == Blocks.DIRT || b == Blocks.FARMLAND || path.endsWith("moss_block") || path.equals("mud");
     }
 
-    static void grow(World world, BlockPos pos, Random random, WorldGenerator gen) {
-        if (!soil(world, pos)) {
+    /** The tree, or Dynamic Trees' where it grows its own in the biome (Backport Core's {@code DynamicTrees.grow}). */
+    static void grow(World world, BlockPos pos, Random random, String feature, Supplier<WorldGenerator> tree) {
+        if (!soil(world, pos) || com.exiledradio.backportcore.compat.DynamicTrees.grow(world, pos, random, feature)) {
             return;
         }
+        WorldGenerator gen = tree.get();
         if (gen instanceof WorldGenAbstractTree) {
             ((WorldGenAbstractTree) gen).generate(world, random, pos);
         } else {

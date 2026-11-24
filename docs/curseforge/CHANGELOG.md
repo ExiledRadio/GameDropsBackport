@@ -1,3 +1,9 @@
+# 1.0.2
+
+*   **Dynamic Trees**: abandoned camps' oaks, birches, spruces, pines, jungle trees and acacias are Dynamic Trees' where it grows the biome's trees. Camps had normal trees among dynamic ones.
+
+Needs Backport Core 1.4.9 or newer.
+
 # 1.0.1
 
 *   **Sulfur cubes swallow other mods' blocks** that those mods list in the ore dictionary as stone, cobblestone, logs, planks, wool, ores or metal blocks, as 26.3's item tags take other mods' blocks. The new `sulfurCube.extraBlocks` setting adds any other block, with the kind of cube it makes (`modid:block=kind`).

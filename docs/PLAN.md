@@ -277,8 +277,8 @@ family mods already change, is `docs/streams/changes.md`; patches P1-P6 are in `
 
 ### Later 26.x
 
-Each later 26.x release joins this plan as its own streams when it ships (26.4 is in snapshots now), with the next
-config category, id blocks and port.
+Each later 26.x release joins this plan as its own streams when it ships, with the next config category, id
+blocks and port. 26.4 (Deep Freeze, in pre-release since 2026-11-24): [PLAN_26_4.md](PLAN_26_4.md).
 
 ## Decisions (made for Tricky Trials, 2026-11-07; they carry over)
 

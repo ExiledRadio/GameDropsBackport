@@ -1,7 +1,7 @@
 # 1.0.2
 
 *   **Dynamic Trees**: abandoned camps' oaks, birches, spruces, pines, jungle trees and acacias are Dynamic Trees' where it grows the biome's trees. Camps had normal trees among dynamic ones.
-*   **Dynamic Trees in dappled forests**: with Dynamic Trees - Backport, its poplars are dynamic poplars, with their leaf litter and shelf mushrooms (the trunk grows a full log thick where a mushroom sits), and its spruces are Dynamic Trees' spruces.
+*   **Dynamic Trees in dappled forests**: with Dynamic Trees - Backport, its poplars are dynamic poplars, with their leaf litter and shelf mushrooms (the trunk grows a full log thick where a mushroom sits), and its spruces are Dynamic Trees' spruces. Shelf mushrooms stay on a dynamic trunk as it grows.
 
 Needs Backport Core 1.4.9 or newer.
 

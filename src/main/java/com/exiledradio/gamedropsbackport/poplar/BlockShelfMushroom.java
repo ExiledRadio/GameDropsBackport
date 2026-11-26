@@ -130,10 +130,25 @@ public class BlockShelfMushroom extends Block implements IGrowable {
     // ---------------------------------------------------------------------------------------------
     // Support
 
-    /** {@code canSurvive}: the block behind it (opposite its facing) has a full face toward it. */
+    /**
+     * {@code canSurvive}: the block behind it (opposite its facing) has a full face toward it. A Dynamic Trees branch
+     * reports no full face even at a whole log's thickness; one that is a whole log (its {@code radius} 8 or more) holds a
+     * mushroom as a log does, so the dynamic poplars' mushrooms stay as their trunks grow.
+     */
     public static boolean canStay(IBlockAccess world, BlockPos pos, EnumFacing facing) {
         BlockPos support = pos.offset(facing.getOpposite());
-        return world.getBlockState(support).getBlockFaceShape(world, support, facing) == BlockFaceShape.SOLID;
+        IBlockState state = world.getBlockState(support);
+        return state.getBlockFaceShape(world, support, facing) == BlockFaceShape.SOLID || wholeBranch(state);
+    }
+
+    /** A block with an integer {@code radius} of 8 or more: a whole-log Dynamic Trees branch (by property, not class). */
+    private static boolean wholeBranch(IBlockState state) {
+        for (net.minecraft.block.properties.IProperty<?> p : state.getPropertyKeys()) {
+            if (p.getName().equals("radius") && p.getValueClass() == Integer.class && (Integer) state.getValue(p) >= 8) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

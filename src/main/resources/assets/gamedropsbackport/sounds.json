@@ -2734,5 +2734,13 @@
       "gamedropsbackport:event/mob_effects/freezing"
     ],
     "subtitle": "subtitles.gamedropsbackport.event.mob_effect.freezing"
+  },
+  "music_disc.flurry": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:records/flurry",
+        "stream": true
+      }
+    ]
   }
 }

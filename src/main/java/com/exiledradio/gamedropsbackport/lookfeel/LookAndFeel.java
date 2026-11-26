@@ -60,9 +60,15 @@ public final class LookAndFeel {
         Presentation.version("26.1");
         Contribution v262 = Presentation.version("26.2");
         Contribution v263 = Presentation.version("26.3");
+        // 26.4 (Deep Freeze), built on Pre-Release 1 until the release.
+        Contribution v264 = Presentation.version("26.4");
         ModConfig.LookAndFeel cfg = ModConfig.lookAndFeel;
         if (!cfg.enabled) {
             return;
+        }
+        if (ModConfig.jukebox.enabled) {
+            // 26.4's jukebox: new side and top, and a bottom of its own (cube_bottom_top).
+            v264.replaceAsset("models/block/jukebox.json", vanilla("models/block/jukebox.json"));
         }
         if (cfg.splashes) {
             // 26.1's one change ("Java 16 + 1 + 4 * 2 = 25!") names a Java version, which Core leaves out on 1.12.2.
@@ -93,6 +99,9 @@ public final class LookAndFeel {
         }
         if (cfg.panorama) {
             v263.panorama(ID + ":textures/gui/title/background/panorama_")
+                    .panoramaOverlay(new ResourceLocation(ID, "textures/gui/title/background/panorama_overlay.png"));
+            // 26.4's Deep Freeze panorama (tools/lookfeel264).
+            v264.panorama(ID + ":textures/gui/title/background/deep_freeze/panorama_")
                     .panoramaOverlay(new ResourceLocation(ID, "textures/gui/title/background/panorama_overlay.png"));
         }
         v263.vanillaText(new ResourceLocation(ID, "vanilla_text"));

@@ -55,6 +55,8 @@ config.gamedropsbackport.iceCaves.tooltip=26.4's ice caves: icicles, ice crystal
 config.gamedropsbackport.iceCaves.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
 config.gamedropsbackport.frostbite.tooltip=26.4's frostbite, ice balls, the Freezing effect and its potions, and the zombie, husk and drowned conversions in powder snow.
 config.gamedropsbackport.frostbite.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
+config.gamedropsbackport.jukebox.tooltip=26.4's jukebox playlists (the discs in a chest on top) and the music disc Flurry.
+config.gamedropsbackport.jukebox.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
 # --- end config tooltips ---
 
 # --- common ---
@@ -528,3 +530,9 @@ subtitles.gamedropsbackport.entity.ice_ball.throw=Ice Ball is thrown
 subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=Parrot groans
 subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=Zombie converts to Frostbite
 subtitles.gamedropsbackport.event.mob_effect.freezing=Starting to freeze
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=Music Disc
+item.record.flurry.desc=Hyper Potions - Flurry
+config.gamedropsbackport.jukebox=Jukebox
+config.gamedropsbackport.jukebox.enabled=Enabled

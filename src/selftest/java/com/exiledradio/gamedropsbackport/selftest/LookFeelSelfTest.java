@@ -42,9 +42,9 @@ final class LookFeelSelfTest implements SelfTest {
     public void run(Check check) throws Exception {
         ModConfig.LookAndFeel cfg = ModConfig.lookAndFeel;
         check.ok(cfg.enabled && cfg.panorama && cfg.splashes && cfg.menuMusic && cfg.gameMusic && cfg.pauseMenu && cfg.worldOptions, "every switch on by default");
-        check.ok(Presentation.installedNewest().equals(GameVersion.parse("26.3")), "newest installed is 26.3, " + Presentation.installedNewest());
+        check.ok(Presentation.installedNewest().equals(GameVersion.parse("26.4")), "newest installed is 26.4, " + Presentation.installedNewest());
         check.ok(Presentation.isAtLeast("26.3"), "a dedicated server's look is the installed newest");
-        for (String v : new String[]{"26.1", "26.2", "26.3"}) {
+        for (String v : new String[]{"26.1", "26.2", "26.3", "26.4"}) {
             Contribution c = Presentation.contribution(v);
             check.ok(c != null && c.owners().contains(ID), v + " is ours");
         }
@@ -52,12 +52,12 @@ final class LookFeelSelfTest implements SelfTest {
         // Panorama: ours is the newest, six square faces of one size; the overlay is ours.
         List<Presentation.Panorama> panoramas = Presentation.panoramas();
         Presentation.Panorama newest = panoramas.isEmpty() ? null : panoramas.get(panoramas.size() - 1);
-        check.ok(newest != null && newest.version.equals(GameVersion.parse("26.3")) && newest.faces.length == 6
-                && newest.faces[0].getNamespace().equals(ID), "the 26.3 panorama is the newest");
+        check.ok(newest != null && newest.version.equals(GameVersion.parse("26.4")) && newest.faces.length == 6
+                && newest.faces[0].getNamespace().equals(ID), "the 26.4 (Deep Freeze) panorama is the newest");
         int size = -1;
         boolean square = true;
         for (int i = 0; i < 6; i++) {
-            BufferedImage img = image("textures/gui/title/background/panorama_" + i + ".png");
+            BufferedImage img = image("textures/gui/title/background/deep_freeze/panorama_" + i + ".png");
             square &= img != null && img.getWidth() == img.getHeight() && (size < 0 || img.getWidth() == size);
             size = img == null ? size : img.getWidth();
         }

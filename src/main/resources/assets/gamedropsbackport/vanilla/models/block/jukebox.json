@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "bottom": "gamedropsbackport:blocks/jukebox_bottom",
+    "side": "gamedropsbackport:blocks/jukebox_side",
+    "top": "gamedropsbackport:blocks/jukebox_top"
+  }
+}

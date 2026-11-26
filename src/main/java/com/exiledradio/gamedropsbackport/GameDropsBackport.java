@@ -60,6 +60,7 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.iceblocks.IceBlocksContent.preInit();
         com.exiledradio.gamedropsbackport.icecaves.IceCavesContent.preInit();
         com.exiledradio.gamedropsbackport.frostbite.FrostbiteContent.preInit();
+        com.exiledradio.gamedropsbackport.jukebox.JukeboxContent.preInit();
         if (event.getSide().isClient() && com.exiledradio.gamedropsbackport.frostbite.FrostbiteContent.enabled()) {
             try {
                 Class.forName("com.exiledradio.gamedropsbackport.frostbite.client.FrostbiteClient").getMethod("preInit").invoke(null);

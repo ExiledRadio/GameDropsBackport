@@ -89,6 +89,18 @@ public final class ModConfig {
     @Config.Comment("26.4's frostbite, ice balls, the Freezing effect and its potions, and the zombie, husk and drowned conversions in powder snow.")
     public static final Frostbite frostbite = new Frostbite();
 
+    @Setting.Feature(icon = "gamedropsbackport:music_disc_flurry|minecraft:jukebox")
+    @Config.LangKey("config.gamedropsbackport.jukebox")
+    @Config.Comment("26.4's jukebox playlists (the discs in a chest on top) and the music disc Flurry.")
+    public static final Jukebox jukebox = new Jukebox();
+
+    public static final class Jukebox {
+        @Config.RequiresMcRestart
+        @Config.Comment("Off, nothing is registered, and a world that has them loses them.")
+        @Config.LangKey("config.gamedropsbackport.jukebox.enabled")
+        public boolean enabled = true;
+    }
+
     public static final class Frostbite {
         @Config.RequiresMcRestart
         @Config.Comment("Off, nothing is registered, and a world that has them loses them.")

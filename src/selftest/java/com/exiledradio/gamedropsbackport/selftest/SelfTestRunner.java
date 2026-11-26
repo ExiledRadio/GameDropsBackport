@@ -54,6 +54,7 @@ public final class SelfTestRunner {
             new IceBlocksSelfTest(),
             new IceCavesSelfTest(),
             new FrostbiteSelfTest(),
+            new ColdCubeSelfTest(),
     };
 
     private final List<String> wanted;

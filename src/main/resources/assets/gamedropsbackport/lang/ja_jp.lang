@@ -9,7 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=硫黄と辰砂のブロック、強力�
 config.gamedropsbackport.sulfur.enabled.tooltip=オフにすると何も登録されず、これらがあるワールドからは失われます。
 config.gamedropsbackport.sulfurCube.tooltip=サルファーキューブ。
 config.gamedropsbackport.sulfurCube.enabled.tooltip=オフにすると何も登録されず、これらがあるワールドからは失われます。
-config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=硫黄キューブが飲み込むブロックを1行に1つずつ追加します: modid:block=種類 または modid:block@meta=種類。種類は bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky です。他のModが鉱石辞書に石、丸石、原木、板材、羊毛、鉱石、金属ブロックとして登録したブロックは、すでに飲み込まれます。
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=硫黄キューブが飲み込むブロックを1行に1つずつ追加します: modid:block=種類 または modid:block@meta=種類。種類は bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky です。他のModが鉱石辞書に石、丸石、原木、板材、羊毛、鉱石、金属ブロックとして登録したブロックは、すでに飲み込まれます。
 config.gamedropsbackport.sulfurCaves.tooltip=硫黄の洞窟と硫黄泉。
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=硫黄の洞窟と硫黄泉は新しく生成されたチャンクに生成されます。
 config.gamedropsbackport.poplar.tooltip=ポプラの木材、赤色の低木、サルノコシカケ、まだらな森。

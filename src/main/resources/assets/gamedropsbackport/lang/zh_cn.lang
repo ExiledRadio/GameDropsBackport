@@ -9,7 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=硫黄与朱砂方块、烈性硫黄、�
 config.gamedropsbackport.sulfur.enabled.tooltip=关闭时不注册任何内容，已有这些内容的世界会失去它们。
 config.gamedropsbackport.sulfurCube.tooltip=硫方怪。
 config.gamedropsbackport.sulfurCube.enabled.tooltip=关闭时不注册任何内容，已有这些内容的世界会失去它们。
-config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=硫磺方块还会吞下的方块，每行一个：modid:block=种类 或 modid:block@meta=种类。种类有 bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky。其他模组在矿物词典中登记为石头、圆石、原木、木板、羊毛、矿石或金属块的方块已经会被吞下。
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=硫磺方块还会吞下的方块，每行一个：modid:block=种类 或 modid:block@meta=种类。种类有 bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky。其他模组在矿物词典中登记为石头、圆石、原木、木板、羊毛、矿石或金属块的方块已经会被吞下。
 config.gamedropsbackport.sulfurCaves.tooltip=硫黄洞穴和硫黄泉。
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=硫黄洞穴和硫黄泉会在新生成的区块中生成。
 config.gamedropsbackport.poplar.tooltip=杨木、红灌木、层孔菇和斑驳森林。

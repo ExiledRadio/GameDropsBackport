@@ -9,7 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=Blocs de soufre et de cinabre, soufre co
 config.gamedropsbackport.sulfur.enabled.tooltip=Désactivé, rien n'est enregistré, et un monde qui en contient déjà les perd.
 config.gamedropsbackport.sulfurCube.tooltip=Le cube de soufre.
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Désactivé, rien n'est enregistré, et un monde qui en contient déjà les perd.
-config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=D'autres blocs qu'un cube de soufre avale, un par ligne : modid:bloc=type ou modid:bloc@meta=type. Les types sont bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Les blocs qu'un autre mod inscrit dans le dictionnaire de minerais comme pierre, pierre taillée, bûches, planches, laine, minerais ou blocs de métal sont déjà avalés.
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=D'autres blocs qu'un cube de soufre avale, un par ligne : modid:bloc=type ou modid:bloc@meta=type. Les types sont bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Les blocs qu'un autre mod inscrit dans le dictionnaire de minerais comme pierre, pierre taillée, bûches, planches, laine, minerais ou blocs de métal sont déjà avalés.
 config.gamedropsbackport.sulfurCaves.tooltip=Les cavernes de soufre et les sources de soufre.
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=Les cavernes et sources de soufre apparaissent dans les chunks nouvellement générés.
 config.gamedropsbackport.poplar.tooltip=Bois de peuplier, buisson rouge, polypores et forêt ambrée.

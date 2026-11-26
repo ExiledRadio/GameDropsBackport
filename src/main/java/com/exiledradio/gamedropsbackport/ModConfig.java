@@ -143,7 +143,7 @@ public final class ModConfig {
         // --- SulfurCube fields ---
         @Config.RequiresMcRestart
         @Config.Comment("More blocks a sulfur cube swallows, one per line: modid:block=kind or modid:block@meta=kind. "
-                + "The kinds are bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, "
+                + "The kinds are bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, "
                 + "slow_bouncy, slow_flat, slow_sliding and sticky. Blocks another mod lists in the ore dictionary as "
                 + "stone, cobblestone, logs, planks, wool, ores or metal blocks are swallowed already.")
         @Config.LangKey("config.gamedropsbackport.sulfurCube.extraBlocks")

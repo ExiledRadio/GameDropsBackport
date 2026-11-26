@@ -9,7 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=Bloki siarki i cynobru, stężona siarka
 config.gamedropsbackport.sulfur.enabled.tooltip=Po wyłączeniu nic nie jest rejestrowane, a świat, który je zawiera, traci je.
 config.gamedropsbackport.sulfurCube.tooltip=Kostka siarki.
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Po wyłączeniu nic nie jest rejestrowane, a świat, który je zawiera, traci je.
-config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Kolejne bloki, które połyka sześcian siarki, po jednym w wierszu: modid:blok=rodzaj lub modid:blok@meta=rodzaj. Rodzaje to bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Bloki, które inny mod wpisuje do słownika rud jako kamień, bruk, pnie, deski, wełnę, rudy lub bloki metali, są już połykane.
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Kolejne bloki, które połyka sześcian siarki, po jednym w wierszu: modid:blok=rodzaj lub modid:blok@meta=rodzaj. Rodzaje to bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Bloki, które inny mod wpisuje do słownika rud jako kamień, bruk, pnie, deski, wełnę, rudy lub bloki metali, są już połykane.
 config.gamedropsbackport.sulfurCaves.tooltip=Jaskinie siarkowe i źródła siarkowe.
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=Jaskinie i źródła siarkowe generują się w nowo wygenerowanych chunkach.
 config.gamedropsbackport.poplar.tooltip=Drewno topolowe, czerwony krzew, huby i pstrokaty las.

@@ -9,7 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=硫磺與硃砂方塊、烈性硫磺、�
 config.gamedropsbackport.sulfur.enabled.tooltip=停用時不會註冊任何內容，已有這些內容的世界會失去它們。
 config.gamedropsbackport.sulfurCube.tooltip=硫磺立方怪。
 config.gamedropsbackport.sulfurCube.enabled.tooltip=停用時不會註冊任何內容，已有這些內容的世界會失去它們。
-config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=硫磺方塊還會吞下的方塊，每行一個：modid:block=種類 或 modid:block@meta=種類。種類有 bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky。其他模組在礦物辭典中登記為石頭、鵝卵石、原木、木材、羊毛、礦石或金屬方塊的方塊已經會被吞下。
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=硫磺方塊還會吞下的方塊，每行一個：modid:block=種類 或 modid:block@meta=種類。種類有 bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky。其他模組在礦物辭典中登記為石頭、鵝卵石、原木、木材、羊毛、礦石或金屬方塊的方塊已經會被吞下。
 config.gamedropsbackport.sulfurCaves.tooltip=硫磺洞窟和硫磺泉。
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=硫磺洞窟和硫磺泉會在新生成的區塊中生成。
 config.gamedropsbackport.poplar.tooltip=楊木、紅灌木、層孔菇和斑駁森林。

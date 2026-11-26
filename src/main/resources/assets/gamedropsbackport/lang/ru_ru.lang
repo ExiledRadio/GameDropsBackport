@@ -9,7 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=Блоки серы и киновари,
 config.gamedropsbackport.sulfur.enabled.tooltip=При выключенной настройке ничего не регистрируется, а мир, в котором они есть, их теряет.
 config.gamedropsbackport.sulfurCube.tooltip=Серный куб.
 config.gamedropsbackport.sulfurCube.enabled.tooltip=При выключенной настройке ничего не регистрируется, а мир, в котором они есть, их теряет.
-config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Другие блоки, которые глотает серный куб, по одному в строке: modid:block=вид или modid:block@meta=вид. Виды: bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Блоки, которые другой мод вносит в словарь руд как камень, булыжник, брёвна, доски, шерсть, руды или блоки металлов, уже глотаются.
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Другие блоки, которые глотает серный куб, по одному в строке: modid:block=вид или modid:block@meta=вид. Виды: bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Блоки, которые другой мод вносит в словарь руд как камень, булыжник, брёвна, доски, шерсть, руды или блоки металлов, уже глотаются.
 config.gamedropsbackport.sulfurCaves.tooltip=Серные пещеры и серные источники.
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=Серные пещеры и серные источники появляются в новых чанках.
 config.gamedropsbackport.poplar.tooltip=Тополевая древесина, красный куст, трутовики и пёстрый лес.

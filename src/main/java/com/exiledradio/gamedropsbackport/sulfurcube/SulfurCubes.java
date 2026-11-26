@@ -85,12 +85,15 @@ public final class SulfurCubes {
 
     static {
         for (Archetype a : Archetype.values()) {
-            if (a == Archetype.NONE) {
+            if (a == Archetype.NONE || a == Archetype.COLD) {
                 continue;
             }
             HIT.put(a, sound("entity.sulfur_cube." + a.id + ".hit"));
             PUSH.put(a, sound("entity.sulfur_cube." + a.id + ".push"));
         }
+        // 26.4: the cold cube's hit and push are both fast sliding's hit.
+        HIT.put(Archetype.COLD, HIT.get(Archetype.FAST_SLIDING));
+        PUSH.put(Archetype.COLD, HIT.get(Archetype.FAST_SLIDING));
     }
 
     public static ItemSulfurCubeBucket bucket;

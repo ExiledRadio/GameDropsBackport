@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "gamedropsbackport:ice_crystal",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "gamedropsbackport:ice_crystal",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gamedropsbackport:ice_crystal",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "gamedropsbackport:ice_crystal",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "gamedropsbackport:ice_crystal"
+    },
+    "facing=west": {
+      "model": "gamedropsbackport:ice_crystal",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

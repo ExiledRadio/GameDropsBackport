@@ -58,6 +58,7 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.lookfeel.LookAndFeel.preInit(event.getSide().isClient());
         com.exiledradio.gamedropsbackport.babies.BabiesContent.preInit();
         com.exiledradio.gamedropsbackport.iceblocks.IceBlocksContent.preInit();
+        com.exiledradio.gamedropsbackport.icecaves.IceCavesContent.preInit();
     }
 
     @Mod.EventHandler
@@ -67,6 +68,7 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.poplar.PoplarContent.init();
         CampsContent.init();
         com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.init();
+        com.exiledradio.gamedropsbackport.icecaves.IceCavesContent.init();
     }
 
     @Mod.EventHandler

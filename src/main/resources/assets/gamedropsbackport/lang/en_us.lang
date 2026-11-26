@@ -51,6 +51,8 @@ config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join a
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish closes a world opened to LAN: other players leave and it stops being listed (26.2).
 config.gamedropsbackport.iceBlocks.tooltip=26.4's packed ice bricks, chiseled packed ice and snow bricks; the calcite set with Caves & Cliffs; chiseled soulshale with Wild Update.
 config.gamedropsbackport.iceBlocks.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
+config.gamedropsbackport.iceCaves.tooltip=26.4's ice caves: icicles, ice crystals, brittle ice, crevasses and the biome under cold land.
+config.gamedropsbackport.iceCaves.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
 # --- end config tooltips ---
 
 # --- common ---
@@ -488,3 +490,13 @@ tile.gamedropsbackport.snow_brick_wall.name=Snow Brick Wall
 tile.gamedropsbackport.snow_bricks.name=Snow Bricks
 config.gamedropsbackport.iceBlocks=Ice and Snow Blocks
 config.gamedropsbackport.iceBlocks.enabled=Enabled
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=Brittle Ice
+tile.gamedropsbackport.ice_crystal.name=Ice Crystal
+tile.gamedropsbackport.icicle.name=Icicle
+subtitles.gamedropsbackport.block.brittle_ice.crack=Brittle Ice cracks
+subtitles.gamedropsbackport.block.ice_crystal.ambient=Ice Crystal chimes
+subtitles.gamedropsbackport.block.icicle.land=Icicle crashes down
+config.gamedropsbackport.iceCaves=Ice Caves
+config.gamedropsbackport.iceCaves.enabled=Enabled

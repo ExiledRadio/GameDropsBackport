@@ -52,6 +52,7 @@ public final class SelfTestRunner {
             new LookFeelSelfTest(),
             new WaterlogSelfTest(),
             new IceBlocksSelfTest(),
+            new IceCavesSelfTest(),
     };
 
     private final List<String> wanted;

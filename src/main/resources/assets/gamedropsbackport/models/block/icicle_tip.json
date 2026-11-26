@@ -1,0 +1,6 @@
+{
+  "parent": "gamedropsbackport:block/template_icicle",
+  "textures": {
+    "cross": "gamedropsbackport:block/icicle_tip"
+  }
+}

@@ -79,6 +79,18 @@ public final class ModConfig {
     @Config.Comment("26.4's packed ice bricks, chiseled packed ice and snow bricks; the calcite set with Caves & Cliffs; chiseled soulshale with Wild Update.")
     public static final IceBlocks iceBlocks = new IceBlocks();
 
+    @Setting.Feature(icon = "gamedropsbackport:icicle|minecraft:packed_ice")
+    @Config.LangKey("config.gamedropsbackport.iceCaves")
+    @Config.Comment("26.4's ice caves: icicles, ice crystals, brittle ice, crevasses and the biome under cold land.")
+    public static final IceCaves iceCaves = new IceCaves();
+
+    public static final class IceCaves {
+        @Config.RequiresMcRestart
+        @Config.Comment("Off, nothing is registered, and a world that has them loses them.")
+        @Config.LangKey("config.gamedropsbackport.iceCaves.enabled")
+        public boolean enabled = true;
+    }
+
     public static final class IceBlocks {
         @Config.RequiresMcRestart
         @Config.Comment("Off, nothing is registered, and a world that has them loses them.")

@@ -133,6 +133,17 @@ public final class PoplarFeatures {
         if (PoplarContent.set == null) {
             return false;
         }
+        // With Dynamic Trees - Backport, a dynamic poplar of this color grows here instead, with this tree's decorators.
+        if (com.exiledradio.backportcore.compat.DynamicTrees.grow(world, origin, rand, "dtbackport:" + color.name + "poplar")) {
+            List<BlockPos> trunk = dynamicTrunk(world, origin);
+            if (leafLitter) {
+                leafLitter(world, rand, trunk, 96, 4, 2, false);
+                leafLitter(world, rand, trunk, 150, 2, 2, true);
+            }
+            shelfMushrooms(world, rand, trunk, SHELF_STANDING);
+            fullTrunkUnderMushrooms(world, trunk);
+            return true;
+        }
         IBlockState log = PoplarContent.set.log.getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
         Block leavesBlock = color == BlockPoplarLeaves.Color.RED ? PoplarContent.redLeaves
                 : color == BlockPoplarLeaves.Color.ORANGE ? PoplarContent.orangeLeaves : PoplarContent.yellowLeaves;
@@ -442,6 +453,50 @@ public final class PoplarFeatures {
         }
     }
 
+    /** A Dynamic Trees trunk from its first log up: the blocks with a {@code radius}, as a branch has. */
+    private static List<BlockPos> dynamicTrunk(World world, BlockPos origin) {
+        List<BlockPos> out = new ArrayList<BlockPos>();
+        BlockPos p = origin;
+        while (out.size() < 32 && radiusProperty(world.getBlockState(p)) != null) {
+            out.add(p);
+            p = p.up();
+        }
+        return out;
+    }
+
+    @javax.annotation.Nullable
+    private static IProperty<?> radiusProperty(IBlockState state) {
+        for (IProperty<?> prop : state.getPropertyKeys()) {
+            if (prop.getName().equals("radius") && prop.getValueClass() == Integer.class) {
+                return prop;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * A shelf mushroom sits against a whole log; a Dynamic Trees trunk is often thinner, so from the base up to the
+     * highest mushroom it grows a full log thick (Dynamic Trees only ever thickens a branch).
+     */
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    private static void fullTrunkUnderMushrooms(World world, List<BlockPos> trunk) {
+        int top = -1;
+        for (int i = 0; i < trunk.size(); i++) {
+            for (EnumFacing f : HORIZONTAL) {
+                if (PoplarContent.shelfMushroom != null && world.getBlockState(trunk.get(i).offset(f)).getBlock() == PoplarContent.shelfMushroom) {
+                    top = i;
+                }
+            }
+        }
+        for (int i = 0; i <= top; i++) {
+            IBlockState s = world.getBlockState(trunk.get(i));
+            IProperty prop = radiusProperty(s);
+            if (prop != null && prop.getAllowedValues().contains(8) && (Integer) s.getValue(prop) < 8) {
+                world.setBlockState(trunk.get(i), s.withProperty(prop, 8), 2);
+            }
+        }
+    }
+
     /** {@code isBlockReplaceableWithShelfMushroom}: replaceable, and no water there or beside it. */
     private static boolean mushroomSpot(World world, BlockPos pos) {
         if (!world.getBlockState(pos).getBlock().isReplaceable(world, pos)) {
@@ -576,7 +631,9 @@ public final class PoplarFeatures {
                 kind++;
             }
             if (kind == 3) {
-                if (((net.minecraft.block.BlockBush) Blocks.SAPLING).canBlockStay(world, pos, Blocks.SAPLING.getDefaultState())) {
+                if (((net.minecraft.block.BlockBush) Blocks.SAPLING).canBlockStay(world, pos, Blocks.SAPLING.getDefaultState())
+                        && !com.exiledradio.backportcore.compat.DynamicTrees.grow(world, pos, rand, "dynamictrees:spruce")) {
+                    // Dynamic Trees grows its own spruce here when installed, as it does in every other biome.
                     new WorldGenTaiga2(false).generate(world, rand, pos);
                 }
                 continue;

@@ -547,3 +547,11 @@ config.gamedropsbackport.jukebox.enabled=Enabled
 
 # --- changes264 ---
 subtitles.gamedropsbackport.block.ice.ambient=Ice resonates
+config.gamedropsbackport.changes.snowOnPackedIce=Snow on Packed Ice
+config.gamedropsbackport.changes.mushroomsAnyLight=Mushrooms in Any Light
+config.gamedropsbackport.changes.iceSounds=Ice Sounds
+config.gamedropsbackport.changes.iceFaces=Ice Faces
+config.gamedropsbackport.changes.frostedIceVibrations=Frosted Ice Vibrations
+config.gamedropsbackport.changes.snowballKnockback=Snowball Knockback
+config.gamedropsbackport.changes.steeringBoost=Steering Boost
+config.gamedropsbackport.changes.dragonPerchThrown=Perching Dragon Ignores Thrown Things

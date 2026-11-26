@@ -38,6 +38,19 @@ public final class IceCavesEvents {
         }
     }
 
+    /** Under ground in the ice caves, 26.4's spawn lists (monsters, bats) instead of the column biome's. */
+    @SubscribeEvent
+    public void potentialSpawns(net.minecraftforge.event.world.WorldEvent.PotentialSpawns event) {
+        net.minecraft.entity.EnumCreatureType type = event.getType();
+        if ((type != net.minecraft.entity.EnumCreatureType.MONSTER && type != net.minecraft.entity.EnumCreatureType.AMBIENT)
+                || IceCavesContent.biome == null || !event.getWorld().isBlockLoaded(event.getPos())
+                || !IceCaves.at(event.getWorld(), event.getPos())) {
+            return;
+        }
+        event.getList().clear();
+        event.getList().addAll(IceCavesContent.biome.getSpawnableList(type));
+    }
+
     @SubscribeEvent
     public void notify(BlockEvent.NeighborNotifyEvent event) {
         if (IceCavesContent.brittleIce == null || event.getWorld().isRemote) {

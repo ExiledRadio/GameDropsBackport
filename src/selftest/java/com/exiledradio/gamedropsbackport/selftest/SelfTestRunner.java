@@ -57,6 +57,7 @@ public final class SelfTestRunner {
             new ColdCubeSelfTest(),
             new JukeboxSelfTest(),
             new DeepFreezeChangesSelfTest(),
+            new com.exiledradio.gamedropsbackport.icecaves.IceCavesGenSelfTest(),
     };
 
     private final List<String> wanted;

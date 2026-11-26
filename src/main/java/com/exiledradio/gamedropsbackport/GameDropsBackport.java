@@ -103,6 +103,7 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.postInit();
         com.exiledradio.gamedropsbackport.changes.Changes.postInit();
         com.exiledradio.gamedropsbackport.frostbite.FrostbiteContent.postInit();
+        com.exiledradio.gamedropsbackport.icecaves.IceCavesContent.postInit();
         com.exiledradio.gamedropsbackport.changes.DeepFreezeChanges.postInit();
         CampsContent.postInit();
     }

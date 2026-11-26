@@ -74,6 +74,18 @@ public final class ModConfig {
 
     // ------------------------------------------------------------------------------------------
 
+    @Setting.Feature(icon = "gamedropsbackport:packed_ice_bricks|minecraft:packed_ice")
+    @Config.LangKey("config.gamedropsbackport.iceBlocks")
+    @Config.Comment("26.4's packed ice bricks, chiseled packed ice and snow bricks; the calcite set with Caves & Cliffs; chiseled soulshale with Wild Update.")
+    public static final IceBlocks iceBlocks = new IceBlocks();
+
+    public static final class IceBlocks {
+        @Config.RequiresMcRestart
+        @Config.Comment("Off, nothing is registered, and a world that has them loses them.")
+        @Config.LangKey("config.gamedropsbackport.iceBlocks.enabled")
+        public boolean enabled = true;
+    }
+
     public static final class Babies {
         @Config.RequiresMcRestart
         @Config.Comment("Off, nothing is registered, and a world that has them loses them.")

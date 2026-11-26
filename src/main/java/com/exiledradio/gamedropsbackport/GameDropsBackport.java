@@ -29,7 +29,7 @@ import org.apache.logging.log4j.Logger;
         acceptedMinecraftVersions = "[1.12.2]",
         // Newer releases, read by Forge's update check and Backport Core's settings screen.
         updateJSON = "https://raw.githubusercontent.com/ExiledRadio/BackportCore/main/updates/gamedropsbackport.json",
-        dependencies = "required-after:backportcore@[1.4.9,)"
+        dependencies = "required-after:backportcore@[1.5.0,)"
 )
 public final class GameDropsBackport {
 
@@ -57,6 +57,7 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.preInit();
         com.exiledradio.gamedropsbackport.lookfeel.LookAndFeel.preInit(event.getSide().isClient());
         com.exiledradio.gamedropsbackport.babies.BabiesContent.preInit();
+        com.exiledradio.gamedropsbackport.iceblocks.IceBlocksContent.preInit();
     }
 
     @Mod.EventHandler

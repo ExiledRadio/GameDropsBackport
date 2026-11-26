@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "gamedropsbackport:packed_ice_brick_slab"
+    },
+    "half=top": {
+      "model": "gamedropsbackport:packed_ice_brick_slab_top"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "gamedropsbackport:block/calcite_pillar_top",
+    "side": "gamedropsbackport:block/calcite_pillar_side"
+  }
+}

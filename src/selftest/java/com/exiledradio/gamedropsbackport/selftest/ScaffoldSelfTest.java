@@ -59,7 +59,7 @@ final class ScaffoldSelfTest implements SelfTest {
             Object value = category.get(null);
             check.eq(Boolean.TRUE, value.getClass().getField("enabled").get(value), category.getName() + ".enabled default");
         }
-        check.eq(9, categoryKeys.size(), "config categories (one per planned stream)");
+        check.eq(10, categoryKeys.size(), "config categories (one per planned stream)");
 
         SettingsModel.Page page = BackportSettings.page(GameDropsBackport.MOD_ID);
         if (check.ok(page != null, "Backport Core's settings screen has this mod's page")) {

@@ -51,6 +51,7 @@ public final class SelfTestRunner {
             new com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesSelfTest(),
             new LookFeelSelfTest(),
             new WaterlogSelfTest(),
+            new IceBlocksSelfTest(),
     };
 
     private final List<String> wanted;

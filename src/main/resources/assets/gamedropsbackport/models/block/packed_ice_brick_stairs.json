@@ -1,0 +1,8 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "gamedropsbackport:block/packed_ice_bricks",
+    "side": "gamedropsbackport:block/packed_ice_bricks",
+    "top": "gamedropsbackport:block/packed_ice_bricks"
+  }
+}

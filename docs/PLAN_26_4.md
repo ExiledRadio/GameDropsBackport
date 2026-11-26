@@ -1,155 +1,174 @@
 # Game Drops Backport: 26.4 (Deep Freeze) plan
 
 26.4 is the winter game drop, "Deep Freeze": ice caves, the frostbite, the Freezing effect, ice and snow building
-blocks, a calcite set, jukebox playlists and a sulfur cube archetype. Status on 2026-11-24: 10 snapshots
-(Sept 22 to Nov 17) and Pre-Release 1 (Nov 24); release planned for Q4 2026, no date yet. No code or assets until
-this plan is approved.
+blocks, a calcite set, jukebox playlists and a cold sulfur cube.
 
-**When to build:** content counts as 26.4 when it ships outside experiments in the 26.4 release (the rule in
-`PLAN.md`). Planning and test design start now; assets, names and numbers come from the release's client jar.
-Streams whose content hasn't changed since Snapshot 7 ("final features") can start at the release candidate.
+**Status (2026-11-26): built on 26.4 Pre-Release 1, branch `gd-26-4`, on Backport Core 1.5.0 (`core-1.5.0-deepfreeze`).**
+26.4 is not released yet (newest: 26.4-pre-1, 2026-11-24). On 2026-11-26 the user chose to build on the pre-release
+instead of waiting (open question 2 below). **Every number here is Pre-Release 1's and must be diffed against the
+release when it ships** (Order, step 2). Not merged, pushed or uploaded.
 
-**Sources:** minecraft.wiki's *Java Edition 26.4* and *26.4/Development versions* pages (read 2026-11-24), checked
-against **26.4 Pre-Release 1**: its client jar, Vineflower source and a diff against 26.3 are in
-`G:\MCDownloads\minecraft-26.4-pre-1\` (`client.jar`, `src/`, `diff-26.3.txt`, `sounds.json`). 26.x jars aren't
-obfuscated, so the source reads as Mojang's names. At release, diff the release jar against the pre-release and
-switch `tools/assets.py` to 26.4.
+**Sources:** the 26.4 Pre-Release 1 client jar, decompiled with Vineflower (Mojang names), and its diff against 26.3, in
+`E:\MCDownloads\minecraft-26.4-pre-1\` and `E:\MCDownloads\minecraft-26.3\` (G: was not mounted on 2026-11-26;
+`tools/assets.py` finds either). The exact numbers, file and line for each, are in three checklists next to this plan:
+- [`26.4/blocks-and-changes.md`](26.4/blocks-and-changes.md): the building blocks, the cold sulfur cube, jukebox
+  playlists, Flurry, every change to existing things, the language diff;
+- [`26.4/ice-caves.md`](26.4/ice-caves.md): the biome, its placement, every feature and placed feature, the bands, the
+  icicle, ice crystal and brittle ice;
+- [`26.4/frostbite-and-freezing.md`](26.4/frostbite-and-freezing.md): the frostbite, Freezing, ice balls, potions,
+  advancements, strays and every new sound event.
 
-**What the pre-release contains** (diff against 26.3): 25 new blocks, 28 new item definitions, 5 item textures,
-the frostbite's 3 entity textures, the Freezing effect icon and 6 particle frames, 58 new sound events, 1 biome
-(`ice_caves`), 21 features, 26 placed features, 2 surface rules, 1 noise, the `cold` sulfur cube archetype, 2
-wandering trader trade files, 13 brewing recipes, the `flurry` jukebox song and 52 recipe advancements. Everything
-in the stream lists below is in it; nothing in it is missing from them.
+**What the pre-release contains** (diff against 26.3): 25 new blocks, 28 new item definitions, the frostbite's 3 entity
+textures, the Freezing icon and 6 particle frames, 1 biome (`ice_caves`), 21 placed ice cave ores and 5 decoration
+features, 2 surface rules, 1 noise, the `cold` sulfur cube archetype, 2 wandering trader trades, 13 brewing recipes, the
+`flurry` jukebox song, 52 recipe advancements, the Deep Freeze panorama, 26.4's own ice sound sets.
 
-**Version:** Game Drops 1.1.0 (a new drop). Backport Core bumps for the look and feel pieces (stream 8). Every
-release follows Core's `docs/RELEASING.md`.
+**Version:** Game Drops 1.1.0 (a new drop), requiring Backport Core 1.5.0.
 
-## Scope at a glance
+## Streams, as built
 
-| In | Out (and why) |
-| --- | --- |
-| Ice caves, crevasses, icicles, ice crystals, brittle ice | Vulkan, DXGI, shader and launcher changes (not in 1.12.2) |
-| Frostbite, Freezing, ice balls, Freezing potions and arrows | Data pack, resource pack and network format changes |
-| Packed ice bricks, chiseled packed ice, snow bricks, the calcite set, chiseled soulshale | New registries (`block_sound_set`, `dispense_behavior`) as data; their player-visible results are in |
-| Cold sulfur cube; new fast-sliding blocks | Commands-only changes (`/fillbiome` accuracy, `/time` limit, 2D local coordinates) |
-| Jukebox playlists, the "Flurry" disc | Friend requests, reporting and Realms (needs Mojang's services) |
-| Changes to existing things players see (ice sounds and faces, mushrooms, snowball knockback, carrot on a stick, stray spawns, conversions) | Ender dragon fixes that patch 1.21+ code with no 1.12.2 equivalent (checked one by one in stream 7) |
-| 26.4's look and feel (Other Players screen, F3 categories, fog, keyboard navigation, Repeat Recipe key, panorama) | |
+Packages: `iceblocks` (3, 4), `frostbite` (2), `icecaves` (1), `jukebox` (6), and in the existing `sulfurcube` (5),
+`changes` (7) and `lookfeel` (8). Entity ids 16-17 (frostbite, ice ball). Self-tests: `iceblocks`, `icecaves`,
+`icecavesgen`, `frostbite`, `coldcube`, `jukebox`, `changes264`; `-Pselftest=all` runs them with the rest.
 
-## Content owned by another mod of the family (Rule 1) and its integrations (Rule 2)
+### 1. Ice caves (`icecaves`) - built
+- [x] Biome `gamedropsbackport:ice_caves` (temperature 0, snow, water and fog `#14559b`, sky `#7fa1ff`, the sulfur caves'
+      music), 26.4's spawns in order (creeper 100, skeleton 90, stray 10, frostbite 50, slime 100, spider 100, zombie 50,
+      enderman 10, witch 5, zombie villager 5; bats 10). Under ground through Backport Core's `UndergroundBiomes` (F3,
+      colors) and `/locate biome minecraft:ice_caves` (Core's `BiomeLocate`, chained with the sulfur caves').
+- [x] **Where** (`IceCaves`): 26.4's box (continentalness -1.05 to -0.19, weirdness 0.5 to 1.1, depth 0.2 to 0.9) over
+      Caves & Cliffs' 1.18 climate noise, under its frozen and deep frozen oceans (26.4's temperature -1 to -0.8 band);
+      elsewhere our patches (one 512 cell in 3, radius 20-69, ragged) under snowy oceans, or any snowy biome without
+      Update Aquatic, whose frozen oceans 1.12.2 hardly makes; 26.4's depth below the ground, proportional in 0-255
+      worlds; superflat by the preset's biome.
+- [x] **Bands** (`ice_cave_bands`): calcite -0.6 to -0.5, packed ice to 0.2, calcite to 0.3, packed ice to 0.5, calcite to
+      0.7 of `ice_cave_gradient` (first octave -4, amplitudes 1, 0, 1). Calcite is Caves & Cliffs'; packed ice without it.
+- [x] **Features**, 26.4's counts and heights: `large_icicle` (48-64), the 21 `ice_cave_ore_*` (each ore inside a size-20
+      stone or deepslate host; andesite, diorite, gravel plain), `snow_layers` (16-24 x 32), `ice_crystals` (48-64 x 2,
+      on packed ice), `icicle_cluster` (24-64, ceiling only, attached bases, radius 6, height 3-5), `ice_crevasse` (16:
+      two 8-step twisting branches, width 4 tapering 0.6, brittle ice over air over water, walls patched).
+- [x] **Icicles** on Core's shared speleothem: packed ice, down only, no tip merging, `MAX_GROWING_LENGTH` 4, melt above
+      block light 4, in the Nether or over magma; fall as stalactites; land with `block.icicle.land`; hardness 0.5;
+      snow dust drips. **Ice crystals**: light 4, 7 high and 10 wide, need a sturdy face, air without one, chime over
+      packed ice (1/250). **Brittle ice**: ages 0-3, a crack per 24 ticks under any living thing but frostbites and
+      strays (mobs only with `mobGriefing`, players unless spawn-protected), breaks without a drop, Silk Touch only,
+      friction 0.98. Water beside any mod's blue ice becomes brittle ice.
+- [x] Wandering trader (Village & Pillage, Core's `TradeRegistry`): ice crystal for 2 emeralds, 2 icicles for 1; 5 uses.
 
-| Needed here | Owner | What this mod does |
-| --- | --- | --- |
-| Powder snow (frostbite conversion; husk and drowned conversions) | Caves & Cliffs | Rule 2: conversions only with Caves & Cliffs. The frostbite and ice caves work without it. |
-| Freezing's freeze ticks (the frozen-ticks counter, its damage every 40 ticks, the frost overlay, leather and mob immunity) | **Backport Core**, moved from Caves & Cliffs (decision 3) | 26.4's Freezing effect does nothing of its own: `FreezingMobEffect.applyEffectTick` only calls `freezeForTicks(1)`, and `LivingEntity` freezes a mob that is in powder snow **or** has the effect. Game Drops feeds Core's freeze ticks; Caves & Cliffs' powder snow does too. |
-| Calcite (the calcite set; ice caves are mostly packed ice and calcite) | Caves & Cliffs | The calcite set only with Caves & Cliffs. Without it, ice caves use packed ice where vanilla has calcite. |
-| Deepslate (ice cave ore blobs below 0) | Caves & Cliffs | Stone blobs without it, as the sulfur caves do. |
-| Ancient cities (chiseled soulshale loot) | Wild Update | Only with Wild Update; in Creative only through commands, as in vanilla. |
-| Blue ice (cold sulfur cube; water next to blue ice turns to brittle ice) | Update Aquatic (Rule 1 table) | Uses whichever blue ice is installed. |
-| Strays in more cold biomes | Caves & Cliffs (frozen peaks, jagged peaks, snowy slopes) | Vanilla's frozen ocean and frozen river here; the peaks only with Caves & Cliffs. |
-| Wandering trader (ice crystal and icicle trades) | Village & Pillage | Rule 2, through Core's `TradeRegistry`. |
-| Cold farm animals, frogs, snow foxes, white rabbits in ice caves | Tricky Trials (variants), Wild Update (frogs), Village & Pillage (foxes) | Each only with its owner; through tags, as vanilla does. |
-| Trial chambers, mineshafts, strongholds and ruined portals in ice caves | Tricky Trials; vanilla | Ice caves don't block them. |
-| Sulfur caves under upgraded old worlds (26.4 Snapshot 1) | Caves & Cliffs (`upgradeworld`) | Caves & Cliffs adds Game Drops' sulfur caves to its below-zero retrogen when Game Drops is installed. |
-| Copper chests feeding a jukebox | Tricky Trials | Any copper chest counts only with Tricky Trials. |
-| Adventuring Time (ice caves), Monster Hunter (frostbite) | Backport Core (`advancement.AdventuringTime`) | Registered through Core. |
+### 2. Frostbite, Freezing and ice balls (`frostbite`) - built
+- [x] **Frostbite**: 24 health, speed 0.21, the zombie's damage 3, armor 2, follow 35; 25% with an ice ball; throws
+      within 16 blocks (ranged from 5 out, back to melee at 3; intervals Easy 60, Normal 20-40, Hard 15-30 ticks;
+      velocity 1.6, uncertainty `14 - 4 x difficulty`), 30-tick melee that gives Freezing for 60 ticks; burns in
+      daylight; frostbite reinforcements; drowns into a zombie after 600 + 300 ticks; drops 0-2 rotten flesh and 0-3 ice
+      balls (+0-1 per Looting); cold-variant spawn rule (sky through powder snow, except in ice caves). Renderer with the
+      drowned-style 64x64 body and the 0.25 outer layer; the baby uses the babies stream's 26.1 baby zombie model.
+- [x] **Spawns**: snowy plains 10, ice spikes 25, frozen river 25, frozen ocean 25, Update Aquatic's deep frozen ocean 25,
+      Caves & Cliffs' frozen peaks 25, jagged peaks 10, snowy slopes 10 (the last three by the 1.18 terrain's biome),
+      ice caves 50; strays newly 95 in frozen river, frozen ocean, deep frozen ocean and the three peaks.
+- [x] **Freezing** (effect 0x9EEEEE): one freeze tick a tick on Backport Core's freeze ticks; holds the counter; 1.5
+      damage at full; refused by what can't freeze; `event.mob_effect.freezing` when added; 26.4's icon and freezing
+      particle (on entities whose only effect is Freezing).
+- [x] **Ice ball**: `ceil(speed x 1.3)` thrown damage, no freezing; stack 16; thrown at 1.5, inaccuracy 1; dispensers;
+      break sound and 8 item particles.
+- [x] **Potions**: Freezing 900 ticks, long 1800; awkward + ice ball, water + ice ball = mundane, + redstone = long;
+      splash, lingering (a quarter) and tipped arrows (an eighth) from 1.12.2's container mixes.
+- [x] **Conversions** in powder snow (Caves & Cliffs'), no leather worn: zombie to frostbite, husk to zombie, Update
+      Aquatic's drowned to zombie, 140 + 300 ticks, with 26.4's sounds.
+- [x] **Advancements**: What Goes Around Comes Around; the frostbite in Monster Hunter and Monsters Hunted (Core's new
+      `advancement.MonsterHunter`). The parrot imitates the frostbite.
 
-## Streams
+### 3 and 4. Ice and snow building blocks, the calcite set, chiseled soulshale (`iceblocks`) - built
+- [x] Packed ice bricks (0.5, chime, friction 0.6, pickaxe needed), their stairs, slab and wall, chiseled packed ice;
+      snow bricks (0.6, snow's sounds, shovel needed) and their shapes; recipes as 26.4's (2x2 to 4, slabs 6, stairs 4,
+      walls 6, chiseled from two slabs).
+- [x] With Caves & Cliffs: calcite pillar, slab, stairs, wall; polished calcite and polished calcite bricks with their
+      shapes (0.75, calcite's sounds); recipes as 26.4's (pillar 2 from 2).
+- [x] With Wild Update: chiseled soulshale (2.0 / 6.0, any tool, no creative tab), weight 3 in the ancient city chest
+      pool.
 
-### 1. Ice caves
-- **Where:** an underground region under cold biomes, placed where vanilla places the biome. As decided for sulfur caves: vanilla's heights with Caves & Cliffs' extended height, the proportional 0-255 placement otherwise, and our own underground region under any biome, since 1.12.2 has no cave biomes.
-- **What's in them:** mostly packed ice and calcite, large packed-ice icicles on floor and ceiling, ice crystals, snow patches and no glow lichen.
-- **Ore placements:** the 22 `ice_cave_ore_*` placements, each placing a stone or deepslate patch before the ore.
-- **Crevasses:** winding cracks covered with brittle ice over water, using vanilla's feature fields (width 2-8, length 4-16, twistiness, tapering).
-- **Spawns:** frostbites, strays and the common cave monsters; snowy villagers in villages that reach them.
-- **Blocks:**
-  - **Icicles** (`IcicleBlock`): speleothems that grow under packed ice (`MAX_GROWING_LENGTH = 4`). They melt when the block light is above 4 (block light only, not sky light), and in the Nether. They fall like pointed dripstone, and a trident breaks them. Shares Caves & Cliffs' pointed dripstone code where installed, its own copy otherwise (open question 1).
-  - **Ice crystals** (`IceCrystalBlock`): light 4, attach to any full side, ambient sound over packed ice.
-  - **Brittle ice** (`BrittleIceBlock`): ages 0-3. Stepping on it schedules the next crack 24 ticks later, so frostbites and strays (`#does_not_break_brittle_ice`) don't break it. It doesn't melt and drops only with Silk Touch. Water next to blue ice becomes brittle ice.
-  - **Crevasses** (`CrevasseFeature`).
-- **Tests:** placement and depth with and without Caves & Cliffs, and with RTG and OTG (Caves & Cliffs' new hybrid worlds), F3 and `/locate biome`.
+### 5. Sulfur cube (`sulfurcube`) - built
+- [x] The cold archetype (blue ice): fast sliding's numbers, both sounds `fast_sliding.hit`; on the ground and riding
+      nothing, with `mobGriefing`, it turns water sources under it within 3 (`< 9`) with air above into frosted ice.
+- [x] Fast sliding now packed ice, packed ice bricks, chiseled packed ice, snow block, snow bricks; slow bouncy gains the
+      calcite set and chiseled soulshale; `extraBlocks` accepts `=cold`.
 
-### 2. Frostbite, Freezing and ice balls
-- **Frostbite:** a zombie type in snowy biomes and ice caves, with a baby form.
-  - Fights in melee (which applies Freezing) or throws ice balls, switching by distance.
-  - Immune to Freezing; doesn't sink in powder snow; burns in sunlight.
-  - Drops rotten flesh and ice balls; becomes a zombie after 30 s underwater.
-- **Freezing effect:** damage over time and slowness, and the player's screen shakes.
-  - Leather armor stops the damage but not the effect; fire or lava counters it.
-  - Blazes, magma cubes and striders take 5x damage. Undead, snow golems, polar bears and the ender dragon are immune.
-- **Ice ball** (`IceBall`): a throwable projectile; damage is `ceil(speed × 1.3)` (`BASE_DAMAGE = 1.3F`).
-- **Potions and arrows:** Potion of Freezing 900 ticks (45 s), long 1800 ticks (90 s), brewed from an awkward potion and an ice ball, with splash, lingering and Arrows of Freezing as vanilla scales them; the 13 brewing recipes in the pre-release.
-- **Freezing in 1.12.2:** the effect only feeds freeze ticks (see the owners table), so the frost overlay, the damage and the immunities come from whoever owns freezing (open question 3).
-- **Conversions:** zombie to frostbite after 30 s in powder snow, husk and drowned to zombie (Rule 2, Caves & Cliffs). Leather armor prevents them.
-- **Advancements:** "What Goes Around Comes Around", Monster Hunter, Monsters Hunted, and the two that need Freezing.
-- **Sounds:** frostbite, ice ball and conversion sounds; the parrot imitates a frostbite.
+### 6. Jukebox playlists and "Flurry" (`jukebox`) - built
+- [x] A jukebox under a single chest, trapped chest or copper chest plays its discs in slot order after the last one
+      taken, skips non-discs, loops; an empty jukebox takes the next disc at once, so ejecting skips. Song ends from 26.4's
+      lengths.
+- [x] Flurry (154 s, comparator 7, uncommon), 30% in igloo chests (a pool of its own).
+- [x] The jukebox's 26.4 look (new side and top, a bottom of its own), as Game Drops' 26.4 contribution to Core.
 
-### 3. Ice and snow building blocks
-- **Packed ice bricks:** stairs, slab and wall. Not slippery; a pickaxe is needed to drop them.
-- **Chiseled packed ice.**
-- **Snow bricks:** slab, stairs and wall. Shovel only; no stonecutter.
-- **Recipes:** crafting and stonecutter recipes as vanilla's (Core's stonecutter where installed).
-- **Waterlogging:** stairs, slabs and walls use Core's waterlogging, as every family stairs, slab and wall does.
+### 7. Changes to existing things (`changes`, settings each) - built
+- [x] Ice, packed ice, frosted ice and blue ice: 26.4's sound sets; ice in a frozen lake resonates (1/10000).
+- [x] Ice and frosted ice hide faces against ice, frosted ice and brittle ice (patch P10).
+- [x] Frosted ice vibrates on each crack (P11).
+- [x] Snow layers on packed ice (P8). Mushrooms stay on any center support in any light, spread only under 13 (P9).
+- [x] Snowballs push players. Carrot on a stick boosts 140-700 ticks. A perching dragon takes no thrown damage.
+- [x] Checked, no change needed: the dragon's vertical steering (1.12.2 already 0.1, 26.4's fix of 26.3's 0.01);
+      pointed dripstone's cauldron rates (unchanged in 26.4, against this plan's earlier note).
 
-### 4. Calcite set and chiseled soulshale (Rule 2)
-- **Calcite set:** calcite pillar, slab, stairs and wall; polished calcite and its slab, stairs and wall; polished calcite bricks and their slab, stairs and wall. Recipes as vanilla's. Only with Caves & Cliffs' calcite.
-- **Chiseled soulshale:** ancient city loot, mined without a tool. Only with Wild Update.
+### 8. Look and feel - partly built
+- [x] Game Drops registers 26.4 with Core: the Deep Freeze panorama, the jukebox model.
+- [ ] Out of reach this pass, Core's (its 1.4.7 rule): Other Players (P), F3's categories, the fog fade and Improved Fog
+      option, keyboard navigation and the Repeat Recipe key, recipe book tab tooltips, the advancement renames ("Uh-Oh",
+      "Oooh, Shiny!"), 26.4's reworded subtitles, Javanese and Chavacano. Client screens: a Core 1.5.x look and feel
+      stream with client tests.
 
-### 5. Sulfur cube
-- **Cold archetype** (`data/minecraft/sulfur_cube_archetype/cold.json`, absorbing `#sulfur_cube_archetype/cold`, i.e. blue ice):
-  - **Attributes:** knockback resistance +0.5, explosion knockback resistance +0.5, bounciness +0.1, friction ×0.05 and air drag ×0.01. Knockback is horizontal 0.6625 and vertical 0.09.
-  - **Frosted ice:** while on the ground and not ridden, it turns water sources below it within radius 3 into frosted ice (age 0), only where there's air above, and sends a block-place game event. There's no floating, and nothing happens over flowing water (Snapshot 8 removed both).
-  - **Sounds:** the fast-sliding hit sound for hits and pushes.
-- **Fast-sliding archetype:** now also packed ice bricks, chiseled packed ice and snow bricks.
-- **Config:** extends the `sulfurCube.extraBlocks` kinds with `cold`.
+## Backport Core 1.5.0 (`core-1.5.0-deepfreeze`, off `core-1.5.0`)
+- [x] `freeze/` freeze ticks (decision 3): 26.4's rules (undead immune, none on fire, leather, 140 ticks, damage every 40,
+      x5 blazes, magma cubes, striders, slowness), effects that hold the counter and set the damage, sync, frost overlay,
+      shaking, `freezing` config, `freezeDamage` also Game Drops'.
+- [x] `speleothem/` (decision 1): 26.4's `SpeleothemBlock` as `BlockSpeleothem`, `falling_speleothem` (Core entity 0),
+      stalagmite and falling stalactite damage, tridents.
+- [x] `advancement.MonsterHunter`, `locate.BiomeLocate.next`, the frostbite egg in the modern egg layer.
+- Self-test group `freeze` (25 checks); the full Core suite passes (one timing check flaked under load, passing alone).
 
-### 6. Jukebox playlists and "Flurry"
-- **Playlists:** a jukebox plays the discs in a chest, trapped chest or copper chest above it, in slot order. It skips anything that isn't a disc, loops to the start, and swaps the finished disc for the next. Ejecting skips to the next disc.
-- **Textures:** the jukebox gets new textures.
-- **"Flurry":** the music disc, with a 30% chance in igloo basement chests and comparator output 7.
+## Test results (2026-11-26)
+- GD `-Pselftest=all`, fresh world, Game Drops alone: 4328 pass, 0 fail.
+- The same with Village & Pillage, Update Aquatic, Caves & Cliffs, Wild Update, Trails & Tales and Tricky Trials dev
+  jars: 4411 pass, 2 fail, both in 26.2's peaceful-spawning check (`changes`: a spawn answered DENY outside the pass,
+  so another mod's spawn rule answers there); no crashes, clashes or linkage errors. Not yet compared with main.
 
-### 7. Changes to existing things
-- **Ice blocks:**
-  - Ice, packed ice, blue ice and frosted ice each get their own sounds, and the ice ambient sound.
-  - No internal faces between ice blocks.
-  - Frosted ice sends a vibration (Core's game events).
-- **Snow:** can be placed on packed ice. Creative groups snow, snow blocks and snow bricks.
-- **Mushrooms:** placeable on any solid top face whatever the light. Spreading still needs light under 13.
-- **Items:**
-  - Snowballs knock back players.
-  - Carrot and warped fungus on a stick boost for 7-35 s (warped fungus only with Nether Update).
-- **Mobs:**
-  - Strays spawn in more cold biomes (see the owners table).
-  - Pointed dripstone drips lava into cauldrons 3x as often (Caves & Cliffs).
-- **Ender dragon fixes** (Snapshots 8-9): each checked against 1.12.2's dragon; only those that fix behavior 1.12.2 shares.
+## Owners (Rule 1 and 2)
+Unchanged from the first plan: powder snow, calcite and deepslate are Caves & Cliffs'; ancient cities Wild Update's;
+blue ice and the drowned Update Aquatic's; the trader Village & Pillage's; copper chests Tricky Trials'. Each piece
+here works without its owner and joins it when installed.
 
-### 8. Look and feel (Backport Core, per the 1.4.7 rule)
-Core owns each version's look and feel, so these pieces go into Core as the 26.4 version; Game Drops keeps only its
-panorama and music.
-- **Other Players** (key P, a pause menu icon): online and recent players, each opening Player Options. Mute works locally. Friend requests and reporting need Mojang's services and are left out.
-- **F3:** the debug screen's categories and new layout.
-- **Fog:** the render-distance edge fades opacity instead of turning opaque; the Improved Fog option, on by default and off in the Fast preset.
-- **Keyboard:** navigation and narration for gameplay screens, the recipe book and the Creative inventory; the Repeat Recipe/Trade key (R); recipe book tab tooltips.
-- **Text:** the advancement renames ("Oooh, Shiny!", "Uh-Oh"), 26.4's splashes and wording, and the Javanese and Chavacano languages where Core adds languages.
-- **Panorama:** the Deep Freeze panorama (Game Drops).
+## Deviations from 26.4
+- Icicles' `attached` is read from the neighbor (1.12.2 has no metadata left); 26.4 stores it at placement.
+- Brittle ice's crack particles are block-crack particles (26.4's level event 2014 has no 1.12.2 twin).
+- Frostbite: the "path ends short of the target" test compares the path's end with the target's block (1.12.2's path
+  keeps no target); turtle-egg trampling and turtle targeting are left out (Update Aquatic's turtles).
+- Freezing's particle shows beside 1.12.2's swirl, on entities whose only effect is Freezing.
+- Ice caves: Caves & Cliffs' terrain has no temperature in its column noise, so 26.4's temperature band is its frozen
+  oceans; legacy worlds use our patches. The bands come after 1.12.2's ores (which they take) and the hosted ores add
+  26.4's; ores outside the bands' noise keep 1.12.2's too. Features are cut at the four chunks 1.12.2 guarantees
+  (26.4's region is 3x3).
+- Jukebox: ejecting in playlist mode drops the disc where 1.12.2 drops it, not 2.2 above; the chest screen's "Playing
+  Next" tooltip is not shown.
+- Pig boosts: a fresh 1.12.2 boost over 700 ticks is drawn again (uniform 140-700); the boost is not saved.
+
+## Follow-ups (not this branch)
+- **Caves & Cliffs release**: hand powder snow to Core's freeze ticks (`FreezeTicks.markInFreezingBlock`) and pointed
+  dripstone to `BlockSpeleothem`; list the frostbite in its powder snow walkers; until then a frozen mob in C&C's powder
+  snow and with Freezing runs both counters.
+- **Village & Pillage**: 26.4's trade changes (farmer's cake 1 emerald, weaponsmith's iron sword 3 uses), its own table.
+- **Nether Update**: warped fungus on a stick 140-700 ticks.
+- **Core**: Adventuring Time's 26.4 list (ice caves); the look and feel pieces above.
+- Languages: the 17 other languages for the new keys (`tools/lang/build_langs.py build` needs the Mojang 26.4 lang
+  files once released).
 
 ## Order
-1. **Done (2026-11-24):** this plan; Pre-Release 1 downloaded, decompiled and diffed, and the numbers above taken from it.
-2. **At release:** diff the release jar against Pre-Release 1, update any number that changed, and switch `tools/assets.py` to 26.4.
-3. **Streams 3 and 4 first:** blocks only, little risk. Alongside them, **freeze ticks move into Backport Core** (decision 3), with a Caves & Cliffs release that hands its powder snow freezing to Core.
-4. **Then 2:** frostbite and Freezing.
-5. **Then 1:** ice caves, which need 2's spawns, 3's blocks and Caves & Cliffs' heights.
-6. **Then 5, 6 and 7.**
-7. **Stream 8:** in Core, alongside.
-8. **Release checks** as for 1.0.0: `tools/release_suite.sh` alone and with `FAMILY=1`, the client scenes, ScanAll and boot-server, then Core's `docs/RELEASING.md`.
+1. **Done (2026-11-24):** the first plan.
+2. **At release:** diff the release jar against Pre-Release 1, fix any number that changed, rerun the generators
+   (`tools/iceblocks`, `icecaves`, `frostbite`, `jukebox`, `changes264`, `lookfeel264` with `GD_ASSETS_VERSION=26.4`),
+   switch `tools/assets.py`'s default to 26.4.
+3. **Done (2026-11-26, on pre-1):** streams 1-7, the Core pieces.
+4. Release checks: `tools/release_suite.sh` alone and with `FAMILY=1`, client scenes, boot-server; Core's RELEASING.md.
 
 ## Open questions
-1. **Icicles: decided 2026-11-24 by the user, shared.** Caves & Cliffs' pointed dripstone code becomes a speleothem helper in Backport Core (growth, falling, landing damage, the trident break), as vanilla shares it. Pointed dripstone and icicles both use it.
-2. **When to start: decided 2026-11-24 by the user, wait.** No stream starts before the 26.4 release, the block streams included.
-3. **Who owns freezing: decided 2026-11-24 by the user, Backport Core.** 26.4's Freezing effect is built on 1.17's
-   freeze ticks, which Caves & Cliffs owned with powder snow. Freeze ticks become Core's: their damage and slowness,
-   the frost overlay and the immunities (leather, freeze-immune mobs, the undead from 26.4).
-   - Caves & Cliffs' powder snow feeds Core's freeze ticks, and so does Game Drops' Freezing.
-   - Caves & Cliffs' `powderSnow.*` config keys keep working, mirrored as Core's settings move.
-   - Worlds keep their frozen mobs' state.
-   - This is a Core stream of its own (Core plus a Caves & Cliffs release) and goes before stream 2.
+1. **Icicles: decided 2026-11-24, shared** (Core's speleothem). Built.
+2. **When to start: decided 2026-11-24, wait; changed 2026-11-26 by the user: build on Pre-Release 1 now** and diff at
+   release.
+3. **Who owns freezing: decided 2026-11-24, Backport Core.** Built in Core; Caves & Cliffs' handover is a follow-up.

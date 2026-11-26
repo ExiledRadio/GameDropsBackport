@@ -121,8 +121,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=有毒气体：冒�
 death.attack.gamedropsbackport.fallingStalactite=%1$s被下落的钟乳石刺穿了
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s在与%2$s战斗时被下落的钟乳石刺穿了
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=让硫方怪吸收TNT方块
-advancements.husbandry.uh_oh.title=坏了
 death.attack.sulfurCubeHot.item=%2$s用%3$s让%1$s知道了不只有地板是熔岩做的
 death.attack.sulfurCubeHot.player=%2$s让%1$s知道了不只有地板是熔岩做的
 death.attack.sulfurCubeHot=%1$s发现了不只有地板是熔岩做的

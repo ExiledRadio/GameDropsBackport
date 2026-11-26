@@ -121,8 +121,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Gás tóxico aparece
 death.attack.gamedropsbackport.fallingStalactite=Uma estalactite atingiu %1$s
 death.attack.gamedropsbackport.fallingStalactite.player=Uma estalactite atingiu %1$s enquanto lutava com %2$s
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Faça um Cubo de Enxofre absorver um bloco de TNT
-advancements.husbandry.uh_oh.title=Eita...
 death.attack.sulfurCubeHot.item=%2$s mostrou a %1$s que nem só o chão era lava enquanto usava %3$s
 death.attack.sulfurCubeHot.player=%2$s mostrou a %1$s que nem só o chão era lava
 death.attack.sulfurCubeHot=%1$s morreu porque nem só o chão era lava

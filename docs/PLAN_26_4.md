@@ -108,18 +108,27 @@ Packages: `iceblocks` (3, 4), `frostbite` (2), `icecaves` (1), `jukebox` (6), an
 - [x] Checked, no change needed: the dragon's vertical steering (1.12.2 already 0.1, 26.4's fix of 26.3's 0.01);
       pointed dripstone's cauldron rates (unchanged in 26.4, against this plan's earlier note).
 
-### 8. Look and feel - partly built
+### 8. Look and feel - built (Pre-Release 1)
 - [x] Game Drops registers 26.4 with Core: the Deep Freeze panorama, the jukebox model.
-- [ ] Out of reach this pass, Core's (its 1.4.7 rule): Other Players (P), F3's categories, the fog fade and Improved Fog
-      option, keyboard navigation and the Repeat Recipe key, recipe book tab tooltips, the advancement renames ("Uh-Oh",
-      "Oooh, Shiny!"), 26.4's reworded subtitles, Javanese and Chavacano. Client screens: a Core 1.5.x look and feel
-      stream with client tests.
+- [x] Vanilla text as 26.4 words it (`tools/lookfeel264`, `vanilla_text_264/`, 19 languages from Mojang's 26.4 files):
+      185 keys, every 1.12.2 key whose English changed from 26.3 ("Cow is hurt", "60 FPS", ...), the family's prefixed
+      copies of them, and copies under vanilla's own keys ("Oooh, Shiny!", "Uh-Oh"). Uh Oh's keys moved out of Game
+      Drops' lang into `vanilla_text/` (26.3's "Uh Oh"), so 26.4's text can replace them.
+- [x] Core `Look264` / `Look264Client` (`core-1.5.0-deepfreeze`): Improved Fog (Video Settings, on; off in Fast), the
+      Repeat Recipe/Trade key (R, recipe book only: the merchant screen is Village & Pillage's), recipe book tab
+      tooltips, Other Players (P and the pause menu icon, inactive in a world nobody can join) with Player Options' mute.
+- [x] Client test: `deepFreeze` step and the 26.4 pause icon row; 146 pass, 0 fail. The sulfur caves color check now
+      reads at blend radius 1 (Core 1.5.0's 1.13 Biome Blend defaults to radius 2, so a 3x3 span blends with plains).
+- [ ] Out of reach: F3's categories (1.12.2's F3 is one text block), keyboard navigation of menus, Javanese and
+      Chavacano (Core has no language pipeline, and 1.12.2 lang codes differ), Repeat Trade (Village & Pillage's
+      screen), Other Players' Blocked tab, friends and reporting (Mojang's online services). Splashes: unchanged in
+      Pre-Release 1.
 
 ## Backport Core 1.5.0 (`core-1.5.0-deepfreeze`, off `core-1.5.0`)
 - [x] `freeze/` freeze ticks (decision 3): 26.4's rules (undead immune, none on fire, leather, 140 ticks, damage every 40,
       x5 blazes, magma cubes, striders, slowness), effects that hold the counter and set the damage, sync, frost overlay,
       shaking, `freezing` config, `freezeDamage` also Game Drops'.
-- [x] `speleothem/` (decision 1): 26.4's `SpeleothemBlock` as `BlockSpeleothem`, `falling_speleothem` (Core entity 0),
+- [x] `speleothem/` (decision 1): 26.4's `SpeleothemBlock` as `BlockSpeleothem`, `falling_speleothem` (Core entity 2; the boats have 0 and 1),
       stalagmite and falling stalactite damage, tridents.
 - [x] `advancement.MonsterHunter`, `locate.BiomeLocate.next`, the frostbite egg in the modern egg layer.
 - Self-test group `freeze` (25 checks); the full Core suite passes (one timing check flaked under load, passing alone).

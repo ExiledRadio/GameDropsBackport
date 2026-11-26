@@ -121,8 +121,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Zararlı gaz beliriy
 death.attack.gamedropsbackport.fallingStalactite=%1$s düşen bir sarkıt tarafından şişlendi
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s, %2$s ile savaşırken düşen bir sarkıt tarafından şişlendi
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Bir Sülfür Küpünün içine TNT almasını sağlayın
-advancements.husbandry.uh_oh.title=Ayvayı Yedik
 death.attack.sulfurCubeHot.item=%2$s, %1$s oyuncusuna sadece zeminin lav olmadığını %3$s kullanarak gösterdi
 death.attack.sulfurCubeHot.player=%2$s, %1$s oyuncusuna sadece zeminin lav olmadığını gösterdi
 death.attack.sulfurCubeHot=%1$s öldü çünkü sadece zemin lav değildi

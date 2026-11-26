@@ -14,3 +14,5 @@ resourcePack.openFolder=Папка с наборами
 resourcePack.folderInfo=(Поместите файлы наборов сюда)
 resourcePack.available.title=Доступные
 resourcePack.selected.title=Выбранные
+advancements.husbandry.uh_oh.description=Дайте серному кубу поглотить динамит
+advancements.husbandry.uh_oh.title=Ой-ой

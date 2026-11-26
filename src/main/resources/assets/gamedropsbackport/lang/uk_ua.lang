@@ -121,8 +121,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Шкідливий �
 death.attack.gamedropsbackport.fallingStalactite=%1$s проткнуто падучим сталактитом
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s проткнуто падучим сталактитом під час битви з %2$s
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Дайте сіркокубу поглинути блок динаміту
-advancements.husbandry.uh_oh.title=Йой
 death.attack.sulfurCubeHot.item=%2$s показав %1$s, що не лише підлога є лавою, використавши %3$s
 death.attack.sulfurCubeHot.player=%2$s показав %1$s, що не лише підлога є лавою
 death.attack.sulfurCubeHot=%1$s загинув, бо не лише підлога є лавою

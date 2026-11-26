@@ -136,8 +136,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Noxious gas appears
 death.attack.gamedropsbackport.fallingStalactite=%1$s was skewered by a falling stalactite
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s was skewered by a falling stalactite while fighting %2$s
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Have a Sulfur Cube absorb a TNT block
-advancements.husbandry.uh_oh.title=Uh Oh
 death.attack.sulfurCubeHot.item=%2$s showed %1$s that not just the floor is lava using %3$s
 death.attack.sulfurCubeHot.player=%2$s showed %1$s that not just the floor is lava
 death.attack.sulfurCubeHot=%1$s died because not just the floor is lava

@@ -121,8 +121,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Gas nocivo aparece
 death.attack.gamedropsbackport.fallingStalactite=%1$s ha sido atravesado por una estalactita
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s ha sido atravesado por una estalactita mientras luchaba contra %2$s
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Haz que un cubo de azufre absorba un bloque de dinamita.
-advancements.husbandry.uh_oh.title=Esto no tiene buena pinta
 death.attack.sulfurCubeHot.item=%2$s enseñó a %1$s que no solo el suelo es lava con su %3$s
 death.attack.sulfurCubeHot.player=%2$s ha demostrado a %1$s que no solo el suelo es lava
 death.attack.sulfurCubeHot=%1$s ha muerto porque no solo el suelo es lava

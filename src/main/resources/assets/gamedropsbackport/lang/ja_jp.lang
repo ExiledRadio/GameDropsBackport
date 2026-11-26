@@ -121,8 +121,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=有毒なガスが�
 death.attack.gamedropsbackport.fallingStalactite=%1$sは落ちてきた鍾乳石に串刺しにされた
 death.attack.gamedropsbackport.fallingStalactite.player=%1$sは%2$sと戦いながら落ちてきた鍾乳石に串刺しにされた
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=サルファーキューブにTNTブロックを吸収させる
-advancements.husbandry.uh_oh.title=あ、まずい
 death.attack.sulfurCubeHot.item=%2$sは%1$sに%3$sで溶岩は床だけではないことを思い知らせた
 death.attack.sulfurCubeHot.player=%2$sは%1$sに溶岩は床だけではないことを思い知らせた
 death.attack.sulfurCubeHot=%1$sは溶岩は床だけではなかったと気付いた

@@ -14,3 +14,5 @@ resourcePack.openFolder=Відкрити теку з пакетами
 resourcePack.folderInfo=(Помістіть файли пакетів сюди)
 resourcePack.available.title=Доступні
 resourcePack.selected.title=Вибрані
+advancements.husbandry.uh_oh.description=Дайте сіркокубу поглинути блок динаміту
+advancements.husbandry.uh_oh.title=Йой

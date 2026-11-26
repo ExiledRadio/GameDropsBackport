@@ -121,8 +121,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=유독 가스가 올
 death.attack.gamedropsbackport.fallingStalactite=%1$s이(가) 떨어지는 종유석에 찔렸습니다
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s이(가) %2$s과(와) 싸우다가 떨어지는 종유석에 찔렸습니다
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=유황 큐브가 TNT 블록을 흡수하게 하세요
-advancements.husbandry.uh_oh.title=폭탄 받아라
 death.attack.sulfurCubeHot.item=%3$s을(를) 사용한 %2$s이(가) %1$s에게 바닥만 용암인 것은 아니었음을 보여주었습니다
 death.attack.sulfurCubeHot.player=%2$s이(가) %1$s에게 바닥만 용암인 것은 아니었음을 보여주었습니다
 death.attack.sulfurCubeHot=%1$s이(가) 바닥만 용암인 것은 아니어서 죽었습니다

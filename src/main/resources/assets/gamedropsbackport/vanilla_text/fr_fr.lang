@@ -14,3 +14,5 @@ resourcePack.openFolder=Ouvrir le dossier des packs
 resourcePack.folderInfo=(Placer les fichiers de packs ici)
 resourcePack.available.title=Disponibles
 resourcePack.selected.title=Sélectionnés
+advancements.husbandry.uh_oh.description=Faites absorber un bloc de TNT à un cube de soufre.
+advancements.husbandry.uh_oh.title=Ça va péter !

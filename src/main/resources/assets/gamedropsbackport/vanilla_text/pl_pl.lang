@@ -14,3 +14,5 @@ resourcePack.openFolder=Otwórz folder z paczkami
 resourcePack.folderInfo=(Tutaj umieszczaj pliki paczek)
 resourcePack.available.title=Dostępne
 resourcePack.selected.title=Wybrane
+advancements.husbandry.uh_oh.description=Spraw, aby kostka siarki pochłonęła blok TNT
+advancements.husbandry.uh_oh.title=Ale siara

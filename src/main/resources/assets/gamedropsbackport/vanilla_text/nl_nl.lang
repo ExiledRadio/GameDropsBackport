@@ -14,3 +14,5 @@ resourcePack.openFolder=Pakkettenmap openen
 resourcePack.folderInfo=(plaats pakketbestanden hier)
 resourcePack.available.title=Beschikbaar
 resourcePack.selected.title=Geselecteerd
+advancements.husbandry.uh_oh.description=Laat een zwavelkubus een blok TNT absorberen
+advancements.husbandry.uh_oh.title=Oh nee...

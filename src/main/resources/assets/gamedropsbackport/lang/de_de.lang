@@ -121,8 +121,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Reizgas tritt auf
 death.attack.gamedropsbackport.fallingStalactite=%1$s wurde von einem fallenden Stalaktiten aufgespießt
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s wurde im Kampf gegen %2$s von einem fallenden Stalaktiten aufgespießt
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Lass einen Schwefelwürfel einen TNT‐Block aufnehmen
-advancements.husbandry.uh_oh.title=Oh, oh
 death.attack.sulfurCubeHot.item=%2$s zeigte %1$s mit %3$s, dass nicht nur der Boden zu heiß ist
 death.attack.sulfurCubeHot.player=%2$s zeigte %1$s, dass nicht nur der Boden zu heiß ist
 death.attack.sulfurCubeHot=%1$s starb, da nicht nur der Boden zu heiß ist

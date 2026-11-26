@@ -121,8 +121,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Ядовитый г�
 death.attack.gamedropsbackport.fallingStalactite=%1$s был пронзён обрушившимся сталактитом
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s был пронзён обрушившимся сталактитом, пока боролся с %2$s
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Дайте серному кубу поглотить динамит
-advancements.husbandry.uh_oh.title=Ой-ой
 death.attack.sulfurCubeHot.item=%2$s показал %1$s, что лавой может быть не только пол, используя %3$s
 death.attack.sulfurCubeHot.player=%2$s показал %1$s, что лавой может быть не только пол
 death.attack.sulfurCubeHot=%1$s обнаружил, что лавой может быть не только пол

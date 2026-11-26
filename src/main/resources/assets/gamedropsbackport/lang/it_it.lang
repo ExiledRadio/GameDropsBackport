@@ -121,8 +121,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Esalazione nociva
 death.attack.gamedropsbackport.fallingStalactite=Una stalattite ha infilzato %1$s
 death.attack.gamedropsbackport.fallingStalactite.player=Una stalattite ha infilzato %1$s mentre lottava con %2$s
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Fa' assorbire un blocco di TNT a un cubo di zolfo.
-advancements.husbandry.uh_oh.title=Come vola via una bomba
 death.attack.sulfurCubeHot.item=%2$s ha mostrato a %1$s che qualcos'altro oltre al pavimento era lava con %3$s
 death.attack.sulfurCubeHot.player=%2$s ha mostrato a %1$s che qualcos'altro oltre al pavimento era lava
 death.attack.sulfurCubeHot=%1$s ha scoperto che qualcos'altro oltre al pavimento era lava

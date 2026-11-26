@@ -26,8 +26,8 @@ def main():
     lang.append("entity.%s.sulfur_cube.name=%s" % (mid, assets.name("entity.minecraft.sulfur_cube")))
     lang.append("entity.%s.sulfur_cube.content=%s" % (mid, assets.name("entity.minecraft.sulfur_cube.content")))
     lang.append("item.%s.sulfur_cube_bucket.name=%s" % (mid, assets.name("item.minecraft.sulfur_cube_bucket")))
-    for key in ("death.attack.sulfurCubeHot", "death.attack.sulfurCubeHot.item", "death.attack.sulfurCubeHot.player",
-                "advancements.husbandry.uh_oh.title", "advancements.husbandry.uh_oh.description"):
+    # Uh Oh's two keys are vanilla's: they are in the look and feel's vanilla text (26.3's, then 26.4's "Uh-Oh").
+    for key in ("death.attack.sulfurCubeHot", "death.attack.sulfurCubeHot.item", "death.attack.sulfurCubeHot.player"):
         lang.append("%s=%s" % (key, assets.name(key)))
 
     # Uh Oh: 26.3's two criteria (TNT given to an adult cube, or dropped TNT it picks up), granted by the mod.

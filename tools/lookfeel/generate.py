@@ -65,6 +65,8 @@ REWORDED = ["advancements.story.enter_the_nether.description", "advancements.sto
             "options.languageWarning", "selectWorld.load_folder_access"]
 # And the screens Backport Core lays out as 26.3's: the disconnected screen's button, "Saving world", out of memory.
 SCREENS = ["gui.toMenu", "gui.toTitle", "menu.savingLevel", "outOfMemory.title", "outOfMemory.message"]
+# The sulfur cube's advancement, under vanilla's own keys: vanilla text, so 26.4's "Uh-Oh" can replace it.
+SCREENS += ["advancements.husbandry.uh_oh.title", "advancements.husbandry.uh_oh.description"]
 # One line per key: a line break is written as \n (vanilla_text.py does the same for the other languages).
 assets.write("vanilla_text/en_us.lang", "".join("%s=%s\n" % (k, assets.name(k).replace("\n", "\\n"))
                                                 for k in sorted(REWORDED + SCREENS)))

@@ -121,8 +121,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=有毒氣體出現
 death.attack.gamedropsbackport.fallingStalactite=%1$s 被墜落的鐘乳石刺穿了
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s 在與 %2$s 戰鬥時被落下的鐘乳石刺穿
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=讓硫磺立方怪吸收 TNT 方塊
-advancements.husbandry.uh_oh.title=不妙
 death.attack.sulfurCubeHot.item=%2$s 用 %3$s 讓 %1$s 察覺不只有地面可以是熔岩
 death.attack.sulfurCubeHot.player=%2$s 讓 %1$s 察覺不只有地面可以是熔岩
 death.attack.sulfurCubeHot=%1$s 察覺不只有地面可以是熔岩

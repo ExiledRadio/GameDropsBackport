@@ -14,3 +14,5 @@ resourcePack.openFolder=Open Pack Folder
 resourcePack.folderInfo=(Place pack files here)
 resourcePack.available.title=Available
 resourcePack.selected.title=Selected
+advancements.husbandry.uh_oh.description=Have a Sulfur Cube absorb a TNT block
+advancements.husbandry.uh_oh.title=Uh Oh

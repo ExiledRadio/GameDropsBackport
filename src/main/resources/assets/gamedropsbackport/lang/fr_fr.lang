@@ -121,8 +121,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Gaz nocif qui appara
 death.attack.gamedropsbackport.fallingStalactite=%1$s s'est fait transpercer par une stalactite
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s s'est fait transpercer par une stalactite en combattant (un(e)) %2$s
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Faites absorber un bloc de TNT à un cube de soufre.
-advancements.husbandry.uh_oh.title=Ça va péter !
 death.attack.sulfurCubeHot.item=%2$s a montré à %1$s qu'il n'y a pas que le sol qui est fait de lave avec %3$s
 death.attack.sulfurCubeHot.player=%2$s a montré à %1$s qu'il n'y a pas que le sol qui est fait de lave
 death.attack.sulfurCubeHot=%1$s est mort(e) car il n'y a pas que le sol qui est fait de lave

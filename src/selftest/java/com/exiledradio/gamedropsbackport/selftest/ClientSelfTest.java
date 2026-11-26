@@ -134,6 +134,42 @@ public final class ClientSelfTest {
         }
     }
 
+    /** 26.4's pieces that need no screen: the reworded text, Improved Fog, the keys, the recipe tabs' names, muting. */
+    private void deepFreeze(Minecraft mc) {
+        ok("Uh-Oh".equals(net.minecraft.client.resources.I18n.format("advancements.husbandry.uh_oh.title")), "26.4 text: Uh-Oh");
+        ok("Cow is hurt".equals(net.minecraft.client.resources.I18n.format("subtitles.entity.cow.hurt")), "26.4 text: Cow is hurt, got "
+                + net.minecraft.client.resources.I18n.format("subtitles.entity.cow.hurt"));
+        ok("60 FPS".equals(net.minecraft.client.resources.I18n.format("options.framerate", 60)), "26.4 text: 60 FPS");
+        com.exiledradio.backportcore.presentation.option.ToggleOption fog = com.exiledradio.backportcore.presentation.versions.Look264.IMPROVED_FOG;
+        ok(fog.isShown() && fog.defaultValue(), "Improved Fog is on Video Settings, on by default");
+        ok("false".equals(com.exiledradio.backportcore.presentation.GraphicsPreset.values("fast").get("improved_fog"))
+                && "true".equals(com.exiledradio.backportcore.presentation.GraphicsPreset.values("fancy").get("improved_fog")), "Improved Fog: off in Fast, on in Fancy");
+        net.minecraft.client.settings.KeyBinding repeat = com.exiledradio.backportcore.presentation.versions.client.Look264Client.REPEAT;
+        net.minecraft.client.settings.KeyBinding others = com.exiledradio.backportcore.presentation.versions.client.Look264Client.OTHER_PLAYERS;
+        ok(repeat.getKeyCodeDefault() == org.lwjgl.input.Keyboard.KEY_R && "key.categories.inventory".equals(repeat.getKeyCategory()), "Repeat Recipe/Trade: R, Inventory");
+        ok(others.getKeyCodeDefault() == org.lwjgl.input.Keyboard.KEY_P && "key.categories.multiplayer".equals(others.getKeyCategory()), "Other Players: P, Multiplayer");
+        ok(java.util.Arrays.asList(mc.gameSettings.keyBindings).contains(repeat) && java.util.Arrays.asList(mc.gameSettings.keyBindings).contains(others),
+                "both keys are in Controls");
+        ok(!com.exiledradio.backportcore.presentation.versions.look264.client.OtherPlayersScreen.available(), "Other Players: not in an unshared world");
+        java.util.UUID id = java.util.UUID.randomUUID();
+        com.exiledradio.backportcore.presentation.versions.look264.client.PlayerMutes.set(id, "Steve", true);
+        net.minecraftforge.client.event.ClientChatReceivedEvent chat = new net.minecraftforge.client.event.ClientChatReceivedEvent(
+                net.minecraft.util.text.ChatType.CHAT, new net.minecraft.util.text.TextComponentTranslation("chat.type.text",
+                new net.minecraft.util.text.TextComponentString("Steve"), "hello"));
+        net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(chat);
+        ok(chat.isCanceled(), "a muted player's chat is hidden");
+        com.exiledradio.backportcore.presentation.versions.look264.client.PlayerMutes.set(id, "Steve", false);
+        net.minecraftforge.client.event.ClientChatReceivedEvent chat2 = new net.minecraftforge.client.event.ClientChatReceivedEvent(
+                net.minecraft.util.text.ChatType.CHAT, new net.minecraft.util.text.TextComponentTranslation("chat.type.text",
+                new net.minecraft.util.text.TextComponentString("Steve"), "hello"));
+        net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(chat2);
+        ok(!chat2.isCanceled(), "unmuted, shown again");
+        mc.displayGuiScreen(new com.exiledradio.backportcore.presentation.versions.look264.client.OtherPlayersScreen(null));
+        ok(mc.currentScreen instanceof com.exiledradio.backportcore.presentation.versions.look264.client.OtherPlayersScreen, "Other Players opens");
+        shot("other_players.png");
+        mc.displayGuiScreen(null);
+    }
+
     /** 26.2's game music: the sound handler's music.game (and so the creative music) holds fingerspit's five. */
     private void gameMusic(Minecraft mc) throws Exception {
         ok(com.exiledradio.gamedropsbackport.music.client.GameMusicPack.installed, "game music: the built-in pack is installed");
@@ -305,6 +341,11 @@ public final class ClientSelfTest {
             mc.getIntegratedServer().addScheduledTask(() -> sp.inventory.setInventorySlotContents(sp.inventory.currentItem, net.minecraft.item.ItemStack.EMPTY));
             return 5;
         });
+        // 26.4's look and feel (Core's Look264, Game Drops' vanilla text).
+        this.steps.add(() -> {
+            deepFreeze(mc);
+            return 5;
+        });
         // The pause menu: World Options... in Open to LAN's place, the 26.2 icon row under Advancements and Statistics.
         this.steps.add(() -> {
             mc.displayGuiScreen(new GuiIngameMenu());
@@ -323,13 +364,14 @@ public final class ClientSelfTest {
             }
             String desc = row.toString();
             ok(icons.size() == 4, "pause: four icon buttons, " + desc);
-            String[] sprites = {"pause_menu/bug.png", "pause_menu/social_interactions.png", "friends/friends.png", "pause_menu/player_reporting.png"};
-            String[] tips = {"Report Bugs", "Give Feedback", "Friends", "There are no players to report in this world"};
+            // 26.4: Friends, Other Players (inactive in a world nobody can join), Report Bugs, Give Feedback.
+            String[] sprites = {"friends/friends.png", "pause_menu/other_players.png", "pause_menu/bug.png", "pause_menu/social_interactions.png"};
+            String[] tips = {"Friends", "This world is not currently joinable by other players", "Report Bugs", "Give Feedback"};
             boolean order = icons.size() == 4;
             for (int i = 0; order && i < 4; i++) {
                 order = ("textures/gui/sprites/" + sprites[i]).equals(icons.get(i).sprite) && tips[i].equals(icons.get(i).tooltip);
             }
-            ok(order, "pause: 26.3's order and tooltips (Report Bugs, Give Feedback, Friends, Player Reporting), " + desc);
+            ok(order, "pause: 26.4's order and tooltips (Friends, Other Players, Report Bugs, Give Feedback), " + desc);
             int x0 = mc.currentScreen.width / 2 - 46;
             boolean laid = icons.size() == 4 && back != null;
             for (int i = 0; laid && i < 4; i++) {
@@ -337,17 +379,18 @@ public final class ClientSelfTest {
                 laid = b.x == x0 + 24 * i && b.y == back.y + 48 && b.width == 20 && b.height == 20;
             }
             ok(laid, "pause: 20 by 20 with 4 between, 92 wide and centered, the third row, " + desc);
-            ok(icons.size() == 4 && icons.get(0).enabled && icons.get(1).enabled && icons.get(2).enabled && !icons.get(3).enabled,
-                    "pause: alone in singleplayer, only Player Reporting is inactive, " + desc);
+            ok(icons.size() == 4 && icons.get(0).enabled && !icons.get(1).enabled && icons.get(2).enabled && icons.get(3).enabled,
+                    "pause: alone in singleplayer, only Other Players is inactive, " + desc);
             GuiButton options = button(mc.currentScreen, 0);
             ok(options != null && lan != null && options.y == lan.y && lan.x == mc.currentScreen.width / 2 + 4, "pause: Options... and World Options... share a row");
             shot("pause.png");
-            // Clicks: the inactive Player Reporting does nothing; Friends shows the toast and the pause menu stays.
+            // Clicks: the inactive Other Players does nothing; Friends shows the toast and the pause menu stays.
             if (icons.size() == 4) {
                 GuiScreen pause = mc.currentScreen;
-                click(pause, icons.get(3));
-                ok(!com.exiledradio.backportcore.presentation.client.SystemToasts.showing(), "pause: an inactive Player Reporting shows nothing");
-                click(pause, icons.get(2));
+                click(pause, icons.get(1));
+                ok(!com.exiledradio.backportcore.presentation.client.SystemToasts.showing() && mc.currentScreen == pause,
+                        "pause: an inactive Other Players shows nothing");
+                click(pause, icons.get(0));
                 ok(com.exiledradio.backportcore.presentation.client.SystemToasts.showing()
                         && "Friends".equals(com.exiledradio.backportcore.presentation.client.SystemToasts.lastTitle)
                         && "Not available in this version".equals(com.exiledradio.backportcore.presentation.client.SystemToasts.lastMessage)

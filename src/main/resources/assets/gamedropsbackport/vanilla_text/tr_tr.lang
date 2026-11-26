@@ -14,3 +14,5 @@ resourcePack.openFolder=Paket Klasörünü Aç
 resourcePack.folderInfo=(Paket dosyalarını buraya yerleştirin)
 resourcePack.available.title=Mevcut
 resourcePack.selected.title=Seçili
+advancements.husbandry.uh_oh.description=Bir Sülfür Küpünün içine TNT almasını sağlayın
+advancements.husbandry.uh_oh.title=Ayvayı Yedik

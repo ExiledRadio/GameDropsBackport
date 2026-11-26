@@ -121,8 +121,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Giftig gas verschijn
 death.attack.gamedropsbackport.fallingStalactite=Een vallende stalactiet spietste %1$s
 death.attack.gamedropsbackport.fallingStalactite.player=Een vallende stalactiet spietste %1$s tijdens een gevecht met %2$s
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Laat een zwavelkubus een blok TNT absorberen
-advancements.husbandry.uh_oh.title=Oh nee...
 death.attack.sulfurCubeHot.item=%2$s liet %1$s met %3$s zien dat niet alleen de vloer lava is
 death.attack.sulfurCubeHot.player=%2$s liet %1$s zien dat niet alleen de vloer lava is
 death.attack.sulfurCubeHot=%1$s stierf, want niet alleen de vloer is lava

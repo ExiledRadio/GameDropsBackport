@@ -1,5 +1,6 @@
 # 1.0.2
 
+*   **Fixed: on a server, opening a villager's trades could kick you** ("Internal server error") when an old explorer map in them needed updating. Singleplayer was not affected.
 *   **Dynamic Trees**: abandoned camps' oaks, birches, spruces, pines, jungle trees and acacias are Dynamic Trees' where it grows the biome's trees. Camps had normal trees among dynamic ones.
 *   **Dynamic Trees in dappled forests**: with Dynamic Trees - Backport, its poplars are dynamic poplars, with their leaf litter and shelf mushrooms (the trunk grows a full log thick where a mushroom sits), and its spruces are Dynamic Trees' spruces. Shelf mushrooms stay on a dynamic trunk as it grows.
 

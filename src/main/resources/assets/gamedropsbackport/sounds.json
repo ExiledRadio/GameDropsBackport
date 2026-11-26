@@ -2602,5 +2602,137 @@
       "gamedropsbackport:block/brittle_ice/crack5"
     ],
     "subtitle": "subtitles.gamedropsbackport.block.brittle_ice.crack"
+  },
+  "entity.frostbite.ambient": {
+    "sounds": [
+      "gamedropsbackport:mob/frostbite/ambient1",
+      "gamedropsbackport:mob/frostbite/ambient2",
+      "gamedropsbackport:mob/frostbite/ambient3",
+      "gamedropsbackport:mob/frostbite/ambient4"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.frostbite.ambient"
+  },
+  "entity.frostbite.death": {
+    "sounds": [
+      "gamedropsbackport:mob/frostbite/death"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.frostbite.death"
+  },
+  "entity.frostbite.hurt": {
+    "sounds": [
+      "gamedropsbackport:mob/frostbite/hurt1",
+      "gamedropsbackport:mob/frostbite/hurt2",
+      "gamedropsbackport:mob/frostbite/hurt3",
+      "gamedropsbackport:mob/frostbite/hurt4"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.frostbite.hurt"
+  },
+  "entity.frostbite.step": {
+    "sounds": [
+      "gamedropsbackport:mob/frostbite/step1",
+      "gamedropsbackport:mob/frostbite/step2",
+      "gamedropsbackport:mob/frostbite/step3",
+      "gamedropsbackport:mob/frostbite/step4",
+      "gamedropsbackport:mob/frostbite/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.frostbite.throw": {
+    "sounds": [
+      "gamedropsbackport:random/bow"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.frostbite.throw"
+  },
+  "entity.frostbite.converted_to_zombie": {
+    "sounds": [
+      "gamedropsbackport:mob/frostbite/convert1",
+      "gamedropsbackport:mob/frostbite/convert2"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie"
+  },
+  "entity.zombie.converted_to_frostbite": {
+    "sounds": [
+      "gamedropsbackport:mob/zombie/convert1",
+      "gamedropsbackport:mob/zombie/convert2"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite"
+  },
+  "entity.drowned.converted_to_zombie": {
+    "sounds": [
+      "gamedropsbackport:mob/drowned/convert_to_zombie1",
+      "gamedropsbackport:mob/drowned/convert_to_zombie2"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.drowned.converted_to_zombie"
+  },
+  "entity.husk.converted_to_zombie": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:mob/husk/convert1",
+        "volume": 0.8
+      },
+      {
+        "name": "gamedropsbackport:mob/husk/convert2",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.husk.converted_to_zombie"
+  },
+  "entity.parrot.imitate.frostbite": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:mob/frostbite/ambient1",
+        "pitch": 1.8,
+        "volume": 0.7
+      },
+      {
+        "name": "gamedropsbackport:mob/frostbite/ambient2",
+        "pitch": 1.8,
+        "volume": 0.7
+      },
+      {
+        "name": "gamedropsbackport:mob/frostbite/ambient3",
+        "pitch": 1.8,
+        "volume": 0.7
+      },
+      {
+        "name": "gamedropsbackport:mob/frostbite/ambient4",
+        "pitch": 1.8,
+        "volume": 0.7
+      }
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.parrot.imitate.frostbite"
+  },
+  "entity.ice_ball.throw": {
+    "sounds": [
+      "gamedropsbackport:entity/ice_ball/bow"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.ice_ball.throw"
+  },
+  "entity.ice_ball.break": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:entity/ice_ball/hit1",
+        "pitch": 2.0
+      },
+      {
+        "name": "gamedropsbackport:entity/ice_ball/hit2",
+        "pitch": 2.0
+      },
+      {
+        "name": "gamedropsbackport:entity/ice_ball/hit3",
+        "pitch": 2.0
+      },
+      {
+        "name": "gamedropsbackport:entity/ice_ball/hit4",
+        "pitch": 2.0
+      }
+    ],
+    "subtitle": "subtitles.gamedropsbackport.entity.ice_ball.break"
+  },
+  "event.mob_effect.freezing": {
+    "sounds": [
+      "gamedropsbackport:event/mob_effects/freezing"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.event.mob_effect.freezing"
   }
 }

@@ -53,6 +53,8 @@ config.gamedropsbackport.iceBlocks.tooltip=26.4's packed ice bricks, chiseled pa
 config.gamedropsbackport.iceBlocks.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
 config.gamedropsbackport.iceCaves.tooltip=26.4's ice caves: icicles, ice crystals, brittle ice, crevasses and the biome under cold land.
 config.gamedropsbackport.iceCaves.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
+config.gamedropsbackport.frostbite.tooltip=26.4's frostbite, ice balls, the Freezing effect and its potions, and the zombie, husk and drowned conversions in powder snow.
+config.gamedropsbackport.frostbite.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
 # --- end config tooltips ---
 
 # --- common ---
@@ -500,3 +502,29 @@ subtitles.gamedropsbackport.block.ice_crystal.ambient=Ice Crystal chimes
 subtitles.gamedropsbackport.block.icicle.land=Icicle crashes down
 config.gamedropsbackport.iceCaves=Ice Caves
 config.gamedropsbackport.iceCaves.enabled=Enabled
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=Frostbite
+entity.gamedropsbackport.ice_ball.name=Ice Ball
+item.gamedropsbackport.ice_ball.name=Ice Ball
+effect.gamedropsbackport.freezing=Freezing
+potion.effect.gamedropsbackport.freezing=Potion of Freezing
+splash_potion.effect.gamedropsbackport.freezing=Splash Potion of Freezing
+lingering_potion.effect.gamedropsbackport.freezing=Lingering Potion of Freezing
+tipped_arrow.effect.gamedropsbackport.freezing=Arrow of Freezing
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=What Goes Around Comes Around
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=Kill a Frostbite using an Ice Ball
+config.gamedropsbackport.frostbite=Frostbite
+config.gamedropsbackport.frostbite.enabled=Enabled
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=Drowned converts to Zombie
+subtitles.gamedropsbackport.entity.frostbite.ambient=Frostbite groans
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=Frostbite converts to Zombie
+subtitles.gamedropsbackport.entity.frostbite.death=Frostbite dies
+subtitles.gamedropsbackport.entity.frostbite.hurt=Frostbite is hurt
+subtitles.gamedropsbackport.entity.frostbite.throw=Frostbite throws
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=Husk converts to Zombie
+subtitles.gamedropsbackport.entity.ice_ball.break=Ice Ball hits
+subtitles.gamedropsbackport.entity.ice_ball.throw=Ice Ball is thrown
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=Parrot groans
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=Zombie converts to Frostbite
+subtitles.gamedropsbackport.event.mob_effect.freezing=Starting to freeze

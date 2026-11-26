@@ -300,6 +300,10 @@ public final class BabyRenderers {
                 BabyRender.tex("zombie/zombie_baby"), 0.0F, 0.0F, 1.0F));
         wrap(map, EntityHusk.class, RenderHusk.class, zombie(rm, BabyHumanoidModel.zombie(), false,
                 BabyRender.tex("zombie/husk_baby"), 0.0F, 0.0F, 1.0F));
+        // 26.4's baby frostbite: the baby zombie's model (BabyFrostbiteModel adds nothing), when the frostbite stream is on.
+        wrap(map, com.exiledradio.gamedropsbackport.frostbite.EntityFrostbite.class,
+                com.exiledradio.gamedropsbackport.frostbite.client.RenderFrostbite.class, zombie(rm, BabyHumanoidModel.zombie(), false,
+                        BabyRender.tex("zombie/frostbite_baby"), 0.0F, 0.0F, 1.0F));
         BabyHumanoidModel zvModel = BabyHumanoidModel.zombieVillager();
         BabyRender<EntityZombie> zombieVillager = zombie(rm, zvModel, false,
                 BabyRender.tex("zombie_villager/zombie_villager_baby"), -0.1171875F, -0.07421875F, 1.0F);

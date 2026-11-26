@@ -53,6 +53,7 @@ public final class SelfTestRunner {
             new WaterlogSelfTest(),
             new IceBlocksSelfTest(),
             new IceCavesSelfTest(),
+            new FrostbiteSelfTest(),
     };
 
     private final List<String> wanted;

@@ -84,6 +84,18 @@ public final class ModConfig {
     @Config.Comment("26.4's ice caves: icicles, ice crystals, brittle ice, crevasses and the biome under cold land.")
     public static final IceCaves iceCaves = new IceCaves();
 
+    @Setting.Feature(icon = "gamedropsbackport:ice_ball|minecraft:snowball")
+    @Config.LangKey("config.gamedropsbackport.frostbite")
+    @Config.Comment("26.4's frostbite, ice balls, the Freezing effect and its potions, and the zombie, husk and drowned conversions in powder snow.")
+    public static final Frostbite frostbite = new Frostbite();
+
+    public static final class Frostbite {
+        @Config.RequiresMcRestart
+        @Config.Comment("Off, nothing is registered, and a world that has them loses them.")
+        @Config.LangKey("config.gamedropsbackport.frostbite.enabled")
+        public boolean enabled = true;
+    }
+
     public static final class IceCaves {
         @Config.RequiresMcRestart
         @Config.Comment("Off, nothing is registered, and a world that has them loses them.")

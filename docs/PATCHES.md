@@ -25,3 +25,12 @@ method starts on a frame.
 | --- | --- | --- | --- |
 | P6 | `TileEntityLockableLoot.fillWithLoot` | Head: `LootOrigin.enter(this)` (only `this` read); `LootOrigin.exit()` before each return. The camp loot (`CampLoot`) takes the container's block as 26.3's `ORIGIN` (biome check, map search) instead of the opening player's; outside a container it falls back to the player. Covers every subclass that inherits it (chests, Village & Pillage's barrel). | Only records; nothing but the camp tables reads it. |
 
+
+## 26.4, changes (`asm/DeepFreezeTransformer`, hooks in `changes/DeepFreezeHooks`)
+
+| # | Class and method | Change | Off |
+| --- | --- | --- | --- |
+| P8 | `BlockSnow.canPlaceBlockAt` | Its `Blocks.PACKED_ICE` becomes `DeepFreezeHooks.snowRefuses()`: ice again, so snow sits on packed ice (26.4's `#cannot_support_snow_layer`). | Returns packed ice. |
+| P9 | `BlockMushroom.canBlockStay`, `updateTick` | Head: `if (mushroomRule()) return mushroomStays(world, pos);` (26.4: center support, any light; not during population). The two `canBlockStay` calls in `updateTick` (where it spreads) become `mushroomSpreads`, which keeps light under 13. | `mushroomRule` is false; `mushroomSpreads` calls `canBlockStay`. |
+| P10 | `BlockBreakable.shouldSideBeRendered` (client) | Head: `if (iceFaceHidden(this, world, pos, side)) return false;` Ice and frosted ice against `#face_occluding_ice_blocks`. | The test is false. |
+| P11 | `BlockFrostedIce.slightlyMelt` | Head: `frostedIceCracks(world, pos, state)`: `block_change` for a crack below age 3. | Does nothing. |

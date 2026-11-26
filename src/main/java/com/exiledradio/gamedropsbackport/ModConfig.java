@@ -266,6 +266,39 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Changes fields ---
+        @Config.Comment("Snow layers can be placed and fall on packed ice (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.snowOnPackedIce")
+        public boolean snowOnPackedIce = true;
+
+        @Config.Comment({"Mushrooms stay on any block whose top supports their middle, in any light; they still spread only in",
+                "light under 13 (26.4). World generation keeps 1.12.2's rule."})
+        @Config.LangKey("config.gamedropsbackport.changes.mushroomsAnyLight")
+        public boolean mushroomsAnyLight = true;
+
+        @Config.Comment("Ice, packed ice, frosted ice and blue ice sound as 26.4's own sets, and ice in a frozen lake resonates (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.iceSounds")
+        public boolean iceSounds = true;
+
+        @Config.Comment("Ice and frosted ice hide their faces against ice, frosted ice and brittle ice (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.iceFaces")
+        public boolean iceFaces = true;
+
+        @Config.Comment("Frosted ice sends a vibration each time it cracks (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.frostedIceVibrations")
+        public boolean frostedIceVibrations = true;
+
+        @Config.Comment("Snowballs knock players back (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.snowballKnockback")
+        public boolean snowballKnockback = true;
+
+        @Config.Comment("A carrot on a stick boosts a pig for 7 to 35 seconds instead of 7 to 49 (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.steeringBoost")
+        public boolean steeringBoost = true;
+
+        @Config.Comment("A perching ender dragon takes no damage from snowballs, eggs, ice balls or other thrown things (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.dragonPerchThrown")
+        public boolean dragonPerchThrown = true;
+
         @Config.Comment({"/time runs on world clocks: set day, noon, night and midnight go forward to the next one; pause,",
                 "resume and rate; of <clock>; query time and timelines; 26.1's messages (26.1)."})
         @Config.LangKey("config.gamedropsbackport.changes.timeCommand")

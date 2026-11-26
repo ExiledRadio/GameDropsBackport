@@ -2742,5 +2742,264 @@
         "stream": true
       }
     ]
+  },
+  "block.ice.break": {
+    "sounds": [
+      "gamedropsbackport:block/ice/break1",
+      "gamedropsbackport:block/ice/break2",
+      "gamedropsbackport:block/ice/break3",
+      "gamedropsbackport:block/ice/break4",
+      "gamedropsbackport:block/ice/break5",
+      "gamedropsbackport:block/ice/break6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.ice.step": {
+    "sounds": [
+      "gamedropsbackport:block/ice/step1",
+      "gamedropsbackport:block/ice/step2",
+      "gamedropsbackport:block/ice/step3",
+      "gamedropsbackport:block/ice/step4",
+      "gamedropsbackport:block/ice/step5",
+      "gamedropsbackport:block/ice/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.ice.place": {
+    "sounds": [
+      "gamedropsbackport:block/ice/place1",
+      "gamedropsbackport:block/ice/place2",
+      "gamedropsbackport:block/ice/place3",
+      "gamedropsbackport:block/ice/place4",
+      "gamedropsbackport:block/ice/place5",
+      "gamedropsbackport:block/ice/place6"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.ice.hit": {
+    "sounds": [
+      "gamedropsbackport:block/ice/hit1",
+      "gamedropsbackport:block/ice/hit2",
+      "gamedropsbackport:block/ice/hit3",
+      "gamedropsbackport:block/ice/hit4",
+      "gamedropsbackport:block/ice/hit5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.ice.fall": {
+    "sounds": [
+      "gamedropsbackport:block/ice/hit1",
+      "gamedropsbackport:block/ice/hit2",
+      "gamedropsbackport:block/ice/hit3",
+      "gamedropsbackport:block/ice/hit4",
+      "gamedropsbackport:block/ice/hit5"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.generic.fall"
+  },
+  "block.frosted_ice.break": {
+    "sounds": [
+      "gamedropsbackport:block/frosted_ice/break1",
+      "gamedropsbackport:block/frosted_ice/break2",
+      "gamedropsbackport:block/frosted_ice/break3",
+      "gamedropsbackport:block/frosted_ice/break4",
+      "gamedropsbackport:block/frosted_ice/break5",
+      "gamedropsbackport:block/frosted_ice/break6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.frosted_ice.step": {
+    "sounds": [
+      "gamedropsbackport:block/frosted_ice/step1",
+      "gamedropsbackport:block/frosted_ice/step2",
+      "gamedropsbackport:block/frosted_ice/step3",
+      "gamedropsbackport:block/frosted_ice/step4",
+      "gamedropsbackport:block/frosted_ice/step5",
+      "gamedropsbackport:block/frosted_ice/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.frosted_ice.place": {
+    "sounds": [
+      "gamedropsbackport:block/frosted_ice/place1",
+      "gamedropsbackport:block/frosted_ice/place2",
+      "gamedropsbackport:block/frosted_ice/place3",
+      "gamedropsbackport:block/frosted_ice/place4",
+      "gamedropsbackport:block/frosted_ice/place5",
+      "gamedropsbackport:block/frosted_ice/place6"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.frosted_ice.hit": {
+    "sounds": [
+      "gamedropsbackport:block/frosted_ice/hit1",
+      "gamedropsbackport:block/frosted_ice/hit2",
+      "gamedropsbackport:block/frosted_ice/hit3",
+      "gamedropsbackport:block/frosted_ice/hit4",
+      "gamedropsbackport:block/frosted_ice/hit5",
+      "gamedropsbackport:block/frosted_ice/hit6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.frosted_ice.fall": {
+    "sounds": [
+      "gamedropsbackport:block/frosted_ice/hit1",
+      "gamedropsbackport:block/frosted_ice/hit2",
+      "gamedropsbackport:block/frosted_ice/hit3",
+      "gamedropsbackport:block/frosted_ice/hit4",
+      "gamedropsbackport:block/frosted_ice/hit5",
+      "gamedropsbackport:block/frosted_ice/hit6"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.generic.fall"
+  },
+  "block.blue_ice.break": {
+    "sounds": [
+      "gamedropsbackport:block/blue_ice/break1",
+      "gamedropsbackport:block/blue_ice/break2",
+      "gamedropsbackport:block/blue_ice/break3",
+      "gamedropsbackport:block/blue_ice/break4",
+      "gamedropsbackport:block/blue_ice/break5",
+      "gamedropsbackport:block/blue_ice/break6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.blue_ice.step": {
+    "sounds": [
+      "gamedropsbackport:block/blue_ice/step1",
+      "gamedropsbackport:block/blue_ice/step2",
+      "gamedropsbackport:block/blue_ice/step3",
+      "gamedropsbackport:block/blue_ice/step4",
+      "gamedropsbackport:block/blue_ice/step5",
+      "gamedropsbackport:block/blue_ice/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.blue_ice.place": {
+    "sounds": [
+      "gamedropsbackport:block/blue_ice/place1",
+      "gamedropsbackport:block/blue_ice/place2",
+      "gamedropsbackport:block/blue_ice/place3",
+      "gamedropsbackport:block/blue_ice/place4",
+      "gamedropsbackport:block/blue_ice/place5",
+      "gamedropsbackport:block/blue_ice/place6"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.blue_ice.hit": {
+    "sounds": [
+      "gamedropsbackport:block/blue_ice/hit1",
+      "gamedropsbackport:block/blue_ice/hit2",
+      "gamedropsbackport:block/blue_ice/hit3",
+      "gamedropsbackport:block/blue_ice/hit4",
+      "gamedropsbackport:block/blue_ice/hit5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.blue_ice.fall": {
+    "sounds": [
+      "gamedropsbackport:block/blue_ice/hit1",
+      "gamedropsbackport:block/blue_ice/hit2",
+      "gamedropsbackport:block/blue_ice/hit3",
+      "gamedropsbackport:block/blue_ice/hit4",
+      "gamedropsbackport:block/blue_ice/hit5"
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.generic.fall"
+  },
+  "block.ice.ambient": {
+    "sounds": [
+      {
+        "name": "gamedropsbackport:block/ice/ambient1",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient2",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient3",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient4",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient5",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient6",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient7",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient8",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient9",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient10",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient11",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient12",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient13",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient14",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient15",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient16",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient17",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient18",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient19",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient20",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient21",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient22",
+        "volume": 4.0
+      },
+      {
+        "name": "gamedropsbackport:block/ice/ambient23",
+        "volume": 4.0
+      }
+    ],
+    "subtitle": "subtitles.gamedropsbackport.block.ice.ambient"
   }
 }

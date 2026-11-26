@@ -56,6 +56,7 @@ public final class SelfTestRunner {
             new FrostbiteSelfTest(),
             new ColdCubeSelfTest(),
             new JukeboxSelfTest(),
+            new DeepFreezeChangesSelfTest(),
     };
 
     private final List<String> wanted;

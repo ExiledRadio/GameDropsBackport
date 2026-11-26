@@ -13,7 +13,7 @@ import java.util.Map;
  * environment, by {@code -Dfml.coreMods.load}. A transformer only rewrites a call or adds a call to a hook in the
  * mod's own packages; the hook keeps 1.12.2's behavior while its stream is off.
  *
- * <p>The patches: the changes stream's P1-P5 ({@link ChangesTransformer}); the camps' P6 ({@link LootOriginTransformer}); the changes stream's P7 (spam counters).
+ * <p>The patches: the changes stream's P1-P5 ({@link ChangesTransformer}); the camps' P6 ({@link LootOriginTransformer}); the changes stream's P7 (spam counters); 26.4's P8-P11 ({@link DeepFreezeTransformer}).
  */
 @IFMLLoadingPlugin.Name("Game Drops Backport Core")
 @IFMLLoadingPlugin.MCVersion("1.12.2")
@@ -25,15 +25,16 @@ public final class GameDropsCore implements IFMLLoadingPlugin {
     @Override
     public String[] getASMTransformerClass() {
         return new String[]{"com.exiledradio.gamedropsbackport.asm.ChangesTransformer",
-                "com.exiledradio.gamedropsbackport.asm.LootOriginTransformer"};
+                "com.exiledradio.gamedropsbackport.asm.LootOriginTransformer", "com.exiledradio.gamedropsbackport.asm.DeepFreezeTransformer"};
     }
 
     /** The classes the transformers patch on both sides, for {@code PatchCheck}: each transformer's TARGETS. */
     public static String[] serverTargets() {
-        String[] out = new String[ChangesTransformer.TARGETS.length + LootOriginTransformer.TARGETS.length];
-        System.arraycopy(ChangesTransformer.TARGETS, 0, out, 0, ChangesTransformer.TARGETS.length);
-        System.arraycopy(LootOriginTransformer.TARGETS, 0, out, ChangesTransformer.TARGETS.length, LootOriginTransformer.TARGETS.length);
-        return out;
+        java.util.List<String> out = new java.util.ArrayList<String>();
+        java.util.Collections.addAll(out, ChangesTransformer.TARGETS);
+        java.util.Collections.addAll(out, LootOriginTransformer.TARGETS);
+        java.util.Collections.addAll(out, DeepFreezeTransformer.TARGETS);
+        return out.toArray(new String[0]);
     }
 
     /** The classes patched only on the client, for {@code PatchCheck}. */

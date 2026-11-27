@@ -78,8 +78,10 @@ public class ItemCushion extends Item {
             cushion.setLocationAndAngles(x, y, z, player.getHorizontalFacing().getHorizontalAngle(), 0.0F);
             world.spawnEntity(cushion);
             cushion.breakIfBurning();
-            world.playSound(null, cushion.posX, cushion.posY, cushion.posZ, SoftBlocks.cushionPlace, SoundCategory.BLOCKS,
-                    0.75F, 0.8F);
+            if (!cushion.isSilent()) {
+                world.playSound(null, cushion.posX, cushion.posY, cushion.posZ, SoftBlocks.cushionPlace, SoundCategory.BLOCKS,
+                        0.75F, 0.8F);
+            }
             if (!player.capabilities.isCreativeMode) {
                 stack.shrink(1);
             }

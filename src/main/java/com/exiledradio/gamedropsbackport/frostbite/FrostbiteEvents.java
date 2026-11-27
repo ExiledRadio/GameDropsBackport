@@ -165,7 +165,8 @@ public final class FrostbiteEvents {
     @SubscribeEvent
     public void added(PotionEvent.PotionAddedEvent event) {
         EntityLivingBase e = event.getEntityLiving();
-        if (event.getPotionEffect().getPotion() == FrostbiteContent.freezing && event.getOldPotionEffect() == null && !e.world.isRemote) {
+        if (event.getPotionEffect().getPotion() == FrostbiteContent.freezing && event.getOldPotionEffect() == null && !e.world.isRemote
+                && !e.isSilent()) {
             e.world.playSound(null, e.posX, e.posY, e.posZ, FrostbiteContent.applyFreezing, e.getSoundCategory(), 1.0F, 1.0F);
         }
     }

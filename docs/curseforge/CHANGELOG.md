@@ -19,6 +19,7 @@ Minecraft's 26.4 game drop, Deep Freeze.
 *   A primed sulfur cube swallows nothing, so a dispenser can no longer swap the TNT out of a lit one.
 *   Blocks and heads worn by baby zombies, husks, frostbites, zombie villagers, villagers and zombified piglins are drawn smaller, as in 26.4.
 *   A silent baby makes no sound when a golden dandelion is used on it.
+*   Silent mobs stay silent when they get Freezing, and a silent cushion is placed without a sound.
 
 # 1.0.3
 

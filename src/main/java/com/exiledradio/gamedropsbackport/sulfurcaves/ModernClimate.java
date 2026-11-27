@@ -43,6 +43,15 @@ final class ModernClimate {
     }
 
     /** @return true for a world with Caves &amp; Cliffs' 1.18 terrain, whose own climate places the sulfur caves */
+    /** @return whether the world is made by Caves &amp; Cliffs' 1.18 terrain (its own sulfur caves or not) */
+    static boolean onModernTerrain(World world) {
+        if (!(world instanceof WorldServer)) {
+            return false;
+        }
+        Object generator = ((WorldServer) world).getChunkProvider().chunkGenerator;
+        return generator != null && generator.getClass().getName().endsWith(GENERATOR);
+    }
+
     static boolean modern(World world) {
         return state(world) != null;
     }

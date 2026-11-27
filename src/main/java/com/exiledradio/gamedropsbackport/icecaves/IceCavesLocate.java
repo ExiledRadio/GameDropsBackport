@@ -7,8 +7,11 @@ import net.minecraft.util.math.BlockPos;
 
 /**
  * {@code /locate biome minecraft:ice_caves}: our patches under snowy oceans, at 26.4's depth below the ground, through
- * Backport Core's biome search (as the sulfur caves). In Caves &amp; Cliffs' 1.18 terrain the climate box is not
- * searchable this way, and the search answers with the terrain's own biomes.
+ * Backport Core's biome search (as the sulfur caves). In Caves &amp; Cliffs' 1.18 terrain, 26.4's climate box over its
+ * noise ({@link IceCaves.Modern#mask}), the one the generator carves by; elsewhere the terrain's own biomes.
+ *
+ * <p>The search samples one height per 64 blocks, so a column counts when the caves reach into the 64 blocks around
+ * that height, in both terrains.</p>
  */
 final class IceCavesLocate {
 
@@ -27,11 +30,24 @@ final class IceCavesLocate {
     @javax.annotation.Nullable
     static BiomeLocate.Sampler sampler(BiomeLocate.SamplerFactory self, net.minecraft.world.WorldServer world) {
         {
-            if (!IceCaves.generates(world) || IceCaves.Modern.applies(world)) {
+            if (!IceCaves.generates(world)) {
                 return null;
             }
             // Everything else is the other sources' (the sulfur caves', Caves & Cliffs'), else 1.12.2's layers.
             BiomeLocate.Sampler layers = BiomeLocate.next(self, world);
+            if (IceCaves.Modern.applies(world)) {
+                return (x, y, z) -> {
+                    boolean[] mask = IceCaves.Modern.mask(world, x, z, y - 32, 64);
+                    if (mask != null) {
+                        for (boolean in : mask) {
+                            if (in) {
+                                return IceCaves.BIOME;
+                            }
+                        }
+                    }
+                    return layers.biome(x, y, z);
+                };
+            }
             TerrainHeights terrain = TerrainHeights.forWorld(world);
             long seed = world.getSeed();
             return (x, y, z) -> {

@@ -1,3 +1,7 @@
+# 1.0.3
+
+*   **Less lag in Caves & Cliffs worlds**: mob spawning asks the sulfur caves about one block, not a whole column, and remembers it per 4x4 area.
+
 # 1.0.2
 
 *   **Fixed: on a server, opening a villager's trades could kick you** ("Internal server error") when an old explorer map in them needed updating. Singleplayer was not affected.

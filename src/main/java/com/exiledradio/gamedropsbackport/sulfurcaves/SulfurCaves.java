@@ -65,6 +65,11 @@ public final class SulfurCaves {
         if (!generates(world)) {
             return false;
         }
+        if (terrainHasSulfurCaves(world)) {
+            // One block's 3D biome: a lookup, where the column's mask is a hundred (mob spawning asks this for blocks
+            // all over the 15 chunks around every player).
+            return BIOME.equals(modernBiome(world, pos));
+        }
         boolean[] mask = mask(world, pos.getX(), pos.getZ());
         int i = pos.getY() - minY(world);
         return mask != null && i >= 0 && i < mask.length && mask[i];
@@ -76,6 +81,11 @@ public final class SulfurCaves {
      */
     @Nullable
     public static boolean[] mask(World world, int x, int z) {
+        if (terrainHasSulfurCaves(world)) {
+            // The 1.18 terrain's biomes come in 4x4x4 cells: one mask serves the cell's sixteen columns.
+            x &= ~3;
+            z &= ~3;
+        }
         long key = (long) x << 32 | (z & 0xFFFFFFFFL);
         Map<Long, boolean[]> cache;
         synchronized (MASKS) {
@@ -104,6 +114,9 @@ public final class SulfurCaves {
     public static void forget(World world) {
         synchronized (MASKS) {
             MASKS.remove(world);
+        }
+        synchronized (EDITIONS) {
+            EDITIONS.remove(world);
         }
     }
 
@@ -224,6 +237,23 @@ public final class SulfurCaves {
         if (!(world instanceof WorldServer)) {
             return false;
         }
+        synchronized (EDITIONS) {
+            Boolean known = EDITIONS.get(world);
+            if (known != null) {
+                return known;
+            }
+        }
+        boolean has = askTerrain(world);
+        synchronized (EDITIONS) {
+            EDITIONS.put(world, has);
+        }
+        return has;
+    }
+
+    /** A world's terrain and its edition never change: asked once per world. */
+    private static final Map<World, Boolean> EDITIONS = new WeakHashMap<World, Boolean>();
+
+    private static boolean askTerrain(World world) {
         Object generator = ((WorldServer) world).getChunkProvider().chunkGenerator;
         if (generator == null || !generator.getClass().getName().equals("com.exiledradio.cavesandcliffsbackport.terrain.ModernGenerator")) {
             return false;

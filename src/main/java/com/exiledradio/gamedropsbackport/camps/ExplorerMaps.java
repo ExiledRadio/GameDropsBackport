@@ -307,8 +307,10 @@ public final class ExplorerMaps {
             if (c instanceof ContainerMerchant) {
                 IMerchant merchant = merchant((ContainerMerchant) c);
                 MerchantRecipeList recipes = merchant == null ? null : merchant.getRecipes(event.getEntityPlayer());
-                if (recipes != null && upgrade(recipes)) {
-                    merchant.setRecipes(recipes);
+                if (recipes != null) {
+                    // In place: the list is the merchant's own, and the server sends it after this event. (IMerchant's
+                    // setRecipes is client-only: calling it here kicked the player on a dedicated server.)
+                    upgrade(recipes);
                 }
                 return;
             }

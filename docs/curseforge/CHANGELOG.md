@@ -3,6 +3,7 @@
 Minecraft's 26.4 game drop, Deep Freeze.
 
 *   **Ice caves** under frozen oceans and snowy land, with icicles, ice crystals, brittle ice and crevasses. `/locate biome minecraft:ice_caves` finds them.
+*   **Caves & Cliffs worlds**: with Caves & Cliffs Backport 1.2.0, new worlds place ice caves exactly where 26.4 does. Older Caves & Cliffs worlds keep the ice caves they had.
 *   **The frostbite**, a cold zombie that throws ice balls. Zombies turn into frostbites in powder snow; husks and drowned turn into zombies.
 *   **Ice balls**, the **Freezing** effect and its potions and tipped arrows.
 *   **Packed ice bricks**, chiseled packed ice and **snow bricks** in every shape. With Caves & Cliffs Backport, the calcite pillar, polished calcite and polished calcite bricks in every shape. With Wild Update Backport, chiseled soulshale in ancient city chests.

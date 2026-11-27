@@ -27,7 +27,10 @@ import java.util.WeakHashMap;
  * -0.8, humidity -1 to 0.7, continentalness -1.05 to -0.19 (deep ocean and ocean), any erosion, weirdness 0.5 to 1.1,
  * depth 0.2 to 0.9: under the coldest oceans. 1.12.2 has no underground biomes, so a block's answer comes from:
  * <ul>
- *   <li><b>1.18 terrain</b> (Caves &amp; Cliffs' worlds): the box over its own climate noise at its real heights
+ *   <li><b>1.18 terrain with 26.4's ice caves</b> (Caves &amp; Cliffs' worlds made with its {@code DEEP_FREEZE}
+ *       edition): its own 3D biome. The terrain places them by 26.4's climate, lays their bands and names the biome
+ *       ({@link #terrainHasIceCaves}).</li>
+ *   <li><b>1.18 terrain</b> made before that edition: the box over its own climate noise at its real heights
  *       (continentalness, weirdness, depth), with the temperature band read from its surface biome: frozen and deep
  *       frozen ocean, 1.18's coldest oceans (temperature below -0.45). Its lush caves, dripstone caves and deep dark
  *       stay.</li>
@@ -62,6 +65,10 @@ public final class IceCaves {
         if (!generates(world)) {
             return false;
         }
+        if (terrainHasIceCaves(world)) {
+            // One block's 3D biome: a lookup (mob spawning asks for blocks all around every player).
+            return BIOME.equals(com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCaves.modernBiome(world, pos));
+        }
         boolean[] mask = mask(world, pos.getX(), pos.getZ());
         int i = pos.getY() - minY(world);
         return mask != null && i >= 0 && i < mask.length && mask[i];
@@ -69,6 +76,11 @@ public final class IceCaves {
 
     @Nullable
     public static boolean[] mask(World world, int x, int z) {
+        if (terrainHasIceCaves(world)) {
+            // The 1.18 terrain's biomes come in 4x4x4 cells: one mask serves the cell's sixteen columns.
+            x &= ~3;
+            z &= ~3;
+        }
         long key = (long) x << 32 | (z & 0xFFFFFFFFL);
         Map<Long, boolean[]> cache;
         synchronized (MASKS) {
@@ -97,6 +109,9 @@ public final class IceCaves {
         synchronized (MASKS) {
             MASKS.remove(world);
         }
+        synchronized (EDITIONS) {
+            EDITIONS.remove(world);
+        }
     }
 
     @Nullable
@@ -109,6 +124,21 @@ public final class IceCaves {
             boolean[] all = new boolean[height];
             java.util.Arrays.fill(all, true);
             return all;
+        }
+        if (terrainHasIceCaves(world)) {
+            // The 1.18 terrain names the ice caves itself: its 3D biome is the answer.
+            boolean[] mask = null;
+            for (int y = min; y < min + height; y += 4) {
+                if (BIOME.equals(com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCaves.modernBiome(world, new BlockPos(x, y, z)))) {
+                    if (mask == null) {
+                        mask = new boolean[height];
+                    }
+                    for (int i = y - min; i < Math.min(height, y - min + 4); i++) {
+                        mask[i] = true;
+                    }
+                }
+            }
+            return mask;
         }
         boolean[] modern = Modern.mask(world, x, z, min, height);
         if (modern != null || Modern.applies(world)) {
@@ -255,6 +285,55 @@ public final class IceCaves {
     }
 
     // ------------------------------------------------------------------------------------------------- 1.18 terrain
+
+    /** A world's terrain and its editions never change: asked once per world. */
+    private static final Map<World, Boolean> EDITIONS = new WeakHashMap<World, Boolean>();
+    private static Method editions;
+    private static int deepFreeze = -1;
+
+    /**
+     * @return true when the world is Caves &amp; Cliffs' 1.18 terrain made with its 26.4 edition
+     *     ({@code Editions.DEEP_FREEZE}): the terrain places the ice caves by 26.4's climate, lays their bands and
+     *     names the biome, so our climate box ({@link Modern}), the bands at population and our locate step aside. A
+     *     1.18 world made before that edition keeps them.
+     */
+    public static boolean terrainHasIceCaves(World world) {
+        if (!(world instanceof WorldServer)) {
+            return false;
+        }
+        synchronized (EDITIONS) {
+            Boolean known = EDITIONS.get(world);
+            if (known != null) {
+                return known;
+            }
+        }
+        boolean has = askTerrain(world);
+        synchronized (EDITIONS) {
+            EDITIONS.put(world, has);
+        }
+        return has;
+    }
+
+    private static boolean askTerrain(World world) {
+        Object generator = ((WorldServer) world).getChunkProvider().chunkGenerator;
+        if (generator == null || !generator.getClass().getName().equals("com.exiledradio.cavesandcliffsbackport.terrain.ModernGenerator")) {
+            return false;
+        }
+        try {
+            synchronized (IceCaves.class) {
+                if (deepFreeze < 0) {
+                    deepFreeze = 0;
+                    deepFreeze = Class.forName("com.exiledradio.cavesandcliffsbackport.terrain.core.Editions", false,
+                            generator.getClass().getClassLoader()).getField("DEEP_FREEZE").getInt(null);
+                    editions = generator.getClass().getMethod("editions");
+                }
+            }
+            return deepFreeze != 0 && (((Integer) editions.invoke(generator)) & deepFreeze) != 0;
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
+            // A Caves & Cliffs without the edition.
+            return false;
+        }
+    }
 
     /** 26.4's box over Caves &amp; Cliffs' 1.18 climate noise, reached by reflection (as the sulfur caves stream does). */
     static final class Modern {

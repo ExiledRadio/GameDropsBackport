@@ -39,6 +39,14 @@ public final class IceCavesGenSelfTest implements SelfTest {
         check.eq(null, IceCavesGen.band(-0.7, p, c), "band -0.7: stone stays");
 
         WorldServer w = check.world;
+        // Off Caves & Cliffs' 1.18 terrain with its 26.4 edition, our own regions and our /locate answer.
+        check.ok(!IceCaves.terrainHasIceCaves(w), "a world off the 1.18 terrain's 26.4 edition gets our own ice caves");
+        check.ok(IceCavesLocate.sampler(new com.exiledradio.backportcore.locate.BiomeLocate.SamplerFactory() {
+            @Override
+            public com.exiledradio.backportcore.locate.BiomeLocate.Sampler forWorld(WorldServer world) {
+                return null;
+            }
+        }, w) != null, "our /locate answers the ice caves there");
         BlockPos base = w.getSpawnPoint().add(400, 0, 400);
         int cx = base.getX() >> 4, cz = base.getZ() >> 4;
         for (int dx = 0; dx < 2; dx++) {

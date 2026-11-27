@@ -68,8 +68,11 @@ public final class IceCavesGen implements IWorldGenerator {
         if (!any) {
             return 0;
         }
-        int changed = bands(world, x0, z0);
-        if (!FlatWorlds.isFlat(world)) {
+        // Caves & Cliffs' 26.4 edition lays the bands in its surface rules, before its ores and deepslate, and names
+        // the biome itself.
+        boolean terrainNames = IceCaves.terrainHasIceCaves(world);
+        int changed = terrainNames ? 0 : bands(world, x0, z0);
+        if (!terrainNames && !FlatWorlds.isFlat(world)) {
             registerBiome(world, x0, z0);
         }
         Random rand = new Random(IceCaves.mix(world.getSeed() ^ 0x26_04_1CEL, chunkX, chunkZ));

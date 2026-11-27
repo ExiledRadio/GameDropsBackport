@@ -157,12 +157,12 @@ Paths are relative to `E:/MCDownloads/minecraft-26.4-pre-1/src/` unless they say
 ## 3. Ice Ball
 
 - [ ] Item: stacksTo 16, dispensed DEFAULT_PROJECTILE (it is a ProjectileItem: dispenser fires `new IceBall` at the position). There is NO use cooldown. W/item/Items.java:1935-1937; IceBallItem.java:16, 46-48
-- [ ] Player throw: sound ICE_BALL_THROW, SoundSource NEUTRAL, vol 0.5, pitch `0.4/(r*0.4+0.8)`. `spawnProjectileFromRotation(..., roll 0, velocity 1.5, inaccuracy 1.0)`. Consumes 1, awards ITEM_USED. IceBallItem.java:17 (PROJECTILE_SHOOT_POWER 1.5), 26-42
+- [ ] Player throw: sound ICE_BALL_THROW, SoundSource PLAYERS (Pre-Release 2; NEUTRAL in Pre-Release 1), vol 0.5, pitch `0.4/(r*0.4+0.8)`. `spawnProjectileFromRotation(..., roll 0, velocity 1.5, inaccuracy 1.0)`. Consumes 1, awards ITEM_USED. IceBallItem.java:17 (PROJECTILE_SHOOT_POWER 1.5), 26-42
 - [ ] Entity ICE_BALL: MISC, noLootTable, 0.25x0.25, clientTrackingRange 4, updateInterval 10. EntityTypes.java:572-575. Rendered as ThrownItemRenderer (C/renderer/entity/EntityRenderers.java:116). Gravity 0.03 (ThrowableProjectile default).
 - [ ] Damage: `ceil(clamp(|velocity| * 1.3, 0, 2^31))` from the projectile's current speed at impact. BASE_DAMAGE 1.3. IceBall.java:17, 36-40. Fresh throws give ceil(1.5*1.3)=2 for a player and ceil(1.6*1.3)=3 for a frostbite. Drag and gravity change the speed at impact. Damage source `thrown(this, owner)`.
 - [ ] On entity hit: `hurtServer`. If damage > 0 and the target is living, `EnchantmentHelper.doPostAttackEffectsWithItemSource` with the ball's item. ThrowableBallProjectile.java:58-69 (file lines). It does NOT apply Freezing. Nothing in IceBall freezes. The Frostbite's freeze is melee only.
 - [ ] Knockback: standard hurt knockback, no custom value.
-- [ ] On any hit (block or entity), server side: broadcast entity event 3, play the hit sound ICE_BALL_BREAK at the hit point, NEUTRAL, vol 0.5, pitch `0.4/(r*0.4+0.8)`, then discard. ThrowableBallProjectile.java:72-93. No block interaction (no snow layers or freezing water).
+- [ ] On any hit (block or entity), server side: broadcast entity event 3, play the hit sound ICE_BALL_BREAK at the hit point unless the ball is silent (Pre-Release 2), NEUTRAL, vol 0.5, pitch `0.4/(r*0.4+0.8)`, then discard. ThrowableBallProjectile.java:72-93. No block interaction (no snow layers or freezing water).
 - [ ] Event 3 client: 8 `ItemParticleOption(ITEM, ice_ball stack)` particles at the position with zero velocity. ThrowableBallProjectile.java:47-55
 - [ ] It is in `#impact_projectiles`. D/tags/entity_type/impact_projectiles.json
 - [ ] Snowball now extends ThrowableBallProjectile. Damage 3 to Blaze, else 0. Snowball.java (diff 13770-13850). Changes:

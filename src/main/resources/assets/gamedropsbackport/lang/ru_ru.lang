@@ -30,6 +30,14 @@ config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=Титульный эк
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Экран «Настройки мира» 26.3 в меню паузы вместо «Открыть для сети»; сложность уходит из настроек.
 config.gamedropsbackport.changes.tooltip=Изменения из 26.x в командах, мобах, блоках и предметах, которые уже есть в 1.12.2.
 config.gamedropsbackport.changes.enabled.tooltip=Если выключено, все изменения ниже отключены и возвращается поведение 1.12.2.
+config.gamedropsbackport.changes.snowOnPackedIce.tooltip=Слои снега можно ставить на плотный лёд, и они на него выпадают (26.4).
+config.gamedropsbackport.changes.mushroomsAnyLight.tooltip=Грибы держатся на любом блоке, верх которого поддерживает их середину, при любом свете; распространяются они по-прежнему только при свете ниже 13 (26.4). Генерация мира сохраняет правило 1.12.2.
+config.gamedropsbackport.changes.iceSounds.tooltip=Лёд, плотный лёд, талый лёд и синий лёд звучат собственными наборами 26.4, а лёд в замёрзшем озере резонирует (26.4).
+config.gamedropsbackport.changes.iceFaces.tooltip=Лёд и талый лёд скрывают грани рядом со льдом, талым льдом и хрупким льдом (26.4).
+config.gamedropsbackport.changes.frostedIceVibrations.tooltip=Талый лёд создаёт вибрацию каждый раз, когда трескается (26.4).
+config.gamedropsbackport.changes.snowballKnockback.tooltip=Снежки отбрасывают игроков (26.4).
+config.gamedropsbackport.changes.steeringBoost.tooltip=Удочка с морковкой ускоряет свинью на 7–35 секунд вместо 7–49 (26.4).
+config.gamedropsbackport.changes.dragonPerchThrown.tooltip=Сидящий эндер-дракон не получает урона от снежков, яиц, ледышек и других брошенных предметов (26.4).
 config.gamedropsbackport.changes.timeCommand.tooltip=/time работает с мировыми часами: set day, noon, night и midnight переводят время вперёд до следующего; pause, resume и rate; of <clock>; query времени и шкал времени; сообщения из 26.1 (26.1).
 config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule отвечает сообщениями из 26.x, а установка правила в его текущее значение считается ошибкой (26.3).
 config.gamedropsbackport.changes.teamColorNames.tooltip=Цвета команд принимают только свои названия строчными буквами с подчёркиваниями, например dark_purple (26.2).
@@ -50,6 +58,14 @@ config.gamedropsbackport.changes.hostGameModeDefault.tooltip=Когда хост
 config.gamedropsbackport.changes.advancementCounts.tooltip=/advancement grant и revoke принимают нескольких игроков и отвечают как в 26.3: сколько игроков и достижений, и ошибка, только если ничего не изменилось (26.2, 26.3).
 config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join и leave отвечают как /team в 26.3: участники, которые вступили или вышли, и без ошибки для тех, кто уже не в команде (26.3).
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish закрывает мир, открытый для LAN: другие игроки выходят, и он больше не объявляется (26.2).
+config.gamedropsbackport.iceBlocks.tooltip=Плотные ледяные кирпичи, резной плотный лёд и снежные кирпичи из 26.4; блоки из кальцита с Caves & Cliffs; резной сланец душ с Wild Update.
+config.gamedropsbackport.iceBlocks.enabled.tooltip=При выключенной настройке ничего не регистрируется, а мир, в котором они есть, их теряет.
+config.gamedropsbackport.iceCaves.tooltip=Ледяные пещеры из 26.4: сосульки, ледяные кристаллы, хрупкий лёд, расселины и биом под холодными землями.
+config.gamedropsbackport.iceCaves.enabled.tooltip=При выключенной настройке ничего не регистрируется, а мир, в котором они есть, их теряет.
+config.gamedropsbackport.frostbite.tooltip=Мерзляк из 26.4, ледышки, эффект «Замерзание» и его зелья, а также превращения зомби, кадавра и утопленника в рыхлом снегу.
+config.gamedropsbackport.frostbite.enabled.tooltip=При выключенной настройке ничего не регистрируется, а мир, в котором они есть, их теряет.
+config.gamedropsbackport.jukebox.tooltip=Плейлисты проигрывателей из 26.4 (пластинки в сундуке сверху) и пластинка Flurry.
+config.gamedropsbackport.jukebox.enabled.tooltip=При выключенной настройке ничего не регистрируется, а мир, в котором они есть, их теряет.
 # --- end config tooltips ---
 
 # --- common ---
@@ -115,7 +131,7 @@ tile.gamedropsbackport.sulfur_slab.name=Серная плита
 tile.gamedropsbackport.sulfur_spike.name=Серный шип
 tile.gamedropsbackport.sulfur_stairs.name=Серные ступеньки
 tile.gamedropsbackport.sulfur_wall.name=Серная ограда
-subtitles.gamedropsbackport.block.generic.fall=Что-то упало на блок
+subtitles.gamedropsbackport.block.generic.fall=Падение на блок
 subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=Серный источник извергается
 subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Ядовитый газ выделяется
 death.attack.gamedropsbackport.fallingStalactite=%1$s был пронзён обрушившимся сталактитом
@@ -325,7 +341,7 @@ tile.gamedropsbackport.stripped_poplar_log.name=Обтёсанное топол�
 tile.gamedropsbackport.stripped_poplar_wood.name=Обтёсанная тополевая древесина
 tile.gamedropsbackport.yellow_poplar_leaves.name=Жёлтые тополиные листья
 subtitles.gamedropsbackport.block.poplar_leaves.ambient=Шелест листьев
-subtitles.gamedropsbackport.block.shelf_mushroom.bounce=Что-то отскочило от трутовика
+subtitles.gamedropsbackport.block.shelf_mushroom.bounce=Отскок от трутовика
 subtitles.gamedropsbackport.item.axe.strip=Обтёсывание топором
 
 # --- sulfurcaves ---
@@ -454,3 +470,87 @@ commands.unpublish.notPublished=Нет открытой сетевой игры
 commands.unpublish.success=Сетевая игра закрыта
 menu.multiplayerOptions.publish.stopped=Этот мир больше не открыт для сетевой игры
 team.notFound=Неизвестная команда «%s»
+
+# --- iceblocks ---
+tile.gamedropsbackport.calcite_double_slab.name=Кальцитовая плита
+tile.gamedropsbackport.calcite_pillar.name=Кальцитовая колонна
+tile.gamedropsbackport.calcite_slab.name=Кальцитовая плита
+tile.gamedropsbackport.calcite_stairs.name=Кальцитовые ступеньки
+tile.gamedropsbackport.calcite_wall.name=Кальцитовая ограда
+tile.gamedropsbackport.chiseled_packed_ice.name=Резной плотный лёд
+tile.gamedropsbackport.chiseled_soulshale.name=Резной сланец душ
+tile.gamedropsbackport.packed_ice_brick_double_slab.name=Плита из плотного ледяного кирпича
+tile.gamedropsbackport.packed_ice_brick_slab.name=Плита из плотного ледяного кирпича
+tile.gamedropsbackport.packed_ice_brick_stairs.name=Ступеньки из плотного ледяного кирпича
+tile.gamedropsbackport.packed_ice_brick_wall.name=Ограда из плотного ледяного кирпича
+tile.gamedropsbackport.packed_ice_bricks.name=Плотные ледяные кирпичи
+tile.gamedropsbackport.polished_calcite.name=Полированный кальцит
+tile.gamedropsbackport.polished_calcite_brick_double_slab.name=Плита из полированно-кальцитового кирпича
+tile.gamedropsbackport.polished_calcite_brick_slab.name=Плита из полированно-кальцитового кирпича
+tile.gamedropsbackport.polished_calcite_brick_stairs.name=Ступеньки из полированно-кальцитового кирпича
+tile.gamedropsbackport.polished_calcite_brick_wall.name=Ограда из полированно-кальцитового кирпича
+tile.gamedropsbackport.polished_calcite_bricks.name=Полированно-кальцитовые кирпичи
+tile.gamedropsbackport.polished_calcite_double_slab.name=Плита из полированного кальцита
+tile.gamedropsbackport.polished_calcite_slab.name=Плита из полированного кальцита
+tile.gamedropsbackport.polished_calcite_stairs.name=Ступеньки из полированного кальцита
+tile.gamedropsbackport.polished_calcite_wall.name=Ограда из полированного кальцита
+tile.gamedropsbackport.snow_brick_double_slab.name=Плита из снежного кирпича
+tile.gamedropsbackport.snow_brick_slab.name=Плита из снежного кирпича
+tile.gamedropsbackport.snow_brick_stairs.name=Ступеньки из снежного кирпича
+tile.gamedropsbackport.snow_brick_wall.name=Ограда из снежного кирпича
+tile.gamedropsbackport.snow_bricks.name=Снежные кирпичи
+config.gamedropsbackport.iceBlocks=Ледяные и снежные блоки
+config.gamedropsbackport.iceBlocks.enabled=Включено
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=Хрупкий лёд
+tile.gamedropsbackport.ice_crystal.name=Ледяной кристалл
+tile.gamedropsbackport.icicle.name=Сосулька
+subtitles.gamedropsbackport.block.brittle_ice.crack=Хрупкий лёд трескается
+subtitles.gamedropsbackport.block.ice_crystal.ambient=Ледяной кристалл звенит
+subtitles.gamedropsbackport.block.icicle.land=Сосулька обрушилась
+config.gamedropsbackport.iceCaves=Ледяные пещеры
+config.gamedropsbackport.iceCaves.enabled=Включено
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=Мерзляк
+entity.gamedropsbackport.ice_ball.name=Ледышка
+item.gamedropsbackport.ice_ball.name=Ледышка
+effect.gamedropsbackport.freezing=Замерзание
+potion.effect.gamedropsbackport.freezing=Зелье замерзания
+splash_potion.effect.gamedropsbackport.freezing=Взрывное зелье замерзания
+lingering_potion.effect.gamedropsbackport.freezing=Туманное зелье замерзания
+tipped_arrow.effect.gamedropsbackport.freezing=Стрела замерзания
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=С кем поведёшься — так тому и надо
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=Убейте мерзляка ледышкой
+config.gamedropsbackport.frostbite=Мерзляк
+config.gamedropsbackport.frostbite.enabled=Включено
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=Утопленник превратился в зомби
+subtitles.gamedropsbackport.entity.frostbite.ambient=Мерзляк стонет
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=Мерзляк превратился в зомби
+subtitles.gamedropsbackport.entity.frostbite.death=Мерзляк погибает
+subtitles.gamedropsbackport.entity.frostbite.hurt=Мерзляк ранен
+subtitles.gamedropsbackport.entity.frostbite.throw=Мерзляк бросает ледышку
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=Кадавр превратился в зомби
+subtitles.gamedropsbackport.entity.ice_ball.break=Попадание ледышкой
+subtitles.gamedropsbackport.entity.ice_ball.throw=Ледышка летит
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=Попугай стонет как мерзляк
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=Зомби превратился в мерзляка
+subtitles.gamedropsbackport.event.mob_effect.freezing=Начало замерзания
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=Пластинка
+item.record.flurry.desc=Hyper Potions — Flurry
+config.gamedropsbackport.jukebox=Проигрыватель
+config.gamedropsbackport.jukebox.enabled=Включено
+
+# --- changes264 ---
+subtitles.gamedropsbackport.block.ice.ambient=Лёд резонирует
+config.gamedropsbackport.changes.snowOnPackedIce=Снег на плотном льду
+config.gamedropsbackport.changes.mushroomsAnyLight=Грибы при любом свете
+config.gamedropsbackport.changes.iceSounds=Звуки льда
+config.gamedropsbackport.changes.iceFaces=Грани льда
+config.gamedropsbackport.changes.frostedIceVibrations=Вибрации талого льда
+config.gamedropsbackport.changes.snowballKnockback=Отбрасывание снежками
+config.gamedropsbackport.changes.steeringBoost=Ускорение верхом
+config.gamedropsbackport.changes.dragonPerchThrown=Сидящий дракон не замечает брошенного

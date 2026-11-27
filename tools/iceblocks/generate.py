@@ -2,12 +2,12 @@
 
     python -I tools/iceblocks/generate.py
 
-Reads 26.4 Pre-Release 1 until 26.4 releases (GD_ASSETS_VERSION; tools/assets.py).
+Reads 26.4 Pre-Release 2 until 26.4 releases (GD_ASSETS_VERSION; tools/assets.py).
 """
 import os
 import sys
 
-os.environ.setdefault("GD_ASSETS_VERSION", "26.4-pre-1")
+os.environ.setdefault("GD_ASSETS_VERSION", "26.4-pre-2")
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import assets  # noqa: E402
 

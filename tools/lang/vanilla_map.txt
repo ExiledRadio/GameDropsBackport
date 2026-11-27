@@ -74,3 +74,6 @@ commands.unpublish.notPublished = commands.unpublish.notPublished
 commands.unpublish.success = commands.unpublish.success
 menu.multiplayerOptions.publish.stopped = menu.multiplayerOptions.publish.stopped
 team.notFound = team.notFound
+# Disc descriptions: Mojang keeps the song names under jukebox_song (the 26.3 en_us leftover .desc keys have no translations)
+item.record.bounce.desc = jukebox_song.minecraft.bounce
+item.record.flurry.desc = jukebox_song.minecraft.flurry

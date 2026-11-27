@@ -59,8 +59,10 @@ public class EntityIceBall extends EntityThrowable {
         }
         if (!this.world.isRemote) {
             this.world.setEntityState(this, (byte) 3);
-            this.world.playSound(null, result.hitVec.x, result.hitVec.y, result.hitVec.z, FrostbiteContent.iceBallBreak,
-                    SoundCategory.NEUTRAL, 0.5F, 0.4F / (this.rand.nextFloat() * 0.4F + 0.8F));
+            if (!this.isSilent()) {
+                this.world.playSound(null, result.hitVec.x, result.hitVec.y, result.hitVec.z, FrostbiteContent.iceBallBreak,
+                        SoundCategory.NEUTRAL, 0.5F, 0.4F / (this.rand.nextFloat() * 0.4F + 0.8F));
+            }
             setDead();
         }
     }

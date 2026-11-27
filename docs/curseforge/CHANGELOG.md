@@ -1,3 +1,21 @@
+# 1.1.0
+
+Minecraft's 26.4 game drop, Deep Freeze.
+
+*   **Ice caves** under frozen oceans and snowy land, with icicles, ice crystals, brittle ice and crevasses. `/locate biome minecraft:ice_caves` finds them.
+*   **The frostbite**, a cold zombie that throws ice balls. Zombies turn into frostbites in powder snow; husks and drowned turn into zombies.
+*   **Ice balls**, the **Freezing** effect and its potions and tipped arrows.
+*   **Packed ice bricks**, chiseled packed ice and **snow bricks** in every shape. With Caves & Cliffs Backport, the calcite pillar, polished calcite and polished calcite bricks in every shape. With Wild Update Backport, chiseled soulshale in ancient city chests.
+*   **The cold sulfur cube**: a cube that swallows blue ice slides like packed ice and freezes the water under it.
+*   **Jukebox playlists**: a jukebox under a chest plays the chest's discs in order, and loops. The jukebox has 26.4's look.
+*   **The music disc Flurry**, in igloo chests.
+*   **26.4's changes**: ice, packed ice, frosted ice and blue ice have their own sounds; snow settles on packed ice; mushrooms grow in any light; snowballs push players; carrot on a stick boosts are shorter; a perching ender dragon ignores thrown things; strays spawn in more cold biomes; straw beds break with their own sound.
+*   **The wandering trader** sells ice crystals and icicles (with Village & Pillage Backport).
+*   **Menus**: the Deep Freeze title screen panorama, and 26.4's wording of vanilla text.
+*   Every new feature has its own setting.
+*   Translated into 18 languages.
+*   Requires Backport Core 1.5.0 or newer.
+
 # 1.0.3
 
 *   **Less lag in Caves & Cliffs worlds**: mob spawning asks the sulfur caves about one block, not a whole column, and remembers it per 4x4 area.

@@ -139,7 +139,7 @@ Stonecutting (each gives 1 unless noted; slabs always give 2):
   - items: `#minecraft:sulfur_cube_archetype/cold`
   - knockback_modifiers: horizontal_power 0.6625, vertical_power 0.09
   - sound_settings:
-    - hit_sound and push_sound are **both** `entity.sulfur_cube.fast_sliding.hit` (fast_sliding uses `.push` for push)
+    - hit_sound `entity.sulfur_cube.fast_sliding.hit`, push_sound `entity.sulfur_cube.fast_sliding.push` (Pre-Release 2; Pre-Release 1 had `.hit` for both)
     - push_sound_cooldown 1.0 s
     - push_sound_impulse_threshold 0.05
   - floats: false. No explosion (maxFuse) and no contact damage.
@@ -166,7 +166,7 @@ Stonecutting (each gives 1 unless noted; slabs always give 2):
   - `equipItem` refuses while the cube is primed (`!isBaby() && !isPrimed()`, line 566). OLD only refused babies.
   - Shearing plays the eject sound and sets pickupTimer=100 only if the drop actually spawned (~683).
   - Hit and push sounds are skipped when absent.
-- [ ] Sounds: no new sulfur-cube sound events (SoundEvents diff). The cold archetype reuses fast_sliding.hit.
+- [ ] Sounds: no new sulfur-cube sound events (SoundEvents diff). The cold archetype reuses fast_sliding's hit and push.
 
 ## 3. Jukebox playlists and the Flurry disc
 
@@ -204,7 +204,7 @@ Stonecutting (each gives 1 unless noted; slabs always give 2):
 - [ ] Ejecting (`popOutTheItem`, 91-108):
   - In playlist mode the disc spawns at block bottom-center **+2.2 Y** (above the chest), with no random XZ offset. OLD (and non-playlist): +1.01 Y with random XZ ±0.7.
   - Because the jukebox is then empty, `tickWithoutRecord` loads the next chest disc on the next tick, so ejecting effectively skips to the next song.
-- [ ] Game events (82-89): in playlist mode the `BLOCK_CHANGE` game event on disc insert/remove is **suppressed**. JUKEBOX_PLAY / JUKEBOX_STOP_PLAY from the song player are unchanged.
+- [ ] Game events (82-89): in playlist mode the `BLOCK_CHANGE` game event on disc insert is **suppressed**; Pre-Release 2 emits it again on removal (`!wasInserted || !isInPlaylistMode`). JUKEBOX_PLAY / JUKEBOX_STOP_PLAY from the song player are unchanged.
 - [ ] Note particles (item/JukeboxSongPlayer.java:84-90): spawn at +1.2 Y, **+1.0 more (2.2) when shouldLoop** (the BooleanSupplier passed at JukeboxBlockEntity:63).
 - [ ] Hoppers and comparators: nothing in the jukebox changed.
   - The jukebox still accepts only `jukebox_playable` items, max stack 1, only when empty (`canPlaceItem` 202).
@@ -286,6 +286,7 @@ Stonecutting (each gives 1 unless noted; slabs always give 2):
 
 ### Carrot / warped fungus on a stick (entity/ItemBasedSteering.java)
 - [ ] Boost duration OLD `random.nextInt(841) + 140` = **140-980 ticks** -> NEW `random.nextIntBetweenInclusive(140, 700)` = **140-700 ticks** (line 38; the constants MIN 140 / MAX 700 at 11-12 now match the code). boostFactor is unchanged: `1 + 1.15*sin(t/total*PI)` (49-51).
+- [ ] Pre-Release 2: a finished boost sets `boost_time_total` to 0 (`tickBoost`), `onSynced` boosts only when the synced total is above 0, and a load without `boosting` reads the total as 0.
 - [ ] The boost state now persists. A new NBT child `item_based_steering {boosting, boost_time, boost_time_total}` is saved and loaded by Pig and Strider (Pig diff +save/load; Strider.java ~138-149).
 - [ ] `ItemSteerable` now extends the new `Saddleable` interface (`getSaddleEquipSound`; pig PIG_SADDLE, strider STRIDER_SADDLE, default HORSE_SADDLE). This is a refactor only.
 

@@ -30,6 +30,14 @@ config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=26.2 的标题屏幕：
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=暂停菜单中以 26.3 的世界选项界面取代对局域网开放；难度从选项界面移出。
 config.gamedropsbackport.changes.tooltip=26.x 对 1.12.2 中已有的命令、生物、方块和物品所做的更改。
 config.gamedropsbackport.changes.enabled.tooltip=关闭时，下方所有更改都会关闭，恢复 1.12.2 的行为。
+config.gamedropsbackport.changes.snowOnPackedIce.tooltip=雪层可以放置在浮冰上，也会落在浮冰上 (26.4)。
+config.gamedropsbackport.changes.mushroomsAnyLight.tooltip=蘑菇可以在任意亮度下留在顶面能支撑其中心的任何方块上；仍只在亮度低于 13 时蔓延 (26.4)。世界生成保留 1.12.2 的规则。
+config.gamedropsbackport.changes.iceSounds.tooltip=冰、浮冰、霜冰和蓝冰使用 26.4 自己的音效组，结冰湖泊中的冰会发出共鸣 (26.4)。
+config.gamedropsbackport.changes.iceFaces.tooltip=冰和霜冰贴着冰、霜冰和脆冰时隐藏相邻的面 (26.4)。
+config.gamedropsbackport.changes.frostedIceVibrations.tooltip=霜冰每次开裂时都会发出振动 (26.4)。
+config.gamedropsbackport.changes.snowballKnockback.tooltip=雪球会击退玩家 (26.4)。
+config.gamedropsbackport.changes.steeringBoost.tooltip=胡萝卜钓竿使猪加速 7 到 35 秒，而不是 7 到 49 秒 (26.4)。
+config.gamedropsbackport.changes.dragonPerchThrown.tooltip=栖息的末影龙不会受到雪球、鸡蛋、冰球或其他投掷物的伤害 (26.4)。
 config.gamedropsbackport.changes.timeCommand.tooltip=/time 使用世界时钟：set day、noon、night 和 midnight 会前进到下一个对应时间；pause、resume 和 rate；of <clock>；query 查询时间和时间线；使用 26.1 的消息 (26.1)。
 config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule 使用 26.x 的消息回应，并且把规则设为当前值会报错 (26.3)。
 config.gamedropsbackport.changes.teamColorNames.tooltip=队伍颜色只接受带下划线的小写名称，例如 dark_purple (26.2)。
@@ -50,6 +58,14 @@ config.gamedropsbackport.changes.hostGameModeDefault.tooltip=房主用 /gamemode
 config.gamedropsbackport.changes.advancementCounts.tooltip=/advancement grant 和 revoke 可指定多名玩家，并像 26.3 一样回应：多少名玩家和进度，只有在没有任何变化时才报错 (26.2、26.3)。
 config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join 和 leave 像 26.3 的 /team 一样回应：加入或离开的成员，对已不在任何队伍中的成员不报错 (26.3)。
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish 关闭对局域网开放的世界：其他玩家离开，世界不再被公布 (26.2)。
+config.gamedropsbackport.iceBlocks.tooltip=26.4 的浮冰砖、雕纹浮冰和雪砖；装有 Caves & Cliffs 时的方解石系列；装有 Wild Update 时的雕纹灵魂页岩。
+config.gamedropsbackport.iceBlocks.enabled.tooltip=关闭时不注册任何内容，已有这些内容的世界会失去它们。
+config.gamedropsbackport.iceCaves.tooltip=26.4 的冰封洞穴：冰锥、冰晶、脆冰、冰隙，以及寒冷地表之下的生物群系。
+config.gamedropsbackport.iceCaves.enabled.tooltip=关闭时不注册任何内容，已有这些内容的世界会失去它们。
+config.gamedropsbackport.frostbite.tooltip=26.4 的冻尸、冰球、冰冻状态效果及其药水，以及僵尸、尸壳和溺尸在细雪中的转化。
+config.gamedropsbackport.frostbite.enabled.tooltip=关闭时不注册任何内容，已有这些内容的世界会失去它们。
+config.gamedropsbackport.jukebox.tooltip=26.4 的唱片机播放列表（上方箱子里的唱片）和音乐唱片 Flurry。
+config.gamedropsbackport.jukebox.enabled.tooltip=关闭时不注册任何内容，已有这些内容的世界会失去它们。
 # --- end config tooltips ---
 
 # --- common ---
@@ -454,3 +470,87 @@ commands.unpublish.notPublished=目前尚未开放多人游戏
 commands.unpublish.success=多人游戏已取消开放
 menu.multiplayerOptions.publish.stopped=此世界不再对多人游戏开放
 team.notFound=未知的队伍“%s”
+
+# --- iceblocks ---
+tile.gamedropsbackport.calcite_double_slab.name=方解石台阶
+tile.gamedropsbackport.calcite_pillar.name=方解石柱
+tile.gamedropsbackport.calcite_slab.name=方解石台阶
+tile.gamedropsbackport.calcite_stairs.name=方解石楼梯
+tile.gamedropsbackport.calcite_wall.name=方解石墙
+tile.gamedropsbackport.chiseled_packed_ice.name=雕纹浮冰
+tile.gamedropsbackport.chiseled_soulshale.name=雕纹灵魂页岩
+tile.gamedropsbackport.packed_ice_brick_double_slab.name=浮冰砖台阶
+tile.gamedropsbackport.packed_ice_brick_slab.name=浮冰砖台阶
+tile.gamedropsbackport.packed_ice_brick_stairs.name=浮冰砖楼梯
+tile.gamedropsbackport.packed_ice_brick_wall.name=浮冰砖墙
+tile.gamedropsbackport.packed_ice_bricks.name=浮冰砖
+tile.gamedropsbackport.polished_calcite.name=磨制方解石
+tile.gamedropsbackport.polished_calcite_brick_double_slab.name=磨制方解石砖台阶
+tile.gamedropsbackport.polished_calcite_brick_slab.name=磨制方解石砖台阶
+tile.gamedropsbackport.polished_calcite_brick_stairs.name=磨制方解石砖楼梯
+tile.gamedropsbackport.polished_calcite_brick_wall.name=磨制方解石砖墙
+tile.gamedropsbackport.polished_calcite_bricks.name=磨制方解石砖
+tile.gamedropsbackport.polished_calcite_double_slab.name=磨制方解石台阶
+tile.gamedropsbackport.polished_calcite_slab.name=磨制方解石台阶
+tile.gamedropsbackport.polished_calcite_stairs.name=磨制方解石楼梯
+tile.gamedropsbackport.polished_calcite_wall.name=磨制方解石墙
+tile.gamedropsbackport.snow_brick_double_slab.name=雪砖台阶
+tile.gamedropsbackport.snow_brick_slab.name=雪砖台阶
+tile.gamedropsbackport.snow_brick_stairs.name=雪砖楼梯
+tile.gamedropsbackport.snow_brick_wall.name=雪砖墙
+tile.gamedropsbackport.snow_bricks.name=雪砖
+config.gamedropsbackport.iceBlocks=冰雪方块
+config.gamedropsbackport.iceBlocks.enabled=启用
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=脆冰
+tile.gamedropsbackport.ice_crystal.name=冰晶
+tile.gamedropsbackport.icicle.name=冰锥
+subtitles.gamedropsbackport.block.brittle_ice.crack=脆冰：裂开
+subtitles.gamedropsbackport.block.ice_crystal.ambient=冰晶：叮铃
+subtitles.gamedropsbackport.block.icicle.land=冰锥：塌落
+config.gamedropsbackport.iceCaves=冰封洞穴
+config.gamedropsbackport.iceCaves.enabled=启用
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=冻尸
+entity.gamedropsbackport.ice_ball.name=冰球
+item.gamedropsbackport.ice_ball.name=冰球
+effect.gamedropsbackport.freezing=冰冻
+potion.effect.gamedropsbackport.freezing=冰冻药水
+splash_potion.effect.gamedropsbackport.freezing=喷溅型冰冻药水
+lingering_potion.effect.gamedropsbackport.freezing=滞留型冰冻药水
+tipped_arrow.effect.gamedropsbackport.freezing=冰冻之箭
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=还掷其身
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=用冰球杀死冻尸
+config.gamedropsbackport.frostbite=冻尸
+config.gamedropsbackport.frostbite.enabled=启用
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=溺尸：转化为僵尸
+subtitles.gamedropsbackport.entity.frostbite.ambient=冻尸：低吼
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=冻尸：转化为僵尸
+subtitles.gamedropsbackport.entity.frostbite.death=冻尸：死亡
+subtitles.gamedropsbackport.entity.frostbite.hurt=冻尸：受伤
+subtitles.gamedropsbackport.entity.frostbite.throw=冻尸：投掷
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=尸壳：转化为僵尸
+subtitles.gamedropsbackport.entity.ice_ball.break=冰球：击中
+subtitles.gamedropsbackport.entity.ice_ball.throw=冰球：被掷出
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=鹦鹉：低吼
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=僵尸：转化为冻尸
+subtitles.gamedropsbackport.event.mob_effect.freezing=开始冰冻
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=音乐唱片
+item.record.flurry.desc=Hyper Potions - Flurry
+config.gamedropsbackport.jukebox=唱片机
+config.gamedropsbackport.jukebox.enabled=启用
+
+# --- changes264 ---
+subtitles.gamedropsbackport.block.ice.ambient=冰：回响
+config.gamedropsbackport.changes.snowOnPackedIce=浮冰上的雪
+config.gamedropsbackport.changes.mushroomsAnyLight=任意亮度下的蘑菇
+config.gamedropsbackport.changes.iceSounds=冰的音效
+config.gamedropsbackport.changes.iceFaces=冰的面
+config.gamedropsbackport.changes.frostedIceVibrations=霜冰振动
+config.gamedropsbackport.changes.snowballKnockback=雪球击退
+config.gamedropsbackport.changes.steeringBoost=骑乘加速
+config.gamedropsbackport.changes.dragonPerchThrown=栖息的龙无视投掷物

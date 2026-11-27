@@ -30,6 +30,14 @@ config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=Ekran tytułowy z 26.2:
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Ekran Opcje świata z 26.3 w menu pauzy zamiast Otwórz w sieci LAN; poziom trudności znika z Opcji.
 config.gamedropsbackport.changes.tooltip=Zmiany z 26.x w poleceniach, mobach, blokach i przedmiotach, które 1.12.2 już ma.
 config.gamedropsbackport.changes.enabled.tooltip=Wyłączone: wszystkie zmiany poniżej są wyłączone i wraca zachowanie z 1.12.2.
+config.gamedropsbackport.changes.snowOnPackedIce.tooltip=Warstwy śniegu można kłaść na zbitym lodzie i spadają na niego (26.4).
+config.gamedropsbackport.changes.mushroomsAnyLight.tooltip=Grzyby trzymają się każdego bloku, którego góra podpiera ich środek, przy każdym świetle; nadal rozprzestrzeniają się tylko przy świetle poniżej 13 (26.4). Generowanie świata zachowuje zasadę z 1.12.2.
+config.gamedropsbackport.changes.iceSounds.tooltip=Lód, zbity lód, oszroniony lód i niebieski lód lodowcowy brzmią własnymi zestawami z 26.4, a lód w zamarzniętym jeziorze rezonuje (26.4).
+config.gamedropsbackport.changes.iceFaces.tooltip=Lód i oszroniony lód ukrywają ściany przylegające do lodu, oszronionego lodu i kruchego lodu (26.4).
+config.gamedropsbackport.changes.frostedIceVibrations.tooltip=Oszroniony lód wysyła wibrację za każdym razem, gdy pęka (26.4).
+config.gamedropsbackport.changes.snowballKnockback.tooltip=Śnieżki odrzucają graczy (26.4).
+config.gamedropsbackport.changes.steeringBoost.tooltip=Marchewka na patyku przyspiesza świnię na 7 do 35 sekund zamiast 7 do 49 (26.4).
+config.gamedropsbackport.changes.dragonPerchThrown.tooltip=Siedzący Smok Endu nie otrzymuje obrażeń od śnieżek, jajek, kul lodu ani innych rzucanych rzeczy (26.4).
 config.gamedropsbackport.changes.timeCommand.tooltip=/time działa na zegarach świata: set day, noon, night i midnight przesuwają do następnego; pause, resume i rate; of <clock>; query czasu i osi czasu; komunikaty z 26.1 (26.1).
 config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule odpowiada komunikatami z 26.x, a ustawienie reguły na jej obecną wartość jest błędem (26.3).
 config.gamedropsbackport.changes.teamColorNames.tooltip=Kolory drużyn przyjmują tylko swoje nazwy małymi literami z podkreślnikami, na przykład dark_purple (26.2).
@@ -50,6 +58,14 @@ config.gamedropsbackport.changes.hostGameModeDefault.tooltip=Gdy gospodarz zmien
 config.gamedropsbackport.changes.advancementCounts.tooltip=/advancement grant i revoke przyjmują wielu graczy i odpowiadają jak w 26.3: ilu graczy i ile postępów, a błąd tylko gdy nic się nie zmieniło (26.2, 26.3).
 config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join i leave odpowiadają jak /team w 26.3: członkowie, którzy dołączyli lub odeszli, i brak błędu dla tych, którzy już nie byli w drużynie (26.3).
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish zamyka świat otwarty w LAN: inni gracze wychodzą, a świat przestaje być ogłaszany (26.2).
+config.gamedropsbackport.iceBlocks.tooltip=Zbite lodowe cegły, rzeźbiony zbity lód i śnieżne cegły z 26.4; zestaw kalcytu z Caves & Cliffs; rzeźbiony duszołupek z Wild Update.
+config.gamedropsbackport.iceBlocks.enabled.tooltip=Po wyłączeniu nic nie jest rejestrowane, a świat, który je zawiera, traci je.
+config.gamedropsbackport.iceCaves.tooltip=Jaskinie lodowe z 26.4: sople, lodowe kryształy, kruchy lód, szczeliny i biom pod zimnym lądem.
+config.gamedropsbackport.iceCaves.enabled.tooltip=Po wyłączeniu nic nie jest rejestrowane, a świat, który je zawiera, traci je.
+config.gamedropsbackport.frostbite.tooltip=Zmarzlak z 26.4, kule lodu, efekt Zamrożenie i jego mikstury oraz przemiany zombie, posucha i utopca w sypkim śniegu.
+config.gamedropsbackport.frostbite.enabled.tooltip=Po wyłączeniu nic nie jest rejestrowane, a świat, który je zawiera, traci je.
+config.gamedropsbackport.jukebox.tooltip=Listy odtwarzania szaf grających z 26.4 (płyty w skrzyni na górze) i płyta muzyczna Flurry.
+config.gamedropsbackport.jukebox.enabled.tooltip=Po wyłączeniu nic nie jest rejestrowane, a świat, który je zawiera, traci je.
 # --- end config tooltips ---
 
 # --- common ---
@@ -254,7 +270,7 @@ subtitles.gamedropsbackport.entity.baby_horse.hurt=Źrebak cierpi
 subtitles.gamedropsbackport.entity.baby_pig.ambient=Prosiak chrumka
 subtitles.gamedropsbackport.entity.baby_pig.death=Prosiak ginie
 subtitles.gamedropsbackport.entity.baby_pig.eat=Prosiak je
-subtitles.gamedropsbackport.entity.baby_pig.hurt=Świnka cierpi
+subtitles.gamedropsbackport.entity.baby_pig.hurt=Prosię cierpi
 subtitles.gamedropsbackport.entity.baby_wolf.ambient=Szczeniak szczeka
 subtitles.gamedropsbackport.entity.baby_wolf.death=Szczeniak ginie
 subtitles.gamedropsbackport.entity.baby_wolf.growl=Szczeniak warczy
@@ -454,3 +470,87 @@ commands.unpublish.notPublished=Brak opublikowanych gier wieloosobowych
 commands.unpublish.success=Wycofano publikację gry wieloosobowej
 menu.multiplayerOptions.publish.stopped=Ten świat nie jest już dostępny dla innych graczy
 team.notFound=Nieznana drużyna: „%s”
+
+# --- iceblocks ---
+tile.gamedropsbackport.calcite_double_slab.name=Kalcytowa płyta
+tile.gamedropsbackport.calcite_pillar.name=Kalcytowy filar
+tile.gamedropsbackport.calcite_slab.name=Kalcytowa płyta
+tile.gamedropsbackport.calcite_stairs.name=Kalcytowe schody
+tile.gamedropsbackport.calcite_wall.name=Kalcytowy murek
+tile.gamedropsbackport.chiseled_packed_ice.name=Rzeźbiony zbity lód
+tile.gamedropsbackport.chiseled_soulshale.name=Rzeźbiony duszołupek
+tile.gamedropsbackport.packed_ice_brick_double_slab.name=Zbita lodowa ceglana płyta
+tile.gamedropsbackport.packed_ice_brick_slab.name=Zbita lodowa ceglana płyta
+tile.gamedropsbackport.packed_ice_brick_stairs.name=Zbite lodowe ceglane schody
+tile.gamedropsbackport.packed_ice_brick_wall.name=Zbity lodowy ceglany murek
+tile.gamedropsbackport.packed_ice_bricks.name=Zbite lodowe cegły
+tile.gamedropsbackport.polished_calcite.name=Wypolerowany kalcyt
+tile.gamedropsbackport.polished_calcite_brick_double_slab.name=Wypolerowana kalcytowa ceglana płyta
+tile.gamedropsbackport.polished_calcite_brick_slab.name=Wypolerowana kalcytowa ceglana płyta
+tile.gamedropsbackport.polished_calcite_brick_stairs.name=Wypolerowane kalcytowe ceglane schody
+tile.gamedropsbackport.polished_calcite_brick_wall.name=Wypolerowany kalcytowy ceglany murek
+tile.gamedropsbackport.polished_calcite_bricks.name=Wypolerowane kalcytowe cegły
+tile.gamedropsbackport.polished_calcite_double_slab.name=Wypolerowana kalcytowa płyta
+tile.gamedropsbackport.polished_calcite_slab.name=Wypolerowana kalcytowa płyta
+tile.gamedropsbackport.polished_calcite_stairs.name=Wypolerowane kalcytowe schody
+tile.gamedropsbackport.polished_calcite_wall.name=Wypolerowany kalcytowy murek
+tile.gamedropsbackport.snow_brick_double_slab.name=Śnieżna ceglana płyta
+tile.gamedropsbackport.snow_brick_slab.name=Śnieżna ceglana płyta
+tile.gamedropsbackport.snow_brick_stairs.name=Śnieżne ceglane schody
+tile.gamedropsbackport.snow_brick_wall.name=Śnieżny ceglany murek
+tile.gamedropsbackport.snow_bricks.name=Śnieżne cegły
+config.gamedropsbackport.iceBlocks=Bloki lodu i śniegu
+config.gamedropsbackport.iceBlocks.enabled=Włączone
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=Kruchy lód
+tile.gamedropsbackport.ice_crystal.name=Lodowy kryształ
+tile.gamedropsbackport.icicle.name=Sopel
+subtitles.gamedropsbackport.block.brittle_ice.crack=Kruchy lód pęka
+subtitles.gamedropsbackport.block.ice_crystal.ambient=Lodowy kryształ dźwięczy
+subtitles.gamedropsbackport.block.icicle.land=Sopel roztrzaskuje się
+config.gamedropsbackport.iceCaves=Jaskinie lodowe
+config.gamedropsbackport.iceCaves.enabled=Włączone
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=Zmarzlak
+entity.gamedropsbackport.ice_ball.name=Kula lodu
+item.gamedropsbackport.ice_ball.name=Kula lodu
+effect.gamedropsbackport.freezing=Zamrożenie
+potion.effect.gamedropsbackport.freezing=Mikstura zamrożenia
+splash_potion.effect.gamedropsbackport.freezing=Miotana mikstura zamrożenia
+lingering_potion.effect.gamedropsbackport.freezing=Trwała mikstura zamrożenia
+tipped_arrow.effect.gamedropsbackport.freezing=Strzała zamrożenia
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=Kto lodem wojuje, ten od lodu ginie
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=Zabij zmarzlaka za pomocą kuli lodu
+config.gamedropsbackport.frostbite=Zmarzlak
+config.gamedropsbackport.frostbite.enabled=Włączone
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=Utopiec przeistacza się w zombie
+subtitles.gamedropsbackport.entity.frostbite.ambient=Zmarzlak jęczy
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=Zmarzlak staje się zombie
+subtitles.gamedropsbackport.entity.frostbite.death=Zmarzlak ginie
+subtitles.gamedropsbackport.entity.frostbite.hurt=Zmarzlak cierpi
+subtitles.gamedropsbackport.entity.frostbite.throw=Zmarzlak rzuca
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=Posuch staje się zombie
+subtitles.gamedropsbackport.entity.ice_ball.break=Uderzenie kuli lodu
+subtitles.gamedropsbackport.entity.ice_ball.throw=Kula lodu leci
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=Papuga charczy
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=Zombie staje się zmarzlakiem
+subtitles.gamedropsbackport.event.mob_effect.freezing=Zamarzanie
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=Płyta muzyczna
+item.record.flurry.desc=Hyper Potions — Flurry
+config.gamedropsbackport.jukebox=Szafa grająca
+config.gamedropsbackport.jukebox.enabled=Włączone
+
+# --- changes264 ---
+subtitles.gamedropsbackport.block.ice.ambient=Lód rozbrzmiewa
+config.gamedropsbackport.changes.snowOnPackedIce=Śnieg na zbitym lodzie
+config.gamedropsbackport.changes.mushroomsAnyLight=Grzyby przy każdym świetle
+config.gamedropsbackport.changes.iceSounds=Dźwięki lodu
+config.gamedropsbackport.changes.iceFaces=Ściany lodu
+config.gamedropsbackport.changes.frostedIceVibrations=Wibracje oszronionego lodu
+config.gamedropsbackport.changes.snowballKnockback=Odrzut od śnieżek
+config.gamedropsbackport.changes.steeringBoost=Przyspieszenie przy jeździe
+config.gamedropsbackport.changes.dragonPerchThrown=Siedzący smok ignoruje rzucane rzeczy

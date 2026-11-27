@@ -30,6 +30,14 @@ config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=A tela de título de 26
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=A tela Opções do mundo de 26.3 no menu de pausa, no lugar de Abrir para LAN; a dificuldade sai das Opções.
 config.gamedropsbackport.changes.tooltip=As mudanças da 26.x em comandos, criaturas, blocos e itens que a 1.12.2 já tem.
 config.gamedropsbackport.changes.enabled.tooltip=Desativado, todas as mudanças abaixo ficam desligadas e o comportamento da 1.12.2 volta.
+config.gamedropsbackport.changes.snowOnPackedIce.tooltip=Camadas de neve podem ser colocadas e caem sobre gelo compactado (26.4).
+config.gamedropsbackport.changes.mushroomsAnyLight.tooltip=Cogumelos ficam em qualquer bloco cujo topo sustente o seu centro, em qualquer luz; ainda só se espalham com luz abaixo de 13 (26.4). A geração do mundo mantém a regra da 1.12.2.
+config.gamedropsbackport.changes.iceSounds.tooltip=Gelo, gelo compactado, gelo fosco e gelo azul soam com os conjuntos próprios de 26.4, e o gelo de um lago congelado ressoa (26.4).
+config.gamedropsbackport.changes.iceFaces.tooltip=Gelo e gelo fosco escondem suas faces junto a gelo, gelo fosco e gelo quebradiço (26.4).
+config.gamedropsbackport.changes.frostedIceVibrations.tooltip=O gelo fosco emite uma vibração cada vez que racha (26.4).
+config.gamedropsbackport.changes.snowballKnockback.tooltip=Bolas de neve empurram jogadores (26.4).
+config.gamedropsbackport.changes.steeringBoost.tooltip=Uma vara com cenoura impulsiona um porco por 7 a 35 segundos em vez de 7 a 49 (26.4).
+config.gamedropsbackport.changes.dragonPerchThrown.tooltip=Um Dragão de Ender pousado não sofre dano de bolas de neve, ovos, bolas de gelo ou outras coisas arremessadas (26.4).
 config.gamedropsbackport.changes.timeCommand.tooltip=/time funciona com relógios do mundo: set day, noon, night e midnight avançam até o próximo; pause, resume e rate; of <clock>; query para a hora e as linhas do tempo; as mensagens da 26.1 (26.1).
 config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule responde com as mensagens da 26.x, e definir uma regra com o valor atual é um erro (26.3).
 config.gamedropsbackport.changes.teamColorNames.tooltip=As cores de equipe só aceitam seus nomes em minúsculas com sublinhados, como dark_purple (26.2).
@@ -50,6 +58,14 @@ config.gamedropsbackport.changes.hostGameModeDefault.tooltip=Quando o anfitrião
 config.gamedropsbackport.changes.advancementCounts.tooltip=/advancement grant e revoke aceitam vários jogadores e respondem como na 26.3: quantos jogadores e progressos, e um erro só quando nada mudou (26.2, 26.3).
 config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join e leave respondem como o /team da 26.3: os membros que entraram ou saíram, e nenhum erro para quem já estava fora de uma equipe (26.3).
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish fecha um mundo aberto para LAN: os outros jogadores saem e ele deixa de ser anunciado (26.2).
+config.gamedropsbackport.iceBlocks.tooltip=Os tijolos de gelo compactado, o gelo compactado cinzelado e os tijolos de neve de 26.4; o conjunto de calcita com Caves & Cliffs; o folhelho das almas talhado com Wild Update.
+config.gamedropsbackport.iceBlocks.enabled.tooltip=Desativado, nada é registrado, e um mundo que já os tem os perde.
+config.gamedropsbackport.iceCaves.tooltip=As cavernas de gelo de 26.4: pingentes de gelo, cristais de gelo, gelo quebradiço, fendas e o bioma sob as terras frias.
+config.gamedropsbackport.iceCaves.enabled.tooltip=Desativado, nada é registrado, e um mundo que já os tem os perde.
+config.gamedropsbackport.frostbite.tooltip=O gélido de 26.4, as bolas de gelo, o efeito Congelamento e suas poções, e as conversões de zumbi, cascoso e afogado na neve em pó.
+config.gamedropsbackport.frostbite.enabled.tooltip=Desativado, nada é registrado, e um mundo que já os tem os perde.
+config.gamedropsbackport.jukebox.tooltip=As playlists das jukeboxes de 26.4 (os discos de um baú em cima) e o disco musical Flurry.
+config.gamedropsbackport.jukebox.enabled.tooltip=Desativado, nada é registrado, e um mundo que já os tem os perde.
 # --- end config tooltips ---
 
 # --- common ---
@@ -81,8 +97,8 @@ config.gamedropsbackport.lookAndFeel.worldOptions=Tela de opções do mundo
 # --- sulfur ---
 item.gamedropsbackport.music_disc_bounce.name=Disco Musical
 item.record.bounce.desc=fingerspit — Bounce
-tile.gamedropsbackport.chiseled_cinnabar.name=Cinábrio Talhado
-tile.gamedropsbackport.chiseled_sulfur.name=Enxofre Talhado
+tile.gamedropsbackport.chiseled_cinnabar.name=Cinábrio Cinzelado
+tile.gamedropsbackport.chiseled_sulfur.name=Enxofre Cinzelado
 tile.gamedropsbackport.cinnabar.name=Cinábrio
 tile.gamedropsbackport.cinnabar_brick_double_slab.name=Laje de Tijolos de Cinábrio
 tile.gamedropsbackport.cinnabar_brick_slab.name=Laje de Tijolos de Cinábrio
@@ -454,3 +470,87 @@ commands.unpublish.notPublished=Nenhum jogo multijogador publicado
 commands.unpublish.success=O jogo multijogador não está mais publicado
 menu.multiplayerOptions.publish.stopped=Esse mundo não está mais aberto para o multijogador
 team.notFound=Equipe desconhecida: %s
+
+# --- iceblocks ---
+tile.gamedropsbackport.calcite_double_slab.name=Laje de Calcita
+tile.gamedropsbackport.calcite_pillar.name=Pilar de Calcita
+tile.gamedropsbackport.calcite_slab.name=Laje de Calcita
+tile.gamedropsbackport.calcite_stairs.name=Escadas de Calcita
+tile.gamedropsbackport.calcite_wall.name=Muro de Calcita
+tile.gamedropsbackport.chiseled_packed_ice.name=Gelo Compactado Cinzelado
+tile.gamedropsbackport.chiseled_soulshale.name=Folhelho das Almas Talhado
+tile.gamedropsbackport.packed_ice_brick_double_slab.name=Laje de Tijolos de Gelo Compactado
+tile.gamedropsbackport.packed_ice_brick_slab.name=Laje de Tijolos de Gelo Compactado
+tile.gamedropsbackport.packed_ice_brick_stairs.name=Escadas de Tijolos de Gelo Compactado
+tile.gamedropsbackport.packed_ice_brick_wall.name=Muro de Tijolos de Gelo Compactado
+tile.gamedropsbackport.packed_ice_bricks.name=Tijolos de Gelo Compactado
+tile.gamedropsbackport.polished_calcite.name=Calcita Polida
+tile.gamedropsbackport.polished_calcite_brick_double_slab.name=Laje de Tijolos de Calcita Polida
+tile.gamedropsbackport.polished_calcite_brick_slab.name=Laje de Tijolos de Calcita Polida
+tile.gamedropsbackport.polished_calcite_brick_stairs.name=Escadas de Tijolos de Calcita Polida
+tile.gamedropsbackport.polished_calcite_brick_wall.name=Muro de Tijolos de Calcita Polida
+tile.gamedropsbackport.polished_calcite_bricks.name=Tijolos de Calcita Polida
+tile.gamedropsbackport.polished_calcite_double_slab.name=Laje de Calcita Polida
+tile.gamedropsbackport.polished_calcite_slab.name=Laje de Calcita Polida
+tile.gamedropsbackport.polished_calcite_stairs.name=Escadas de Calcita Polida
+tile.gamedropsbackport.polished_calcite_wall.name=Muro de Calcita Polida
+tile.gamedropsbackport.snow_brick_double_slab.name=Laje de Tijolos de Neve
+tile.gamedropsbackport.snow_brick_slab.name=Laje de Tijolos de Neve
+tile.gamedropsbackport.snow_brick_stairs.name=Escadas de Tijolos de Neve
+tile.gamedropsbackport.snow_brick_wall.name=Muro de Tijolos de Neve
+tile.gamedropsbackport.snow_bricks.name=Tijolos de Neve
+config.gamedropsbackport.iceBlocks=Blocos de gelo e neve
+config.gamedropsbackport.iceBlocks.enabled=Ativado
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=Gelo Quebradiço
+tile.gamedropsbackport.ice_crystal.name=Cristal de Gelo
+tile.gamedropsbackport.icicle.name=Pingente de Gelo
+subtitles.gamedropsbackport.block.brittle_ice.crack=Gelo Quebradiço racha
+subtitles.gamedropsbackport.block.ice_crystal.ambient=Cristal de Gelo soa
+subtitles.gamedropsbackport.block.icicle.land=Pingente de Gelo despenca
+config.gamedropsbackport.iceCaves=Cavernas de gelo
+config.gamedropsbackport.iceCaves.enabled=Ativado
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=Gélido
+entity.gamedropsbackport.ice_ball.name=Bola de Gelo
+item.gamedropsbackport.ice_ball.name=Bola de Gelo
+effect.gamedropsbackport.freezing=Congelamento
+potion.effect.gamedropsbackport.freezing=Poção de Congelamento
+splash_potion.effect.gamedropsbackport.freezing=Poção Arremessável de Congelamento
+lingering_potion.effect.gamedropsbackport.freezing=Poção Prolongada de Congelamento
+tipped_arrow.effect.gamedropsbackport.freezing=Flecha de Congelamento
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=Tudo que vai, volta
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=Mate um Gélido com uma Bola de Gelo
+config.gamedropsbackport.frostbite=Gélido
+config.gamedropsbackport.frostbite.enabled=Ativado
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=Afogado transforma-se em Zumbi
+subtitles.gamedropsbackport.entity.frostbite.ambient=Gélido grunhe
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=Gélido transforma-se em Zumbi
+subtitles.gamedropsbackport.entity.frostbite.death=Gélido morre
+subtitles.gamedropsbackport.entity.frostbite.hurt=Gélido ferido
+subtitles.gamedropsbackport.entity.frostbite.throw=Gélido lança
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=Cascoso transforma-se em Zumbi
+subtitles.gamedropsbackport.entity.ice_ball.break=Bola de Gelo atinge
+subtitles.gamedropsbackport.entity.ice_ball.throw=Bola de Gelo lançada
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=Papagaio imita um Gélido
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=Zumbi transforma-se em Gélido
+subtitles.gamedropsbackport.event.mob_effect.freezing=Começando a congelar
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=Disco Musical
+item.record.flurry.desc=Hyper Potions – Flurry
+config.gamedropsbackport.jukebox=Jukebox
+config.gamedropsbackport.jukebox.enabled=Ativado
+
+# --- changes264 ---
+subtitles.gamedropsbackport.block.ice.ambient=Gelo ressoa
+config.gamedropsbackport.changes.snowOnPackedIce=Neve sobre gelo compactado
+config.gamedropsbackport.changes.mushroomsAnyLight=Cogumelos em qualquer luz
+config.gamedropsbackport.changes.iceSounds=Sons do gelo
+config.gamedropsbackport.changes.iceFaces=Faces do gelo
+config.gamedropsbackport.changes.frostedIceVibrations=Vibrações do gelo fosco
+config.gamedropsbackport.changes.snowballKnockback=Empurrão das bolas de neve
+config.gamedropsbackport.changes.steeringBoost=Impulso ao montar
+config.gamedropsbackport.changes.dragonPerchThrown=Dragão pousado ignora arremessos

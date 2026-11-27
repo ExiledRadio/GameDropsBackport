@@ -89,6 +89,13 @@ final class DeepFreezeChangesSelfTest implements SelfTest {
             }
         }
         check.eq(0, over, "every boost lasts 140-700 ticks (26.4)");
+        EntityPig done = new EntityPig(w);
+        done.setPosition(at.getX() + 0.5, at.getY(), at.getZ() + 0.5);
+        done.boost();
+        done.onUpdate();
+        net.minecraftforge.fml.relauncher.ReflectionHelper.setPrivateValue(EntityPig.class, done, false, "boosting", "field_184765_bx");
+        done.onUpdate();
+        check.eq(0, done.getDataManager().get(boostParam()), "a finished boost syncs a total of 0 (26.4 Pre-Release 2)");
 
         // The perching dragon.
         EntityDragon dragon = new EntityDragon(w);

@@ -53,7 +53,7 @@ public class BlockIcicle extends BlockSpeleothem {
     private final SoundEvent land;
 
     public BlockIcicle(SoundType sound, SoundEvent land) {
-        super(Material.PACKED_ICE, MapColor.LIGHT_BLUE, Blocks.PACKED_ICE.getDefaultState());
+        super(Material.PACKED_ICE, MapColor.ICE, Blocks.PACKED_ICE.getDefaultState());
         this.land = land;
         setSoundType(sound);
         setHardness(0.5F);

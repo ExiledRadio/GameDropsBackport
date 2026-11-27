@@ -30,6 +30,14 @@ config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=Титульний ек
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Екран «Налаштування світу» 26.3 у меню паузи замість «Відкрити для мережі»; складність іде з налаштувань.
 config.gamedropsbackport.changes.tooltip=Зміни з 26.x в командах, мобах, блоках і предметах, які вже є в 1.12.2.
 config.gamedropsbackport.changes.enabled.tooltip=Якщо вимкнено, усі зміни нижче вимкнені й повертається поведінка 1.12.2.
+config.gamedropsbackport.changes.snowOnPackedIce.tooltip=Шари снігу можна ставити на твердий лід, і вони на нього випадають (26.4).
+config.gamedropsbackport.changes.mushroomsAnyLight.tooltip=Гриби тримаються на будь-якому блоці, верх якого підтримує їхню середину, за будь-якого світла; поширюються вони, як і раніше, лише за світла нижче 13 (26.4). Генерація світу зберігає правило 1.12.2.
+config.gamedropsbackport.changes.iceSounds.tooltip=Лід, твердий лід, талий лід і синій лід звучать власними наборами 26.4, а лід у замерзлому озері резонує (26.4).
+config.gamedropsbackport.changes.iceFaces.tooltip=Лід і талий лід приховують грані поруч із льодом, талим льодом і крихким льодом (26.4).
+config.gamedropsbackport.changes.frostedIceVibrations.tooltip=Талий лід створює вібрацію щоразу, коли тріскається (26.4).
+config.gamedropsbackport.changes.snowballKnockback.tooltip=Сніжки відкидають гравців (26.4).
+config.gamedropsbackport.changes.steeringBoost.tooltip=Морква на паличці прискорює свиню на 7–35 секунд замість 7–49 (26.4).
+config.gamedropsbackport.changes.dragonPerchThrown.tooltip=Дракон Енду, що сидить, не отримує шкоди від сніжок, яєць, льодяних куль та інших кинутих речей (26.4).
 config.gamedropsbackport.changes.timeCommand.tooltip=/time працює зі світовими годинниками: set day, noon, night і midnight переводять час уперед до наступного; pause, resume і rate; of <clock>; query часу й шкал часу; повідомлення з 26.1 (26.1).
 config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule відповідає повідомленнями з 26.x, а встановлення правила в його поточне значення є помилкою (26.3).
 config.gamedropsbackport.changes.teamColorNames.tooltip=Кольори команд приймають лише свої назви малими літерами з підкресленнями, наприклад dark_purple (26.2).
@@ -50,6 +58,14 @@ config.gamedropsbackport.changes.hostGameModeDefault.tooltip=Коли хост �
 config.gamedropsbackport.changes.advancementCounts.tooltip=/advancement grant і revoke приймають кількох гравців і відповідають як у 26.3: скільки гравців і досягнень, і помилка, лише якщо нічого не змінилося (26.2, 26.3).
 config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join і leave відповідають як /team у 26.3: учасники, що вступили чи вийшли, і без помилки для тих, хто вже не в команді (26.3).
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish закриває світ, відкритий для LAN: інші гравці виходять, і його більше не оголошують (26.2).
+config.gamedropsbackport.iceBlocks.tooltip=Цегла з твердого льоду, різьблений твердий лід і снігова цегла з 26.4; набір із кальциту з Caves & Cliffs; різьблений душосланець з Wild Update.
+config.gamedropsbackport.iceBlocks.enabled.tooltip=Коли налаштування вимкнене, нічого не реєструється, а світ, у якому вони є, їх утрачає.
+config.gamedropsbackport.iceCaves.tooltip=Крижані печери з 26.4: бурульки, льодяні кристали, крихкий лід, розколини та біом під холодними землями.
+config.gamedropsbackport.iceCaves.enabled.tooltip=Коли налаштування вимкнене, нічого не реєструється, а світ, у якому вони є, їх утрачає.
+config.gamedropsbackport.frostbite.tooltip=Заморозень з 26.4, льодяні кулі, ефект «Замороження» та його зілля, а також перетворення зомбі, висушеня й потопельника в сипкому снігу.
+config.gamedropsbackport.frostbite.enabled.tooltip=Коли налаштування вимкнене, нічого не реєструється, а світ, у якому вони є, їх утрачає.
+config.gamedropsbackport.jukebox.tooltip=Плейлисти програвачів з 26.4 (платівки в скрині зверху) і платівка Flurry.
+config.gamedropsbackport.jukebox.enabled.tooltip=Коли налаштування вимкнене, нічого не реєструється, а світ, у якому вони є, їх утрачає.
 # --- end config tooltips ---
 
 # --- common ---
@@ -454,3 +470,87 @@ commands.unpublish.notPublished=Жодної запущеної гри в мер
 commands.unpublish.success=Гру в мережі тепер зупинено
 menu.multiplayerOptions.publish.stopped=Цей світ більше не відкритий для гри в мережі
 team.notFound=Невідома команда «%s»
+
+# --- iceblocks ---
+tile.gamedropsbackport.calcite_double_slab.name=Кальцитова плита
+tile.gamedropsbackport.calcite_pillar.name=Кальцитова колона
+tile.gamedropsbackport.calcite_slab.name=Кальцитова плита
+tile.gamedropsbackport.calcite_stairs.name=Кальцитові сходи
+tile.gamedropsbackport.calcite_wall.name=Кальцитова стіна
+tile.gamedropsbackport.chiseled_packed_ice.name=Різьблений твердий лід
+tile.gamedropsbackport.chiseled_soulshale.name=Різьблений душосланець
+tile.gamedropsbackport.packed_ice_brick_double_slab.name=Цегляна плита з твердого льоду
+tile.gamedropsbackport.packed_ice_brick_slab.name=Цегляна плита з твердого льоду
+tile.gamedropsbackport.packed_ice_brick_stairs.name=Цегляні сходи з твердого льоду
+tile.gamedropsbackport.packed_ice_brick_wall.name=Цегляна стіна з твердого льоду
+tile.gamedropsbackport.packed_ice_bricks.name=Цегла з твердого льоду
+tile.gamedropsbackport.polished_calcite.name=Полірований кальцит
+tile.gamedropsbackport.polished_calcite_brick_double_slab.name=Плита з полірованої кальцитової цегли
+tile.gamedropsbackport.polished_calcite_brick_slab.name=Плита з полірованої кальцитової цегли
+tile.gamedropsbackport.polished_calcite_brick_stairs.name=Сходи з полірованої кальцитової цегли
+tile.gamedropsbackport.polished_calcite_brick_wall.name=Стіна з полірованої кальцитової цегли
+tile.gamedropsbackport.polished_calcite_bricks.name=Полірована кальцитова цегла
+tile.gamedropsbackport.polished_calcite_double_slab.name=Полірована кальцитова плита
+tile.gamedropsbackport.polished_calcite_slab.name=Полірована кальцитова плита
+tile.gamedropsbackport.polished_calcite_stairs.name=Поліровані кальцитові сходи
+tile.gamedropsbackport.polished_calcite_wall.name=Полірована кальцитова стіна
+tile.gamedropsbackport.snow_brick_double_slab.name=Плита зі снігової цегли
+tile.gamedropsbackport.snow_brick_slab.name=Плита зі снігової цегли
+tile.gamedropsbackport.snow_brick_stairs.name=Сходи зі снігової цегли
+tile.gamedropsbackport.snow_brick_wall.name=Стіна зі снігової цегли
+tile.gamedropsbackport.snow_bricks.name=Снігова цегла
+config.gamedropsbackport.iceBlocks=Крижані та снігові блоки
+config.gamedropsbackport.iceBlocks.enabled=Увімкнено
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=Крихкий лід
+tile.gamedropsbackport.ice_crystal.name=Льодяний кристал
+tile.gamedropsbackport.icicle.name=Бурулька
+subtitles.gamedropsbackport.block.brittle_ice.crack=Крихкий лід тріскається
+subtitles.gamedropsbackport.block.ice_crystal.ambient=Льодяний кристал дзвенить
+subtitles.gamedropsbackport.block.icicle.land=Бурулька впала
+config.gamedropsbackport.iceCaves=Крижані печери
+config.gamedropsbackport.iceCaves.enabled=Увімкнено
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=Заморозень
+entity.gamedropsbackport.ice_ball.name=Льодяна куля
+item.gamedropsbackport.ice_ball.name=Льодяна куля
+effect.gamedropsbackport.freezing=Замороження
+potion.effect.gamedropsbackport.freezing=Зілля замороження
+splash_potion.effect.gamedropsbackport.freezing=Вибухове зілля замороження
+lingering_potion.effect.gamedropsbackport.freezing=Осідальне зілля замороження
+tipped_arrow.effect.gamedropsbackport.freezing=Стріла замороження
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=Що посієш — те й пожнеш
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=Убийте заморозня за допомогою льодяної кулі
+config.gamedropsbackport.frostbite=Заморозень
+config.gamedropsbackport.frostbite.enabled=Увімкнено
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=Потопельник перетворюється на зомбі
+subtitles.gamedropsbackport.entity.frostbite.ambient=Заморозень стогне
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=Заморозень перетворюється на зомбі
+subtitles.gamedropsbackport.entity.frostbite.death=Заморозень гине
+subtitles.gamedropsbackport.entity.frostbite.hurt=Заморозня поранено
+subtitles.gamedropsbackport.entity.frostbite.throw=Заморозень кидає
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=Висушень перетворюється на зомбі
+subtitles.gamedropsbackport.entity.ice_ball.break=Льодяна куля влучає
+subtitles.gamedropsbackport.entity.ice_ball.throw=Льодяна куля летить
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=Папуга стогне
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=Зомбі перетворюється на заморозня
+subtitles.gamedropsbackport.event.mob_effect.freezing=Замерзання
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=Платівка
+item.record.flurry.desc=Hyper Potions — flurry
+config.gamedropsbackport.jukebox=Програвач
+config.gamedropsbackport.jukebox.enabled=Увімкнено
+
+# --- changes264 ---
+subtitles.gamedropsbackport.block.ice.ambient=Лід резонує
+config.gamedropsbackport.changes.snowOnPackedIce=Сніг на твердому льоду
+config.gamedropsbackport.changes.mushroomsAnyLight=Гриби за будь-якого світла
+config.gamedropsbackport.changes.iceSounds=Звуки льоду
+config.gamedropsbackport.changes.iceFaces=Грані льоду
+config.gamedropsbackport.changes.frostedIceVibrations=Вібрації талого льоду
+config.gamedropsbackport.changes.snowballKnockback=Відкидання сніжками
+config.gamedropsbackport.changes.steeringBoost=Прискорення верхи
+config.gamedropsbackport.changes.dragonPerchThrown=Дракон, що сидить, не зважає на кинуте

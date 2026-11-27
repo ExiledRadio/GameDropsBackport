@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 /**
  * 26.4's ice ball item ({@code IceBallItem}): stacks to 16, no cooldown; thrown at 1.5 with inaccuracy 1.0 and
- * {@code entity.ice_ball.throw} (neutral, volume 0.5, pitch {@code 0.4 / (r x 0.4 + 0.8)}); a dispenser shoots it.
+ * {@code entity.ice_ball.throw} (players, volume 0.5, pitch {@code 0.4 / (r x 0.4 + 0.8)}); a dispenser shoots it.
  */
 public class ItemIceBall extends Item {
 
@@ -35,7 +35,7 @@ public class ItemIceBall extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
-        world.playSound(null, player.posX, player.posY, player.posZ, FrostbiteContent.iceBallThrow, SoundCategory.NEUTRAL, 0.5F,
+        world.playSound(null, player.posX, player.posY, player.posZ, FrostbiteContent.iceBallThrow, SoundCategory.PLAYERS, 0.5F,
                 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
         if (!world.isRemote) {
             EntityIceBall ball = new EntityIceBall(world, player);

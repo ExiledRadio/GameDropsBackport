@@ -56,6 +56,7 @@ final class IceCavesSelfTest implements SelfTest {
     private static void icicle(Check check, WorldServer w, BlockPos at) {
         BlockIcicle icicle = IceCavesContent.icicle;
         check.ok(Math.abs(icicle.getBlockHardness(icicle.getDefaultState(), w, at) - 0.5F) < 1e-4, "icicle hardness 0.5");
+        check.eq(net.minecraft.block.material.MapColor.ICE, icicle.getDefaultState().getMapColor(w, at), "icicle map color ice (26.4 Pre-Release 2)");
         check.ok(Math.abs(icicle.getExplosionResistance(null) - 0.5F) < 1e-4, "icicle resistance 0.5");
         check.ok(icicle.getOffsetType() == net.minecraft.block.Block.EnumOffsetType.NONE, "icicle: no sideways offset");
         w.setBlockState(at.up(), Blocks.PACKED_ICE.getDefaultState(), 2);

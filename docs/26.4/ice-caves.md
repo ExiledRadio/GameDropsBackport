@@ -289,7 +289,7 @@ Source: `world/level/levelgen/feature/CrevasseFeature.java`.
 ### Registration (`world/level/block/Blocks.java`)
 - [ ] ICICLE (`:5231-5246`):
   - `new IcicleBlock(PACKED_ICE.defaultBlockState(), p)`, so it grows on packed_ice
-  - mapColor COLOR_LIGHT_BLUE, forceSolidOn, instrument CHIME, noOcclusion, sound BlockSoundSets.ICICLE, **randomTicks**, strength 0.5 / resistance 0.5, dynamicShape, pushReaction POPPED, isRedstoneConductor never
+  - mapColor ICE (Pre-Release 2; COLOR_LIGHT_BLUE in Pre-Release 1), forceSolidOn, instrument CHIME, noOcclusion, sound BlockSoundSets.ICICLE, **randomTicks**, strength 0.5 / resistance 0.5, dynamicShape, pushReaction POPPED, isRedstoneConductor never
   - **No offsetType**. Pointed dripstone and sulfur spike use `OffsetType.XZ` (`:5258`, `:5275`); icicles are centred.
   - No requiresCorrectToolForDrops, no light emission
 - [ ] ICE_CRYSTAL (`:4869-4880`):

@@ -91,9 +91,9 @@ public final class SulfurCubes {
             HIT.put(a, sound("entity.sulfur_cube." + a.id + ".hit"));
             PUSH.put(a, sound("entity.sulfur_cube." + a.id + ".push"));
         }
-        // 26.4: the cold cube's hit and push are both fast sliding's hit.
+        // 26.4: the cold cube has fast sliding's sounds (Pre-Release 1 used the hit for both).
         HIT.put(Archetype.COLD, HIT.get(Archetype.FAST_SLIDING));
-        PUSH.put(Archetype.COLD, HIT.get(Archetype.FAST_SLIDING));
+        PUSH.put(Archetype.COLD, PUSH.get(Archetype.FAST_SLIDING));
     }
 
     public static ItemSulfurCubeBucket bucket;

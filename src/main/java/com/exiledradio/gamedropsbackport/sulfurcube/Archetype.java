@@ -13,8 +13,8 @@ public enum Archetype {
     //            kbRes  expRes bounce friction        airDrag          buoyant  hPower  vPower  pushCool pushThreshold
     BOUNCY("bouncy", -2, 0, 0.9, 1 - 0.7, 1 - 0.99, true, 0.4125F, 0.105F, 0.7F, 0.3F),
     /**
-     * 26.4's cold archetype ({@code cold.json}, blue ice): fast sliding's numbers; its hit and push sounds are both
-     * {@code fast_sliding.hit}; on the ground and not riding it freezes the water sources under it ({@link #freezes()}).
+     * 26.4's cold archetype ({@code cold.json}, blue ice): fast sliding's numbers and sounds ({@code fast_sliding.hit},
+     * {@code fast_sliding.push}); on the ground and not riding it freezes the water sources under it ({@link #freezes()}).
      */
     COLD("cold", 0.5, 0.5, 0.1, 1 - 0.95, 1 - 0.99, false, 0.6625F, 0.09F, 1.0F, 0.05F),
     EXPLOSIVE("explosive", -1, 0, 0.5, 1 - 0.7, 1 - 0.7, true, 0.4125F, 0.09F, 0.7F, 0.1F),

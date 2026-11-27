@@ -1,5 +1,8 @@
 package com.exiledradio.gamedropsbackport.jukebox;
 
+import com.exiledradio.backportcore.gameevent.GameEvent;
+import com.exiledradio.backportcore.gameevent.GameEventContext;
+import com.exiledradio.backportcore.gameevent.GameEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockJukebox;
@@ -33,6 +36,8 @@ import java.util.Map;
  *       the same one plays again: the playlist loops forever.</li>
  *   <li>An empty jukebox in playlist mode takes the next disc at once (every tick), so ejecting one skips to the
  *       next.</li>
+ *   <li>Taking a disc out in playlist mode is a {@code block_change} game event (26.4 Pre-Release 2; putting one
+ *       in is not).</li>
  * </ul>
  * 1.12.2's jukebox doesn't know when a song ends; 26.4's lengths ({@code jukebox_song/*.json}) tell it, by the disc's
  * song name ({@code record_13}'s 13, {@code music_disc_otherside}'s otherside). A disc with no known length (another
@@ -181,6 +186,7 @@ public final class Playlists {
             BlockJukebox.TileEntityJukebox jukebox = (BlockJukebox.TileEntityJukebox) te;
             NBTTagCompound data = jukebox.getTileData();
             ItemStack record = jukebox.getRecord();
+            boolean taken = record.isEmpty() && data.hasKey(STARTED);
             if (record.isEmpty()) {
                 data.removeTag(STARTED);
             } else if (!data.hasKey(STARTED)) {
@@ -192,6 +198,9 @@ public final class Playlists {
                 return;
             }
             if (record.isEmpty()) {
+                if (taken) {
+                    GameEvents.emit(world, GameEvent.BLOCK_CHANGE, pos, GameEventContext.of(world.getBlockState(pos)));
+                }
                 advance(world, pos, jukebox, chest, false);
                 return;
             }

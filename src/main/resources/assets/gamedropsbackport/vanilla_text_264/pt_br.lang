@@ -15,7 +15,7 @@ jigsaw_block.selection_priority.tooltip=Ao processar a peça principal às conex
 
 Os Blocos-Quebra-Cabeças são processados em ordem descrescente de prioridade com ordenação aleatória para desempate.
 menu.playerReporting.no_players=Nenhum jogador para denunciar nesse mundo.
-multiplayer.status.unrequested=Atualização de status não solicitada recebida
+multiplayer.status.unrequested=Status recebido sem solicitação
 options.ctrlClickEmulatesRightClick=Emulação do clique direito
 options.debugGuiScale.tooltip=Substitui a sobreposição da depuração por um tamanho de interface diferente do resto do jogo.
 options.directionalAudio.off.tooltip=Som estéreo clássico.
@@ -49,7 +49,7 @@ subtitles.cavesandcliffsbackport.item.axe.wax_off=Cera removida
 subtitles.cavesandcliffsbackport.item.bucket.fill_axolotl=Axolote capturado
 subtitles.cavesandcliffsbackport.item.honeycomb.wax_on=Cera aplicada
 subtitles.entity.arrow.hit_player=Jogador atingido
-subtitles.entity.arrow.shoot=Flecha disparada
+subtitles.entity.arrow.shoot=Arco dispara
 subtitles.entity.bat.hurt=Morcego ferido
 subtitles.entity.blaze.hurt=Blaze ferido
 subtitles.entity.cat.hurt=Gato ferido

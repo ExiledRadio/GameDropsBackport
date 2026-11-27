@@ -34,6 +34,8 @@ final class ColdCubeSelfTest implements SelfTest {
         check.eq(0.6625F, cold.horizontalPower, "cold: horizontal knockback 0.6625");
         check.eq(0.09F, cold.verticalPower, "cold: vertical knockback 0.09");
         check.ok(cold.freezes() && !fast.freezes(), "only cold freezes water");
+        check.eq(SulfurCubes.hit(fast), SulfurCubes.hit(cold), "cold: fast sliding's hit sound");
+        check.eq(SulfurCubes.push(fast), SulfurCubes.push(cold), "cold: fast sliding's push sound (26.4 Pre-Release 2)");
         if (IceBlocksContent.enabled()) {
             check.eq(fast, ArchetypeItems.of(new ItemStack(IceBlocksContent.packedIceBricks)), "packed ice bricks: fast sliding (26.4)");
             check.eq(fast, ArchetypeItems.of(new ItemStack(IceBlocksContent.snowBricks)), "snow bricks: fast sliding (26.4)");

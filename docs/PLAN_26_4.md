@@ -3,20 +3,23 @@
 26.4 is the winter game drop, "Deep Freeze": ice caves, the frostbite, the Freezing effect, ice and snow building
 blocks, a calcite set, jukebox playlists and a cold sulfur cube.
 
-**Status (2026-11-26): built on 26.4 Pre-Release 1, branch `gd-26-4`, on Backport Core 1.5.0 (`core-1.5.0-deepfreeze`).**
-26.4 is not released yet (newest: 26.4-pre-1, 2026-11-24). On 2026-11-26 the user chose to build on the pre-release
-instead of waiting (open question 2 below). **Every number here is Pre-Release 1's and must be diffed against the
-release when it ships** (Order, step 2). Not merged, pushed or uploaded.
+**Status (2026-11-27): built on 26.4 Pre-Release 1, updated to Pre-Release 2, branch `gd-26-4`, on Backport Core 1.5.0
+(`core-1.5.0-deepfreeze`).** 26.4 is not released yet (newest: 26.4-pre-2, 2026-11-27). On 2026-11-26 the user chose to
+build on the pre-release instead of waiting (open question 2 below). Pre-Release 2's changes are in
+[`26.4/pre-release-2.md`](26.4/pre-release-2.md) and applied. **Every number here must be diffed against the release
+when it ships** (Order, step 2). All 18 languages are complete. Not merged, pushed or uploaded.
 
-**Sources:** the 26.4 Pre-Release 1 client jar, decompiled with Vineflower (Mojang names), and its diff against 26.3, in
-`E:\MCDownloads\minecraft-26.4-pre-1\` and `E:\MCDownloads\minecraft-26.3\` (G: was not mounted on 2026-11-26;
-`tools/assets.py` finds either). The exact numbers, file and line for each, are in three checklists next to this plan:
+**Sources:** the 26.4 Pre-Release 1 and 2 client jars, decompiled with Vineflower (Mojang names), and their diffs
+against 26.3 and each other, in `E:\MCDownloads\minecraft-26.4-pre-2\`, `minecraft-26.4-pre-1\` and `minecraft-26.3\` (G:
+was not mounted on 2026-11-26; `tools/assets.py` finds either). The generators read `26.4-pre-2`. The exact numbers,
+file and line for each, are in the checklists next to this plan (Pre-Release 2's changes marked in them):
 - [`26.4/blocks-and-changes.md`](26.4/blocks-and-changes.md): the building blocks, the cold sulfur cube, jukebox
   playlists, Flurry, every change to existing things, the language diff;
 - [`26.4/ice-caves.md`](26.4/ice-caves.md): the biome, its placement, every feature and placed feature, the bands, the
   icicle, ice crystal and brittle ice;
 - [`26.4/frostbite-and-freezing.md`](26.4/frostbite-and-freezing.md): the frostbite, Freezing, ice balls, potions,
-  advancements, strays and every new sound event.
+  advancements, strays and every new sound event;
+- [`26.4/pre-release-2.md`](26.4/pre-release-2.md): Pre-Release 2 against Pre-Release 1, and what changed here.
 
 **What the pre-release contains** (diff against 26.3): 25 new blocks, 28 new item definitions, the frostbite's 3 entity
 textures, the Freezing icon and 6 particle frames, 1 biome (`ice_caves`), 21 placed ice cave ores and 5 decoration
@@ -49,6 +52,7 @@ Packages: `iceblocks` (3, 4), `frostbite` (2), `icecaves` (1), `jukebox` (6), an
       two 8-step twisting branches, width 4 tapering 0.6, brittle ice over air over water, walls patched).
 - [x] **Icicles** on Core's shared speleothem: packed ice, down only, no tip merging, `MAX_GROWING_LENGTH` 4, melt above
       block light 4, in the Nether or over magma; fall as stalactites; land with `block.icicle.land`; hardness 0.5;
+      map color ice (Pre-Release 2);
       snow dust drips. **Ice crystals**: light 4, 7 high and 10 wide, need a sturdy face, air without one, chime over
       packed ice (1/250). **Brittle ice**: ages 0-3, a crack per 24 ticks under any living thing but frostbites and
       strays (mobs only with `mobGriefing`, players unless spawn-protected), breaks without a drop, Silk Touch only,
@@ -69,7 +73,7 @@ Packages: `iceblocks` (3, 4), `frostbite` (2), `icecaves` (1), `jukebox` (6), an
       damage at full; refused by what can't freeze; `event.mob_effect.freezing` when added; 26.4's icon and freezing
       particle (on entities whose only effect is Freezing).
 - [x] **Ice ball**: `ceil(speed x 1.3)` thrown damage, no freezing; stack 16; thrown at 1.5, inaccuracy 1; dispensers;
-      break sound and 8 item particles.
+      throw sound in the players category, break sound (none when silent) and 8 item particles (Pre-Release 2).
 - [x] **Potions**: Freezing 900 ticks, long 1800; awkward + ice ball, water + ice ball = mundane, + redstone = long;
       splash, lingering (a quarter) and tipped arrows (an eighth) from 1.12.2's container mixes.
 - [x] **Conversions** in powder snow (Caves & Cliffs'), no leather worn: zombie to frostbite, husk to zombie, Update
@@ -87,7 +91,8 @@ Packages: `iceblocks` (3, 4), `frostbite` (2), `icecaves` (1), `jukebox` (6), an
       pool.
 
 ### 5. Sulfur cube (`sulfurcube`) - built
-- [x] The cold archetype (blue ice): fast sliding's numbers, both sounds `fast_sliding.hit`; on the ground and riding
+- [x] The cold archetype (blue ice): fast sliding's numbers and sounds (Pre-Release 2: push `fast_sliding.push`, was
+      `.hit`); on the ground and riding
       nothing, with `mobGriefing`, it turns water sources under it within 3 (`< 9`) with air above into frosted ice.
 - [x] Fast sliding now packed ice, packed ice bricks, chiseled packed ice, snow block, snow bricks; slow bouncy gains the
       calcite set and chiseled soulshale; `extraBlocks` accepts `=cold`.
@@ -95,7 +100,7 @@ Packages: `iceblocks` (3, 4), `frostbite` (2), `icecaves` (1), `jukebox` (6), an
 ### 6. Jukebox playlists and "Flurry" (`jukebox`) - built
 - [x] A jukebox under a single chest, trapped chest or copper chest plays its discs in slot order after the last one
       taken, skips non-discs, loops; an empty jukebox takes the next disc at once, so ejecting skips. Song ends from 26.4's
-      lengths.
+      lengths. Taking a disc out sends `block_change` (Pre-Release 2).
 - [x] Flurry (154 s, comparator 7, uncommon), 30% in igloo chests (a pool of its own).
 - [x] The jukebox's 26.4 look (new side and top, a bottom of its own), as Game Drops' 26.4 contribution to Core.
 
@@ -104,7 +109,9 @@ Packages: `iceblocks` (3, 4), `frostbite` (2), `icecaves` (1), `jukebox` (6), an
 - [x] Ice and frosted ice hide faces against ice, frosted ice and brittle ice (patch P10).
 - [x] Frosted ice vibrates on each crack (P11).
 - [x] Snow layers on packed ice (P8). Mushrooms stay on any center support in any light, spread only under 13 (P9).
-- [x] Snowballs push players. Carrot on a stick boosts 140-700 ticks. A perching dragon takes no thrown damage.
+- [x] Snowballs push players. Carrot on a stick boosts 140-700 ticks; a finished boost syncs a total of 0, which is no
+      boost (Pre-Release 2). A perching dragon takes no thrown damage.
+- [x] Pre-Release 2, 26.3's straw bed: breaks with `break_leave` (its sound set's break sound), through `destroyBlock`.
 - [x] Checked, no change needed: the dragon's vertical steering (1.12.2 already 0.1, 26.4's fix of 26.3's 0.01);
       pointed dripstone's cauldron rates (unchanged in 26.4, against this plan's earlier note).
 
@@ -132,6 +139,10 @@ Packages: `iceblocks` (3, 4), `frostbite` (2), `icecaves` (1), `jukebox` (6), an
       stalagmite and falling stalactite damage, tridents.
 - [x] `advancement.MonsterHunter`, `locate.BiomeLocate.next`, the frostbite egg in the modern egg layer.
 - Self-test group `freeze` (25 checks); the full Core suite passes (one timing check flaked under load, passing alone).
+
+## Test results (2026-11-27, Pre-Release 2)
+- GD `-Pselftest=all`, fresh world, Game Drops alone: 4333 pass, 0 fail (5 new Pre-Release 2 checks).
+- Client test (`runClient -Pselftest=client`): 146 pass, 0 fail.
 
 ## Test results (2026-11-26)
 - GD `-Pselftest=all`, fresh world, Game Drops alone: 4328 pass, 0 fail.
@@ -165,14 +176,17 @@ here works without its owner and joins it when installed.
 - **Village & Pillage**: 26.4's trade changes (farmer's cake 1 emerald, weaponsmith's iron sword 3 uses), its own table.
 - **Nether Update**: warped fungus on a stick 140-700 ticks.
 - **Core**: Adventuring Time's 26.4 list (ice caves); the look and feel pieces above.
-- Languages: the 17 other languages for the new keys (`tools/lang/build_langs.py build` needs the Mojang 26.4 lang
-  files once released).
+- Languages: done 2026-11-27 from 26.4-pre-2's Mojang files (vanilla names) and `tools/lang/translations/` (the 32
+  config keys, translated by hand in the 15 languages; es_ar, es_uy, es_ve copy es_mx). Rebuild at release.
+- **Nether Update**: Pre-Release 2's steering fix (a finished boost syncs a total of 0) for the warped fungus on a stick.
+- **Core (optional, not 26.4's plan)**: Pre-Release 2's `#wall_side_shape_override` (the honey block) for `ModernWall`.
 
 ## Order
 1. **Done (2026-11-24):** the first plan.
-2. **At release:** diff the release jar against Pre-Release 1, fix any number that changed, rerun the generators
-   (`tools/iceblocks`, `icecaves`, `frostbite`, `jukebox`, `changes264`, `lookfeel264` with `GD_ASSETS_VERSION=26.4`),
-   switch `tools/assets.py`'s default to 26.4.
+2. **At release:** diff the release jar against Pre-Release 2 (done for Pre-Release 1 -> 2 on 2026-11-27), fix any
+   number that changed, rerun the generators (`tools/iceblocks`, `icecaves`, `frostbite`, `jukebox`, `changes264`,
+   `lookfeel264` with `GD_ASSETS_VERSION=26.4`), switch `tools/assets.py`'s default to 26.4, put `26.4` first in
+   `tools/lang/langs.json` and rebuild the languages.
 3. **Done (2026-11-26, on pre-1):** streams 1-7, the Core pieces.
 4. Release checks: `tools/release_suite.sh` alone and with `FAMILY=1`, client scenes, boot-server; Core's RELEASING.md.
 

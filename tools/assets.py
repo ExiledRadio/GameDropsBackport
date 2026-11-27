@@ -23,7 +23,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODID = "gamedropsbackport"
 ASSETS = os.path.join(ROOT, "src", "main", "resources", "assets", MODID)
 # The version a generator reads: 26.3 unless it asks for another before importing this module (the 26.4 streams set
-# GD_ASSETS_VERSION=26.4-pre-1 until 26.4 releases). Downloads live on G: when it is mounted, else E:/MCDownloads.
+# GD_ASSETS_VERSION=26.4-pre-2 until 26.4 releases). Downloads live on G: when it is mounted, else E:/MCDownloads.
 VERSION = os.environ.get("GD_ASSETS_VERSION", "26.3")
 DOWNLOADS = next((d for d in ("G:/MCDownloads", "E:/MCDownloads") if os.path.isdir("%s/minecraft-%s" % (d, VERSION))),
                  "G:/MCDownloads")

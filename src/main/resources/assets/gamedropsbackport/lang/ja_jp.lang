@@ -30,6 +30,14 @@ config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=26.2 のタイトル画
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=LAN に公開の代わりにポーズメニューに 26.3 のワールドオプション画面。難易度はオプション画面から移ります。
 config.gamedropsbackport.changes.tooltip=1.12.2にすでにあるコマンド、モブ、ブロック、アイテムへの26.xの変更です。
 config.gamedropsbackport.changes.enabled.tooltip=オフにすると、以下の変更はすべてオフになり、1.12.2の挙動に戻ります。
+config.gamedropsbackport.changes.snowOnPackedIce.tooltip=雪を氷塊の上に置けるようになり、氷塊の上にも積もります (26.4)。
+config.gamedropsbackport.changes.mushroomsAnyLight.tooltip=キノコは上面が中央を支えるどのブロックの上にも、どの明るさでも残ります。広がるのは引き続き明るさ13未満のときだけです (26.4)。ワールド生成は1.12.2のルールのままです。
+config.gamedropsbackport.changes.iceSounds.tooltip=氷、氷塊、薄氷、青氷が26.4独自のサウンドになり、凍った湖の氷が共鳴します (26.4)。
+config.gamedropsbackport.changes.iceFaces.tooltip=氷と薄氷は、氷、薄氷、脆い氷と接する面を隠します (26.4)。
+config.gamedropsbackport.changes.frostedIceVibrations.tooltip=薄氷はひびが入るたびに振動を出します (26.4)。
+config.gamedropsbackport.changes.snowballKnockback.tooltip=雪玉がプレイヤーをノックバックします (26.4)。
+config.gamedropsbackport.changes.steeringBoost.tooltip=ニンジン付きの棒でブタが加速する時間が7～49秒から7～35秒になります (26.4)。
+config.gamedropsbackport.changes.dragonPerchThrown.tooltip=止まっているエンダードラゴンは、雪玉、卵、氷玉などの投げられた物からダメージを受けません (26.4)。
 config.gamedropsbackport.changes.timeCommand.tooltip=/timeがワールドクロックで動作します。set day、noon、night、midnightは次のその時刻まで進み、pause、resume、rate、of <clock>、時間とタイムラインのqueryも使えます。メッセージは26.1のものです (26.1)。
 config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gameruleが26.xのメッセージで応答し、ルールを現在の値に設定するとエラーになります (26.3)。
 config.gamedropsbackport.changes.teamColorNames.tooltip=チームの色は、dark_purpleのように小文字とアンダースコアの名前だけを受け付けます (26.2)。
@@ -50,6 +58,14 @@ config.gamedropsbackport.changes.hostGameModeDefault.tooltip=ホストが /gamem
 config.gamedropsbackport.changes.advancementCounts.tooltip=/advancement grant と revoke で複数のプレイヤーを指定でき、26.3 と同じように応答します：プレイヤーと進捗の数、何も変わらなかったときだけエラー (26.2、26.3)。
 config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join と leave が 26.3 の /team と同じように応答します：参加または脱退したメンバー、すでにチームに入っていないメンバーはエラーにしない (26.3)。
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish で LAN に公開したワールドを閉じます。ほかのプレイヤーは退出し、一覧に表示されなくなります (26.2)。
+config.gamedropsbackport.iceBlocks.tooltip=26.4の氷塊レンガ、模様入りの氷塊、雪レンガ。Caves & Cliffsがあれば方解石のブロック、Wild Updateがあれば模様入りのソウルシェール。
+config.gamedropsbackport.iceBlocks.enabled.tooltip=オフにすると何も登録されず、これらがあるワールドからは失われます。
+config.gamedropsbackport.iceCaves.tooltip=26.4の氷の洞窟: つらら、氷晶、脆い氷、クレバス、寒冷な地表の下のバイオーム。
+config.gamedropsbackport.iceCaves.enabled.tooltip=オフにすると何も登録されず、これらがあるワールドからは失われます。
+config.gamedropsbackport.frostbite.tooltip=26.4のフロストバイト、氷玉、凍結の効果とそのポーション、粉雪の中でのゾンビ、ハスク、ドラウンドの変化。
+config.gamedropsbackport.frostbite.enabled.tooltip=オフにすると何も登録されず、これらがあるワールドからは失われます。
+config.gamedropsbackport.jukebox.tooltip=26.4のジュークボックスのプレイリスト（上に置いたチェストのレコード）とレコード「Flurry」。
+config.gamedropsbackport.jukebox.enabled.tooltip=オフにすると何も登録されず、これらがあるワールドからは失われます。
 # --- end config tooltips ---
 
 # --- common ---
@@ -454,3 +470,87 @@ commands.unpublish.notPublished=公開されているマルチプレイはあり
 commands.unpublish.success=マルチプレイを非公開にしました
 menu.multiplayerOptions.publish.stopped=このワールドのマルチプレイへの公開を停止しました
 team.notFound=「%s」は不明なチームです
+
+# --- iceblocks ---
+tile.gamedropsbackport.calcite_double_slab.name=方解石のハーフブロック
+tile.gamedropsbackport.calcite_pillar.name=方解石の柱
+tile.gamedropsbackport.calcite_slab.name=方解石のハーフブロック
+tile.gamedropsbackport.calcite_stairs.name=方解石の階段
+tile.gamedropsbackport.calcite_wall.name=方解石の塀
+tile.gamedropsbackport.chiseled_packed_ice.name=模様入りの氷塊
+tile.gamedropsbackport.chiseled_soulshale.name=模様入りのソウルシェール
+tile.gamedropsbackport.packed_ice_brick_double_slab.name=氷塊レンガのハーフブロック
+tile.gamedropsbackport.packed_ice_brick_slab.name=氷塊レンガのハーフブロック
+tile.gamedropsbackport.packed_ice_brick_stairs.name=氷塊レンガの階段
+tile.gamedropsbackport.packed_ice_brick_wall.name=氷塊レンガの塀
+tile.gamedropsbackport.packed_ice_bricks.name=氷塊レンガ
+tile.gamedropsbackport.polished_calcite.name=磨かれた方解石
+tile.gamedropsbackport.polished_calcite_brick_double_slab.name=磨かれた方解石レンガのハーフブロック
+tile.gamedropsbackport.polished_calcite_brick_slab.name=磨かれた方解石レンガのハーフブロック
+tile.gamedropsbackport.polished_calcite_brick_stairs.name=磨かれた方解石レンガの階段
+tile.gamedropsbackport.polished_calcite_brick_wall.name=磨かれた方解石レンガの塀
+tile.gamedropsbackport.polished_calcite_bricks.name=磨かれた方解石レンガ
+tile.gamedropsbackport.polished_calcite_double_slab.name=磨かれた方解石のハーフブロック
+tile.gamedropsbackport.polished_calcite_slab.name=磨かれた方解石のハーフブロック
+tile.gamedropsbackport.polished_calcite_stairs.name=磨かれた方解石の階段
+tile.gamedropsbackport.polished_calcite_wall.name=磨かれた方解石の塀
+tile.gamedropsbackport.snow_brick_double_slab.name=雪レンガのハーフブロック
+tile.gamedropsbackport.snow_brick_slab.name=雪レンガのハーフブロック
+tile.gamedropsbackport.snow_brick_stairs.name=雪レンガの階段
+tile.gamedropsbackport.snow_brick_wall.name=雪レンガの塀
+tile.gamedropsbackport.snow_bricks.name=雪レンガ
+config.gamedropsbackport.iceBlocks=氷と雪のブロック
+config.gamedropsbackport.iceBlocks.enabled=有効
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=脆い氷
+tile.gamedropsbackport.ice_crystal.name=氷晶
+tile.gamedropsbackport.icicle.name=つらら
+subtitles.gamedropsbackport.block.brittle_ice.crack=脆い氷にひびが入る
+subtitles.gamedropsbackport.block.ice_crystal.ambient=氷晶が音を奏でる
+subtitles.gamedropsbackport.block.icicle.land=つららが崩れ落ちる
+config.gamedropsbackport.iceCaves=氷の洞窟
+config.gamedropsbackport.iceCaves.enabled=有効
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=フロストバイト
+entity.gamedropsbackport.ice_ball.name=氷玉
+item.gamedropsbackport.ice_ball.name=氷玉
+effect.gamedropsbackport.freezing=凍結
+potion.effect.gamedropsbackport.freezing=凍結のポーション
+splash_potion.effect.gamedropsbackport.freezing=凍結のスプラッシュポーション
+lingering_potion.effect.gamedropsbackport.freezing=凍結の残留ポーション
+tipped_arrow.effect.gamedropsbackport.freezing=凍結の矢
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=因果応報
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=フロストバイトを氷玉で倒す
+config.gamedropsbackport.frostbite=フロストバイト
+config.gamedropsbackport.frostbite.enabled=有効
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=ドラウンドがゾンビに変わる
+subtitles.gamedropsbackport.entity.frostbite.ambient=フロストバイトがうめく
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=フロストバイトがゾンビに変わる
+subtitles.gamedropsbackport.entity.frostbite.death=フロストバイトが死ぬ
+subtitles.gamedropsbackport.entity.frostbite.hurt=フロストバイトがダメージを受ける
+subtitles.gamedropsbackport.entity.frostbite.throw=フロストバイトが投げる
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=ハスクがゾンビに変わる
+subtitles.gamedropsbackport.entity.ice_ball.break=氷玉が当たる
+subtitles.gamedropsbackport.entity.ice_ball.throw=氷玉が投げられる
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=オウムがフロストバイトのうめき声を真似る
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=ゾンビがフロストバイトに変わる
+subtitles.gamedropsbackport.event.mob_effect.freezing=凍え始める
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=レコード
+item.record.flurry.desc=Hyper Potions - flurry
+config.gamedropsbackport.jukebox=ジュークボックス
+config.gamedropsbackport.jukebox.enabled=有効
+
+# --- changes264 ---
+subtitles.gamedropsbackport.block.ice.ambient=氷が共鳴する
+config.gamedropsbackport.changes.snowOnPackedIce=氷塊の上の雪
+config.gamedropsbackport.changes.mushroomsAnyLight=どの明るさでもキノコ
+config.gamedropsbackport.changes.iceSounds=氷の音
+config.gamedropsbackport.changes.iceFaces=氷の面
+config.gamedropsbackport.changes.frostedIceVibrations=薄氷の振動
+config.gamedropsbackport.changes.snowballKnockback=雪玉のノックバック
+config.gamedropsbackport.changes.steeringBoost=騎乗ブースト
+config.gamedropsbackport.changes.dragonPerchThrown=止まっているドラゴンは投げ物を無視

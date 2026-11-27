@@ -35,7 +35,9 @@ import java.util.List;
  *       {@code block.packed_ice.*}, ...; 1.12.2's are glass).</li>
  *   <li>Snowballs knock players back ({@code #knocks_back_players_even_with_zero_damage}): a 0-damage hit still pushes,
  *       unless a shield blocks it.</li>
- *   <li>A carrot on a stick boosts a pig for 140-700 ticks ({@code ItemBasedSteering}; 1.12.2's 140-980).</li>
+ *   <li>A carrot on a stick boosts a pig for 140-700 ticks ({@code ItemBasedSteering}; 1.12.2's 140-980). A finished
+ *       boost resets the synced total to 0, and a synced 0 is no boost (26.4 Pre-Release 2), so a client that starts
+ *       tracking the pig later doesn't replay the last boost.</li>
  *   <li>A perching ender dragon takes no thrown damage ({@code #cannot_hurt_perching_ender_dragon} gained
  *       {@code thrown}); the projectile is set on fire for a second, as arrows are.</li>
  * </ul>
@@ -160,13 +162,23 @@ public final class DeepFreezeChanges {
 
         @SubscribeEvent
         public void living(LivingEvent.LivingUpdateEvent event) {
-            if (!(event.getEntityLiving() instanceof EntityPig) || event.getEntityLiving().world.isRemote
-                    || !Changes.on(ModConfig.changes.steeringBoost)) {
+            if (!(event.getEntityLiving() instanceof EntityPig) || !Changes.on(ModConfig.changes.steeringBoost)) {
                 return;
             }
             EntityPig pig = (EntityPig) event.getEntityLiving();
             try {
-                if (BOOSTING.getBoolean(pig) && BOOST_TIME.getInt(pig) == 0 && TOTAL_BOOST.getInt(pig) > BOOST_MAX) {
+                if (pig.world.isRemote) {
+                    // onSynced: a synced total of 0 is no boost (1.12.2 boosts for a tick).
+                    if (BOOSTING.getBoolean(pig) && TOTAL_BOOST.getInt(pig) == 0) {
+                        BOOSTING.setBoolean(pig, false);
+                    }
+                    return;
+                }
+                if (!BOOSTING.getBoolean(pig) && TOTAL_BOOST.getInt(pig) > 0) {
+                    // tickBoost: a finished boost sets the total to 0.
+                    TOTAL_BOOST.setInt(pig, 0);
+                    pig.getDataManager().set(BOOST_PARAM, 0);
+                } else if (BOOSTING.getBoolean(pig) && BOOST_TIME.getInt(pig) == 0 && TOTAL_BOOST.getInt(pig) > BOOST_MAX) {
                     // A fresh 1.12.2 boost past 700 is drawn again in 140-700, which leaves 140-700 uniform.
                     int total = BOOST_MIN + pig.getRNG().nextInt(BOOST_MAX - BOOST_MIN + 1);
                     TOTAL_BOOST.setInt(pig, total);

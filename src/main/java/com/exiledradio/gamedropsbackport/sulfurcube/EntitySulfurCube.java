@@ -295,11 +295,11 @@ public class EntitySulfurCube extends EntityAgeable {
     }
 
     /**
-     * 26.3's {@code equipItem}: swallows one of the stack, spitting out a different block it held. Babies swallow
-     * nothing.
+     * 26.4's {@code equipItem}: swallows one of the stack, spitting out a different block it held. Babies swallow
+     * nothing, and nor does a primed cube (26.4 Pre-Release 1: a dispenser could swap the TNT out of a lit one).
      */
     public boolean equipItem(ItemStack stack) {
-        if (this.isChild() || !ArchetypeItems.swallowable(stack)) {
+        if (this.isChild() || this.isPrimed() || !ArchetypeItems.swallowable(stack)) {
             return false;
         }
         if (this.hasBodyItem()) {

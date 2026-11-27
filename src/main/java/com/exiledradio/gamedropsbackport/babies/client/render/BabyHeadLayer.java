@@ -1,6 +1,7 @@
 package com.exiledradio.gamedropsbackport.babies.client.render;
 
 import com.exiledradio.gamedropsbackport.babies.client.model.HeadedModel;
+import com.exiledradio.backportcore.presentation.Presentation;
 import com.mojang.authlib.GameProfile;
 
 import net.minecraft.client.Minecraft;
@@ -24,8 +25,9 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.UUID;
 
 /**
- * Blocks and skulls worn on the head: 1.12's {@code LayerCustomHead} placed by 26.3's {@code CustomHeadLayer}
- * (its {@code Transforms}, and no extra baby shrinking: the baby head is already baby sized).
+ * Blocks and skulls worn on the head: 1.12's {@code LayerCustomHead} placed by 26.4's {@code CustomHeadLayer}: its
+ * {@code Transforms}, then the model's {@code getCustomHeadLayerScale} (26.4 Pre-Release 1: 0.75 for baby zombies and
+ * husks, 0.85 for baby villagers and zombie villagers, 0.9 for baby zombified piglins; 26.3 drew them adult sized, and so do older looks).
  */
 public final class BabyHeadLayer implements LayerRenderer<EntityLivingBase> {
 
@@ -33,9 +35,14 @@ public final class BabyHeadLayer implements LayerRenderer<EntityLivingBase> {
     private final float yOffset;
     private final float skullYOffset;
     private final float horizontalScale;
+    private final float headLayerScale;
 
-    /** {@code CustomHeadLayer.Transforms}: (0, 0, 1) by default, villagers (-0.1171875, -0.07421875, 1). */
-    public BabyHeadLayer(HeadedModel model, float yOffset, float skullYOffset, float horizontalScale) {
+    /**
+     * {@code CustomHeadLayer.Transforms}: (0, 0, 1) by default, villagers (-0.1171875, -0.07421875, 1); and the
+     * model's {@code getCustomHeadLayerScale}.
+     */
+    public BabyHeadLayer(HeadedModel model, float yOffset, float skullYOffset, float horizontalScale, float headLayerScale) {
+        this.headLayerScale = headLayerScale;
         this.model = model;
         this.yOffset = yOffset;
         this.skullYOffset = skullYOffset;
@@ -57,6 +64,9 @@ public final class BabyHeadLayer implements LayerRenderer<EntityLivingBase> {
         GlStateManager.pushMatrix();
         GlStateManager.scale(horizontalScale, 1.0F, horizontalScale);
         model.getHead().translateAndRotate(0.0625F);
+        if (Presentation.isAtLeast("26.4")) {
+            GlStateManager.scale(headLayerScale, headLayerScale, headLayerScale);
+        }
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         if (skull) {
             GlStateManager.translate(0.0F, skullYOffset, 0.0F);

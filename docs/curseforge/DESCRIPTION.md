@@ -8,7 +8,7 @@
 
 # Game Drops Backport
 
-Minecraft's 26.x game drops, 26.1 to 26.3, on Minecraft 1.12.2. It needs Backport Core on the client and the server.
+Minecraft's 26.x game drops, 26.1 to 26.4, on Minecraft 1.12.2. It needs Backport Core on the client and the server.
 
 > 💬 [Join the Discord](https://discord.gg/kxQvMDJBTN) for bug reports and questions.
 
@@ -47,6 +47,14 @@ A new cave biome under low land, banded with sulfur and cinnabar, with pools of 
 ![A pool of potent sulfur letting out gas](https://media.forgecdn.net/attachments/2256/315/10-gd-sulfur-pool-jpg.jpg)
 
 ![A sulfur spring](https://media.forgecdn.net/attachments/2256/285/03-gd-sulfur-spring-jpg.jpg)
+
+## Deep Freeze: ice caves and the frostbite
+
+26.4's ice caves lie under frozen oceans and snowy land, with icicles, ice crystals, brittle ice and crevasses. With Caves & Cliffs Backport 1.2.0, new worlds place them exactly where 26.4 does.
+
+The frostbite is a cold zombie that throws ice balls. Zombies in powder snow turn into frostbites. Ice balls give Freezing, which also comes as potions and tipped arrows.
+
+Packed ice bricks, chiseled packed ice and snow bricks come in every shape. A sulfur cube that swallows blue ice slides like packed ice and freezes the water under it. A jukebox under a chest plays the chest's discs in order, and the music disc Flurry turns up in igloo chests.
 
 ## Poplar and the dappled forest
 

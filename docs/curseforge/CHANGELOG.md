@@ -9,6 +9,7 @@
 *   **Mobs on a lead or riding something no longer despawn**, as in 26.1: leashed squid and ocelots, and the other backports' leashed mobs, stay put.
 *   **Teleport trails**: endermen, shulkers and players eating chorus fruit leave a trail of portal particles where they teleport, as in 26.3.
 *   **Dispensers and sulfur cubes**: a dispenser with shears cuts the block out of a sulfur cube in front of it, and a dispenser no longer puts armor on a sulfur cube, as in 26.2.
+*   **Slimmer dynamic poplars**: with Dynamic Trees - Backport, the poplars a sapling or an abandoned camp grows get shelf mushrooms only on their bottom two logs, with a whole log behind them that tapers above, as Dynamic Trees - Backport's own poplars do.
 *   **With Backport Core 1.5.0**: placing a cushion and a dispenser shearing a sulfur cube are heard by sculk sensors (with Wild Update Backport), and Adventuring Time asks for the sulfur caves and the dappled forest, as in 26.2 and 26.3.
 
 Needs Backport Core 1.5.0 or newer.

@@ -140,7 +140,8 @@ public final class PoplarFeatures {
                 leafLitter(world, rand, trunk, 96, 4, 2, false);
                 leafLitter(world, rand, trunk, 150, 2, 2, true);
             }
-            shelfMushrooms(world, rand, trunk, SHELF_STANDING);
+            // Dynamic Trees - Backport's slimmer poplar (its Decorators, 6629b8c): the trunk's bottom two logs only.
+            shelfMushrooms(world, rand, trunk, SHELF_STANDING, DT_SHELF_MIN, DT_SHELF_MAX);
             fullTrunkUnderMushrooms(world, trunk);
             return true;
         }
@@ -172,7 +173,7 @@ public final class PoplarFeatures {
             leafLitter(world, rand, logs, 96, 4, 2, false);
             leafLitter(world, rand, logs, 150, 2, 2, true);
         }
-        shelfMushrooms(world, rand, logs, SHELF_STANDING);
+        shelfMushrooms(world, rand, logs, SHELF_STANDING, 1, 4);
         return true;
     }
 
@@ -408,11 +409,12 @@ public final class PoplarFeatures {
 
     /**
      * {@code ShelfMushroomDecorator}: with chance {@code probability}, shelf mushrooms on the lowest logs. A standing
-     * tree: two neighboring sides picked once, each log 1 to 4 above the trunk's bottom tries them in order (a quarter
-     * each) and takes the first that is free, not wet and has no mushroom under it. A fallen log: both long sides of
-     * every log, a quarter each, never beside another mushroom.
+     * tree: two neighboring sides picked once, each log {@code minDy} to {@code maxDy} above the trunk's bottom (26.3's 1
+     * to 4; a Dynamic Trees poplar's bottom two, 0 to 1) tries them in order (a quarter each) and takes the first that is
+     * free, not wet and has no mushroom under it. A fallen log: both long sides of every log, a quarter each, never
+     * beside another mushroom.
      */
-    private static void shelfMushrooms(World world, Random rand, List<BlockPos> logs, float probability) {
+    public static void shelfMushrooms(World world, Random rand, List<BlockPos> logs, float probability, int minDy, int maxDy) {
         if (PoplarContent.shelfMushroom == null || rand.nextFloat() >= probability || logs.isEmpty()) {
             return;
         }
@@ -438,7 +440,7 @@ public final class PoplarFeatures {
         int baseY = first.getY();
         for (BlockPos log : logs) {
             int dy = log.getY() - baseY;
-            if (dy < 1 || dy > 4) {
+            if (dy < minDy || dy > maxDy) {
                 continue;
             }
             for (EnumFacing f : sides) {
@@ -475,11 +477,30 @@ public final class PoplarFeatures {
     }
 
     /**
-     * A shelf mushroom sits against a whole log; a Dynamic Trees trunk is often thinner, so from the base up to the
-     * highest mushroom it grows a full log thick (Dynamic Trees only ever thickens a branch).
+     * The radius at least the {@code i}th trunk log (from the bottom) grows to, with mushrooms up to log {@code top} of
+     * {@code height}: 8 to the mushrooms, two less a log above, never the top two logs; -1 once nothing more changes.
+     */
+    public static int wantedRadius(int i, int top, int height) {
+        if (top < 0 || i >= height - 2) {
+            return -1;
+        }
+        int want = i <= top ? 8 : 8 - 2 * (i - top);
+        return want <= 1 ? -1 : want;
+    }
+
+    /** A Dynamic Trees poplar's shelf mushrooms: its bottom two logs (Dynamic Trees - Backport's slimmer poplar). */
+    public static final int DT_SHELF_MIN = 0;
+    public static final int DT_SHELF_MAX = 1;
+
+    /**
+     * A shelf mushroom sits against a whole log; a Dynamic Trees trunk is thinner, so the logs up to the highest mushroom
+     * grow a full log thick, and each log above two sizes thinner than the one below it, until the trunk's own thickness
+     * takes over; the top two logs (and the leaves they feed) stay as grown. Dynamic Trees - Backport's
+     * {@code Decorators} does the same for the poplars it grows itself. Only ever thicker (Dynamic Trees only thickens
+     * a branch).
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
-    private static void fullTrunkUnderMushrooms(World world, List<BlockPos> trunk) {
+    static void fullTrunkUnderMushrooms(World world, List<BlockPos> trunk) {
         int top = -1;
         for (int i = 0; i < trunk.size(); i++) {
             for (EnumFacing f : HORIZONTAL) {
@@ -488,11 +509,18 @@ public final class PoplarFeatures {
                 }
             }
         }
-        for (int i = 0; i <= top; i++) {
+        if (top < 0) {
+            return;
+        }
+        for (int i = 0; i < trunk.size(); i++) {
+            int want = wantedRadius(i, top, trunk.size());
+            if (want < 0) {
+                break;
+            }
             IBlockState s = world.getBlockState(trunk.get(i));
             IProperty prop = radiusProperty(s);
-            if (prop != null && prop.getAllowedValues().contains(8) && (Integer) s.getValue(prop) < 8) {
-                world.setBlockState(trunk.get(i), s.withProperty(prop, 8), 2);
+            if (prop != null && prop.getAllowedValues().contains(want) && (Integer) s.getValue(prop) < want) {
+                world.setBlockState(trunk.get(i), s.withProperty(prop, want), 2);
             }
         }
     }
@@ -571,7 +599,7 @@ public final class PoplarFeatures {
                 world.setBlockState(up, Blocks.BROWN_MUSHROOM.getDefaultState(), 3);
             }
         }
-        shelfMushrooms(world, rand, logs, SHELF_FALLEN);
+        shelfMushrooms(world, rand, logs, SHELF_FALLEN, 1, 4);
         return true;
     }
 

@@ -83,11 +83,70 @@ final class PoplarSelfTest implements SelfTest {
         fallen();
         shrub();
         mushroom();
+        dynamicPoplar();
         bounce();
         biome();
     }
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * A Dynamic Trees poplar (Dynamic Trees - Backport's slimmer poplar, 6629b8c): shelf mushrooms on the trunk's bottom
+     * two logs only, a whole log behind them and two sizes thinner a log above; the static poplar keeps 26.3's 1 to 4.
+     */
+    private void dynamicPoplar() {
+        check.eq(8, PoplarFeatures.wantedRadius(0, 1, 10), "dynamic poplar: whole log at the bottom");
+        check.eq(8, PoplarFeatures.wantedRadius(1, 1, 10), "and behind the higher mushroom");
+        check.eq(6, PoplarFeatures.wantedRadius(2, 1, 10), "two sizes thinner a log above");
+        check.eq(4, PoplarFeatures.wantedRadius(3, 1, 10), "two more the next");
+        check.eq(2, PoplarFeatures.wantedRadius(4, 1, 10), "and the next");
+        check.eq(-1, PoplarFeatures.wantedRadius(5, 1, 10), "then the trunk's own thickness");
+        check.eq(-1, PoplarFeatures.wantedRadius(2, 0, 4), "never the top two logs");
+        check.eq(-1, PoplarFeatures.wantedRadius(0, -1, 10), "no mushrooms: the trunk stays as grown");
+        BlockPos base = new BlockPos(200, 150, 200);
+        IBlockState log = PoplarContent.set.log.getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
+        List<BlockPos> trunk = new ArrayList<BlockPos>();
+        for (int dy = 0; dy < 6; dy++) {
+            trunk.add(base.up(dy));
+        }
+        int dtPlaced = 0;
+        int dtWrong = 0;
+        int staticPlaced = 0;
+        int staticWrong = 0;
+        for (int seed = 0; seed < 40; seed++) {
+            for (int pass = 0; pass < 2; pass++) {
+                for (BlockPos q : BlockPos.getAllInBox(base.add(-1, 0, -1), base.add(1, 6, 1))) {
+                    world.setBlockState(q, Blocks.AIR.getDefaultState(), 2);
+                }
+                for (BlockPos t : trunk) {
+                    world.setBlockState(t, log, 2);
+                }
+                boolean dt = pass == 0;
+                PoplarFeatures.shelfMushrooms(world, new java.util.Random(seed), trunk, 1.0F,
+                        dt ? PoplarFeatures.DT_SHELF_MIN : 1, dt ? PoplarFeatures.DT_SHELF_MAX : 4);
+                for (BlockPos q : BlockPos.getAllInBox(base.add(-1, 0, -1), base.add(1, 6, 1))) {
+                    if (world.getBlockState(q).getBlock() != PoplarContent.shelfMushroom) {
+                        continue;
+                    }
+                    int dy = q.getY() - base.getY();
+                    if (dt) {
+                        dtPlaced++;
+                        dtWrong += dy > 1 ? 1 : 0;
+                    } else {
+                        staticPlaced++;
+                        staticWrong += dy < 1 || dy > 4 ? 1 : 0;
+                    }
+                }
+            }
+        }
+        check.ok(dtPlaced > 0 && dtWrong == 0, "dynamic poplar: shelf mushrooms only on the bottom two logs ("
+                + dtPlaced + " placed, " + dtWrong + " higher)");
+        check.ok(staticPlaced > 0 && staticWrong == 0, "static poplar: 26.3's 1 to 4 up (" + staticPlaced + " placed, "
+                + staticWrong + " outside)");
+        for (BlockPos q : BlockPos.getAllInBox(base.add(-1, 0, -1), base.add(1, 6, 1))) {
+            world.setBlockState(q, Blocks.AIR.getDefaultState(), 2);
+        }
+    }
 
     private void registration() {
         for (String name : BLOCKS) {

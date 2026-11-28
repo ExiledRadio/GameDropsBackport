@@ -213,6 +213,9 @@ public final class SulfurCubes {
             for (EntitySulfurCube cube : world.getEntitiesWithinAABB(EntitySulfurCube.class, new AxisAlignedBB(pos))) {
                 if (cube.isEntityAlive() && cube.hasBodyItem()) {
                     cube.shear();
+                    // 26.2's ShearDispenseBehavior: gameEvent(null, SHEAR, pos), for Wild Update's sculk.
+                    com.exiledradio.backportcore.gameevent.GameEvents.emit(world, com.exiledradio.backportcore.gameevent.GameEvent.SHEAR,
+                            pos, com.exiledradio.backportcore.gameevent.GameEventContext.of((net.minecraft.entity.Entity) null));
                     world.playEvent(1000, source.getBlockPos(), 0);
                     if (stack.attemptDamageItem(1, world.rand, null)) {
                         stack.setCount(0);

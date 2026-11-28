@@ -94,6 +94,7 @@ final class SulfurCubeSelfTest implements SelfTest {
         contact(check, world);
         Rules26SelfTest.cubeBoats(check, world, ORIGIN.add(24, 0, 24));
         Rules26SelfTest.cubeDispensers(check, world, ORIGIN.add(12, 0, 22));
+        Core150SelfTest.cubeShearEvent(check, world, ORIGIN.add(12, 0, 18));
         dispenser(check, world);
         spawning(check, world);
         dump();

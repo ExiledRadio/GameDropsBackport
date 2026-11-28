@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=Blocs posés par les Endermen
 config.gamedropsbackport.changes.saplingBonemeal=Pousses de chêne noir seules
 config.gamedropsbackport.changes.spawnTrampling=Pas de piétinement au spawn
 config.gamedropsbackport.changes.persistentTrapHorses=Chevaux pièges persistants
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=Les créatures en laisse ou qui chevauchent quelque chose ne disparaissent jamais (26.1).
+config.gamedropsbackport.changes.teleportTrails.tooltip=Les Endermen, les shulkers et ceux qui mangent un chorus laissent une traînée de particules de portail en se téléportant (26.3).
+config.gamedropsbackport.changes.leashedMobsStay=Les créatures en laisse restent
+config.gamedropsbackport.changes.teleportTrails=Traînées de téléportation

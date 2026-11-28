@@ -6,6 +6,9 @@
 *   **Endermen follow 26.3's rules**: they no longer teleport onto signs or waterlogged blocks, an arrow they dodge flies on instead of bouncing back, and they never put their block down on bedrock or where an item frame or other entity is. They place their blocks again on Forge versions that stopped them.
 *   **Smaller 26.x fixes**: a lone dark oak sapling can't be bone mealed, players can't trample farmland inside a server's spawn protection, and a named skeleton trap horse no longer vanishes.
 *   **Sulfur cubes, geysers and straw beds**: boats no longer scoop up sulfur cubes, geysers leave the ender dragon alone, a hoe is the straw bed's tool, and sleeping in a straw bed counts as "Times Slept in a Straw Bed".
+*   **Mobs on a lead or riding something no longer despawn**, as in 26.1: leashed squid and ocelots, and the other backports' leashed mobs, stay put.
+*   **Teleport trails**: endermen, shulkers and players eating chorus fruit leave a trail of portal particles where they teleport, as in 26.3.
+*   **Dispensers and sulfur cubes**: a dispenser with shears cuts the block out of a sulfur cube in front of it, and a dispenser no longer puts armor on a sulfur cube, as in 26.2.
 
 # 1.0.3
 

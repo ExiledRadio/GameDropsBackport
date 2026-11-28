@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=Endermen colocando blocos
 config.gamedropsbackport.changes.saplingBonemeal=Mudas de carvalho escuro sozinhas
 config.gamedropsbackport.changes.spawnTrampling=Sem pisotear no renascimento
 config.gamedropsbackport.changes.persistentTrapHorses=Cavalos armadilha persistentes
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=Criaturas presas por um laço ou montando algo nunca desaparecem (26.1).
+config.gamedropsbackport.changes.teleportTrails.tooltip=Endermen, shulkers e quem come fruta do coro deixam um rastro de partículas de portal ao se teletransportar (26.3).
+config.gamedropsbackport.changes.leashedMobsStay=Criaturas presas ficam
+config.gamedropsbackport.changes.teleportTrails=Rastros de teletransporte

@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=末影人放置方块
 config.gamedropsbackport.changes.saplingBonemeal=单独的深色橡树树苗
 config.gamedropsbackport.changes.spawnTrampling=出生点不踩坏耕地
 config.gamedropsbackport.changes.persistentTrapHorses=持久的陷阱马
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=拴着拴绳或正在骑乘的生物永远不会消失 (26.1)。
+config.gamedropsbackport.changes.teleportTrails.tooltip=末影人、潜影贝和吃下紫颂果的生物传送时会留下一道传送门粒子轨迹 (26.3)。
+config.gamedropsbackport.changes.leashedMobsStay=拴住的生物会留下
+config.gamedropsbackport.changes.teleportTrails=传送轨迹

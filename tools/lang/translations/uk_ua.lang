@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=Ендермени ставля
 config.gamedropsbackport.changes.saplingBonemeal=Поодинокі саджанці темного дуба
 config.gamedropsbackport.changes.spawnTrampling=Без витоптування біля спавну
 config.gamedropsbackport.changes.persistentTrapHorses=Постійні коні-пастки
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=Моби на повідці або верхи на чомусь ніколи не зникають (26.1).
+config.gamedropsbackport.changes.teleportTrails.tooltip=Ендермени, шалкери та ті, хто їсть плоди хорусу, залишають під час телепортації слід із частинок порталу (26.3).
+config.gamedropsbackport.changes.leashedMobsStay=Моби на повідці залишаються
+config.gamedropsbackport.changes.teleportTrails=Сліди телепортації

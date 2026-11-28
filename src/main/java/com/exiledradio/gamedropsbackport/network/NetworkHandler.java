@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.Side;
  *   5-9   babies        25-29 poplar
  *   10-14 sulfur        30-34 softBlocks
  *   15-19 sulfurCube    35-39 camps
- *   20-24 sulfurCaves
+ *   20-24 sulfurCaves   40-44 changes
  * </pre>
  */
 public final class NetworkHandler {
@@ -36,5 +36,8 @@ public final class NetworkHandler {
         // 20-24 sulfurCaves
         channel.registerMessage(com.exiledradio.gamedropsbackport.sulfurcaves.SulfurNet.Handler.class,
                 com.exiledradio.gamedropsbackport.sulfurcaves.SulfurNet.InsideMessage.class, 20, Side.CLIENT);
+        // 40-44 changes
+        channel.registerMessage(com.exiledradio.gamedropsbackport.changes.TeleportTrails.Handler.class,
+                com.exiledradio.gamedropsbackport.changes.TeleportTrails.Message.class, 40, Side.CLIENT);
     }
 }

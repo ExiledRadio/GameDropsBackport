@@ -161,6 +161,8 @@ public final class SulfurCubes {
             return;
         }
         ArchetypeItems.build();
+        dispenserShears();
+        dispenserArmor();
         for (Item item : ArchetypeItems.items()) {
             final IBehaviorDispenseItem previous = BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.getObject(item);
             BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(item, new IBehaviorDispenseItem() {
@@ -188,6 +190,78 @@ public final class SulfurCubes {
             }
         }
         return previous.dispense(source, stack);
+    }
+
+    /**
+     * 26.2's {@code ShearDispenseBehavior} for the cube ({@code Shearable}, ready while it holds a block): a dispenser's
+     * shears cut the block out of a cube in front and lose a point; with none, the shears' earlier behavior runs.
+     */
+    static void dispenserShears() {
+        final IBehaviorDispenseItem previous = BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.getObject(net.minecraft.init.Items.SHEARS);
+        BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(net.minecraft.init.Items.SHEARS, new IBehaviorDispenseItem() {
+            @Override
+            public ItemStack dispense(IBlockSource source, ItemStack stack) {
+                return shearOrElse(source, stack, previous);
+            }
+        });
+    }
+
+    static ItemStack shearOrElse(IBlockSource source, ItemStack stack, IBehaviorDispenseItem previous) {
+        net.minecraft.world.World world = source.getWorld();
+        BlockPos pos = source.getBlockPos().offset(source.getBlockState().getValue(BlockDispenser.FACING));
+        if (!world.isRemote) {
+            for (EntitySulfurCube cube : world.getEntitiesWithinAABB(EntitySulfurCube.class, new AxisAlignedBB(pos))) {
+                if (cube.isEntityAlive() && cube.hasBodyItem()) {
+                    cube.shear();
+                    world.playEvent(1000, source.getBlockPos(), 0);
+                    if (stack.attemptDamageItem(1, world.rand, null)) {
+                        stack.setCount(0);
+                    }
+                    return stack;
+                }
+            }
+        }
+        return previous.dispense(source, stack);
+    }
+
+    /**
+     * 26.2's dispenser equips a cube's body slot only ({@code canDispenserEquipIntoSlot}): 1.12.2's armor behavior took
+     * any mob that can pick up loot, empty adult cubes too. Wrapped for every item using it (armor, elytra, other
+     * mods' armor), it equips the first other mob in front, as 1.12.2 does, and drops the item when only cubes are
+     * there.
+     */
+    static void dispenserArmor() {
+        final IBehaviorDispenseItem armor = new net.minecraft.dispenser.BehaviorDefaultDispenseItem() {
+            @Override
+            protected ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
+                ItemStack out = dispenseArmorSkippingCubes(source, stack);
+                return out.isEmpty() ? super.dispenseStack(source, stack) : out;
+            }
+        };
+        for (Item item : Item.REGISTRY) {
+            if (BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.getObject(item) == net.minecraft.item.ItemArmor.DISPENSER_BEHAVIOR) {
+                BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(item, armor);
+            }
+        }
+    }
+
+    /** 1.12.2's {@code ItemArmor.dispenseArmor}, without sulfur cubes. @return the rest, or empty when nothing took it */
+    public static ItemStack dispenseArmorSkippingCubes(IBlockSource source, ItemStack stack) {
+        BlockPos pos = source.getBlockPos().offset(source.getBlockState().getValue(BlockDispenser.FACING));
+        for (net.minecraft.entity.EntityLivingBase e : source.getWorld().getEntitiesWithinAABB(net.minecraft.entity.EntityLivingBase.class,
+                new AxisAlignedBB(pos), com.google.common.base.Predicates.and(net.minecraft.util.EntitySelectors.NOT_SPECTATING,
+                        new net.minecraft.util.EntitySelectors.ArmoredMob(stack)))) {
+            if (e instanceof EntitySulfurCube) {
+                continue;
+            }
+            net.minecraft.inventory.EntityEquipmentSlot slot = net.minecraft.entity.EntityLiving.getSlotForItemStack(stack);
+            e.setItemStackToSlot(slot, stack.splitStack(1));
+            if (e instanceof net.minecraft.entity.EntityLiving) {
+                ((net.minecraft.entity.EntityLiving) e).setDropChance(slot, 2.0F);
+            }
+            return stack;
+        }
+        return ItemStack.EMPTY;
     }
 
     /** Grants one of <i>Uh Oh</i>'s criteria (either completes it). */

@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=Odkładanie bloków przez ender
 config.gamedropsbackport.changes.saplingBonemeal=Samotne sadzonki ciemnego dębu
 config.gamedropsbackport.changes.spawnTrampling=Bez deptania przy spawnie
 config.gamedropsbackport.changes.persistentTrapHorses=Trwałe konie-pułapki
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=Moby na smyczy lub jadące na czymś nigdy nie znikają (26.1).
+config.gamedropsbackport.changes.teleportTrails.tooltip=Endermani, shulkery i ci, którzy jedzą owoce refrenu, zostawiają przy teleportacji ślad cząsteczek portalu (26.3).
+config.gamedropsbackport.changes.leashedMobsStay=Moby na smyczy zostają
+config.gamedropsbackport.changes.teleportTrails=Ślady teleportacji

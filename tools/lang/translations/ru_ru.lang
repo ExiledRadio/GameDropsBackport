@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=Эндермены ставят
 config.gamedropsbackport.changes.saplingBonemeal=Одиночные саженцы тёмного дуба
 config.gamedropsbackport.changes.spawnTrampling=Без вытаптывания у спавна
 config.gamedropsbackport.changes.persistentTrapHorses=Постоянные лошади-ловушки
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=Мобы на поводке или верхом на чём-либо никогда не исчезают (26.1).
+config.gamedropsbackport.changes.teleportTrails.tooltip=Эндермены, шалкеры и те, кто ест плоды хоруса, оставляют при телепортации след из частиц портала (26.3).
+config.gamedropsbackport.changes.leashedMobsStay=Мобы на поводке остаются
+config.gamedropsbackport.changes.teleportTrails=Следы телепортации

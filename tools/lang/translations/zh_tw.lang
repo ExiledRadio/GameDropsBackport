@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=終界使者放置方塊
 config.gamedropsbackport.changes.saplingBonemeal=單獨的黑橡木樹苗
 config.gamedropsbackport.changes.spawnTrampling=重生點不踩壞耕地
 config.gamedropsbackport.changes.persistentTrapHorses=持久的陷阱馬
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=拴著拴繩或正在騎乘的生物永遠不會消失 (26.1)。
+config.gamedropsbackport.changes.teleportTrails.tooltip=終界使者、界伏蚌和吃下歌萊果的生物傳送時會留下一道傳送門粒子軌跡 (26.3)。
+config.gamedropsbackport.changes.leashedMobsStay=拴住的生物會留下
+config.gamedropsbackport.changes.teleportTrails=傳送軌跡

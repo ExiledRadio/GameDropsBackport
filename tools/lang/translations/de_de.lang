@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=Endermen setzen Blöcke ab
 config.gamedropsbackport.changes.saplingBonemeal=Einzelne Schwarzeichensetzlinge
 config.gamedropsbackport.changes.spawnTrampling=Kein Zertrampeln am Spawn
 config.gamedropsbackport.changes.persistentTrapHorses=Beständige Fallenpferde
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=Kreaturen an der Leine oder die auf etwas reiten, verschwinden nie (26.1).
+config.gamedropsbackport.changes.teleportTrails.tooltip=Endermen, Shulker und wer Chorusfrüchte isst, hinterlassen beim Teleportieren eine Spur aus Portalpartikeln (26.3).
+config.gamedropsbackport.changes.leashedMobsStay=Angeleinte Kreaturen bleiben
+config.gamedropsbackport.changes.teleportTrails=Teleportspuren

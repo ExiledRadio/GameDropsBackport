@@ -62,7 +62,16 @@ public final class ChangeHooks {
      * @return true to skip 1.12.2's own body (only for a persistent mob, while the setting is on)
      */
     public static boolean persistentDespawn(EntityLiving mob) {
-        if (!mob.isNoDespawnRequired() || !Changes.on(ModConfig.changes.persistentMobsIdle)) {
+        boolean custom = !mob.isNoDespawnRequired() && customPersistence(mob);
+        if (!mob.isNoDespawnRequired() && !custom) {
+            return false;
+        }
+        if (!Changes.on(ModConfig.changes.persistentMobsIdle)) {
+            if (custom) {
+                // 1.12.2's own persistent branch, for a mob 26.x keeps without the flag.
+                setIdleTime(mob, 0);
+                return true;
+            }
             return false;
         }
         EntityPlayer player = mob.world.getClosestPlayerToEntity(mob, -1.0D);
@@ -70,6 +79,14 @@ public final class ChangeHooks {
             setIdleTime(mob, 0);
         }
         return true;
+    }
+
+    /**
+     * 26.1's {@code Mob.requiresCustomPersistence}: a mob on a lead or riding something never despawns (1.12.2 let a
+     * leashed squid, ocelot or modded mob go, and a mob in a boat).
+     */
+    public static boolean customPersistence(EntityLiving mob) {
+        return Changes.on(ModConfig.changes.leashedMobsStay) && (mob.getLeashed() || mob.isRiding());
     }
 
     static void setIdleTime(EntityLivingBase mob, int value) {

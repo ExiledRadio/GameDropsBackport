@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=Blocchi posati dagli Enderman
 config.gamedropsbackport.changes.saplingBonemeal=Arboscelli di quercia scura soli
 config.gamedropsbackport.changes.spawnTrampling=Niente calpestio al punto di rinascita
 config.gamedropsbackport.changes.persistentTrapHorses=Cavalli trappola persistenti
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=Le creature al guinzaglio o che cavalcano qualcosa non scompaiono mai (26.1).
+config.gamedropsbackport.changes.teleportTrails.tooltip=Gli Enderman, gli shulker e chi mangia frutti di chorus lasciano una scia di particelle di portale quando si teletrasportano (26.3).
+config.gamedropsbackport.changes.leashedMobsStay=Le creature al guinzaglio restano
+config.gamedropsbackport.changes.teleportTrails=Scie di teletrasporto

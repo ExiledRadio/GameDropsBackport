@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=Endermen zetten blokken neer
 config.gamedropsbackport.changes.saplingBonemeal=Losse donkere-eikenboompjes
 config.gamedropsbackport.changes.spawnTrampling=Niet vertrappen bij de spawn
 config.gamedropsbackport.changes.persistentTrapHorses=Blijvende valpaarden
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=Wezens aan een lijn of die ergens op rijden verdwijnen nooit (26.1).
+config.gamedropsbackport.changes.teleportTrails.tooltip=Endermen, shulkers en wie chorusvruchten eet laten bij het teleporteren een spoor van portaaldeeltjes achter (26.3).
+config.gamedropsbackport.changes.leashedMobsStay=Wezens aan de lijn blijven
+config.gamedropsbackport.changes.teleportTrails=Teleportsporen

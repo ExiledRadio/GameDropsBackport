@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=Endermanların Blok Bırakması
 config.gamedropsbackport.changes.saplingBonemeal=Tek Koyu Meşe Fidanları
 config.gamedropsbackport.changes.spawnTrampling=Doğma Noktasında Çiğneme Yok
 config.gamedropsbackport.changes.persistentTrapHorses=Kalıcı Tuzak Atları
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=Kayışla bağlı ya da bir şeye binen yaratıklar asla kaybolmaz (26.1).
+config.gamedropsbackport.changes.teleportTrails.tooltip=Endermanlar, shulkerlar ve koro meyvesi yiyenler ışınlandıkları yerde bir portal parçacığı izi bırakır (26.3).
+config.gamedropsbackport.changes.leashedMobsStay=Bağlı Yaratıklar Kalır
+config.gamedropsbackport.changes.teleportTrails=Işınlanma İzleri

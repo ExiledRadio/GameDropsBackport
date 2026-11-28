@@ -102,7 +102,7 @@ Ports (block 25920-25939): the main checkout's dev server uses 25920; a stream w
 - The **sulfur cube**: 8 health, hops like a slime, absorbs the block it touches (its AI stops until it is
   sheared), immune to fall, player and explosion damage while holding a block, splits in two on death; 12
   archetypes by the block held (bouncy, sticky, hot, explosive with TNT: a 6 s fuse from fire or redstone,
-  0.75-3 s from an explosion, ...). Large cubes can be bucketed; small ones grow on slimeballs.
+  0.75-2.2 s from an explosion, TNT's own short fuse in 26.3's jar, ...). Large cubes can be bucketed; small ones grow on slimeballs.
   Advancement *Uh Oh*; the hot cube's death message.
 - **Built** (stream 3, 0.1.0): `sulfurcube.SulfurCubes` registers it (entity id 1, no packets). The 12 archetypes'
   values are in `Archetype`; `ArchetypeItems` maps 26.3's item tags to 1.12.2's blocks, stream 2's sulfur and

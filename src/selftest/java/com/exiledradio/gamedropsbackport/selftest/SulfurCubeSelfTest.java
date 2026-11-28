@@ -93,6 +93,7 @@ final class SulfurCubeSelfTest implements SelfTest {
         physics(check, world);
         contact(check, world);
         Rules26SelfTest.cubeBoats(check, world, ORIGIN.add(24, 0, 24));
+        Rules26SelfTest.cubeDispensers(check, world, ORIGIN.add(12, 0, 22));
         dispenser(check, world);
         spawning(check, world);
         dump();

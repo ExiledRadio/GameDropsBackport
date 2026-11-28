@@ -223,6 +223,8 @@ public final class ClientSelfTest {
         return false;
     }
 
+    private int trailParticlesBefore;
+
     private void scenes(Minecraft mc) {
         this.steps.add(() -> {
             int[] bed = iconBox(mc, new net.minecraft.item.ItemStack(net.minecraft.init.Items.BED, 1, 14));
@@ -237,6 +239,25 @@ public final class ClientSelfTest {
             return 2;
         });
         strawBedSleep(mc);
+        // 26.3's teleport trails reach the client: both shapes spawn their 128 portal particles.
+        this.steps.add(() -> {
+            net.minecraft.util.math.BlockPos at = new net.minecraft.util.math.BlockPos(mc.player);
+            int before = mc.effectRenderer.getStatistics() == null ? 0 : Integer.parseInt(mc.effectRenderer.getStatistics());
+            int asked = com.exiledradio.gamedropsbackport.changes.client.TeleportTrailsClient.spawn(mc.world,
+                    com.exiledradio.gamedropsbackport.changes.TeleportTrails.ENDERMAN, at.add(4, 0, 0), at.add(-4, 0, 3))
+                    + com.exiledradio.gamedropsbackport.changes.client.TeleportTrailsClient.spawn(mc.world,
+                    com.exiledradio.gamedropsbackport.changes.TeleportTrails.BLOCK, at.add(0, 1, 4), at.add(2, 1, -4));
+            ok(asked == 256, "teleport trails: two trails of 128 portal particles (26.3)");
+            this.trailParticlesBefore = before;
+            return 1;
+        });
+        // 1.12.2's ParticleManager queues new particles and counts them from its next update.
+        this.steps.add(() -> {
+            int after = Integer.parseInt(mc.effectRenderer.getStatistics());
+            ok(after > this.trailParticlesBefore || mc.gameSettings.particleSetting == 2,
+                    "teleport trails: the particles are there: " + this.trailParticlesBefore + " -> " + after);
+            return 2;
+        });
         // Blocks, items, mobs and their screens first: World Options below switches the player to adventure.
         new ClientScenes(this, mc).add(this.steps);
         // The other backports' babies (Trails & Tales, Wild Update), when their dev jars are on the classpath.

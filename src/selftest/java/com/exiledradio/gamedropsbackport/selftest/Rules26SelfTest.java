@@ -3,7 +3,9 @@ package com.exiledradio.gamedropsbackport.selftest;
 import com.exiledradio.backportcore.waterlog.Waterlogging;
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
 import com.exiledradio.gamedropsbackport.ModConfig;
+import com.exiledradio.gamedropsbackport.changes.ChangeHooks;
 import com.exiledradio.gamedropsbackport.changes.EndermanRules;
+import com.exiledradio.gamedropsbackport.changes.TeleportTrails;
 import com.exiledradio.gamedropsbackport.changes.SmallRules;
 import com.exiledradio.gamedropsbackport.softblocks.SoftBlocks;
 import com.exiledradio.gamedropsbackport.softblocks.StrawBedSleep;
@@ -32,6 +34,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.dedicated.DedicatedServer;
 import net.minecraft.server.management.PlayerInteractionManager;
 import net.minecraft.stats.StatList;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.WorldServer;
@@ -64,6 +67,69 @@ final class Rules26SelfTest {
         saplings(check, world, origin.add(-4, 0, -6));
         trampling(check, world, origin.add(0, 0, -8));
         trapHorses(check, world, origin.add(6, 0, 6));
+        leashed(check, world, origin.add(-6, 0, 0));
+        trails(check, world, origin.add(0, 0, 3));
+    }
+
+    private static void leashed(Check check, WorldServer world, BlockPos p) {
+        net.minecraft.entity.passive.EntitySquid squid = new net.minecraft.entity.passive.EntitySquid(world);
+        squid.setPosition(p.getX() + 0.5D, p.getY(), p.getZ() + 0.5D);
+        world.spawnEntity(squid);
+        check.ok(!ChangeHooks.persistentDespawn(squid), "a free squid despawns as before");
+        EntityZombie holder = new EntityZombie(world);
+        holder.setPosition(squid.posX + 1, squid.posY, squid.posZ);
+        world.spawnEntity(holder);
+        squid.setLeashHolder(holder, false);
+        check.ok(ChangeHooks.customPersistence(squid), "a leashed squid is kept (26.1)");
+        check.ok(ChangeHooks.persistentDespawn(squid), "its despawn check is skipped");
+        ModConfig.changes.persistentMobsIdle = false;
+        check.ok(ChangeHooks.persistentDespawn(squid), "also with persistentMobsIdle off");
+        ModConfig.changes.persistentMobsIdle = true;
+        squid.clearLeashed(false, false);
+        check.ok(!ChangeHooks.customPersistence(squid), "let go, it may despawn again");
+        EntityBoat boat = new EntityBoat(world, p.getX() + 0.5D, p.getY(), p.getZ() + 3.5D);
+        world.spawnEntity(boat);
+        EntityZombie rider = new EntityZombie(world);
+        rider.setPosition(boat.posX, boat.posY, boat.posZ);
+        world.spawnEntity(rider);
+        rider.startRiding(boat, true);
+        check.ok(ChangeHooks.customPersistence(rider), "a zombie in a boat is kept (requiresCustomPersistence)");
+        ModConfig.changes.leashedMobsStay = false;
+        check.ok(!ChangeHooks.customPersistence(rider), "setting off: 1.12.2's despawning");
+        ModConfig.changes.leashedMobsStay = true;
+        for (Entity e : new Entity[]{squid, holder, boat, rider}) {
+            e.setDead();
+        }
+    }
+
+    private static void trails(Check check, WorldServer world, BlockPos p) throws Exception {
+        EntityEnderman enderman = new EntityEnderman(world);
+        enderman.setPosition(10.5D, 70D, 10.5D);
+        check.ok(TeleportTrails.landedFor(enderman, 0.5D, 70D, 0.5D, 10.5D, 75D, 10.5D),
+                "an enderman at the target's x and z, at or below its y, landed");
+        check.ok(!TeleportTrails.landedFor(enderman, 0.5D, 70D, 0.5D, 20.5D, 75D, 10.5D), "elsewhere it did not");
+        check.ok(!TeleportTrails.landedFor(enderman, 10.5D, 70D, 10.5D, 10.5D, 75D, 10.5D), "nor where it started");
+        world.setBlockState(p.down(), Blocks.STONE.getDefaultState());
+        BlockPos to = p.add(5, 0, 0);
+        world.setBlockState(to.down(), Blocks.STONE.getDefaultState());
+        enderman.setPosition(p.getX() + 0.5D, p.getY(), p.getZ() + 0.5D);
+        world.spawnEntity(enderman);
+        int before = TeleportTrails.sent;
+        // 1.12.2's teleportTo: the event, then attemptTeleport at its target.
+        EnderTeleportEvent tp = new EnderTeleportEvent(enderman, to.getX() + 0.5D, to.getY() + 3, to.getZ() + 0.5D, 0);
+        check.ok(!MinecraftForge.EVENT_BUS.post(tp), "the test teleport is allowed");
+        check.ok(enderman.attemptTeleport(tp.getTargetX(), tp.getTargetY(), tp.getTargetZ()), "and lands on the stone");
+        TeleportTrails.onWorldTick(new net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent(
+                net.minecraftforge.fml.relauncher.Side.SERVER, net.minecraftforge.fml.common.gameevent.TickEvent.Phase.END, world));
+        check.eq(before + 1, TeleportTrails.sent, "an enderman's teleport sends one trail (26.3)");
+        EnderTeleportEvent failed = new EnderTeleportEvent(enderman, to.getX() + 40.5D, to.getY() + 3, to.getZ() + 0.5D, 0);
+        MinecraftForge.EVENT_BUS.post(failed);
+        TeleportTrails.onWorldTick(new net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent(
+                net.minecraftforge.fml.relauncher.Side.SERVER, net.minecraftforge.fml.common.gameevent.TickEvent.Phase.END, world));
+        check.eq(before + 1, TeleportTrails.sent, "a teleport that did not happen sends none");
+        world.setBlockToAir(to.down());
+        enderman.setDead();
+        world.setBlockToAir(p.down());
     }
 
     private static EnderTeleportEvent teleport(EntityEnderman e, BlockPos ground) {
@@ -271,6 +337,43 @@ final class Rules26SelfTest {
         cube.setDead();
         boat.setDead();
         zombie.setDead();
+    }
+
+    /** Sulfur cube stream: 26.2's dispensers shear a cube and never put armor on one. */
+    static void cubeDispensers(Check check, WorldServer world, BlockPos d) {
+        world.setBlockState(d, Blocks.DISPENSER.getDefaultState().withProperty(net.minecraft.block.BlockDispenser.FACING, EnumFacing.EAST));
+        net.minecraft.dispenser.IBlockSource source = new net.minecraft.block.BlockSourceImpl(world, d);
+        EntitySulfurCube cube = new EntitySulfurCube(world);
+        cube.setLocationAndAngles(d.getX() + 1.5D, d.getY(), d.getZ() + 0.5D, 0.0F, 0.0F);
+        cube.onInitialSpawn(world.getDifficultyForLocation(d), null);
+        world.spawnEntity(cube);
+        cube.equipItem(new ItemStack(Blocks.PLANKS));
+        check.ok(cube.hasBodyItem(), "the cube holds planks");
+        ItemStack shears = new ItemStack(Items.SHEARS);
+        net.minecraft.block.BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.getObject(Items.SHEARS).dispense(source, shears);
+        check.ok(!cube.hasBodyItem(), "a dispenser's shears cut the block out of a cube (26.2)");
+        check.eq(1, shears.getItemDamage(), "and lose a point");
+        ItemStack helmet = new ItemStack(Items.IRON_HELMET);
+        check.ok(cube.canPickUpLoot(), "the empty adult cube still picks up blocks");
+        net.minecraft.block.BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.getObject(Items.IRON_HELMET).dispense(source, helmet);
+        check.ok(cube.getItemStackFromSlot(net.minecraft.inventory.EntityEquipmentSlot.HEAD).isEmpty(),
+                "a dispenser never puts armor on a cube (26.2: body slot only)");
+        check.ok(helmet.isEmpty(), "the helmet is dispensed as an item instead");
+        cube.setDead();
+        world.removeEntityDangerously(cube);
+        EntityZombie zombie = new EntityZombie(world);
+        zombie.setCanPickUpLoot(true);
+        zombie.setPosition(d.getX() + 1.5D, d.getY(), d.getZ() + 0.5D);
+        world.spawnEntity(zombie);
+        ItemStack helmet2 = new ItemStack(Items.IRON_HELMET);
+        net.minecraft.block.BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.getObject(Items.IRON_HELMET).dispense(source, helmet2);
+        check.eq(Items.IRON_HELMET, zombie.getItemStackFromSlot(net.minecraft.inventory.EntityEquipmentSlot.HEAD).getItem(),
+                "a zombie in front still gets the helmet");
+        zombie.setDead();
+        for (EntityItem item : world.getEntitiesWithinAABB(EntityItem.class, new net.minecraft.util.math.AxisAlignedBB(d).grow(3))) {
+            item.setDead();
+        }
+        world.setBlockToAir(d);
     }
 
     /** Sulfur stream: 26.2's {@code #not_affected_by_geysers}. */

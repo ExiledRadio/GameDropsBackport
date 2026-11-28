@@ -270,6 +270,14 @@ public final class ModConfig {
         @Config.LangKey("config.gamedropsbackport.changes.spawnTrampling")
         public boolean spawnTrampling = true;
 
+        @Config.Comment("Mobs on a lead or riding something never despawn (26.1).")
+        @Config.LangKey("config.gamedropsbackport.changes.leashedMobsStay")
+        public boolean leashedMobsStay = true;
+
+        @Config.Comment("Endermen, shulkers and chorus fruit eaters leave a trail of portal particles where they teleport (26.3).")
+        @Config.LangKey("config.gamedropsbackport.changes.teleportTrails")
+        public boolean teleportTrails = true;
+
         @Config.Comment("A persistent skeleton trap horse (a named one, for example) never vanishes (26.1).")
         @Config.LangKey("config.gamedropsbackport.changes.persistentTrapHorses")
         public boolean persistentTrapHorses = true;

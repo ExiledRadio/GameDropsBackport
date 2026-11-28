@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=엔더맨 블록 놓기
 config.gamedropsbackport.changes.saplingBonemeal=홀로 있는 짙은 참나무 묘목
 config.gamedropsbackport.changes.spawnTrampling=스폰에서 짓밟기 없음
 config.gamedropsbackport.changes.persistentTrapHorses=지속되는 함정 말
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=끈에 묶이거나 무언가에 탄 몹은 절대 사라지지 않습니다 (26.1).
+config.gamedropsbackport.changes.teleportTrails.tooltip=엔더맨, 셜커, 후렴과를 먹은 개체는 순간이동한 자리에 차원문 입자 자취를 남깁니다 (26.3).
+config.gamedropsbackport.changes.leashedMobsStay=끈에 묶인 몹 유지
+config.gamedropsbackport.changes.teleportTrails=순간이동 자취

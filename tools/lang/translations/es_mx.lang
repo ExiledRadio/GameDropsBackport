@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=Enderman colocando bloques
 config.gamedropsbackport.changes.saplingBonemeal=Brotes de roble oscuro solos
 config.gamedropsbackport.changes.spawnTrampling=Sin pisotear en la aparición
 config.gamedropsbackport.changes.persistentTrapHorses=Caballos trampa persistentes
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=Las criaturas atadas con una rienda o que montan algo nunca desaparecen (26.1).
+config.gamedropsbackport.changes.teleportTrails.tooltip=Los Enderman, los shulker y quien come fruta coral dejan un rastro de partículas de portal al teletransportarse (26.3).
+config.gamedropsbackport.changes.leashedMobsStay=Las criaturas atadas se quedan
+config.gamedropsbackport.changes.teleportTrails=Rastros de teletransporte

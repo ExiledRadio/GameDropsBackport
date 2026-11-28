@@ -26,6 +26,8 @@ unobfuscated), its data (`world_clock`, `timeline`, tags, recipes) and the Engli
 | `endermenPlacing` | 26.3 | `EndermanLeaveBlockGoal.canPlaceBlock`: never onto bedrock, never where an entity is (item frames, mobs, items). 1.12.2's goal is swapped for this mod's at its priority; Forge's place event refuses it when cancelled (Forge 14.23.5.2847's own goal places only when the event *is* cancelled, so endermen there never put blocks down). | `EntityJoinWorldEvent`. |
 | `saplingBonemeal` | 26.3 | `TreeGrower.canGrow`: a dark oak sapling outside a 2x2 is no bone meal target; the bone meal stays. | `BonemealEvent`, both sides. |
 | `spawnTrampling` | 26.3 | `FarmlandBlock.fallOn`: a player cannot trample farmland under the server's spawn protection (1.12.2's `isBlockProtected`: dedicated servers, with ops). Mobs as before. | `FarmlandTrampleEvent`. |
+| `leashedMobsStay` | 26.1 | `Mob.requiresCustomPersistence`: a mob on a lead or riding something never despawns (1.12.2's leashed squid, ocelots and modded mobs went; so did a mob in a boat). | P3's hook (`ChangeHooks.customPersistence`): Forge's `AllowDespawn` is asked only every 32 ticks, so it cannot keep a mob. |
+| `teleportTrails` | 26.3 | Level events 2018 (enderman), 2016 (shulker) and 2017 (chorus fruit): 128 portal particles between the old and new spot, for players within 64 blocks. 1.12.2 spawns its trail on the server only. | `EnderTeleportEvent` (lowest) and the chorus fruit's use events; checked at the world tick's end; packet 40. |
 | `persistentTrapHorses` | 26.1 | A persistent skeleton trap horse (named) stops counting toward its 18000-tick end. | `LivingUpdateEvent`. |
 | `persistentMobsIdle` | 26.3 | A persistent mob (named, for example) counts idle time while no player is within 32 blocks, so it stops wandering as other mobs do. | P3. |
 | `leaderZombieHealth` | 26.1 | A leader zombie (and husk, zombie villager, zombie pigman) spawns with its raised maximum health filled. | `EntityJoinWorldEvent`, once per zombie. |
@@ -84,6 +86,10 @@ unobfuscated), its data (`world_clock`, `timeline`, tags, recipes) and the Engli
 - Endermen and rain: already 1.12.2's. 26.3's `Enderman.hurtServer` still teleports on 9 in 10 hits of damage with no
   living source (rain's drowning included), as 1.12.2's unblockable rule does; 26.3's only environmental-damage change
   is "no teleport while riding", which `endermenRiding` covers (every teleport of a riding enderman is cancelled).
+- Checked and already 1.12.2's (xisumavoid audit, 2026-11-28): creepers stop swelling when their player dies
+  (`EntityAITarget.shouldContinueExecuting` drops a dead target, `EntityAICreeperSwell` then counts down; the bug was
+  1.21.10's); mobs never spawn on a moving piston block (`BlockPistonMoving` is no solid top, so
+  `canCreatureSpawn` refuses it).
 - Game rule snake_case ids (`minecraft:advance_time`, ...): 1.21.11's, Tricky Trials' scope (out of it there).
 - `/locate`'s "within a reasonable distance": Backport Core's `/locate` already has 26.3's text.
 - Hostile spawn eggs refused for players on Peaceful: 1.21.x's, Tricky Trials'.

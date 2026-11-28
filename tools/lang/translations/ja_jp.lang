@@ -108,3 +108,7 @@ config.gamedropsbackport.changes.endermenPlacing=エンダーマンのブロッ�
 config.gamedropsbackport.changes.saplingBonemeal=1 本だけの黒樫の苗木
 config.gamedropsbackport.changes.spawnTrampling=スポーンでの踏み荒らしなし
 config.gamedropsbackport.changes.persistentTrapHorses=永続する罠の馬
+config.gamedropsbackport.changes.leashedMobsStay.tooltip=リードでつながれたモブや何かに乗っているモブは決してデスポーンしない (26.1)。
+config.gamedropsbackport.changes.teleportTrails.tooltip=エンダーマン、シュルカー、コーラスフルーツを食べた者はテレポートした跡にポータルのパーティクルを残す (26.3)。
+config.gamedropsbackport.changes.leashedMobsStay=リードでつながれたモブが残る
+config.gamedropsbackport.changes.teleportTrails=テレポートの軌跡

@@ -658,6 +658,10 @@ public final class PoplarFeatures {
                 pick -= w;
                 kind++;
             }
+            // Dynamic Trees places the living trees itself, spaced its way; the fallen ones stay here.
+            if (kind < 4 && com.exiledradio.backportcore.compat.DynamicTrees.replacesTrees(world, pos)) {
+                continue;
+            }
             if (kind == 3) {
                 if (((net.minecraft.block.BlockBush) Blocks.SAPLING).canBlockStay(world, pos, Blocks.SAPLING.getDefaultState())
                         && !com.exiledradio.backportcore.compat.DynamicTrees.grow(world, pos, rand, "dynamictrees:spruce")) {

@@ -142,7 +142,10 @@ public class BiomeDappledForest extends Biome {
                     this.gravelGen.generate(world, random, world.getTopSolidOrLiquidBlock(this.chunkPos.add(x, 0, z)));
                 }
             }
-            if (TerrainGen.decorate(world, random, chunk, DecorateBiomeEvent.Decorate.EventType.TREE)) {
+            // Where Dynamic Trees grows this forest's trees (Dynamic Trees - Backport's biome table), it denies the
+            // TREE step; the step's fallen trees, mushrooms and shrubs are still Game Drops' to place.
+            if (TerrainGen.decorate(world, random, chunk, DecorateBiomeEvent.Decorate.EventType.TREE)
+                    || com.exiledradio.backportcore.compat.DynamicTrees.replacesTrees(world, this.chunkPos.add(16, 0, 16))) {
                 PoplarFeatures.vegetation(world, random, this.chunkPos, biome);
             }
             if (this.generateFalls) {

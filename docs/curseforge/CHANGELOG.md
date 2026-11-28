@@ -1,6 +1,6 @@
 # 1.1.0
 
-Minecraft's 26.4 game drop, Deep Freeze, and fixes.
+Minecraft's 26.4 game drop, Deep Freeze, and fixes. 26.4 is still in pre-release: this follows 26.4 Pre-Release 2, and an update will match the full release.
 
 *   **Ice caves** under frozen oceans and snowy land, with icicles, ice crystals, brittle ice and crevasses. `/locate biome minecraft:ice_caves` finds them.
 *   **Caves & Cliffs worlds**: with Caves & Cliffs Backport 1.2.0, new worlds place ice caves exactly where 26.4 does. Older Caves & Cliffs worlds keep the ice caves they had.

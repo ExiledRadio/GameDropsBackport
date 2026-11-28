@@ -8,7 +8,7 @@
 
 # Game Drops Backport
 
-Minecraft's 26.x game drops, 26.1 to 26.4, on Minecraft 1.12.2. It needs Backport Core on the client and the server.
+Minecraft's 26.x game drops, 26.1 to 26.4, on Minecraft 1.12.2. It needs Backport Core on the client and the server. 26.4 follows its Pre-Release 2 until Mojang releases it; an update will then match the full release.
 
 > 💬 [Join the Discord](https://discord.gg/kxQvMDJBTN) for bug reports and questions.
 

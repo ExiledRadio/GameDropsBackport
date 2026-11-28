@@ -5,6 +5,7 @@ import com.exiledradio.backportcore.presentation.VanillaRevisions;
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
 import com.exiledradio.gamedropsbackport.babies.AgeLock;
 import com.exiledradio.gamedropsbackport.babies.BabiesContent;
+import com.exiledradio.gamedropsbackport.babies.client.render.BabyWrapper;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
@@ -12,6 +13,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -147,9 +151,57 @@ final class FamilyBabyScene {
         }
     }
 
+    /**
+     * Tricky Trials' farm animal variants (its renderers replace 1.12.2's cow, pig and chicken renderers): each
+     * variant's calf, piglet and chick go to this mod's 26.1 baby model with that variant's baby texture, and the
+     * adults stay Tricky Trials' own. Client-side entities, asked directly (nothing is spawned).
+     */
+    private void trickyFarmBabies() {
+        String[] variants = {"TEMPERATE", "WARM", "COLD"};
+        Object[][] mobs = {{"cow", new EntityCow(this.mc.world)}, {"pig", new EntityPig(this.mc.world)},
+            {"chicken", new EntityChicken(this.mc.world)}};
+        try {
+            Class<?> fa = Class.forName("com.exiledradio.trickytrialsbackport.animals.FarmAnimals");
+            Class<?> fv = Class.forName("com.exiledradio.trickytrialsbackport.animals.FarmVariant");
+            Method set = fa.getMethod("setVariant", Entity.class, fv);
+            for (Object[] mob : mobs) {
+                String name = (String) mob[0];
+                EntityAgeable e = (EntityAgeable) mob[1];
+                Render<Entity> r = this.mc.getRenderManager().getEntityRenderObject(e);
+                boolean wrapped = r instanceof BabyWrapper && ((BabyWrapper<?>) r).vanilla().getClass().getName()
+                        .startsWith("com.exiledradio.trickytrialsbackport.animals.client.FarmRenderers$");
+                this.t.ok(wrapped, "Tricky Trials " + name + ": our baby wrapper around its variant renderer, "
+                        + (r instanceof BabyWrapper ? ((BabyWrapper<?>) r).vanilla().getClass().getName() : r == null ? null : r.getClass().getName()));
+                for (String v : variants) {
+                    set.invoke(null, e, fv.getMethod("valueOf", String.class).invoke(null, v));
+                    String lower = v.toLowerCase(java.util.Locale.ROOT);
+                    e.setGrowingAge(-24000);
+                    ResourceLocation baby = texture(r, e);
+                    this.t.ok(baby != null && GameDropsBackport.MOD_ID.equals(baby.getNamespace())
+                            && baby.getPath().endsWith("/" + name + "_" + lower + "_baby.png"),
+                            "Tricky Trials " + lower + " baby " + name + ": 26.1's " + name + "_" + lower + "_baby, " + baby);
+                    e.setGrowingAge(0);
+                    ResourceLocation adult = texture(r, e);
+                    this.t.ok(adult != null && "trickytrialsbackport".equals(adult.getNamespace()) && adult.getPath().contains(lower),
+                            "Tricky Trials " + lower + " adult " + name + ": still its own variant texture, " + adult);
+                }
+            }
+        } catch (ReflectiveOperationException ex) {
+            this.t.ok(false, "Tricky Trials' farm animal classes: " + ex);
+        }
+    }
+
     void add(List<IntSupplier> steps) {
         final boolean tt = Loader.isModLoaded(TT);
         final boolean wu = Loader.isModLoaded(WU);
+        if (Loader.isModLoaded("trickytrialsbackport")) {
+            steps.add(() -> {
+                trickyFarmBabies();
+                return 1;
+            });
+        } else {
+            GameDropsBackport.LOGGER.info("CLIENT SELFTEST note: Tricky Trials' farm animal babies skipped, it is not loaded");
+        }
         if (!tt && !wu) {
             GameDropsBackport.LOGGER.info("CLIENT SELFTEST note: family babies skipped, neither {} nor {} is loaded", TT, WU);
             return;

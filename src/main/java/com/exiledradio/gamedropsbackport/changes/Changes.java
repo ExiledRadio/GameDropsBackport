@@ -16,7 +16,6 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityShulker;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
@@ -345,7 +344,7 @@ public final class Changes {
         }
         ResourceLocation id = ItemMonsterPlacer.getNamedIdFrom(egg);
         Class<? extends Entity> type = id == null ? null : EntityList.getClass(id);
-        return type != null && IMob.class.isAssignableFrom(type);
+        return PeacefulSpawning.refusedOnPeaceful(type, id);
     }
 
     // ------------------------------------------------------------------------------------------

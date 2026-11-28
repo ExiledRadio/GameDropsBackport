@@ -4,6 +4,7 @@ import com.exiledradio.gamedropsbackport.GameDropsBackport;
 import com.exiledradio.gamedropsbackport.sulfurcube.Archetype;
 import com.exiledradio.gamedropsbackport.sulfurcube.ArchetypeItems;
 import com.exiledradio.gamedropsbackport.sulfurcube.EntitySulfurCube;
+import com.exiledradio.gamedropsbackport.sulfurcube.HotCubeDamage;
 import com.exiledradio.gamedropsbackport.sulfurcube.ItemSulfurCubeBucket;
 import com.exiledradio.gamedropsbackport.sulfurcube.SulfurCubes;
 import com.exiledradio.gamedropsbackport.sulfurcube.client.HeldBlockPose;
@@ -14,7 +15,16 @@ import net.minecraft.block.Block;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.init.Enchantments;
+import net.minecraft.init.MobEffects;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EntityDamageSource;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.init.Blocks;
@@ -524,8 +534,78 @@ final class SulfurCubeSelfTest implements SelfTest {
         check.ok(z.getHealth() < before && z.getHealth() >= before - 1.0F, "a hot cube burns what it touches for 1 (less armor): " + z.getHealth());
         check.eq(SulfurCubes.HOT_DAMAGE, z.getLastDamageSource() == null ? null : z.getLastDamageSource().getDamageType(),
                 "with the hot damage type");
-        z.setDead();
-        c.setDead();
+        DamageSource hot = z.getLastDamageSource();
+        check.ok(hot != null && hot.isFireDamage(), "26.2's is_fire: the hot damage is fire damage");
+        check.ok(hot != null && !hot.isUnblockable(), "not bypasses_armor: armor still counts");
+        check.ok(hot != null && hot.getTrueSource() == null && hot.getDamageLocation() == null,
+                "no attacker and no location for a mob (attribute_to_source false)");
+        check.ok(z.getRevengeTarget() == null, "the zombie is not angered at the cube (no_anger by having no attacker)");
+        // no_knockback: still, the zombie stays still.
+        EntityZombie still = new EntityZombie(world);
+        still.setLocationAndAngles(c.posX + 0.5D, c.posY, c.posZ + 2.0D, 0.0F, 0.0F);
+        world.spawnEntity(still);
+        still.motionX = still.motionY = still.motionZ = 0.0D;
+        check.ok(HotCubeDamage.hurt(c, still), "hurt again (a fresh zombie)");
+        check.ok(still.motionX == 0.0D && still.motionY == 0.0D && still.motionZ == 0.0D && !still.isAirBorne,
+                "no_knockback: not pushed (" + still.motionX + ", " + still.motionY + ", " + still.motionZ + ")");
+        // is_fire: fire-immune mobs take none.
+        EntityBlaze blaze = new EntityBlaze(world);
+        blaze.setLocationAndAngles(c.posX - 0.5D, c.posY, c.posZ, 0.0F, 0.0F);
+        world.spawnEntity(blaze);
+        float blazeBefore = blaze.getHealth();
+        invoke(c, "collideWithEntity", Entity.class, blaze);
+        check.eq(blazeBefore, blaze.getHealth(), "a blaze (fire-immune) takes no hot damage");
+        EntityZombie resistant = new EntityZombie(world);
+        resistant.setLocationAndAngles(c.posX, c.posY, c.posZ - 2.0D, 0.0F, 0.0F);
+        world.spawnEntity(resistant);
+        resistant.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 200));
+        check.ok(!HotCubeDamage.hurt(c, resistant), "Fire Resistance stops it (is_fire)");
+        // burn_from_stepping: Frost Walker boots.
+        EntityZombie walker = new EntityZombie(world);
+        walker.setLocationAndAngles(c.posX + 2.0D, c.posY, c.posZ - 2.0D, 0.0F, 0.0F);
+        world.spawnEntity(walker);
+        ItemStack boots = new ItemStack(Items.IRON_BOOTS);
+        boots.addEnchantment(Enchantments.FROST_WALKER, 1);
+        walker.setItemStackToSlot(EntityEquipmentSlot.FEET, boots);
+        float walkerBefore = walker.getHealth();
+        check.ok(!HotCubeDamage.hurt(c, walker) && walker.getHealth() == walkerBefore, "Frost Walker boots protect (burn_from_stepping)");
+        // panic_environmental_causes: a cow runs, a zombie (no panic goal) does not.
+        EntityCow cow = new EntityCow(world);
+        cow.setLocationAndAngles(c.posX - 2.0D, c.posY, c.posZ + 2.0D, 0.0F, 0.0F);
+        world.spawnEntity(cow);
+        cow.getNavigator().clearPath();
+        cow.onGround = true; // it has not ticked yet: a mob paths only from the ground
+        check.ok(HotCubeDamage.panicGoal(cow) != null, "a cow has 1.12.2's panic goal");
+        check.ok(HotCubeDamage.hurt(c, cow), "a cow is burned");
+        // A random spot can come up empty (26.2's PanicGoal then does not start either): a few more tries.
+        for (int i = 0; i < 10 && cow.getNavigator().noPath(); i++) {
+            HotCubeDamage.panic(cow);
+        }
+        check.ok(!cow.getNavigator().noPath(), "panic_environmental_causes: the cow runs off");
+        check.ok(HotCubeDamage.panicGoal(z) == null, "a zombie has no panic goal (never panics)");
+        // A player: from the cube (death message, difficulty scaling), but no attacker, no location, so no
+        // knockback, no wolf retaliation, and the shield cannot block it (bypasses_shield).
+        FakePlayer player = FakePlayerFactory.getMinecraft(world);
+        DamageSource toPlayer = HotCubeDamage.source(c, player);
+        check.ok(toPlayer instanceof EntityDamageSource && ((EntityDamageSource) toPlayer).getTrueSource() == null,
+                "a player's: from the cube, no attacker (no knockback, no_wolf_retaliation)");
+        check.ok(toPlayer.isDifficultyScaled(), "a player's scales with difficulty (when_caused_by_living_non_player)");
+        check.ok(toPlayer.isFireDamage() && toPlayer.getDamageLocation() == null, "a player's is fire, with no location");
+        check.eq(SulfurCubes.HOT_DAMAGE, toPlayer.getDamageType(), "a player's damage type");
+        player.setLocationAndAngles(c.posX + 2.0D, c.posY, c.posZ, 90.0F, 0.0F);
+        player.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(Items.SHIELD));
+        player.setActiveHand(EnumHand.MAIN_HAND);
+        ReflectionHelper.setPrivateValue(EntityLivingBase.class, player, player.getActiveItemStack().getMaxItemUseDuration() - 10,
+                "activeItemStackUseCount", "field_184628_bn");
+        Method canBlock = ReflectionHelper.findMethod(EntityLivingBase.class, "canBlockDamageSource", "func_184583_d", DamageSource.class);
+        check.ok(player.isActiveItemStackBlocking(), "the player raises a shield toward the cube");
+        check.ok((Boolean) canBlock.invoke(player, new EntityDamageSource("mob", c)), "the shield blocks the cube's ordinary hits");
+        check.ok(!(Boolean) canBlock.invoke(player, toPlayer), "bypasses_shield: it cannot block the hot damage");
+        player.resetActiveHand();
+        player.setHeldItem(EnumHand.MAIN_HAND, ItemStack.EMPTY);
+        for (Entity e : new Entity[]{z, still, blaze, resistant, walker, cow, c}) {
+            e.setDead();
+        }
     }
 
     private static void dispenser(Check check, WorldServer world) {

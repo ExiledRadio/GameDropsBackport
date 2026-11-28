@@ -70,7 +70,9 @@ unobfuscated), its data (`world_clock`, `timeline`, tags, recipes) and the Engli
 - Explorer map items, their names and conversion: stream 7. Wool and concrete shapes: stream 6.
 - Piglins and zombie horses on Peaceful (26.2, the ocelots' bullet): Nether Update's piglins and Tricky Trials'
   zombie horses (1.12.2 spawns none naturally). `ocelotsPeaceful` lets through any non-monster a mod lists with the
-  monsters, so a piglin that is not an `IMob` would already spawn.
+  monsters. Nether Update's piglin is an `IMob`, so `PeacefulSpawning.ALLOWED_MONSTERS` names it
+  (`netherupdatebackport:piglin`, 26.2's piglin type is not `notInPeaceful()`; the brute is): the pass and the
+  Peaceful spawn egg rule let it through, and Nether Update stays optional (1.0.4).
 - Game rule snake_case ids (`minecraft:advance_time`, ...): 1.21.11's, Tricky Trials' scope (out of it there).
 - `/locate`'s "within a reasonable distance": Backport Core's `/locate` already has 26.3's text.
 - Hostile spawn eggs refused for players on Peaceful: 1.21.x's, Tricky Trials'.

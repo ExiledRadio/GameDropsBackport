@@ -68,6 +68,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.Loader;
 
+import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
@@ -87,7 +88,67 @@ public final class BabyRenderers {
     private static final ResourceLocation[] CAT = {BabyRender.tex("cat/ocelot_baby"), BabyRender.tex("cat/cat_black_baby"),
         BabyRender.tex("cat/cat_red_baby"), BabyRender.tex("cat/cat_siamese_baby")};
 
+    /** Tricky Trials' renderers for its farm animal variants (no compile dependency: named, and asked by reflection). */
+    static final String TT_COW = "com.exiledradio.trickytrialsbackport.animals.client.FarmRenderers$Cow";
+    static final String TT_PIG = "com.exiledradio.trickytrialsbackport.animals.client.FarmRenderers$Pig";
+    static final String TT_CHICKEN = "com.exiledradio.trickytrialsbackport.animals.client.FarmRenderers$Chicken";
+    private static final String TT_FARM_ANIMALS = "com.exiledradio.trickytrialsbackport.animals.FarmAnimals";
+    /** 26.3's farm animal variants, in Tricky Trials' {@code FarmVariant} order. */
+    static final String[] FARM_VARIANTS = {"temperate", "warm", "cold"};
+
+    private static Method ttVariant;
+
     private BabyRenderers() {
+    }
+
+    /**
+     * A calf's, piglet's or chick's texture: its Tricky Trials variant's baby texture when Tricky Trials draws that
+     * animal's variants, else the temperate one (1.12.2's one look, as the adult then has).
+     */
+    static <T extends Entity> BabyRender.Texture<T> farm(Map<Class<? extends Entity>, Render<? extends Entity>> map,
+            Class<? extends Entity> cls, String ttRenderer, final String mob) {
+        final ResourceLocation[] textures = new ResourceLocation[FARM_VARIANTS.length];
+        for (int i = 0; i < textures.length; i++) {
+            textures[i] = BabyRender.tex(mob + "/" + mob + "_" + FARM_VARIANTS[i] + "_baby");
+        }
+        Render<? extends Entity> current = map.get(cls);
+        if (current == null || !current.getClass().getName().equals(ttRenderer) || ttVariantMethod() == null) {
+            return fixed(textures[0]);
+        }
+        return new BabyRender.Texture<T>() {
+            @Override
+            public ResourceLocation get(T entity) {
+                return textures[ttVariantIndex(entity)];
+            }
+        };
+    }
+
+    private static Method ttVariantMethod() {
+        if (ttVariant == null) {
+            try {
+                ttVariant = Class.forName(TT_FARM_ANIMALS).getMethod("variant", Entity.class);
+            } catch (ReflectiveOperationException | LinkageError e) {
+                GameDropsBackport.LOGGER.warn("Baby models: Tricky Trials' FarmAnimals.variant not found; temperate calves, piglets and chicks", e);
+                return null;
+            }
+        }
+        return ttVariant;
+    }
+
+    /** Tricky Trials' variant of the animal as an index into {@link #FARM_VARIANTS}; temperate if unknown. */
+    static int ttVariantIndex(Entity entity) {
+        try {
+            Object v = ttVariantMethod() == null ? null : ttVariant.invoke(null, entity);
+            if (v instanceof Enum) {
+                int i = ((Enum<?>) v).ordinal();
+                if (i >= 0 && i < FARM_VARIANTS.length) {
+                    return i;
+                }
+            }
+        } catch (ReflectiveOperationException e) {
+            // fall through: temperate
+        }
+        return 0;
     }
 
     private static ResourceLocation[] horse(String... names) {
@@ -112,19 +173,23 @@ public final class BabyRenderers {
         RenderManager rm = Minecraft.getMinecraft().getRenderManager();
         Map<Class<? extends Entity>, Render<? extends Entity>> map = rm.entityRenderMap;
 
-        wrap(map, EntityChicken.class, RenderChicken.class,
-                new BabyRender<EntityChicken>(rm, new BabyChickenModel(), 0.3F, BabyRenderers.<EntityChicken>fixed(BabyRender.tex("chicken/chicken_temperate_baby"))));
-        wrap(map, EntityCow.class, RenderCow.class,
+        // With Tricky Trials' farm animal variants (1.21.5's, its renderers replace these three), the 26.1 baby
+        // model draws every variant: one baby model for all of them, as 26.3's renderers pair it, and the variant's
+        // own baby texture.
+        wrap(map, EntityChicken.class, RenderChicken.class, TT_CHICKEN,
+                new BabyRender<EntityChicken>(rm, new BabyChickenModel(), 0.3F,
+                        BabyRenderers.<EntityChicken>farm(map, EntityChicken.class, TT_CHICKEN, "chicken")));
+        wrap(map, EntityCow.class, RenderCow.class, TT_COW,
                 new BabyRender<EntityCow>(rm, new BabyQuadrupedModel<EntityCow>(BabyQuadrupedModel.cow()), 0.7F,
-                        BabyRenderers.<EntityCow>fixed(BabyRender.tex("cow/cow_temperate_baby"))));
+                        BabyRenderers.<EntityCow>farm(map, EntityCow.class, TT_COW, "cow")));
         // 26.3's MushroomCowMushroomLayer skips babies: no mushrooms.
         wrap(map, EntityMooshroom.class, RenderMooshroom.class,
                 new BabyRender<EntityMooshroom>(rm, new BabyQuadrupedModel<EntityMooshroom>(BabyQuadrupedModel.cow()), 0.7F,
                         BabyRenderers.<EntityMooshroom>fixed(BabyRender.tex("cow/mooshroom_red_baby"))));
         // 26.1: saddles no longer render on babies.
-        wrap(map, EntityPig.class, RenderPig.class,
+        wrap(map, EntityPig.class, RenderPig.class, TT_PIG,
                 new BabyRender<EntityPig>(rm, new BabyQuadrupedModel<EntityPig>(BabyQuadrupedModel.pig()), 0.7F,
-                        BabyRenderers.<EntityPig>fixed(BabyRender.tex("pig/pig_temperate_baby"))));
+                        BabyRenderers.<EntityPig>farm(map, EntityPig.class, TT_PIG, "pig")));
         wrap(map, EntitySheep.class, RenderSheep.class, sheep(rm));
         wrap(map, EntityWolf.class, RenderWolf.class, wolf(rm));
         wrap(map, EntityOcelot.class, RenderOcelot.class,
@@ -339,11 +404,18 @@ public final class BabyRenderers {
     }
 
     /** Wraps a class's renderer if it is still vanilla's own. */
-    @SuppressWarnings({"unchecked", "rawtypes"})
     private static <T extends EntityLiving> void wrap(Map<Class<? extends Entity>, Render<? extends Entity>> map, Class<? extends T> cls,
             Class<?> vanillaClass, BabyRender<? extends T> baby) {
+        wrap(map, cls, vanillaClass, null, baby);
+    }
+
+    /** Wraps a class's renderer if it is vanilla's own, or the named family renderer this baby renderer knows. */
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    private static <T extends EntityLiving> void wrap(Map<Class<? extends Entity>, Render<? extends Entity>> map, Class<? extends T> cls,
+            Class<?> vanillaClass, String familyClass, BabyRender<? extends T> baby) {
         Render<? extends Entity> current = map.get(cls);
-        if (current == null || current.getClass() != vanillaClass) {
+        if (current == null || current.getClass() != vanillaClass
+                && (familyClass == null || !current.getClass().getName().equals(familyClass))) {
             GameDropsBackport.LOGGER.info("Baby models: {} has renderer {}, not vanilla's; left as it is", cls.getSimpleName(),
                     current == null ? "none" : current.getClass().getName());
             return;

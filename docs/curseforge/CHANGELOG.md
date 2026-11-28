@@ -1,3 +1,9 @@
+# 1.0.4
+
+*   **Fixed: hot sulfur cubes now burn like 26.2's.** Their contact damage is fire damage: a shield no longer blocks it, you are not knocked back, mobs that panic run from it, and blazes, wither skeletons, Fire Resistance and Frost Walker boots are safe from it.
+*   **Fixed: piglins never spawned on Peaceful** with Nether Update Backport. They now spawn in the Nether on Peaceful, as in 26.2, and a dispenser can use a piglin spawn egg there. Piglin brutes still don't.
+*   **Fixed: calves, piglets and chicks had no 26.1 baby model with Tricky Trials Backport.** They now get it, in all three farm animal variants with 26.1's cold and warm baby textures. Adults keep Tricky Trials' look.
+
 # 1.0.3
 
 *   **Less lag in Caves & Cliffs worlds**: mob spawning asks the sulfur caves about one block, not a whole column, and remembers it per 4x4 area.

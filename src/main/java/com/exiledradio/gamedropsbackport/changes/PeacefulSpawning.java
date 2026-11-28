@@ -3,7 +3,10 @@ package com.exiledradio.gamedropsbackport.changes;
 import com.exiledradio.gamedropsbackport.GameDropsBackport;
 import com.exiledradio.gamedropsbackport.ModConfig;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.WorldEntitySpawner;
 import net.minecraft.world.WorldServer;
@@ -15,14 +18,19 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Ocelots on Peaceful (26.2, MC-1788). 26.x's natural spawner runs the monster category on every difficulty (only the
  * {@code spawn_monsters} rule stops it) and refuses each monster on Peaceful by itself ({@code isAllowedInPeaceful},
  * {@code checkMonsterSpawnRules}), so the jungles' ocelots, listed with the monsters, still spawn. 1.12.2 skips the
  * whole category on Peaceful ({@code spawnHostileMobs} false). Here, on Peaceful, 1.12.2's own spawner runs that
  * category once more after each world tick, with the same caps, chunks, packs and rules, and Forge's spawn check refuses
- * every {@link IMob} it picks: what is left is what 26.2 lets through (vanilla's ocelots, and any other mod's non-monster
- * the monster lists hold). The dedicated server's {@code spawn-monsters=false} and {@code doMobSpawning} still stop it,
+ * every {@link IMob} it picks but those 26.2 allows on Peaceful ({@link #ALLOWED_MONSTERS}): what is left is what 26.2
+ * lets through (vanilla's ocelots, Nether Update's piglins, and any other mod's non-monster the monster lists hold). The dedicated server's {@code spawn-monsters=false} and {@code doMobSpawning} still stop it,
  * as they stop the category on other difficulties.
  */
 @Mod.EventBusSubscriber(modid = GameDropsBackport.MOD_ID)
@@ -35,7 +43,23 @@ public final class PeacefulSpawning {
     public static int spawned;
     public static int refused;
 
+    /**
+     * The family's {@link IMob} mobs whose 26.2 entity type is allowed on Peaceful (not built {@code notInPeaceful()}):
+     * Nether Update's piglin (26.2 snapshot 4; its brute stays off). Named, so Nether Update stays optional.
+     */
+    public static final Set<ResourceLocation> ALLOWED_MONSTERS = Collections.unmodifiableSet(new HashSet<ResourceLocation>(
+            Arrays.asList(new ResourceLocation("netherupdatebackport", "piglin"))));
+
     private PeacefulSpawning() {
+    }
+
+    /** 26.2's {@code !EntityType.isAllowedInPeaceful()} for 1.12.2: an {@link IMob}, unless one of {@link #ALLOWED_MONSTERS}. */
+    public static boolean refusedOnPeaceful(Class<? extends Entity> type, ResourceLocation id) {
+        return type != null && IMob.class.isAssignableFrom(type) && (id == null || !ALLOWED_MONSTERS.contains(id));
+    }
+
+    public static boolean refusedOnPeaceful(Entity entity) {
+        return refusedOnPeaceful(entity.getClass(), EntityList.getKey(entity));
     }
 
     public static boolean active(WorldServer world) {
@@ -71,7 +95,7 @@ public final class PeacefulSpawning {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onCheckSpawn(LivingSpawnEvent.CheckSpawn event) {
-        if (inPass && !event.isSpawner() && event.getEntityLiving() instanceof IMob) {
+        if (inPass && !event.isSpawner() && refusedOnPeaceful(event.getEntityLiving())) {
             event.setResult(Event.Result.DENY);
             refused++;
         }
@@ -80,7 +104,7 @@ public final class PeacefulSpawning {
     /** Lower-priority listeners (another mod's spawn rules) must not let a refused monster back in. */
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onCheckSpawnLast(LivingSpawnEvent.CheckSpawn event) {
-        if (inPass && !event.isSpawner() && event.getEntityLiving() instanceof IMob) {
+        if (inPass && !event.isSpawner() && refusedOnPeaceful(event.getEntityLiving())) {
             event.setResult(Event.Result.DENY);
         }
     }

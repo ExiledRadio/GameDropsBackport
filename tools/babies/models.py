@@ -10,9 +10,15 @@ import assets as A  # noqa: E402
 
 TEXTURES = [
     "chicken/chicken_temperate_baby",
+    "chicken/chicken_warm_baby",
+    "chicken/chicken_cold_baby",
     "cow/cow_temperate_baby",
+    "cow/cow_warm_baby",
+    "cow/cow_cold_baby",
     "cow/mooshroom_red_baby",
     "pig/pig_temperate_baby",
+    "pig/pig_warm_baby",
+    "pig/pig_cold_baby",
     "sheep/sheep_baby",
     "sheep/sheep_wool_baby",
     "wolf/wolf_baby",

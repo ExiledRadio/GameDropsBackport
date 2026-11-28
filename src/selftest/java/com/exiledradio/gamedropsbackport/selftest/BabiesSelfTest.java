@@ -80,6 +80,42 @@ public final class BabiesSelfTest implements SelfTest {
         undeadHorses(check, world, base);
         soundVariants(check, world, base);
         trumpet(check);
+        farmBabyTextures(check);
+    }
+
+    /**
+     * 26.1's calf, piglet and chick in each farm animal variant (Tricky Trials draws the adults'): their baby
+     * textures ship, and Tricky Trials' names this mod's renderers ask for (its renderers, FarmAnimals.variant and
+     * FarmVariant's order) still hold. The renderers are client classes: on this server only their files are found.
+     */
+    private static void farmBabyTextures(Check check) {
+        ClassLoader cl = BabiesSelfTest.class.getClassLoader();
+        String[] variants = {"temperate", "warm", "cold"};
+        for (String mob : new String[]{"cow", "pig", "chicken"}) {
+            for (String v : variants) {
+                String path = "assets/" + M + "/textures/entity/" + mob + "/" + mob + "_" + v + "_baby.png";
+                check.ok(cl.getResource(path) != null, "baby texture " + mob + "_" + v + "_baby");
+            }
+        }
+        if (!net.minecraftforge.fml.common.Loader.isModLoaded("trickytrialsbackport")) {
+            GameDropsBackport.LOGGER.info("SELFTEST note: Tricky Trials not installed; its farm animal renderers not checked");
+            return;
+        }
+        for (String r : new String[]{"Cow", "Pig", "Chicken"}) {
+            String cls = "com/exiledradio/trickytrialsbackport/animals/client/FarmRenderers$" + r + ".class";
+            check.ok(cl.getResource(cls) != null, "Tricky Trials' farm renderer " + r + " is where the baby models look");
+        }
+        try {
+            Class<?> fa = Class.forName("com.exiledradio.trickytrialsbackport.animals.FarmAnimals");
+            check.ok(fa.getMethod("variant", net.minecraft.entity.Entity.class) != null, "Tricky Trials' FarmAnimals.variant");
+            Object[] order = Class.forName("com.exiledradio.trickytrialsbackport.animals.FarmVariant").getEnumConstants();
+            check.eq(variants.length, order.length, "Tricky Trials' farm variants");
+            for (int i = 0; i < order.length && i < variants.length; i++) {
+                check.eq(variants[i], ((Enum<?>) order[i]).name().toLowerCase(java.util.Locale.ROOT), "farm variant " + i);
+            }
+        } catch (ReflectiveOperationException e) {
+            check.ok(false, "Tricky Trials' farm animal classes: " + e);
+        }
     }
 
     private static void registration(Check check) {

@@ -26,7 +26,6 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -648,14 +647,12 @@ public class EntitySulfurCube extends EntityAgeable {
         }
     }
 
-    /** The hot archetype: 1 damage of {@code sulfurCubeHot}, from the cube only when the target is a player. */
+    /** The hot archetype: 1 damage of {@code sulfurCubeHot} ({@link HotCubeDamage}: 26.2's damage type's tags). */
     private void applyContactDamage(Entity entity) {
         if (this.world.isRemote || this.archetype == null || !this.archetype.hot()) {
             return;
         }
-        DamageSource source = entity instanceof EntityPlayer ? new EntityDamageSource(SulfurCubes.HOT_DAMAGE, this)
-                : new DamageSource(SulfurCubes.HOT_DAMAGE);
-        entity.attackEntityFrom(source, 1.0F);
+        HotCubeDamage.hurt(this, entity);
     }
 
     // --- damage and knockback --------------------------------------------------------------------

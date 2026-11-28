@@ -1,8 +1,10 @@
 package com.exiledradio.gamedropsbackport.selftest;
 
+import com.exiledradio.gamedropsbackport.GameDropsBackport;
 import com.exiledradio.gamedropsbackport.ModConfig;
 import com.exiledradio.gamedropsbackport.asm.ChangesTransformer;
 import com.exiledradio.gamedropsbackport.changes.AdvancementCountsCommand;
+import com.exiledradio.gamedropsbackport.changes.Changes;
 import com.exiledradio.gamedropsbackport.changes.HostGameModeCommand;
 import com.exiledradio.gamedropsbackport.changes.PeacefulSpawning;
 import com.exiledradio.gamedropsbackport.changes.ServerProperties;
@@ -11,7 +13,14 @@ import com.exiledradio.gamedropsbackport.changes.UnpublishCommand;
 
 import com.mojang.authlib.GameProfile;
 import net.minecraft.command.ICommand;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.monster.IMob;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemMonsterPlacer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.EnumPacketDirection;
@@ -20,12 +29,14 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.client.CPacketChatMessage;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerInteractionManager;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.UUID;
@@ -114,8 +125,49 @@ final class ChangesGapsSelfTest {
         PeacefulSpawning.runPass(world);
         check.ok(!PeacefulSpawning.inPass, "a pass on a world with no player ends cleanly");
         check.ok(PeacefulSpawning.refused >= refused, "the refused count never goes back");
+        piglins(check, world);
         world.getWorldInfo().setDifficulty(was);
         check.ok(!PeacefulSpawning.active(world) || was == EnumDifficulty.PEACEFUL, "off Peaceful the extra pass does not run");
+    }
+
+    /**
+     * 26.2: piglins (not brutes) are allowed on Peaceful. Nether Update's piglin is an {@code IMob}, so this mod names
+     * it; with Nether Update installed its real piglin and brute are asked too.
+     */
+    private static void piglins(Check check, WorldServer world) {
+        ResourceLocation piglin = new ResourceLocation("netherupdatebackport", "piglin");
+        ResourceLocation brute = new ResourceLocation("netherupdatebackport", "piglin_brute");
+        check.ok(!PeacefulSpawning.refusedOnPeaceful(EntityZombie.class, piglin), "an IMob named Nether Update's piglin is allowed on Peaceful");
+        check.ok(PeacefulSpawning.refusedOnPeaceful(EntityZombie.class, brute), "a piglin brute is not (26.2's notInPeaceful)");
+        check.ok(PeacefulSpawning.refusedOnPeaceful(EntityZombie.class, new ResourceLocation("zombie")), "a zombie is not");
+        check.ok(!PeacefulSpawning.refusedOnPeaceful(EntityOcelot.class, new ResourceLocation("ocelot")), "an ocelot (no IMob) is");
+        if (!Loader.isModLoaded("netherupdatebackport")) {
+            GameDropsBackport.LOGGER.info("SELFTEST note: Nether Update not installed; its real piglins not checked");
+            return;
+        }
+        Entity p = EntityList.createEntityByIDFromName(piglin, world);
+        Entity b = EntityList.createEntityByIDFromName(brute, world);
+        if (!check.ok(p instanceof EntityLiving && b instanceof EntityLiving, "Nether Update's piglin and brute exist")) {
+            return;
+        }
+        check.ok(p instanceof IMob, "Nether Update's piglin is an IMob (why it is named)");
+        p.setPosition(64.5D, 130D, 64.5D);
+        b.setPosition(64.5D, 130D, 64.5D);
+        PeacefulSpawning.inPass = true;
+        try {
+            check.eq(Event.Result.DEFAULT, ForgeEventFactory.canEntitySpawn((EntityLiving) p, world, 64.5F, 130F, 64.5F, false),
+                    "in the Peaceful pass a piglin is left to its own rules (26.2)");
+            check.eq(Event.Result.DENY, ForgeEventFactory.canEntitySpawn((EntityLiving) b, world, 64.5F, 130F, 64.5F, false),
+                    "in the Peaceful pass a piglin brute is refused");
+        } finally {
+            PeacefulSpawning.inPass = false;
+        }
+        ItemStack piglinEgg = new ItemStack(Items.SPAWN_EGG);
+        ItemMonsterPlacer.applyEntityIdToItemStack(piglinEgg, piglin);
+        ItemStack bruteEgg = new ItemStack(Items.SPAWN_EGG);
+        ItemMonsterPlacer.applyEntityIdToItemStack(bruteEgg, brute);
+        check.ok(!Changes.blockedOnPeaceful(world, piglinEgg), "a dispenser's piglin egg works on Peaceful");
+        check.ok(Changes.blockedOnPeaceful(world, bruteEgg), "a brute egg does not");
     }
 
     // spamThresholds (P6) --------------------------------------------------------------------------

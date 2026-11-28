@@ -298,8 +298,10 @@ final class ClientScenes {
             onServer(() -> {
                 serverPlayer().connection.setPlayerLocation(7.5, 4, 11.0, 0, 18);
                 WorldServer w = server();
-                for (int dx = -1; dx <= 1; dx++) {
-                    for (int dz = -1; dz <= 1; dz++) {
+                // Core's Biome Blend (P68, 1.13's, 5x5 by default, up to 15x15) averages the colors over that
+                // square: the whole square around UNDER is sulfur caves, so its color is theirs alone.
+                for (int dx = -7; dx <= 7; dx++) {
+                    for (int dz = -7; dz <= 7; dz++) {
                         UndergroundBiomes.set(w, UNDER.getX() + dx, UNDER.getZ() + dz, 0, 12, SulfurCavesContent.biome);
                     }
                 }
@@ -339,8 +341,10 @@ final class ClientScenes {
             this.mc.gameSettings.showDebugInfo = false;
             onServer(() -> {
                 WorldServer w = server();
-                for (int dx = -1; dx <= 1; dx++) {
-                    for (int dz = -1; dz <= 1; dz++) {
+                // Core's Biome Blend (P68, 1.13's, 5x5 by default, up to 15x15) averages the colors over that
+                // square: the whole square around UNDER is sulfur caves, so its color is theirs alone.
+                for (int dx = -7; dx <= 7; dx++) {
+                    for (int dz = -7; dz <= 7; dz++) {
                         UndergroundBiomes.set(w, UNDER.getX() + dx, UNDER.getZ() + dz, 0, 12, null);
                     }
                 }

@@ -73,6 +73,9 @@ unobfuscated), its data (`world_clock`, `timeline`, tags, recipes) and the Engli
   monsters. Nether Update's piglin is an `IMob`, so `PeacefulSpawning.ALLOWED_MONSTERS` names it
   (`netherupdatebackport:piglin`, 26.2's piglin type is not `notInPeaceful()`; the brute is): the pass and the
   Peaceful spawn egg rule let it through, and Nether Update stays optional (1.0.4).
+  The list also names 1.12.2's shulker (26.2 allows it on Peaceful; only its spawn egg asks). 26.2 spawns its other
+  allowed monster-category types (camel husk, zombie nautilus) only as mounts of husks and drowned, which stay off
+  Peaceful; Tricky Trials' zombie nautilus is no `IMob` and it has no camel husk, so neither needs a name.
 - Game rule snake_case ids (`minecraft:advance_time`, ...): 1.21.11's, Tricky Trials' scope (out of it there).
 - `/locate`'s "within a reasonable distance": Backport Core's `/locate` already has 26.3's text.
 - Hostile spawn eggs refused for players on Peaceful: 1.21.x's, Tricky Trials'.

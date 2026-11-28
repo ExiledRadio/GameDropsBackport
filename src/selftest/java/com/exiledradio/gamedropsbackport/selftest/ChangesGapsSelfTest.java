@@ -131,6 +131,34 @@ final class ChangesGapsSelfTest {
     }
 
     /**
+     * 26.2's other monster-category types allowed on Peaceful that a family mod could add: Tricky Trials' zombie
+     * nautilus and camel husk. 26.2 spawns neither on its own (only as a drowned's or husk's mount, and those riders
+     * stay off Peaceful), so only spawn eggs ask; Tricky Trials' zombie nautilus is no {@code IMob}, so it needs no
+     * name here, and Tricky Trials has no camel husk.
+     */
+    private static void trickyMounts(Check check) {
+        if (!Loader.isModLoaded("trickytrialsbackport")) {
+            GameDropsBackport.LOGGER.info("SELFTEST note: Tricky Trials not installed; its zombie nautilus not checked");
+            return;
+        }
+        ResourceLocation nautilus = new ResourceLocation("trickytrialsbackport", "zombie_nautilus");
+        Class<? extends Entity> type = EntityList.getClass(nautilus);
+        if (type == null) {
+            GameDropsBackport.LOGGER.info("SELFTEST note: Tricky Trials' zombie nautilus is off");
+        } else {
+            check.ok(!PeacefulSpawning.refusedOnPeaceful(type, nautilus), "Tricky Trials' zombie nautilus is allowed on Peaceful (26.2)");
+        }
+        ResourceLocation camelHusk = new ResourceLocation("trickytrialsbackport", "camel_husk");
+        Class<? extends Entity> husk = EntityList.getClass(camelHusk);
+        if (husk == null) {
+            GameDropsBackport.LOGGER.info("SELFTEST note: Tricky Trials registers no camel husk");
+        } else {
+            check.ok(!PeacefulSpawning.refusedOnPeaceful(husk, camelHusk),
+                    "Tricky Trials' camel husk is allowed on Peaceful (26.2): name it in ALLOWED_MONSTERS if it is an IMob");
+        }
+    }
+
+    /**
      * 26.2: piglins (not brutes) are allowed on Peaceful. Nether Update's piglin is an {@code IMob}, so this mod names
      * it; with Nether Update installed its real piglin and brute are asked too.
      */
@@ -141,6 +169,10 @@ final class ChangesGapsSelfTest {
         check.ok(PeacefulSpawning.refusedOnPeaceful(EntityZombie.class, brute), "a piglin brute is not (26.2's notInPeaceful)");
         check.ok(PeacefulSpawning.refusedOnPeaceful(EntityZombie.class, new ResourceLocation("zombie")), "a zombie is not");
         check.ok(!PeacefulSpawning.refusedOnPeaceful(EntityOcelot.class, new ResourceLocation("ocelot")), "an ocelot (no IMob) is");
+        ItemStack shulkerEgg = new ItemStack(Items.SPAWN_EGG);
+        ItemMonsterPlacer.applyEntityIdToItemStack(shulkerEgg, new ResourceLocation("shulker"));
+        check.ok(!Changes.blockedOnPeaceful(world, shulkerEgg), "a dispenser's shulker egg works on Peaceful (26.2 allows the shulker)");
+        trickyMounts(check);
         if (!Loader.isModLoaded("netherupdatebackport")) {
             GameDropsBackport.LOGGER.info("SELFTEST note: Nether Update not installed; its real piglins not checked");
             return;

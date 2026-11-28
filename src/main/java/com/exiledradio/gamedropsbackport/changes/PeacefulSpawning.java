@@ -45,10 +45,13 @@ public final class PeacefulSpawning {
 
     /**
      * The family's {@link IMob} mobs whose 26.2 entity type is allowed on Peaceful (not built {@code notInPeaceful()}):
-     * Nether Update's piglin (26.2 snapshot 4; its brute stays off). Named, so Nether Update stays optional.
+     * Nether Update's piglin (26.2 snapshot 4; its brute stays off), named so Nether Update stays optional, and 1.12.2's
+     * shulker (no biome lists it; its spawn egg works on Peaceful). 26.2's other allowed monster-category types need no
+     * name: the sulfur cube, the zombie horse and Tricky Trials' zombie nautilus are no {@link IMob}, Tricky Trials has
+     * no camel husk, and the dragon has no egg and no spawn list.
      */
     public static final Set<ResourceLocation> ALLOWED_MONSTERS = Collections.unmodifiableSet(new HashSet<ResourceLocation>(
-            Arrays.asList(new ResourceLocation("netherupdatebackport", "piglin"))));
+            Arrays.asList(new ResourceLocation("netherupdatebackport", "piglin"), new ResourceLocation("shulker"))));
 
     private PeacefulSpawning() {
     }

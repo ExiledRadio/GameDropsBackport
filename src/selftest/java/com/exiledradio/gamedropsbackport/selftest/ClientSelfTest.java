@@ -160,7 +160,7 @@ public final class ClientSelfTest {
             all &= s != null && s.getWeight() == 2 && s.getVolume() == 0.4F && s.isStreaming();
         }
         ok(all, "game music: music.game holds fingerspit's five at weight 2, volume 0.4, streamed");
-        if (mc.getSoundHandler().getAccessor(new net.minecraft.util.ResourceLocation("ambient.cave")) != null) {
+        if (vanillaSoundsLoaded(mc)) {
             ok(sounds.containsKey("minecraft:music/game/calm1"), "game music: 1.12.2's own tracks stay (" + count + " entries)");
         } else {
             // An offline dev run has no 1.12.2 sounds.json (the asset download failed): nothing of vanilla's to keep.
@@ -203,6 +203,24 @@ public final class ClientSelfTest {
             }
         }
         return out;
+    }
+
+    /**
+     * Whether 1.12.2's own sounds.json is loaded: the default pack supplies one (an offline dev run may lack it). A sound
+     * event's presence says nothing: other backports' sounds.json add vanilla names (Tricky Trials' {@code ambient.cave}).
+     */
+    private static boolean vanillaSoundsLoaded(Minecraft mc) {
+        try {
+            for (net.minecraft.client.resources.IResource r : mc.getResourceManager().getAllResources(
+                    new net.minecraft.util.ResourceLocation("sounds.json"))) {
+                if ("default".equals(r.getResourcePackName())) {
+                    return true;
+                }
+            }
+        } catch (java.io.IOException e) {
+            // none at all
+        }
+        return false;
     }
 
     private void scenes(Minecraft mc) {

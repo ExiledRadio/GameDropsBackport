@@ -271,11 +271,17 @@ public final class SoftBlocks {
         r.register(recipe);
     }
 
-    /** Init: the hand-offs to other family mods. */
+    /** 26.3's {@code sleep_in_straw_bed}: counted instead of {@code sleep_in_bed} when the bed is a straw bed. */
+    public static net.minecraft.stats.StatBase sleepInStrawBed;
+    public static final String SLEEP_STAT = "stat." + GameDropsBackport.MOD_ID + ".sleepInStrawBed";
+
+    /** Init: the straw bed statistic, and the hand-offs to other family mods. */
     public static void init() {
         if (!enabled()) {
             return;
         }
+        sleepInStrawBed = new net.minecraft.stats.StatBasic(SLEEP_STAT,
+                new net.minecraft.util.text.TextComponentTranslation(SLEEP_STAT)).registerStat();
         if (Loader.isModLoaded("villagerbackport")) {
             try {
                 Class.forName("com.exiledradio.villagerbackport.block.Compostables")

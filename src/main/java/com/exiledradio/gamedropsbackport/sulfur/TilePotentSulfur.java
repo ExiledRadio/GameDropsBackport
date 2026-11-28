@@ -169,6 +169,13 @@ public class TilePotentSulfur extends TileEntity implements ITickable {
         }
     }
 
+    /** 26.2's {@code #not_affected_by_geysers}: the ender dragon (and its parts). */
+    public static boolean notAffectedByGeysers(Entity e) {
+        return e instanceof net.minecraft.entity.boss.EntityDragon
+                || e instanceof net.minecraft.entity.MultiPartEntityPart
+                && ((net.minecraft.entity.MultiPartEntityPart) e).parent instanceof net.minecraft.entity.boss.EntityDragon;
+    }
+
     private void launch() {
         BlockPos source = findGasSource(this.world, this.pos);
         if (source == null) {
@@ -186,7 +193,7 @@ public class TilePotentSulfur extends TileEntity implements ITickable {
             if (this.world.isRemote ? !player || !((EntityPlayer) e).isUser() : player) {
                 continue;
             }
-            if (e instanceof EntityPlayer && ((EntityPlayer) e).capabilities.isFlying) {
+            if (e instanceof EntityPlayer && ((EntityPlayer) e).capabilities.isFlying || notAffectedByGeysers(e)) {
                 continue;
             }
             if (!e.isRiding() && e.motionY < 0.3F + water * 0.1) {

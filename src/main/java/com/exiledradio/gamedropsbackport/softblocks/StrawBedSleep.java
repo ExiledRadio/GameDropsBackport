@@ -93,10 +93,17 @@ public final class StrawBedSleep {
         }
     }
 
-    /** Shears cut wool stairs and slabs as fast as wool (5). */
+    /** Shears cut wool stairs and slabs as fast as wool (5); a hoe is the straw bed's tool ({@code #mineable/hoe}). */
     @SubscribeEvent
     public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
         IBlockState state = event.getState();
+        if (state.getBlock() instanceof BlockStrawBed) {
+            float hoe = hoeSpeed(event.getEntityPlayer().getHeldItemMainhand());
+            if (hoe > 1.0F) {
+                event.setNewSpeed(event.getOriginalSpeed() * hoe);
+            }
+            return;
+        }
         if (!(state.getBlock() instanceof BlockSoftStairs || state.getBlock() instanceof BlockSoftSlab)
                 || state.getMaterial() != net.minecraft.block.material.Material.CLOTH) {
             return;
@@ -113,5 +120,26 @@ public final class StrawBedSleep {
             speed += efficiency * efficiency + 1;
         }
         event.setNewSpeed(event.getOriginalSpeed() * speed);
+    }
+
+    /**
+     * A hoe's speed on its blocks, as Wild Update gives sculk: its material's efficiency, plus Efficiency's bonus as
+     * {@code EntityPlayer.getDigSpeed} adds it. 1 for anything else.
+     */
+    public static float hoeSpeed(ItemStack held) {
+        if (!(held.getItem() instanceof net.minecraft.item.ItemHoe)) {
+            return 1.0F;
+        }
+        float speed;
+        try {
+            speed = net.minecraft.item.Item.ToolMaterial.valueOf(((net.minecraft.item.ItemHoe) held.getItem()).getMaterialName()).getEfficiency();
+        } catch (IllegalArgumentException e) {
+            return 1.0F;
+        }
+        int efficiency = EnchantmentHelper.getEnchantmentLevel(Enchantments.EFFICIENCY, held);
+        if (efficiency > 0 && speed > 1.0F) {
+            speed += efficiency * efficiency + 1;
+        }
+        return speed;
     }
 }

@@ -3,6 +3,9 @@
 *   **Fixed: hot sulfur cubes now burn like 26.2's.** Their contact damage is fire damage: a shield no longer blocks it, you are not knocked back, mobs that panic run from it, and blazes, wither skeletons, Fire Resistance and Frost Walker boots are safe from it.
 *   **Fixed: piglins never spawned on Peaceful** with Nether Update Backport. They now spawn in the Nether on Peaceful, as in 26.2, and a dispenser can use a piglin or shulker spawn egg there, as 26.2 allows. Piglin brutes still don't.
 *   **Fixed: calves, piglets and chicks had no 26.1 baby model with Tricky Trials Backport.** They now get it, in all three farm animal variants with 26.1's cold and warm baby textures. Adults keep Tricky Trials' look.
+*   **Endermen follow 26.3's rules**: they no longer teleport onto signs or waterlogged blocks, an arrow they dodge flies on instead of bouncing back, and they never put their block down on bedrock or where an item frame or other entity is. They place their blocks again on Forge versions that stopped them.
+*   **Smaller 26.x fixes**: a lone dark oak sapling can't be bone mealed, players can't trample farmland inside a server's spawn protection, and a named skeleton trap horse no longer vanishes.
+*   **Sulfur cubes, geysers and straw beds**: boats no longer scoop up sulfur cubes, geysers leave the ender dragon alone, a hoe is the straw bed's tool, and sleeping in a straw bed counts as "Times Slept in a Straw Bed".
 
 # 1.0.3
 

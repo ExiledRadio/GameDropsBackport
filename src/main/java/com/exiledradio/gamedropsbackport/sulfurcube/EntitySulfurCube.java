@@ -602,6 +602,15 @@ public class EntitySulfurCube extends EntityAgeable {
         return block instanceof BlockBed ? 0.66D : 0.0D;
     }
 
+    /** 26.2's {@code #cannot_be_pushed_onto_boats}: a boat bumping into a cube no longer takes it aboard. */
+    @Override
+    public boolean startRiding(Entity entity, boolean force) {
+        if (!force && entity instanceof net.minecraft.entity.item.EntityBoat) {
+            return false;
+        }
+        return super.startRiding(entity, force);
+    }
+
     // --- pushing and contact ---------------------------------------------------------------------
 
     @Override

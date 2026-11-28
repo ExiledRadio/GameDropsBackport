@@ -158,6 +158,7 @@ public final class ChangesSelfTest implements SelfTest {
         shield(check, world, origin);
         endermen(check, world, origin);
         teleportTargets(check, world, origin);
+        Rules26SelfTest.changes(check, world, origin);
         persistent(check, world, origin);
         leader(check, world, origin);
         witch(check, world, origin);

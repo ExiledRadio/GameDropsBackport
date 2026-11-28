@@ -102,6 +102,7 @@ public class BlockStrawBed extends BlockHorizontal {
         EntityPlayer.SleepResult result = player.trySleep(pos);
         if (result == EntityPlayer.SleepResult.OK) {
             setOccupied(world, pos, world.getBlockState(pos), true);
+            countSleep(player);
         } else if (result == EntityPlayer.SleepResult.NOT_POSSIBLE_NOW) {
             player.sendStatusMessage(new TextComponentTranslation("tile.bed.noSleep"), true);
         } else if (result == EntityPlayer.SleepResult.NOT_SAFE) {
@@ -110,6 +111,14 @@ public class BlockStrawBed extends BlockHorizontal {
             player.sendStatusMessage(new TextComponentTranslation("tile.bed.tooFarAway"), true);
         }
         return true;
+    }
+
+    /** 26.3's {@code getSleepStat}: a night in a straw bed counts as one, not as a night in a bed. */
+    static void countSleep(EntityPlayer player) {
+        if (player instanceof net.minecraft.entity.player.EntityPlayerMP && SoftBlocks.sleepInStrawBed != null) {
+            player.addStat(net.minecraft.stats.StatList.SLEEP_IN_BED, -1);
+            player.addStat(SoftBlocks.sleepInStrawBed);
+        }
     }
 
     private static EntityPlayer sleeperAt(World world, BlockPos pos) {

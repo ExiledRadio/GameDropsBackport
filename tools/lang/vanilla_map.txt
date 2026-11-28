@@ -74,3 +74,4 @@ commands.unpublish.notPublished = commands.unpublish.notPublished
 commands.unpublish.success = commands.unpublish.success
 menu.multiplayerOptions.publish.stopped = menu.multiplayerOptions.publish.stopped
 team.notFound = team.notFound
+stat.gamedropsbackport.sleepInStrawBed = stat.minecraft.sleep_in_straw_bed

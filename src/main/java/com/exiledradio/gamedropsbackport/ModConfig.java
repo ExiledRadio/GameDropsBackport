@@ -249,10 +249,30 @@ public final class ModConfig {
         @Config.LangKey("config.gamedropsbackport.changes.endermenRiding")
         public boolean endermenRiding = true;
 
-        @Config.Comment({"Endermen never teleport onto bedrock or into fire, cactus, magma and the like; shulkers never onto",
-                "bedrock (26.3)."})
+        @Config.Comment({"Endermen never teleport onto bedrock, signs or waterlogged blocks, or into fire, cactus, magma and the",
+                "like; shulkers never onto bedrock (26.3)."})
         @Config.LangKey("config.gamedropsbackport.changes.teleportTargets")
         public boolean teleportTargets = true;
+
+        @Config.Comment("An arrow an enderman dodges flies on, instead of bouncing back or sticking in it (26.3).")
+        @Config.LangKey("config.gamedropsbackport.changes.endermenArrows")
+        public boolean endermenArrows = true;
+
+        @Config.Comment("Endermen never put their block down on bedrock or where an entity, such as an item frame, is (26.3).")
+        @Config.LangKey("config.gamedropsbackport.changes.endermenPlacing")
+        public boolean endermenPlacing = true;
+
+        @Config.Comment("A dark oak sapling without the other three of its 2x2 cannot be bone mealed (26.3).")
+        @Config.LangKey("config.gamedropsbackport.changes.saplingBonemeal")
+        public boolean saplingBonemeal = true;
+
+        @Config.Comment("Players cannot trample farmland inside a server's spawn protection (26.3).")
+        @Config.LangKey("config.gamedropsbackport.changes.spawnTrampling")
+        public boolean spawnTrampling = true;
+
+        @Config.Comment("A persistent skeleton trap horse (a named one, for example) never vanishes (26.1).")
+        @Config.LangKey("config.gamedropsbackport.changes.persistentTrapHorses")
+        public boolean persistentTrapHorses = true;
 
         @Config.Comment("Persistent mobs (named ones, for example) stop wandering when no player is within 32 blocks (26.3).")
         @Config.LangKey("config.gamedropsbackport.changes.persistentMobsIdle")

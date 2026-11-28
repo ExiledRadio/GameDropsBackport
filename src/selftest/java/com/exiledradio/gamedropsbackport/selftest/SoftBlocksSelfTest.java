@@ -72,6 +72,7 @@ final class SoftBlocksSelfTest implements SelfTest {
             return;
         }
         WorldServer world = check.world;
+        Rules26SelfTest.strawBed(check, world);
         check.eq(23, SoftBlocks.blocks().size(), "block ids (8 stairs + 2 slabs + 1 double per material, straw bed)");
         check.eq(22, SoftBlocks.items().size(), "items (stairs and slabs, cushion, straw bed)");
 

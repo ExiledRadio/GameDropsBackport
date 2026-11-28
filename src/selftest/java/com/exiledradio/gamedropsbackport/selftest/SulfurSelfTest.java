@@ -74,6 +74,7 @@ final class SulfurSelfTest implements SelfTest {
         registry(check);
         recipes(check);
         potent(check);
+        Rules26SelfTest.geysers(check, check.world);
         spike(check);
         disc(check);
         dump(check.world);

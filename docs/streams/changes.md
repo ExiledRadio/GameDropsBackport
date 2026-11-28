@@ -21,7 +21,12 @@ unobfuscated), its data (`world_clock`, `timeline`, tags, recipes) and the Engli
 | `mushroomStew` | 26.3 | Mushroom stew from a bowl and any two of `#mushrooms` (brown, red, the poplar stream's shelf mushroom). | 1.12.2's `minecraft:mushroom_stew` replaced in the recipe registry. Restart. |
 | `shieldBeforeTools` | 26.3 | Hoe or shovel in the main hand, shield in the off hand, not sneaking: the shield is raised instead of tilling or making a path. The block itself is still used (a chest opens). | `RightClickBlock` denies the item use only. |
 | `endermenRiding` | 26.3 | An enderman riding something takes projectile damage and never teleports. | P2; `EnderTeleportEvent`. |
-| `teleportTargets` | 26.3 | Endermen never land on bedrock or touch `#dangerous_for_teleportation` (fire, magma, cactus and the family's soul fire, campfires, sweet berry bushes, wither roses, pointed dripstone, powder snow); shulkers never attach to bedrock. | `EnderTeleportEvent` (1.12.2's landing search repeated there). |
+| `teleportTargets` | 26.3 | Endermen never land on bedrock or touch `#dangerous_for_teleportation` (fire, magma, cactus and the family's soul fire, campfires, sweet berry bushes, wither roses, pointed dripstone, powder snow); never onto a standing or wall sign (MC-58061: 26.3's `#entities_can_teleport_to` has no such sign, so the target moves down to the sign's block and the search goes on below; hanging signs stay) nor a waterlogged block (MC-220319); shulkers never attach to bedrock. | `EnderTeleportEvent` (1.12.2's landing search repeated there); signs and water in `EndermanRules`, ahead of `Changes`. |
+| `endermenArrows` | 26.3 | An arrow an enderman dodges flies on (26.3's dodge returns false and the arrow takes no side effects): 1.12.2 counted it stuck when a teleport worked and sent it back when all 64 failed. A riding enderman is left to `endermenRiding`. | `ProjectileImpactEvent.Arrow` (cancelled, then 1.12.2's dodge). |
+| `endermenPlacing` | 26.3 | `EndermanLeaveBlockGoal.canPlaceBlock`: never onto bedrock, never where an entity is (item frames, mobs, items). 1.12.2's goal is swapped for this mod's at its priority; Forge's place event refuses it when cancelled (Forge 14.23.5.2847's own goal places only when the event *is* cancelled, so endermen there never put blocks down). | `EntityJoinWorldEvent`. |
+| `saplingBonemeal` | 26.3 | `TreeGrower.canGrow`: a dark oak sapling outside a 2x2 is no bone meal target; the bone meal stays. | `BonemealEvent`, both sides. |
+| `spawnTrampling` | 26.3 | `FarmlandBlock.fallOn`: a player cannot trample farmland under the server's spawn protection (1.12.2's `isBlockProtected`: dedicated servers, with ops). Mobs as before. | `FarmlandTrampleEvent`. |
+| `persistentTrapHorses` | 26.1 | A persistent skeleton trap horse (named) stops counting toward its 18000-tick end. | `LivingUpdateEvent`. |
 | `persistentMobsIdle` | 26.3 | A persistent mob (named, for example) counts idle time while no player is within 32 blocks, so it stops wandering as other mobs do. | P3. |
 | `leaderZombieHealth` | 26.1 | A leader zombie (and husk, zombie villager, zombie pigman) spawns with its raised maximum health filled. | `EntityJoinWorldEvent`, once per zombie. |
 | `witchCloseThrows` | 26.1 | Witches throw at 0.45 instead of 0.75 at 2 blocks or less, so the potion no longer flies over the target. | P4. |
@@ -76,6 +81,9 @@ unobfuscated), its data (`world_clock`, `timeline`, tags, recipes) and the Engli
   The list also names 1.12.2's shulker (26.2 allows it on Peaceful; only its spawn egg asks). 26.2 spawns its other
   allowed monster-category types (camel husk, zombie nautilus) only as mounts of husks and drowned, which stay off
   Peaceful; Tricky Trials' zombie nautilus is no `IMob` and it has no camel husk, so neither needs a name.
+- Endermen and rain: already 1.12.2's. 26.3's `Enderman.hurtServer` still teleports on 9 in 10 hits of damage with no
+  living source (rain's drowning included), as 1.12.2's unblockable rule does; 26.3's only environmental-damage change
+  is "no teleport while riding", which `endermenRiding` covers (every teleport of a riding enderman is cancelled).
 - Game rule snake_case ids (`minecraft:advance_time`, ...): 1.21.11's, Tricky Trials' scope (out of it there).
 - `/locate`'s "within a reasonable distance": Backport Core's `/locate` already has 26.3's text.
 - Hostile spawn eggs refused for players on Peaceful: 1.21.x's, Tricky Trials'.

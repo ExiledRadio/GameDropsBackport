@@ -9,7 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=硫磺與硃砂方塊、烈性硫磺、�
 config.gamedropsbackport.sulfur.enabled.tooltip=停用時不會註冊任何內容，已有這些內容的世界會失去它們。
 config.gamedropsbackport.sulfurCube.tooltip=硫磺立方怪。
 config.gamedropsbackport.sulfurCube.enabled.tooltip=停用時不會註冊任何內容，已有這些內容的世界會失去它們。
-config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=硫磺方塊還會吞下的方塊，每行一個：modid:block=種類 或 modid:block@meta=種類。種類有 bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky。其他模組在礦物辭典中登記為石頭、鵝卵石、原木、木材、羊毛、礦石或金屬方塊的方塊已經會被吞下。
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=硫磺方塊還會吞下的方塊，每行一個：modid:block=種類 或 modid:block@meta=種類。種類有 bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky。其他模組在礦物辭典中登記為石頭、鵝卵石、原木、木材、羊毛、礦石或金屬方塊的方塊已經會被吞下。
 config.gamedropsbackport.sulfurCaves.tooltip=硫磺洞窟和硫磺泉。
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=硫磺洞窟和硫磺泉會在新生成的區塊中生成。
 config.gamedropsbackport.poplar.tooltip=楊木、紅灌木、層孔菇和斑駁森林。
@@ -30,6 +30,14 @@ config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=26.2 的標題畫面：
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=暫停選單以 26.3 的世界選項畫面取代在區域網路上開放；難度移出選項畫面。
 config.gamedropsbackport.changes.tooltip=26.x 對 1.12.2 中已有的指令、生物、方塊和物品所做的更改。
 config.gamedropsbackport.changes.enabled.tooltip=關閉時，下方所有更改都會關閉，恢復 1.12.2 的行為。
+config.gamedropsbackport.changes.snowOnPackedIce.tooltip=雪層可以放置在積冰上，也會落在積冰上 (26.4)。
+config.gamedropsbackport.changes.mushroomsAnyLight.tooltip=蘑菇可以在任何亮度下留在頂面能支撐其中心的任何方塊上；仍只在亮度低於 13 時蔓延 (26.4)。世界生成保留 1.12.2 的規則。
+config.gamedropsbackport.changes.iceSounds.tooltip=冰、積冰、霜冰和藍冰使用 26.4 自己的音效組，結冰湖泊中的冰會產生共鳴 (26.4)。
+config.gamedropsbackport.changes.iceFaces.tooltip=冰和霜冰貼著冰、霜冰和脆冰時隱藏相鄰的面 (26.4)。
+config.gamedropsbackport.changes.frostedIceVibrations.tooltip=霜冰每次裂開時都會發出震動 (26.4)。
+config.gamedropsbackport.changes.snowballKnockback.tooltip=雪球會擊退玩家 (26.4)。
+config.gamedropsbackport.changes.steeringBoost.tooltip=胡蘿蔔釣竿讓豬加速 7 到 35 秒，而不是 7 到 49 秒 (26.4)。
+config.gamedropsbackport.changes.dragonPerchThrown.tooltip=棲息的終界龍不會受到雪球、雞蛋、冰球或其他投擲物的傷害 (26.4)。
 config.gamedropsbackport.changes.timeCommand.tooltip=/time 使用世界時鐘：set day、noon、night 和 midnight 會前進到下一個對應時間；pause、resume 和 rate；of <clock>；query 查詢時間和時間線；使用 26.1 的訊息 (26.1)。
 config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule 使用 26.x 的訊息回應，並且把規則設為目前的值會報錯 (26.3)。
 config.gamedropsbackport.changes.teamColorNames.tooltip=隊伍顏色只接受帶底線的小寫名稱，例如 dark_purple (26.2)。
@@ -57,6 +65,14 @@ config.gamedropsbackport.changes.hostGameModeDefault.tooltip=房主用 /gamemode
 config.gamedropsbackport.changes.advancementCounts.tooltip=/advancement grant 和 revoke 可指定多名玩家，並像 26.3 一樣回應：多少名玩家和進度，只有在沒有任何變化時才報錯 (26.2、26.3)。
 config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join 和 leave 像 26.3 的 /team 一樣回應：加入或離開的成員，對已不在任何隊伍中的成員不報錯 (26.3)。
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish 關閉對區域網路開放的世界：其他玩家離開，世界不再被公布 (26.2)。
+config.gamedropsbackport.iceBlocks.tooltip=26.4 的積冰磚、浮雕積冰和雪磚；安裝 Caves & Cliffs 時的方解石系列；安裝 Wild Update 時的浮雕靈魂頁岩。
+config.gamedropsbackport.iceBlocks.enabled.tooltip=停用時不會註冊任何內容，已有這些內容的世界會失去它們。
+config.gamedropsbackport.iceCaves.tooltip=26.4 的寒冰洞窟：冰錐、冰晶、脆冰、冰隙，以及寒冷地表之下的生態域。
+config.gamedropsbackport.iceCaves.enabled.tooltip=停用時不會註冊任何內容，已有這些內容的世界會失去它們。
+config.gamedropsbackport.frostbite.tooltip=26.4 的凍屍、冰球、冰凍狀態效果及其藥水，以及殭屍、屍殼和沉屍在粉雪中的轉化。
+config.gamedropsbackport.frostbite.enabled.tooltip=停用時不會註冊任何內容，已有這些內容的世界會失去它們。
+config.gamedropsbackport.jukebox.tooltip=26.4 的唱片機播放清單（上方儲物箱裡的唱片）和唱片 Flurry。
+config.gamedropsbackport.jukebox.enabled.tooltip=停用時不會註冊任何內容，已有這些內容的世界會失去它們。
 # --- end config tooltips ---
 
 # --- common ---
@@ -128,8 +144,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=有毒氣體出現
 death.attack.gamedropsbackport.fallingStalactite=%1$s 被墜落的鐘乳石刺穿了
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s 在與 %2$s 戰鬥時被落下的鐘乳石刺穿
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=讓硫磺立方怪吸收 TNT 方塊
-advancements.husbandry.uh_oh.title=不妙
 death.attack.sulfurCubeHot.item=%2$s 用 %3$s 讓 %1$s 察覺不只有地面可以是熔岩
 death.attack.sulfurCubeHot.player=%2$s 讓 %1$s 察覺不只有地面可以是熔岩
 death.attack.sulfurCubeHot=%1$s 察覺不只有地面可以是熔岩
@@ -471,3 +485,87 @@ commands.unpublish.notPublished=目前尚未公開多人遊戲
 commands.unpublish.success=已取消公開多人遊戲
 menu.multiplayerOptions.publish.stopped=這個世界已不再開放多人遊戲
 team.notFound=未知的隊伍 '%s'
+
+# --- iceblocks ---
+tile.gamedropsbackport.calcite_double_slab.name=方解石半磚
+tile.gamedropsbackport.calcite_pillar.name=方解石柱
+tile.gamedropsbackport.calcite_slab.name=方解石半磚
+tile.gamedropsbackport.calcite_stairs.name=方解石階梯
+tile.gamedropsbackport.calcite_wall.name=方解石牆
+tile.gamedropsbackport.chiseled_packed_ice.name=浮雕積冰
+tile.gamedropsbackport.chiseled_soulshale.name=浮雕靈魂頁岩
+tile.gamedropsbackport.packed_ice_brick_double_slab.name=積冰磚半磚
+tile.gamedropsbackport.packed_ice_brick_slab.name=積冰磚半磚
+tile.gamedropsbackport.packed_ice_brick_stairs.name=積冰磚階梯
+tile.gamedropsbackport.packed_ice_brick_wall.name=積冰磚牆
+tile.gamedropsbackport.packed_ice_bricks.name=積冰磚
+tile.gamedropsbackport.polished_calcite.name=拋光方解石
+tile.gamedropsbackport.polished_calcite_brick_double_slab.name=拋光方解石磚半磚
+tile.gamedropsbackport.polished_calcite_brick_slab.name=拋光方解石磚半磚
+tile.gamedropsbackport.polished_calcite_brick_stairs.name=拋光方解石磚階梯
+tile.gamedropsbackport.polished_calcite_brick_wall.name=拋光方解石磚牆
+tile.gamedropsbackport.polished_calcite_bricks.name=拋光方解石磚
+tile.gamedropsbackport.polished_calcite_double_slab.name=拋光方解石半磚
+tile.gamedropsbackport.polished_calcite_slab.name=拋光方解石半磚
+tile.gamedropsbackport.polished_calcite_stairs.name=拋光方解石階梯
+tile.gamedropsbackport.polished_calcite_wall.name=拋光方解石牆
+tile.gamedropsbackport.snow_brick_double_slab.name=雪磚半磚
+tile.gamedropsbackport.snow_brick_slab.name=雪磚半磚
+tile.gamedropsbackport.snow_brick_stairs.name=雪磚階梯
+tile.gamedropsbackport.snow_brick_wall.name=雪磚牆
+tile.gamedropsbackport.snow_bricks.name=雪磚
+config.gamedropsbackport.iceBlocks=冰雪方塊
+config.gamedropsbackport.iceBlocks.enabled=啟用
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=脆冰
+tile.gamedropsbackport.ice_crystal.name=冰晶
+tile.gamedropsbackport.icicle.name=冰錐
+subtitles.gamedropsbackport.block.brittle_ice.crack=脆冰破裂
+subtitles.gamedropsbackport.block.ice_crystal.ambient=冰晶叮噹作響
+subtitles.gamedropsbackport.block.icicle.land=冰錐砸落
+config.gamedropsbackport.iceCaves=寒冰洞窟
+config.gamedropsbackport.iceCaves.enabled=啟用
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=凍屍
+entity.gamedropsbackport.ice_ball.name=冰球
+item.gamedropsbackport.ice_ball.name=冰球
+effect.gamedropsbackport.freezing=冰凍
+potion.effect.gamedropsbackport.freezing=冰凍藥水
+splash_potion.effect.gamedropsbackport.freezing=飛濺冰凍藥水
+lingering_potion.effect.gamedropsbackport.freezing=滯留冰凍藥水
+tipped_arrow.effect.gamedropsbackport.freezing=冰凍之箭
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=冰戎相見
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=使用冰球殺死凍屍
+config.gamedropsbackport.frostbite=凍屍
+config.gamedropsbackport.frostbite.enabled=啟用
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=沉屍轉化為殭屍
+subtitles.gamedropsbackport.entity.frostbite.ambient=凍屍呻吟聲
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=凍屍轉化為殭屍
+subtitles.gamedropsbackport.entity.frostbite.death=凍屍死亡
+subtitles.gamedropsbackport.entity.frostbite.hurt=凍屍受傷
+subtitles.gamedropsbackport.entity.frostbite.throw=凍屍投擲
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=屍殼轉化為殭屍
+subtitles.gamedropsbackport.entity.ice_ball.break=冰球擊中
+subtitles.gamedropsbackport.entity.ice_ball.throw=擲出冰球
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=鸚鵡呻吟聲
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=殭屍轉化為凍屍
+subtitles.gamedropsbackport.event.mob_effect.freezing=開始冰凍
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=唱片
+item.record.flurry.desc=Hyper Potions - Flurry
+config.gamedropsbackport.jukebox=唱片機
+config.gamedropsbackport.jukebox.enabled=啟用
+
+# --- changes264 ---
+subtitles.gamedropsbackport.block.ice.ambient=冰共振
+config.gamedropsbackport.changes.snowOnPackedIce=積冰上的雪
+config.gamedropsbackport.changes.mushroomsAnyLight=任何亮度下的蘑菇
+config.gamedropsbackport.changes.iceSounds=冰的音效
+config.gamedropsbackport.changes.iceFaces=冰的面
+config.gamedropsbackport.changes.frostedIceVibrations=霜冰震動
+config.gamedropsbackport.changes.snowballKnockback=雪球擊退
+config.gamedropsbackport.changes.steeringBoost=騎乘加速
+config.gamedropsbackport.changes.dragonPerchThrown=棲息的龍無視投擲物

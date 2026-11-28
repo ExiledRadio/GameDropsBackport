@@ -1,16 +1,36 @@
-# 1.0.4
+# 1.1.0
 
-*   **Fixed: hot sulfur cubes now burn like 26.2's.** Their contact damage is fire damage: a shield no longer blocks it, you are not knocked back, mobs that panic run from it, and blazes, wither skeletons, Fire Resistance and Frost Walker boots are safe from it.
-*   **Fixed: piglins never spawned on Peaceful** with Nether Update Backport. They now spawn in the Nether on Peaceful, as in 26.2, and a dispenser can use a piglin or shulker spawn egg there, as 26.2 allows. Piglin brutes still don't.
-*   **Fixed: calves, piglets and chicks had no 26.1 baby model with Tricky Trials Backport.** They now get it, in all three farm animal variants with 26.1's cold and warm baby textures. Adults keep Tricky Trials' look.
+Minecraft's 26.4 game drop, Deep Freeze, and fixes.
+
+*   **Ice caves** under frozen oceans and snowy land, with icicles, ice crystals, brittle ice and crevasses. `/locate biome minecraft:ice_caves` finds them.
+*   **Caves & Cliffs worlds**: with Caves & Cliffs Backport 1.2.0, new worlds place ice caves exactly where 26.4 does. Older Caves & Cliffs worlds keep the ice caves they had.
+*   **The frostbite**, a cold zombie that throws ice balls. Zombies turn into frostbites in powder snow; husks and drowned turn into zombies.
+*   **Ice balls**, the **Freezing** effect and its potions and tipped arrows.
+*   **Packed ice bricks**, chiseled packed ice and **snow bricks** in every shape. With Caves & Cliffs Backport, the calcite pillar, polished calcite and polished calcite bricks in every shape. With Wild Update Backport, chiseled soulshale in ancient city chests.
+*   **The cold sulfur cube**: a cube that swallows blue ice slides like packed ice and freezes the water under it.
+*   **Jukebox playlists**: a jukebox under a chest plays the chest's discs in order, and loops. The jukebox has 26.4's look.
+*   **The music disc Flurry**, in igloo chests.
+*   **26.4's changes**: ice, packed ice, frosted ice and blue ice have their own sounds; snow settles on packed ice; mushrooms grow in any light; snowballs push players; carrot on a stick boosts are shorter; a perching ender dragon ignores thrown things; strays spawn in more cold biomes; straw beds break with their own sound.
+*   A primed sulfur cube swallows nothing, so a dispenser can no longer swap the TNT out of a lit one.
+*   Blocks and heads worn by baby zombies, husks, frostbites, zombie villagers, villagers and zombified piglins are drawn smaller, as in 26.4.
+*   A silent baby makes no sound when a golden dandelion is used on it.
+*   Silent mobs stay silent when they get Freezing, and a silent cushion is placed without a sound.
+*   **The wandering trader** sells ice crystals and icicles (with Village & Pillage Backport).
+*   **Menus**: the Deep Freeze title screen panorama, and 26.4's wording of vanilla text.
 *   **Endermen follow 26.3's rules**: they no longer teleport onto signs or waterlogged blocks, an arrow they dodge flies on instead of bouncing back, and they never put their block down on bedrock or where an item frame or other entity is. They place their blocks again on Forge versions that stopped them.
 *   **Smaller 26.x fixes**: a lone dark oak sapling can't be bone mealed, players can't trample farmland inside a server's spawn protection, and a named skeleton trap horse no longer vanishes.
 *   **Sulfur cubes, geysers and straw beds**: boats no longer scoop up sulfur cubes, geysers leave the ender dragon alone, a hoe is the straw bed's tool, and sleeping in a straw bed counts as "Times Slept in a Straw Bed".
 *   **Mobs on a lead or riding something no longer despawn**, as in 26.1: leashed squid and ocelots, and the other backports' leashed mobs, stay put.
 *   **Teleport trails**: endermen, shulkers and players eating chorus fruit leave a trail of portal particles where they teleport, as in 26.3.
 *   **Dispensers and sulfur cubes**: a dispenser with shears cuts the block out of a sulfur cube in front of it, and a dispenser no longer puts armor on a sulfur cube, as in 26.2.
-*   **Slimmer dynamic poplars**: with Dynamic Trees - Backport, the poplars a sapling or an abandoned camp grows get shelf mushrooms only on their bottom two logs, with a whole log behind them that tapers above, as Dynamic Trees - Backport's own poplars do.
 *   **With Backport Core 1.5.0**: placing a cushion and a dispenser shearing a sulfur cube are heard by sculk sensors (with Wild Update Backport), and Adventuring Time asks for the sulfur caves and the dappled forest, as in 26.2 and 26.3.
+*   **Slimmer dynamic poplars**: with Dynamic Trees - Backport, the poplars a sapling or an abandoned camp grows get shelf mushrooms only on their bottom two logs, with a whole log behind them that tapers above, as Dynamic Trees - Backport's own poplars do.
+*   **Fixed: dappled forests lost their fallen trees, mushrooms and shrubs** where Dynamic Trees - Backport grows their trees. They keep them now.
+*   **Fixed: hot sulfur cubes now burn like 26.2's.** Their contact damage is fire damage: a shield no longer blocks it, you are not knocked back, mobs that panic run from it, and blazes, wither skeletons, Fire Resistance and Frost Walker boots are safe from it.
+*   **Fixed: piglins never spawned on Peaceful** with Nether Update Backport. They now spawn in the Nether on Peaceful, as in 26.2, and a dispenser can use a piglin or shulker spawn egg there, as 26.2 allows. Piglin brutes still don't.
+*   **Fixed: calves, piglets and chicks had no 26.1 baby model with Tricky Trials Backport.** They now get it, in all three farm animal variants with 26.1's cold and warm baby textures. Adults keep Tricky Trials' look.
+*   Every new feature has its own setting.
+*   Translated into 18 languages.
 
 Needs Backport Core 1.5.0 or newer.
 

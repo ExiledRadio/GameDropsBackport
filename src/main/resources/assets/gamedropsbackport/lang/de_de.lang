@@ -9,7 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=Schwefel- und Zinnoberblöcke, reaktiver
 config.gamedropsbackport.sulfur.enabled.tooltip=Ausgeschaltet wird nichts registriert, und eine Welt, die sie enthält, verliert sie.
 config.gamedropsbackport.sulfurCube.tooltip=Der Schwefelwürfel.
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Ausgeschaltet wird nichts registriert, und eine Welt, die sie enthält, verliert sie.
-config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Weitere Blöcke, die ein Schwefelwürfel verschluckt, einer pro Zeile: modid:block=art oder modid:block@meta=art. Die Arten sind bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Blöcke, die eine andere Mod im Erzwörterbuch als Stein, Bruchstein, Stämme, Bretter, Wolle, Erze oder Metallblöcke führt, werden bereits verschluckt.
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Weitere Blöcke, die ein Schwefelwürfel verschluckt, einer pro Zeile: modid:block=art oder modid:block@meta=art. Die Arten sind bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Blöcke, die eine andere Mod im Erzwörterbuch als Stein, Bruchstein, Stämme, Bretter, Wolle, Erze oder Metallblöcke führt, werden bereits verschluckt.
 config.gamedropsbackport.sulfurCaves.tooltip=Die Schwefelhöhlen und Schwefelquellen.
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=Schwefelhöhlen und Schwefelquellen entstehen in neu generierten Chunks.
 config.gamedropsbackport.poplar.tooltip=Pappelholz, der rote Strauch, Baumpilze und der Rotlaubwald.
@@ -30,6 +30,14 @@ config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=Der Titelbildschirm von
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Der Weltoptionen-Bildschirm von 26.3 im Pausenmenü statt „Im LAN öffnen“; Schwierigkeit verlässt die Optionen.
 config.gamedropsbackport.changes.tooltip=Änderungen von 26.x an Befehlen, Monstern, Blöcken und Items, die es in 1.12.2 schon gibt.
 config.gamedropsbackport.changes.enabled.tooltip=Ausgeschaltet sind alle Änderungen unten aus, und das Verhalten von 1.12.2 ist zurück.
+config.gamedropsbackport.changes.snowOnPackedIce.tooltip=Schneeschichten lassen sich auf Packeis setzen und fallen darauf (26.4).
+config.gamedropsbackport.changes.mushroomsAnyLight.tooltip=Pilze halten auf jedem Block, dessen Oberseite ihre Mitte trägt, bei jedem Licht; sie breiten sich weiterhin nur bei Licht unter 13 aus (26.4). Die Weltgenerierung behält die Regel von 1.12.2.
+config.gamedropsbackport.changes.iceSounds.tooltip=Eis, Packeis, Frosteis und Blaueis klingen nach den eigenen Geräuschsätzen von 26.4, und Eis in einem zugefrorenen See klingt nach (26.4).
+config.gamedropsbackport.changes.iceFaces.tooltip=Eis und Frosteis verbergen ihre Seiten an Eis, Frosteis und Brucheis (26.4).
+config.gamedropsbackport.changes.frostedIceVibrations.tooltip=Frosteis sendet jedes Mal eine Vibration, wenn es Risse bekommt (26.4).
+config.gamedropsbackport.changes.snowballKnockback.tooltip=Schneebälle stoßen Spieler zurück (26.4).
+config.gamedropsbackport.changes.steeringBoost.tooltip=Eine Karottenrute beschleunigt ein Schwein 7 bis 35 Sekunden lang statt 7 bis 49 (26.4).
+config.gamedropsbackport.changes.dragonPerchThrown.tooltip=Ein sitzender Enderdrache nimmt keinen Schaden durch Schneebälle, Eier, Eiskugeln oder andere geworfene Dinge (26.4).
 config.gamedropsbackport.changes.timeCommand.tooltip=/time läuft über Weltuhren: set day, noon, night und midnight gehen vor zur nächsten Zeit; pause, resume und rate; of <clock>; query für Zeit und Zeitleisten; die Meldungen von 26.1 (26.1).
 config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule antwortet mit den Meldungen von 26.x, und eine Regel auf ihren aktuellen Wert zu setzen ist ein Fehler (26.3).
 config.gamedropsbackport.changes.teamColorNames.tooltip=Teamfarben nehmen nur ihre kleingeschriebenen Namen mit Unterstrichen an, etwa dark_purple (26.2).
@@ -57,6 +65,14 @@ config.gamedropsbackport.changes.hostGameModeDefault.tooltip=Ändert der Gastgeb
 config.gamedropsbackport.changes.advancementCounts.tooltip=/advancement grant und revoke nehmen mehrere Spieler und antworten wie in 26.3: wie viele Spieler und Fortschritte, und ein Fehler nur, wenn sich nichts geändert hat (26.2, 26.3).
 config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join und leave antworten wie /team in 26.3: die Mitglieder, die beigetreten oder ausgetreten sind, und kein Fehler für die, die schon in keinem Team sind (26.3).
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish schließt eine im LAN geöffnete Welt: Andere Spieler verlassen sie, und sie wird nicht mehr angezeigt (26.2).
+config.gamedropsbackport.iceBlocks.tooltip=Die Packeisziegel, das gemeißelte Packeis und die Schneeziegel von 26.4; die Kalzitblöcke mit Caves & Cliffs; gemeißelter Seelenfels mit Wild Update.
+config.gamedropsbackport.iceBlocks.enabled.tooltip=Ausgeschaltet wird nichts registriert, und eine Welt, die sie enthält, verliert sie.
+config.gamedropsbackport.iceCaves.tooltip=Die Eishöhlen von 26.4: Eiszapfen, Eiskristalle, Brucheis, Gletscherspalten und das Biom unter kaltem Land.
+config.gamedropsbackport.iceCaves.enabled.tooltip=Ausgeschaltet wird nichts registriert, und eine Welt, die sie enthält, verliert sie.
+config.gamedropsbackport.frostbite.tooltip=Der Erfrorene von 26.4, Eiskugeln, der Effekt Frost und seine Tränke sowie die Verwandlungen von Zombie, Wüstenzombie und Ertrunkenem im Pulverschnee.
+config.gamedropsbackport.frostbite.enabled.tooltip=Ausgeschaltet wird nichts registriert, und eine Welt, die sie enthält, verliert sie.
+config.gamedropsbackport.jukebox.tooltip=Die Wiedergabelisten der Plattenspieler von 26.4 (die Schallplatten in einer Truhe darauf) und die Schallplatte Flurry.
+config.gamedropsbackport.jukebox.enabled.tooltip=Ausgeschaltet wird nichts registriert, und eine Welt, die sie enthält, verliert sie.
 # --- end config tooltips ---
 
 # --- common ---
@@ -128,8 +144,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Reizgas tritt auf
 death.attack.gamedropsbackport.fallingStalactite=%1$s wurde von einem fallenden Stalaktiten aufgespießt
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s wurde im Kampf gegen %2$s von einem fallenden Stalaktiten aufgespießt
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Lass einen Schwefelwürfel einen TNT‐Block aufnehmen
-advancements.husbandry.uh_oh.title=Oh, oh
 death.attack.sulfurCubeHot.item=%2$s zeigte %1$s mit %3$s, dass nicht nur der Boden zu heiß ist
 death.attack.sulfurCubeHot.player=%2$s zeigte %1$s, dass nicht nur der Boden zu heiß ist
 death.attack.sulfurCubeHot=%1$s starb, da nicht nur der Boden zu heiß ist
@@ -471,3 +485,87 @@ commands.unpublish.notPublished=Kein Mehrspieler-Spiel freigegeben
 commands.unpublish.success=Spiel ist nicht mehr im Mehrspieler freigegeben
 menu.multiplayerOptions.publish.stopped=Diese Welt ist nicht mehr im Mehrspieler geöffnet
 team.notFound=Unbekanntes Team ‚%s‘
+
+# --- iceblocks ---
+tile.gamedropsbackport.calcite_double_slab.name=Kalzitstufe
+tile.gamedropsbackport.calcite_pillar.name=Kalzitsäule
+tile.gamedropsbackport.calcite_slab.name=Kalzitstufe
+tile.gamedropsbackport.calcite_stairs.name=Kalzittreppe
+tile.gamedropsbackport.calcite_wall.name=Kalzitmauer
+tile.gamedropsbackport.chiseled_packed_ice.name=Gemeißeltes Packeis
+tile.gamedropsbackport.chiseled_soulshale.name=Gemeißelter Seelenfels
+tile.gamedropsbackport.packed_ice_brick_double_slab.name=Packeisziegelstufe
+tile.gamedropsbackport.packed_ice_brick_slab.name=Packeisziegelstufe
+tile.gamedropsbackport.packed_ice_brick_stairs.name=Packeisziegeltreppe
+tile.gamedropsbackport.packed_ice_brick_wall.name=Packeisziegelmauer
+tile.gamedropsbackport.packed_ice_bricks.name=Packeisziegel
+tile.gamedropsbackport.polished_calcite.name=Polierter Calcit
+tile.gamedropsbackport.polished_calcite_brick_double_slab.name=Polierte Kalzitziegelstufe
+tile.gamedropsbackport.polished_calcite_brick_slab.name=Polierte Kalzitziegelstufe
+tile.gamedropsbackport.polished_calcite_brick_stairs.name=Polierte Kalzitziegeltreppe
+tile.gamedropsbackport.polished_calcite_brick_wall.name=Polierte Kalzitziegelmauer
+tile.gamedropsbackport.polished_calcite_bricks.name=Polierte Kalzitziegel
+tile.gamedropsbackport.polished_calcite_double_slab.name=Polierte Kalzitstufe
+tile.gamedropsbackport.polished_calcite_slab.name=Polierte Kalzitstufe
+tile.gamedropsbackport.polished_calcite_stairs.name=Polierte Kalzittreppe
+tile.gamedropsbackport.polished_calcite_wall.name=Polierte Kalzitmauer
+tile.gamedropsbackport.snow_brick_double_slab.name=Schneeziegelstufe
+tile.gamedropsbackport.snow_brick_slab.name=Schneeziegelstufe
+tile.gamedropsbackport.snow_brick_stairs.name=Schneeziegeltreppe
+tile.gamedropsbackport.snow_brick_wall.name=Schneeziegelmauer
+tile.gamedropsbackport.snow_bricks.name=Schneeziegel
+config.gamedropsbackport.iceBlocks=Eis- und Schneeblöcke
+config.gamedropsbackport.iceBlocks.enabled=Aktiviert
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=Brucheis
+tile.gamedropsbackport.ice_crystal.name=Eiskristall
+tile.gamedropsbackport.icicle.name=Eiszapfen
+subtitles.gamedropsbackport.block.brittle_ice.crack=Brucheis knackt
+subtitles.gamedropsbackport.block.ice_crystal.ambient=Eiskristall klingt
+subtitles.gamedropsbackport.block.icicle.land=Eiszapfen fällt herunter
+config.gamedropsbackport.iceCaves=Eishöhlen
+config.gamedropsbackport.iceCaves.enabled=Aktiviert
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=Erfrorener
+entity.gamedropsbackport.ice_ball.name=Eisklumpen
+item.gamedropsbackport.ice_ball.name=Eiskugel
+effect.gamedropsbackport.freezing=Frost
+potion.effect.gamedropsbackport.freezing=Trank des Frosts
+splash_potion.effect.gamedropsbackport.freezing=Wurftrank des Frosts
+lingering_potion.effect.gamedropsbackport.freezing=Verweiltrank des Frosts
+tipped_arrow.effect.gamedropsbackport.freezing=Pfeil des Frosts
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=Wie du mir, so ich dir
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=Erlege einen Erfrorenen mit einer Eiskugel
+config.gamedropsbackport.frostbite=Erfrorener
+config.gamedropsbackport.frostbite.enabled=Aktiviert
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=Ertrunkener wird zu Zombie
+subtitles.gamedropsbackport.entity.frostbite.ambient=Erfrorener stöhnt
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=Erfrorener wird zu Zombie
+subtitles.gamedropsbackport.entity.frostbite.death=Erfrorener stirbt
+subtitles.gamedropsbackport.entity.frostbite.hurt=Erfrorener nimmt Schaden
+subtitles.gamedropsbackport.entity.frostbite.throw=Erfrorener wirft
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=Wüstenzombie wird zu Zombie
+subtitles.gamedropsbackport.entity.ice_ball.break=Eiskugel trifft
+subtitles.gamedropsbackport.entity.ice_ball.throw=Eiskugel wird geworfen
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=Papagei stöhnt
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=Zombie wird zu Erfrorenem
+subtitles.gamedropsbackport.event.mob_effect.freezing=Beginnt zu erfrieren
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=Schallplatte
+item.record.flurry.desc=Hyper Potions – Flurry
+config.gamedropsbackport.jukebox=Plattenspieler
+config.gamedropsbackport.jukebox.enabled=Aktiviert
+
+# --- changes264 ---
+subtitles.gamedropsbackport.block.ice.ambient=Eis hallt nach
+config.gamedropsbackport.changes.snowOnPackedIce=Schnee auf Packeis
+config.gamedropsbackport.changes.mushroomsAnyLight=Pilze bei jedem Licht
+config.gamedropsbackport.changes.iceSounds=Eisgeräusche
+config.gamedropsbackport.changes.iceFaces=Eisflächen
+config.gamedropsbackport.changes.frostedIceVibrations=Frosteis-Vibrationen
+config.gamedropsbackport.changes.snowballKnockback=Schneeball-Rückstoß
+config.gamedropsbackport.changes.steeringBoost=Reit-Schub
+config.gamedropsbackport.changes.dragonPerchThrown=Sitzender Drache ignoriert Geworfenes

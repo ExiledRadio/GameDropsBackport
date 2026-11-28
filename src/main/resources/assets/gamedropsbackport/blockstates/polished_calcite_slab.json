@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "gamedropsbackport:polished_calcite_slab"
+    },
+    "half=top": {
+      "model": "gamedropsbackport:polished_calcite_slab_top"
+    }
+  }
+}

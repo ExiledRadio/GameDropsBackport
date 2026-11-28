@@ -9,7 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=Blocs de soufre et de cinabre, soufre co
 config.gamedropsbackport.sulfur.enabled.tooltip=Désactivé, rien n'est enregistré, et un monde qui en contient déjà les perd.
 config.gamedropsbackport.sulfurCube.tooltip=Le cube de soufre.
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Désactivé, rien n'est enregistré, et un monde qui en contient déjà les perd.
-config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=D'autres blocs qu'un cube de soufre avale, un par ligne : modid:bloc=type ou modid:bloc@meta=type. Les types sont bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Les blocs qu'un autre mod inscrit dans le dictionnaire de minerais comme pierre, pierre taillée, bûches, planches, laine, minerais ou blocs de métal sont déjà avalés.
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=D'autres blocs qu'un cube de soufre avale, un par ligne : modid:bloc=type ou modid:bloc@meta=type. Les types sont bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Les blocs qu'un autre mod inscrit dans le dictionnaire de minerais comme pierre, pierre taillée, bûches, planches, laine, minerais ou blocs de métal sont déjà avalés.
 config.gamedropsbackport.sulfurCaves.tooltip=Les cavernes de soufre et les sources de soufre.
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=Les cavernes et sources de soufre apparaissent dans les chunks nouvellement générés.
 config.gamedropsbackport.poplar.tooltip=Bois de peuplier, buisson rouge, polypores et forêt ambrée.
@@ -30,6 +30,14 @@ config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=L'écran titre de 26.2 
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=L'écran Options du monde de 26.3 dans le menu pause, à la place d'Ouvrir au LAN ; la difficulté quitte les Options.
 config.gamedropsbackport.changes.tooltip=Les changements de la 26.x aux commandes, créatures, blocs et objets que la 1.12.2 possède déjà.
 config.gamedropsbackport.changes.enabled.tooltip=Désactivé, tous les changements ci-dessous sont coupés et le comportement de la 1.12.2 revient.
+config.gamedropsbackport.changes.snowOnPackedIce.tooltip=Les couches de neige peuvent être posées et tombent sur la glace compactée (26.4).
+config.gamedropsbackport.changes.mushroomsAnyLight.tooltip=Les champignons tiennent sur tout bloc dont le dessus soutient leur centre, à toute lumière ; ils ne se propagent toujours qu'à une lumière inférieure à 13 (26.4). La génération du monde garde la règle de 1.12.2.
+config.gamedropsbackport.changes.iceSounds.tooltip=La glace, la glace compactée, la glace givrée et la glace bleue ont les ensembles de sons propres à 26.4, et la glace d'un lac gelé résonne (26.4).
+config.gamedropsbackport.changes.iceFaces.tooltip=La glace et la glace givrée cachent leurs faces contre la glace, la glace givrée et la glace fragile (26.4).
+config.gamedropsbackport.changes.frostedIceVibrations.tooltip=La glace givrée émet une vibration chaque fois qu'elle se fissure (26.4).
+config.gamedropsbackport.changes.snowballKnockback.tooltip=Les boules de neige repoussent les joueurs (26.4).
+config.gamedropsbackport.changes.steeringBoost.tooltip=Une carotte sur un bâton accélère un cochon pendant 7 à 35 secondes au lieu de 7 à 49 (26.4).
+config.gamedropsbackport.changes.dragonPerchThrown.tooltip=Un Ender Dragon posé ne subit aucun dégât des boules de neige, œufs, boules de glace ou autres objets lancés (26.4).
 config.gamedropsbackport.changes.timeCommand.tooltip=/time fonctionne avec des horloges du monde : set day, noon, night et midnight avancent jusqu'au suivant ; pause, resume et rate ; of <clock> ; query pour l'heure et les chronologies ; les messages de la 26.1 (26.1).
 config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule répond avec les messages de la 26.x, et mettre une règle à sa valeur actuelle est une erreur (26.3).
 config.gamedropsbackport.changes.teamColorNames.tooltip=Les couleurs d'équipe n'acceptent que leurs noms en minuscules avec des tirets bas, comme dark_purple (26.2).
@@ -57,6 +65,14 @@ config.gamedropsbackport.changes.hostGameModeDefault.tooltip=Quand l'hôte chang
 config.gamedropsbackport.changes.advancementCounts.tooltip=/advancement grant et revoke acceptent plusieurs joueurs et répondent comme en 26.3 : combien de joueurs et de progrès, et une erreur seulement si rien n'a changé (26.2, 26.3).
 config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join et leave répondent comme /team en 26.3 : les membres qui ont rejoint ou quitté, et aucune erreur pour ceux déjà sans équipe (26.3).
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish ferme un monde ouvert en LAN : les autres joueurs partent et il n'est plus annoncé (26.2).
+config.gamedropsbackport.iceBlocks.tooltip=La glace compactée taillée, la glace compactée sculptée et les briques de neige de 26.4 ; l'ensemble de calcite avec Caves & Cliffs ; le schiste des âmes sculpté avec Wild Update.
+config.gamedropsbackport.iceBlocks.enabled.tooltip=Désactivé, rien n'est enregistré, et un monde qui en contient déjà les perd.
+config.gamedropsbackport.iceCaves.tooltip=Les cavernes de glace de 26.4 : pointes de glace, cristaux de glace, glace fragile, crevasses et le biome sous les terres froides.
+config.gamedropsbackport.iceCaves.enabled.tooltip=Désactivé, rien n'est enregistré, et un monde qui en contient déjà les perd.
+config.gamedropsbackport.frostbite.tooltip=Le givré de 26.4, les boules de glace, l'effet Gel et ses potions, et les conversions du zombie, du momifié et du noyé dans la neige poudreuse.
+config.gamedropsbackport.frostbite.enabled.tooltip=Désactivé, rien n'est enregistré, et un monde qui en contient déjà les perd.
+config.gamedropsbackport.jukebox.tooltip=Les listes de lecture des jukebox de 26.4 (les disques d'un coffre posé dessus) et le disque de musique Flurry.
+config.gamedropsbackport.jukebox.enabled.tooltip=Désactivé, rien n'est enregistré, et un monde qui en contient déjà les perd.
 # --- end config tooltips ---
 
 # --- common ---
@@ -86,7 +102,7 @@ config.gamedropsbackport.lookAndFeel.titleScreen=Écran titre de 26.2
 config.gamedropsbackport.lookAndFeel.worldOptions=Écran Options du monde
 
 # --- sulfur ---
-item.gamedropsbackport.music_disc_bounce.name=Disque
+item.gamedropsbackport.music_disc_bounce.name=Disque de musique
 item.record.bounce.desc=fingerspit - Bounce
 tile.gamedropsbackport.chiseled_cinnabar.name=Cinabre sculpté
 tile.gamedropsbackport.chiseled_sulfur.name=Soufre sculpté
@@ -128,8 +144,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Gaz nocif qui appara
 death.attack.gamedropsbackport.fallingStalactite=%1$s s'est fait transpercer par une stalactite
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s s'est fait transpercer par une stalactite en combattant (un(e)) %2$s
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Faites absorber un bloc de TNT à un cube de soufre.
-advancements.husbandry.uh_oh.title=Ça va péter !
 death.attack.sulfurCubeHot.item=%2$s a montré à %1$s qu'il n'y a pas que le sol qui est fait de lave avec %3$s
 death.attack.sulfurCubeHot.player=%2$s a montré à %1$s qu'il n'y a pas que le sol qui est fait de lave
 death.attack.sulfurCubeHot=%1$s est mort(e) car il n'y a pas que le sol qui est fait de lave
@@ -471,3 +485,87 @@ commands.unpublish.notPublished=Aucune partie multijoueur publiée
 commands.unpublish.success=La partie multijoueur n'est plus publiée
 menu.multiplayerOptions.publish.stopped=Ce monde n'est plus ouvert au multijoueur
 team.notFound=Équipe inconnue : %s
+
+# --- iceblocks ---
+tile.gamedropsbackport.calcite_double_slab.name=Dalle de calcite
+tile.gamedropsbackport.calcite_pillar.name=Pilier de calcite
+tile.gamedropsbackport.calcite_slab.name=Dalle de calcite
+tile.gamedropsbackport.calcite_stairs.name=Escalier en calcite
+tile.gamedropsbackport.calcite_wall.name=Muret de calcite
+tile.gamedropsbackport.chiseled_packed_ice.name=Glace compactée sculptée
+tile.gamedropsbackport.chiseled_soulshale.name=Schiste des âmes sculpté
+tile.gamedropsbackport.packed_ice_brick_double_slab.name=Dalle de glace compactée taillée
+tile.gamedropsbackport.packed_ice_brick_slab.name=Dalle de glace compactée taillée
+tile.gamedropsbackport.packed_ice_brick_stairs.name=Escalier en glace compactée taillée
+tile.gamedropsbackport.packed_ice_brick_wall.name=Muret de glace compactée taillée
+tile.gamedropsbackport.packed_ice_bricks.name=Glace compactée taillée
+tile.gamedropsbackport.polished_calcite.name=Calcite polie
+tile.gamedropsbackport.polished_calcite_brick_double_slab.name=Dalle de calcite polie taillée
+tile.gamedropsbackport.polished_calcite_brick_slab.name=Dalle de calcite polie taillée
+tile.gamedropsbackport.polished_calcite_brick_stairs.name=Escalier en calcite polie taillée
+tile.gamedropsbackport.polished_calcite_brick_wall.name=Muret de calcite polie taillée
+tile.gamedropsbackport.polished_calcite_bricks.name=Calcite polie taillée
+tile.gamedropsbackport.polished_calcite_double_slab.name=Dalle de calcite polie
+tile.gamedropsbackport.polished_calcite_slab.name=Dalle de calcite polie
+tile.gamedropsbackport.polished_calcite_stairs.name=Escalier en calcite polie
+tile.gamedropsbackport.polished_calcite_wall.name=Muret de calcite polie
+tile.gamedropsbackport.snow_brick_double_slab.name=Dalle de briques de neige
+tile.gamedropsbackport.snow_brick_slab.name=Dalle de briques de neige
+tile.gamedropsbackport.snow_brick_stairs.name=Escalier en briques de neige
+tile.gamedropsbackport.snow_brick_wall.name=Muret de briques de neige
+tile.gamedropsbackport.snow_bricks.name=Briques de neige
+config.gamedropsbackport.iceBlocks=Blocs de glace et de neige
+config.gamedropsbackport.iceBlocks.enabled=Activé
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=Glace fragile
+tile.gamedropsbackport.ice_crystal.name=Cristal de glace
+tile.gamedropsbackport.icicle.name=Pointe de glace
+subtitles.gamedropsbackport.block.brittle_ice.crack=Glace fragile qui se fissure
+subtitles.gamedropsbackport.block.ice_crystal.ambient=Tintement de cristal de glace
+subtitles.gamedropsbackport.block.icicle.land=Pointe de glace qui s'écrase
+config.gamedropsbackport.iceCaves=Cavernes de glace
+config.gamedropsbackport.iceCaves.enabled=Activé
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=Givré
+entity.gamedropsbackport.ice_ball.name=Boule de glace
+item.gamedropsbackport.ice_ball.name=Boule de glace
+effect.gamedropsbackport.freezing=Gel
+potion.effect.gamedropsbackport.freezing=Potion de gel
+splash_potion.effect.gamedropsbackport.freezing=Potion de gel jetable
+lingering_potion.effect.gamedropsbackport.freezing=Potion de gel persistante
+tipped_arrow.effect.gamedropsbackport.freezing=Flèche de gel
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=La vengeance est un plat qui se mange froid
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=Tuez un givré avec une boule de glace.
+config.gamedropsbackport.frostbite=Givré
+config.gamedropsbackport.frostbite.enabled=Activé
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=Noyé converti en zombie
+subtitles.gamedropsbackport.entity.frostbite.ambient=Grognement de givré
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=Givré converti en zombie
+subtitles.gamedropsbackport.entity.frostbite.death=Givré qui meurt
+subtitles.gamedropsbackport.entity.frostbite.hurt=Givré blessé
+subtitles.gamedropsbackport.entity.frostbite.throw=Givré qui lance
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=Momifié converti en zombie
+subtitles.gamedropsbackport.entity.ice_ball.break=Impact de boule de glace
+subtitles.gamedropsbackport.entity.ice_ball.throw=Boule de glace lancée
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=Perroquet qui imite le givré
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=Zombie converti en givré
+subtitles.gamedropsbackport.event.mob_effect.freezing=Commence à geler
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=Disque de musique
+item.record.flurry.desc=Hyper Potions - Flurry
+config.gamedropsbackport.jukebox=Jukebox
+config.gamedropsbackport.jukebox.enabled=Activé
+
+# --- changes264 ---
+subtitles.gamedropsbackport.block.ice.ambient=Glace qui résonne
+config.gamedropsbackport.changes.snowOnPackedIce=Neige sur la glace compactée
+config.gamedropsbackport.changes.mushroomsAnyLight=Champignons à toute lumière
+config.gamedropsbackport.changes.iceSounds=Sons de la glace
+config.gamedropsbackport.changes.iceFaces=Faces de la glace
+config.gamedropsbackport.changes.frostedIceVibrations=Vibrations de la glace givrée
+config.gamedropsbackport.changes.snowballKnockback=Recul des boules de neige
+config.gamedropsbackport.changes.steeringBoost=Accélération en monture
+config.gamedropsbackport.changes.dragonPerchThrown=Le dragon posé ignore les projectiles lancés

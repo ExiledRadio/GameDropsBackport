@@ -14,3 +14,5 @@ resourcePack.openFolder=Cartella dei pacchetti
 resourcePack.folderInfo=(Inserisci qui i pacchetti)
 resourcePack.available.title=Disponibili
 resourcePack.selected.title=Selezionati
+advancements.husbandry.uh_oh.description=Fa' assorbire un blocco di TNT a un cubo di zolfo.
+advancements.husbandry.uh_oh.title=Come vola via una bomba

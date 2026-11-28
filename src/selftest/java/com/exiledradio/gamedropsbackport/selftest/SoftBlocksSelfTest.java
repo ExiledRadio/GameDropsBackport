@@ -140,6 +140,7 @@ final class SoftBlocksSelfTest implements SelfTest {
                 new ItemStack(SoftBlocks.cushion, 1, EnumDyeColor.SILVER.getMetadata()).getTranslationKey(), "cushion name");
         check.eq(60, Blocks.FIRE.getFlammability(SoftBlocks.stairs("wool", EnumDyeColor.LIME)), "wool stairs flammability");
         check.eq(60, Blocks.FIRE.getFlammability(SoftBlocks.strawBed), "straw bed flammability");
+        check.eq(SoftBlocks.strawBedBreakLeave, SoftBlocks.STRAW_BED.getBreakSound(), "straw bed breaks with break_leave (26.4 Pre-Release 2)");
         check.eq(0, Blocks.FIRE.getFlammability(SoftBlocks.stairs("concrete", EnumDyeColor.LIME)), "concrete does not burn");
         // 26.3's #dampens_vibrations: wool stairs and slabs (and their items), concrete not (Backport Core's addDampener).
         check.ok(com.exiledradio.backportcore.gameevent.GameEventTags.dampens(SoftBlocks.stairs("wool", EnumDyeColor.LIME).getDefaultState())

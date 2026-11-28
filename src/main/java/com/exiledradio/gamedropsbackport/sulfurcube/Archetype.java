@@ -1,7 +1,7 @@
 package com.exiledradio.gamedropsbackport.sulfurcube;
 
 /**
- * 26.3's twelve sulfur cube archetypes ({@code data/minecraft/sulfur_cube_archetype/*.json}): what a cube becomes while it
+ * 26.3's twelve sulfur cube archetypes and 26.4's cold one ({@code data/minecraft/sulfur_cube_archetype/*.json}): what a cube becomes while it
  * holds a block. The values are the attribute modifiers' results on a cube's base values, already clamped as 26.3's
  * attribute ranges clamp them: knockback resistance to -2..1 (26.x lowered its minimum, so -1 doubles knockback and -2
  * triples it), explosion knockback resistance and bounciness to 0-1.
@@ -12,6 +12,11 @@ package com.exiledradio.gamedropsbackport.sulfurcube;
 public enum Archetype {
     //            kbRes  expRes bounce friction        airDrag          buoyant  hPower  vPower  pushCool pushThreshold
     BOUNCY("bouncy", -2, 0, 0.9, 1 - 0.7, 1 - 0.99, true, 0.4125F, 0.105F, 0.7F, 0.3F),
+    /**
+     * 26.4's cold archetype ({@code cold.json}, blue ice): fast sliding's numbers and sounds ({@code fast_sliding.hit},
+     * {@code fast_sliding.push}); on the ground and not riding it freezes the water sources under it ({@link #freezes()}).
+     */
+    COLD("cold", 0.5, 0.5, 0.1, 1 - 0.95, 1 - 0.99, false, 0.6625F, 0.09F, 1.0F, 0.05F),
     EXPLOSIVE("explosive", -1, 0, 0.5, 1 - 0.7, 1 - 0.7, true, 0.4125F, 0.09F, 0.7F, 0.1F),
     FAST_FLAT("fast_flat", -1, 0, 0.5, 1 - 0.8, 1 - 0.99, false, 0.9125F, 0.09F, 0.9F, 0.03F),
     FAST_SLIDING("fast_sliding", 0.5, 0.5, 0.1, 1 - 0.95, 1 - 0.99, false, 0.6625F, 0.09F, 1.0F, 0.05F),
@@ -64,6 +69,11 @@ public enum Archetype {
         this.verticalPower = vPower;
         this.pushSoundCooldown = pushCooldown;
         this.pushSoundThreshold = pushThreshold;
+    }
+
+    /** 26.4's cold archetype: {@code replace_disk} of frosted ice, radius 3, under the cube. */
+    public boolean freezes() {
+        return this == COLD;
     }
 
     public boolean explodes() {

@@ -58,7 +58,8 @@ public final class SoftBlocks {
     public static final SoundEvent cushionSit = sound("entity.cushion.sit");
     public static final SoundEvent cushionGetUp = sound("entity.cushion.get_up");
     public static final SoundEvent strawBedBreakLeave = sound("block.straw_bed.break_leave");
-    public static final SoundType STRAW_BED = new SoundType(1.0F, 1.0F, sound("block.straw_bed.break"),
+    /** 26.4 Pre-Release 2: the straw bed's break sound is break_leave ({@code block_sound_set/straw_bed.json}). */
+    public static final SoundType STRAW_BED = new SoundType(1.0F, 1.0F, strawBedBreakLeave,
             sound("block.straw_bed.step"), sound("block.straw_bed.place"), sound("block.straw_bed.hit"),
             sound("block.straw_bed.fall"));
 

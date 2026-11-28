@@ -353,7 +353,7 @@ public final class BabyRenderers {
         // VillagerRenderer halves the baby shadow again: 0.5 * 0.5, then 1.12's child half.
         BabyRender<EntityVillager> render = new BabyRender<EntityVillager>(rm, model, 0.25F,
                 BabyRenderers.<EntityVillager>fixed(BabyRender.tex("villager/villager_baby")));
-        render.addLayer(new BabyHeadLayer(model, -0.1171875F, -0.07421875F, 1.0F));
+        render.addLayer(new BabyHeadLayer(model, -0.1171875F, -0.07421875F, 1.0F, 0.85F));
         // VillagerProfessionLayer: babies show only their type (1.12 has only plains) with the hat, no profession.
         render.addLayer(new OverlayLayer<EntityVillager>(render, model,
                 OverlayLayer.<EntityVillager>plain(BabyRender.tex("villager/baby/plains")), false));
@@ -362,12 +362,16 @@ public final class BabyRenderers {
 
     private static void zombies(RenderManager rm, Map<Class<? extends Entity>, Render<? extends Entity>> map) {
         wrap(map, EntityZombie.class, RenderZombie.class, zombie(rm, BabyHumanoidModel.zombie(), false,
-                BabyRender.tex("zombie/zombie_baby"), 0.0F, 0.0F, 1.0F));
+                BabyRender.tex("zombie/zombie_baby"), 0.0F, 0.0F, 1.0F, 0.75F));
         wrap(map, EntityHusk.class, RenderHusk.class, zombie(rm, BabyHumanoidModel.zombie(), false,
-                BabyRender.tex("zombie/husk_baby"), 0.0F, 0.0F, 1.0F));
+                BabyRender.tex("zombie/husk_baby"), 0.0F, 0.0F, 1.0F, 0.75F));
+        // 26.4's baby frostbite: the baby zombie's model (BabyFrostbiteModel adds nothing), when the frostbite stream is on.
+        wrap(map, com.exiledradio.gamedropsbackport.frostbite.EntityFrostbite.class,
+                com.exiledradio.gamedropsbackport.frostbite.client.RenderFrostbite.class, zombie(rm, BabyHumanoidModel.zombie(), false,
+                        BabyRender.tex("zombie/frostbite_baby"), 0.0F, 0.0F, 1.0F, 0.75F));
         BabyHumanoidModel zvModel = BabyHumanoidModel.zombieVillager();
         BabyRender<EntityZombie> zombieVillager = zombie(rm, zvModel, false,
-                BabyRender.tex("zombie_villager/zombie_villager_baby"), -0.1171875F, -0.07421875F, 1.0F);
+                BabyRender.tex("zombie_villager/zombie_villager_baby"), -0.1171875F, -0.07421875F, 1.0F, 0.85F);
         zombieVillager.addLayer(new OverlayLayer<EntityZombie>(zombieVillager, zvModel,
                 OverlayLayer.<EntityZombie>plain(BabyRender.tex("zombie_villager/baby/plains")), false));
         wrap(map, EntityZombieVillager.class, RenderZombieVillager.class, zombieVillager);
@@ -375,13 +379,13 @@ public final class BabyRenderers {
             GameDropsBackport.LOGGER.info("Nether Update is installed: baby zombie pigmen left to it");
         } else {
             wrap(map, EntityPigZombie.class, RenderPigZombie.class, zombie(rm, BabyHumanoidModel.zombifiedPiglin(), true,
-                    BabyRender.tex("piglin/zombified_piglin_baby"), 0.0F, 0.0F, 1.0019531F));
+                    BabyRender.tex("piglin/zombified_piglin_baby"), 0.0F, 0.0F, 1.0019531F, 0.9F));
         }
     }
 
     /** AbstractZombieRenderer / HumanoidMobRenderer: armor, head item, held items; 0.5 shadow. */
     private static BabyRender<EntityZombie> zombie(RenderManager rm, BabyHumanoidModel model, boolean piglin,
-            ResourceLocation texture, float headY, float skullY, float headScale) {
+            ResourceLocation texture, float headY, float skullY, float headScale, float layerScale) {
         BabyRender<EntityZombie> render = new BabyRender<EntityZombie>(rm, model, 0.5F, BabyRenderers.<EntityZombie>fixed(texture)) {
             @Override
             public boolean handles(EntityZombie e) {
@@ -398,7 +402,7 @@ public final class BabyRenderers {
             }
         };
         render.addLayer(new BabyArmorLayer(render, piglin));
-        render.addLayer(new BabyHeadLayer(model, headY, skullY, headScale));
+        render.addLayer(new BabyHeadLayer(model, headY, skullY, headScale, layerScale));
         render.addLayer(new BabyHeldItemLayer(model));
         return render;
     }

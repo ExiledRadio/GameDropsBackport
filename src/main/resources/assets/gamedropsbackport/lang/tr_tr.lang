@@ -9,7 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=Sülfür ve zincifre blokları, tepkin s
 config.gamedropsbackport.sulfur.enabled.tooltip=Kapalıyken hiçbir şey kaydedilmez ve bunları içeren bir dünya onları kaybeder.
 config.gamedropsbackport.sulfurCube.tooltip=Sülfür küpü.
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Kapalıyken hiçbir şey kaydedilmez ve bunları içeren bir dünya onları kaybeder.
-config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Bir kükürt küpünün yuttuğu başka bloklar, her satıra bir tane: modid:blok=tür veya modid:blok@meta=tür. Türler: bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Başka bir modun cevher sözlüğüne taş, kırıktaş, kütük, tahta, yün, cevher veya metal blok olarak kaydettiği bloklar zaten yutulur.
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Bir kükürt küpünün yuttuğu başka bloklar, her satıra bir tane: modid:blok=tür veya modid:blok@meta=tür. Türler: bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Başka bir modun cevher sözlüğüne taş, kırıktaş, kütük, tahta, yün, cevher veya metal blok olarak kaydettiği bloklar zaten yutulur.
 config.gamedropsbackport.sulfurCaves.tooltip=Sülfür mağaraları ve sülfür kaynakları.
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=Sülfür mağaraları ve sülfür kaynakları yeni oluşturulan yığınlarda oluşur.
 config.gamedropsbackport.poplar.tooltip=Kavak ağacı, kırmızı çalı, kav mantarları ve alacalı orman.
@@ -30,6 +30,14 @@ config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=26.2 başlık ekranı: 
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Duraklatma menüsünde LAN'a aç yerine 26.3'ün Dünya Seçenekleri ekranı; zorluk Seçenekler'den ayrılır.
 config.gamedropsbackport.changes.tooltip=1.12.2'de zaten bulunan komutlarda, yaratıklarda, bloklarda ve eşyalarda 26.x'in değişiklikleri.
 config.gamedropsbackport.changes.enabled.tooltip=Kapalıyken aşağıdaki tüm değişiklikler kapanır ve 1.12.2'nin davranışı geri gelir.
+config.gamedropsbackport.changes.snowOnPackedIce.tooltip=Kar katmanları sert buzun üstüne konabilir ve üstüne yağar (26.4).
+config.gamedropsbackport.changes.mushroomsAnyLight.tooltip=Mantarlar, üst yüzü ortalarını taşıyan her blokta her ışıkta kalır; yine yalnızca 13'ün altındaki ışıkta yayılırlar (26.4). Dünya oluşturma 1.12.2'nin kuralını korur.
+config.gamedropsbackport.changes.iceSounds.tooltip=Buz, sert buz, kırağı ve mavi buz 26.4'ün kendi ses setleriyle ses çıkarır ve donmuş bir gölün buzu yankılanır (26.4).
+config.gamedropsbackport.changes.iceFaces.tooltip=Buz ve kırağı; buz, kırağı ve kırılgan buza bakan yüzlerini gizler (26.4).
+config.gamedropsbackport.changes.frostedIceVibrations.tooltip=Kırağı her çatladığında bir titreşim gönderir (26.4).
+config.gamedropsbackport.changes.snowballKnockback.tooltip=Kar topları oyuncuları geri iter (26.4).
+config.gamedropsbackport.changes.steeringBoost.tooltip=Havuçlu olta bir domuzu 7 ila 49 yerine 7 ila 35 saniye hızlandırır (26.4).
+config.gamedropsbackport.changes.dragonPerchThrown.tooltip=Konmuş bir Ender Ejderhası kar toplarından, yumurtalardan, buz toplarından veya atılan diğer şeylerden hasar almaz (26.4).
 config.gamedropsbackport.changes.timeCommand.tooltip=/time dünya saatleriyle çalışır: set day, noon, night ve midnight bir sonrakine ilerler; pause, resume ve rate; of <clock>; zaman ve zaman çizelgeleri için query; 26.1'in mesajları (26.1).
 config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule 26.x'in mesajlarıyla yanıt verir ve bir kuralı mevcut değerine ayarlamak hatadır (26.3).
 config.gamedropsbackport.changes.teamColorNames.tooltip=Takım renkleri yalnızca dark_purple gibi alt çizgili küçük harfli adlarını kabul eder (26.2).
@@ -57,6 +65,14 @@ config.gamedropsbackport.changes.hostGameModeDefault.tooltip=Ev sahibi kendi oyu
 config.gamedropsbackport.changes.advancementCounts.tooltip=/advancement grant ve revoke birden çok oyuncu alır ve 26.3 gibi yanıt verir: kaç oyuncu ve ilerleme, ve yalnızca hiçbir şey değişmediğinde hata (26.2, 26.3).
 config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join ve leave, 26.3'teki /team gibi yanıt verir: katılan veya ayrılan üyeler, zaten bir takımda olmayanlar için hata yok (26.3).
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish LAN'a açılmış bir dünyayı kapatır: diğer oyuncular ayrılır ve artık listelenmez (26.2).
+config.gamedropsbackport.iceBlocks.tooltip=26.4'ün sert buz tuğlaları, yontulmuş sert buzu ve kar tuğlaları; Caves & Cliffs ile kireç taşı seti; Wild Update ile yontulmuş ruh şisti.
+config.gamedropsbackport.iceBlocks.enabled.tooltip=Kapalıyken hiçbir şey kaydedilmez ve bunları içeren bir dünya onları kaybeder.
+config.gamedropsbackport.iceCaves.tooltip=26.4'ün buz mağaraları: buz sarkıtları, buz kristalleri, kırılgan buz, buz yarıkları ve soğuk toprakların altındaki biyom.
+config.gamedropsbackport.iceCaves.enabled.tooltip=Kapalıyken hiçbir şey kaydedilmez ve bunları içeren bir dünya onları kaybeder.
+config.gamedropsbackport.frostbite.tooltip=26.4'ün donuğu, buz topları, Donma etkisi ve iksirleri, ayrıca zombi, kalıntı ve boğuğun tozlaşmış karda dönüşmesi.
+config.gamedropsbackport.frostbite.enabled.tooltip=Kapalıyken hiçbir şey kaydedilmez ve bunları içeren bir dünya onları kaybeder.
+config.gamedropsbackport.jukebox.tooltip=26.4'ün müzik kutusu çalma listeleri (üstteki sandıktaki diskler) ve Flurry müzik diski.
+config.gamedropsbackport.jukebox.enabled.tooltip=Kapalıyken hiçbir şey kaydedilmez ve bunları içeren bir dünya onları kaybeder.
 # --- end config tooltips ---
 
 # --- common ---
@@ -109,7 +125,7 @@ tile.gamedropsbackport.polished_sulfur.name=Cilalı Sülfür
 tile.gamedropsbackport.polished_sulfur_double_slab.name=Cilalı Sülfür Basamağı
 tile.gamedropsbackport.polished_sulfur_slab.name=Cilalı Sülfür Basamağı
 tile.gamedropsbackport.polished_sulfur_stairs.name=Cilalı Sülfür Merdiven
-tile.gamedropsbackport.polished_sulfur_wall.name=Cilalı Sülfür Duvar
+tile.gamedropsbackport.polished_sulfur_wall.name=Cilalı Kükürt Duvar
 tile.gamedropsbackport.potent_sulfur.name=Tepkin Sülfür
 tile.gamedropsbackport.sulfur.name=Sülfür
 tile.gamedropsbackport.sulfur_brick_double_slab.name=Sülfür Tuğla Basamak
@@ -124,12 +140,10 @@ tile.gamedropsbackport.sulfur_stairs.name=Sülfür Merdiven
 tile.gamedropsbackport.sulfur_wall.name=Sülfür Duvar
 subtitles.gamedropsbackport.block.generic.fall=Bir şey bloğa düştü
 subtitles.gamedropsbackport.block.potent_sulfur.geyser_eruption=Sülfür kaynağı püskürüyor
-subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Zararlı gaz beliriyor
+subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Bulandırıcı gaz beliriyor
 death.attack.gamedropsbackport.fallingStalactite=%1$s düşen bir sarkıt tarafından şişlendi
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s, %2$s ile savaşırken düşen bir sarkıt tarafından şişlendi
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Bir Sülfür Küpünün içine TNT almasını sağlayın
-advancements.husbandry.uh_oh.title=Ayvayı Yedik
 death.attack.sulfurCubeHot.item=%2$s, %1$s oyuncusuna sadece zeminin lav olmadığını %3$s kullanarak gösterdi
 death.attack.sulfurCubeHot.player=%2$s, %1$s oyuncusuna sadece zeminin lav olmadığını gösterdi
 death.attack.sulfurCubeHot=%1$s öldü çünkü sadece zemin lav değildi
@@ -141,7 +155,7 @@ subtitles.gamedropsbackport.entity.small_sulfur_cube.death=Küçük Sülfür Kü
 subtitles.gamedropsbackport.entity.small_sulfur_cube.eat=Küçük Sülfür Küpü genişledi
 subtitles.gamedropsbackport.entity.small_sulfur_cube.hurt=Küçük Sülfür Küpü hasar aldı
 subtitles.gamedropsbackport.entity.small_sulfur_cube.jump=Küçük Sülfür Küpü sekti
-subtitles.gamedropsbackport.entity.sulfur_cube.absorb=Sülfür Küpü doldu
+subtitles.gamedropsbackport.entity.sulfur_cube.absorb=Sülfür Küpü emdi
 subtitles.gamedropsbackport.entity.sulfur_cube.bounce=Sülfür Küpü sekti
 subtitles.gamedropsbackport.entity.sulfur_cube.death=Sülfür Küpü öldü
 subtitles.gamedropsbackport.entity.sulfur_cube.eject=Blok kaldırıldı
@@ -471,3 +485,87 @@ commands.unpublish.notPublished=Çok oyunculu oyun sunulmuyor
 commands.unpublish.success=Çok oyunculu oyun artık sunulmuyor
 menu.multiplayerOptions.publish.stopped=Bu dünya artık çok oyunculuya açık değil
 team.notFound=Bilinmeyen takım '%s'
+
+# --- iceblocks ---
+tile.gamedropsbackport.calcite_double_slab.name=Kireç Taşı Basamak
+tile.gamedropsbackport.calcite_pillar.name=Kireç Taşı Sütun
+tile.gamedropsbackport.calcite_slab.name=Kireç Taşı Basamak
+tile.gamedropsbackport.calcite_stairs.name=Kireç Taşı Merdiven
+tile.gamedropsbackport.calcite_wall.name=Kireç Taşı Duvar
+tile.gamedropsbackport.chiseled_packed_ice.name=Yontulmuş Sert Buz
+tile.gamedropsbackport.chiseled_soulshale.name=Yontulmuş Ruh Şisti
+tile.gamedropsbackport.packed_ice_brick_double_slab.name=Sert Buz Tuğla Basamak
+tile.gamedropsbackport.packed_ice_brick_slab.name=Sert Buz Tuğla Basamak
+tile.gamedropsbackport.packed_ice_brick_stairs.name=Sert Buz Tuğla Merdiven
+tile.gamedropsbackport.packed_ice_brick_wall.name=Sert Buz Tuğla Duvar
+tile.gamedropsbackport.packed_ice_bricks.name=Sert Buz Tuğla
+tile.gamedropsbackport.polished_calcite.name=Cilalı Kireç Taşı
+tile.gamedropsbackport.polished_calcite_brick_double_slab.name=Cilalı Kireç Taşı Tuğla Basamak
+tile.gamedropsbackport.polished_calcite_brick_slab.name=Cilalı Kireç Taşı Tuğla Basamak
+tile.gamedropsbackport.polished_calcite_brick_stairs.name=Cilalı Kireç Taşı Tuğla Merdiven
+tile.gamedropsbackport.polished_calcite_brick_wall.name=Cilalı Kireç Taşı Tuğla Duvar
+tile.gamedropsbackport.polished_calcite_bricks.name=Cilalı Kireç Taşı Tuğla
+tile.gamedropsbackport.polished_calcite_double_slab.name=Cilalı Kireç Taşı Basamak
+tile.gamedropsbackport.polished_calcite_slab.name=Cilalı Kireç Taşı Basamak
+tile.gamedropsbackport.polished_calcite_stairs.name=Cilalı Kireç Taşı Merdiven
+tile.gamedropsbackport.polished_calcite_wall.name=Cilalı Kireç Taşı Duvar
+tile.gamedropsbackport.snow_brick_double_slab.name=Kar Tuğla Basamak
+tile.gamedropsbackport.snow_brick_slab.name=Kar Tuğla Basamak
+tile.gamedropsbackport.snow_brick_stairs.name=Kar Tuğla Merdiven
+tile.gamedropsbackport.snow_brick_wall.name=Kar Tuğla Duvar
+tile.gamedropsbackport.snow_bricks.name=Kar Tuğla
+config.gamedropsbackport.iceBlocks=Buz ve Kar Blokları
+config.gamedropsbackport.iceBlocks.enabled=Etkin
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=Kırılgan Buz
+tile.gamedropsbackport.ice_crystal.name=Buz Kristali
+tile.gamedropsbackport.icicle.name=Buz Sarkıtı
+subtitles.gamedropsbackport.block.brittle_ice.crack=Kırılgan Buz çatlıyor
+subtitles.gamedropsbackport.block.ice_crystal.ambient=Buz Kristali çınlıyor
+subtitles.gamedropsbackport.block.icicle.land=Buz Sarkıtı yere çakıldı
+config.gamedropsbackport.iceCaves=Buz Mağaraları
+config.gamedropsbackport.iceCaves.enabled=Etkin
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=Donuk
+entity.gamedropsbackport.ice_ball.name=Buz Topu
+item.gamedropsbackport.ice_ball.name=Buz Topu
+effect.gamedropsbackport.freezing=Donma
+potion.effect.gamedropsbackport.freezing=Donma İksiri
+splash_potion.effect.gamedropsbackport.freezing=Patlayıcı Donma İksiri
+lingering_potion.effect.gamedropsbackport.freezing=Kalıcı Donma İksiri
+tipped_arrow.effect.gamedropsbackport.freezing=Donma Oku
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=Ne Ekersen Onu Biçersin
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=Bir Donuğu Buz Topu kullanarak öldür
+config.gamedropsbackport.frostbite=Donuk
+config.gamedropsbackport.frostbite.enabled=Etkin
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=Boğuk, Zombi’ye dönüştü
+subtitles.gamedropsbackport.entity.frostbite.ambient=Donuk sızlanıyor
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=Donuk, Zombi’ye dönüştü
+subtitles.gamedropsbackport.entity.frostbite.death=Donuk öldü
+subtitles.gamedropsbackport.entity.frostbite.hurt=Donuk hasar aldı
+subtitles.gamedropsbackport.entity.frostbite.throw=Donuk fırlattı
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=Kalıntı, Zombi’ye dönüştü
+subtitles.gamedropsbackport.entity.ice_ball.break=Buz Topu isabet etti
+subtitles.gamedropsbackport.entity.ice_ball.throw=Buz Topu fırlatıldı
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=Papağan sızlanıyor
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=Zombi, Donuk’a dönüştü
+subtitles.gamedropsbackport.event.mob_effect.freezing=Donma başlıyor
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=Müzik Diski
+item.record.flurry.desc=Hyper Potions - Flurry
+config.gamedropsbackport.jukebox=Müzik Kutusu
+config.gamedropsbackport.jukebox.enabled=Etkin
+
+# --- changes264 ---
+subtitles.gamedropsbackport.block.ice.ambient=Buz tınıları
+config.gamedropsbackport.changes.snowOnPackedIce=Sert Buz Üstünde Kar
+config.gamedropsbackport.changes.mushroomsAnyLight=Her Işıkta Mantarlar
+config.gamedropsbackport.changes.iceSounds=Buz Sesleri
+config.gamedropsbackport.changes.iceFaces=Buz Yüzleri
+config.gamedropsbackport.changes.frostedIceVibrations=Kırağı Titreşimleri
+config.gamedropsbackport.changes.snowballKnockback=Kar Topu Geri Tepmesi
+config.gamedropsbackport.changes.steeringBoost=Binek Hızlandırması
+config.gamedropsbackport.changes.dragonPerchThrown=Konan Ejderha Atılanları Yok Sayar

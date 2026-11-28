@@ -65,7 +65,9 @@ public final class WaterlogSelfTest implements SelfTest {
         return path.endsWith("_slab") || path.endsWith("_stairs") || path.endsWith("_wall")
                 || path.equals("poplar_fence") || path.equals("poplar_trapdoor")
                 || path.equals("poplar_sign") || path.equals("poplar_wall_sign")
-                || path.endsWith("_poplar_leaves") || path.equals("sulfur_spike");
+                || path.endsWith("_poplar_leaves") || path.equals("sulfur_spike")
+                // 26.4: the icicle (a SpeleothemBlock) and the ice crystal (an AbstractCrystalClusterBlock).
+                || path.equals("icicle") || path.equals("ice_crystal");
     }
 
     @Override

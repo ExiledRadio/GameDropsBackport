@@ -18,7 +18,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -130,10 +129,12 @@ public class BlockStrawBed extends BlockHorizontal {
         return null;
     }
 
-    /** 26.3's {@code destroyBed}: the break_leave sound, then the head goes and takes the foot with it, no drop. */
+    /**
+     * 26.4's {@code destroyOnUse} and {@code destroyOnLeave}: {@code destroyBlock} without a drop, so the break particles
+     * and the sound set's break sound (break_leave since 26.4 Pre-Release 2); the head takes the foot with it.
+     */
     void breakBed(World world, BlockPos head) {
-        world.playSound(null, head, SoftBlocks.strawBedBreakLeave, SoundCategory.BLOCKS, 1.0F, 1.0F);
-        world.setBlockToAir(head);
+        world.destroyBlock(head, false);
     }
 
     private void setOccupied(World world, BlockPos pos, IBlockState state, boolean occupied) {

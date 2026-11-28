@@ -60,9 +60,15 @@ public final class LookAndFeel {
         Presentation.version("26.1");
         Contribution v262 = Presentation.version("26.2");
         Contribution v263 = Presentation.version("26.3");
+        // 26.4 (Deep Freeze), built on Pre-Release 1 until the release.
+        Contribution v264 = Presentation.version("26.4");
         ModConfig.LookAndFeel cfg = ModConfig.lookAndFeel;
         if (!cfg.enabled) {
             return;
+        }
+        if (ModConfig.jukebox.enabled) {
+            // 26.4's jukebox: new side and top, and a bottom of its own (cube_bottom_top).
+            v264.replaceAsset("models/block/jukebox.json", vanilla("models/block/jukebox.json"));
         }
         if (cfg.splashes) {
             // 26.1's one change ("Java 16 + 1 + 4 * 2 = 25!") names a Java version, which Core leaves out on 1.12.2.
@@ -94,8 +100,19 @@ public final class LookAndFeel {
         if (cfg.panorama) {
             v263.panorama(ID + ":textures/gui/title/background/panorama_")
                     .panoramaOverlay(new ResourceLocation(ID, "textures/gui/title/background/panorama_overlay.png"));
+            // 26.4's Deep Freeze panorama (tools/lookfeel264).
+            v264.panorama(ID + ":textures/gui/title/background/deep_freeze/panorama_")
+                    .panoramaOverlay(new ResourceLocation(ID, "textures/gui/title/background/panorama_overlay.png"));
         }
         v263.vanillaText(new ResourceLocation(ID, "vanilla_text"));
+        // 26.4's rewording (tools/lookfeel264): "Uh-Oh", "Oooh, Shiny!", the subtitles' "X is hurt", "Right-Click", ...,
+        // vanilla's keys and the family's own copies of them, in Mojang's 26.4 translations.
+        v264.vanillaText(new ResourceLocation(ID, "vanilla_text_264"));
+        if (cfg.pauseMenu) {
+            // 26.4's pause menu icon row: Friends, Other Players (Core's screen of the players here), Report Bugs, Feedback.
+            String others = "textures/gui/sprites/pause_menu/other_players.png";
+            v264.replaceAsset(others, vanilla(others));
+        }
         // 26.3's built-in High Contrast pack (tools/lookfeel/high_contrast.py): Core serves it while its High Contrast
         // option is on. Contribution.highContrast is Core 1.4.5's; on 1.4.4 there is no such option, so nothing to do.
         try {

@@ -14,3 +14,5 @@ resourcePack.openFolder=팩 폴더 열기
 resourcePack.folderInfo=(여기에 팩 파일을 놓으세요)
 resourcePack.available.title=사용 가능
 resourcePack.selected.title=선택됨
+advancements.husbandry.uh_oh.description=유황 큐브가 TNT 블록을 흡수하게 하세요
+advancements.husbandry.uh_oh.title=폭탄 받아라

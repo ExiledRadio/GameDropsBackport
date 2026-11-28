@@ -9,7 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=Zwavel- en cinnaberblokken, reactief zwa
 config.gamedropsbackport.sulfur.enabled.tooltip=Uit wordt er niets geregistreerd, en een wereld die ze heeft, raakt ze kwijt.
 config.gamedropsbackport.sulfurCube.tooltip=De zwavelkubus.
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Uit wordt er niets geregistreerd, en een wereld die ze heeft, raakt ze kwijt.
-config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Meer blokken die een zwavelkubus inslikt, één per regel: modid:blok=soort of modid:blok@meta=soort. De soorten zijn bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Blokken die een andere mod in het ertswoordenboek opneemt als steen, keien, stammen, planken, wol, ertsen of metaalblokken worden al ingeslikt.
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=Meer blokken die een zwavelkubus inslikt, één per regel: modid:blok=soort of modid:blok@meta=soort. De soorten zijn bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky. Blokken die een andere mod in het ertswoordenboek opneemt als steen, keien, stammen, planken, wol, ertsen of metaalblokken worden al ingeslikt.
 config.gamedropsbackport.sulfurCaves.tooltip=De zwavelgrotten en zwavelbronnen.
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=Zwavelgrotten en zwavelbronnen ontstaan in nieuw gegenereerde chunks.
 config.gamedropsbackport.poplar.tooltip=Populierenhout, de rode struik, elfenbankjes en het populierenbos.
@@ -30,6 +30,14 @@ config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=Het titelscherm van 26.
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=Het Wereldopties-scherm van 26.3 in het pauzemenu in plaats van Openen voor LAN; Moeilijkheid verlaat Opties.
 config.gamedropsbackport.changes.tooltip=De veranderingen van 26.x aan commando's, mobs, blokken en voorwerpen die 1.12.2 al heeft.
 config.gamedropsbackport.changes.enabled.tooltip=Uit zijn alle veranderingen hieronder uit en is het gedrag van 1.12.2 terug.
+config.gamedropsbackport.changes.snowOnPackedIce.tooltip=Sneeuwlagen kunnen op pakijs worden geplaatst en vallen erop (26.4).
+config.gamedropsbackport.changes.mushroomsAnyLight.tooltip=Paddenstoelen blijven op elk blok waarvan de bovenkant hun midden draagt, in elk licht; ze verspreiden zich nog steeds alleen bij licht onder 13 (26.4). De wereldgeneratie houdt de regel van 1.12.2.
+config.gamedropsbackport.changes.iceSounds.tooltip=IJs, pakijs, gerijpt ijs en blauw ijs klinken met de eigen geluidssets van 26.4, en ijs in een bevroren meer resoneert (26.4).
+config.gamedropsbackport.changes.iceFaces.tooltip=IJs en gerijpt ijs verbergen hun vlakken tegen ijs, gerijpt ijs en broos ijs (26.4).
+config.gamedropsbackport.changes.frostedIceVibrations.tooltip=Gerijpt ijs zendt een trilling uit telkens als het barst (26.4).
+config.gamedropsbackport.changes.snowballKnockback.tooltip=Sneeuwballen duwen spelers terug (26.4).
+config.gamedropsbackport.changes.steeringBoost.tooltip=Een wortel aan een stok versnelt een varken 7 tot 35 seconden in plaats van 7 tot 49 (26.4).
+config.gamedropsbackport.changes.dragonPerchThrown.tooltip=Een zittende Enderdraak krijgt geen schade van sneeuwballen, eieren, ijsbrokken of andere gegooide dingen (26.4).
 config.gamedropsbackport.changes.timeCommand.tooltip=/time werkt met wereldklokken: set day, noon, night en midnight gaan vooruit naar de volgende; pause, resume en rate; of <clock>; query voor tijd en tijdlijnen; de berichten van 26.1 (26.1).
 config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule antwoordt met de berichten van 26.x, en een regel op zijn huidige waarde zetten is een fout (26.3).
 config.gamedropsbackport.changes.teamColorNames.tooltip=Teamkleuren accepteren alleen hun kleine letters met underscores, zoals dark_purple (26.2).
@@ -57,6 +65,14 @@ config.gamedropsbackport.changes.hostGameModeDefault.tooltip=Als de host zijn ei
 config.gamedropsbackport.changes.advancementCounts.tooltip=/advancement grant en revoke nemen meerdere spelers en antwoorden zoals 26.3: hoeveel spelers en vooruitgangen, en alleen een fout als er niets veranderde (26.2, 26.3).
 config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join en leave antwoorden zoals /team in 26.3: de leden die erbij kwamen of vertrokken, en geen fout voor wie al in geen team zat (26.3).
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish sluit een wereld die voor LAN geopend is: andere spelers vertrekken en hij wordt niet meer aangekondigd (26.2).
+config.gamedropsbackport.iceBlocks.tooltip=De pakijsblokken, het gebeitelde pakijs en de sneeuwblokken van 26.4; de calcietset met Caves & Cliffs; gebeitelde zielenleisteen met Wild Update.
+config.gamedropsbackport.iceBlocks.enabled.tooltip=Uit wordt er niets geregistreerd, en een wereld die ze heeft, raakt ze kwijt.
+config.gamedropsbackport.iceCaves.tooltip=De ijsgrotten van 26.4: ijspegels, ijskristallen, broos ijs, gletsjerspleten en het bioom onder koud land.
+config.gamedropsbackport.iceCaves.enabled.tooltip=Uit wordt er niets geregistreerd, en een wereld die ze heeft, raakt ze kwijt.
+config.gamedropsbackport.frostbite.tooltip=De bevrorene van 26.4, ijsbrokken, het effect Bevriezing en zijn drankjes, en de veranderingen van zombie, mummie en drenkeling in poedersneeuw.
+config.gamedropsbackport.frostbite.enabled.tooltip=Uit wordt er niets geregistreerd, en een wereld die ze heeft, raakt ze kwijt.
+config.gamedropsbackport.jukebox.tooltip=De afspeellijsten van de platenspelers van 26.4 (de platen in een kist erbovenop) en de muziekplaat Flurry.
+config.gamedropsbackport.jukebox.enabled.tooltip=Uit wordt er niets geregistreerd, en een wereld die ze heeft, raakt ze kwijt.
 # --- end config tooltips ---
 
 # --- common ---
@@ -128,8 +144,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Giftig gas verschijn
 death.attack.gamedropsbackport.fallingStalactite=Een vallende stalactiet spietste %1$s
 death.attack.gamedropsbackport.fallingStalactite.player=Een vallende stalactiet spietste %1$s tijdens een gevecht met %2$s
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Laat een zwavelkubus een blok TNT absorberen
-advancements.husbandry.uh_oh.title=Oh nee...
 death.attack.sulfurCubeHot.item=%2$s liet %1$s met %3$s zien dat niet alleen de vloer lava is
 death.attack.sulfurCubeHot.player=%2$s liet %1$s zien dat niet alleen de vloer lava is
 death.attack.sulfurCubeHot=%1$s stierf, want niet alleen de vloer is lava
@@ -421,7 +435,7 @@ commands.time.pause.already_running=Klok %s loopt al
 commands.time.query.absolute=Klok %s staat op %s tick(s)
 commands.time.query.gametime=De speltijd is %s tick(s)
 commands.time.query.timeline=Tijdlijn %s staat op %s tick(s)
-commands.time.query.timeline.repetitions=Tijdlijn %s is %s keer herhaald
+commands.time.query.timeline.repetitions=Tijdlijn %s werd %s keer herhaald
 commands.time.rate=Klok %s gaat nu %s× de normale snelheid
 commands.time.rate.already_same=Klok %s gaat al %s× de normale snelheid
 commands.time.resume=Klok %s hervat
@@ -435,7 +449,7 @@ commands.gamerule.query=Spelregel %s is op dit moment '%s'
 commands.gamerule.set=Spelregel %s gewijzigd naar '%s'
 argument.resource.not_found=Element '%s' met type '%s' niet gevonden
 argument.time.invalid_unit=Ongeldige eenheid
-argument.time.tick_count_too_low=Aantal ticks mag niet lager zijn dan %s: %s gevonden
+argument.time.tick_count_too_low=Het aantal ticks mag niet kleiner zijn dan %s: %s gevonden
 argument.float.big=Zwevendekommagetal mag niet hoger zijn dan %s: %s gevonden
 argument.float.low=Zwevendekommagetal mag niet lager zijn dan %s: %s gevonden
 parsing.float.invalid=Ongeldig zwevendekommagetal: %s
@@ -471,3 +485,87 @@ commands.unpublish.notPublished=Geen samen spelen-spel gepubliceerd
 commands.unpublish.success=Samen spelen-spel is nu gesloten
 menu.multiplayerOptions.publish.stopped=Deze wereld is nu gesloten voor samen spelen
 team.notFound=Onbekend team: %s
+
+# --- iceblocks ---
+tile.gamedropsbackport.calcite_double_slab.name=Calcieten plaat
+tile.gamedropsbackport.calcite_pillar.name=Calcieten pilaar
+tile.gamedropsbackport.calcite_slab.name=Calcieten plaat
+tile.gamedropsbackport.calcite_stairs.name=Calcieten trap
+tile.gamedropsbackport.calcite_wall.name=Calcieten muur
+tile.gamedropsbackport.chiseled_packed_ice.name=Gebeiteld pakijs
+tile.gamedropsbackport.chiseled_soulshale.name=Gebeitelde zielenleisteen
+tile.gamedropsbackport.packed_ice_brick_double_slab.name=Pakijsblokken plaat
+tile.gamedropsbackport.packed_ice_brick_slab.name=Pakijsblokken plaat
+tile.gamedropsbackport.packed_ice_brick_stairs.name=Pakijsblokken trap
+tile.gamedropsbackport.packed_ice_brick_wall.name=Pakijsblokken muur
+tile.gamedropsbackport.packed_ice_bricks.name=Pakijsblokken
+tile.gamedropsbackport.polished_calcite.name=Gepolijst calciet
+tile.gamedropsbackport.polished_calcite_brick_double_slab.name=Gepolijste calcieten blokstenen plaat
+tile.gamedropsbackport.polished_calcite_brick_slab.name=Gepolijste calcieten blokstenen plaat
+tile.gamedropsbackport.polished_calcite_brick_stairs.name=Gepolijste calcieten blokstenen trap
+tile.gamedropsbackport.polished_calcite_brick_wall.name=Gepolijste calcieten blokstenen muur
+tile.gamedropsbackport.polished_calcite_bricks.name=Gepolijste calcieten blokstenen
+tile.gamedropsbackport.polished_calcite_double_slab.name=Gepolijste calcieten plaat
+tile.gamedropsbackport.polished_calcite_slab.name=Gepolijste calcieten plaat
+tile.gamedropsbackport.polished_calcite_stairs.name=Gepolijste calcieten trap
+tile.gamedropsbackport.polished_calcite_wall.name=Gepolijste calcieten muur
+tile.gamedropsbackport.snow_brick_double_slab.name=Sneeuwblokken plaat
+tile.gamedropsbackport.snow_brick_slab.name=Sneeuwblokken plaat
+tile.gamedropsbackport.snow_brick_stairs.name=Sneeuwblokken trap
+tile.gamedropsbackport.snow_brick_wall.name=Sneeuwblokken muur
+tile.gamedropsbackport.snow_bricks.name=Sneeuwblokken
+config.gamedropsbackport.iceBlocks=IJs- en sneeuwblokken
+config.gamedropsbackport.iceBlocks.enabled=Ingeschakeld
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=Broos ijs
+tile.gamedropsbackport.ice_crystal.name=IJskristal
+tile.gamedropsbackport.icicle.name=IJspegel
+subtitles.gamedropsbackport.block.brittle_ice.crack=Broos ijs kraakt
+subtitles.gamedropsbackport.block.ice_crystal.ambient=IJskristal klingelt
+subtitles.gamedropsbackport.block.icicle.land=IJspegel stort neer
+config.gamedropsbackport.iceCaves=IJsgrotten
+config.gamedropsbackport.iceCaves.enabled=Ingeschakeld
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=Bevrorene
+entity.gamedropsbackport.ice_ball.name=IJsbrok
+item.gamedropsbackport.ice_ball.name=IJsbrok
+effect.gamedropsbackport.freezing=Bevriezing
+potion.effect.gamedropsbackport.freezing=Drank der bevriezing
+splash_potion.effect.gamedropsbackport.freezing=Spattende drank der bevriezing
+lingering_potion.effect.gamedropsbackport.freezing=Aanhoudende drank der bevriezing
+tipped_arrow.effect.gamedropsbackport.freezing=Pijl der bevriezing
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=Wie de brok gooit, kan haar terug verwachten!
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=Dood een bevrorene met een ijsbrok
+config.gamedropsbackport.frostbite=Bevrorene
+config.gamedropsbackport.frostbite.enabled=Ingeschakeld
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=Drenkeling wordt zombie
+subtitles.gamedropsbackport.entity.frostbite.ambient=Bevrorene kreunt
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=Bevrorene wordt zombie
+subtitles.gamedropsbackport.entity.frostbite.death=Bevrorene sterft
+subtitles.gamedropsbackport.entity.frostbite.hurt=Bevrorene raakt gewond
+subtitles.gamedropsbackport.entity.frostbite.throw=Bevrorene gooit
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=Mummie werd een zombie
+subtitles.gamedropsbackport.entity.ice_ball.break=IJsbrok raakt
+subtitles.gamedropsbackport.entity.ice_ball.throw=IJsbrok wordt gegooid
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=Papegaai kreunt
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=Zombie wordt bevrorene
+subtitles.gamedropsbackport.event.mob_effect.freezing=Bevriezen begint
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=Muziekplaat
+item.record.flurry.desc=Hyper Potions - Flurry
+config.gamedropsbackport.jukebox=Platenspeler
+config.gamedropsbackport.jukebox.enabled=Ingeschakeld
+
+# --- changes264 ---
+subtitles.gamedropsbackport.block.ice.ambient=IJs resoneert
+config.gamedropsbackport.changes.snowOnPackedIce=Sneeuw op pakijs
+config.gamedropsbackport.changes.mushroomsAnyLight=Paddenstoelen in elk licht
+config.gamedropsbackport.changes.iceSounds=IJsgeluiden
+config.gamedropsbackport.changes.iceFaces=IJsvlakken
+config.gamedropsbackport.changes.frostedIceVibrations=Trillingen van gerijpt ijs
+config.gamedropsbackport.changes.snowballKnockback=Terugslag van sneeuwballen
+config.gamedropsbackport.changes.steeringBoost=Rijversnelling
+config.gamedropsbackport.changes.dragonPerchThrown=Zittende draak negeert gegooide dingen

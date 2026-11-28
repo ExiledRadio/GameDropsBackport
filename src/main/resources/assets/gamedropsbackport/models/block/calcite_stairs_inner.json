@@ -1,0 +1,8 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "bottom": "gamedropsbackport:block/calcite",
+    "side": "gamedropsbackport:block/calcite",
+    "top": "gamedropsbackport:block/calcite"
+  }
+}

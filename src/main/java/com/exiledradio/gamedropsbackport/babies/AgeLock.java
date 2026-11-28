@@ -133,7 +133,8 @@ public final class AgeLock {
             mob.enablePersistence();
         }
         SoundEvent sound = BabiesContent.sound(locked ? "item.golden_dandelion.use" : "item.golden_dandelion.unuse");
-        if (sound != null) {
+        // 26.4 Pre-Release 1: a silent mob makes no sound here either.
+        if (sound != null && !mob.isSilent()) {
             mob.world.playSound(null, mob.posX, mob.posY, mob.posZ, sound, SoundCategory.PLAYERS, 1.0F, 1.0F);
         }
         // Every player who sees the mob, the one using the dandelion included.

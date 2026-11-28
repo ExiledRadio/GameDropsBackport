@@ -14,3 +14,5 @@ resourcePack.openFolder=Abrir carpeta de paquetes
 resourcePack.folderInfo=(Coloca los archivos de paquetes aquí)
 resourcePack.available.title=Disponibles
 resourcePack.selected.title=Seleccionados
+advancements.husbandry.uh_oh.description=Haz que un cubo de azufre absorba un bloque de dinamita.
+advancements.husbandry.uh_oh.title=Esto no tiene buena pinta

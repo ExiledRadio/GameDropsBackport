@@ -121,15 +121,28 @@ final class LegacyRegions {
      * {@code /locate biome} in a world without 1.18 terrain: 1.12.2's column biomes know nothing under ground, so this
      * answers {@code sulfur_caves} where {@link #mask} would put the sulfur caves (the ground from Core's
      * {@code TerrainHeights}, without loading chunks; sea level where it has no answer), within 32 blocks of the height the
-     * search asks, and the world's layers
-     * everywhere else.
+     * search asks, and the sources before this one (else the world's layers) everywhere else. Not in Caves &amp;
+     * Cliffs' 1.18 terrain, with or without its own sulfur caves: there these patches are not made, and its own source
+     * answers.
      */
     static void locator() {
-        com.exiledradio.backportcore.locate.BiomeLocate.source(world -> {
-            if (!SulfurCaves.generates(world) || ModernClimate.modern(world)) {
+        com.exiledradio.backportcore.locate.BiomeLocate.source(new com.exiledradio.backportcore.locate.BiomeLocate.SamplerFactory() {
+            @Nullable
+            @Override
+            public com.exiledradio.backportcore.locate.BiomeLocate.Sampler forWorld(net.minecraft.world.WorldServer world) {
+                return sampler(this, world);
+            }
+        });
+    }
+
+    @Nullable
+    static com.exiledradio.backportcore.locate.BiomeLocate.Sampler sampler(com.exiledradio.backportcore.locate.BiomeLocate.SamplerFactory self,
+            net.minecraft.world.WorldServer world) {
+        {
+            if (!SulfurCaves.generates(world) || ModernClimate.onModernTerrain(world)) {
                 return null;
             }
-            com.exiledradio.backportcore.locate.BiomeLocate.Sampler layers = com.exiledradio.backportcore.locate.BiomeLocate.layers(world);
+            com.exiledradio.backportcore.locate.BiomeLocate.Sampler layers = com.exiledradio.backportcore.locate.BiomeLocate.next(self, world);
             com.exiledradio.backportcore.terrain.TerrainHeights terrain = com.exiledradio.backportcore.terrain.TerrainHeights.forWorld(world);
             long seed = world.getSeed();
             double scale = SulfurCaves.extended(world) ? 128.0 : 128.0 * 256.0 / 384.0;
@@ -147,7 +160,7 @@ final class LegacyRegions {
                 }
                 return layers.biome(x, y, z);
             };
-        });
+        }
     }
 
     private static Method lush, dripstone;

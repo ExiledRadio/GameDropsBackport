@@ -32,7 +32,7 @@ final class ScaffoldSelfTest implements SelfTest {
     public void run(Check check) throws Exception {
         check.ok(Loader.isModLoaded(GameDropsBackport.MOD_ID), "the mod is loaded");
         check.ok(Loader.isModLoaded("backportcore"), "Backport Core is loaded");
-        check.eq("1.0.4", Loader.instance().getIndexedModList().get(GameDropsBackport.MOD_ID).getVersion(), "mod version");
+        check.eq("1.1.0", Loader.instance().getIndexedModList().get(GameDropsBackport.MOD_ID).getVersion(), "mod version");
 
         Set<String> lang = langKeys();
         check.ok(lang.size() > 0, "en_us.lang has keys");
@@ -59,7 +59,7 @@ final class ScaffoldSelfTest implements SelfTest {
             Object value = category.get(null);
             check.eq(Boolean.TRUE, value.getClass().getField("enabled").get(value), category.getName() + ".enabled default");
         }
-        check.eq(9, categoryKeys.size(), "config categories (one per planned stream)");
+        check.eq(13, categoryKeys.size(), "config categories (one per planned stream)");
 
         SettingsModel.Page page = BackportSettings.page(GameDropsBackport.MOD_ID);
         if (check.ok(page != null, "Backport Core's settings screen has this mod's page")) {

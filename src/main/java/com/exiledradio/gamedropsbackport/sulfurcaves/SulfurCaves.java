@@ -276,7 +276,7 @@ public final class SulfurCaves {
 
     /** @return the 1.18 terrain's biome id at a block, or null in a world without it (Core's {@code ModernGeneration}) */
     @Nullable
-    static String modernBiome(World world, BlockPos pos) {
+    public static String modernBiome(World world, BlockPos pos) {
         Method m = method();
         if (m == null) {
             return null;

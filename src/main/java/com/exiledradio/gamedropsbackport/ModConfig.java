@@ -74,6 +74,54 @@ public final class ModConfig {
 
     // ------------------------------------------------------------------------------------------
 
+    @Setting.Feature(icon = "gamedropsbackport:packed_ice_bricks|minecraft:packed_ice")
+    @Config.LangKey("config.gamedropsbackport.iceBlocks")
+    @Config.Comment("26.4's packed ice bricks, chiseled packed ice and snow bricks; the calcite set with Caves & Cliffs; chiseled soulshale with Wild Update.")
+    public static final IceBlocks iceBlocks = new IceBlocks();
+
+    @Setting.Feature(icon = "gamedropsbackport:icicle|minecraft:packed_ice")
+    @Config.LangKey("config.gamedropsbackport.iceCaves")
+    @Config.Comment("26.4's ice caves: icicles, ice crystals, brittle ice, crevasses and the biome under cold land.")
+    public static final IceCaves iceCaves = new IceCaves();
+
+    @Setting.Feature(icon = "gamedropsbackport:ice_ball|minecraft:snowball")
+    @Config.LangKey("config.gamedropsbackport.frostbite")
+    @Config.Comment("26.4's frostbite, ice balls, the Freezing effect and its potions, and the zombie, husk and drowned conversions in powder snow.")
+    public static final Frostbite frostbite = new Frostbite();
+
+    @Setting.Feature(icon = "gamedropsbackport:music_disc_flurry|minecraft:jukebox")
+    @Config.LangKey("config.gamedropsbackport.jukebox")
+    @Config.Comment("26.4's jukebox playlists (the discs in a chest on top) and the music disc Flurry.")
+    public static final Jukebox jukebox = new Jukebox();
+
+    public static final class Jukebox {
+        @Config.RequiresMcRestart
+        @Config.Comment("Off, nothing is registered, and a world that has them loses them.")
+        @Config.LangKey("config.gamedropsbackport.jukebox.enabled")
+        public boolean enabled = true;
+    }
+
+    public static final class Frostbite {
+        @Config.RequiresMcRestart
+        @Config.Comment("Off, nothing is registered, and a world that has them loses them.")
+        @Config.LangKey("config.gamedropsbackport.frostbite.enabled")
+        public boolean enabled = true;
+    }
+
+    public static final class IceCaves {
+        @Config.RequiresMcRestart
+        @Config.Comment("Off, nothing is registered, and a world that has them loses them.")
+        @Config.LangKey("config.gamedropsbackport.iceCaves.enabled")
+        public boolean enabled = true;
+    }
+
+    public static final class IceBlocks {
+        @Config.RequiresMcRestart
+        @Config.Comment("Off, nothing is registered, and a world that has them loses them.")
+        @Config.LangKey("config.gamedropsbackport.iceBlocks.enabled")
+        public boolean enabled = true;
+    }
+
     public static final class Babies {
         @Config.RequiresMcRestart
         @Config.Comment("Off, nothing is registered, and a world that has them loses them.")
@@ -107,7 +155,7 @@ public final class ModConfig {
         // --- SulfurCube fields ---
         @Config.RequiresMcRestart
         @Config.Comment("More blocks a sulfur cube swallows, one per line: modid:block=kind or modid:block@meta=kind. "
-                + "The kinds are bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, "
+                + "The kinds are bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, "
                 + "slow_bouncy, slow_flat, slow_sliding and sticky. Blocks another mod lists in the ore dictionary as "
                 + "stone, cobblestone, logs, planks, wool, ores or metal blocks are swallowed already.")
         @Config.LangKey("config.gamedropsbackport.sulfurCube.extraBlocks")
@@ -218,6 +266,39 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Changes fields ---
+        @Config.Comment("Snow layers can be placed and fall on packed ice (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.snowOnPackedIce")
+        public boolean snowOnPackedIce = true;
+
+        @Config.Comment({"Mushrooms stay on any block whose top supports their middle, in any light; they still spread only in",
+                "light under 13 (26.4). World generation keeps 1.12.2's rule."})
+        @Config.LangKey("config.gamedropsbackport.changes.mushroomsAnyLight")
+        public boolean mushroomsAnyLight = true;
+
+        @Config.Comment("Ice, packed ice, frosted ice and blue ice sound as 26.4's own sets, and ice in a frozen lake resonates (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.iceSounds")
+        public boolean iceSounds = true;
+
+        @Config.Comment("Ice and frosted ice hide their faces against ice, frosted ice and brittle ice (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.iceFaces")
+        public boolean iceFaces = true;
+
+        @Config.Comment("Frosted ice sends a vibration each time it cracks (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.frostedIceVibrations")
+        public boolean frostedIceVibrations = true;
+
+        @Config.Comment("Snowballs knock players back (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.snowballKnockback")
+        public boolean snowballKnockback = true;
+
+        @Config.Comment("A carrot on a stick boosts a pig for 7 to 35 seconds instead of 7 to 49 (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.steeringBoost")
+        public boolean steeringBoost = true;
+
+        @Config.Comment("A perching ender dragon takes no damage from snowballs, eggs, ice balls or other thrown things (26.4).")
+        @Config.LangKey("config.gamedropsbackport.changes.dragonPerchThrown")
+        public boolean dragonPerchThrown = true;
+
         @Config.Comment({"/time runs on world clocks: set day, noon, night and midnight go forward to the next one; pause,",
                 "resume and rate; of <clock>; query time and timelines; 26.1's messages (26.1)."})
         @Config.LangKey("config.gamedropsbackport.changes.timeCommand")

@@ -14,3 +14,5 @@ resourcePack.openFolder=Abrir pasta de pacotes
 resourcePack.folderInfo=(Coloque os arquivos dos pacotes aqui)
 resourcePack.available.title=Disponíveis
 resourcePack.selected.title=Selecionados
+advancements.husbandry.uh_oh.description=Faça um Cubo de Enxofre absorver um bloco de TNT
+advancements.husbandry.uh_oh.title=Eita...

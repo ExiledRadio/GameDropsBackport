@@ -322,12 +322,17 @@ final class ClientScenes {
                 this.t.ok(UndergroundBiomes.at(this.mc.world, UNDER) == SulfurCavesContent.biome,
                         "underground biome spans reach the client: " + UndergroundBiomes.at(this.mc.world, UNDER));
                 this.t.ok(UndergroundBiomes.at(this.mc.world, UNDER.up(20)) == null, "not above the span");
+                // Core's 1.13 Biome Blend defaults to 1.13's radius 2 (5x5); the span here is 3x3, so read at radius 1.
+                com.exiledradio.backportcore.presentation.option.SliderOption blend = com.exiledradio.backportcore.presentation.versions.Look113.BIOME_BLEND;
+                double radius = blend.get();
+                blend.set(1.0);
                 int grass = net.minecraft.world.biome.BiomeColorHelper.getGrassColorAtPos(this.mc.world, UNDER);
                 this.t.ok(grass == 0xABA64F, "grass color there is the sulfur caves' (P44): " + Integer.toHexString(grass));
                 int water = net.minecraft.world.biome.BiomeColorHelper.getWaterColorAtPos(this.mc.world, UNDER);
                 this.t.ok(water == 0x34BF89, "water color there is the sulfur caves': " + Integer.toHexString(water));
                 int above = net.minecraft.world.biome.BiomeColorHelper.getGrassColorAtPos(this.mc.world, UNDER.up(20));
                 this.t.ok(above != 0xABA64F, "and the column's own above: " + Integer.toHexString(above));
+                blend.set(radius);
                 java.util.List<String> left = new java.util.ArrayList<String>(java.util.Arrays.asList("Biome: Plains"));
                 com.exiledradio.backportcore.presentation.client.DebugText.apply(
                         new com.exiledradio.backportcore.presentation.client.DebugText.Lines(left, new java.util.ArrayList<String>(), this.mc, 0F));

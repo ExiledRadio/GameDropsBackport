@@ -1,0 +1,13 @@
+entity.drowned.converted_to_zombie
+entity.frostbite.ambient
+entity.frostbite.converted_to_zombie
+entity.frostbite.death
+entity.frostbite.hurt
+entity.frostbite.step
+entity.frostbite.throw
+entity.husk.converted_to_zombie
+entity.ice_ball.break
+entity.ice_ball.throw
+entity.parrot.imitate.frostbite
+entity.zombie.converted_to_frostbite
+event.mob_effect.freezing

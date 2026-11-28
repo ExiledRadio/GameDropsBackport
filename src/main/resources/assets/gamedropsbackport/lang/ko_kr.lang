@@ -9,7 +9,7 @@ config.gamedropsbackport.sulfur.tooltip=유황과 진사 블록, 독한 유황, 
 config.gamedropsbackport.sulfur.enabled.tooltip=끄면 아무것도 등록되지 않으며, 이것들이 있는 세계에서는 사라집니다.
 config.gamedropsbackport.sulfurCube.tooltip=유황 큐브.
 config.gamedropsbackport.sulfurCube.enabled.tooltip=끄면 아무것도 등록되지 않으며, 이것들이 있는 세계에서는 사라집니다.
-config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=유황 큐브가 삼키는 블록을 한 줄에 하나씩 추가합니다: modid:block=종류 또는 modid:block@meta=종류. 종류는 bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky입니다. 다른 모드가 광석 사전에 돌, 조약돌, 원목, 판자, 양털, 광석, 금속 블록으로 등록한 블록은 이미 삼킵니다.
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=유황 큐브가 삼키는 블록을 한 줄에 하나씩 추가합니다: modid:block=종류 또는 modid:block@meta=종류. 종류는 bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding, sticky입니다. 다른 모드가 광석 사전에 돌, 조약돌, 원목, 판자, 양털, 광석, 금속 블록으로 등록한 블록은 이미 삼킵니다.
 config.gamedropsbackport.sulfurCaves.tooltip=유황 동굴과 유황천.
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=유황 동굴과 유황천이 새로 생성되는 청크에 생성됩니다.
 config.gamedropsbackport.poplar.tooltip=포플러나무 목재, 붉은 관목, 선반 버섯, 얼룩덜룩한 숲.
@@ -30,6 +30,14 @@ config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=26.2 타이틀 화면: 
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=LAN에 공개 대신 일시 정지 메뉴에 26.3의 월드 옵션 화면. 난이도는 설정 화면에서 빠집니다.
 config.gamedropsbackport.changes.tooltip=1.12.2에 이미 있는 명령어, 몹, 블록, 아이템에 대한 26.x의 변경 사항입니다.
 config.gamedropsbackport.changes.enabled.tooltip=끄면 아래의 모든 변경이 꺼지고 1.12.2의 동작으로 돌아갑니다.
+config.gamedropsbackport.changes.snowOnPackedIce.tooltip=눈 층을 꽁꽁 언 얼음 위에 놓을 수 있고, 그 위에 쌓입니다 (26.4).
+config.gamedropsbackport.changes.mushroomsAnyLight.tooltip=버섯은 윗면이 가운데를 받쳐 주는 모든 블록 위에 어떤 밝기에서도 남아 있습니다. 퍼지는 것은 여전히 밝기 13 미만일 때뿐입니다 (26.4). 월드 생성은 1.12.2의 규칙을 유지합니다.
+config.gamedropsbackport.changes.iceSounds.tooltip=얼음, 꽁꽁 언 얼음, 살얼음, 푸른얼음이 26.4 고유의 소리를 내고, 언 호수의 얼음이 울립니다 (26.4).
+config.gamedropsbackport.changes.iceFaces.tooltip=얼음과 살얼음은 얼음, 살얼음, 약한 얼음과 맞닿은 면을 숨깁니다 (26.4).
+config.gamedropsbackport.changes.frostedIceVibrations.tooltip=살얼음은 금이 갈 때마다 진동을 보냅니다 (26.4).
+config.gamedropsbackport.changes.snowballKnockback.tooltip=눈덩이가 플레이어를 밀쳐냅니다 (26.4).
+config.gamedropsbackport.changes.steeringBoost.tooltip=당근 낚싯대가 돼지를 7~49초 대신 7~35초 동안 가속합니다 (26.4).
+config.gamedropsbackport.changes.dragonPerchThrown.tooltip=앉아 있는 엔더 드래곤은 눈덩이, 달걀, 얼음덩이 등 던진 것에 피해를 입지 않습니다 (26.4).
 config.gamedropsbackport.changes.timeCommand.tooltip=/time이 월드 시계로 동작합니다. set day, noon, night, midnight은 다음 해당 시각까지 진행하고, pause, resume, rate, of <clock>, 시간과 타임라인 query도 쓸 수 있습니다. 메시지는 26.1의 것입니다 (26.1).
 config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule이 26.x의 메시지로 응답하며, 규칙을 현재 값으로 설정하면 오류가 됩니다 (26.3).
 config.gamedropsbackport.changes.teamColorNames.tooltip=팀 색상은 dark_purple처럼 밑줄이 있는 소문자 이름만 받습니다 (26.2).
@@ -57,6 +65,14 @@ config.gamedropsbackport.changes.hostGameModeDefault.tooltip=호스트가 /gamem
 config.gamedropsbackport.changes.advancementCounts.tooltip=/advancement grant와 revoke가 여러 플레이어를 받고 26.3처럼 응답합니다: 플레이어와 발전 과제의 수, 아무것도 바뀌지 않았을 때만 오류 (26.2, 26.3).
 config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join과 leave가 26.3의 /team처럼 응답합니다: 참가하거나 나간 구성원, 이미 팀에 없는 구성원은 오류 없음 (26.3).
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish로 LAN에 공개한 세계를 닫습니다. 다른 플레이어는 나가고 더 이상 목록에 표시되지 않습니다 (26.2).
+config.gamedropsbackport.iceBlocks.tooltip=26.4의 꽁꽁 언 얼음 벽돌, 조각된 꽁꽁 언 얼음, 눈 벽돌. Caves & Cliffs가 있으면 방해석 블록, Wild Update가 있으면 조각된 영혼셰일.
+config.gamedropsbackport.iceBlocks.enabled.tooltip=끄면 아무것도 등록되지 않으며, 이것들이 있는 세계에서는 사라집니다.
+config.gamedropsbackport.iceCaves.tooltip=26.4의 얼음 동굴: 고드름, 얼음 수정, 약한 얼음, 크레바스, 추운 땅 아래의 생물 군계.
+config.gamedropsbackport.iceCaves.enabled.tooltip=끄면 아무것도 등록되지 않으며, 이것들이 있는 세계에서는 사라집니다.
+config.gamedropsbackport.frostbite.tooltip=26.4의 프로스트바이트, 얼음덩이, 빙결 효과와 그 물약, 가루눈 속에서 좀비, 허스크, 드라운드의 변환.
+config.gamedropsbackport.frostbite.enabled.tooltip=끄면 아무것도 등록되지 않으며, 이것들이 있는 세계에서는 사라집니다.
+config.gamedropsbackport.jukebox.tooltip=26.4의 주크박스 재생 목록(위에 놓인 상자 안의 음반)과 음반 Flurry.
+config.gamedropsbackport.jukebox.enabled.tooltip=끄면 아무것도 등록되지 않으며, 이것들이 있는 세계에서는 사라집니다.
 # --- end config tooltips ---
 
 # --- common ---
@@ -128,8 +144,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=유독 가스가 올
 death.attack.gamedropsbackport.fallingStalactite=%1$s이(가) 떨어지는 종유석에 찔렸습니다
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s이(가) %2$s과(와) 싸우다가 떨어지는 종유석에 찔렸습니다
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=유황 큐브가 TNT 블록을 흡수하게 하세요
-advancements.husbandry.uh_oh.title=폭탄 받아라
 death.attack.sulfurCubeHot.item=%3$s을(를) 사용한 %2$s이(가) %1$s에게 바닥만 용암인 것은 아니었음을 보여주었습니다
 death.attack.sulfurCubeHot.player=%2$s이(가) %1$s에게 바닥만 용암인 것은 아니었음을 보여주었습니다
 death.attack.sulfurCubeHot=%1$s이(가) 바닥만 용암인 것은 아니어서 죽었습니다
@@ -471,3 +485,87 @@ commands.unpublish.notPublished=멀티플레이 게임을 호스트하고 있지
 commands.unpublish.success=이제 멀티플레이 게임을 호스트하지 않습니다
 menu.multiplayerOptions.publish.stopped=이 세계는 더 이상 멀티플레이에 공개되지 않습니다
 team.notFound='%s'은(는) 알 수 없는 팀입니다
+
+# --- iceblocks ---
+tile.gamedropsbackport.calcite_double_slab.name=방해석 반 블록
+tile.gamedropsbackport.calcite_pillar.name=방해석 기둥
+tile.gamedropsbackport.calcite_slab.name=방해석 반 블록
+tile.gamedropsbackport.calcite_stairs.name=방해석 계단
+tile.gamedropsbackport.calcite_wall.name=방해석 담장
+tile.gamedropsbackport.chiseled_packed_ice.name=조각된 꽁꽁 언 얼음
+tile.gamedropsbackport.chiseled_soulshale.name=조각된 영혼셰일
+tile.gamedropsbackport.packed_ice_brick_double_slab.name=꽁꽁 언 얼음 벽돌 반 블록
+tile.gamedropsbackport.packed_ice_brick_slab.name=꽁꽁 언 얼음 벽돌 반 블록
+tile.gamedropsbackport.packed_ice_brick_stairs.name=꽁꽁 언 얼음 벽돌 계단
+tile.gamedropsbackport.packed_ice_brick_wall.name=꽁꽁 언 얼음 벽돌 담장
+tile.gamedropsbackport.packed_ice_bricks.name=꽁꽁 언 얼음 벽돌
+tile.gamedropsbackport.polished_calcite.name=윤나는 방해석
+tile.gamedropsbackport.polished_calcite_brick_double_slab.name=윤나는 방해석 벽돌 반 블록
+tile.gamedropsbackport.polished_calcite_brick_slab.name=윤나는 방해석 벽돌 반 블록
+tile.gamedropsbackport.polished_calcite_brick_stairs.name=윤나는 방해석 벽돌 계단
+tile.gamedropsbackport.polished_calcite_brick_wall.name=윤나는 방해석 벽돌 담장
+tile.gamedropsbackport.polished_calcite_bricks.name=윤나는 방해석 벽돌
+tile.gamedropsbackport.polished_calcite_double_slab.name=윤나는 방해석 반 블록
+tile.gamedropsbackport.polished_calcite_slab.name=윤나는 방해석 반 블록
+tile.gamedropsbackport.polished_calcite_stairs.name=윤나는 방해석 계단
+tile.gamedropsbackport.polished_calcite_wall.name=윤나는 방해석 담장
+tile.gamedropsbackport.snow_brick_double_slab.name=눈 벽돌 반 블록
+tile.gamedropsbackport.snow_brick_slab.name=눈 벽돌 반 블록
+tile.gamedropsbackport.snow_brick_stairs.name=눈 벽돌 계단
+tile.gamedropsbackport.snow_brick_wall.name=눈 벽돌 담장
+tile.gamedropsbackport.snow_bricks.name=눈 벽돌
+config.gamedropsbackport.iceBlocks=얼음과 눈 블록
+config.gamedropsbackport.iceBlocks.enabled=활성화
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=약한 얼음
+tile.gamedropsbackport.ice_crystal.name=얼음 수정
+tile.gamedropsbackport.icicle.name=고드름
+subtitles.gamedropsbackport.block.brittle_ice.crack=약한 얼음에 금이 감
+subtitles.gamedropsbackport.block.ice_crystal.ambient=얼음 수정이 울림
+subtitles.gamedropsbackport.block.icicle.land=고드름이 떨어져 깨짐
+config.gamedropsbackport.iceCaves=얼음 동굴
+config.gamedropsbackport.iceCaves.enabled=활성화
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=프로스트바이트
+entity.gamedropsbackport.ice_ball.name=얼음덩이
+item.gamedropsbackport.ice_ball.name=얼음덩이
+effect.gamedropsbackport.freezing=빙결
+potion.effect.gamedropsbackport.freezing=빙결의 물약
+splash_potion.effect.gamedropsbackport.freezing=투척용 빙결의 물약
+lingering_potion.effect.gamedropsbackport.freezing=잔류형 빙결의 물약
+tipped_arrow.effect.gamedropsbackport.freezing=빙결의 화살
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=인과응보
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=얼음덩이를 던져 프로스트바이트를 죽이세요
+config.gamedropsbackport.frostbite=프로스트바이트
+config.gamedropsbackport.frostbite.enabled=활성화
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=드라운드가 좀비로 변함
+subtitles.gamedropsbackport.entity.frostbite.ambient=프로스트바이트가 그르렁거림
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=프로스트바이트가 좀비로 변함
+subtitles.gamedropsbackport.entity.frostbite.death=프로스트바이트가 죽음
+subtitles.gamedropsbackport.entity.frostbite.hurt=프로스트바이트가 상처를 입음
+subtitles.gamedropsbackport.entity.frostbite.throw=프로스트바이트가 얼음덩이를 던짐
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=허스크가 좀비로 변함
+subtitles.gamedropsbackport.entity.ice_ball.break=얼음덩이가 명중함
+subtitles.gamedropsbackport.entity.ice_ball.throw=얼음덩이를 던짐
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=앵무새가 그르렁거리는 소리를 흉내 냄
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=좀비가 프로스트바이트로 변함
+subtitles.gamedropsbackport.event.mob_effect.freezing=얼어붙기 시작함
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=음반
+item.record.flurry.desc=Hyper Potions - Flurry
+config.gamedropsbackport.jukebox=주크박스
+config.gamedropsbackport.jukebox.enabled=활성화
+
+# --- changes264 ---
+subtitles.gamedropsbackport.block.ice.ambient=얼음이 공명함
+config.gamedropsbackport.changes.snowOnPackedIce=꽁꽁 언 얼음 위의 눈
+config.gamedropsbackport.changes.mushroomsAnyLight=모든 밝기의 버섯
+config.gamedropsbackport.changes.iceSounds=얼음 소리
+config.gamedropsbackport.changes.iceFaces=얼음 면
+config.gamedropsbackport.changes.frostedIceVibrations=살얼음 진동
+config.gamedropsbackport.changes.snowballKnockback=눈덩이 밀치기
+config.gamedropsbackport.changes.steeringBoost=탑승 가속
+config.gamedropsbackport.changes.dragonPerchThrown=앉은 드래곤은 던진 것을 무시

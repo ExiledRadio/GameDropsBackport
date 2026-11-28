@@ -1,0 +1,8 @@
+{
+  "parent": "gamedropsbackport:block/template_icicle_base",
+  "textures": {
+    "cross": "gamedropsbackport:block/icicle_tip_merge",
+    "side": "gamedropsbackport:block/icicle_side",
+    "top": "gamedropsbackport:block/icicle_top"
+  }
+}

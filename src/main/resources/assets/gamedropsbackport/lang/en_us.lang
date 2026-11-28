@@ -8,7 +8,7 @@ config.gamedropsbackport.sulfur.tooltip=Sulfur and cinnabar blocks, potent sulfu
 config.gamedropsbackport.sulfur.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
 config.gamedropsbackport.sulfurCube.tooltip=The sulfur cube.
 config.gamedropsbackport.sulfurCube.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
-config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=More blocks a sulfur cube swallows, one per line: modid:block=kind or modid:block@meta=kind. The kinds are bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding and sticky. Blocks another mod lists in the ore dictionary as stone, cobblestone, logs, planks, wool, ores or metal blocks are swallowed already.
+config.gamedropsbackport.sulfurCube.extraBlocks.tooltip=More blocks a sulfur cube swallows, one per line: modid:block=kind or modid:block@meta=kind. The kinds are bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, regular, slow_bouncy, slow_flat, slow_sliding and sticky. Blocks another mod lists in the ore dictionary as stone, cobblestone, logs, planks, wool, ores or metal blocks are swallowed already.
 config.gamedropsbackport.sulfurCaves.tooltip=The sulfur caves and sulfur springs.
 config.gamedropsbackport.sulfurCaves.enabled.tooltip=Sulfur caves and sulfur springs generate in newly generated chunks.
 config.gamedropsbackport.poplar.tooltip=Poplar wood, the red shrub, shelf mushrooms and the dappled forest.
@@ -29,6 +29,14 @@ config.gamedropsbackport.lookAndFeel.titleScreen.tooltip=26.2's title screen: Fr
 config.gamedropsbackport.lookAndFeel.worldOptions.tooltip=26.3's World Options screen on the pause menu, in place of Open to LAN; Difficulty leaves the Options screen.
 config.gamedropsbackport.changes.tooltip=26.x's changes to commands, mobs, blocks and items 1.12.2 already has.
 config.gamedropsbackport.changes.enabled.tooltip=Off, every change below is off and 1.12.2's behavior is back.
+config.gamedropsbackport.changes.snowOnPackedIce.tooltip=Snow layers can be placed and fall on packed ice (26.4).
+config.gamedropsbackport.changes.mushroomsAnyLight.tooltip=Mushrooms stay on any block whose top supports their middle, in any light; they still spread only in light under 13 (26.4). World generation keeps 1.12.2's rule.
+config.gamedropsbackport.changes.iceSounds.tooltip=Ice, packed ice, frosted ice and blue ice sound as 26.4's own sets, and ice in a frozen lake resonates (26.4).
+config.gamedropsbackport.changes.iceFaces.tooltip=Ice and frosted ice hide their faces against ice, frosted ice and brittle ice (26.4).
+config.gamedropsbackport.changes.frostedIceVibrations.tooltip=Frosted ice sends a vibration each time it cracks (26.4).
+config.gamedropsbackport.changes.snowballKnockback.tooltip=Snowballs knock players back (26.4).
+config.gamedropsbackport.changes.steeringBoost.tooltip=A carrot on a stick boosts a pig for 7 to 35 seconds instead of 7 to 49 (26.4).
+config.gamedropsbackport.changes.dragonPerchThrown.tooltip=A perching ender dragon takes no damage from snowballs, eggs, ice balls or other thrown things (26.4).
 config.gamedropsbackport.changes.timeCommand.tooltip=/time runs on world clocks: set day, noon, night and midnight go forward to the next one; pause, resume and rate; of <clock>; query time and timelines; 26.1's messages (26.1).
 config.gamedropsbackport.changes.gameRuleMessages.tooltip=/gamerule answers with 26.x's messages, and setting a rule to its current value is an error (26.3).
 config.gamedropsbackport.changes.teamColorNames.tooltip=Team colors take only their lowercase names with underscores, such as dark_purple (26.2).
@@ -56,6 +64,14 @@ config.gamedropsbackport.changes.hostGameModeDefault.tooltip=The host changing t
 config.gamedropsbackport.changes.advancementCounts.tooltip=/advancement grant and revoke take several players and answer as 26.3 does: how many players and advancements, and an error only when nothing changed (26.2, 26.3).
 config.gamedropsbackport.changes.teamJoinCounts.tooltip=/scoreboard teams join and leave answer as 26.3's /team does: the members that joined or left, and no error for those already out of a team (26.3).
 config.gamedropsbackport.changes.unpublish.tooltip=/unpublish closes a world opened to LAN: other players leave and it stops being listed (26.2).
+config.gamedropsbackport.iceBlocks.tooltip=26.4's packed ice bricks, chiseled packed ice and snow bricks; the calcite set with Caves & Cliffs; chiseled soulshale with Wild Update.
+config.gamedropsbackport.iceBlocks.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
+config.gamedropsbackport.iceCaves.tooltip=26.4's ice caves: icicles, ice crystals, brittle ice, crevasses and the biome under cold land.
+config.gamedropsbackport.iceCaves.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
+config.gamedropsbackport.frostbite.tooltip=26.4's frostbite, ice balls, the Freezing effect and its potions, and the zombie, husk and drowned conversions in powder snow.
+config.gamedropsbackport.frostbite.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
+config.gamedropsbackport.jukebox.tooltip=26.4's jukebox playlists (the discs in a chest on top) and the music disc Flurry.
+config.gamedropsbackport.jukebox.enabled.tooltip=Off, nothing is registered, and a world that has them loses them.
 # --- end config tooltips ---
 
 # --- common ---
@@ -127,8 +143,6 @@ subtitles.gamedropsbackport.block.potent_sulfur.noxious_gas=Noxious gas appears
 death.attack.gamedropsbackport.fallingStalactite=%1$s was skewered by a falling stalactite
 death.attack.gamedropsbackport.fallingStalactite.player=%1$s was skewered by a falling stalactite while fighting %2$s
 # --- sulfurcube ---
-advancements.husbandry.uh_oh.description=Have a Sulfur Cube absorb a TNT block
-advancements.husbandry.uh_oh.title=Uh Oh
 death.attack.sulfurCubeHot.item=%2$s showed %1$s that not just the floor is lava using %3$s
 death.attack.sulfurCubeHot.player=%2$s showed %1$s that not just the floor is lava
 death.attack.sulfurCubeHot=%1$s died because not just the floor is lava
@@ -470,3 +484,87 @@ commands.unpublish.notPublished=No multiplayer game published
 commands.unpublish.success=Multiplayer game is now unpublished
 menu.multiplayerOptions.publish.stopped=This world is no longer open to multiplayer
 team.notFound=Unknown team '%s'
+
+# --- iceblocks ---
+tile.gamedropsbackport.calcite_double_slab.name=Calcite Slab
+tile.gamedropsbackport.calcite_pillar.name=Calcite Pillar
+tile.gamedropsbackport.calcite_slab.name=Calcite Slab
+tile.gamedropsbackport.calcite_stairs.name=Calcite Stairs
+tile.gamedropsbackport.calcite_wall.name=Calcite Wall
+tile.gamedropsbackport.chiseled_packed_ice.name=Chiseled Packed Ice
+tile.gamedropsbackport.chiseled_soulshale.name=Chiseled Soulshale
+tile.gamedropsbackport.packed_ice_brick_double_slab.name=Packed Ice Brick Slab
+tile.gamedropsbackport.packed_ice_brick_slab.name=Packed Ice Brick Slab
+tile.gamedropsbackport.packed_ice_brick_stairs.name=Packed Ice Brick Stairs
+tile.gamedropsbackport.packed_ice_brick_wall.name=Packed Ice Brick Wall
+tile.gamedropsbackport.packed_ice_bricks.name=Packed Ice Bricks
+tile.gamedropsbackport.polished_calcite.name=Polished Calcite
+tile.gamedropsbackport.polished_calcite_brick_double_slab.name=Polished Calcite Brick Slab
+tile.gamedropsbackport.polished_calcite_brick_slab.name=Polished Calcite Brick Slab
+tile.gamedropsbackport.polished_calcite_brick_stairs.name=Polished Calcite Brick Stairs
+tile.gamedropsbackport.polished_calcite_brick_wall.name=Polished Calcite Brick Wall
+tile.gamedropsbackport.polished_calcite_bricks.name=Polished Calcite Bricks
+tile.gamedropsbackport.polished_calcite_double_slab.name=Polished Calcite Slab
+tile.gamedropsbackport.polished_calcite_slab.name=Polished Calcite Slab
+tile.gamedropsbackport.polished_calcite_stairs.name=Polished Calcite Stairs
+tile.gamedropsbackport.polished_calcite_wall.name=Polished Calcite Wall
+tile.gamedropsbackport.snow_brick_double_slab.name=Snow Brick Slab
+tile.gamedropsbackport.snow_brick_slab.name=Snow Brick Slab
+tile.gamedropsbackport.snow_brick_stairs.name=Snow Brick Stairs
+tile.gamedropsbackport.snow_brick_wall.name=Snow Brick Wall
+tile.gamedropsbackport.snow_bricks.name=Snow Bricks
+config.gamedropsbackport.iceBlocks=Ice and Snow Blocks
+config.gamedropsbackport.iceBlocks.enabled=Enabled
+
+# --- icecaves ---
+tile.gamedropsbackport.brittle_ice.name=Brittle Ice
+tile.gamedropsbackport.ice_crystal.name=Ice Crystal
+tile.gamedropsbackport.icicle.name=Icicle
+subtitles.gamedropsbackport.block.brittle_ice.crack=Brittle Ice cracks
+subtitles.gamedropsbackport.block.ice_crystal.ambient=Ice Crystal chimes
+subtitles.gamedropsbackport.block.icicle.land=Icicle crashes down
+config.gamedropsbackport.iceCaves=Ice Caves
+config.gamedropsbackport.iceCaves.enabled=Enabled
+
+# --- frostbite ---
+entity.gamedropsbackport.frostbite.name=Frostbite
+entity.gamedropsbackport.ice_ball.name=Ice Ball
+item.gamedropsbackport.ice_ball.name=Ice Ball
+effect.gamedropsbackport.freezing=Freezing
+potion.effect.gamedropsbackport.freezing=Potion of Freezing
+splash_potion.effect.gamedropsbackport.freezing=Splash Potion of Freezing
+lingering_potion.effect.gamedropsbackport.freezing=Lingering Potion of Freezing
+tipped_arrow.effect.gamedropsbackport.freezing=Arrow of Freezing
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.title=What Goes Around Comes Around
+advancements.gamedropsbackport.adventure.what_goes_around_comes_around.description=Kill a Frostbite using an Ice Ball
+config.gamedropsbackport.frostbite=Frostbite
+config.gamedropsbackport.frostbite.enabled=Enabled
+subtitles.gamedropsbackport.entity.drowned.converted_to_zombie=Drowned converts to Zombie
+subtitles.gamedropsbackport.entity.frostbite.ambient=Frostbite groans
+subtitles.gamedropsbackport.entity.frostbite.converted_to_zombie=Frostbite converts to Zombie
+subtitles.gamedropsbackport.entity.frostbite.death=Frostbite dies
+subtitles.gamedropsbackport.entity.frostbite.hurt=Frostbite is hurt
+subtitles.gamedropsbackport.entity.frostbite.throw=Frostbite throws
+subtitles.gamedropsbackport.entity.husk.converted_to_zombie=Husk converts to Zombie
+subtitles.gamedropsbackport.entity.ice_ball.break=Ice Ball hits
+subtitles.gamedropsbackport.entity.ice_ball.throw=Ice Ball is thrown
+subtitles.gamedropsbackport.entity.parrot.imitate.frostbite=Parrot groans
+subtitles.gamedropsbackport.entity.zombie.converted_to_frostbite=Zombie converts to Frostbite
+subtitles.gamedropsbackport.event.mob_effect.freezing=Starting to freeze
+
+# --- jukebox ---
+item.gamedropsbackport.music_disc_flurry.name=Music Disc
+item.record.flurry.desc=Hyper Potions - Flurry
+config.gamedropsbackport.jukebox=Jukebox
+config.gamedropsbackport.jukebox.enabled=Enabled
+
+# --- changes264 ---
+subtitles.gamedropsbackport.block.ice.ambient=Ice resonates
+config.gamedropsbackport.changes.snowOnPackedIce=Snow on Packed Ice
+config.gamedropsbackport.changes.mushroomsAnyLight=Mushrooms in Any Light
+config.gamedropsbackport.changes.iceSounds=Ice Sounds
+config.gamedropsbackport.changes.iceFaces=Ice Faces
+config.gamedropsbackport.changes.frostedIceVibrations=Frosted Ice Vibrations
+config.gamedropsbackport.changes.snowballKnockback=Snowball Knockback
+config.gamedropsbackport.changes.steeringBoost=Steering Boost
+config.gamedropsbackport.changes.dragonPerchThrown=Perching Dragon Ignores Thrown Things

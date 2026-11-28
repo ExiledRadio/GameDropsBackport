@@ -294,11 +294,11 @@ public class EntitySulfurCube extends EntityAgeable {
     }
 
     /**
-     * 26.3's {@code equipItem}: swallows one of the stack, spitting out a different block it held. Babies swallow
-     * nothing.
+     * 26.4's {@code equipItem}: swallows one of the stack, spitting out a different block it held. Babies swallow
+     * nothing, and nor does a primed cube (26.4 Pre-Release 1: a dispenser could swap the TNT out of a lit one).
      */
     public boolean equipItem(ItemStack stack) {
-        if (this.isChild() || !ArchetypeItems.swallowable(stack)) {
+        if (this.isChild() || this.isPrimed() || !ArchetypeItems.swallowable(stack)) {
             return false;
         }
         if (this.hasBodyItem()) {
@@ -359,6 +359,50 @@ public class EntitySulfurCube extends EntityAgeable {
         }
         this.wasOnGround = this.onGround;
         this.targetSquish *= 0.6F;
+        if (!this.world.isRemote && this.archetype != null && this.archetype.freezes()) {
+            BlockPos here = new BlockPos(this);
+            if (!here.equals(this.lastFreezePos)) {
+                this.lastFreezePos = here;
+                freezeWater();
+            }
+        } else {
+            this.lastFreezePos = null;
+        }
+    }
+
+    /** The block the cold archetype last froze from ({@code onChangedBlock} runs on each change of block). */
+    private BlockPos lastFreezePos;
+
+    /**
+     * 26.4's cold archetype's {@code replace_disk}: on the ground and riding nothing, with {@code mobGriefing}, every
+     * water source in the layer under the cube within 3 of it ({@code distToCenterSqr < 9}) with air above and no entity
+     * in the way becomes frosted ice (age 0, melting as Frost Walker's), sending {@code block_place}.
+     */
+    public void freezeWater() {
+        if (!this.onGround || isRiding() || !this.world.getGameRules().getBoolean("mobGriefing")) {
+            return;
+        }
+        BlockPos center = new BlockPos(this.posX, this.posY, this.posZ).down();
+        int dist = 3;
+        for (BlockPos.MutableBlockPos p : BlockPos.getAllInBoxMutable(center.add(-dist, 0, -dist), center.add(dist, 0, dist))) {
+            double dx = p.getX() + 0.5D - this.posX, dz = p.getZ() + 0.5D - this.posZ;
+            if (dx * dx + dz * dz >= dist * dist) {
+                continue;
+            }
+            net.minecraft.block.state.IBlockState state = this.world.getBlockState(p);
+            if (state.getMaterial() != net.minecraft.block.material.Material.WATER
+                    || !(state.getBlock() instanceof net.minecraft.block.BlockLiquid)
+                    || state.getValue(net.minecraft.block.BlockLiquid.LEVEL) != 0
+                    || !this.world.isAirBlock(p.up())
+                    || !this.world.mayPlace(net.minecraft.init.Blocks.FROSTED_ICE, p, false, net.minecraft.util.EnumFacing.DOWN, null)) {
+                continue;
+            }
+            BlockPos at = p.toImmutable();
+            this.world.setBlockState(at, net.minecraft.init.Blocks.FROSTED_ICE.getDefaultState());
+            this.world.scheduleUpdate(at, net.minecraft.init.Blocks.FROSTED_ICE, net.minecraft.util.math.MathHelper.getInt(this.rand, 60, 120));
+            com.exiledradio.backportcore.gameevent.GameEvents.emit(this.world, com.exiledradio.backportcore.gameevent.GameEvent.BLOCK_PLACE, at,
+                    com.exiledradio.backportcore.gameevent.GameEventContext.of(this, net.minecraft.init.Blocks.FROSTED_ICE.getDefaultState()));
+        }
     }
 
     private void tickFuse() {

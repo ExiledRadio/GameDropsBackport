@@ -124,7 +124,9 @@ public final class ArchetypeItems {
                 + "dead_fire_coral_block dead_horn_coral_block sponge wet_sponge dried_kelp_block #moss_blocks resin_block "
                 + "resin_bricks chiseled_resin_bricks melon hay_block pumpkin carved_pumpkin jack_o_lantern ochre_froglight "
                 + "pearlescent_froglight verdant_froglight");
-        LISTS.put(Archetype.FAST_SLIDING, "blue_ice packed_ice snow_block");
+        // 26.4: blue ice moved to cold; the ice and snow bricks joined fast sliding.
+        LISTS.put(Archetype.FAST_SLIDING, "packed_ice packed_ice_bricks chiseled_packed_ice snow_block snow_bricks");
+        LISTS.put(Archetype.COLD, "blue_ice");
         LISTS.put(Archetype.HIGH_RESISTANCE, "soul_sand soul_soil");
         LISTS.put(Archetype.HOT, "magma_block");
         LISTS.put(Archetype.LIGHT, "#wool ore:blockWool");
@@ -144,7 +146,7 @@ public final class ArchetypeItems {
                 + "quartz_bricks nether_quartz_ore quartz_pillar red_nether_bricks red_sandstone redstone_lamp sandstone "
                 + "sea_lantern smooth_basalt smooth_quartz smooth_red_sandstone smooth_sandstone smooth_stone stone "
                 + "stone_bricks sulfur sulfur_bricks tuff tuff_bricks warped_nylium #concrete #coal_ores #lapis_ores "
-                + "#redstone_ores #diamond_ores #emerald_ores #terracotta #glazed_terracotta ore:stone ore:cobblestone "
+                + "#redstone_ores #diamond_ores #emerald_ores #terracotta #glazed_terracotta calcite_pillar polished_calcite polished_calcite_bricks chiseled_soulshale ore:stone ore:cobblestone "
                 + "ore:stoneGranite ore:stoneGranitePolished ore:stoneDiorite ore:stoneDioritePolished ore:stoneAndesite "
                 + "ore:stoneAndesitePolished ore:sandstone ore:obsidian ore:netherrack ore:endstone ore:blockQuartz "
                 + "ore:blockPrismarine ore:blockDiamond ore:blockEmerald ore:blockLapis ore:oreCoal ore:oreLapis "
@@ -236,7 +238,7 @@ public final class ArchetypeItems {
         Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
         if (archetype == null || item == null || item == net.minecraft.init.Items.AIR) {
             GameDropsBackport.LOGGER.warn("sulfurCube.extraBlocks: \"{}\" names no {}", entry,
-                    archetype == null ? "kind (bouncy, explosive, fast_flat, fast_sliding, high_resistance, hot, light, "
+                    archetype == null ? "kind (bouncy, cold, explosive, fast_flat, fast_sliding, high_resistance, hot, light, "
                             + "regular, slow_bouncy, slow_flat, slow_sliding, sticky)" : "item");
             return false;
         }

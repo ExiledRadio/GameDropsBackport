@@ -57,6 +57,25 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.preInit();
         com.exiledradio.gamedropsbackport.lookfeel.LookAndFeel.preInit(event.getSide().isClient());
         com.exiledradio.gamedropsbackport.babies.BabiesContent.preInit();
+        com.exiledradio.gamedropsbackport.iceblocks.IceBlocksContent.preInit();
+        com.exiledradio.gamedropsbackport.icecaves.IceCavesContent.preInit();
+        com.exiledradio.gamedropsbackport.frostbite.FrostbiteContent.preInit();
+        com.exiledradio.gamedropsbackport.jukebox.JukeboxContent.preInit();
+        com.exiledradio.gamedropsbackport.changes.DeepFreezeChanges.preInit();
+        if (event.getSide().isClient()) {
+            try {
+                Class.forName("com.exiledradio.gamedropsbackport.changes.client.IceAmbience").getMethod("init").invoke(null);
+            } catch (ReflectiveOperationException e) {
+                LOGGER.error("Ice ambience failed to start", e);
+            }
+        }
+        if (event.getSide().isClient() && com.exiledradio.gamedropsbackport.frostbite.FrostbiteContent.enabled()) {
+            try {
+                Class.forName("com.exiledradio.gamedropsbackport.frostbite.client.FrostbiteClient").getMethod("preInit").invoke(null);
+            } catch (ReflectiveOperationException e) {
+                LOGGER.error("Frostbite renderers failed to register", e);
+            }
+        }
     }
 
     @Mod.EventHandler
@@ -66,6 +85,8 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.poplar.PoplarContent.init();
         CampsContent.init();
         com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.init();
+        com.exiledradio.gamedropsbackport.icecaves.IceCavesContent.init();
+        com.exiledradio.gamedropsbackport.frostbite.FrostbiteContent.init();
     }
 
     @Mod.EventHandler
@@ -81,6 +102,9 @@ public final class GameDropsBackport {
         com.exiledradio.gamedropsbackport.sulfurcube.SulfurCubes.postInit();
         com.exiledradio.gamedropsbackport.sulfurcaves.SulfurCavesContent.postInit();
         com.exiledradio.gamedropsbackport.changes.Changes.postInit();
+        com.exiledradio.gamedropsbackport.frostbite.FrostbiteContent.postInit();
+        com.exiledradio.gamedropsbackport.icecaves.IceCavesContent.postInit();
+        com.exiledradio.gamedropsbackport.changes.DeepFreezeChanges.postInit();
         CampsContent.postInit();
     }
 

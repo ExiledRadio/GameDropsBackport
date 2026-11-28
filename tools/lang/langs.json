@@ -2,6 +2,7 @@
   "modid": "gamedropsbackport",
   "lang_dir": "src/main/resources/assets/gamedropsbackport/lang",
   "mojang_versions": [
+    "26.4-pre-2",
     "26.3",
     "26.2",
     "26.1.2",

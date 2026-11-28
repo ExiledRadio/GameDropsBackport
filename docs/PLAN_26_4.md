@@ -62,10 +62,11 @@ release follows Core's `docs/RELEASING.md`.
 - **Ore placements:** the 22 `ice_cave_ore_*` placements, each placing a stone or deepslate patch before the ore.
 - **Crevasses:** winding cracks covered with brittle ice over water, using vanilla's feature fields (width 2-8, length 4-16, twistiness, tapering).
 - **Spawns:** frostbites, strays and the common cave monsters; snowy villagers in villages that reach them.
+- **Structures:** strongholds are biased toward ice caves (`#stronghold_biased_to` lists `ice_caves`); mineshafts, standard ruined portals and trial chambers also generate in them.
 - **Blocks:**
-  - **Icicles** (`IcicleBlock`): speleothems that grow under packed ice (`MAX_GROWING_LENGTH = 4`). They melt when the block light is above 4 (block light only, not sky light), and in the Nether. They fall like pointed dripstone, and a trident breaks them. Shares Caves & Cliffs' pointed dripstone code where installed, its own copy otherwise (open question 1).
+  - **Icicles** (`IcicleBlock`): speleothems that grow under packed ice (`MAX_GROWING_LENGTH = 4`). They melt when the block light is above 4 (block light only, not sky light), above any block in `#melts_icicle_above` (magma block), and in the Nether. They fall like pointed dripstone, and a trident breaks them. Shares Caves & Cliffs' pointed dripstone code where installed, its own copy otherwise (open question 1).
   - **Ice crystals** (`IceCrystalBlock`): light 4, attach to any full side, ambient sound over packed ice.
-  - **Brittle ice** (`BrittleIceBlock`): ages 0-3. Stepping on it schedules the next crack 24 ticks later, so frostbites and strays (`#does_not_break_brittle_ice`) don't break it. It doesn't melt and drops only with Silk Touch. Water next to blue ice becomes brittle ice.
+  - **Brittle ice** (`BrittleIceBlock`): ages 0-3. Stepping on it schedules the next crack 24 ticks later, so frostbites and strays (`#does_not_break_brittle_ice`) don't break it. Only living entities crack it: other mobs only with `mobGriefing`, players only outside spawn protection (`shouldEntityIncreaseCracking`). Shulkers crack the brittle ice they sit on. Iron golems never spawn on it (`SpawnUtil`). Lily pads can be placed on it (`#supports_lily_pad`: ice, brittle ice, frosted ice). It doesn't melt and drops only with Silk Touch. Water next to blue ice becomes brittle ice.
   - **Crevasses** (`CrevasseFeature`).
 - **Tests:** placement and depth with and without Caves & Cliffs, and with RTG and OTG (Caves & Cliffs' new hybrid worlds), F3 and `/locate biome`.
 
@@ -73,14 +74,16 @@ release follows Core's `docs/RELEASING.md`.
 - **Frostbite:** a zombie type in snowy biomes and ice caves, with a baby form.
   - Fights in melee (which applies Freezing) or throws ice balls, switching by distance.
   - Immune to Freezing; doesn't sink in powder snow; burns in sunlight.
-  - Drops rotten flesh and ice balls; becomes a zombie after 30 s underwater.
+  - 24 max health, speed 0.21.
+  - Drops 0-2 rotten flesh and 0-3 ice balls (Looting adds 0-1 of each per level); ice balls stack to 16.
+  - Becomes a zombie after 45 s underwater (the zombie's drowning tracker: 600 ticks in water, then a 300-tick conversion).
 - **Freezing effect:** damage over time and slowness, and the player's screen shakes.
   - Leather armor stops the damage but not the effect; fire or lava counters it.
   - Blazes, magma cubes and striders take 5x damage. Undead, snow golems, polar bears and the ender dragon are immune.
 - **Ice ball** (`IceBall`): a throwable projectile; damage is `ceil(speed × 1.3)` (`BASE_DAMAGE = 1.3F`).
 - **Potions and arrows:** Potion of Freezing 900 ticks (45 s), long 1800 ticks (90 s), brewed from an awkward potion and an ice ball, with splash, lingering and Arrows of Freezing as vanilla scales them; the 13 brewing recipes in the pre-release.
 - **Freezing in 1.12.2:** the effect only feeds freeze ticks (see the owners table), so the frost overlay, the damage and the immunities come from whoever owns freezing (open question 3).
-- **Conversions:** zombie to frostbite after 30 s in powder snow, husk and drowned to zombie (Rule 2, Caves & Cliffs). Leather armor prevents them.
+- **Conversions:** zombie to frostbite after 22 s in powder snow (140 ticks, then a 300-tick conversion), husk and drowned to zombie (Rule 2, Caves & Cliffs). Leather armor prevents them, and now also stops a skeleton becoming a stray (`Skeleton`: `isWearingFreezeImmuneWearables`).
 - **Advancements:** "What Goes Around Comes Around", Monster Hunter, Monsters Hunted, and the two that need Freezing.
 - **Sounds:** frostbite, ice ball and conversion sounds; the parrot imitates a frostbite.
 
@@ -101,10 +104,11 @@ release follows Core's `docs/RELEASING.md`.
   - **Frosted ice:** while on the ground and not ridden, it turns water sources below it within radius 3 into frosted ice (age 0), only where there's air above, and sends a block-place game event. There's no floating, and nothing happens over flowing water (Snapshot 8 removed both).
   - **Sounds:** the fast-sliding hit sound for hits and pushes.
 - **Fast-sliding archetype:** now also packed ice bricks, chiseled packed ice and snow bricks.
+- **Slow bouncy archetype:** now also calcite pillar, polished calcite, polished calcite bricks (Caves & Cliffs' calcite set, Rule 2) and chiseled soulshale (with Wild Update). Calcite was already in it in 26.3.
 - **Config:** extends the `sulfurCube.extraBlocks` kinds with `cold`.
 
 ### 6. Jukebox playlists and "Flurry"
-- **Playlists:** a jukebox plays the discs in a chest, trapped chest or copper chest above it, in slot order. It skips anything that isn't a disc, loops to the start, and swaps the finished disc for the next. Ejecting skips to the next disc.
+- **Playlists:** a jukebox plays the discs in a chest, trapped chest or copper chest above it (`#jukebox_containers`), in slot order; single chests only, never half of a double chest. It skips anything that isn't a disc, loops to the start, and swaps the finished disc for the next. Ejecting skips to the next disc.
 - **Textures:** the jukebox gets new textures.
 - **"Flurry":** the music disc, with a 30% chance in igloo basement chests and comparator output 7.
 
@@ -114,7 +118,9 @@ release follows Core's `docs/RELEASING.md`.
   - No internal faces between ice blocks.
   - Frosted ice sends a vibration (Core's game events).
 - **Snow:** can be placed on packed ice. Creative groups snow, snow blocks and snow bricks.
-- **Mushrooms:** placeable on any solid top face whatever the light. Spreading still needs light under 13.
+- **Mushrooms:** placeable whatever the light on any block whose top face has a sturdy center (`canSupportCenter`, so end rods count). Spreading still needs light under 13.
+- **Honey blocks:** support blocks as a full block (`getBlockSupportShape` is a full cube), so what goes on a slime block goes on honey; mobs never spawn on them (`isValidSpawn` never).
+- **Projectiles:** decorated pots and chorus flowers break only when the projectile `mayInteract` and `mayBreak` there; sulfur spikes and icicles have their own `onProjectileHit` (`SpeleothemBlock`). What `mayBreak` allows a mob's arrow is checked at release (Snapshot 5 tied it to `mobGriefing`). Pots are Trails & Tales'.
 - **Items:**
   - Snowballs knock back players.
   - Carrot and warped fungus on a stick boost for 7-35 s (warped fungus only with Nether Update).

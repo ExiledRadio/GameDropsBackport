@@ -11,7 +11,7 @@ import net.minecraft.client.model.ModelZombie;
 public class ModelFrostbite extends ModelZombie {
 
     public ModelFrostbite(float inflate) {
-        super(inflate, true);
+        super(inflate, false); // false: a 64x64 texture (true is 1.12's 64x32 zombie)
         this.bipedLeftArm = new ModelRenderer(this, 32, 48);
         this.bipedLeftArm.addBox(-1.0F, -2.0F, -2.0F, 4, 12, 4, inflate);
         this.bipedLeftArm.setRotationPoint(5.0F, 2.0F, 0.0F);
